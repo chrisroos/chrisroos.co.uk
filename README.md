@@ -17,3 +17,4 @@ This is the raw content of chrisroos.co.uk and these instructions are only reall
 ## Creating a new post
 
     $ webby create:post blog/"<title of post with spaces>"
+
