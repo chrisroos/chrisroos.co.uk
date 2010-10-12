@@ -1,0 +1,26 @@
+---
+summary:    HMRC Employer CD and httperf fun
+blog_post:  true
+title:      Day notes - 11th Oct 2010
+created_at: 2010-10-12 10:04:47.920184 +01:00
+guid:       a7e99820-c19d-452e-a53d-2642fe3eb3dc
+layout:     blog
+filter:     haml
+---
+:markdown
+  
+  * Worked with [James A](http://interblah.net/) to get the [HMRC employer's CD](http://www.hmrc.gov.uk/employers/cdrom/index.htm) set-up.
+
+    * We keep the data directory in a shared [dropbox](http://www.dropbox.com) so that all of us can use the app from any machine and connect to the same data directory.  Although multiple people *can* have the app open at one time (pointing at their local dropbox copies of the data) only the last edit/save will win.
+
+    * You can customise the data directory (post-install) by editing the configuration/projectSpecific/userPath key in the /PATH/TO/HMRC/Employer CD-ROM 2010/shared/xml/configuration.xml configuration file (that's on a Mac).
+
+    * The app actually appears to be made of a webserver (running on [http://127.0.0.1:46721](http://127.0.0.1:46721) by default) and a flash front end app.  It looks as though you can do everything through the web app if you don't care for the flash front end.
+
+    * We got an error when trying to submit a form to the HMRC gateway.  The error was something along the lines of 'missing or invalid XML in /PATH/TO/HMRC/Employer CD-ROM 2010/shared/xml/forms/2010/p45_part3_zap/script.xml'.  We noticed that the p45_part3_zap directory had been created with a capital P (i.e. P45_part3_zap): aliasing this as p45_part3_zap and re-starting the app fixed the problem.
+
+  * Worked with [James M](http://blog.floehopper.org/) getting an understanding of [httperf](http://www.hpl.hp.com/research/linux/httperf/).
+
+    * Patched our copy of httperf as the standard version limits cookies to 256 bytes and the cookies that rails generates by default are larger than that.  Luckily, someone else had already [done the work for us](http://github.com/Gregg/httperf_big_cookies).
+
+    * We started to get an understanding of the stats that httperf generates.
