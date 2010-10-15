@@ -1,0 +1,16 @@
+---
+summary:    Meeting, retrospective and JMeter
+blog_post:  true
+title:      Day notes - Weds 13th Oct 2010
+created_at: 2010-10-15 10:28:27.838206 +01:00
+guid:       28743236-d997-40a6-b8ed-dc46f6bedef8
+layout:     blog
+filter:     haml
+---
+:markdown
+
+  * Weekly meeting with O2.
+
+  * The second team retrospective run by [Ben G](http://www.techbelly.com/).
+
+  * Worked with [Kalv](http://kalv.co.uk/) to see whether we could get any useful data out of [JMeter](http://jakarta.apache.org/jmeter/) after our ([James M](http://blog.floehopper.org/) and I) somewhat unsuccessful attempts at getting anything useful [tsung](http://tsung.erlang-projects.org/), [httperf](http://www.hpl.hp.com/research/linux/httperf/) or [siege](http://www.joedog.org/index/siege-home).  Initial results appear positive, at least in the sense that we can actually get useful data.
