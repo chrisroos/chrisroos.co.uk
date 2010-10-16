@@ -5,9 +5,8 @@ filter: haml
 %meta{"http-equiv" => "content-type", :content => "text/html; charset=utf-8"}
 %link{:rel => "icon", :href => "/images/favicon.gif"}
 %link{:rel => "alternate", :type => "application/rss+xml", :title => "RSS", :href => "http://feeds.feedburner.com/DeferredUntilInspirationHits"}
-%link{:rel => "stylesheet", :href => "/stylesheets/yui-reset-fonts-grids.css", :type => "text/css", :media => "all"}
-%link{:rel => "stylesheet", :href => "/stylesheets/blog.css", :type => "text/css", :media => "all", :charset => "utf-8"}
-%link{:rel => "stylesheet", :href => "/stylesheets/print.css", :type => "text/css", :media => "print", :charset => "utf-8"}
+%link{:rel => "stylesheet", :href => "/stylesheets/reset.css", :type => "text/css", :media => "all"}
+%link{:rel => "stylesheet", :href => "/stylesheets/congobongo.css", :type => "text/css", :media => "all"}
 %link{:rel => "openid.server", :href => "http://www.myopenid.com/server"}
 %link{:rel => "openid.delegate", :href => "http://chrisroos.myopenid.com/"}
 %title= @page.title + ' - Chris Roos'
