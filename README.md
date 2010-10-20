@@ -20,6 +20,5 @@ This is the raw content of chrisroos.co.uk and these instructions are only reall
     
 ## Creating a new day note
 
-    $ webby create:post blog/2010-10-14-day-notes
-    # Change the title attribute of that post to 'Day notes - Thurs 14th Oct 2010'
+    $ webby create:day_note blog/2010-10-14-day-notes
 
