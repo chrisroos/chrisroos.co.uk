@@ -1,0 +1,15 @@
+---
+summary:    Notes from Wednesday 10th November 2010
+blog_post:  true
+title:      Day notes - Wed 10th Nov 2010
+created_at: 2010-11-18 17:52:06.634922 +00:00
+guid:       84d7539c-b443-45c8-88ba-e77ee5589b5a
+layout:     blog
+filter:     haml
+---
+:markdown
+  [Caffeine Monitor](http://cm.buildconf.com/) went live at [Build conference](http://buildconf.com/).
+
+  Paired with [James M](http://blog.floehopper.org/) to fix the non-deterministic asynchronous javascript [qunit](http://docs.jquery.com/Qunit) tests that [Jase](http://jasoncale.com/) and I looked at on Monday.
+
+  Paired with [James A](http://interblah.net/) on getting us using [Puppet](http://www.puppetlabs.com/) to provision our [#blue](https://hashblue.com/) staging server.

@@ -1,0 +1,19 @@
+---
+summary:    Notes from Monday 15th November 2010
+blog_post:  true
+title:      Day notes - Mon 15th Nov 2010
+created_at: 2010-11-18 17:54:20.751280 +00:00
+guid:       ae0a173d-17da-4970-b3c9-9b969c53a613
+layout:     blog
+filter:     haml
+---
+:markdown
+  Paired with [Kalv](http://kalv.co.uk/) to sign off some outstanding [#blue](https://hashblue.com/) stories in [Pivotal Tracker](https://www.pivotaltracker.com).
+
+  We noticed that viewing a 'missing resource' was raising an exception and returning a 500 http response.  It should, and now does, return a 404 response.  [Rails](http://rubyonrails.org/)/[ActiveRecord](http://ar.rubyonrails.org/) would normally take care of this by raising, and correctly rescuing from, an ActiveRecord::RecordNotFound exception but we were using a custom find method that didn't replicate this behaviour.
+
+  We noticed that we couldn't actually deploy to our newly provisioned staging server as our own users (this was originally a requirement from [o2](http://www.o2.co.uk/) for deploying to the [AWS](http://aws.amazon.com/) servers).  We decided to respect [Capistrano's](https://github.com/capistrano/capistrano/wiki/Documentation-v2.x) wishes and work out how to get it to deploy as a single user.
+
+  We all spent about 90 minutes on a '[retrospective](http://en.wikipedia.org/wiki/Retrospective)' (quotes because I'm not sure it was technically a retrospective) focussing on [pairing](http://en.wikipedia.org/wiki/Pair_programming).  Although there were specific examples of when it was/wasn't working we decided not to change anything and just to monitor the situation this week so that we could work out whether we wanted to change anything next week.
+
+  Watched [The Social Network](http://www.imdb.com/title/tt1285016/) at [Brixton's ritzy cinema](http://www.picturehouses.co.uk/cinema/Ritzy_Picturehouse/).  I can best describe it as "a film I've seen".
