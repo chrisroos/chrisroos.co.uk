@@ -1,0 +1,15 @@
+---
+summary:    Notes from Thursday 18th November 2010
+blog_post:  true
+title:      Day notes - Thu 18th Nov 2010
+created_at: 2010-11-19 10:41:55.575730 +00:00
+guid:       761c6f5f-2da6-48a6-bcb3-04211077064c
+layout:     blog
+filter:     haml
+---
+:markdown
+  I've got this idea about explaining iterative software development using the analogy of bridging a gap to get to something you can see on the other side.  I did some reading around this to see if other people had already written similar things.
+
+  [Kalv](http://kalv.co.uk/), [James A](http://interblah.net/) and I had a great meeting with a business that were enquiring about re-writing the software they use daily.  It was great because it reminded me that we all share a common view of software development and the desire to "do the right thing".  On questioning their motivation for wanting to re-write the existing system it became clear that their problems lie with the maintenance of the software rather than the software itself.  We basically talked ourselves out of the work by suggesting that they contract a small Java shop (the current software is written in Java) to maintain and enhance the existing system rather than to go with a re-write (I'm actually not convinced that a re-write is ever the answer).  We got in touch with a few Java shops and made the introductions.
+  
+  Caught up on these day notes *again*.
