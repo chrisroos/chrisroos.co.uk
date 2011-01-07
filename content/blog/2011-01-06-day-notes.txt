@@ -1,0 +1,13 @@
+---
+summary:    Notes from Thursday 6th January 2011
+blog_post:  true
+title:      Day notes - Thu 6th Jan 2011
+created_at: 2011-01-07 18:16:30.514072 +00:00
+guid:       9ff06620-ee89-439a-822c-30395abb1da3
+layout:     blog
+filter:     haml
+---
+:markdown
+  My first cycle to work today.  I bought a [Marin Inverness](http://www.marin.co.uk/2011/bikepage.php?ModNo=11IN) just before Christmas but today was the first chance I had to cycle it into the office.  I got soaked.  Like water squelching out of my trainers soaked.  I need to work on some wet weather clobber before I cycle in the rain again.  I need to change the gearing on the bike too - it's nice and easy to get started but I hit top speed way too soon.  I'll either definitely do this or just never ride the bike again.
+  
+  Work wise, I spent some time working with [Kalv](http://kalv.co.uk/) on getting another of our servers provisioned using [puppet](http://www.puppetlabs.com/).
