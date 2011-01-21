@@ -1,0 +1,11 @@
+---
+summary:    Notes from Monday 17th January 2011
+blog_post:  true
+title:      Day notes - Mon 17th Jan 2011
+created_at: 2011-01-21 17:19:41.963928 +00:00
+guid:       eb319359-0122-4bcc-8021-2a92a93325e1
+layout:     blog
+filter:     haml
+---
+:markdown
+  Spent a chunk of time trying to get our VPN configured so that we could communicate with the live MMSC within O2.
