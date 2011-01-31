@@ -1,0 +1,11 @@
+---
+summary:    Notes from Tuesday 25th January 2011
+blog_post:  true
+title:      Day notes - Tue 25th Jan 2011
+created_at: 2011-01-31 11:19:52.333747 +00:00
+guid:       f8106781-7316-44d2-a8fc-252f29952f54
+layout:     blog
+filter:     haml
+---
+:markdown
+  I spent quite a while investigating a problem with installing [Nokogiri](https://github.com/tenderlove/nokogiri/).  It turned out to be a problem with a version of [libiconv](http://www.gnu.org/software/libiconv/) I had installed.  I added some details to [Nokogiri issue 381](https://github.com/tenderlove/nokogiri/issues/#issue/381/comment/706790).
