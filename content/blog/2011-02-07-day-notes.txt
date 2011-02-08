@@ -1,0 +1,13 @@
+---
+summary:    Notes from Monday 7th February 2011
+blog_post:  true
+title:      Day notes - Mon 7th Feb 2011
+created_at: 2011-02-08 18:00:46.488218 +00:00
+guid:       a43e7961-739b-4c3c-9e70-6cbb419c5433
+layout:     blog
+filter:     haml
+---
+:markdown
+  [Kalv](http://kalv.co.uk/), [Jase](http://jasoncale.com/) and I spent some time discussing a new [#blue](https://hashblue.com) sign-up process.  It became clear after trying to implement our plan that we hadn't quite thought it through enough and we went back to the drawing board.
+  
+  I came off my bike last Friday and, although it looks fine to me, it's felt a little off balance since so I took it to the shop for them to have a little look at.  I kinda hope there's actually something wrong with it and it's not just the fact that I've forgotten how to cycle.  That'd be embarrassing.
