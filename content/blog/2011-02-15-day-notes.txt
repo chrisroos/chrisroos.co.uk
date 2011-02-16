@@ -1,0 +1,15 @@
+---
+summary:    Notes from Tuesday 15th February 2011
+blog_post:  true
+title:      Day notes - Tue 15th Feb 2011
+created_at: 2011-02-16 18:32:50.258712 +00:00
+guid:       e9f6d1aa-aff3-414c-8f00-3ab70b24ef58
+layout:     blog
+filter:     haml
+---
+:markdown
+  [Kalv](http://kalv.co.uk/) and I paired on some message encoding oddness we're seeing with certain messages coming to us from the SMSCs.
+
+  [Tom](http://tomafro.net/) and I paired to investigate some spikes in load we were seeing on our application server after re-enabling a number of [#blue](https://hashblue.com/) users yesterday.  We're fairly confident we found at least two of the main offenders: removing conversations and cancelling accounts were both using grossly inefficient queries.  We've tidied these up and re-deployed.
+
+  I saw [Alexander](http://en.wikipedia.org/wiki/Alex_Ebert) (off of [Edward Sharpe and the Magnetic Zeros](http://en.wikipedia.org/wiki/Edward_Sharpe_and_the_Magnetic_Zeros)) at [The City Arts & Music Project](http://www.thecamplondon.com/).  It was great.  You can listen to the single, [Truth](http://www.youtube.com/watch?v=N_atFMCUJ1o), on youtube.
