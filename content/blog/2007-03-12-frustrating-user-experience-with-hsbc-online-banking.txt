@@ -61,6 +61,12 @@ layout: blog
       %td.dateReported Feb 23rd 2010
       %td.notes (Contributed by Chris via email) For paying your self employed National Insurance contributions
     %tr
+      %td.hsbcName HMRC NIC QUARTERLY
+      %td.sortCode 03-32-20
+      %td.accountNumber 12001004
+      %td.dateReported 7th Apr 2010
+      %td.notes (Contributed by Emily via email) For paying your self employed National Insurance contributions
+    %tr
       %td.hsbcName HMRC OTHER TAX
       %td.sortCode 08.32.10
       %td.accountNumber 12001020
