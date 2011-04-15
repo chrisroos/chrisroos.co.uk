@@ -24,6 +24,8 @@ layout: blog
   Hmm, now if only I knew which of 12 cryptic names to choose I'd be away...  Anyway.  A short phone call later, filled with such insights as "lots of people seem to phone up about this", and, "we can't give out the list of names vs sort codes as it's against data protection", I was all set.  For anyone that cares, the sort code and account number I had (10-50-41 and 23456000) match to the incredibly obvious 'HMRC CORP TAX SHIP'.  Actually, I've just come across a "page":http://www.hmrc.gov.uk/payinghmrc/bank-account-checker.htm detailing all the different HMRC accounts and what they're for.  A quick scan suggests that you can probably derive the cryptic Hsbc name from the more human friendly name on that page.
 
   If anyone happens to come across this page while searching for the error above, maybe you could leave details in the comments of the sort code, account number and Hsbc cryptic name, in order to help out any future visitors.
+  
+  It's been pointed out, by Zaib via email, that there's a list of these bank accounts on the "hmrc site":http://www.hmrc.gov.uk/bankaccounts/.  I'd definitely recommend checking that official site in order to be confident that you've got the correct sort code and account number.
 
   h2. Sort codes, account numbers and the cryptic Hsbc name
 
