@@ -1,0 +1,46 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    RedCloth (4.2.7)
+    active_support (3.0.0)
+      activesupport (= 3.0.0)
+    activesupport (3.0.0)
+    addressable (2.2.6)
+    diff-lcs (1.1.3)
+    directory_watcher (1.4.1)
+    haml (3.0.25)
+    hpricot (0.8.5)
+    launchy (2.0.5)
+      addressable (~> 2.2.6)
+    little-plugger (1.1.3)
+    logging (1.6.1)
+      little-plugger (>= 1.1.2)
+    loquacious (1.9.1)
+    rake (0.9.2.2)
+    rdiscount (1.6.8)
+    rspec (2.7.0)
+      rspec-core (~> 2.7.0)
+      rspec-expectations (~> 2.7.0)
+      rspec-mocks (~> 2.7.0)
+    rspec-core (2.7.1)
+    rspec-expectations (2.7.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.7.0)
+    webby (0.9.4)
+      directory_watcher (>= 1.1.2)
+      hpricot (>= 0.6.0)
+      launchy (>= 0.3.2)
+      logging (>= 0.9.7)
+      loquacious (>= 1.3.0)
+      rake (>= 0.8.4)
+      rspec (>= 1.2.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  RedCloth (= 4.2.7)
+  active_support
+  haml (= 3.0.25)
+  rdiscount
+  webby
