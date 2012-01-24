@@ -1,5 +1,5 @@
 SITE.user       = "chrisroos"
-SITE.host       = "seagul.co.uk"
+SITE.host       = "jail0145.vps.exonetric.net"
 SITE.remote_dir = "/home/chrisroos/www/chrisroos.co.uk/"
 
 task :default => :build
