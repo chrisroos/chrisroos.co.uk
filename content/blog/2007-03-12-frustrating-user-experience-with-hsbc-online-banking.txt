@@ -7,6 +7,9 @@ created_at: 2007-03-12 23:13:00 +00:00
 layout: blog
 ---
 :textile
+  *Update - 9th Jan 2013*
+  I received an email toward the end of last (thanks, Nick) pointing out that when you choose a payee from the list of beneficiaries (e.g. HMRC SA AS SHIP) you'll be presented with their sort code and account number on the next screen. If it doesn't match what you're expecting you can go back and choose another entry from the list.
+  
   *Update - 15th Feb 2012*
   I've removed the table of sort codes and account numbers that used to live at the bottom of this page.  I received an email from someone (thanks, Adam) that had found this page and realised that at least one of the entries in the table was incorrect (the one for HMRC SELF AS CUMB).  I don't want to host incorrect information but also don't want to maintain the table so the easiest thing for me is to remove it.
   
