@@ -28,7 +28,7 @@ If that's not possible, for whatever reason, then you can use webby's autobuild 
   
 ## Creating a new post
 
-    $ webby create:post blog/"<title of post with spaces>"
+    $ webby create:post blog/"<yyyy-mm-dd>-<title of post with spaces>"
     
 ## Creating a new day note
 
