@@ -201,6 +201,10 @@ CONTENT
   padding: 0 0 1.78em 0;
 }
 
+#content img {
+  width: 100%;
+}
+
 #content ul, #content ol {
   padding: 0 1em 2.5em 0;
 }
