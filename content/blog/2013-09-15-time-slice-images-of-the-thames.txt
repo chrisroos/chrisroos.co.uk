@@ -8,7 +8,7 @@ layout:     blog
 filter:     haml
 ---
 :markdown
-  This image was created by taking 24 images (well, I think it might actually be 23 because my maths was off) from the set I captured on the [30th August 2013](http://thames-time-lapse.herokuapp.com/2013-08-30).
+  This image was created by taking 24 images (well, I think it might actually be 23 because my maths was off) from the set I captured on the [30th August 2013](http://thames-time-lapse.chrisroos.co.uk/days/2013-08-30).
 
   ![Time slice image of the Thames](/images/2013-08-30-thames-time-slice.jpg)
 
