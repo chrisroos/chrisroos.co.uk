@@ -40,7 +40,7 @@ filter:     haml
 
   %ul
     %li
-      %a.url{ :href => "http://github.com/chrisroos", :rel => 'me' } Github
+      %a.url{ :href => "https://github.com/chrisroos", :rel => 'me' } Github
 
   %h3 Infrequent use
 
