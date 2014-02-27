@@ -40,6 +40,12 @@ filter:     haml
 
   %ul
     %li
+      %a.url{ :href => "http://github.com/chrisroos" } Github
+
+  %h3 Infrequent use
+
+  %ul
+    %li
       %a.url{ :href => "http://twitter.com/chrisroos" } Twitter
     %li
       %a.url{ :href => "http://delicious.com/chrisjroos" } Delicious
@@ -51,10 +57,6 @@ filter:     haml
       %a.url{ :href => "http://getsatisfaction.com/people/chrisroos" } Get Satisfaction
     %li
       %a.url{ :href => "http://www.dailymugshot.com/main/show/13817" } Daily Mug Shot
-
-  %h3 Infrequent use
-
-  %ul
     %li
       %a.url{ :href => "http://userscripts.org/users/87038" } Userscripts
     %li
@@ -63,8 +65,6 @@ filter:     haml
       %a.url{ :href => "http://www.workingwithrails.com/person/973-chris-roos" } Working with Rails
     %li
       %a.url{ :href => "http://rubyforge.org/users/chrisjroos" } Rubyforge
-    %li
-      %a.url{ :href => "http://github.com/chrisroos" } Github
     %li
       %a.url{ :href => "http://www.beerintheevening.com/user_profile.shtml?username=chrisroos" } Beer in the evening
     %li
