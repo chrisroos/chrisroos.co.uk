@@ -13,8 +13,8 @@ filter:     haml
   %h2 Email, twitter and instant messenger
 
   %ul
-    %li 
-      Email: 
+    %li
+      Email:
       %a.email{ :href => "mailto:chris@seagul.co.uk" } chris@seagul.co.uk
     %li
       Skype:
@@ -53,8 +53,6 @@ filter:     haml
       %a.url{ :href => "http://getsatisfaction.com/people/chrisroos" } Get Satisfaction
     %li
       %a.url{ :href => "http://www.dailymugshot.com/main/show/13817" } Daily Mug Shot
-    %li
-      %a.url{ :href => "http://upcoming.yahoo.com/user/486473/" } Upcoming
 
   %h3 Infrequent use
 
@@ -72,20 +70,26 @@ filter:     haml
     %li
       %a.url{ :href => "http://www.ruby-forum.com/user/show/463" } Ruby forum
     %li
-      %a.url{ :href => "https://www.wesabe.com/users/chris-roos" } Wesabe
-    %li
       %a.url{ :href => "http://bkkeepr.com/people/chrisroos" } Bkkeepr
     %li
       %a.url{ :href => "http://github.com/chrisroos" } Github
     %li
       %a.url{ :href => "http://www.beerintheevening.com/user_profile.shtml?username=chrisroos" } Beer in the evening
     %li
-      %a.url{ :href => "http://claimid.com/chrisroos" } ClaimId
-    %li
       %a.url{ :href => "http://www.43things.com/person/chrisjroos" } 43 things
-    %li
-      %a.url{ :href => "http://www.43places.com/person/chrisjroos" } 43 places
     %li
       %a.url{ :href => "http://allconsuming.net/person/chrisjroos" } All consuming
     %li
       %a.url{ :href => "http://profiles.yahoo.com/chrisjroos" } Yahoo
+
+  %h3 Dead sites
+
+  %ul
+    %li
+      %a.url{ :href => "http://upcoming.yahoo.com/user/486473/" } Upcoming
+    %li
+      %a.url{ :href => "https://www.wesabe.com/users/chris-roos" } Wesabe
+    %li
+      %a.url{ :href => "http://claimid.com/chrisroos" } ClaimId
+    %li
+      %a.url{ :href => "http://www.43places.com/person/chrisjroos" } 43 places
