@@ -48,8 +48,6 @@ filter:     haml
     %li
       %a.url{ :href => "http://www.last.fm/user/chrisroos" } Last.fm
     %li
-      %a.url{ :href => "http://code.google.com/u/chrisjroos" } Google code
-    %li
       %a.url{ :href => "http://getsatisfaction.com/people/chrisroos" } Get Satisfaction
     %li
       %a.url{ :href => "http://www.dailymugshot.com/main/show/13817" } Daily Mug Shot
@@ -62,15 +60,9 @@ filter:     haml
     %li
       %a.url{ :href => "http://vimeo.com/chrisroos" } Vimeo
     %li
-      %a.url{ :href => "http://www.amazon.co.uk/gp/shops/index.html?sellerID=AS1VKYI0VDYE5" } Amazon seller account
-    %li
       %a.url{ :href => "http://www.workingwithrails.com/person/973-chris-roos" } Working with Rails
     %li
       %a.url{ :href => "http://rubyforge.org/users/chrisjroos" } Rubyforge
-    %li
-      %a.url{ :href => "http://www.ruby-forum.com/user/show/463" } Ruby forum
-    %li
-      %a.url{ :href => "http://bkkeepr.com/people/chrisroos" } Bkkeepr
     %li
       %a.url{ :href => "http://github.com/chrisroos" } Github
     %li
@@ -79,8 +71,6 @@ filter:     haml
       %a.url{ :href => "http://www.43things.com/person/chrisjroos" } 43 things
     %li
       %a.url{ :href => "http://allconsuming.net/person/chrisjroos" } All consuming
-    %li
-      %a.url{ :href => "http://profiles.yahoo.com/chrisjroos" } Yahoo
 
   %h3 Dead sites
 
