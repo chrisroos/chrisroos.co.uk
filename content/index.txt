@@ -10,6 +10,14 @@ filter:      haml
 
   I work with my friends at "Go Free Range":http://gofreerange.com/.  It's awesome.
 
+  h2. Elsewhere
+
+  <ul>
+    <li>
+      <a href="https://github.com/chrisroos" rel="me">Github</a>
+    </li>
+  </ul>
+
   h2. Recent blog posts ("View all":/blog)
 
 = render(:partial => "/blog_post_list", :locals => {:blog_posts => blog_posts(3)})
