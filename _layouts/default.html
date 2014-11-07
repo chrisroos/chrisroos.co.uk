@@ -8,7 +8,7 @@
       <div id="header" class="group">
         {% include header.html %}
         {% include navigation.html %}
-        = render(:partial => "/google-search")
+        {% include google-search.html %}
       </div>
       <div id="content">
         {{ @content }}
