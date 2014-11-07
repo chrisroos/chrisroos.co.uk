@@ -1,34 +1,39 @@
-!!!
-%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en"}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    {% include html-header.html %}
 
-  %head
-    = render(:partial => "/html-header")
-    
     - if @page.blog_post
       - posts = blog_posts(:all, :reverse => false)
       - post_index = posts.index(@page)
       - if post_index > 0 && previous_post = posts[post_index - 1]
-        %link{:rel => "prev", :href => "#{friendly_url(previous_post)}"}
+        <link rel="prev" href="#{friendly_url(previous_post)}" />
       - if next_post = posts[post_index + 1]
-        %link{:rel => "next", :href => "#{friendly_url(next_post)}"}
-      %link{:rel => "first", :href => "#{friendly_url(posts.first)}"}
-      %link{:rel => "last", :href => "#{friendly_url(posts.last)}"}
-      %link{:rel => "index", :href => "/blog"}
+        <link rel="next" href="#{friendly_url(next_post)}" />
+      <link rel="first" href="#{friendly_url(posts.first)}" />
+      <link rel="last" href="#{friendly_url(posts.last)}" />
+      <link rel="index" href="/blog" />
       - if @page.summary
-        %meta{:name => "description", :content => "#{h(@page.summary)}"}
-  %body
-    #page
-      #header.group
-        = render(:partial => "/header")
-        = render(:partial => "/navigation")
-        = render(:partial => "/google-search")
-      #content
+        <meta name="description" content="#{h(@page.summary)}" />
+  <body>
+    <div id="page">
+      <div id="header" class="group">
+        {% include header.html %}
+        {% include navigation.html %}
+        {% include google-search.html %}
+      </div>
+      <div id="content">
         = short_date(@page)
-        %h1= @page.title
-        = @content
-      
-        %hr
+        <h1>{{ page.title }}</h1>
+        {{ @content }}
+
+        <hr />
         = render(:partial => "/blog_post_navigation")
-      #footer
-        = render(:partial => "/footer")
-    %script{ :src => "/javascripts/google-custom-search.js", :type => "text/javascript", :charset => "utf-8" }
+      </div>
+      <div id="footer">
+        {% include footer.html %}
+      </div>
+    </div>
+    <script src="/javascripts/google-custom-search.js" type="text/javascript" charset="utf-8"></script>
+  </body>
+</html>
