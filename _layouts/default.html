@@ -6,7 +6,7 @@
   <body>
     <div id="page">
       <div id="header" class="group">
-        = render(:partial => "/header")
+        {% include header.html %}
         = render(:partial => "/navigation")
         = render(:partial => "/google-search")
       </div>

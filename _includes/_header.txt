@@ -1,5 +1,0 @@
----
-filter: haml
----
-%p#site_name
-  %a{:href => "/"}chris roos
