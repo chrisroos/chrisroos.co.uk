@@ -43,6 +43,8 @@ GEM
     github-pages-health-check (0.1.1)
       net-dns (~> 0.6)
       public_suffix (~> 1.4)
+    haml (4.0.5)
+      tilt
     hitimes (1.2.2)
     html-pipeline (1.9.0)
       activesupport (>= 2)
@@ -111,6 +113,7 @@ GEM
     sass (3.4.7)
     terminal-table (1.4.5)
     thread_safe (0.3.5)
+    tilt (2.0.1)
     timers (4.0.1)
       hitimes
     toml (0.1.2)
@@ -124,6 +127,7 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
+  haml
 
 BUNDLED WITH
    1.10.6
