@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    = render(:partial => "/html-header")
+  </head>
+  <body>
+    <div id="page">
+      <div id="header" class="group">
+        = render(:partial => "/header")
+        = render(:partial => "/navigation")
+        = render(:partial => "/google-search")
+      </div>
+      <div id="content">
+        = @content
+      </div>
+      <div id="footer">
+        = render(:partial => "/footer")
+      </div>
+    </div>
+    <script src="/javascripts/google-custom-search.js" type="text/javascript" charset="utf-8"></script>
+  </body>
+</html>
