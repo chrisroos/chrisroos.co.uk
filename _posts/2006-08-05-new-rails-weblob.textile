@@ -5,4 +5,4 @@ title: New rails weblob
 created_at: 2006-08-05 00:47:00 +01:00
 layout: blog
 ---
-  "he he he":http://railsblob.blogspot.com/
+"he he he":http://railsblob.blogspot.com/

@@ -5,4 +5,4 @@ title: Bye bye feedshow...
 created_at: 2006-09-30 06:51:00 +01:00
 layout: blog
 ---
-  ... hello "revamped":http://www.techcrunch.com/2006/09/28/google-reader-steps-it-up-with-new-version/ "google reader":http://reader.google.com
+... hello "revamped":http://www.techcrunch.com/2006/09/28/google-reader-steps-it-up-with-new-version/ "google reader":http://reader.google.com

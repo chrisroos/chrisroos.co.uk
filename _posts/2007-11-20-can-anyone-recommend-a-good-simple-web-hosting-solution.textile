@@ -5,4 +5,4 @@ title: Can anyone recommend a good simple web hosting solution?
 created_at: 2007-11-20 22:07:00 +00:00
 layout: blog
 ---
-  I'm keen to move some domains over to "google apps":http://www.google.com/a but I need more than the included Page Creator.  Ideally, I want a very basic, reliable webhost that allows me to host static files.  Anyone have any recommendations?
+I'm keen to move some domains over to "google apps":http://www.google.com/a but I need more than the included Page Creator.  Ideally, I want a very basic, reliable webhost that allows me to host static files.  Anyone have any recommendations?

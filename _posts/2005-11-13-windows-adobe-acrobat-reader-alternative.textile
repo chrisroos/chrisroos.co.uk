@@ -5,4 +5,4 @@ title: Windows Adobe Acrobat Reader alternative
 created_at: 2005-11-13 16:08:54 +00:00
 layout: blog
 ---
-  I just re-installed Windows XP on my laptop as it has been almost unusable for the last few months due to large amounts of software cruft.  I had a need to read a .pdf and didn't really want to install Adobe as it just feels a little too bloaty to me.  A quick google turned this "little app":http://www.foxitsoftware.com/pdf/rd_intro.php up.  It's small, feels faster than Acrobat Reader (although that may be to do with the re-install) and is free.  So far so good.
+I just re-installed Windows XP on my laptop as it has been almost unusable for the last few months due to large amounts of software cruft.  I had a need to read a .pdf and didn't really want to install Adobe as it just feels a little too bloaty to me.  A quick google turned this "little app":http://www.foxitsoftware.com/pdf/rd_intro.php up.  It's small, feels faster than Acrobat Reader (although that may be to do with the re-install) and is free.  So far so good.

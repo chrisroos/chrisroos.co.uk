@@ -5,4 +5,4 @@ title: The worst word in the world... ever
 created_at: 2007-03-09 10:28:00 +00:00
 layout: blog
 ---
-  I don't know why, but I really don't like the word 'texted'.  It hurts my ears when I hear it, and my eyes when I see it.
+I don't know why, but I really don't like the word 'texted'.  It hurts my ears when I hear it, and my eyes when I see it.
