@@ -6,5 +6,4 @@ created_at: 2010-11-04 14:32:39.425599 +00:00
 guid:       54ff0d2d-7784-4875-af9d-ff138c2a1ed3
 layout:     blog
 ---
-:markdown
   Err, an unexpected day off.  Shhhhhh.

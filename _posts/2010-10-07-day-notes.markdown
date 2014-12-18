@@ -6,7 +6,6 @@ created_at: 2010-10-08 10:27:09.413602 +01:00
 guid:       e743b7a7-f06f-45a3-a99a-db04520c1361
 layout:     blog
 ---
-:markdown
 
   * Wrote up some meeting notes from yesterday.
 

@@ -6,5 +6,4 @@ created_at: 2011-01-24 14:03:42.056327 +00:00
 guid:       22723646-2eb9-4bfe-8454-26231def38d8
 layout:     blog
 ---
-:markdown
   I have literally no idea what I did today.  I'm sure it was great though.

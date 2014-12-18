@@ -6,7 +6,6 @@ created_at: 2012-04-12 17:36:00.295575 +01:00
 guid:       d605a057-02c2-4506-b49b-78e8695614eb
 layout:     blog
 ---
-:markdown
   I've spent the last couple of days creating a simple service for the [Printer platform][].  This service allows you to print a bookmark (in the traditional sense) for the book you're reading.  Although it's probably of most use to those people with their own printers, you can definitely have a play with generating your own bookmarks (and see a printed example) over on the [Printer bookmarks app on Heroku][].
 
   The idea of a book-specific bookmark, on which I can record when I start and finish along with some reading notes, appeals to me.  I can actually imagine that a custom bookmark printing service like this might be useful outside of this little experiment with the Printer platform.

@@ -6,7 +6,6 @@ created_at: 2013-08-14 18:50:49.777736 +01:00
 guid:       db952403-4abd-4817-a6d5-86ab75a055c1
 layout:     blog
 ---
-:markdown
   I've often thought that it'd be cool if I could have a little Internet connected camera that I could put almost anywhere and have it regularly capture what it sees.
 
   I've recently been playing around with my old Samsung Galaxy S2 to see if it might be a suitable candidate, and it seems like it might just do the job. It's been sitting on my windowsill looking out over the Thames and Canary Wharf since the 3rd of August and has captured 6,941 of the things it's seen so far. Not only has it captured them but it's also been automatically uploading them to Amazon S3. You can see the most recent[1] thing its seen by visiting [http://thames-time-lapse.chrisroos.co.uk](http://thames-time-lapse.chrisroos.co.uk).

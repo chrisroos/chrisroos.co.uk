@@ -6,7 +6,6 @@ created_at: 2010-11-18 17:54:46.117445 +00:00
 guid:       2ed043fc-c6e5-42bf-b753-3011281be59f
 layout:     blog
 ---
-:markdown
   Invoicing with [Kalv](http://kalv.co.uk/).
 
   [James A](http://interblah.net/) and I had a play with [Rapid Task](http://www.rapidtask.com/) from the Google Apps marketplace.  I was after a simple group todo list.  Although this was quite nice it didn't do exactly what we were after so we discarded it.

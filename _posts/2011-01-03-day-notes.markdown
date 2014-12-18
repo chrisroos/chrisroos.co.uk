@@ -6,7 +6,6 @@ created_at: 2011-01-05 18:34:31.940776 +00:00
 guid:       fd3c2f5a-2487-4c3c-9525-6089f8415086
 layout:     blog
 ---
-:markdown
   Happy New Year everybody peeps.
 
   I started this little day notes thingy in October last year, did it for a bit, got behind and then gave up.  I'm going to start again and see if I can keep it up this year (I almost certainly won't).

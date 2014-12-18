@@ -6,7 +6,6 @@ created_at: 2011-01-31 12:09:55.790194 +00:00
 guid:       cd655f93-c6eb-4c9b-b231-5a872528a109
 layout:     blog
 ---
-:markdown
   I finished listening to [An Evening with Ranulph Fiennes](http://www.audible.co.uk/aduk/site/product.jsp?p=BK_HODD_000094UK).  It's a seriously good listen and I'd recommend it to anyone.  It's a recording of a talk he gave in front of an audience and it sounds as though there were probably slides to go along with it: I don't think it's made any worse by the lack of slides but I suspect they might've made some of the funnier points even funnier.
 
   I finished reading [Hardcore Zen](http://www.amazon.co.uk/Hardcore-Zen-Monster-Movies-Reality/dp/086171380X) that [Jase](http://jasoncale.com/) lent me.  I enjoyed it and think I might even understand some of it.  It'll definitely require a re-read though.

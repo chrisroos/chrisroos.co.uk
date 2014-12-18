@@ -6,7 +6,6 @@ created_at: 2010-10-26 10:43:19.151768 +01:00
 guid:       990d8844-01c7-46de-a780-bd685ef6364f
 layout:     blog
 ---
-:markdown
   Resumed an investigation into an [envjs](http://github.com/smparkes/env-js) problem that [Jase](http://jasoncale.com/) and I start on Friday.
 
   Ripped out a whole load of javascript functionality from [hashblue](http://hashblue.com) which meant we no longer ran into the envjs problem.

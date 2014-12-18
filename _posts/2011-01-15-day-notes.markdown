@@ -6,7 +6,6 @@ created_at: 2011-01-21 16:49:16.534908 +00:00
 guid:       dde38961-5882-4f18-882e-ae2a54f0271c
 layout:     blog
 ---
-:markdown
   I went to [the Outdoors show](http://www.theoutdoorsshow.co.uk/) and saw some climbing, some great bike trickery from [The Clan](http://www.mb7.com/TheClan/) and talks by [Ray Mears](http://www.raymears.com/) and [Ben Fogle](http://www.benfogle.com/).
 
   The talks were really interesting.  The main thing I took away from Ray's talk was the importance of the journey (versus the destination): The difference, in bushcraft terms, between being able to *survive* in the wild for a short period of time and being able to *live* in the wild.  I also really respect Ray's depth of knowledge in the subjects he spoke about.

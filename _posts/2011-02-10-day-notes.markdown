@@ -6,7 +6,6 @@ created_at: 2011-02-15 18:32:44.418502 +00:00
 guid:       9104a84a-8cdf-4bb0-b5e6-b68b8c8e9760
 layout:     blog
 ---
-:markdown
   Continued working on [mubi](http://mubi.com/) with [Kalv](http://kalv.co.uk/).  We looked at upgrading the app to rails 3.  We used the [rails upgrade plugin](https://github.com/rails/rails_upgrade) and started to make some of the simpler changes (RAILS_ENV etc).
 
   Continued on the rails 3 upgrade with [James A](http://interblah.net/).  Took a slightly different approach.  Updated to rails 3 in an attempt to see what needed to be changed.  We got a certain way through before getting pretty stuck on the routes.  The task in the plugin that attempts to upgrade the routes doesn't work for certain route definitions.  In addition, one of the libraries that we ended up updating resulted in [RedCloth](http://redcloth.org/) 4.2.6 being installed.  It turns out that this just doesn't work on Mac OS X.

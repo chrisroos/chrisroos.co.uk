@@ -6,5 +6,4 @@ created_at: 2010-10-20 07:45:55.338195 +01:00
 guid:       0118af8f-f36f-40df-8ea1-b689a81a617b
 layout:     blog
 ---
-:markdown
   [Kalv](http://kalv.co.uk/) and I finished up our work with [JMeter](http://jakarta.apache.org/jmeter/).  We satisfied ourselves that we understood the data coming out of JMeter and that we could repeat our 'tests' before writing up fairly detailed instructions so that someone else could sign off the story we were working on.

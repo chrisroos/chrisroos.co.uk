@@ -6,7 +6,6 @@ created_at: 2011-02-07 17:46:42.273614 +00:00
 guid:       d2b7dc04-4fba-4821-8186-3ec21b3f7df7
 layout:     blog
 ---
-:markdown
   [Tom](http://tomafro.net/) and I spent some time on a call with O2 chatting about phone number re-use and [#blue](https://hashblue.com/).
 
   Tom and I investigated a problem with new messages not being imported into #blue.  It turns out that the default [Mongoid](http://mongoid.org/) behaviour is to 'fire and forget'.  So, although our messages were falling foul of a unique index constraint in Mongo, Mongoid was responding as if they'd be saved correctly.  See [Mongoid issue 642](https://github.com/mongoid/mongoid/issues/642) for a little more information.

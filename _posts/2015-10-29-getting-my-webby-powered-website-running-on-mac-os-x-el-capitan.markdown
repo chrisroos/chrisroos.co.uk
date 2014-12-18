@@ -6,7 +6,6 @@ created_at: 2015-10-29 17:20:00.000000 +00:00
 guid:       7f9f06d4-4cf6-407e-9f92-83321e34d105
 layout:     blog
 ---
-:markdown
 
   This is what I needed to do to get [Webby](https://github.com/TwP/webby) powered [website](https://github.com/chrisroos/chrisroos.co.uk) working on my laptop.
 

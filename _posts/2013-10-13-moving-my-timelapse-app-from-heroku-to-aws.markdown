@@ -6,7 +6,6 @@ created_at: 2013-10-13 18:08:54.847076 +01:00
 guid:       e3d6bffa-f81d-4a4c-93f0-c14766b68617
 layout:     blog
 ---
-:markdown
   I love [Heroku](https://www.heroku.com/) and tend to use the free resources to deploy apps when they're in their very early stages of development. I have a few things that I continue to use Heroku for but unfortunately ran into some of the limits with the [Thames Time Lapse project](https://github.com/chrisroos/thames-time-lapse).
 
   The first limitation was the number of rows in the free development database. The dev plan gives you 10,000 rows for free but I managed to get up to around 150,000 before receiving a warning email from Heroku. I only create around 1,000 rows a day, and I'm nowhere near 150 days in, so I'd obviously screwed up somewhere along the line.

@@ -6,7 +6,6 @@ created_at: 2013-09-09 11:39:55.348897 +01:00
 guid:       32f11fcc-2675-450a-885e-6107aba7760a
 layout:     blog
 ---
-:markdown
   One of the things I wanted to do with the [pictures of the Thames that I've been capturing](/blog/2013-08-14-android-and-some-time-lapse-ish-magic) is to periodically update my desktop background to show the most recent image.
 
   I was investigating how best to hook it all up when I came across this article that describes how to [Set the Desktop Picture to NASA Image of the Day](http://www.macosxautomation.com/automator/examples/ex08/03.html). I figured that I could add a feed of the recent images to the [thames-time-lapse website](http://thames-time-lapse.chrisroos.co.uk/images) and follow the same workflow to set my desktop background.

@@ -6,7 +6,6 @@ created_at: 2013-03-08 12:46:37.897127 +00:00
 guid:       100345a0-53f5-40ed-9f43-67bbec484f64
 layout:     blog
 ---
-:markdown
 
   It's taken me a good couple of days to really understand the purpose of `withCredentials`, and in particular the fact that it (currently, at least) has nothing to do with the username and password you can supply to `XMLHttpRequest.open()`. I figured I'd write it up as it might save other people some time.
 

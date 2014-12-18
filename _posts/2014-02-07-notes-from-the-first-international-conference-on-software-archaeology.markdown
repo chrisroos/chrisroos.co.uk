@@ -6,7 +6,6 @@ created_at: 2014-02-07 12:25:17.233323 +00:00
 guid:       05586206-a0fc-434f-ad2f-5815671d94f5
 layout:     blog
 ---
-:markdown
   [James](http://jamesmead.org/) and I attended [The First International Conference on Software Archaeology](http://ticosa.org/) last week.
 
   I've spent some time going through the notes I made and have categorised the things I took from the presentations into three broad themes. I'm not sure how effective a picture this paints for anyone that wasn't there but hopefully there's something useful in here. For an alternative overview, please see [Jeff Foster's TICOSA writeup](http://www.fatvat.co.uk/2014/02/the-first-international-conference-on.html) or the [TICOSA sessions](http://ticosa.org/sessions.html) page which contains some of the presentation slides.

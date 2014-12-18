@@ -6,7 +6,6 @@ created_at: 2015-11-20 16:20:25.608410 +00:00
 guid:       d309caf9-53c2-4b67-9a70-defb2032d154
 layout:     blog
 ---
-:markdown
   I was confused by the behaviour of `git log` when using the `before` and `after` options. After some playing I realised that it was because the default `git log` output shows the author date but the `before` and `after` options operate on the `commit` date.
 
   I can demonstrate the behaviour in an empty repository.

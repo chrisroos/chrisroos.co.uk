@@ -6,7 +6,6 @@ created_at: 2011-01-14 13:44:01.805240 +00:00
 guid:       42adec95-75dd-4a5e-9b3a-c6df53b5fa9f
 layout:     blog
 ---
-:markdown
   This is a transcript of [Chapter three](http://www.bbc.co.uk/programmes/p00d4n2l) of [You and Yours from the 6th Jan 2011](http://www.bbc.co.uk/programmes/b00x7c36).  I transcribed it because I think it makes interesting listening/reading.
 
   **Winifred Robinson (15:33)**: Clever computer programmes that use up to the minute information on buses and trains means that you can now do all kinds of fancy things when it comes to planning your journey.  But National Rail Enquiries has decided to charge people who want to make use of its real time data, that's the facts about the train times, rather than what the timetables say.  It's a change of policy, and some people, including Gordon Brown when he was Prime Minister, think the information from publicly funded bodies should always be free.  Alex Hewson is a web developer who created an application for mobile phones where users could get some of this live time/live train information, and he was told by National Rail Enquiries to close it down.

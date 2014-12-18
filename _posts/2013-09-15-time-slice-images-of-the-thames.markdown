@@ -6,7 +6,6 @@ created_at: 2013-09-15 18:23:24.076839 +01:00
 guid:       05352791-fc8c-4428-b425-f25ab9b72b0c
 layout:     blog
 ---
-:markdown
   This image was created by taking 24 images (well, I think it might actually be 23 because my maths was off) from the set I captured on the [30th August 2013](http://thames-time-lapse.chrisroos.co.uk/days/2013-08-30).
 
   ![Time slice image of the Thames](/images/2013-08-30-thames-time-slice.jpg)

@@ -6,7 +6,6 @@ created_at: 2011-01-10 09:49:45.067037 +00:00
 guid:       092519f6-a57e-47a3-a47d-28a80976b5f9
 layout:     blog
 ---
-:markdown
   Bought and watched the incredible [First Ascent series](http://www.firstascentseries.com/).  All six episodes contain inspirational stories and amazing footage.
 
   I ordered a [50t chainring](http://www.chainreactioncycles.com/Models.aspx?ModelID=47443) to pop on my new bike.  I'm slightly concerned that this'll make it a bit too hard to ride but I'll just have to wait to find out.

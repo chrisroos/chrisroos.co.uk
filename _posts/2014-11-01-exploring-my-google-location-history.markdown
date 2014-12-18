@@ -6,7 +6,6 @@ created_at: 2014-11-01 09:44:26.585886 +00:00
 guid:       14ac3ce0-6711-4dd9-af2b-3a5e604d4fda
 layout:     blog
 ---
-:markdown
   I used [Google Takeout][] to export my [Location History][] as JSON. I wanted to know what date range the file covered (it's not obvious from the Location History site) and figured I'd use command line tools rather than parsing the JSON.
 
   This is the command I ended up with to display the earliest timestamp in the file:

@@ -6,7 +6,6 @@ created_at: 2011-01-05 18:47:10.826685 +00:00
 guid:       bf39c856-f9bd-4b1c-831a-e1751af0b9ab
 layout:     blog
 ---
-:markdown
   We, [Go Free Range](http://gofreerange.com), moved today.  We've spent the last 6 months or so with [Moo](http://uk.moo.com/), which has been great, but decided to take [Protein's](http://prote.in/) offer of our own room in their [Hewett Street](http://gofreerange.com/#contact) building.  It turns out we travel pretty light so it took all of about two hours to get moved and settled in.
 
   Once in, we attempted to get a handle on our work committments for the first part of this year.  Then we went for a pub lunch.  We deserved it.  Probably.
