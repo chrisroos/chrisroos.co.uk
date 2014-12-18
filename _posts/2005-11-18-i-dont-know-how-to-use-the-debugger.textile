@@ -2,7 +2,6 @@
 blog_post: true
 guid: fe559494-2085-48d6-8ac1-0a5b3534bc22
 title: I don't know how to use the debugger
-filter: haml
 created_at: 2005-11-18 11:08:00 +00:00
 layout: blog
 ---

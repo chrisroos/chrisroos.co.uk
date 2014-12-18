@@ -5,7 +5,6 @@ title:      A Simple Utility to Generate and Preview Html on the Web
 created_at: 2009-01-06 12:52:21.740953 +00:00
 guid:       7c04563c-6ed0-4496-9b50-b0e6118b7331
 layout:     blog
-filter:     haml
 ---
 :textile
   This happened a few months ago so I might be missing some of the specific details.

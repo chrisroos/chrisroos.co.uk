@@ -2,7 +2,6 @@
 blog_post: true
 guid: d15fdc80-ed24-4451-8c27-d484f86ad91a
 title: Ranting about Sky
-filter: haml
 created_at: 2007-06-05 23:03:00 +01:00
 layout: blog
 ---

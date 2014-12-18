@@ -2,7 +2,6 @@
 blog_post: true
 guid: ece9a725-7aff-4eb3-b62c-0924ca5460ba
 title: gDisk - very cheap (free) online storage
-filter: haml
 created_at: 2006-09-18 20:17:00 +01:00
 layout: blog
 ---

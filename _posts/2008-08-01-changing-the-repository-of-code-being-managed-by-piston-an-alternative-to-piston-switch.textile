@@ -2,7 +2,6 @@
 blog_post: true
 guid: 0424857d-9f43-46e1-8492-9fb6cbc68016
 title: Changing the repository of code being managed by Piston (an alternative to piston switch)
-filter: haml
 created_at: 2008-08-01 18:17:35.153245 +01:00
 layout: blog
 ---

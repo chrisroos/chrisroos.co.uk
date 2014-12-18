@@ -2,7 +2,6 @@
 blog_post: true
 guid: c26d93e8-9832-4a7b-b4fd-b258b52acb7a
 title: Print to Pdf in Windows without Acrobat Writer
-filter: haml
 created_at: 2005-12-23 10:57:00 +00:00
 layout: blog
 ---

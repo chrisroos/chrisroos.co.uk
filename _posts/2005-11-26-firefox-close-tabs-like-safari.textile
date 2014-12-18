@@ -2,7 +2,6 @@
 blog_post: true
 guid: 9eff0053-1567-4a95-92ea-3e83169ae30c
 title: Firefox close tabs like Safari
-filter: haml
 created_at: 2005-11-26 21:11:00 +00:00
 layout: blog
 ---

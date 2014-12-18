@@ -2,7 +2,6 @@
 blog_post: true
 guid: 346ed442-9499-44fc-a578-9f61bd89ebd4
 title: In memory AR object for testing
-filter: haml
 created_at: 2006-09-09 12:03:00 +01:00
 layout: blog
 ---

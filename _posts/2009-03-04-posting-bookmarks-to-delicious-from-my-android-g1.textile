@@ -5,7 +5,6 @@ title:      Posting Bookmarks to Delicious From My Android G1
 created_at: 2009-03-04 23:09:41.344393 +00:00
 guid:       583b9942-cc0e-41e1-924f-f5b6d7c522b9
 layout:     blog
-filter:     haml
 ---
 :textile
   For a while I've wanted the ability to bookmark pages in "delicious":http://delicious.com from my "Android":http://code.google.com/android/ "G1":http://www.t-mobileg1.com/.  After a few weeks of occasionally looking to see if anyone had done the work for me I started to investigate building an Android app.  I got about as far as reading through some of the tutorials but never seemed to find the time to really get stuck in.  In the meantime, to get around the limitations of the client side only bookmarks on the G1, I would save a draft email containing the "URL":http://en.wikipedia.org/wiki/Uniform_Resource_Locator of the page I was interested in and later open it on a desktop machine and post to delicious.  Saving a draft is fairly trivial in that you visit a page in the browser, hit the share menu item, choose "gmail":http://mail.google.com and hit save draft (sharing via gmail pastes the URL of the current page into the body of the email) but the whole process was a bit cumbersome.  I think it was about a week ago when I realised that I should just be able to email my bookmarks to delicious directly.  A little searching appeared to suggest that there was nothing to let me do this[1] so I went about hooking a few things together in order to get the functionality I was after.

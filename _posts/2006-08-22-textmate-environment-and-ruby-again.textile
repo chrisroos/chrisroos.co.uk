@@ -2,7 +2,6 @@
 blog_post: true
 guid: eae3fed9-0d74-489b-87c3-2034ae1d178b
 title: Textmate environment and ruby (again)
-filter: haml
 created_at: 2006-08-22 23:53:00 +01:00
 layout: blog
 ---

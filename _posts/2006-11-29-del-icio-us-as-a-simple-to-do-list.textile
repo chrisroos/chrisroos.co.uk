@@ -2,7 +2,6 @@
 blog_post: true
 guid: ba97b5ea-73ce-4b89-98d5-678894962768
 title: del.icio.us as a simple to do list
-filter: haml
 created_at: 2006-11-29 21:37:00 +00:00
 layout: blog
 ---

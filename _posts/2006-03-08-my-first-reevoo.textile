@@ -2,7 +2,6 @@
 blog_post: true
 guid: aa79db1f-8c41-431f-8105-c81eaea9027d
 title: My first reevoo!
-filter: haml
 created_at: 2006-03-08 09:20:00 +00:00
 layout: blog
 ---

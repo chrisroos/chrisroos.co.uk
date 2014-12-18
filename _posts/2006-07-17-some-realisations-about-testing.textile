@@ -2,7 +2,6 @@
 blog_post: true
 guid: b0ddd5f2-7446-4b4a-9213-b6639f93549c
 title: Some realisations about testing
-filter: haml
 created_at: 2006-07-17 09:19:00 +01:00
 layout: blog
 ---

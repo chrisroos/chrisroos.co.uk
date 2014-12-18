@@ -5,7 +5,6 @@ title:      Generating and Inserting a Rel=Canonical Link Into Pages With Firefo
 created_at: 2009-04-14 14:14:00.122422 +01:00
 guid:       fca91c96-2df9-4112-b7b7-8902fed60a6d
 layout:     blog
-filter:     haml
 ---
 :textile
   I've been "thinking about this for over a year":/blog/2007-12-14-web-pages-should-specify-their-canonical-url-permalink but have only recently got around to doing something about it.  I've also chosen to use "rel=canonical":http://googlewebmastercentral.blogspot.com/2009/02/specify-your-canonical.html rather than rel=bookmark.

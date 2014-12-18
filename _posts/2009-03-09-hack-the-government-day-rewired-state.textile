@@ -5,7 +5,6 @@ title:      Hack the Government Day (Rewired State)
 created_at: 2009-03-09 22:14:51.867052 +00:00
 guid:       b1db873b-4bf0-4d35-bfa1-7eba23bc9cbc
 layout:     blog
-filter:     haml
 ---
 :textile
   "James Darling":http://coupde.com/, "Richard Pope":http://www.memespring.co.uk/ and "Emma Mulqueeny":http://www.emmamulqueeny.com/ organised the excellent "Rewired State":http://rewiredstate.org/ on Saturday (7th March) at the new "Guardian":http://www.guardian.co.uk/ offices in Kings Cross.  The idea behind rewiredstate was pretty simple (from rewiredstate.org):

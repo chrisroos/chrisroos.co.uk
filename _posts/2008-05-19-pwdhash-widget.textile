@@ -2,7 +2,6 @@
 blog_post: true
 guid: 8b08900d-3772-466f-8da4-05cb81f67e40
 title: Pwdhash Widget
-filter: haml
 created_at: 2008-05-19 21:58:15.266930 +01:00
 layout: blog
 ---

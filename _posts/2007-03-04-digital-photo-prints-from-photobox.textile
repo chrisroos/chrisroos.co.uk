@@ -2,7 +2,6 @@
 blog_post: true
 guid: 4de2dcc6-84bc-47da-90aa-5118bc175434
 title: Digital Photo Prints from PhotoBox
-filter: haml
 created_at: 2007-03-04 08:13:00 +00:00
 layout: blog
 ---

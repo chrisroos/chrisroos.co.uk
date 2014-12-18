@@ -2,7 +2,6 @@
 blog_post: true
 guid: 8c0cc51d-6665-4475-9af7-6cf6ad593b09
 title: Might as well aim high...
-filter: haml
 created_at: 2006-12-15 17:07:00 +00:00
 layout: blog
 ---

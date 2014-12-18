@@ -3,7 +3,6 @@ summary: A little utility that extracts and displays querystring parameters in a
 blog_post: true
 guid: 31745701-a13d-40e0-9702-13029cf02ca9
 title: A Javascript QueryString Printer
-filter: haml
 created_at: 2008-12-05 10:24:28.959773 +00:00
 layout: blog
 ---

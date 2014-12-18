@@ -5,7 +5,6 @@ title:      A Greasemonkey Script that inserts a Google Site Search form into ev
 created_at: 2009-04-24 14:09:30.391671 +01:00
 guid:       bdb63bd0-cf82-404b-9b48-83b10fa27195
 layout:     blog
-filter:     haml
 ---
 :textile
   I often find myself wanting to use "google":http://google.com to search within a site I'm visiting.  My current method is to navigate to the search box in "firefox":http://firefox.com (cmd-k) and type "site:domain-of-site search-term".  That's a bit painful so I finally got around to creating a "greasemonkey":http://en.wikipedia.org/wiki/Greasemonkey script to make it easier.  "Install the script":http://userscripts.org/scripts/show/47192 from the "userscripts":http://userscripts.org site.

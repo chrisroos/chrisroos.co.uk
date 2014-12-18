@@ -2,7 +2,6 @@
 blog_post: true
 guid: eae04aef-89a8-4bc6-8e00-08116e516851
 title: A trip to the tip
-filter: haml
 created_at: 2008-05-19 09:42:29.739515 +01:00
 layout: blog
 ---

@@ -2,7 +2,6 @@
 blog_post: true
 guid: 61067230fb4ac526cc47e7646bf37c02
 title: Linspire
-filter: haml
 created_at: 2005-09-06 09:58:00 +01:00
 layout: blog
 ---

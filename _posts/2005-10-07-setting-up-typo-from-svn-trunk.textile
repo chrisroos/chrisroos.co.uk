@@ -2,7 +2,6 @@
 blog_post: true
 guid: a8792b94-ea94-49b1-bc88-c95fa5fcc02a
 title: Setting up Typo from SVN Trunk
-filter: haml
 created_at: 2005-10-07 17:26:00 +01:00
 layout: blog
 ---

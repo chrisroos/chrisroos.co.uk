@@ -2,7 +2,6 @@
 blog_post: true
 guid: e7338fc7-3433-4d3b-a68b-53b1db6c59d8
 title: Using active record models in rails migrations
-filter: haml
 created_at: 2006-05-12 16:32:00 +01:00
 layout: blog
 ---

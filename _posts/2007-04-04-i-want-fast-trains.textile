@@ -2,7 +2,6 @@
 blog_post: true
 guid: bd22fb53-efae-46f4-82fc-14f43bb1c63f
 title: I want fast trains
-filter: haml
 created_at: 2007-04-04 20:19:00 +01:00
 layout: blog
 ---

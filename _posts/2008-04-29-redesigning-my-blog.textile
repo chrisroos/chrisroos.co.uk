@@ -2,7 +2,6 @@
 blog_post: true
 guid: 1ec429c1-206b-4c2c-87a8-84f0c71db78d
 title: Redesigning my blog
-filter: haml
 created_at: 2008-04-29 06:17:07.944748 +01:00
 layout: blog
 ---

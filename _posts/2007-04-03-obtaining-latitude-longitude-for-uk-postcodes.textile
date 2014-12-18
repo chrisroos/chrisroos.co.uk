@@ -2,7 +2,6 @@
 blog_post: true
 guid: c567c902-bb82-4501-b922-1bad9337e283
 title: Obtaining latitude/longitude for UK postcodes
-filter: haml
 created_at: 2007-04-03 21:33:00 +01:00
 layout: blog
 ---

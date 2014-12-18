@@ -2,7 +2,6 @@
 blog_post: true
 guid: c5da6cb9-7a1f-481b-b1db-23f1db4b6a56
 title: More Hsbc Shenanigans
-filter: haml
 created_at: 2007-10-15 20:13:00 +01:00
 layout: blog
 ---

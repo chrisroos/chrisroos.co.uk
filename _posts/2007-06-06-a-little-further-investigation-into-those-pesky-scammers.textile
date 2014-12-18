@@ -2,7 +2,6 @@
 blog_post: true
 guid: 6bb761b0-c2ca-4547-894c-83ac3c701cd5
 title: A little further investigation into those pesky scammers
-filter: haml
 created_at: 2007-06-06 23:11:00 +01:00
 layout: blog
 ---

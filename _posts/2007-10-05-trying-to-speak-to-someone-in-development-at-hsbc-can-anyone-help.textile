@@ -2,7 +2,6 @@
 blog_post: true
 guid: bdbb76c5-3530-4613-869c-9bffa7774b03
 title: Trying to speak to someone in development at Hsbc - can anyone help?
-filter: haml
 created_at: 2007-10-05 08:43:00 +01:00
 layout: blog
 ---

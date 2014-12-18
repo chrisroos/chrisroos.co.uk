@@ -2,7 +2,6 @@
 blog_post: true
 guid: 4e428f6f-3b4c-4bbf-bd08-35d4e25205d5
 title: Addicted to twitter.com
-filter: haml
 created_at: 2006-12-14 14:42:00 +00:00
 layout: blog
 ---

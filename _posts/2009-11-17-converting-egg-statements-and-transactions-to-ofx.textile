@@ -5,7 +5,6 @@ title:      Converting Egg Statements and Transactions to Ofx
 created_at: 2009-11-17 21:06:49.391972 +00:00
 guid:       487c906e-c7d6-4353-a06f-d0e541012cf1
 layout:     blog
-filter:     haml
 ---
 :textile
   Wow, it was around "two and half years ago":/blog/2007-04-01-converting-egg-credit-card-statements-to-ofx-for-upload-to-wesabe that I first hacked together a little utility to do this.  I've pretty much neglected the code since then but have always intended to get back to it.  Over the last week or so I've done just that ("egg2ofx on github":http://github.com/chrisroos/egg2ofx).

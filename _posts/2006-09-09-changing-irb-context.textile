@@ -2,7 +2,6 @@
 blog_post: true
 guid: 553ca94e-9491-4803-8238-e2a6479a9c27
 title: Changing Irb context
-filter: haml
 created_at: 2006-09-09 12:16:00 +01:00
 layout: blog
 ---

@@ -2,7 +2,6 @@
 blog_post: true
 guid: 4c56508e-363a-4446-8526-470ee95be326
 title: Asking South Eastern about their crappy seats
-filter: haml
 created_at: 2008-07-21 21:08:55.257556 +01:00
 layout: blog
 ---

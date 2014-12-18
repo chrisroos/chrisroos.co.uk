@@ -2,7 +2,6 @@
 blog_post: true
 guid: 2a3426c6-ab30-4fc5-bc2d-b897aea18e35
 title: Wow.  Google must really love Chris.
-filter: haml
 created_at: 2007-11-20 22:51:00 +00:00
 layout: blog
 ---

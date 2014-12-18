@@ -2,7 +2,6 @@
 blog_post: true
 guid: fa0443e665eac702741d9c0efe7c1873
 title: Typo flickr problems
-filter: haml
 created_at: 2005-09-06 11:07:00 +01:00
 layout: blog
 ---

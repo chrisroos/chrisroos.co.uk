@@ -5,7 +5,6 @@ title:      Using SSI to Expose Http Request Headers Sent by Your Browser
 created_at: 2009-01-06 06:12:26.970390 +00:00
 guid:       0ddd1a2e-80f3-4b70-aa2a-205acae3f1a8
 layout:     blog
-filter:     haml
 ---
 :textile
   Playing around with my "T-Mobile G1":http://www.t-mobile.co.uk/g1-with-google-phone/ made me wonder what the included web browser was.  I knew that I needed a site that would display the "http request headers":http://en.wikipedia.org/wiki/List_of_HTTP_headers#Requests and through the magic of google happened upon "Andy Langton's":http://andylangton.co.uk "check browser headers":http://andylangton.co.uk/online-tools/check-browser-headers utility.  This did the job and let me know that the browser is some kind of mobile safari client built on "webkit":http://webkit.org/.

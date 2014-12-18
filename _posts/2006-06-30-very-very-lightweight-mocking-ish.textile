@@ -2,7 +2,6 @@
 blog_post: true
 guid: 90292477-5dc2-4c47-a76b-b6ec1e6f992f
 title: Very very lightweight mocking(ish)
-filter: haml
 created_at: 2006-06-30 12:08:00 +01:00
 layout: blog
 ---

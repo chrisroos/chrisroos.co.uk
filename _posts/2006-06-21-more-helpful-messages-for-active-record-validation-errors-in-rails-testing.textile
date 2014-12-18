@@ -2,7 +2,6 @@
 blog_post: true
 guid: 185128fa-7400-4685-b909-6a94fa0fca87
 title: More helpful messages for Active Record validation errors in Rails testing
-filter: haml
 created_at: 2006-06-21 08:10:00 +01:00
 layout: blog
 ---

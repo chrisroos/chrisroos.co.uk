@@ -2,7 +2,6 @@
 blog_post: true
 guid: 2be30c15-b01e-46d7-949c-69218bf4aada
 title: Converting Google Code Wiki Content to Html
-filter: haml
 created_at: 2008-07-30 21:53:02.548893 +01:00
 layout: blog
 ---

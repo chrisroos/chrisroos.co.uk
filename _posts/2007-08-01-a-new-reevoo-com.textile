@@ -2,7 +2,6 @@
 blog_post: true
 guid: f089ffbe-8845-4879-b74a-be919e2017c8
 title: A new reevoo.com
-filter: haml
 created_at: 2007-08-01 08:32:00 +01:00
 layout: blog
 ---

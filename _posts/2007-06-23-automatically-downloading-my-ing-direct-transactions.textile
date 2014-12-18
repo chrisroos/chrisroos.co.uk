@@ -2,7 +2,6 @@
 blog_post: true
 guid: 83e603e5-15ad-413f-9d1a-c30a2895e114
 title: Automatically downloading my Ing Direct transactions
-filter: haml
 created_at: 2007-06-23 18:00:00 +01:00
 layout: blog
 ---

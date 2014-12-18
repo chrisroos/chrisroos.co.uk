@@ -2,7 +2,6 @@
 blog_post: true
 guid: 906607c8-9b89-4cbb-8394-2a8fed59610b
 title: Transparency in business
-filter: haml
 created_at: 2005-11-26 22:55:00 +00:00
 layout: blog
 ---

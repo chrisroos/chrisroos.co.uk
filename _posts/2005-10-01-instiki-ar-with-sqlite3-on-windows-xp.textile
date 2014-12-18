@@ -2,7 +2,6 @@
 blog_post: true
 guid: 9a7fd6be48986165d4710c226c0eb807
 title: Instiki-AR with sqlite3 on Windows XP
-filter: haml
 created_at: 2005-10-01 15:39:00 +01:00
 layout: blog
 ---

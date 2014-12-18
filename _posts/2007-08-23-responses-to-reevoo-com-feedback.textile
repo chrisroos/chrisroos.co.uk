@@ -2,7 +2,6 @@
 blog_post: true
 guid: 62aeef02-5ba1-4f98-9321-1bde32723cce
 title: Responses to reevoo.com feedback
-filter: haml
 created_at: 2007-08-23 15:14:00 +01:00
 layout: blog
 ---

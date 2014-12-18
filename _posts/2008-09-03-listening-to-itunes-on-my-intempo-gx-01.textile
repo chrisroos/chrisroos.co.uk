@@ -3,7 +3,6 @@ summary: I use EyeConnect in order to share my iTunes library on my Mac with my 
 blog_post: true
 guid: c4456177-2114-4d20-a63e-ac21507de898
 title: Listening to iTunes on my Intempo GX-01
-filter: haml
 created_at: 2008-09-03 22:50:57.506213 +01:00
 layout: blog
 ---

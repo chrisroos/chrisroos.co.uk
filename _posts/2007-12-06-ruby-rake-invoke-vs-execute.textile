@@ -2,7 +2,6 @@
 blog_post: true
 guid: 317c603f-c90d-42f0-907d-7f4209591b38
 title: Ruby Rake - Invoke vs Execute
-filter: haml
 created_at: 2007-12-06 16:26:00 +00:00
 layout: blog
 ---

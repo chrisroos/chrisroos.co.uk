@@ -2,7 +2,6 @@
 blog_post: true
 guid: 82cf9da3-d148-4708-81ad-cb2aa419ff12
 title: Emailing photos to flickr from my Skypephone
-filter: haml
 created_at: 2008-01-17 18:20:00 +00:00
 layout: blog
 ---

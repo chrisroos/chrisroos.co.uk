@@ -2,7 +2,6 @@
 blog_post: true
 guid: b10a6984-0800-481d-884e-8bb2a798ac6f
 title: More on those friendly URLs
-filter: haml
 created_at: 2007-12-07 07:26:00 +00:00
 layout: blog
 ---

@@ -2,7 +2,6 @@
 blog_post: true
 guid: 5c626e81-8c1f-42ca-afea-2a1e325b1566
 title: Test::Unit abstract test case
-filter: haml
 created_at: 2006-07-17 09:22:00 +01:00
 layout: blog
 ---

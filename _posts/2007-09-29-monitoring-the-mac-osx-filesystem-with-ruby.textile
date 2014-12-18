@@ -2,7 +2,6 @@
 blog_post: true
 guid: 86e74ab7-047f-4670-bf35-3753c3f2bb4a
 title: Monitoring the Mac OSX Filesystem with ruby
-filter: haml
 created_at: 2007-09-29 09:11:00 +01:00
 layout: blog
 ---

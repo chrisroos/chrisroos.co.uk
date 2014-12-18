@@ -2,7 +2,6 @@
 blog_post: true
 guid: 39122c15-98c9-40bf-a690-84d75b234714
 title: Telephone numbers for form submissions
-filter: haml
 created_at: 2006-11-07 23:04:00 +00:00
 layout: blog
 ---

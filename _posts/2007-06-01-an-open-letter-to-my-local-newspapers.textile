@@ -2,7 +2,6 @@
 blog_post: true
 guid: 9db9abce-9f4e-4ae0-b16c-26c7a8ab9fc1
 title: An open letter to my local newspapers
-filter: haml
 created_at: 2007-06-01 12:00:00 +01:00
 layout: blog
 ---

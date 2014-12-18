@@ -2,7 +2,6 @@
 blog_post: true
 guid: 958ddabd-4102-4da1-8e3b-18a07bb38d35
 title: Bookmarklet (Favelet) limits in Internet Explorer 6 (and 7?)
-filter: haml
 created_at: 2007-12-14 08:46:00 +00:00
 layout: blog
 ---

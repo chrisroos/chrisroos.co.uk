@@ -2,7 +2,6 @@
 blog_post: true
 guid: 98ac9d3f-9709-48ed-b6e2-9899ddb38b89
 title: Combining distributed small tools as an alternative to Backpack et al
-filter: haml
 created_at: 2007-01-12 11:53:00 +00:00
 layout: blog
 ---

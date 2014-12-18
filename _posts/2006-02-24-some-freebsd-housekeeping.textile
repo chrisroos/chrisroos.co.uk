@@ -2,7 +2,6 @@
 blog_post: true
 guid: 0a1ea791-3669-4975-847f-28335e7fe729
 title: Some Freebsd housekeeping
-filter: haml
 created_at: 2006-02-24 15:17:00 +00:00
 layout: blog
 ---

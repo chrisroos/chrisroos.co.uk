@@ -5,7 +5,6 @@ title:      Lloyds TSB Stole My Money (Kinda)
 created_at: 2009-01-31 10:46:49.081933 +00:00
 guid:       cfa34d64-3838-4789-b8c5-27a5d5d8b27e
 layout:     blog
-filter:     haml
 ---
 :textile
   I received a letter dated the 21st January to state that I'd tried to make a transfer, on that day, and that I didn't have the funds to cover it.  Lloyds TSB earned themselves £20 out of the matter (I guess stealing is cheaper than physically printing the money).  I'm willing to take some of the responsibility but at the same time I find the Lloyds TSB online statements to be confusing.  A snippet of the transactions in question are below.

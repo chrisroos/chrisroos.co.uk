@@ -2,7 +2,6 @@
 blog_post: true
 guid: cfe3b7ae-05e5-406a-9dcd-e3a646b9d16c
 title: Atom (like RSS) feeds for thisiskent.co.uk news stories
-filter: haml
 created_at: 2008-02-18 10:00:00 +00:00
 layout: blog
 ---

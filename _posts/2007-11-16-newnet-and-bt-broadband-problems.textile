@@ -2,7 +2,6 @@
 blog_post: true
 guid: f2559cee-46db-4e78-89db-6793fd70f01b
 title: NewNet and BT Broadband problems
-filter: haml
 created_at: 2007-11-16 13:38:00 +00:00
 layout: blog
 ---

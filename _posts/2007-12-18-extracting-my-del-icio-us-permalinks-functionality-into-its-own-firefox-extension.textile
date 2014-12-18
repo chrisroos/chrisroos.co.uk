@@ -2,7 +2,6 @@
 blog_post: true
 guid: c3be6b95-9fd4-4169-84de-faea63703c8b
 title: Extracting my del.icio.us permalinks functionality into its own firefox extension
-filter: haml
 created_at: 2007-12-18 23:01:00 +00:00
 layout: blog
 ---

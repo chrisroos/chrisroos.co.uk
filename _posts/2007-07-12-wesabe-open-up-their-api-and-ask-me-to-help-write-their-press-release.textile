@@ -2,7 +2,6 @@
 blog_post: true
 guid: be6d4d23-532f-46ba-9bf8-fe0dde4d28b5
 title: Wesabe open up their API and ask me to help write their press release...
-filter: haml
 created_at: 2007-07-12 23:49:00 +01:00
 layout: blog
 ---

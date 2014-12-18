@@ -2,7 +2,6 @@
 blog_post: true
 guid: dbf1fc3c-4fb9-4456-8434-18627bf9c1f4
 title: Train times by SMS (or, improving national rail enquiries)
-filter: haml
 created_at: 2007-07-24 14:40:00 +01:00
 layout: blog
 ---

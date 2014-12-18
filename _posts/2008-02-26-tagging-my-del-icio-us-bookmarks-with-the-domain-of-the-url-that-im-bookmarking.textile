@@ -2,7 +2,6 @@
 blog_post: true
 guid: 0965ddb3-1309-4dc8-a04f-297cf892aa75
 title: Tagging my del.icio.us bookmarks with the domain of the URL that I'm bookmarking
-filter: haml
 created_at: 2008-02-26 08:49:00 +00:00
 layout: blog
 ---

@@ -2,7 +2,6 @@
 blog_post: true
 guid: d8b747ec-367b-4ae3-abdc-8acabeef6d17
 title: Chris 1, mod_rewrite 0 (muhahahaha)
-filter: haml
 created_at: 2008-01-16 09:08:00 +00:00
 layout: blog
 ---

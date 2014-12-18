@@ -5,7 +5,6 @@ title:      Installing Passenger 2.1.2 on CentOS 5.2
 created_at: 2009-03-30 08:24:00.287922 +01:00
 guid:       7a9d1abe-ec9c-4752-ae4d-0f973c51de12
 layout:     blog
-filter:     haml
 ---
 :textile
   I needed to upgrade "Passenger":http://www.modrails.com/ on our web server last week (so that we could run "Rails":http://rubyonrails.org/ 2.3 apps) but ran into a little problem getting it installed.

@@ -2,7 +2,6 @@
 blog_post: true
 guid: 182bf19a-44e5-4356-aac5-a33473641ee6
 title: Typo pings
-filter: haml
 created_at: 2005-10-02 19:51:00 +01:00
 layout: blog
 ---

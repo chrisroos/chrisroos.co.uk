@@ -2,7 +2,6 @@
 blog_post: true
 guid: b4536d88-439b-4cc6-8ec1-e02396f58bb6
 title: Orange, orange, orange
-filter: haml
 created_at: 2007-03-16 19:58:00 +00:00
 layout: blog
 ---

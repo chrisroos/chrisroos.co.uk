@@ -2,7 +2,6 @@
 blog_post: true
 guid: b2b9da2d-69fa-4285-ad8c-33f4c66f744a
 title: A great day at work and reevoovision (twittervision for reviews)
-filter: haml
 created_at: 2007-06-26 09:20:00 +01:00
 layout: blog
 ---

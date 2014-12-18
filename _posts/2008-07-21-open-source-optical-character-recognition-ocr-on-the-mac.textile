@@ -2,7 +2,6 @@
 blog_post: true
 guid: 19495a24-8ef5-4c1a-aab1-45d38a8ed548
 title: Open Source Optical Character Recognition (OCR) on the Mac
-filter: haml
 created_at: 2008-07-21 14:04:56.313436 +01:00
 layout: blog
 ---

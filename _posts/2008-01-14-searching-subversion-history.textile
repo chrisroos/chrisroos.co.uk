@@ -2,7 +2,6 @@
 blog_post: true
 guid: fd5f813c-6d6f-488a-bcfa-46ea5a7b37f0
 title: Searching subversion history
-filter: haml
 created_at: 2008-01-14 09:59:00 +00:00
 layout: blog
 ---
