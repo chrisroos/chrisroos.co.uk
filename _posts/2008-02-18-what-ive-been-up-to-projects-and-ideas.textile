@@ -5,7 +5,6 @@ title: What I've been up to - Projects and Ideas
 created_at: 2008-02-18 10:12:00 +00:00
 layout: blog
 ---
-:textile
   I've been a bit quiet on the blogging front (to be fair, I've always been a bit slack) but I think it's for good reason: I've re-discovered a love for programming, and in particular, creating things that I (and hopefully others) find useful.
 
   So, as a bit of an update, and a bit of a reminder for me, I thought I'd list all the things I'm either working on or thinking about.  Feel free to ask questions in the comments or by emailing me (chris at this domain).

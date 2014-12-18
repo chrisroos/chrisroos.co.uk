@@ -5,7 +5,6 @@ title: I hope I didn't break rubyforge...
 created_at: 2006-08-21 23:30:00 +01:00
 layout: blog
 ---
-:textile
   A couple of days ago I was playing around with "SVN::Mirror":http://search.cpan.org/~clkao/SVN-Mirror-0.68/lib/SVN/Mirror.pm, trying to remove some "dependencies":http://wiki.rubyonrails.org/rails/pages/Plugins on third party repositories not in our control.
 
   All was going well until I tried to mirror a "project":http://rubyforge.org/projects/mocha/ hosted on rubyforge.  On initialising the mirror, I kept receiving the error "source url not under source root" from line 72 in Ra.pm.

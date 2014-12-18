@@ -6,7 +6,6 @@ created_at: 2009-02-24 09:29:13.223118 +00:00
 guid:       fe0d326e-6570-4293-a04c-837abba84050
 layout:     blog
 ---
-:textile
   It struck me a couple of nights ago that it wasn't possible to search my site without Javascript, because of "Google Custom Search's":http://www.google.com/coop/cse/ reliance on "Javascript":http://en.wikipedia.org/wiki/JavaScript.  I'm not sure whether I just overlooked the fact or whether I'd realised that it was bad and ignored it.  Either way, I decided it was time to do something about it.  I stripped out the google custom search form and replaced it with a form that actually searches the google index of my site.
 
   <pre class="code html">

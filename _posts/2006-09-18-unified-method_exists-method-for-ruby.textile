@@ -5,7 +5,6 @@ title: Unified method_exists method for ruby
 created_at: 2006-09-18 22:59:00 +01:00
 layout: blog
 ---
-:textile
   There are loads of different ways to check whether an object (class or instance) contains a given method.
 
   In fact, there are so many different ways that I spent some time working out what was what.

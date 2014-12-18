@@ -5,7 +5,6 @@ title: Some useful assertions, maybe
 created_at: 2006-10-14 10:27:00 +01:00
 layout: blog
 ---
-:textile
   The first is to ensure two arrays contain the same elements not necessarily in the same order.
 
   <pre class="code ruby">

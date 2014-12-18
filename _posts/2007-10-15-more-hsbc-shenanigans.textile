@@ -5,7 +5,6 @@ title: More Hsbc Shenanigans
 created_at: 2007-10-15 20:13:00 +01:00
 layout: blog
 ---
-:textile
   This will be of interest to very few (if any) people - I'd suggest you just move on to something more interesting.
 
   Yesterday, I contacted Hsbc using the Internet Banking feedback form that was outside of the Internet Banking site itself.

@@ -5,7 +5,6 @@ title: Rails testing without database
 created_at: 2006-02-23 08:16:00 +00:00
 layout: blog
 ---
-:textile
   Just yesterday I wanted to create a very quick rails app that didn't rely on a database.
 
   I removed :active_record from the frameworks loaded in evironment, but apparently this wasn't quite enough.  The setup and teardown methods in Test::Unit::TestCase were still attempting to load fixtures (which implies that active record is still present somewhere), which require the presence of a database.  This was causing tests not to run.  Having had a quick look at how active record intercepts the setup and teardown methods, it was relatively simple to stop it from doing so.

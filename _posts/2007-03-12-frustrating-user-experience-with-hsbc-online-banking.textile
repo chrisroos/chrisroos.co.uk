@@ -5,7 +5,6 @@ title: Frustrating user experience with Hsbc online banking
 created_at: 2007-03-12 23:13:00 +00:00
 layout: blog
 ---
-:textile
   *Update - 9th Jan 2013*
   I received an email toward the end of last (thanks, Nick) pointing out that when you choose a payee from the list of beneficiaries (e.g. HMRC SA AS SHIP) you'll be presented with their sort code and account number on the next screen. If it doesn't match what you're expecting you can go back and choose another entry from the list.
 

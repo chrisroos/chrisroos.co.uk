@@ -5,7 +5,6 @@ title: Asking South Eastern about the high speed trains
 created_at: 2008-07-21 22:15:25.841176 +01:00
 layout: blog
 ---
-:textile
   *I noticed, having already written everything below, that there's actually quite a lot of information about the high speed proposals on the "South Eastern":http://en.wikipedia.org/wiki/Southeastern_(train_operating_company)#Future_expansion "wikipedia":http://wikipedia.org/ page.*
 
   There's been lots of speculation about the new high speed trains that are going to decrease journey times from, parts of, "Kent":http://en.wikipedia.org/wiki/Kent to "London":http://en.wikipedia.org/wiki/London.  The south eastern site is very sparse on the details of these new services so I thought I'd email them to ask for more details: I'm specifically interested in journey times from "Ramsgate":http://en.wikipedia.org/wiki/Ramsgate to London.  I shouldn't be surprised, but their answer contains essentially no information.

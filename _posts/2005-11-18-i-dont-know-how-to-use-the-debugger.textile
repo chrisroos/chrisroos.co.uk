@@ -5,7 +5,6 @@ title: I don't know how to use the debugger
 created_at: 2005-11-18 11:08:00 +00:00
 layout: blog
 ---
-:textile
   I currently use "Ruby":http://www.ruby-lang.org and "Rails":http://www.rubyonrails.com all day, every day, at "work":http://www.revieworld.com.  It's great.
 
   Now, I don't actually know how to use the Ruby debugger; I've taken a look at it in the past and am sure I could use it; it's just that I've never had the need.

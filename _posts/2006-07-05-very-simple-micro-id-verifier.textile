@@ -5,7 +5,6 @@ title: Very simple Micro Id Verifier
 created_at: 2006-07-05 23:22:00 +01:00
 layout: blog
 ---
-:textile
   I just finished up the initial copy of a Ruby implementation of "Fred Stutzman's":http://chimprawk.blogspot.com/ "Micro Id":http://www.microid.org/ "Verifier":http://chimprawk.blogspot.com/2006/06/simple-microid-verifier.html.
 
   View the source "on-line":http://chrisroos.googlecode.com/svn/trunk/micro-id-verifier/ or checkout from anonymous subversion.

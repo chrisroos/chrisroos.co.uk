@@ -5,7 +5,6 @@ title: It'll grow back, right?
 created_at: 2007-03-05 22:16:00 +00:00
 layout: blog
 ---
-:textile
   Hmm.  I need to remove this, very firmly attached, processor from the heatsink and fan assembly.
 
   !http://farm1.static.flickr.com/174/411792179_f302416633.jpg?v=0!

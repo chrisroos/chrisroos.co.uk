@@ -5,7 +5,6 @@ title: Tadalist bookmarklet
 created_at: 2005-11-26 20:30:00 +00:00
 layout: blog
 ---
-:textile
   I've been aware of, and used periodically, "tadalist":http://www.tadalists.com from "37 signals":http://www.37signals.com.
 
   Over about the last week I've started to use tadalist far more.  It's great but I really want a way to add items without having to use tada each time.  Apparently there "used to be":http://www.keeganjones.com/widgets/tada/ a "dashboard":http://www.apple.com/uk/downloads/dashboard/ widget (which would be handy as I use mac's at work) but it's been long lost.

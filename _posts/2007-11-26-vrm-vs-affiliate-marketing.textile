@@ -5,7 +5,6 @@ title: VRM vs Affiliate Marketing
 created_at: 2007-11-26 22:23:00 +00:00
 layout: blog
 ---
-:textile
   I just read "this":http://blogs.law.harvard.edu/vrm/2007/11/16/can-vrm-fix-drm/ article over on the "Project VRM":http://blogs.law.harvard.edu/vrm/ blog.  There was a fragment of a sentence that really resonated with me - highlighted in the quote below.
 
   <blockquote>

@@ -5,7 +5,6 @@ title: Typo admin broke!
 created_at: 2005-11-06 14:25:00 +00:00
 layout: blog
 ---
-:textile
   I went to add a link to my bloglines public feed this morning and couldn't log into typo admin.  I double checked that my username and password were correct using the console and so took a look at the accounts controller.  Using some advanced debugging techniques (mmm render :text => '') I found that request.method was returning :POST where the code was checking for :post.  I amended the controller and all now works.  I'm just really not sure why it stopped working as nothing had changed!
 
   *Update Sun 6th Nov 14:26*

@@ -6,7 +6,6 @@ created_at: 2009-02-01 12:56:26.435181 +00:00
 guid:       41a108e3-8a8b-4e1c-8c08-65f8ba7ae5a4
 layout:     blog
 ---
-:textile
   This sort of data would have been incredibly handy when I was "trying to implement":/blog/2009-01-31-implementing-version-2-of-the-amazon-aws-http-request-signature-in-ruby the "Amazon request signing functionality":http://docs.amazonwebservices.com/AmazonSimpleDB/2007-11-07/DeveloperGuide/REST_RESTAuth.html.  It might be of use to anyone else that wants to implement it in another language.
 
   I chose to test using the "List domains":http://docs.amazonwebservices.com/AmazonSimpleDB/2007-11-07/DeveloperGuide/SDB_API_ListDomains.html method as it seemed fairly straightforward.  These are request parameters I used (you'll obviously need to use the exact same values when testing your implementation).

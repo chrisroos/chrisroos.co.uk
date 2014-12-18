@@ -5,7 +5,6 @@ title: Reevoo.com and Seo
 created_at: 2007-06-07 08:30:00 +01:00
 layout: blog
 ---
-:textile
   "We":http://www.reevoo.com had an "Seo":http://en.wikipedia.org/wiki/Search_engine_optimization consultant in yesterday.  Although a lot of what was suggested was common sense there were a few interesting snippets of information.
 
   * Seo is only just starting to become a viable marketing option in the Uk.  Are we really that far behind the states?

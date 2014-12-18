@@ -5,7 +5,6 @@ title: Using in memory Active Record objects with associations for testing
 created_at: 2006-07-12 01:23:00 +01:00
 layout: blog
 ---
-:textile
   Hitting the database in testing is bad.
 
   Something that I've found relatively useful at "work":http://www.reevoo.com is to use real "Active Record":http://api.rubyonrails.com/classes/ActiveRecord/Base.html objects without any persistence (basically use AR#new and not AR#save[!] or AR#create[!]).  When using standard techniques to create the association objects in memory you only get one side of the association at a time.  Consider the following.

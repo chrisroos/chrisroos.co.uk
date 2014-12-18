@@ -5,7 +5,6 @@ title: Web service to convert UK Postcodes (outcode) to Latitude and Longitude
 created_at: 2007-07-13 14:41:00 +01:00
 layout: blog
 ---
-:textile
   Using the data supplied in this "article":http://postcodes.easypeasy.com, by "Nik Sargent":http://www.niksargent.com, I've created a simple web service that returns "JSON":http://www.json.org formatted data about UK Outcodes (the first bit of the postcode).
 
   The idea is that you can request, for example, /postcodes/se1 and get some json in return.  For se1, we receive the following data.

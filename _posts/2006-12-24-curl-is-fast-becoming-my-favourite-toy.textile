@@ -5,7 +5,6 @@ title: cURL is fast becoming my favourite toy
 created_at: 2006-12-24 17:04:00 +00:00
 layout: blog
 ---
-:textile
   h2. (or programmatically logging into online banking to retrieve my balance)
 
   In order to make practical use[1] of my new found "sms gateway":/blog/2006-12-14-addicted-to-twitter-com, I've created a ruby script that logs into my hsbc bank account and scrapes the balance from the screen.

@@ -6,7 +6,6 @@ created_at: 2008-12-17 10:30:37.219441 +00:00
 guid:       840b84f0-1287-4bd0-8511-21af6e22a59e
 layout:     blog
 ---
-:textile
   OK, so I was made redundant from "reevoo":http://www.reevoo.com just over a week ago and my initial holiday mood is now wearing off.  I have a couple of things to follow up but I definitely don't have anything concrete so I'm putting this out there on the off chance someone wants to employ me (permanent or contract).
 
   This is a direct copy of an email I sent someone when they requested a CV.  It's not very comprehensive but it hopefully gives some indication of what I'm able to do.

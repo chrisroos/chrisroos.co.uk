@@ -5,7 +5,6 @@ title: Holiday in Newqay
 created_at: 2007-08-14 06:30:00 +01:00
 layout: blog
 ---
-:textile
   We've been camping in "Newquay":http://en.wikipedia.org/wiki/Newquay for the past week.  I just thought I'd post a few unstructured notes about our time there.
 
   * It took about six hours each way in the car.  Much better than last year's nine or ten hour journeys each way.

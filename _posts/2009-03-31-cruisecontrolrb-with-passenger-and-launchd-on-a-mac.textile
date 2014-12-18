@@ -6,7 +6,6 @@ created_at: 2009-03-31 18:27:25.028934 +01:00
 guid:       7442682a-92a4-4d9e-91ef-49e6143e8854
 layout:     blog
 ---
-:textile
   This has taken me ages, is quite fiddly and I'm still not 100% happy with it but it seems to work well enough to document here.
 
   h2. Configuring the server to run under Passenger

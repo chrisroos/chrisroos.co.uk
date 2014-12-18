@@ -5,7 +5,6 @@ title: Textmate command to display Active Record column attributes
 created_at: 2006-07-14 08:18:00 +01:00
 layout: blog
 ---
-:textile
   I find myself constantly visiting either the console or the mysql command line to check out the attributes (columns) of "active record":http://api.rubyonrails.com/classes/ActiveRecord/Base.html objects.
 
   I know there is a "plugin":http://blogs.pragprog.com/cgi-bin/pragdave.cgi/Tech/Ruby/AnnotateModels.rdoc by "Dave Thomas":http://blogs.pragprog.com/cgi-bin/pragdave.cgi that places the table structure within the model code itself.  To be honest I've never tried this and it might well suffice (although I'm not 100% convinced I like the idea).

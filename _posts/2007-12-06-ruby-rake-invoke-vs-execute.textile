@@ -5,7 +5,6 @@ title: Ruby Rake - Invoke vs Execute
 created_at: 2007-12-06 16:26:00 +00:00
 layout: blog
 ---
-:textile
   First up - I don't know an awful lot about the magic that is "Rake":http://rake.rubyforge.org/.  As such, this is probably common knowledge to most people.
 
   I discovered the difference when trying to execute the db:migrate task from within another rake task (I already knew it worked when declared as a dependency).

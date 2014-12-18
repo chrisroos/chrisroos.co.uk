@@ -5,7 +5,6 @@ title: Sending trackbacks to the sites that you bookmark in del.icio.us
 created_at: 2008-02-04 09:53:00 +00:00
 layout: blog
 ---
-:textile
   I know they have their problems (I had 26 good and 38428 spam when they were enabled on my site) but I've always liked the idea of "trackbacks":http://en.wikipedia.org/wiki/Trackback (and the "pingback":http://en.wikipedia.org/wiki/Pingback alternative).
 
   A few months back I started thinking about "sending trackbacks when bookmarking pages in del.icio.us":http://tech.groups.yahoo.com/group/ydn-delicious/message/1447.  Having been told that, although it was something that had been considered, it wasn't likely to be added anytime soon I decided to take a look at adding the functionality myself.

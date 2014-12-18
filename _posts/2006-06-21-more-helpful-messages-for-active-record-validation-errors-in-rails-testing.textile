@@ -5,7 +5,6 @@ title: More helpful messages for Active Record validation errors in Rails testin
 created_at: 2006-06-21 08:10:00 +01:00
 layout: blog
 ---
-:textile
   In testing (and production code) "we":http://www.reevoo.com always try to persist "Active Record":http://api.rubyonrails.com/classes/ActiveRecord/Base.html models with the bang variants (save! and create!).  This allows us to "fail fast":http://www.martinfowler.com/ieeeSoftware/failFast.pdf if any of our models fail our  "validation":http://api.rubyonrails.com/classes/ActiveRecord/Validations/ClassMethods.html rules.
 
   The problem is that the standard "test/unit":http://ruby-doc.org/stdlib/libdoc/test/unit/rdoc/index.html reporting framework displays the exception without any details of why the validation failed.

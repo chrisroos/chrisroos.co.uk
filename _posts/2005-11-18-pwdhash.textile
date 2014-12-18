@@ -5,7 +5,6 @@ title: PwdHash
 created_at: 2005-11-18 00:34:00 +00:00
 layout: blog
 ---
-:textile
   I read about this "concept":https://www.pwdhash.com and associated "firefox plugin":https://addons.mozilla.org/extensions/moreinfo.php?id=1033 a while back but then promptly forgot about it.  I came across it again recently and decided to take a more detailed look.
 
   Currently, you probably either have...

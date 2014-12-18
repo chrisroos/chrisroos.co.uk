@@ -5,7 +5,6 @@ title: Amazing non-customer service
 created_at: 2006-11-28 23:55:00 +00:00
 layout: blog
 ---
-:textile
   I heard (well, read) about "wesabe":http://www.wesabe.com this morning and thought I'd sign-up to find out what it was all about.  During the sign-up process I was asked for _two_ security questions and answers - to be used in the event of me forgetting my password.  Although I was unable[1] to sign-up and use the service, I still got an amazing 'non-customer experience'.  I was curious as to why they wanted me to answer two security questions in order to sign-up, and emailed them to that affect.
 
   bq. I was about to signup to wesabe but I've been rejected by not entering my security questions.  I'm genuinely interested in your decision to require two security questions as well as an email address.  I get the impression that the current trend is to ask for an email address and provide a 'reset password' type link that mails out a new password - maybe you are more aware of this due to the type of data being stored?

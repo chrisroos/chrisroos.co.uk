@@ -5,7 +5,6 @@ title: Pesky Scammers
 created_at: 2007-05-17 22:55:00 +01:00
 layout: blog
 ---
-:textile
   A couple of days ago, I received a comment to one of my articles.  "Hmm, that looks familiar I thought", and not without good reason.  You see, the comment had been copied verbatim from another comment on the same article.  The only change was the author's name and the url of their 'homepage'.  After a little deliberation I deleted the comment.  I found it interesting for two reasons.
 
   # The 'homepage' link wasn't obviously spam (it was some kind of kitchen site I believe), although a quick search did reveal it on some blacklists.

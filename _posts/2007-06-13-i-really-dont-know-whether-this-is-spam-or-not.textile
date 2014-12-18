@@ -5,7 +5,6 @@ title: I really don't know whether this is spam or not...
 created_at: 2007-06-13 22:18:00 +01:00
 layout: blog
 ---
-:textile
   I've received another innocent looking comment, "Hey man, thanks for article!", this time from gribitonline.com.
 
   I followed the same procedure as "last time":/blog/2007-06-06-a-little-further-investigation-into-those-pesky-scammers  and found that this site contains  the same style porn links at the bottom of the page.  The site looks more genuine than all the others, hence the title - I'm really not sure whether this is intentional spam or whether it's been hijacked.

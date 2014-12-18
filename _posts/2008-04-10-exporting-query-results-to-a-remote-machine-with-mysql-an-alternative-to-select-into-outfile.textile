@@ -5,7 +5,6 @@ title: Exporting query results to a remote machine with MySql (an alternative to
 created_at: 2008-04-10 16:45:29.584250 +01:00
 layout: blog
 ---
-:textile
   Exporting query results to a remote machine with MySql (an alternative to SELECT INTO OUTFILE)
 
   "MySql's":http://mysql.com "SELECT INTO OUTFILE":http://dev.mysql.com/doc/refman/5.0/en/select.html syntax provides a nice way to export the results of a query into a tab delimited (by default) text file.  Unfortunately, the file has to be created on the MySql host (by a user with file permissions), rendering it unsuitable for dumping the data to a remote machine.  If you wish to dump the query results to a different machine then the "mysql docs":http://dev.mysql.com/doc/ suggest redirecting the output from the mysql command line client:

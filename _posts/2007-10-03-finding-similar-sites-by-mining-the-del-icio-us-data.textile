@@ -5,7 +5,6 @@ title: Finding similar sites by mining the del.icio.us data
 created_at: 2007-10-03 08:00:00 +01:00
 layout: blog
 ---
-:textile
   So this is very much proof of concept and definitely not very useful in its current form...
 
   You need to execute this javascript in the context of a webpage.  In "firebug":http://getfirebug.com/ (for example), paste it into the console and run.

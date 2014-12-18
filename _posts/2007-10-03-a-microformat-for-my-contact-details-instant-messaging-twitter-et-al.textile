@@ -5,7 +5,6 @@ title: A microformat for my contact details (instant messaging, twitter et al)
 created_at: 2007-10-03 23:52:00 +01:00
 layout: blog
 ---
-:textile
   I haven't done any research on this so it may have already been proposed over at the "microformats":http://microformats.org/ site.
 
   h2. The problem

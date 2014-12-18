@@ -5,7 +5,6 @@ title: Instiki-AR with sqlite3 on Windows XP
 created_at: 2005-10-01 15:39:00 +01:00
 layout: blog
 ---
-:textile
   I've used "Instiki":http://www.instiki.org quite a bit for storing what are essentially notes.
 
   Although it's been a true "Rails":http://www.rubyonrails.com app for a while, due to it's use of "Madeleine":http://madeleine.sourceforge.net/ for object persistence, it required a couple of workarounds to host it using "apache":http://httpd.apache.org.  Namely, run Instiki on "WEBrick":http://www.webrick.org and then use mod_proxy in apache to forward requests for a given url to the webrick server.

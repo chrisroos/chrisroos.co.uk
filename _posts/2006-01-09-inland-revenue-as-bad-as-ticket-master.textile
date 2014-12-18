@@ -5,7 +5,6 @@ title: Inland Revenue as bad as Ticket Master
 created_at: 2006-01-09 14:23:47 +00:00
 layout: blog
 ---
-:textile
   Well it seems that the inland revenue have taken a leaf out of ticket master's "school of less secure passwords" book.  Your password must be between 8 and 12 characters and be alphanumeric.
 
   Completely and utterly pathetic.

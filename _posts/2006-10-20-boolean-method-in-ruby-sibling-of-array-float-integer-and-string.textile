@@ -5,7 +5,6 @@ title: "Boolean method in Ruby (sibling of Array, Float, Integer and String) "
 created_at: 2006-10-20 00:19:00 +01:00
 layout: blog
 ---
-:textile
   I was reading in data from a file and expected one particular column to contain either 'true' or 'false'.  I wanted a nice way to convert the string representation into its object counterpart.  I thought to the Kernel#Float (and kin) and decided I wanted a Kernel#Boolean method.  So I made one.  Tada...
 
   <pre class="code ruby">

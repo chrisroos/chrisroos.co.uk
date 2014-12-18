@@ -5,7 +5,6 @@ title: Version Control Commit Note Best Practice (or not, you decide)
 created_at: 2008-03-28 19:17:57 +00:00
 layout: blog
 ---
-:textile
   This is my own opinion but it has evolved from the need to dig back into past commit notes *a lot*.  The lazy approach to writing commit notes is just to explain what's in the changeset (much like a code comment that says "set x to 1"):  It's exactly what I used to write (and still do if I'm not concentrating).  The more useful approach is to explain why the changeset is there.  I can take two of my own commit notes as examples.
 
   h2. Useless commit note

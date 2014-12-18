@@ -5,7 +5,6 @@ title: Create rails projects using a specific rails gem version
 created_at: 2006-08-14 22:06:00 +01:00
 layout: blog
 ---
-:textile
   I just found this when trying to create a rails project using rails 1.0.0 (having both 1.0.0 and 1.1.6 installed as gems).
 
   If the first argument to the rails command is a valid (i.e. installed) version number and surrounded by underscores then that version of the gem is used to create the rails application structure.

@@ -5,7 +5,6 @@ title: Monkey patching rails routing
 created_at: 2007-03-19 22:16:00 +00:00
 layout: blog
 ---
-:textile
   This "plugin":http://chrisroos.googlecode.com/svn/trunk/plugins/routing_redirection/ offers the following two features.
 
   # Permanently redirecting requests for urls that end in a slash to the equivalent url with no slash, helping disambiguate urls, as "explained":http://simonwillison.net/2007/Feb/4/urls/ by "Simon Willison":http://simonwillison.net/.

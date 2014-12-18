@@ -5,7 +5,6 @@ title: Remote Control Software
 created_at: 2005-09-06 16:45:00 +01:00
 layout: blog
 ---
-:textile
   I've always preferred "TightVNC":http://www.tightvnc.com for remote control of other machines.  When run through an SSH tunnel it provides secure, free, remote access.  The only problem is that it's not amazingly easy to talk someone through installing it remotely, what with the need to configure suitable SSH software, firewall and TightVNC.
 
   "Fogcreek":http://www.fogcreek.com "Copilot":http://www.copilot.com offers a commercial solution to this by having both parties communicate via a mediator.  This is fine but I'm not keen on the cost.

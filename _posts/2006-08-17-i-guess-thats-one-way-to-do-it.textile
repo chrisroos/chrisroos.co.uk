@@ -5,7 +5,6 @@ title: I guess that's one way to do it...
 created_at: 2006-08-17 08:08:00 +01:00
 layout: blog
 ---
-:textile
   We're not _quite_ at this stage yet...
 
   <pre class="code ruby">

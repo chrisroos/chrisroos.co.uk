@@ -5,7 +5,6 @@ title: Some realisations about testing
 created_at: 2006-07-17 09:19:00 +01:00
 layout: blog
 ---
-:textile
   Having been predominantly involved in "Rails":http://www.rubyonrails.com development just recently, "fixtures":http://api.rubyonrails.com/classes/Fixtures.html have taken on a slightly different meaning to what I now believe to be the original understanding.  Having recently re-read "Test Driven Development: By Example":http://www.amazon.co.uk/gp/product/0321146530/202-8808398-1811851?v=glance&n=266239 I re-discovered the 'original' meaning of the word (essentially shared objects used by all tests in a test case).
 
   This has made me think about the way that I've been structuring my tests (or not structuring them as the case may be).  I have never been a fan of the setup and teardown methods provided to us in "xUnit":http://en.wikipedia.org/wiki/XUnit and I now believe this to be due to my misunderstanding of the term fixture and therefore their intention.  This has led to my test cases growing very large and containing many disparate tests.  If there was any separation of the testcase then it was usually based on functionality of a particular method (which separately leads me to believe that they may have been better expressed in a new object).  I now understand that test cases should be split to contain tests that rely on a common test fixture.  As soon as I started to do this, the setup and (to a lesser degree) teardown methods have become much more useful.

@@ -6,7 +6,6 @@ created_at: 2009-02-19 13:42:03.949925 +00:00
 guid:       54052ce7-0520-411d-b065-12e6de8aa9d9
 layout:     blog
 ---
-:textile
   Just a polite request to those that publish only partial content in their feeds.  Please don't do it.
 
   I used to read my feeds offline in "Google Reader":http://www.google.com/reader.  Partial feeds are frustrating because they suck me in with a teaser and then leave me hanging until I get back to an Internet connection: where I'll often forget about the feed and leave it forever.  Alternatively, I'll visit said page offline, bookmark it in delicious ("firefox extension":https://addons.mozilla.org/en-US/firefox/addon/3615) with a to-read tag and still never read it[1].

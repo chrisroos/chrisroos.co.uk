@@ -5,7 +5,6 @@ title: Online news reader
 created_at: 2005-10-02 19:02:00 +01:00
 layout: blog
 ---
-:textile
   It's been on my list for quite a while to check out online newsreaders in order to replace my flagging "desktop client of choice":http://www.sharpreader.com.
 
   This has been pushed up the list by my recent contract taking me away from my main machine for the best part of the week.  As such, I spent last night looking at some of the alternatives listed on "this":http://en.wikipedia.org/wiki/List_of_news_aggregators#Online_news_aggregators "wikipedia":http://www.wikipedia.org article.

@@ -5,7 +5,6 @@ title: A fun (and crappy) Monday morning quiz
 created_at: 2007-04-30 09:08:00 +01:00
 layout: blog
 ---
-:textile
   <pre class="code">
   require 'test/unit'
 

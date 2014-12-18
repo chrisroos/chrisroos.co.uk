@@ -5,7 +5,6 @@ title: Operating systems should be managed by version control
 created_at: 2005-11-27 08:24:00 +00:00
 layout: blog
 ---
-:textile
   I spent from about 09:30 until 15:00 yesterday trying to get some graphics software talking to two output devices (basically printers) on Windows.
 
   On arrival, it kinda worked, although not as requested.  There were some additional problems that needed to be sorted too.

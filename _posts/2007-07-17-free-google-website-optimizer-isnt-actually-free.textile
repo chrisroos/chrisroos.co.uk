@@ -5,7 +5,6 @@ title: Free google website optimizer isn't actually free
 created_at: 2007-07-17 22:36:00 +01:00
 layout: blog
 ---
-:textile
   Nup, it cost me £5.00.  That's not free is it.
 
   OK, so I'm being intentionally blunt, but that's because "google":http://www.google.com annoyed me by being misleading and incompetent.  Although I have no intention of using "adwords":http://adwords.google.com, I had to sign-up in order to use their "website optimizer":http://services.google.com/websiteoptimizer service.  I signed up but chose not to enter any billing information; I wasn't going to buy any ads, and website optimizer is free (hmmm), so I didn't see the point.  I went on to set-up my optimizer experiments and waited.  The docs suggest that you may have to wait up to an hour before seeing impressions, but 24 hours without impressions, that I knew should be there, seemed a little excessive.  I guessed it may have had something to do with not entering my billing information but in order to be sure I sent the folks at google an email.

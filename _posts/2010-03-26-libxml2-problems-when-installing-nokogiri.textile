@@ -6,7 +6,6 @@ created_at: 2010-03-26 09:54:32.477491 +00:00
 guid:       d856b6b9-a7fd-43fb-afcd-16308cc6b56d
 layout:     blog
 ---
-:textile
   h2. The problem
 
   Trying to install "nokogiri":http://nokogiri.org/ on Mac OS X 10.5.8 (Leopard) using "gem bundler":http://github.com/carlhuda/bundler, or more specifically as a non root user (e.g. installing into ~/.gem/), failed with the error below.

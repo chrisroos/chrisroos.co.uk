@@ -5,7 +5,6 @@ title: Maybe I need some more REST
 created_at: 2006-11-27 22:26:00 +00:00
 layout: blog
 ---
-:textile
   This post isn't about sleep deprevation.  Instead, the witty title is referring to everyone's newest, favouritist buzzword: "REST":http://www.wikipedia.org/wiki/REST (or Representational State Transfer).
 
   Scene setting with some things that have happened recently (in roughly this order):

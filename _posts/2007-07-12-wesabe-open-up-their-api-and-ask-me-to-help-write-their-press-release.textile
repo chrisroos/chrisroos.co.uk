@@ -5,7 +5,6 @@ title: Wesabe open up their API and ask me to help write their press release...
 created_at: 2007-07-12 23:49:00 +01:00
 layout: blog
 ---
-:textile
   Ok, so that second bit isn't strictly true ;-)  I was, however, flattered to be contacted by Debbie from "Wesabe":http://www.wesabe.com to answer a few questions and maybe provide a quote for their press release.  They have just improved their service by "offering":http://blog.wesabe.com/index.php/2007/07/12/your-bank-has-a-rest-api-now-shhh-dont-tell-them/ an "API":http://www.wikipedia.org/wiki/API after all.
 
   They asked, and I answered by rambling quite a bit.  In the preview of the press release I've seen, my ramblings have been summarized in three words :-)  Hey, I'm just honoured they asked.  I also asked if I could post their questions and my reply here, so, in all its glory, here it be.

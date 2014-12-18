@@ -5,7 +5,6 @@ title: An open letter to my local newspapers
 created_at: 2007-06-01 12:00:00 +01:00
 layout: blog
 ---
-:textile
   I just sent this email to the editors of four local papers.
 
   <blockquote>

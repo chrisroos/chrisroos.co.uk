@@ -5,7 +5,6 @@ title: Installing Collaboa
 created_at: 2006-03-05 11:58:00 +00:00
 layout: blog
 ---
-:textile
   I just spent a few minutes installing "collaboa":http://www.collaboa.org on my "FreeBsd":http://www.freebsd.org server.
 
   I already had a number of the pre-requisites installed.  All that was outstanding was "swig":http://www.swig.org, the "subversion-ruby bindings":http://www.freshports.org/devel/subversion-ruby/ and the "ruby iconv bindings":http://www.freshports.org/converters/ruby-iconv/ which were all installed using packages.

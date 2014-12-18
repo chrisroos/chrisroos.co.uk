@@ -5,7 +5,6 @@ title: In memory sqlite database for rails testing
 created_at: 2006-02-08 08:54:00 +00:00
 layout: blog
 ---
-:textile
   *Update 12th June 2006*
 
   There is now a "plugin":http://nubyonrails.com/articles/2006/06/01/san-francisco-sqlite3-memory-tests-asteroids from "Geoffrey Grosenbach":http://nubyonrails.com/ that encapsulates this hack.

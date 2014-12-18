@@ -5,7 +5,6 @@ title: Encapsulation in Active Record objects
 created_at: 2007-01-12 01:37:00 +00:00
 layout: blog
 ---
-:textile
   I've been meaning to finish a post on this subject for ages.  As I probably won't finish it in its current incarnation, I thought I'd at least get something up here.
 
   "Active Record":http://www.rubyonrails.org/api/classes/ActiveRecord/Base.html "associations":http://www.rubyonrails.org/api/classes/ActiveRecord/Associations/ClassMethods.html are brilliant for quickly putting together an object graph.  They're not so brilliant for testing, or keeping the code particularly tidy.  They quickly lead to (and even encourage) train-wreck expressions in your code.  Diving straight into an example:

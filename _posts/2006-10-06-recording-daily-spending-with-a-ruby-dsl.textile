@@ -5,7 +5,6 @@ title: Recording daily spending with a Ruby Dsl
 created_at: 2006-10-06 09:19:00 +01:00
 layout: blog
 ---
-:textile
   I'm very very very bad with money.  Don't get me wrong, I'm very good at -spending- wasting money, just bad at all "the":http://en.wikipedia.org/wiki/Savings "boring":http://en.wikipedia.org/wiki/Investing "stuff":http://en.wikipedia.org/wiki/Pension.
 
   The main part of my problem is that I never know how much I have and therefore don't know when to stop spending.  This is down to laziness.  It takes time to check balances at a cash point or via my bank's website.  I feel that this time can be better spent withdrawing the cash and wandering to the pub.
