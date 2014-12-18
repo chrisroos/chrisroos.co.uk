@@ -6,8 +6,8 @@ created_at: 2010-11-04 14:31:07.938076 +00:00
 guid:       69a70ab8-830c-42c7-a491-22ae3152cbf6
 layout:     blog
 ---
-  [Kalv](http://kalv.co.uk/) and I created a really simple project tracking tool thingy in [Google Spreadsheets](http://www.google.com/google-d-s/spreadsheets/).
+[Kalv](http://kalv.co.uk/) and I created a really simple project tracking tool thingy in [Google Spreadsheets](http://www.google.com/google-d-s/spreadsheets/).
 
-  Used Google's [drawing tool](http://www.google.com/google-d-s/drawings/) to create some diagrams.  It's a pretty darn neat little tool.
+Used Google's [drawing tool](http://www.google.com/google-d-s/drawings/) to create some diagrams.  It's a pretty darn neat little tool.
 
-  Went to/got drunk at the New Act Night at the [Comedy cafe](http://www.comedycafe.co.uk/).  It's free.  It was good.  You should go.
+Went to/got drunk at the New Act Night at the [Comedy cafe](http://www.comedycafe.co.uk/).  It's free.  It was good.  You should go.

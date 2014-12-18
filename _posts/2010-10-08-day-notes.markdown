@@ -7,14 +7,14 @@ guid:       b4c4279e-533c-468a-8959-50ce31e9fcc9
 layout:     blog
 ---
 
-  * Moved this website from [subversion on google code](http://chrisroos.googlecode.com/svn/trunk/websites/chrisroos.co.uk/) to [github](http://github.com/chrisroos/chrisroos.co.uk)
+* Moved this website from [subversion on google code](http://chrisroos.googlecode.com/svn/trunk/websites/chrisroos.co.uk/) to [github](http://github.com/chrisroos/chrisroos.co.uk)
 
-  * Lost a load of historical subversion commits in the process of moving the source of this site (github appears to import the x most recent commits).  I would've cared about this in the past but decided that having the current site in git was more important than working out how to keep them.  Actually, having said that, they'll all still be in the subversion repository should I wish to revisit them.
+* Lost a load of historical subversion commits in the process of moving the source of this site (github appears to import the x most recent commits).  I would've cared about this in the past but decided that having the current site in git was more important than working out how to keep them.  Actually, having said that, they'll all still be in the subversion repository should I wish to revisit them.
 
-  * Removed my life.chrisroos.co.uk tumblr site.  It was, at one time, aggregating a bunch of other sites.
+* Removed my life.chrisroos.co.uk tumblr site.  It was, at one time, aggregating a bunch of other sites.
 
-  * Updated a few things on this site - mainly around what I'm up to these days.
+* Updated a few things on this site - mainly around what I'm up to these days.
 
-  * Downloaded the last months worth of [south eastern's daily performance reports](http://www.southeasternrailway.co.uk/your-journey/daily-performance/) and popped them in git.
+* Downloaded the last months worth of [south eastern's daily performance reports](http://www.southeasternrailway.co.uk/your-journey/daily-performance/) and popped them in git.
 
-  * Added [gembundler](http://gembundler.com) to my [southeastern-daily-performance](http://github.com/chrisroos/southeastern-daily-performance) project and got all the tests passing again.  The next step will be to make sure it can actually convert the downloaded performance reports.
+* Added [gembundler](http://gembundler.com) to my [southeastern-daily-performance](http://github.com/chrisroos/southeastern-daily-performance) project and got all the tests passing again.  The next step will be to make sure it can actually convert the downloaded performance reports.

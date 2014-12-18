@@ -6,6 +6,6 @@ created_at: 2011-01-31 11:19:11.916889 +00:00
 guid:       73960598-472b-4850-8398-e7e305bc6fdf
 layout:     blog
 ---
-  We ordered some [Designer Swedish furniture](http://www.ikea.com/) for the office.
+We ordered some [Designer Swedish furniture](http://www.ikea.com/) for the office.
 
-  I fixed up our CI dashboard.  Although it hadn't been working for a while (we were relying on other notifications for build changes) I was missing the [CC Menu](http://ccmenu.sourceforge.net/) compatible feed that it provided.  It turned out that an upgrade of [Passenger](http://www.modrails.com/) was all that was required to fix it.
+I fixed up our CI dashboard.  Although it hadn't been working for a while (we were relying on other notifications for build changes) I was missing the [CC Menu](http://ccmenu.sourceforge.net/) compatible feed that it provided.  It turned out that an upgrade of [Passenger](http://www.modrails.com/) was all that was required to fix it.

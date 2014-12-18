@@ -6,6 +6,6 @@ created_at: 2010-11-08 09:56:05.191136 +00:00
 guid:       9affda4d-0a80-4f14-85de-1aca3d46b51a
 layout:     blog
 ---
-  Caught up on my outstanding 'day notes'.
+Caught up on my outstanding 'day notes'.
 
-  Spent quite a long time trying to get a [failing test](https://github.com/chrisroos/capybara-envjs-rack-test) to expose the strange [envjs](https://github.com/smparkes/env-js) problem that [Jase](http://jasoncale.com/) and I were seeing last week.
+Spent quite a long time trying to get a [failing test](https://github.com/chrisroos/capybara-envjs-rack-test) to expose the strange [envjs](https://github.com/smparkes/env-js) problem that [Jase](http://jasoncale.com/) and I were seeing last week.

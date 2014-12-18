@@ -6,6 +6,6 @@ created_at: 2011-02-07 17:47:26.890491 +00:00
 guid:       cab44cde-7b00-4000-a14e-9dd593324cf4
 layout:     blog
 ---
-  We had a general company chat about an internal messaging app we've been developing (a chat frontend of which is available as [Teamstream](https://github.com/freerange/teamstream)).
+We had a general company chat about an internal messaging app we've been developing (a chat frontend of which is available as [Teamstream](https://github.com/freerange/teamstream)).
 
-  We managed to get [Tom's](http://tomafro.net/) mobile number re-provisioned through the new mechanism that'll hopefully support us re-enabling the existing [#blue](https://hashblue.com/) functionality that was removed at Christmas and allow us to sign up many more customers.
+We managed to get [Tom's](http://tomafro.net/) mobile number re-provisioned through the new mechanism that'll hopefully support us re-enabling the existing [#blue](https://hashblue.com/) functionality that was removed at Christmas and allow us to sign up many more customers.

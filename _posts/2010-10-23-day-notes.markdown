@@ -6,6 +6,6 @@ created_at: 2010-11-04 14:32:01.392192 +00:00
 guid:       5f15981e-f434-4d41-af31-99e4cc5199bc
 layout:     blog
 ---
-  Spent the day on [The Original Tour](http://www.theoriginaltour.com/) buses in London with Mum and Dad for Dad's birthday.
+Spent the day on [The Original Tour](http://www.theoriginaltour.com/) buses in London with Mum and Dad for Dad's birthday.
 
-  Spent the evening in the [Brazen Monkey](http://www.brazenmonkey.co.uk/) celebrating [Kalv's](http://kalv.co.uk/) 30th.  I popped my karaoke cherry singing Smells like teen spirit with [Tom](http://tomafro.net/).  I'm pretty certain we sounded exactly like [Kurt singing on Top of the Pops](http://www.youtube.com/watch?v=TBQ7jcEh2Qs).
+Spent the evening in the [Brazen Monkey](http://www.brazenmonkey.co.uk/) celebrating [Kalv's](http://kalv.co.uk/) 30th.  I popped my karaoke cherry singing Smells like teen spirit with [Tom](http://tomafro.net/).  I'm pretty certain we sounded exactly like [Kurt singing on Top of the Pops](http://www.youtube.com/watch?v=TBQ7jcEh2Qs).

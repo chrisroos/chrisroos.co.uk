@@ -6,6 +6,6 @@ created_at: 2011-01-10 09:41:35.681602 +00:00
 guid:       b98ab788-501c-4fb8-8bb5-e81b152b1de9
 layout:     blog
 ---
-  We spent some more time this morning discussing work for the first part of this year.  We even managed to come to a descision which felt great.
+We spent some more time this morning discussing work for the first part of this year.  We even managed to come to a descision which felt great.
 
-  I continued to work with both [Kalv](http://kalv.co.uk/) and [James A](http://interblah.net/) to get our servers provisioned using [Puppet](http://www.puppetlabs.com/).
+I continued to work with both [Kalv](http://kalv.co.uk/) and [James A](http://interblah.net/) to get our servers provisioned using [Puppet](http://www.puppetlabs.com/).

@@ -6,6 +6,6 @@ created_at: 2010-11-04 14:33:13.520148 +00:00
 guid:       b145a5ac-cc31-420b-8645-cb12e5d042e8
 layout:     blog
 ---
-  More 'project for upcoming conference' work with [Jase](http://jasoncale.com/).  This time getting it to work reliably offline using [rack-offline](https://github.com/wycats/rack-offline).
+More 'project for upcoming conference' work with [Jase](http://jasoncale.com/).  This time getting it to work reliably offline using [rack-offline](https://github.com/wycats/rack-offline).
 
-  Had beers with some friends in [Skinkers](http://www.davy.co.uk/skinkers).  They serve ale in METAL TANKARDS.
+Had beers with some friends in [Skinkers](http://www.davy.co.uk/skinkers).  They serve ale in METAL TANKARDS.

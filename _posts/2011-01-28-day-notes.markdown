@@ -6,6 +6,6 @@ created_at: 2011-01-31 11:46:56.761851 +00:00
 guid:       9665a11d-eb03-4471-a71c-ac129ba870b0
 layout:     blog
 ---
-  [Tom](http://tomafro.net/) and I paired on fixing our CI machine.  The way in which it was re-provisioned meant that certain application dependencies were missing.
+[Tom](http://tomafro.net/) and I paired on fixing our CI machine.  The way in which it was re-provisioned meant that certain application dependencies were missing.
 
-  I spent some time this afternoon working on a little project that'll allow me to upload my bank transactions to a Google Spreadsheet to track my spending.  The code's in the [ofx-to-csv](https://github.com/chrisroos/ofx-to-csv) repository and currently comprises a script to convert [OFX](http://en.wikipedia.org/wiki/Open_Financial_Exchange) to [CSV](http://en.wikipedia.org/wiki/CSV) and a [Google Apps Script](http://code.google.com/googleapps/appsscript/) to remove duplicate transactions from the Google Spreadsheet.
+I spent some time this afternoon working on a little project that'll allow me to upload my bank transactions to a Google Spreadsheet to track my spending.  The code's in the [ofx-to-csv](https://github.com/chrisroos/ofx-to-csv) repository and currently comprises a script to convert [OFX](http://en.wikipedia.org/wiki/Open_Financial_Exchange) to [CSV](http://en.wikipedia.org/wiki/CSV) and a [Google Apps Script](http://code.google.com/googleapps/appsscript/) to remove duplicate transactions from the Google Spreadsheet.

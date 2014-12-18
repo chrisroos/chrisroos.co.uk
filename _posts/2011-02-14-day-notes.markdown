@@ -6,10 +6,10 @@ created_at: 2011-02-15 18:33:41.676727 +00:00
 guid:       dffaa760-3d00-44bb-883a-7fb7fcb4ce53
 layout:     blog
 ---
-  [Tom](http://tomafro.net/) started to re-enable some of our existing [#blue](https://hashblue.com/) accounts now that we've pretty much got everything we need to integrate fully with [O2](http://www.o2.co.uk/).
+[Tom](http://tomafro.net/) started to re-enable some of our existing [#blue](https://hashblue.com/) accounts now that we've pretty much got everything we need to integrate fully with [O2](http://www.o2.co.uk/).
 
-  Paired with [Kalv](http://kalv.co.uk/) on getting the latest version of the [ruby-smpp](https://github.com/freerange/ruby-smpp) library into #blue.
+Paired with [Kalv](http://kalv.co.uk/) on getting the latest version of the [ruby-smpp](https://github.com/freerange/ruby-smpp) library into #blue.
 
-  We started to investigate some errors with messages containing invalid UTF-8 encoding.  In the process we noticed that these errors weren't being sent to [getexceptional](http://www.getexceptional.com/).  A little bit of investigation led us to believe that it's a problem with getexceptional itself (as per [this ticket](http://support.getexceptional.com/discussions/problems/340-invalid-utf8-exceptions-not-being-captured)).
+We started to investigate some errors with messages containing invalid UTF-8 encoding.  In the process we noticed that these errors weren't being sent to [getexceptional](http://www.getexceptional.com/).  A little bit of investigation led us to believe that it's a problem with getexceptional itself (as per [this ticket](http://support.getexceptional.com/discussions/problems/340-invalid-utf8-exceptions-not-being-captured)).
 
-  I watched [The Hurt Locker](http://www.imdb.com/title/tt0887912/).  It was good.
+I watched [The Hurt Locker](http://www.imdb.com/title/tt0887912/).  It was good.

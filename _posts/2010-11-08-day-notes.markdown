@@ -6,8 +6,8 @@ created_at: 2010-11-18 17:51:43.436924 +00:00
 guid:       a7cc3d5a-71bf-4dca-862d-d87a855616e9
 layout:     blog
 ---
-  Worked with [Jase](http://jasoncale.com/) on some crazy failing tests in [#blue](https://hashblue.com/).  We think we narrowed the problem down to testing asynchronous javascript with [qunit](http://docs.jquery.com/Qunit).
+Worked with [Jase](http://jasoncale.com/) on some crazy failing tests in [#blue](https://hashblue.com/).  We think we narrowed the problem down to testing asynchronous javascript with [qunit](http://docs.jquery.com/Qunit).
 
-  A little [Caffeine Monitor](http://cm.buildconf.com/) tidying before the [Build conference](http://buildconf.com/).
+A little [Caffeine Monitor](http://cm.buildconf.com/) tidying before the [Build conference](http://buildconf.com/).
 
-  Watched [Peter Kay](http://en.wikipedia.org/wiki/Peter_Kay) at the [O2](http://www.theo2.co.uk/).  T'was very good indeed.
+Watched [Peter Kay](http://en.wikipedia.org/wiki/Peter_Kay) at the [O2](http://www.theo2.co.uk/).  T'was very good indeed.

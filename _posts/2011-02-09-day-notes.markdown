@@ -6,8 +6,8 @@ created_at: 2011-02-15 18:32:33.686154 +00:00
 guid:       0d6f720b-5fa2-4130-b4e4-8b08b5b19e0e
 layout:     blog
 ---
-  [Mongoid](http://mongoid.org/) doesn't support migrations out of the box.  Although it has a rake task to create indexes on collections, there is no nice way to remove them.  There is [mongoid_rails_migrations](https://github.com/adacosta/mongoid_rails_migrations) but that doesn't work with mongoid releases after 2.0.0.rc.1 (see [issue 7](https://github.com/adacosta/mongoid_rails_migrations/issues/issue/7)).  One solution is to create a standard active record migration and do something like the [example in this gist](https://gist.github.com/818493).
+[Mongoid](http://mongoid.org/) doesn't support migrations out of the box.  Although it has a rake task to create indexes on collections, there is no nice way to remove them.  There is [mongoid_rails_migrations](https://github.com/adacosta/mongoid_rails_migrations) but that doesn't work with mongoid releases after 2.0.0.rc.1 (see [issue 7](https://github.com/adacosta/mongoid_rails_migrations/issues/issue/7)).  One solution is to create a standard active record migration and do something like the [example in this gist](https://gist.github.com/818493).
 
-  I started working on GFRs new project this afternoon.  I got set-up and updated the developer set-up notes in the process.  Wrote an email about the merits of either migrations and/or having an up-to-date schema.
+I started working on GFRs new project this afternoon.  I got set-up and updated the developer set-up notes in the process.  Wrote an email about the merits of either migrations and/or having an up-to-date schema.
 
-  Watched [Mr Nice](http://www.imdb.com/title/tt1183911/) - it was good.
+Watched [Mr Nice](http://www.imdb.com/title/tt1183911/) - it was good.

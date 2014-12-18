@@ -6,8 +6,8 @@ created_at: 2011-02-07 17:46:23.918608 +00:00
 guid:       32fc10fd-f262-4fb4-a0ee-094769729ee8
 layout:     blog
 ---
-  We're getting closer to having [#blue](https://hashblue.com/) fully integrated with all the relevant services within [O2](http://www.o2.co.uk/).  We had to make a couple of small changes to ensure that #blue could talk to the O2 production network.
+We're getting closer to having [#blue](https://hashblue.com/) fully integrated with all the relevant services within [O2](http://www.o2.co.uk/).  We had to make a couple of small changes to ensure that #blue could talk to the O2 production network.
 
-  [Tom](http://tomafro.net/), [James A](http://interblah.net/), [James M](http://jamesmead.org/) and I were out visiting a new client this afternoon.
+[Tom](http://tomafro.net/), [James A](http://interblah.net/), [James M](http://jamesmead.org/) and I were out visiting a new client this afternoon.
 
-  I used [MyHammer](http://www.myhammer.co.uk/) this evening to get quotes for some DIY.  Let's see how that works out..
+I used [MyHammer](http://www.myhammer.co.uk/) this evening to get quotes for some DIY.  Let's see how that works out..
