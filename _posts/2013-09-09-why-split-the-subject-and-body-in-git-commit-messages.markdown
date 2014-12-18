@@ -5,7 +5,6 @@ title:      Why split the subject and body in git commit messages?
 created_at: 2013-09-09 16:53:06.040609 +01:00
 guid:       2eb2f5e1-748d-4a22-b94d-357e4047000e
 layout:     blog
-filter:     haml
 ---
 :markdown
   Tim Pope's, ["A Note About Git Commit Messages"](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html) suggests that we should split our git commit message into subject and body, with a newline between the two. Tim lists some tools that make use of this split and I thought I'd follow that with some screenshots showing how this convention is used in four fairly common (well, I use them) git tools.

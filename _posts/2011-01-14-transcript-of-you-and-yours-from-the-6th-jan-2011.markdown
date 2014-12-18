@@ -5,7 +5,6 @@ title:      Transcript Of You And Yours From The 6th Jan 2011
 created_at: 2011-01-14 13:44:01.805240 +00:00
 guid:       42adec95-75dd-4a5e-9b3a-c6df53b5fa9f
 layout:     blog
-filter:     haml
 ---
 :markdown
   This is a transcript of [Chapter three](http://www.bbc.co.uk/programmes/p00d4n2l) of [You and Yours from the 6th Jan 2011](http://www.bbc.co.uk/programmes/b00x7c36).  I transcribed it because I think it makes interesting listening/reading.

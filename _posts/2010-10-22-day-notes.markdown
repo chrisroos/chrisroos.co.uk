@@ -5,7 +5,6 @@ title:      Day notes - Fri 22nd Oct 2010
 created_at: 2010-11-04 14:31:42.543513 +00:00
 guid:       be88f773-fd03-42aa-98b4-c2c67fefdd74
 layout:     blog
-filter:     haml
 ---
 :markdown
   Continued investigating the [capybara-envjs](https://github.com/smparkes/capybara-envjs) error we ran into yesterday.  I got a simple failing test but need to simplify further before it can be submitted as an issue.

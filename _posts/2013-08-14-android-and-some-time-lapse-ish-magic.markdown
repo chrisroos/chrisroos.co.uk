@@ -5,7 +5,6 @@ title:      Android and some time lapse(ish) magic
 created_at: 2013-08-14 18:50:49.777736 +01:00
 guid:       db952403-4abd-4817-a6d5-86ab75a055c1
 layout:     blog
-filter:     haml
 ---
 :markdown
   I've often thought that it'd be cool if I could have a little Internet connected camera that I could put almost anywhere and have it regularly capture what it sees.

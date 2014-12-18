@@ -5,7 +5,6 @@ title:      Getting Started With Asterisk And Adhearsion On A Mac
 created_at: 2011-04-21 11:12:15.466472 +01:00
 guid:       858011e0-9f93-4298-b060-e7b8ca6ec347
 layout:     blog
-filter:     haml
 ---
 :markdown
   These are some basic notes that should enable you to get [Asterisk](http://www.asterisk.org/) and [Adhearsion](http://adhearsion.com/) up and running on a Mac.  You'll need [homebrew](https://github.com/mxcl/homebrew) in order to install Asterisk.

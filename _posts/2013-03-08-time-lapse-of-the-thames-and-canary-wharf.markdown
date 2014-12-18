@@ -5,7 +5,6 @@ title:      Time Lapse Of The Thames And Canary Wharf
 created_at: 2013-03-08 15:56:48.608857 +00:00
 guid:       1ce16491-b08c-4971-99d2-f9b7bedaeca4
 layout:     blog
-filter:     haml
 ---
 :markdown
   A time-lapse composed of 595 images (1 image every 30 seconds) from 13:40 to 18:43 on Sunday 3rd March 2013.

@@ -5,7 +5,6 @@ title:      Automatically updating my desktop background from my Thames time lap
 created_at: 2013-09-09 11:39:55.348897 +01:00
 guid:       32f11fcc-2675-450a-885e-6107aba7760a
 layout:     blog
-filter:     haml
 ---
 :markdown
   One of the things I wanted to do with the [pictures of the Thames that I've been capturing](/blog/2013-08-14-android-and-some-time-lapse-ish-magic) is to periodically update my desktop background to show the most recent image.

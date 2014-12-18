@@ -5,7 +5,6 @@ title:      Deploying Rails apps using Recap, Apache and Passenger
 created_at: 2013-10-15 09:49:07.382412 -05:00
 guid:       a3189abe-2732-4996-bffa-40cc0c770a18
 layout:     blog
-filter:     haml
 ---
 :markdown
   This assumes that you already have [Apache](http://httpd.apache.org/) and [Passenger](https://www.phusionpassenger.com/) installed; and that you've run `recap setup` and configured your `Capfile` with the address of your server.

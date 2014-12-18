@@ -5,7 +5,6 @@ title:      Day notes - Wed 19th Jan 2011
 created_at: 2011-01-21 17:28:23.694010 +00:00
 guid:       f4d5dbd1-052d-4e95-a7b5-308b38f3380d
 layout:     blog
-filter:     haml
 ---
 :markdown
   I paired with [James M](http://jamesmead.org/) a little on some work he'd done to replace [delayed_job](https://github.com/tobi/delayed_job) with [resque-scheduler](https://github.com/bvandenbos/resque-scheduler).

@@ -5,7 +5,6 @@ title:      Day notes - Tue 1st Feb 2011
 created_at: 2011-02-07 17:46:42.273614 +00:00
 guid:       d2b7dc04-4fba-4821-8186-3ec21b3f7df7
 layout:     blog
-filter:     haml
 ---
 :markdown
   [Tom](http://tomafro.net/) and I spent some time on a call with O2 chatting about phone number re-use and [#blue](https://hashblue.com/).

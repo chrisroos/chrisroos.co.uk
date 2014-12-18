@@ -5,7 +5,6 @@ title:      Moving my timelapse app from Heroku to AWS
 created_at: 2013-10-13 18:08:54.847076 +01:00
 guid:       e3d6bffa-f81d-4a4c-93f0-c14766b68617
 layout:     blog
-filter:     haml
 ---
 :markdown
   I love [Heroku](https://www.heroku.com/) and tend to use the free resources to deploy apps when they're in their very early stages of development. I have a few things that I continue to use Heroku for but unfortunately ran into some of the limits with the [Thames Time Lapse project](https://github.com/chrisroos/thames-time-lapse).

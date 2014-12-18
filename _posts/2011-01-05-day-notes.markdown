@@ -5,7 +5,6 @@ title:      Day notes - Wed 5th Jan 2011
 created_at: 2011-01-06 21:33:18.580615 +00:00
 guid:       709046cd-7f2d-4516-bbba-51323c2f8616
 layout:     blog
-filter:     haml
 ---
 :markdown
   [Jase](http://jasoncale.com/), [Tom](http://tomafro.net/), [Kalv](http://kalv.co.uk/) and I spent a chunk of the day at the new [O2](http://www.o2.co.uk/) offices in Slough.  We're going to spend at least a day a week there in future but this was more of a New Year catchup.  We got confirmation on a couple of dates and heard about some of the newer ideas O2 have got for [hashblue](https://hashblue.com/).

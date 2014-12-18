@@ -5,7 +5,6 @@ title:      Day notes - Tue 16th Nov 2010
 created_at: 2010-11-18 17:54:32.322725 +00:00
 guid:       57a811fb-2b5b-4ca6-82ba-71b35d6f7e6a
 layout:     blog
-filter:     haml
 ---
 :markdown
   [Kalv](http://kalv.co.uk/) and I continued to work on changing our [puppet](http://www.puppetlabs.com/)/[capistrano](https://github.com/capistrano/capistrano/wiki/Documentation-v2.x) recipes so that we could deploy as a single user.  This ended up taking quite a while to do.  We already had a 'freerange::user' definition that would create a user and set their SSH key but this wouldn't allow us to create a single user with multiple keys.  We ended up splitting the user creation from the SSH key assignment which allowed us to continue to create our individual user accounts and to create a generic user that all of us could log in as.

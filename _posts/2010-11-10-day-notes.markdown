@@ -5,7 +5,6 @@ title:      Day notes - Wed 10th Nov 2010
 created_at: 2010-11-18 17:52:06.634922 +00:00
 guid:       84d7539c-b443-45c8-88ba-e77ee5589b5a
 layout:     blog
-filter:     haml
 ---
 :markdown
   [Caffeine Monitor](http://cm.buildconf.com/) went live at [Build conference](http://buildconf.com/).

@@ -5,7 +5,6 @@ title:      Bookmark printing service for the Go Free Range Printer platform
 created_at: 2012-04-12 17:36:00.295575 +01:00
 guid:       d605a057-02c2-4506-b49b-78e8695614eb
 layout:     blog
-filter:     haml
 ---
 :markdown
   I've spent the last couple of days creating a simple service for the [Printer platform][].  This service allows you to print a bookmark (in the traditional sense) for the book you're reading.  Although it's probably of most use to those people with their own printers, you can definitely have a play with generating your own bookmarks (and see a printed example) over on the [Printer bookmarks app on Heroku][].

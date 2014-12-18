@@ -5,7 +5,6 @@ title:      Day notes - Sat 8th Jan 2011
 created_at: 2011-01-10 09:47:23.217940 +00:00
 guid:       0d8f213c-b4a8-47a0-a2c7-27b196395bf0
 layout:     blog
-filter:     haml
 ---
 :markdown
   I finished reading [Incendiary](http://www.chriscleave.com/incendiary/).  It's a great book.  You should read it.

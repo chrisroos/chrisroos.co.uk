@@ -5,7 +5,6 @@ title:      Manually uploading activities from Garmin Fit app
 created_at: 2015-11-14 08:06:40.105783 +00:00
 guid:       bcb7fe70-7b45-4965-8552-67aa13276fcb
 layout:     blog
-filter:     haml
 ---
 :markdown
   I had two activities recorded on 12 Nov 2015 that weren’t syncing to Garmin Connect from the Garmin Fit app on my phone. I signed out and back in a number of times to try to force the sync (as per [Garmin's support page][garmin-fit-support]), but to no avail.

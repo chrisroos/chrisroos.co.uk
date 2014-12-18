@@ -5,7 +5,6 @@ title:      Day notes - Mon 10th Jan 2011
 created_at: 2011-01-10 22:29:53.465529 +00:00
 guid:       dd42a695-b37c-409c-bbf8-028d5d4d2411
 layout:     blog
-filter:     haml
 ---
 :markdown
   [Kalv](http://kalv.co.uk/) and I spent a good few hours trying to work out why [Openswan](http://www.openswan.org/) wasn't starting when one of our Ubuntu servers rebooted.  We eventually came across two bugs in the Ubuntu openswan package that were causing us problems.

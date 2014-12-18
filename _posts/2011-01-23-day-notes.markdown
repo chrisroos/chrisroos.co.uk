@@ -5,7 +5,6 @@ title:      Day notes - Sun 23rd Jan 2011
 created_at: 2011-01-24 14:11:07.764937 +00:00
 guid:       558325cf-41ef-41cb-804d-df7cf67d9010
 layout:     blog
-filter:     haml
 ---
 :markdown
   Watched two excellent climbing films, both recommended by [Ben Sales](http://twitter.com/bensales): [The Asgard Project](http://www.theasgardproject.com/) and [Progression](http://www.bigupproductions.com/#/films/Progression/).

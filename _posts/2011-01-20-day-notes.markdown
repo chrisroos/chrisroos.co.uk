@@ -5,7 +5,6 @@ title:      Day notes - Thu 20th Jan 2011
 created_at: 2011-01-21 17:35:13.228205 +00:00
 guid:       aef86e28-a6bc-4bb9-984c-298ec0466e17
 layout:     blog
-filter:     haml
 ---
 :markdown
   I popped my bike into [On your bike](http://www.onyourbike.com/) so that they can add MORE POWER.

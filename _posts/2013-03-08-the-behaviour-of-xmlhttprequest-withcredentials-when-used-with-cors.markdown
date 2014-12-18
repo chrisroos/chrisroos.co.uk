@@ -5,7 +5,6 @@ title:      Investigation into CORS And XMLHttpRequest
 created_at: 2013-03-08 12:46:37.897127 +00:00
 guid:       100345a0-53f5-40ed-9f43-67bbec484f64
 layout:     blog
-filter:     haml
 ---
 :markdown
 
