@@ -24,7 +24,7 @@
         {% include google-search.html %}
       </div>
       <div id="content">
-        = short_date(@page)
+        <abbr class="createdAt" title="{{ page.created_at | date_to_xmlschema }}">{{ page.created_at | date: "%a, %d %b %y" }}</abbr>
         <h1>{{ page.title }}</h1>
         {{ @content }}
 
