@@ -1,4 +1,4 @@
-source :rubygems
+source 'http://rubygems.org'
 
 gem "webby"
 gem "haml", "3.0.25"
