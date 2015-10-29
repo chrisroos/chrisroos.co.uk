@@ -9,7 +9,7 @@ layout: none
   <url><loc>http://chrisroos.co.uk/</loc></url>
   <url><loc>http://chrisroos.co.uk/contents</loc></url>
   <url><loc>http://chrisroos.co.uk/projects</loc></url>
-  <% blog_posts.each do |post| %>
-    <url><loc>http://chrisroos.co.uk<%= h(friendly_url(post)) %></loc></url>
-  <% end %>
+  {% for post in site.posts %}
+    <url><loc>http://chrisroos.co.uk{{ post.url }}</loc></url>
+  {% endfor %}
 </urlset>
