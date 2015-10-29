@@ -12,17 +12,16 @@ filter: erb
     <ttl>40</ttl>
 
     <description></description>
-    <% blog_posts(10).each do |post| %>
+    {% for post in site.posts %}
       <item>
-        <title><%= post.title %></title>
-        <description><%= h(post.render) %></description>
+        <title>{{ post.title }}</title>
+        <description>{{ post.content | escape }}</description>
 
-        <pubDate><%= rfc822_datetime(post) %></pubDate>
-        <guid isPermaLink="false">urn:uuid:<%= post.guid %></guid>
+        <pubDate>{{ post.created_at | date_to_rfc822 }}</pubDate>
+        <guid isPermaLink="false">urn:uuid:{{ post.guid }}</guid>
         <author>Chris Roos</author>
-        <link>http://chrisroos.co.uk<%= friendly_url(post) %></link>
+        <link>http://chrisroos.co.uk{{ post.url }}</link>
       </item>
-    <% end %>
+    {% endfor %}
   </channel>
 </rss>
-
