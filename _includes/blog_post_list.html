@@ -1,5 +1,5 @@
 <ol class="posts">
-  {% for post in site.posts %}
+  {% for post in site.posts limit:include.number %}
     <li class="post">
       <h2 class="title">
         <a href="{{ post.url }}">{{ post.title }}</a>
