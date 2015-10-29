@@ -6,8 +6,6 @@
 
 * Continue converting blog layout
 
-* Why aren’t apostrophes showing correctly? They’re showing as â€™
-
 ## Other
 
 * Display the date in the /blog listing. There's currently no indication of when something was written and it took me a while to work out how to find that information.
