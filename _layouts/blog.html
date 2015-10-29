@@ -30,7 +30,7 @@
         {{ @content }}
 
         <hr />
-        = render(:partial => "/blog_post_navigation")
+        {% include blog_post_navigation.html %}
       </div>
       <div id="footer">
         {% include footer.html %}

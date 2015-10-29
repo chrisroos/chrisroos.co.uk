@@ -1,19 +1,21 @@
----
-filter: haml
----
-- if @page.blog_post
-  %ul.navigation.group
-    - posts = blog_posts(:all, :reverse => false)
-    - post_index = posts.index(@page)
-
-    - if post_index > 0 && previous_post = posts[post_index - 1]
-      %li.previousPost
+{% if page.blog_post %}
+  <ul class="navigation group">
+    {% if page.previous %}
+      <li class="previousPost">
         &laquo; (older)
-        %a.previousPost{:rel => "prev", :href => "#{friendly_url(previous_post)}", :title => "#{h(previous_post.title)}"}
-          = h(previous_post.title)
+        <a class="previousPost" rel="prev" href="{{ page.previous.url }}" title="{{ page.previous.title }}">
+          {{ page.previous.title | truncate: 59 }}
+        </a>
+      </li>
+    {% endif %}
 
-    - if next_post = posts[post_index + 1]
-      %li.nextPost
-        %a.nextPost{:rel => "next", :href => "#{friendly_url(next_post)}", :title => "#{h(next_post.title)}"}
-          = h(next_post.title)
+    {% if page.next %}
+      <li class="nextPost">
+        <a class="nextPost" rel="next" href="{{ page.next.url }}" title="{{ page.next.title }}">
+          {{ page.next.title | truncate: 59 }}
+        </a>
         (newer) &raquo;
+      </li>
+    {% endif %}
+  </ul>
+{% endif %}
