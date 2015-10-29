@@ -3,19 +3,20 @@
   <head>
     {% include html-header.html %}
 
-    - if @page.blog_post
-      - posts = blog_posts(:all, :reverse => false)
-      - post_index = posts.index(@page)
-      - if post_index > 0 && previous_post = posts[post_index - 1]
-        <link rel="prev" href="#{friendly_url(previous_post)}" />
-      - if next_post = posts[post_index + 1]
-        <link rel="next" href="#{friendly_url(next_post)}" />
-      <link rel="first" href="#{friendly_url(posts.first)}" />
-      <link rel="last" href="#{friendly_url(posts.last)}" />
+    {% if page.blog_post %}
+      {% if page.previous %}
+        <link rel="prev" href="{{ page.previous.url }}" />
+      {% endif %}
+      {% if page.next %}
+        <link rel="next" href="{{ page.next.url }}" />
+      {% endif %}
+      <link rel="first" href="{{ site.posts.last.url }}" />
+      <link rel="last" href="{{ site.posts.first.url }}" />
       <link rel="index" href="/blog" />
       {% if page.summary %}
         <meta name="description" content="{{ page.summary }}" />
       {% endif %}
+    {% endif %}
   <body>
     <div id="page">
       <div id="header" class="group">
