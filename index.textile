@@ -19,4 +19,4 @@ h2. Elsewhere
 
 h2. Recent blog posts ("View all":/blog)
 
-= render(:partial => "/blog_post_list", :locals => {:blog_posts => blog_posts(3)})
+{% include blog_post_list.html number="3" %}
