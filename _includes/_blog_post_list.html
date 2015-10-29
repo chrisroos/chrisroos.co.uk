@@ -1,0 +1,10 @@
+<ol class="posts">
+  {% for post in site.posts %}
+    <li class="post">
+      <h2 class="title">
+        <a href="{{ post.url }}">{{ post.title }}</a>
+      </h2>
+      <p>{{ post.summary }}</p>
+    </li>
+  {% endfor %}
+</ol>
