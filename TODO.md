@@ -1,10 +1,6 @@
 ## Converting to Jekyll
 
-* Convert sitemap.txt so that it’s output as html
-
-* Convert RSS feed
-
-* Continue converting blog layout
+* Use html tidy, or simmilar, to tidy the html of the Webby and Jekyll versions of the site, before comparing the output. I'm aiming for them to be as close as possible before switching to Jekyll.
 
 ## Other
 
