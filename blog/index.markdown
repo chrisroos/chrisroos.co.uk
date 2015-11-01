@@ -1,6 +1,6 @@
 ---
 title:       Blog
-created_at:  2008-08-02 14:06:40.000000 -06:00
+date:        2008-08-02 14:06:40.000000 -06:00
 layout:      default
 ---
 # {{ page.title }}
