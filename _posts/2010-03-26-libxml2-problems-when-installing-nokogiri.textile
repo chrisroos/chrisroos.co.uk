@@ -2,7 +2,7 @@
 summary:    My solution to the problem of Nokogiri checking for a universal (ppc, i386) version of libxml2 and failing to install.
 blog_post:  true
 title:      Libxml2 Problems When Installing Nokogiri
-created_at: 2010-03-26 09:54:32.477491 +00:00
+date:       2010-03-26 09:54:32.477491 +00:00
 guid:       d856b6b9-a7fd-43fb-afcd-16308cc6b56d
 layout:     blog
 ---

@@ -2,7 +2,7 @@
 summary:    How I get pictures of the Thames from my phone to my desktop background
 blog_post:  true
 title:      Automatically updating my desktop background from my Thames time lapse pictures
-created_at: 2013-09-09 11:39:55.348897 +01:00
+date:       2013-09-09 11:39:55.348897 +01:00
 guid:       32f11fcc-2675-450a-885e-6107aba7760a
 layout:     blog
 ---

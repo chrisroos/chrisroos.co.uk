@@ -2,7 +2,7 @@
 blog_post: true
 guid: 3d609757-2f41-4684-8775-c91de62e5041
 title: dabble db initial thoughts
-created_at: 2005-11-18 00:03:00 +00:00
+date:       2005-11-18 00:03:00 +00:00
 layout: blog
 ---
 I've been following the "blog":http://www.smallthought/blog for "dabbledb":http://dabbledb.com/about/ from "smallthought":http://www.smallthought.com/.  I was initially excited about the promise of this software having read about it in a "post":http://chadfowler.com/index.cgi/Computing/LongTailTriesToWagTheDog by "Chad Fowler":http://www.chadfowler.com.  It intends to replace those custom Excel/Access 'applications' that are so pervasive in organisations of all sizes.

@@ -2,7 +2,7 @@
 summary:    Simple guide to getting started with Asterisk and Adhearsion on a Mac
 blog_post:  true
 title:      Getting Started With Asterisk And Adhearsion On A Mac
-created_at: 2011-04-21 11:12:15.466472 +01:00
+date:       2011-04-21 11:12:15.466472 +01:00
 guid:       858011e0-9f93-4298-b060-e7b8ca6ec347
 layout:     blog
 ---

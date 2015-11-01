@@ -2,7 +2,7 @@
 blog_post: true
 guid: 3ba09b50-ed76-46e9-9179-8655c943c005
 title: Exporting query results to a remote machine with MySql (an alternative to SELECT INTO OUTFILE)
-created_at: 2008-04-10 16:45:29.584250 +01:00
+date:       2008-04-10 16:45:29.584250 +01:00
 layout: blog
 ---
 Exporting query results to a remote machine with MySql (an alternative to SELECT INTO OUTFILE)

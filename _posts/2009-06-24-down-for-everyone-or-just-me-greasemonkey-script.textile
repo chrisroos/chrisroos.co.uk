@@ -2,7 +2,7 @@
 summary:    A greasemonkey script that inserts a link to downforeveryoneorjustme.com into the firefox page not found error page
 blog_post:  true
 title:      Down for Everyone or Just Me Greasemonkey Script
-created_at: 2009-06-24 21:07:18.615403 +01:00
+date:       2009-06-24 21:07:18.615403 +01:00
 guid:       4b5dd513-0c10-4892-8c84-1aa29aeac4c5
 layout:     blog
 ---

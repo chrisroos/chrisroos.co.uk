@@ -2,7 +2,7 @@
 summary:    Notes from Monday 25th October 2010
 blog_post:  true
 title:      Day notes - Mon 25th Oct 2010
-created_at: 2010-10-26 10:43:19.151768 +01:00
+date:       2010-10-26 10:43:19.151768 +01:00
 guid:       990d8844-01c7-46de-a780-bd685ef6364f
 layout:     blog
 ---

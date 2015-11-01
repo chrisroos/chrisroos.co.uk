@@ -2,7 +2,7 @@
 blog_post: true
 guid: c42c088b-48bd-4580-ba44-7272bad89605
 title: A fun (and crappy) Monday morning quiz
-created_at: 2007-04-30 09:08:00 +01:00
+date:       2007-04-30 09:08:00 +01:00
 layout: blog
 ---
 <pre class="code">

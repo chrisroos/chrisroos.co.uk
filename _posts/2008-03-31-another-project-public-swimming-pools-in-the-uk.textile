@@ -2,7 +2,7 @@
 blog_post: true
 guid: 81049870-4a70-495f-8774-ef1ca3d2f15f
 title: Another project - Public Swimming Pools in the UK
-created_at: 2008-03-31 14:18:43 +01:00
+date:       2008-03-31 14:18:43 +01:00
 layout: blog
 ---
 Not content with already having a "bunch of unfinished projects":/articles/2008/02/18/what-ive-been-up-to-projects-and-ideas I thought I'd embark upon another.

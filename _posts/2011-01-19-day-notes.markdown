@@ -2,7 +2,7 @@
 summary:    Notes from Wednesday 19th January 2011
 blog_post:  true
 title:      Day notes - Wed 19th Jan 2011
-created_at: 2011-01-21 17:28:23.694010 +00:00
+date:       2011-01-21 17:28:23.694010 +00:00
 guid:       f4d5dbd1-052d-4e95-a7b5-308b38f3380d
 layout:     blog
 ---

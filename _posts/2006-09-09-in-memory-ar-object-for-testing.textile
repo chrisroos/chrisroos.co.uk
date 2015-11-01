@@ -2,7 +2,7 @@
 blog_post: true
 guid: 346ed442-9499-44fc-a578-9f61bd89ebd4
 title: In memory AR object for testing
-created_at: 2006-09-09 12:03:00 +01:00
+date:       2006-09-09 12:03:00 +01:00
 layout: blog
 ---
 I've "previously written":/blog/2006-07-12-using-in-memory-active-record-objects-with-associations-for-testing about using in memory active record objects for testing.

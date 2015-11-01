@@ -2,7 +2,7 @@
 summary:    I've refreshed the little utility that converts egg html statements to ofx.
 blog_post:  true
 title:      Converting Egg Statements and Transactions to Ofx
-created_at: 2009-11-17 21:06:49.391972 +00:00
+date:       2009-11-17 21:06:49.391972 +00:00
 guid:       487c906e-c7d6-4353-a06f-d0e541012cf1
 layout:     blog
 ---

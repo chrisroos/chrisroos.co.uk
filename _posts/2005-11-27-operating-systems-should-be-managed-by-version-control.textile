@@ -2,7 +2,7 @@
 blog_post: true
 guid: 5aa190cb-86d6-43fd-aec3-c36e4e8cb404
 title: Operating systems should be managed by version control
-created_at: 2005-11-27 08:24:00 +00:00
+date:       2005-11-27 08:24:00 +00:00
 layout: blog
 ---
 I spent from about 09:30 until 15:00 yesterday trying to get some graphics software talking to two output devices (basically printers) on Windows.

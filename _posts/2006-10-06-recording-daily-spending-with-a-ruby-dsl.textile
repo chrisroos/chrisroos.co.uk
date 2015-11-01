@@ -2,7 +2,7 @@
 blog_post: true
 guid: f59fe5c0-fe96-4995-9fc9-5153cf7e088c
 title: Recording daily spending with a Ruby Dsl
-created_at: 2006-10-06 09:19:00 +01:00
+date:       2006-10-06 09:19:00 +01:00
 layout: blog
 ---
 I'm very very very bad with money.  Don't get me wrong, I'm very good at -spending- wasting money, just bad at all "the":http://en.wikipedia.org/wiki/Savings "boring":http://en.wikipedia.org/wiki/Investing "stuff":http://en.wikipedia.org/wiki/Pension.

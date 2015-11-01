@@ -2,7 +2,7 @@
 blog_post: true
 guid: 05aa6c3baeb7f9d8db82919e5eca01e0
 title: Remote Control Software
-created_at: 2005-09-06 16:45:00 +01:00
+date:       2005-09-06 16:45:00 +01:00
 layout: blog
 ---
 I've always preferred "TightVNC":http://www.tightvnc.com for remote control of other machines.  When run through an SSH tunnel it provides secure, free, remote access.  The only problem is that it's not amazingly easy to talk someone through installing it remotely, what with the need to configure suitable SSH software, firewall and TightVNC.

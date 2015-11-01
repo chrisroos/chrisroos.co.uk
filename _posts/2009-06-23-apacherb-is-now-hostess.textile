@@ -2,7 +2,7 @@
 summary:    The utility for serving local directories as virtual hosts in a local apache installation has been gemificated and moved to github
 blog_post:  true
 title:      Apacherb Is Now Hostess
-created_at: 2009-06-23 21:41:27.966449 +01:00
+date:       2009-06-23 21:41:27.966449 +01:00
 guid:       b37f5463-b2b5-4f07-b17e-6e014700ce80
 layout:     blog
 ---

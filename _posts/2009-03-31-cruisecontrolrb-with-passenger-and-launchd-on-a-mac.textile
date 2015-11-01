@@ -2,7 +2,7 @@
 summary:    Getting CruiseControl.rb running under Passenger (mod_rails) with the builders being started automatically via launchd (on a Mac).
 blog_post:  true
 title:      CruiseControlrb With Passenger and Launchd on a Mac
-created_at: 2009-03-31 18:27:25.028934 +01:00
+date:       2009-03-31 18:27:25.028934 +01:00
 guid:       7442682a-92a4-4d9e-91ef-49e6143e8854
 layout:     blog
 ---

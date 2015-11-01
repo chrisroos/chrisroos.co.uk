@@ -2,7 +2,7 @@
 summary:    I explain how I managed to print some documents that were stuck in the Windows XP print queue.
 blog_post:  true
 title:      Backing Up Jobs in a Print Queue on Windows XP (and Printing .prn files)
-created_at: 2009-01-24 13:10:34.972166 +00:00
+date:       2009-01-24 13:10:34.972166 +00:00
 guid:       f18fe493-66c0-4012-8cd8-d630aa13e152
 layout:     blog
 ---

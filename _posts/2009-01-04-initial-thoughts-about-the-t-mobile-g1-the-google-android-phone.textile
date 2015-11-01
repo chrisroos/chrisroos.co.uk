@@ -2,7 +2,7 @@
 summary:    Some thoughts about the T-Mobile G1 now that I've had it in my possession for a couple of days.
 blog_post:  true
 title:      Initial Thoughts About the T-Mobile G1 (the Google Android Phone)
-created_at: 2009-01-04 17:12:22.552720 +00:00
+date:       2009-01-04 17:12:22.552720 +00:00
 guid:       3ced4cae-8538-491f-a54a-2a9ac0472135
 layout:     blog
 ---

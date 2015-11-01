@@ -2,7 +2,7 @@
 blog_post: true
 guid: 43a98faa-7156-495c-873a-d63c3497c2e8
 title: Monkey patching rails routing
-created_at: 2007-03-19 22:16:00 +00:00
+date:       2007-03-19 22:16:00 +00:00
 layout: blog
 ---
 This "plugin":http://chrisroos.googlecode.com/svn/trunk/plugins/routing_redirection/ offers the following two features.

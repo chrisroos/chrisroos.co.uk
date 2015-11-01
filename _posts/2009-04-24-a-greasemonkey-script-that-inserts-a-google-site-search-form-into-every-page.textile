@@ -2,7 +2,7 @@
 summary:    A greasemonkey script that makes it really easy to use google to search within the current site.  Press ctrl-9 to visit the search form.
 blog_post:  true
 title:      A Greasemonkey Script that inserts a Google Site Search form into every page
-created_at: 2009-04-24 14:09:30.391671 +01:00
+date:       2009-04-24 14:09:30.391671 +01:00
 guid:       bdb63bd0-cf82-404b-9b48-83b10fa27195
 layout:     blog
 ---

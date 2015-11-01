@@ -2,7 +2,7 @@
 summary:    The ruby magic required to list controller filters in Rails 4
 blog_post:  true
 title:      Listing controller filters in Rails 4
-created_at: 2013-08-19 18:24:13.084743 +01:00
+date:       2013-08-19 18:24:13.084743 +01:00
 guid:       b8968e4e-8239-44e9-af20-c017735c6d65
 layout:     blog
 ---

@@ -2,7 +2,7 @@
 summary:    There was a Rails 2.3 security note that suggested we could now set the AR timestamps.  It turns out we've always been able to set the created_at/on timestamps and that updated_at/on are also now assignable.
 blog_post:  true
 title:      Rails 2.3 and the ability to update created_at, created_on, updated_at and updated_on timestamps
-created_at: 2009-04-19 08:39:23.415625 +01:00
+date:       2009-04-19 08:39:23.415625 +01:00
 guid:       866f3fd0-a5dd-4b6a-8800-9ff58940fd3d
 layout:     blog
 ---

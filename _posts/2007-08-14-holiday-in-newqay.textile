@@ -2,7 +2,7 @@
 blog_post: true
 guid: 5574c221-04cf-408d-b367-f86172f9bda0
 title: Holiday in Newqay
-created_at: 2007-08-14 06:30:00 +01:00
+date:       2007-08-14 06:30:00 +01:00
 layout: blog
 ---
 We've been camping in "Newquay":http://en.wikipedia.org/wiki/Newquay for the past week.  I just thought I'd post a few unstructured notes about our time there.

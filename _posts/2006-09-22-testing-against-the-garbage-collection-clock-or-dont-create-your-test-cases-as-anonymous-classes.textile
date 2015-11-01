@@ -2,7 +2,7 @@
 blog_post: true
 guid: ddd20dc2-f3fb-428e-b17d-8a25c74f563b
 title: Testing against the (Garbage Collection) Clock, or, Don't create your Test Cases as anonymous classes
-created_at: 2006-09-22 10:43:00 +01:00
+date:       2006-09-22 10:43:00 +01:00
 layout: blog
 ---
 I "wrote":/blog/2006-07-17-some-realisations-about-testing a while ago about how I'd started creating my test cases as anonymous classes.

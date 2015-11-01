@@ -2,7 +2,7 @@
 summary:    Notes from Tuesday 9th November 2010
 blog_post:  true
 title:      Day notes - Tue 9th Nov 2010
-created_at: 2010-11-18 17:51:55.468222 +00:00
+date:       2010-11-18 17:51:55.468222 +00:00
 guid:       f72554e4-cddc-413a-87ec-31b142011a6d
 layout:     blog
 ---

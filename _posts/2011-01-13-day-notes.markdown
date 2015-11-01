@@ -2,7 +2,7 @@
 summary:    Notes from Thursday 13th January 2011
 blog_post:  true
 title:      Day notes - Thu 13th Jan 2011
-created_at: 2011-01-14 17:14:55.110283 +00:00
+date:       2011-01-14 17:14:55.110283 +00:00
 guid:       44c98c28-95ed-4552-9669-43e385250c09
 layout:     blog
 ---

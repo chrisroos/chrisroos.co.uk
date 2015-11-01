@@ -2,7 +2,7 @@
 summary:    Getting my Webby powered website running on Mac OS X El Capitan
 blog_post:  true
 title:      Getting my Webby powered website running on Mac OS X El Capitan
-created_at: 2015-10-29 17:20:00.000000 +00:00
+date:       2015-10-29 17:20:00.000000 +00:00
 guid:       7f9f06d4-4cf6-407e-9f92-83321e34d105
 layout:     blog
 ---

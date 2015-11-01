@@ -2,7 +2,7 @@
 summary:    Notes from Saturday 15th January 2011
 blog_post:  true
 title:      Day notes - Sat 15th Jan 2011
-created_at: 2011-01-21 16:49:16.534908 +00:00
+date:       2011-01-21 16:49:16.534908 +00:00
 guid:       dde38961-5882-4f18-882e-ae2a54f0271c
 layout:     blog
 ---

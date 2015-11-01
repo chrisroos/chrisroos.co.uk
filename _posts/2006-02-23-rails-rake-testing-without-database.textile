@@ -2,7 +2,7 @@
 blog_post: true
 guid: 7436c1ad-8856-4b00-8575-83adcce61509
 title: Rails rake testing without database
-created_at: 2006-02-23 16:46:00 +00:00
+date:       2006-02-23 16:46:00 +00:00
 layout: blog
 ---
 Continuing from the "previous post":/blog/2006-02-23-rails-testing-without-database, it appears that the rake testing tasks are also tightly coupled to active record.

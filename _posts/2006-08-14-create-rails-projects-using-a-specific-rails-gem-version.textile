@@ -2,7 +2,7 @@
 blog_post: true
 guid: 7f4e04b5-6e29-43ee-a225-898096a42579
 title: Create rails projects using a specific rails gem version
-created_at: 2006-08-14 22:06:00 +01:00
+date:       2006-08-14 22:06:00 +01:00
 layout: blog
 ---
 I just found this when trying to create a rails project using rails 1.0.0 (having both 1.0.0 and 1.1.6 installed as gems).

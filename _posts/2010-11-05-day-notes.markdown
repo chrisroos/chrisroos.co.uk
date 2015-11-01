@@ -2,7 +2,7 @@
 summary:    Notes from Friday 5th November 2010
 blog_post:  true
 title:      Day notes - Fri 5th Nov 2010
-created_at: 2010-11-08 09:57:44.044184 +00:00
+date:       2010-11-08 09:57:44.044184 +00:00
 guid:       09a2780d-ac0f-4384-8188-d46e588658a7
 layout:     blog
 ---

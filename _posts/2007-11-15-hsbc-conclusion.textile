@@ -2,7 +2,7 @@
 blog_post: true
 guid: 9c598cbc-a150-4781-9f6c-7527746cf439
 title: HSBC Conclusion
-created_at: 2007-11-15 17:14:00 +00:00
+date:       2007-11-15 17:14:00 +00:00
 layout: blog
 ---
 I finally received a reply from HSBC to my constant nagging about a possible bug in their Internet Banking software.

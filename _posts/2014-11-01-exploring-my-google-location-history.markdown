@@ -2,7 +2,7 @@
 summary:    Using command line tools to start exploring my Google Location History
 blog_post:  true
 title:      Exploring my Google Location History
-created_at: 2014-11-01 09:44:26.585886 +00:00
+date:       2014-11-01 09:44:26.585886 +00:00
 guid:       14ac3ce0-6711-4dd9-af2b-3a5e604d4fda
 layout:     blog
 ---

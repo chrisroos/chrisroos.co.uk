@@ -2,7 +2,7 @@
 summary:    Notes from Tuesday 15th February 2011
 blog_post:  true
 title:      Day notes - Tue 15th Feb 2011
-created_at: 2011-02-16 18:32:50.258712 +00:00
+date:       2011-02-16 18:32:50.258712 +00:00
 guid:       e9f6d1aa-aff3-414c-8f00-3ab70b24ef58
 layout:     blog
 ---

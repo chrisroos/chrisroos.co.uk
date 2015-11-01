@@ -2,7 +2,7 @@
 summary:    HMRC Employer CD and httperf fun
 blog_post:  true
 title:      Day notes - Mon 11th Oct 2010
-created_at: 2010-10-12 10:04:47.920184 +01:00
+date:       2010-10-12 10:04:47.920184 +01:00
 guid:       a7e99820-c19d-452e-a53d-2642fe3eb3dc
 layout:     blog
 ---

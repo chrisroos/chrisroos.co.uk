@@ -2,7 +2,7 @@
 summary:    I've tried to use the notes I took at TICOSA to paint a picture of what I took away from the conference
 blog_post:  true
 title:      Notes from The First International Conference on Software Archaeology
-created_at: 2014-02-07 12:25:17.233323 +00:00
+date:       2014-02-07 12:25:17.233323 +00:00
 guid:       05586206-a0fc-434f-ad2f-5815671d94f5
 layout:     blog
 ---

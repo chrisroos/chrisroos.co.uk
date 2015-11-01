@@ -2,7 +2,7 @@
 summary:    By hooking together Email, a simple Ruby/Rack server and the delicious API I'm able to post bookmarks from my G1 to delicious
 blog_post:  true
 title:      Posting Bookmarks to Delicious From My Android G1
-created_at: 2009-03-04 23:09:41.344393 +00:00
+date:       2009-03-04 23:09:41.344393 +00:00
 guid:       583b9942-cc0e-41e1-924f-f5b6d7c522b9
 layout:     blog
 ---

@@ -2,7 +2,7 @@
 blog_post: true
 guid: 1188bc2b-2b50-4938-923c-aaaca77daa24
 title: Automatically downloading my recent transactions from Lloyds Tsb
-created_at: 2007-05-14 22:39:00 +01:00
+date:       2007-05-14 22:39:00 +01:00
 layout: blog
 ---
 In my continuing quest to cut down my use of banking websites (and increase my use of "wesabe":http://www.wesabe.com), I've hacked together a script to download my recent transactions from "Lloyds Tsb":http://www.lloydstsb.com.  Sadly, the transactions are in "QIF":http://en.wikipedia.org/wiki/QIF format, as only QIF and "CSV":http://en.wikipedia.org/wiki/Comma-separated_values formats are offered.  Maybe I'll get round to exporting the data in "OFX":http://www.ofx.net format sometime in the future.

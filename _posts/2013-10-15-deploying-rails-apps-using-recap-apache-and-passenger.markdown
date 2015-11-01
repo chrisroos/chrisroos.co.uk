@@ -2,7 +2,7 @@
 summary:    Instructions covering how to deploy a Rails app using recap, Apache and Passenger
 blog_post:  true
 title:      Deploying Rails apps using Recap, Apache and Passenger
-created_at: 2013-10-15 09:49:07.382412 -05:00
+date:       2013-10-15 09:49:07.382412 -05:00
 guid:       a3189abe-2732-4996-bffa-40cc0c770a18
 layout:     blog
 ---

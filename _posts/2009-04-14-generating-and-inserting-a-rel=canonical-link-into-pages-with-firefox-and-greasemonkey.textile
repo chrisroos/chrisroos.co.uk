@@ -2,7 +2,7 @@
 summary:    A greasemonkey script that allows me to generate permalinks for various web pages and insert those permalinks into the page as links with rel=canonical.
 blog_post:  true
 title:      Generating and Inserting a Rel=Canonical Link Into Pages With Firefox and Greasemonkey
-created_at: 2009-04-14 14:14:00.122422 +01:00
+date:       2009-04-14 14:14:00.122422 +01:00
 guid:       fca91c96-2df9-4112-b7b7-8902fed60a6d
 layout:     blog
 ---

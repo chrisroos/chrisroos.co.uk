@@ -2,7 +2,7 @@
 blog_post: true
 guid: 590ca24e-90f3-4668-a0f8-5972712b55c6
 title: Maybe I need some more REST
-created_at: 2006-11-27 22:26:00 +00:00
+date:       2006-11-27 22:26:00 +00:00
 layout: blog
 ---
 This post isn't about sleep deprevation.  Instead, the witty title is referring to everyone's newest, favouritist buzzword: "REST":http://www.wikipedia.org/wiki/REST (or Representational State Transfer).

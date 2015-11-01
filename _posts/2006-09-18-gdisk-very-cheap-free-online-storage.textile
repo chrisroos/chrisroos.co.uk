@@ -2,7 +2,7 @@
 blog_post: true
 guid: ece9a725-7aff-4eb3-b62c-0924ca5460ba
 title: gDisk - very cheap (free) online storage
-created_at: 2006-09-18 20:17:00 +01:00
+date:       2006-09-18 20:17:00 +01:00
 layout: blog
 ---
 I've used "this":http://gdisk.sourceforge.net/ for a while but haven't got round to mentioning it.

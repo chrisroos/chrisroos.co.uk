@@ -2,7 +2,7 @@
 blog_post: true
 guid: 82cf9da3-d148-4708-81ad-cb2aa419ff12
 title: Emailing photos to flickr from my Skypephone
-created_at: 2008-01-17 18:20:00 +00:00
+date:       2008-01-17 18:20:00 +00:00
 layout: blog
 ---
 I wanted to get my thoughts down more than trying to write something particularly coherent so I apologise for the unstructured post.

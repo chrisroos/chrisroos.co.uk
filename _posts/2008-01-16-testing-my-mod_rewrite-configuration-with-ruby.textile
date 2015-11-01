@@ -2,7 +2,7 @@
 blog_post: true
 guid: 92474f38-31b4-4247-bc47-af786b4577bb
 title: Testing my mod_rewrite configuration with ruby
-created_at: 2008-01-16 09:31:00 +00:00
+date:       2008-01-16 09:31:00 +00:00
 layout: blog
 ---
 In order to ensure that I didn't break anything while setting up my "mod_rewrite rules":/blog/2008-01-16-chris-1-mod_rewrite-0-muhahahaha I created a little "ruby script":http://chrisroos.googlecode.com/svn/trunk/the-local-paper/apache_test.rb to test my expectations.  I've cut down the rules in the example below but you should get the idea.  It'd be quite cool to create a little dsl to better express the intentions of the code.

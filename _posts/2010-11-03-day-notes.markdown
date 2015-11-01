@@ -2,7 +2,7 @@
 summary:    Notes from Wednesday 3rd November 2010
 blog_post:  true
 title:      Day notes - Wed 3rd Nov 2010
-created_at: 2010-11-04 14:33:48.438996 +00:00
+date:       2010-11-04 14:33:48.438996 +00:00
 guid:       c6007ff9-7659-4866-adad-5f039a637d28
 layout:     blog
 ---

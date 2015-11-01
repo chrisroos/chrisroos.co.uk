@@ -2,7 +2,7 @@
 blog_post: true
 guid: bfabc321-1654-46e0-9ce1-ddc03c4047a0
 title: Backpack sms reminders to orange uk
-created_at: 2005-12-10 09:08:00 +00:00
+date:       2005-12-10 09:08:00 +00:00
 layout: blog
 ---
 I've been using the reminders feature of "backpack":http://www.backpackit.com to text me when I need to be doing something time specific.  As per "this":http://www.backpackit.com/forum/viewtopic.php?id=16 thread in the forum, although I get the text messages, there is no subject; meaning I have to remember what it was that I wanted to be reminded about.  Hmmm.

@@ -2,7 +2,7 @@
 blog_post: true
 guid: 6bb761b0-c2ca-4547-894c-83ac3c701cd5
 title: A little further investigation into those pesky scammers
-created_at: 2007-06-06 23:11:00 +01:00
+date:       2007-06-06 23:11:00 +01:00
 layout: blog
 ---
 I "wrote":/blog/2007-05-17-pesky-scammers a short while ago about receiving comments that were not obviously spam.  In the few weeks  between that post and this, I've received several more legitimate looking comments.  Tonight, I finally looked in some detail at the comments I'd received.  The comments were either very generic ('nice post' or 'thanks for the info') or were copied from previous comments on the site.  The 'homepages' came in four different flavours.

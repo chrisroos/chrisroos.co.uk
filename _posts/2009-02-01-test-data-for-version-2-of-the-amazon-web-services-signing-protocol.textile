@@ -2,7 +2,7 @@
 summary:    I'm hoping this data might be useful for someone else trying to develop code to sign requests to Amazon Web Services
 blog_post:  true
 title:      Test Data for Version 2 of the Amazon Web Services Signing Protocol
-created_at: 2009-02-01 12:56:26.435181 +00:00
+date:       2009-02-01 12:56:26.435181 +00:00
 guid:       41a108e3-8a8b-4e1c-8c08-65f8ba7ae5a4
 layout:     blog
 ---

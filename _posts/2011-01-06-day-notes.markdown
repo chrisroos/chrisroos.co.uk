@@ -2,7 +2,7 @@
 summary:    Notes from Thursday 6th January 2011
 blog_post:  true
 title:      Day notes - Thu 6th Jan 2011
-created_at: 2011-01-07 18:16:30.514072 +00:00
+date:       2011-01-07 18:16:30.514072 +00:00
 guid:       9ff06620-ee89-439a-822c-30395abb1da3
 layout:     blog
 ---

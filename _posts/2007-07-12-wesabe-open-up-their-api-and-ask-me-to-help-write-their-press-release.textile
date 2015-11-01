@@ -2,7 +2,7 @@
 blog_post: true
 guid: be6d4d23-532f-46ba-9bf8-fe0dde4d28b5
 title: Wesabe open up their API and ask me to help write their press release...
-created_at: 2007-07-12 23:49:00 +01:00
+date:       2007-07-12 23:49:00 +01:00
 layout: blog
 ---
 Ok, so that second bit isn't strictly true ;-)  I was, however, flattered to be contacted by Debbie from "Wesabe":http://www.wesabe.com to answer a few questions and maybe provide a quote for their press release.  They have just improved their service by "offering":http://blog.wesabe.com/index.php/2007/07/12/your-bank-has-a-rest-api-now-shhh-dont-tell-them/ an "API":http://www.wikipedia.org/wiki/API after all.

@@ -2,7 +2,7 @@
 blog_post: true
 guid: ca03363d-ef79-4221-afec-54febbb66552
 title: voo2do vs tadalist
-created_at: 2005-12-12 08:36:00 +00:00
+date:       2005-12-12 08:36:00 +00:00
 layout: blog
 ---
 I was taking a look at the "best web 2.0 software":http://web2.wsj2.com/the_best_web_20_software_of_2005.htm when I came across a to do list alternative to "tada":http://www.tadalist.com called "voo2do":http://voo2do.com/.

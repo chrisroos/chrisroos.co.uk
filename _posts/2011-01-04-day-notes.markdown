@@ -2,7 +2,7 @@
 summary:    Notes from Tuesday 4th January 2011
 blog_post:  true
 title:      Day notes - Tue 4th Jan 2011
-created_at: 2011-01-05 18:47:10.826685 +00:00
+date:       2011-01-05 18:47:10.826685 +00:00
 guid:       bf39c856-f9bd-4b1c-831a-e1751af0b9ab
 layout:     blog
 ---

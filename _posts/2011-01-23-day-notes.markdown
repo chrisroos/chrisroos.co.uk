@@ -2,7 +2,7 @@
 summary:    Notes from Sunday 23rd January 2011
 blog_post:  true
 title:      Day notes - Sun 23rd Jan 2011
-created_at: 2011-01-24 14:11:07.764937 +00:00
+date:       2011-01-24 14:11:07.764937 +00:00
 guid:       558325cf-41ef-41cb-804d-df7cf67d9010
 layout:     blog
 ---

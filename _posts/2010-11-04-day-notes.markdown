@@ -2,7 +2,7 @@
 summary:    Notes from Thursday 4th November 2010
 blog_post:  true
 title:      Day notes - Thu 4th Nov 2010
-created_at: 2010-11-08 09:56:05.191136 +00:00
+date:       2010-11-08 09:56:05.191136 +00:00
 guid:       9affda4d-0a80-4f14-85de-1aca3d46b51a
 layout:     blog
 ---

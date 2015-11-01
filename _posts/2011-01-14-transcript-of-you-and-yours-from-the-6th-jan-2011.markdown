@@ -2,7 +2,7 @@
 summary:    A transcript of the National Rail Enquiries segment from You and Yours broadcast on the 6th Jan 2011.
 blog_post:  true
 title:      Transcript Of You And Yours From The 6th Jan 2011
-created_at: 2011-01-14 13:44:01.805240 +00:00
+date:       2011-01-14 13:44:01.805240 +00:00
 guid:       42adec95-75dd-4a5e-9b3a-c6df53b5fa9f
 layout:     blog
 ---

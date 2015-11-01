@@ -2,7 +2,7 @@
 summary:    An overview of what "team activeplaces" achieved at rewiredstate.
 blog_post:  true
 title:      Hack the Government Day (Rewired State)
-created_at: 2009-03-09 22:14:51.867052 +00:00
+date:       2009-03-09 22:14:51.867052 +00:00
 guid:       b1db873b-4bf0-4d35-bfa1-7eba23bc9cbc
 layout:     blog
 ---

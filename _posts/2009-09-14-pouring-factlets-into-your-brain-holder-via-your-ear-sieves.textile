@@ -2,7 +2,7 @@
 summary:    An idea for a dynamic audio guidebook on your gps enabled mobile device.
 blog_post:  true
 title:      Pouring Factlets Into Your Brain Holder via Your Ear Sieves
-created_at: 2009-09-14 20:45:38.770893 +01:00
+date:       2009-09-14 20:45:38.770893 +01:00
 guid:       1d0b0f68-2e97-4d1b-8a3f-4f9c4b303900
 layout:     blog
 ---

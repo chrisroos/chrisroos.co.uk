@@ -2,7 +2,7 @@
 summary:    Notes from Tuesday 11th January 2011
 blog_post:  true
 title:      Day notes - Tue 11th Jan 2011
-created_at: 2011-01-12 13:47:07.611419 +00:00
+date:       2011-01-12 13:47:07.611419 +00:00
 guid:       9bd7176f-44bf-4494-824e-084b27d9c3e2
 layout:     blog
 ---

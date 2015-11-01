@@ -2,7 +2,7 @@
 blog_post: true
 guid: ffb5b1fc-23ce-4c9a-91aa-354b2a5ff75f
 title: Short, Human Friendly, Permalinks
-created_at: 2007-11-27 09:31:00 +00:00
+date:       2007-11-27 09:31:00 +00:00
 layout: blog
 ---
 I was recently asked for my Amazon wishlist.  I wasn't able to use email and was expected to write down the URL.  I had a look and found that the URL ("http://www.amazon.co.uk/gp/registry/IO9HVNCPEWGD":http://www.amazon.co.uk/gp/registry/IO9HVNCPEWGD) wasn't paper or speech friendly.  Instead of attempting to convey this URL, I used the opportunity to create my own human friendly permalink for my wishlist ("chrisroos.co.uk/amazonwishlist":http://chrisroos.co.uk/amazonwishlist).  I actually started with a hyphenated variant (amazon-wishlist) but realised that the non-hyphenated version would be easier for someone to understand in conversation.

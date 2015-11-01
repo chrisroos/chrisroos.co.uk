@@ -2,7 +2,7 @@
 summary:    Examples of current git tooling that is designed to work with a separate subject and body in the commit message
 blog_post:  true
 title:      Why split the subject and body in git commit messages?
-created_at: 2013-09-09 16:53:06.040609 +01:00
+date:       2013-09-09 16:53:06.040609 +01:00
 guid:       2eb2f5e1-748d-4a22-b94d-357e4047000e
 layout:     blog
 ---

@@ -2,7 +2,7 @@
 summary:    Notes from Friday 7th January 2011
 blog_post:  true
 title:      Day notes - Fri 7th Jan 2011
-created_at: 2011-01-10 09:41:35.681602 +00:00
+date:       2011-01-10 09:41:35.681602 +00:00
 guid:       b98ab788-501c-4fb8-8bb5-e81b152b1de9
 layout:     blog
 ---

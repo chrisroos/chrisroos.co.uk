@@ -2,7 +2,7 @@
 summary:    An introduction to the simple Bookmark printing service for the Go Free Range Printer platform.
 blog_post:  true
 title:      Bookmark printing service for the Go Free Range Printer platform
-created_at: 2012-04-12 17:36:00.295575 +01:00
+date:       2012-04-12 17:36:00.295575 +01:00
 guid:       d605a057-02c2-4506-b49b-78e8695614eb
 layout:     blog
 ---

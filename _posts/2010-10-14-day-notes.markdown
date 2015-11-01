@@ -2,7 +2,7 @@
 summary:    More JMeter goodness
 blog_post:  true
 title:      Day notes - Thurs 14th Oct 2010
-created_at: 2010-10-20 07:45:55.338195 +01:00
+date:       2010-10-20 07:45:55.338195 +01:00
 guid:       0118af8f-f36f-40df-8ea1-b689a81a617b
 layout:     blog
 ---

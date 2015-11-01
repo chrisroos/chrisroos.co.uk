@@ -2,7 +2,7 @@
 summary:    Notes from Wednesday 12th January 2011
 blog_post:  true
 title:      Day notes - Wed 12th Jan 2011
-created_at: 2011-01-14 16:55:35.531880 +00:00
+date:       2011-01-14 16:55:35.531880 +00:00
 guid:       c2e66d1c-a259-4168-af77-8c2cd9cfe812
 layout:     blog
 ---

@@ -2,7 +2,7 @@
 summary:    Producing  time-slice images from my photos of the Thames
 blog_post:  true
 title:      Time slice images of the Thames
-created_at: 2013-09-15 18:23:24.076839 +01:00
+date:       2013-09-15 18:23:24.076839 +01:00
 guid:       05352791-fc8c-4428-b425-f25ab9b72b0c
 layout:     blog
 ---

@@ -2,7 +2,7 @@
 summary:    A little time-lapse video of the Thames and Canary Wharf
 blog_post:  true
 title:      Time Lapse Of The Thames And Canary Wharf
-created_at: 2013-03-08 15:56:48.608857 +00:00
+date:       2013-03-08 15:56:48.608857 +00:00
 guid:       1ce16491-b08c-4971-99d2-f9b7bedaeca4
 layout:     blog
 ---

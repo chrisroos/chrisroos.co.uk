@@ -2,7 +2,7 @@
 blog_post: true
 guid: 18ca96bd-e1e3-4b7f-9029-28cc9cdd1f46
 title: Rails testing without database
-created_at: 2006-02-23 08:16:00 +00:00
+date:       2006-02-23 08:16:00 +00:00
 layout: blog
 ---
 Just yesterday I wanted to create a very quick rails app that didn't rely on a database.

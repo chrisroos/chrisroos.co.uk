@@ -2,7 +2,7 @@
 blog_post: true
 guid: c863ac6e-e373-4897-a4bd-bb479990f4ca
 title: Homegrown gooogie
-created_at: 2007-01-04 14:37:00 +00:00
+date:       2007-01-04 14:37:00 +00:00
 layout: blog
 ---
 So, I just saw a "post":http://blog.outer-court.com/archive/2007-01-04.html#n31 about "gooogie":http://www.gooogie.co.uk, and it reminded me of my "own":/blog/2006-12-15-might-as-well-aim-high, 'did you mean', page[1].

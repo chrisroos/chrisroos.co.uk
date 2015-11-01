@@ -2,7 +2,7 @@
 blog_post: true
 guid: d15fdc80-ed24-4451-8c27-d484f86ad91a
 title: Ranting about Sky
-created_at: 2007-06-05 23:03:00 +01:00
+date:       2007-06-05 23:03:00 +01:00
 layout: blog
 ---
 I have three minor outstanding issues with a recent sky installation.  Not wanting to phone them (as previous experience suggests that it's going to waste a lot of my life) I thought I'd drop them an email.

@@ -2,7 +2,7 @@
 summary:    I ran into some of the limits with the free Heroku plan and moved the app to AWS
 blog_post:  true
 title:      Moving my timelapse app from Heroku to AWS
-created_at: 2013-10-13 18:08:54.847076 +01:00
+date:       2013-10-13 18:08:54.847076 +01:00
 guid:       e3d6bffa-f81d-4a4c-93f0-c14766b68617
 layout:     blog
 ---

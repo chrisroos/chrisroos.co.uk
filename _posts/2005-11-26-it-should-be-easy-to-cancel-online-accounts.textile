@@ -2,7 +2,7 @@
 blog_post: true
 guid: ab7c52fa-8bba-4294-b60f-cb3887f184d1
 title: It should be easy to cancel online accounts
-created_at: 2005-11-26 21:22:00 +00:00
+date:       2005-11-26 21:22:00 +00:00
 layout: blog
 ---
 It bugs me when I'm unable to cancel accounts I have for various online services.  I guess that I've possibly become annoyed by it because lots of the "more":http://www.backpackit.com "recent":http://www.basecamphq.com ("cool":http://www.blinksale.com) "offerings":http://www.strongspace.com make it very easy to cancel.

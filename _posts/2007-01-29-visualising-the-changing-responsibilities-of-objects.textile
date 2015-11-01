@@ -2,7 +2,7 @@
 blog_post: true
 guid: d8c7bb3d-65b6-4003-999c-e0853f686f6f
 title: Visualising the changing responsibilities of objects
-created_at: 2007-01-29 21:17:00 +00:00
+date:       2007-01-29 21:17:00 +00:00
 layout: blog
 ---
 By parsing the output of svn diff, we can concisely display the responsibilities that have been added/removed to various objects.  It is based on the assumption that our tests capture these changes.
