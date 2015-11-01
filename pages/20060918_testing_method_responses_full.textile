@@ -1,6 +1,6 @@
 ---
 title: Testing Method Responses - Full
-created_at: 2006-09-18 21:45:42 +01:00
+date:       2006-09-18 21:45:42 +01:00
 layout: blog
 ---
 <pre class="code ruby">
