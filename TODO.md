@@ -4,6 +4,8 @@
 
 * Can I avoid emitting the post URLs with the .html file extension?
 
+* Consider writing a liquid filter to generate the exact same timestamp format in commit titled "Replace short_date helper"
+
 ## Other
 
 * Display the date in the /blog listing. There's currently no indication of when something was written and it took me a while to work out how to find that information.
