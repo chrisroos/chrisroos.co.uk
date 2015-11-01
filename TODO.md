@@ -2,9 +2,9 @@
 
 * Use html tidy, or simmilar, to tidy the html of the Webby and Jekyll versions of the site, before comparing the output. I'm aiming for them to be as close as possible before switching to Jekyll.
 
-* Can I avoid emitting the post URLs with the .html file extension?
+* Why are hashes being "escaped"? For example, "unless instance_variable_get("@\#{attribute}")" in 2006-03-01-ruby-quiz-number-67-metakoans.html.
 
-* Consider writing a liquid filter to generate the exact same timestamp format in commit titled "Replace short_date helper"
+* Consider using excerpt in metadata, rather than summary. The excerpt name is already used by Jekyll.
 
 ## Other
 
