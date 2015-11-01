@@ -14,7 +14,7 @@
         <title>{{ post.title }}</title>
         <description>{{ post.content | escape }}</description>
 
-        <pubDate>{{ post.created_at | date_to_rfc822 }}</pubDate>
+        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
         <guid isPermaLink="false">urn:uuid:{{ post.guid }}</guid>
         <author>Chris Roos</author>
         <link>http://chrisroos.co.uk{{ post.url }}</link>
