@@ -3,7 +3,7 @@
     {% if page.previous %}
       <li class="previousPost">
         &laquo; (older)
-        <a class="previousPost" rel="prev" href="{{ page.previous.url }}" title="{{ page.previous.title }}">
+        <a class="previousPost" rel="prev" href="{{ page.previous.url | replace: '.html', '' }}" title="{{ page.previous.title }}">
           {{ page.previous.title | truncate: 59 }}
         </a>
       </li>
@@ -11,7 +11,7 @@
 
     {% if page.next %}
       <li class="nextPost">
-        <a class="nextPost" rel="next" href="{{ page.next.url }}" title="{{ page.next.title }}">
+        <a class="nextPost" rel="next" href="{{ page.next.url | replace: '.html', '' }}" title="{{ page.next.title }}">
           {{ page.next.title | truncate: 59 }}
         </a>
         (newer) &raquo;

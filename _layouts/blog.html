@@ -5,13 +5,13 @@
 
     {% if page.blog_post %}
       {% if page.previous %}
-        <link rel="prev" href="{{ page.previous.url }}" />
+        <link rel="prev" href="{{ page.previous.url | replace: '.html', '' }}" />
       {% endif %}
       {% if page.next %}
-        <link rel="next" href="{{ page.next.url }}" />
+        <link rel="next" href="{{ page.next.url | replace: '.html', '' }}" />
       {% endif %}
-      <link rel="first" href="{{ site.posts.last.url }}" />
-      <link rel="last" href="{{ site.posts.first.url }}" />
+      <link rel="first" href="{{ site.posts.last.url | replace: '.html', '' }}" />
+      <link rel="last" href="{{ site.posts.first.url | replace: '.html', '' }}" />
       <link rel="index" href="/blog" />
       {% if page.summary %}
         <meta name="description" content="{{ page.summary }}" />
