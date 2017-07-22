@@ -24,7 +24,7 @@ filter:     haml
   The "gcc":http://gcc.gnu.org/ command being executed to test whether libxml2 existed was looking for both i386 and ppc (universal) libraries, where I only had the i386 versions installed via "Macports":http://www.macports.org/ (<code>$ file /opt/local/lib/libxml2.2.dylib #=> /opt/local/lib/libxml2.2.dylib: Mach-O dynamically linked shared library i386</code>)
 
   h3. Solution 1
-  
+
   <pre class="code shell">
     # Instruct gcc to check for i386 libraries only
 
@@ -34,7 +34,7 @@ filter:     haml
   </pre>
 
   h3. Solution 2
-  
+
   <pre class="code shell">
     # Install universal (i.e. i386 and ppc) versions of libxml and libxslt
 

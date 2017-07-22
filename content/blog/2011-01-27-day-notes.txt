@@ -9,5 +9,5 @@ filter:     haml
 ---
 :markdown
   Fixed some failing tests in [Team Stream](https://github.com/freerange/teamstream).
-  
+
   [James A](http://interblah.net/) and I paired on debugging some problems we were experiencing with our [WebSocket](http://en.wikipedia.org/wiki/WebSockets) powered internal chat app.  The problem appeared to be that the WebSocket connection died when the network disconnected and reconnected.  I ended up creating a really simple [WebSocket echo server](https://github.com/chrisroos/websocket-echo-server-example) that seemed to prove that what we were seeing wasn't normal WebSocket behaviour.  Making some changes to our own code (that was attempting to monitor the state of the connection and re-connect when necessary) appears to have fixed the problem.  Which is nice.

@@ -1,4 +1,4 @@
---- 
+---
 blog_post: true
 guid: c5da6cb9-7a1f-481b-b1db-23f1db4b6a56
 title: More Hsbc Shenanigans
@@ -36,13 +36,13 @@ layout: blog
 
   Thank you for using the feedback facility for our Internet Banking service.
 
-  This is with regard to your recent e-mail concerning problems related to the download of transactions. From our experience to date, we have found that similar queries have been most effectively dealt with over the telephone rather than an exchange of a series of e-mails. 
+  This is with regard to your recent e-mail concerning problems related to the download of transactions. From our experience to date, we have found that similar queries have been most effectively dealt with over the telephone rather than an exchange of a series of e-mails.
 
   On occasions it can be of benefit to be online whilst talking to us. You may wish to call from a separate line to your Internet connection.
 
   If you require further assistance, please call us on 0845 600 2290 (within UK) or +44 1226261226 (outside UK).  Minicom support is available on 0845 7125563.  The Internet Banking Helpdesk is open from Monday to Sunday 8.00am to 10.00pm (UK times).
 
-  Kind Regards 
+  Kind Regards
 
   Rajan
   Technical Support Representative

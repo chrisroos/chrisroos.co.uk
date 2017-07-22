@@ -9,5 +9,5 @@ filter:     haml
 ---
 :markdown
   We ordered some [Designer Swedish furniture](http://www.ikea.com/) for the office.
-  
+
   I fixed up our CI dashboard.  Although it hadn't been working for a while (we were relying on other notifications for build changes) I was missing the [CC Menu](http://ccmenu.sourceforge.net/) compatible feed that it provided.  It turned out that an upgrade of [Passenger](http://www.modrails.com/) was all that was required to fix it.

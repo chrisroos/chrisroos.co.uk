@@ -41,7 +41,7 @@ filter:     haml
   sdb.amazonaws.com
   /
   \#{canonical_querystring}"
-                                
+
   hmac = HMAC::SHA256.new(SECRET_IDENTIFIER)
   hmac.update(string_to_sign)
   signature = Base64.encode64(hmac.digest).chomp # chomp is important!  the base64 encoded version will have a newline at the end

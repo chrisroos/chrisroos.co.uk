@@ -1,4 +1,4 @@
---- 
+---
 blog_post: true
 guid: 15bb8604-3169-4328-a4d0-b6a166c60436
 title: cURL is fast becoming my favourite toy
@@ -19,7 +19,7 @@ layout: blog
   SECURITY_CODE = 'YOUR_SECURITY_CODE'
   class << SECURITY_CODE
     [:first, :second, :third, :fourth, :fifth, :sixth, :last].each_with_index do |method, index|
-      define_method(method) do 
+      define_method(method) do
         method == :last ? self.split('').last : self.split('')[index]
       end
     end

@@ -9,5 +9,5 @@ filter:     haml
 ---
 :markdown
   [James M](http://jamesmead.org/), [James A](http://interblah.net/) and I spent more time on our [Puppet](http://www.puppetlabs.com/) provisioning.
-  
+
   [James A](http://interblah.net/), [Jase](http://jasoncale.com/) and I had another discussion (further to that of [4th Jan](/blog/2011-01-04-day-notes)) about some potential future work.

@@ -61,4 +61,4 @@ filter:     haml
   [Daniel Brolund](https://twitter.com/danielbrolund) described how to use the Mikado method to ensure that we're always reshaping the system to get it into a state that's ready to accept new changes.
 
   [Ivan Moore](https://twitter.com/ivanrmoore) gave us some practical advice about [being kind to our future selves in his lightning talk](http://puttingtheteaintoteam.blogspot.co.uk/2014/02/making-life-easier-for-future-software.html).
-  
+

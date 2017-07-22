@@ -9,5 +9,5 @@ filter:     haml
 ---
 :markdown
   [Kalv](http://kalv.co.uk/), [Jase](http://jasoncale.com/) and I spent some time discussing a new [#blue](https://hashblue.com) sign-up process.  It became clear after trying to implement our plan that we hadn't quite thought it through enough and we went back to the drawing board.
-  
+
   I came off my bike last Friday and, although it looks fine to me, it's felt a little off balance since so I took it to the shop for them to have a little look at.  I kinda hope there's actually something wrong with it and it's not just the fact that I've forgotten how to cycle.  That'd be embarrassing.

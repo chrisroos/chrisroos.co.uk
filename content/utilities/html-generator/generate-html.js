@@ -28,7 +28,7 @@ function getDoctypeInputs() {
 
 function getDoctype() {
   var doctypes = getDoctypeInputs()
-  for (var i = 0; i < doctypes.length; i++) { 
+  for (var i = 0; i < doctypes.length; i++) {
     if (doctypes[i].checked == true) {
     var doctype = doctypes[i].value;
       return docTypes[doctype];

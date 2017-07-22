@@ -8,7 +8,7 @@ layout:     blog
 filter:     haml
 ---
 :markdown
-  
+
   * Worked with [James A](http://interblah.net/) to get the [HMRC employer's CD](http://www.hmrc.gov.uk/employers/cdrom/index.htm) set-up.
 
     * We keep the data directory in a shared [dropbox](http://www.dropbox.com) so that all of us can use the app from any machine and connect to the same data directory.  Although multiple people *can* have the app open at one time (pointing at their local dropbox copies of the data) only the last edit/save will win.

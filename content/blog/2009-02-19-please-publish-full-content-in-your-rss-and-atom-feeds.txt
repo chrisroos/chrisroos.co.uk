@@ -17,6 +17,6 @@ filter:     haml
   So there you have it.  The evidence[2] supports the fact that you should publish full content in your feeds.  Now go do it.
 
   fn1. This is worse because I end up with a whole bunch of bookmarks that say 'page could not be loaded', or similar, and I then have to worry about fixing them up to make them pretty (I've been doing this for over a year so just imagine how heavy this is on my shoulders right now).
-  
+
   fn2. Fact.
-  
+

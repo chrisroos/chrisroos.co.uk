@@ -9,13 +9,13 @@ filter:     haml
   Although heavily influenced by my "begging for a job":/blog/2008-12-17-please-sir-can-i-have-a-job post I intend to keep this up to date so I don't feel too bad about replicating it here.
 
   h2. Employment
-  
+
   h3. Currently
-  
+
   * I currently work at "Go Free Range":http://gofreerange.com
-  
+
   h3. Previously
-  
+
   * Software developer at "Headshift":http://www.headshift.com for about 18 months
   * Software developer at "reevoo.com":http://www.reevoo.com for about 3 years
   * Unsuccessfully attempted to work for myself for about a year

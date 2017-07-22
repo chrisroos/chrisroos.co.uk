@@ -1,4 +1,4 @@
---- 
+---
 title: Testing Method Responses - Compact
 filter: haml
 created_at: 2006-09-18 21:47:00 +01:00

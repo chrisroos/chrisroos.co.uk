@@ -7,11 +7,11 @@ body {
 
 /* General type */
 
-h1 { 
+h1 {
   color: #333;
   font-size: 4em;
   line-height: 1.25em;
-  padding-bottom: 0.58em; 
+  padding-bottom: 0.58em;
 }
 
 abbr {
@@ -19,41 +19,41 @@ abbr {
   color: #aaa;
 }
 
-h2 { 
+h2 {
   font-size: 2em;
   color: #444;
   line-height: 1.25em;
   padding-top: 1.1em;
-  padding-bottom: 0.15em; 
+  padding-bottom: 0.15em;
 }
 
 h1 + h2 {
   padding-top: 1.1em;
 }
 
-h3 { 
+h3 {
   font-size: 1.8em;
   line-height: 1.3888888em;
-  color: #666; 
+  color: #666;
 }
 
-h4 { 
-  font-size: 1.3em; 
+h4 {
+  font-size: 1.3em;
   line-height: 1.92307em;
 }
 
-h5 { 
-  font-size: 1.2em; 
+h5 {
+  font-size: 1.2em;
   line-height: 2.08333333em;
 }
 
-p { 
-  font-size: 1.45em; 
+p {
+  font-size: 1.45em;
   line-height: 1.78em;
   color: #555;
 }
 
-li { 
+li {
   color: #555;
   font-size: 1.4em;
   line-height: 1.7857em;
@@ -90,7 +90,7 @@ pre code {
   margin: 0;
 }
 
-a { 
+a {
   color: #991F53;
   text-decoration:none;
   font-weight: bold;
@@ -259,11 +259,11 @@ style sub lists:
   list-style: none;
 }
 
-#content ul.navigation li.previousPost { 
+#content ul.navigation li.previousPost {
   float: left;
 }
 
-#content ul.navigation li.nextPost { 
+#content ul.navigation li.nextPost {
   float: right;
 }
 

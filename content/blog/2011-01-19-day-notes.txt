@@ -9,5 +9,5 @@ filter:     haml
 ---
 :markdown
   I paired with [James M](http://jamesmead.org/) a little on some work he'd done to replace [delayed_job](https://github.com/tobi/delayed_job) with [resque-scheduler](https://github.com/bvandenbos/resque-scheduler).
-  
+
   I spent some time investigating shared address book type functionality in Google Apps for your domains.  It would appear that there are some paid-for apps in the [Apps Marketplace](http://www.google.com/enterprise/marketplace/) and a [Shared Contacts API](http://code.google.com/googleapps/domain/shared_contacts/gdata_shared_contacts_api_reference.html) available to Business and Education GAFYD accounts.  I did a little [spiking with the API](https://github.com/chrisroos/google-apps-shared-contacts-api-spike) and, although you can create and list 'shared contacts' they don't actually appear in the GMail client or Contact Editor.

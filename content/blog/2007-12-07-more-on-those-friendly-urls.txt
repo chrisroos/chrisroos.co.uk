@@ -1,4 +1,4 @@
---- 
+---
 blog_post: true
 guid: b10a6984-0800-481d-884e-8bb2a798ac6f
 title: More on those friendly URLs
@@ -19,7 +19,7 @@ layout: blog
     RewriteEngine On
     # <anything>.chrisroos.co.uk -> chrisroos.co.uk
     RewriteCond %{HTTP_HOST} !^chrisroos.co.uk$ [NC]
-    RewriteRule ^/(.*)$ http://chrisroos.co.uk/$1 [R=301,L] 
+    RewriteRule ^/(.*)$ http://chrisroos.co.uk/$1 [R=301,L]
     # Amazon Wishlist
     RewriteRule ^/amazonwishlist http://www.amazon.co.uk/gp/registry/IO9HVNCPEWGD [R]
   </VirtualHost>

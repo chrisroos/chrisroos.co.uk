@@ -1,4 +1,4 @@
---- 
+---
 blog_post: true
 guid: 9c598cbc-a150-4781-9f6c-7527746cf439
 title: HSBC Conclusion
@@ -14,12 +14,12 @@ layout: blog
 
   Dear Mr Roos	
 
-  Thank you for your e-mail. 
+  Thank you for your e-mail.
 
-  As previously advised, this has been fed back to our Development Team however, we do not offer technical support for any financial packages. 
+  As previously advised, this has been fed back to our Development Team however, we do not offer technical support for any financial packages.
 
-  Our Internet Banking terms and conditions state that 
-  we will not be held responsible for any financial management software which you choose to use in connection with the Internet Banking service. 
+  Our Internet Banking terms and conditions state that
+  we will not be held responsible for any financial management software which you choose to use in connection with the Internet Banking service.
 
   Please be assured that all customer feedback is taken seriously, however we do receive many change requests for our electronic banking services every day.
 
@@ -55,7 +55,7 @@ layout: blog
 
   Chris
 
-  [1] http://blog.seagul.co.uk 
+  [1] http://blog.seagul.co.uk
   </blockquote>
 
   I'm sure that at some point in the future, HSBC will hire some consultants.  Those consultants will tell HSBC how to utilise the open source community to make the world a better place.  HSBC will listen because any advice you pay for has to be true.... Right?

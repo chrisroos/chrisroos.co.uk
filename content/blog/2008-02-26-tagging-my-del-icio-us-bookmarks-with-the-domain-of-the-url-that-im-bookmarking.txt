@@ -1,4 +1,4 @@
---- 
+---
 blog_post: true
 guid: 0965ddb3-1309-4dc8-a04f-297cf892aa75
 title: Tagging my del.icio.us bookmarks with the domain of the URL that I'm bookmarking
@@ -8,7 +8,7 @@ layout: blog
 ---
 :textile
   div(notice). 28-Apr-2009.  This is now a firefox extension hosted at "addons.mozilla.org":https://addons.mozilla.org/en-US/firefox/addon/11660.
-  
+
   I've created another "firefox":http://www.mozilla.com/firefox extension that builds on the "del.icio.us":http://del.icio.us "extension":https://addons.mozilla.org/en-US/firefox/addon/3615.  This one finds the domain of the "URL":http://en.wikipedia.org/wiki/Uniform_Resource_Locator you're bookmarking and adds it as a tag to your bookmark.  It's basically just a copy of my "del.icio.us permalinks extension":/blog/2007-12-18-extracting-my-del-icio-us-permalinks-functionality-into-its-own-firefox-extension
 
   To install this extension head over to the "delicious domain tags google group":http://groups.google.com/group/delicious-domain-tags and visit the installation page (I don't seem to be able to link directly to it for some reason).

@@ -9,5 +9,5 @@ filter:     haml
 ---
 :markdown
   Watched two excellent climbing films, both recommended by [Ben Sales](http://twitter.com/bensales): [The Asgard Project](http://www.theasgardproject.com/) and [Progression](http://www.bigupproductions.com/#/films/Progression/).
-  
+
   Started listening to [An evening with Ranulph Fiennes](http://www.audible.co.uk/aduk/site/product.jsp?p=BK_HODD_000094UK).

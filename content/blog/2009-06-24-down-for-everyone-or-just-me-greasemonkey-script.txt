@@ -9,9 +9,9 @@ filter:     haml
 ---
 :textile
   I hacked on this simple "greasemonkey":http://en.wikipedia.org/wiki/Greasemonkey script a while ago but never got around to writing about it.  It's probably easiest explained with a screenshot.
-  
+
   "!http://farm4.static.flickr.com/3653/3658162176_d6819a620d_m.jpg!":http://www.flickr.com/photos/chrisjroos/3658162176/
-  
+
   If the webpage you're trying to access can't be loaded then you'll see that the standard 'page not found' firefox error page but with an additional link to the useful "Down for everyone or just me":http://downforeveryoneorjustme.com/ service.
-  
+
   Get the script from "userscripts":http://userscripts.org/scripts/show/50164.

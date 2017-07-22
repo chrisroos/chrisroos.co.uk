@@ -1,4 +1,4 @@
---- 
+---
 blog_post: true
 guid: 958ddabd-4102-4da1-8e3b-18a07bb38d35
 title: Bookmarklet (Favelet) limits in Internet Explorer 6 (and 7?)
@@ -8,7 +8,7 @@ layout: blog
 ---
 :textile
   *Update - 20th May 2011.* "Lee":http://www.webdeavour.co.uk was kind enough to email and point out the 505/508 character descrepency.  It's because of the three backslashes in the example.  Programmatically evaluating the length of "\n" in ruby correctly returns 1 as the \n is turned into a single newline.  This isn't what happens in my javascript though: To make the test better replicate what was happening in javascript I should've used single quotes so that '\n' is indeed recognised as 2 characters.  In addition, re-reading this post made me realise that my original test wasn't exactly as simple as it could be (what with all the spaces and newlines) so I created a "crappy html/javascript bookmarklet generator":https://github.com/chrisroos/bookmarklet-generator to more accurately test the limits on bookmarklet lengths.
-  
+
   I wasted quite a bit of time over the last couple of days trying to get a "bookmarklet":http://en.wikipedia.org/wiki/Bookmarklet (or favelet) working in Internet Explorer 6.  It worked perfectly in Firefox and Safari but wasn't doing anything at all in IE.  Through lots of trial and error, I came to the conclusion that it was because of the length of the bookmarklet: it seems that Microsoft "reduced the maximum length of a bookmarklet in IE 6":http://www.squarefree.com/2005/01/12/internet-explorer-drops-support-for-bookmarklets/
 
   Although my original bookmarklet wasn't all that long, I had it spread over multiple lines for readability.  The fix in my case was to remove all the spaces and place the bookmarklet on one line.

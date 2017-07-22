@@ -75,7 +75,7 @@ filter:     haml
   We need to create a 'hello_world_demo' context to mirror the 'hello-world-demo' context we created above in extensions.conf.  The 'simon_game' line tells adhearsion to use the simon_game component that you'll find in ~/sample-adhearsion-project/components.
 
       $ cd ~/sample-adhearsion-project
-      $ cat >> dialplan.rb 
+      $ cat >> dialplan.rb
       hello_world_demo {
         simon_game
       }
@@ -88,7 +88,7 @@ filter:     haml
   ## Extend the Asterisk configuration files with the location of our Adhearsion server
 
   This assumes you followed the instructions above exactly as they were written, i.e. this is going to add to the 'hello-world-demo' context in extensions.conf.
-    
+
       $ cat >> `brew --prefix`/etc/asterisk/extensions.conf
       exten => 2,1,AGI(agi://localhost)
       <ctrl-d>
@@ -102,7 +102,7 @@ filter:     haml
   ## Test that Adhearsion and Asterisk are configured to work together
 
   Use the telephone app mentioned above but this time dial extension 2 (i.e. number 2) rather than extension 1.  You should be prompted to play the [Simon game][]: simply repeat the numbers that you hear read out.
-  
+
   And that's hopefully all there is to get Asterisk and Adhearsion set-up end to end on your Mac.
-  
+
   [Simon game]: http://en.wikipedia.org/wiki/Simon_(game)

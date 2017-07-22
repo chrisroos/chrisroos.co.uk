@@ -9,9 +9,9 @@ filter:     haml
 ---
 :markdown
   [Kalv](http://kalv.co.uk/) and I spent a good few hours trying to work out why [Openswan](http://www.openswan.org/) wasn't starting when one of our Ubuntu servers rebooted.  We eventually came across two bugs in the Ubuntu openswan package that were causing us problems.
-  
+
   The first, [bug 554592](https://bugs.launchpad.net/ubuntu/+source/openswan/+bug/554592), appears to be due to the openswan package mis-configuring the runlevels for the ipsec script (at least that's my understanding).  The effect is that the process doesn't close down cleanly on a reboot and is therefore unable to start again.  As the bug report states, you can either run `ipsec restart` after boot or more permanently modify the runlevels.  We've chosen to update our puppet scripts to modify the runlevels.
-  
+
   The second, [bug 526452](https://bugs.launchpad.net/ubuntu/+source/openswan/+bug/526452), appears to be due to a bug in the _realsetup script.  It expects the /var/lock/subsys directory to exist and ends up reporting confusing information if it doesn't.  We've fixed this by modifying our puppet script, which in turn modifies the ipsec script, to ensure this directory exists.
-  
+
   It was pretty windy on the cycle home tonight.  I struggled at times with my bike as it is currently.  That should be fun with the new chainring on.

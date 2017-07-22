@@ -9,5 +9,5 @@ filter:     haml
 ---
 :markdown
   [James A](http://interblah.net/) and I got the production [#blue](https://hashblue.com/) server re-provisioned using our [Puppet](http://www.puppetlabs.com/) scripts.  This is essentially what the last week has been leading up to so it feels great to finally get the server rebuilt.  Our original thought was to rebuild the current production server but [Linode](http://www.linode.com/) made it really easy for us to build a new production instance, check that the app was working correctly, and then swap the IP addresses between the two boxes.
-  
+
   It's definitely been a bit of a struggle to keep motivated during this phase of Puppet work. I think I'll put that down to the lack of immediate feedback you get with this sort of longer running work.

@@ -1,4 +1,4 @@
---- 
+---
 blog_post: true
 guid: b1012d3b-90d4-4d03-a4b6-9cfd6671c2cb
 title: In memory sqlite database for rails testing
@@ -41,7 +41,7 @@ layout: blog
 
   <pre class="code ruby">
   def in_memory_database?
-    ENV["RAILS_ENV"] == "test" and 
+    ENV["RAILS_ENV"] == "test" and
     ActiveRecord::Base.connection.class == ActiveRecord::ConnectionAdapters::SQLiteAdapter and
     Rails::Configuration.new.database_configuration['test']['database'] == ':memory:'
   end
@@ -62,7 +62,7 @@ layout: blog
   <pre class="code shell">
   $ rake db_schema_dump
   </pre>
-  
+
   That should be all there is to it; although I must confess that I've seen additional strange problems when running certain tests against the sqlite in-memory database.  In certain cases I think these may be fixture related.  Where, in "MySql":http://www.mysql.org, you seem to be able to omit required fields (not null) from a fixtures file, sqlite requires their presence.  In other cases; who knows...
 
   h2. Testing your sqlite installation

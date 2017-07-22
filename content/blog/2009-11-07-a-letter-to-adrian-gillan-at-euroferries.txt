@@ -9,7 +9,7 @@ filter:     haml
 ---
 :textile
   I've just sent this email to Adrian Gillan at "Euroferries":http://euroferries.co.uk/ in response to his request that "Adem":http://twitter.com/adem "remove one of his posts":http://ademdjemil.co.uk/blog/?p=1867.  I'm just popping this up here to support Adem really.
-  
+
   <div class="emailBody">
   Hi Adrian,
 

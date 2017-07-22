@@ -19,7 +19,7 @@ filter:     haml
   Given this I was able to find, and use, this similar code from "chrome://browser/content/browser.js":chrome://browser/content/browser.js (paste that link into the location bar and search for about:neterror or the aboutNeterror constant).
 
   <pre class="code javascript">
-    if (/^about:neterror/.test(document.documentURI)) { 
+    if (/^about:neterror/.test(document.documentURI)) {
   </pre>
 
   I'm still not exactly sure of the purpose of document.documentURI except that it appears to allow you to display one URI and actually render another (in this case it displays the URI you're trying to access but renders the error page).  This error page also appears to screw with "firebug":http://getfirebug.com.  If you want to see the value of documentURI you'll need to use this little bit of javascript in the location bar:

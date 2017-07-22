@@ -9,7 +9,7 @@ filter:     haml
 ---
 :markdown
   Paired with [Jase](http://jasoncale.com/) on multiple minor problems we found in [hashblue](http://hashblue.com).  We've decided to fix bugs as we come across them rather than logging them in [Pivotal Tracker](http://www.pivotaltracker.com/), and we found a few recently while working on another story.
-  
+
   We discovered that [assert_template](http://api.rubyonrails.org/classes/ActionController/TemplateAssertions.html#method-i-assert_template) is slightly more screwed than we'd realised.  It turns out that even if checking for a partial with a layout did work, it still wouldn't do what you'd expect: it'd *only* check for the layout.  We amended our [assert_template patch](http://github.com/freerange/action_controller_template_assertions_ticket_5247) to emit a warning if you do try to use assert_template with the :partial and :layout options.
-  
+
   I started reading the [Hardcore Zen](http://www.amazon.co.uk/Hardcore-Zen-Monster-Movies-Reality/dp/086171380X) book.

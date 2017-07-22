@@ -9,5 +9,5 @@ filter:     haml
 ---
 :markdown
   We spent some more time this morning discussing work for the first part of this year.  We even managed to come to a descision which felt great.
-  
+
   I continued to work with both [Kalv](http://kalv.co.uk/) and [James A](http://interblah.net/) to get our servers provisioned using [Puppet](http://www.puppetlabs.com/).

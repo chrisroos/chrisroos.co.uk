@@ -1,4 +1,4 @@
---- 
+---
 title: Testing Class::method_exists?
 filter: haml
 created_at: 2006-09-18 22:20:59 +01:00

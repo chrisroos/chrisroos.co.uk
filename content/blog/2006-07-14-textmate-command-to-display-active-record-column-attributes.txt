@@ -1,4 +1,4 @@
---- 
+---
 blog_post: true
 guid: bdad36d1-fc62-4c97-bfdc-c910ee33a466
 title: Textmate command to display Active Record column attributes
@@ -35,7 +35,7 @@ layout: blog
     data += [%w[------ ------- -------- -------]]
     data += columns.collect { |col, attrs| [col, attrs.primary.to_s, attrs.sql_type.to_s, attrs.default.to_s] }
 
-    STDOUT << data.inject('') do |output, array| 
+    STDOUT << data.inject('') do |output, array|
       output + array.inject('') { |row_str, value| row_str + value.ljust(20) } + "\n"
     end
   elsif klass and klass.class == Class and not klass.ancestors.include?(ActiveRecord::Base)
