@@ -29,7 +29,7 @@ class Object
       attr_writer attribute
 
       define_method(attribute) do
-        unless instance_variable_get("@\#{attribute}")
+        unless instance_variable_get("@#{attribute}")
           default_value = (value.class == Proc) ? instance_eval(&value) : value
           instance_variable_set("@\#{attribute}", default_value)
         end
