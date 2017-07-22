@@ -34,58 +34,58 @@ require 'digest/md5'
 #  Because it's impossible to hype a UUID generator on its genuine merits,
 #  I give you... Really bad ASCII art in the comments:
 #
-#                                                                  
-#                \                                                 
-#                /                                                   
-#               +                                                  
-#              ]                                                   
-#              ]                                                   
-#              |                                                    
-#             /                                                     
-#           Mp___                                                  
-#              `~0NNp,                                             
-#               __ggM'                                             
-#             g0M~"`                                               
-#            ]0M*-                                                 
-#                                                                  
-#                    ___                                           
-#                _g000M00g,                                        
-#              j0M~      ~M&                                       
-#            j0M"          ~N,                                     
-#           j0P              M&                                    
-#          jM                  1                                   
-#         j0                   ]1                                  
-#        .0P                    0,                                 
-#        00'                    M&                                 
-#        0M                     ]0L                                
-#       ]0f         ___          M0                                
-#        M0NN0M00MMM~"'M          0&                               
-#          `~          ~0         ]0,                              
-#                       ]M        ]0&                              
-#                        M&        M0,                             
-#               ____gp_   M&        M0_                            
-#            __p0MPM8MM&_  M/        ^0&_                          
-#           gN"`       M0N_j0,         MM&__                       
-#         _gF           `~M0P`   __      M00g                      
-#        g0'                    gM0&,     ~M0&                     
-#      _pM`                     0, ]M1     "00&                    
-#     _00                    /g1MMgj01      ]0MI                   
-#    _0F                     t"M,7MMM        00I                   
-#   g0'                  _   N&j&            40'                   
-#  g0'                _p0Mq_   '             N0QQNM#g,             
-#  0'              _g0000000g__              ~M@MMM000g            
-#  f             _jM00@`  ~M0000Mgppg,             "P00&           
-# |             g000~       `~M000000&_               ~0&          
-# ]M          _M00F              "00MM`                ~#&         
-# `0L        m000F                #E                    "0f        
-#   9r     j000M`                 40,                    00        
-#    ]0g_ j00M`                   ^M0MNggp#gqpg          M0&       
-#     ~MPM0f                         ~M000000000g_ ,_ygg&M00f      
-#                                        `~~~M00000000000000       
-#                                              `M0000000000f       
-#                                                  ~@@@MF~`        
-#                                                                  
-#                                                                  
+#
+#                \
+#                /
+#               +
+#              ]
+#              ]
+#              |
+#             /
+#           Mp___
+#              `~0NNp,
+#               __ggM'
+#             g0M~"`
+#            ]0M*-
+#
+#                    ___
+#                _g000M00g,
+#              j0M~      ~M&
+#            j0M"          ~N,
+#           j0P              M&
+#          jM                  1
+#         j0                   ]1
+#        .0P                    0,
+#        00'                    M&
+#        0M                     ]0L
+#       ]0f         ___          M0
+#        M0NN0M00MMM~"'M          0&
+#          `~          ~0         ]0,
+#                       ]M        ]0&
+#                        M&        M0,
+#               ____gp_   M&        M0_
+#            __p0MPM8MM&_  M/        ^0&_
+#           gN"`       M0N_j0,         MM&__
+#         _gF           `~M0P`   __      M00g
+#        g0'                    gM0&,     ~M0&
+#      _pM`                     0, ]M1     "00&
+#     _00                    /g1MMgj01      ]0MI
+#    _0F                     t"M,7MMM        00I
+#   g0'                  _   N&j&            40'
+#  g0'                _p0Mq_   '             N0QQNM#g,
+#  0'              _g0000000g__              ~M@MMM000g
+#  f             _jM00@`  ~M0000Mgppg,             "P00&
+# |             g000~       `~M000000&_               ~0&
+# ]M          _M00F              "00MM`                ~#&
+# `0L        m000F                #E                    "0f
+#   9r     j000M`                 40,                    00
+#    ]0g_ j00M`                   ^M0MNggp#gqpg          M0&
+#     ~MPM0f                         ~M000000000g_ ,_ygg&M00f
+#                                        `~~~M00000000000000
+#                                              `M0000000000f
+#                                                  ~@@@MF~`
+#
+#
 
 #= uuidtools.rb
 #
@@ -137,7 +137,7 @@ class UUID
     unless nodes.respond_to? :size
       raise ArgumentError,
         "Expected nodes to respond to :size."
-    end  
+    end
     unless nodes.size == 6
       raise ArgumentError,
         "Expected nodes to have size of 6."
@@ -257,7 +257,7 @@ class UUID
       clock_seq_low = clock_sequence & 0xFF;
       clock_seq_hi_and_reserved = (clock_sequence & 0x3F00) >> 8
       clock_seq_hi_and_reserved |= 0x80
-    
+
       return UUID.new(time_low, time_mid, time_hi_and_version,
         clock_seq_hi_and_reserved, clock_seq_low, nodes)
     end
@@ -409,7 +409,7 @@ class UUID
     end
     return bytes
   end
-  
+
   # Returns a URI for this UUID.
   def to_uri
     return URI.parse(self.to_uri_string)
@@ -435,7 +435,7 @@ class UUID
     hash_string = hash.to_s[0..31]
     new_uuid = UUID.parse("#{hash_string[0..7]}-#{hash_string[8..11]}-" +
       "#{hash_string[12..15]}-#{hash_string[16..19]}-#{hash_string[20..31]}")
-  
+
     new_uuid.time_hi_and_version &= 0x0FFF
     new_uuid.time_hi_and_version |= (version << 12)
     new_uuid.clock_seq_hi_and_reserved &= 0x3F
