@@ -1,6 +1,7 @@
 SITE.user       = "chrisroos"
 SITE.host       = "jail0145.vps.exonetric.net"
 SITE.remote_dir = "/home/chrisroos/www/chrisroos.co.uk/"
+SITE.haml_options  = { :attr_wrapper => '"' }
 
 task :default => :build
 
