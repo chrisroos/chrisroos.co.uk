@@ -10,12 +10,10 @@ filter: haml
       %li.previousPost
         &laquo; (older)
         %a.previousPost{:rel => "prev", :href => "#{friendly_url(previous_post)}", :title => "#{h(previous_post.title)}"}
-          - previous_post_title = previous_post.title.length > 55 ? previous_post.title[0..55] + '...' : previous_post.title
-          = h(previous_post_title)
+          = h(previous_post.title)
 
     - if next_post = posts[post_index + 1]
       %li.nextPost
         %a.nextPost{:rel => "next", :href => "#{friendly_url(next_post)}", :title => "#{h(next_post.title)}"}
-          - next_post_title = next_post.title.length > 55 ? next_post.title[0..55] + '...' : next_post.title
-          = h(next_post_title)
+          = h(next_post.title)
         (newer) &raquo;
