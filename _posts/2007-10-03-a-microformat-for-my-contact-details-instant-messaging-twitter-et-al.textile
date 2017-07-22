@@ -63,7 +63,7 @@ class ContactParser
     end
   end
   def identifier(service)
-    (@hpricot_doc/".contactDetails .\#{service}.identifier").inner_text
+    (@hpricot_doc/".contactDetails .#{service}.identifier").inner_text
   end
 end
 

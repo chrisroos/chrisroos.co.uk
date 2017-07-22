@@ -21,8 +21,8 @@ The code is below.  You'll need to add a ruby command in the ruby textmate bundl
 project = ENV['TM_PROJECT_DIRECTORY']
 word = ENV['TM_CURRENT_WORD']
 
-require "\#{project}/config/boot"
-require "\#{project}/config/environment"
+require "#{project}/config/boot"
+require "#{project}/config/environment"
 
 klass = Object.const_get(word) rescue nil
 if klass and klass.class == Class and klass.ancestors.include?(ActiveRecord::Base)
@@ -37,9 +37,9 @@ if klass and klass.class == Class and klass.ancestors.include?(ActiveRecord::Bas
     output + array.inject('') { |row_str, value| row_str + value.ljust(20) } + "\n"
   end
 elsif klass and klass.class == Class and not klass.ancestors.include?(ActiveRecord::Base)
-  STDOUT << "\#{word} is not an Active Record derived class"
+  STDOUT << "#{word} is not an Active Record derived class"
 else
-  STDOUT << "\#{word} was not recognised as a class"
+  STDOUT << "#{word} was not recognised as a class"
 end
 </pre>
 

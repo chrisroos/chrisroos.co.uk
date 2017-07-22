@@ -31,13 +31,13 @@ class Object
       define_method(attribute) do
         unless instance_variable_get("@#{attribute}")
           default_value = (value.class == Proc) ? instance_eval(&value) : value
-          instance_variable_set("@\#{attribute}", default_value)
+          instance_variable_set("@#{attribute}", default_value)
         end
-        instance_variable_get("@\#{attribute}")
+        instance_variable_get("@#{attribute}")
       end
 
-      define_method("\#{attribute}?") do
-        instance_variable_get("@\#{attribute}") ? true : false
+      define_method("#{attribute}?") do
+        instance_variable_get("@#{attribute}") ? true : false
       end
 
     end

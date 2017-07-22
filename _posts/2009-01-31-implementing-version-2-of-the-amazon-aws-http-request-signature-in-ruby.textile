@@ -38,7 +38,7 @@ canonical_querystring = params.sort.collect { |key, value| [CGI.escape(key.to_s)
 string_to_sign = "GET
 sdb.amazonaws.com
 /
-\#{canonical_querystring}"
+#{canonical_querystring}"
 
 hmac = HMAC::SHA256.new(SECRET_IDENTIFIER)
 hmac.update(string_to_sign)
@@ -47,5 +47,5 @@ signature = Base64.encode64(hmac.digest).chomp # chomp is important!  the base64
 params['Signature'] = signature
 querystring = params.collect { |key, value| [CGI.escape(key.to_s), CGI.escape(value.to_s)].join('=') }.join('&') # order doesn't matter for the actual request
 
-puts `curl -X"GET" "\#{AMAZON_ENDPOINT}?\#{querystring}" -A"simple ruby aws sdb wrapper"`
+puts `curl -X"GET" "#{AMAZON_ENDPOINT}?#{querystring}" -A"simple ruby aws sdb wrapper"`
 </pre>

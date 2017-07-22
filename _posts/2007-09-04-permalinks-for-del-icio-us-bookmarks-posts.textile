@@ -32,11 +32,11 @@ unless File.exists?(POSTS_CACHE)
   puts "Downloading all posts..."
   curl_cmd = <<-EndCurl
 curl "https://api.del.icio.us/v1/posts/all" \
--u"\#{USERNAME}:\#{PASSWORD}" \
+-u"#{USERNAME}:#{PASSWORD}" \
 -s
-> \#{POSTS_CACHE}
+> #{POSTS_CACHE}
   EndCurl
-  `\#{curl_cmd}`
+  `#{curl_cmd}`
 end
 
 require 'hpricot'
@@ -49,7 +49,7 @@ def add_url_hash_to_post(post)
   url = CGI.escape(url)
 
   tags = post['tag'].split(' ').collect { |tag| CGI.unescapeHTML(tag) }
-  tags << "url/\#{url_hash}" unless tags.include?("url/\#{url_hash}")
+  tags << "url/#{url_hash}" unless tags.include?("url/#{url_hash}")
   tags = tags.collect { |tag| CGI.escape(tag) }
   tags = tags.join(' ')
 
@@ -59,15 +59,15 @@ def add_url_hash_to_post(post)
 
   curl_cmd = <<-EndCurl
 curl "https://api.del.icio.us/v1/posts/add" \
--u"\#{USERNAME}:\#{PASSWORD}" \
--d"url=\#{url}" \
--d"description=\#{description}" \
--d"extended=\#{extended}" \
--d"tags=\#{tags}" \
--d"shared=\#{shared}" \
+-u"#{USERNAME}:#{PASSWORD}" \
+-d"url=#{url}" \
+-d"description=#{description}" \
+-d"extended=#{extended}" \
+-d"tags=#{tags}" \
+-d"shared=#{shared}" \
 -s
   EndCurl
-  `\#{curl_cmd}`
+  `#{curl_cmd}`
 end
 
 # ADD THE URL/<md5_hash> TAG TO EACH POST
@@ -75,7 +75,7 @@ posts_xml = File.open(POSTS_CACHE) { |f| f.read }
 posts_doc = Hpricot(posts_xml)
 count = 1
 (posts_doc/'posts'/'post').each do |post_xml|
-  puts "Bookmark: \#{count}" if (count % 5) == 0
+  puts "Bookmark: #{count}" if (count % 5) == 0
   add_url_hash_to_post(post_xml.attributes)
   count += 1
 end

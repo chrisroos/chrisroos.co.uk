@@ -23,7 +23,7 @@ class Time
 end
 
 def msg(message)
-  puts "\#{Time.now.friendly_format} - \#{message}"
+  puts "#{Time.now.friendly_format} - #{message}"
 end
 
 def produce_diff(revisions, earlier_revision = nil)
@@ -35,15 +35,15 @@ def produce_diff(revisions, earlier_revision = nil)
   later_revision = earlier_revision ? earlier_revision : revisions.shift
   earlier_revision = revisions.shift
 
-  msg "Creating diff from revision \#{earlier_revision} to \#{later_revision}."
-  `svn diff -r\#{earlier_revision}:\#{later_revision} > patches/\#{later_revision}.patch`
+  msg "Creating diff from revision #{earlier_revision} to #{later_revision}."
+  `svn diff -r#{earlier_revision}:#{later_revision} > patches/#{later_revision}.patch`
   produce_diff(revisions, earlier_revision)
 end
 
 FileUtils.mkdir_p 'patches'
 
 msg "Scanning output of svn log to find all revisions that we care about..."
-log = `svn log -rHEAD:\#{stop_at_revision} -q`
+log = `svn log -rHEAD:#{stop_at_revision} -q`
 revisions = log.scan(/^r(\d+)/)
 revisions = revisions.flatten.collect { |revision| Integer(revision) }
 

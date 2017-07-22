@@ -22,6 +22,6 @@ To see far more info than you'll ever likely need, replace the line starting <co
 
 <pre class="code ruby">
 Config::CONFIG.sort.each do |key, value|
-  puts "\#{key} = \#{value}"
+  puts "#{key} = #{value}"
 end
 </pre>

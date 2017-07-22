@@ -27,7 +27,7 @@ class ActiveRecord::Base
   class << self
     alias_method :__original__inherited, :inherited
     def inherited(base)
-      raise "You're trying to use an ActiveRecord::Base derived class (--\#{base}--) that is not defined in this migration." unless base.to_s =~ /^Migration.*/
+      raise "You're trying to use an ActiveRecord::Base derived class (--#{base}--) that is not defined in this migration." unless base.to_s =~ /^Migration.*/
       __original__inherited(base)
     end
   end

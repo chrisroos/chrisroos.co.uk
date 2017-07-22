@@ -23,7 +23,7 @@ module ActiveRecord
   class RecordInvalid < ActiveRecordError
     def initialize(record)
       @record = record
-      super("Validation failed: \#{@record.errors.full_messages.join(", ")}")
+      super("Validation failed: #{@record.errors.full_messages.join(", ")}")
     end
   end
 
