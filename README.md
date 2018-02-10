@@ -4,6 +4,23 @@ This is the raw content of chrisroos.co.uk and these instructions are only reall
 
 It uses [Webby](http://webby.rubyforge.org/) to build a static site from the markdown/textile source. Webby doesn't work with Ruby 1.9.x so I've got a '.rbenv-version' in the project that ties me to Ruby 1.8.7.
 
+## Using Vagrant
+
+I've added a Vagrantfile so that I can ruby this app on a machine with Ruby 1.8.7 installed - it's proving hard to install such an old version of Ruby on MacOS.
+
+```
+$ vagrant up
+$ vagrant ssh
+
+$ cd /vagrant
+
+# Avoid the following error:
+# ragel/redcloth_attributes.c.rl:26:11: error: variable 'act' set but not used [-Werror=unused-but-set-variable]
+$ bundle config build.redcloth --with-cflags="-Wno-unused-but-set-variable"
+
+$ bundle install # The default password is vagrant
+```
+
 ## Viewing the site locally
 
 The best way is to use Apache to serve the 'output' directory so that all the links in the site work as expected (the site expects to have some Apache rewrite rules in place to work correctly). I use [hostess](https://github.com/lazyatom/hostess) to do just this.
