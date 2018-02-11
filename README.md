@@ -60,10 +60,10 @@ I have the `master` branch checked out at ./chrisroos.co.uk and the `migrate-to-
 ## In chrisroos.co.uk
 
 ```
-# Install Ruby and Gems
-$ CONFIGURE_OPTS="--with-openssl-dir=`brew --prefix openssl`" rbenv install 1.8.7-p352
-$ gem install bundler
-$ bundle install
+# Use vagrant to build the site
+$ vagrant up
+$ vagrant ssh
+$ cd /vagrant
 
 # Build site
 $ rm -rf output
