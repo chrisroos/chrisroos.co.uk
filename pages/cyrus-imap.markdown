@@ -3,11 +3,11 @@ title: Cyrus Imap on FreeBsd
 date:       2005-10-02 20:16:58 +01:00
 layout: blog
 ---
-I've spent some time today looking into getting "Cyrus Imap":http://asg.web.cmu.edu/cyrus/ installed on "FreeBsd":http://www.freebsd.org 5.3R.
+I've spent some time today looking into getting [Cyrus Imap](http://asg.web.cmu.edu/cyrus/) installed on [FreeBsd](http://www.freebsd.org) 5.3R.
 
 I haven't got too far yet but think I've probably learned a few things I didn't know.
 
-Initially I just installed cyrus-imap from the ports and left it with all the default values.  Once I had this and played around a bit, I un-installed and started re-installing the "cyrus-sasl":http://asg.web.cmu.edu/sasl/ library manually, playing with various configuration options.
+Initially I just installed cyrus-imap from the ports and left it with all the default values.  Once I had this and played around a bit, I un-installed and started re-installing the [cyrus-sasl](http://asg.web.cmu.edu/sasl/) library manually, playing with various configuration options.
 
 When installed using the default options, all of the following 'plugins' are installed in .
 

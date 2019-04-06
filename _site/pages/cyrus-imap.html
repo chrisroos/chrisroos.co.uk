@@ -46,7 +46,7 @@
         <li>libplain</li>
         <li>libsasldb</li>
       </ul>
-      <p>My preference at this stage is to get the imap server running with plaintext passwords over a <span class="caps">TLS</span> encrypted pipe. As such I started looking at the options available to <code>configure</code>. Some of the options seem to be represented in the Makefile so my first approach was to ‘disable’ them on the command line.</p>
+      <p>My preference at this stage is to get the imap server running with plaintext passwords over a TLS encrypted pipe. As such I started looking at the options available to <code>configure</code>. Some of the options seem to be represented in the Makefile so my first approach was to ‘disable’ them on the command line.</p>
       <pre class="code shell">
 $ make -DWITHOUT_OTP -DWITHOUT_CRAM -DWITHOUT_DIGEST -DWITHOUT_GSSAPI
 </pre>
@@ -62,7 +62,7 @@ $ make -DWITHOUT_OTP -DWITHOUT_CRAM -DWITHOUT_DIGEST -DWITHOUT_GSSAPI
       <pre class="code shell">
 $ make CONFIGURE_ARGS+='--disable-cram --disable-digest --disable-otp --disable-gssapi --disable-anon'
 </pre>
-      <p>This time I ended up with just the libplain and libsasldb ‘plugins’ which seems much closer to what I want – at least I think it does based on my very very limited knowledge at present.</p>
+      <p>This time I ended up with just the libplain and libsasldb ‘plugins’ which seems much closer to what I want - at least I think it does based on my very very limited knowledge at present.</p>
       <hr />
     </div>
     <div id="footer">
