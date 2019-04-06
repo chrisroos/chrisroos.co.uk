@@ -39,11 +39,11 @@
       <h1>Getting Started With Asterisk And Adhearsion On A Mac</h1>
       <p>These are some basic notes that should enable you to get <a href="http://www.asterisk.org/">Asterisk</a> and <a href="http://adhearsion.com/">Adhearsion</a> up and running on a Mac. You’ll need <a href="https://github.com/mxcl/homebrew">homebrew</a> in order to install Asterisk.</p>
       <p>There are slightly more detailed <a href="https://github.com/adhearsion/adhearsion/wiki/Getting-Started">Getting Started instructions</a> on the Adhearsion wiki should you wish to explore further.</p>
-      <h2 id="install-asterisk">Install Asterisk</h2>
+      <h2>Install Asterisk</h2>
       <p><em>NOTE</em> Asterisk, by default, doesn’t come with any config files. You can install the sample config files by supplying the <code>--with-sample-config</code> flag to the command below. It might be an idea to install Asterisk with the sample config files and move them elsewhere on your system to refer back to. The rest of these notes assume that you don’t have any asterisk configuration files.</p>
       <pre><code>$ brew install asterisk
 </code></pre>
-      <h2 id="generate-basic-configuration-files-to-allow-us-to-test-that-asterisk-is-working">Generate basic configuration files to allow us to test that Asterisk is working</h2>
+      <h2>Generate basic configuration files to allow us to test that Asterisk is working</h2>
       <pre><code># Load all modules so that Asterisk can understand SIP, among other things
 $ cat &gt; `brew --prefix`/etc/asterisk/modules.conf
 [modules]
@@ -65,10 +65,10 @@ host=dynamic
 context=hello-world-demo
 &lt;ctrl-d&gt;
 </code></pre>
-      <h2 id="start-asterisk">Start Asterisk</h2>
+      <h2>Start Asterisk</h2>
       <pre><code>$ asterisk
 </code></pre>
-      <h2 id="testing-the-asterisk-configuration">Testing the Asterisk configuration</h2>
+      <h2>Testing the Asterisk configuration</h2>
       <ol>
         <li>
           <p>Install the <a href="http://www.tlphn.com/">Telephone</a> app from the App Store. <em>NOTE</em> Although possibly not the most stable of software I prefer the simplicity of this softphone over some of the others available.</p>
@@ -89,14 +89,14 @@ context=hello-world-demo
           <p>Confirm that you hear the ‘hello world’ message.</p>
         </li>
       </ol>
-      <h2 id="install-adhearsion">Install Adhearsion</h2>
+      <h2>Install Adhearsion</h2>
       <p>This installs version 1.0.2 at the time of writing.</p>
       <pre><code>$ gem install adhearsion
 </code></pre>
-      <h2 id="create-an-adhearsion-project">Create an Adhearsion project</h2>
+      <h2>Create an Adhearsion project</h2>
       <pre><code>$ ahn create ~/sample-adhearsion-project
 </code></pre>
-      <h2 id="configure-the-adhearsion-project">Configure the Adhearsion project</h2>
+      <h2>Configure the Adhearsion project</h2>
       <p>We need to create a ‘hello_world_demo’ context to mirror the ‘hello-world-demo’ context we created above in extensions.conf. The ‘simon_game’ line tells adhearsion to use the simon_game component that you’ll find in ~/sample-adhearsion-project/components.</p>
       <pre><code>$ cd ~/sample-adhearsion-project
 $ cat &gt;&gt; dialplan.rb
@@ -104,21 +104,21 @@ hello_world_demo {
   simon_game
 }
 </code></pre>
-      <h2 id="start-the-adhearsion-server">Start the Adhearsion server</h2>
+      <h2>Start the Adhearsion server</h2>
       <pre><code>$ cd ~/sample-adhearsion-project
 $ ahn start .
 </code></pre>
-      <h2 id="extend-the-asterisk-configuration-files-with-the-location-of-our-adhearsion-server">Extend the Asterisk configuration files with the location of our Adhearsion server</h2>
+      <h2>Extend the Asterisk configuration files with the location of our Adhearsion server</h2>
       <p>This assumes you followed the instructions above exactly as they were written, i.e. this is going to add to the ‘hello-world-demo’ context in extensions.conf.</p>
       <pre><code>$ cat &gt;&gt; `brew --prefix`/etc/asterisk/extensions.conf
 exten =&gt; 2,1,AGI(agi://localhost)
 &lt;ctrl-d&gt;
 </code></pre>
-      <h2 id="start-asterisk-1">Start Asterisk</h2>
+      <h2>Start Asterisk</h2>
       <p>You’ll probably want to do this in another terminal window unless you started the adhearsion server as a daemon.</p>
       <pre><code>$ asterisk
 </code></pre>
-      <h2 id="test-that-adhearsion-and-asterisk-are-configured-to-work-together">Test that Adhearsion and Asterisk are configured to work together</h2>
+      <h2>Test that Adhearsion and Asterisk are configured to work together</h2>
       <p>Use the telephone app mentioned above but this time dial extension 2 (i.e. number 2) rather than extension 1. You should be prompted to play the <a href="http://en.wikipedia.org/wiki/Simon_(game)">Simon game</a>: simply repeat the numbers that you hear read out.</p>
       <p>And that’s hopefully all there is to get Asterisk and Adhearsion set-up end to end on your Mac.</p>
       <hr />

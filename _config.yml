@@ -1,2 +1,4 @@
 exclude: [README.md, Gemfile, Gemfile.lock, Sitefile, TODO.md, Vagrantfile]
 permalink: "/blog/:year-:month-:day-:title.html"
+kramdown:
+  auto_ids: false

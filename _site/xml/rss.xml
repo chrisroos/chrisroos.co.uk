@@ -14,7 +14,7 @@
 
 &lt;p&gt;I can demonstrate the behaviour in an empty repository.&lt;/p&gt;
 
-&lt;h2 id=&quot;create-a-new-git-repo&quot;&gt;Create a new git repo&lt;/h2&gt;
+&lt;h2&gt;Create a new git repo&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;$ cd /tmp
 $ mkdir testing-git-log
@@ -22,14 +22,14 @@ $ cd testing-git-log
 $ git init
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&quot;create-a-file-and-add-it-to-the-repo&quot;&gt;Create a file and add it to the repo&lt;/h2&gt;
+&lt;h2&gt;Create a file and add it to the repo&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;$ touch file1
 $ git add file1
 $ git commit -m &quot;Add file1&quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&quot;edit-the-author-and-commit-date-of-the-commit&quot;&gt;Edit the author and commit date of the commit&lt;/h2&gt;
+&lt;h2&gt;Edit the author and commit date of the commit&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;$ GIT_COMMITTER_DATE=&quot;2015-01-02 09:00&quot; \
 git commit --amend \
@@ -41,7 +41,7 @@ git commit --amend \
 
 &lt;p&gt;Setting &lt;code&gt;GIT_COMMITTER_DATE&lt;/code&gt; affects the commit date of the commit when it’s amended.&lt;/p&gt;
 
-&lt;h2 id=&quot;check-that-the-author-and-commit-date-have-been-set-as-expected&quot;&gt;Check that the author and commit date have been set as expected&lt;/h2&gt;
+&lt;h2&gt;Check that the author and commit date have been set as expected&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;$ git log --pretty=fuller
 Author:     Chris Roos &amp;lt;chris@seagul.co.uk&amp;gt;
@@ -52,13 +52,13 @@ CommitDate: Fri Jan 2 09:00:00 2015 +0000
     Add file1
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&quot;use-git-log-to-show-commits-on-1st-jan-2015&quot;&gt;Use git log to show commits on 1st Jan 2015&lt;/h2&gt;
+&lt;h2&gt;Use git log to show commits on 1st Jan 2015&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;$ git log --after &quot;2015-01-01 00:00&quot; --before &quot;2015-01-01 23:59:59&quot;
 # Nothing shown
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&quot;use-git-log-to-show-commits-on-2nd-jan-2015&quot;&gt;Use git log to show commits on 2nd Jan 2015&lt;/h2&gt;
+&lt;h2&gt;Use git log to show commits on 2nd Jan 2015&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;$ git log --after &quot;2015-01-02 00:00&quot; --before &quot;2015-01-02 23:59:59&quot;
 commit 5f2c92e2b44ab697f92cb4336fd66c6206f56be2
@@ -85,7 +85,7 @@ Date:   Thu Jan 1 09:00:00 2015 +0000
 
 &lt;p&gt;After signing out and back in to the Garmin Fit app I noticed that the 2 activities on 12 Nov 2015 were now duplicated - presumably the versions on the phone were slightly different from the versions on the website. I fixed this by removing all the Garmin Fit app data from my phone and signing in one final time.&lt;/p&gt;
 
-&lt;h2 id=&quot;garmin-fit-app-has-been-removed&quot;&gt;Garmin Fit app has been removed&lt;/h2&gt;
+&lt;h2&gt;Garmin Fit app has been removed&lt;/h2&gt;
 
 &lt;p&gt;While writing this I tried to find a link to the Garmin Fit app in the Google Play Store. While I can see it in my list of installed apps, it no longer appears in the public store. I also followed the link to the app in iTunes but that reports that it’s no longer available in the UK store. I can’t find any official information about the app being removed but &lt;a href=&quot;https://forums.garmin.com/showthread.php?314912-Is-Garmin-Fit-gone&quot;&gt;this thread on the Garmin forums suggests that it was removed in early 2015!&lt;/a&gt;.&lt;/p&gt;
 
@@ -299,7 +299,7 @@ WARNING: DSL method Webby::Apps::Main#import called at /Users/chrisroos/.rbenv/v
 
 &lt;p&gt;The three broad themes are analysing legacy code (the past), working on legacy code (the present) and helping our future selves (the future).&lt;/p&gt;
 
-&lt;h2 id=&quot;analysing-legacy-code&quot;&gt;Analysing legacy code&lt;/h2&gt;
+&lt;h2&gt;Analysing legacy code&lt;/h2&gt;
 
 &lt;p&gt;&lt;em&gt;I think the main thing I took away from this theme was that there’s quite a lot of work going into what still appears to be a fairly new idea.&lt;/em&gt;&lt;/p&gt;
 
@@ -311,11 +311,11 @@ WARNING: DSL method Webby::Apps::Main#import called at /Users/chrisroos/.rbenv/v
 
 &lt;p&gt;&lt;a href=&quot;https://twitter.com/stephaneducasse&quot;&gt;Stéphane Ducasse&lt;/a&gt; told us that having to maintain software means that the software is useful and successful. So, maintenance is a good thing but we can often benefit from dedicated tools that help us understand our specific problems.&lt;/p&gt;
 
-&lt;h2 id=&quot;working-on-legacy-code&quot;&gt;Working on legacy code&lt;/h2&gt;
+&lt;h2&gt;Working on legacy code&lt;/h2&gt;
 
 &lt;p&gt;&lt;em&gt;The main thing I took away from this theme was the reinforcement of my belief that we shouldn’t be so quick to think that we can improve something by throwing it away and rewriting it.&lt;/em&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;avoiding-the-temptation-to-throw-away-whats-there&quot;&gt;Avoiding the temptation to throw away what’s there&lt;/h3&gt;
+&lt;h3&gt;Avoiding the temptation to throw away what’s there&lt;/h3&gt;
 
 &lt;p&gt;Stéphane Ducasse reminded us that, “Early decisions were certainly good at that time”&lt;/p&gt;
 
@@ -329,11 +329,11 @@ WARNING: DSL method Webby::Apps::Main#import called at /Users/chrisroos/.rbenv/v
 
 &lt;p&gt;&lt;a href=&quot;https://twitter.com/stuartcurran&quot;&gt;Stuart Curran&lt;/a&gt; reminded us of George Santayana’s quote, “Those who cannot remember the past are condemned to repeat it”&lt;/p&gt;
 
-&lt;h3 id=&quot;using-tools-to-get-an-overview-of-the-code-were-working-on&quot;&gt;Using tools to get an overview of the code we’re working on&lt;/h3&gt;
+&lt;h3&gt;Using tools to get an overview of the code we’re working on&lt;/h3&gt;
 
 &lt;p&gt;Michael Feathers (using delta-flora), Dmitry Kandalov (using his IntelliJ plugin) and Robert Smallshire (in his dependency structure matrices) all demonstrated ways of visualising which parts of the system are tightly coupled.&lt;/p&gt;
 
-&lt;h2 id=&quot;helping-our-future-selves&quot;&gt;Helping our future selves&lt;/h2&gt;
+&lt;h2&gt;Helping our future selves&lt;/h2&gt;
 
 &lt;p&gt;&lt;em&gt;The main thing I took away from this theme was that code will be around for longer than we expect and we should do our best to help our future selves.&lt;/em&gt;&lt;/p&gt;
 
@@ -471,43 +471,43 @@ end
         <title>Why split the subject and body in git commit messages?</title>
         <description>&lt;p&gt;Tim Pope’s, &lt;a href=&quot;http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html&quot;&gt;“A Note About Git Commit Messages”&lt;/a&gt; suggests that we should split our git commit message into subject and body, with a newline between the two. Tim lists some tools that make use of this split and I thought I’d follow that with some screenshots showing how this convention is used in four fairly common (well, I use them) git tools.&lt;/p&gt;
 
-&lt;h2 id=&quot;github-for-machttpmacgithubcom&quot;&gt;&lt;a href=&quot;http://mac.github.com/&quot;&gt;GitHub for Mac&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&quot;http://mac.github.com/&quot;&gt;GitHub for Mac&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&quot;with-a-long-commit-message-on-a-single-line&quot;&gt;With a long commit message on a single line&lt;/h3&gt;
+&lt;h3&gt;With a long commit message on a single line&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/git-commit-message-github-bad.png&quot; alt=&quot;GitHub.app with a long commit message on a single line&quot; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;with-the-commit-message-split-into-subject-and-body&quot;&gt;With the commit message split into subject and body&lt;/h3&gt;
+&lt;h3&gt;With the commit message split into subject and body&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/git-commit-message-github-good.png&quot; alt=&quot;GitHub.app with the commit message split into subject and body&quot; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;gitkhttpswwwkernelorgpubsoftwarescmgitdocsgitkhtml&quot;&gt;&lt;a href=&quot;https://www.kernel.org/pub/software/scm/git/docs/gitk.html&quot;&gt;Gitk&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&quot;https://www.kernel.org/pub/software/scm/git/docs/gitk.html&quot;&gt;Gitk&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&quot;with-a-long-commit-message-on-a-single-line-1&quot;&gt;With a long commit message on a single line&lt;/h3&gt;
+&lt;h3&gt;With a long commit message on a single line&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/git-commit-message-gitk-bad.png&quot; alt=&quot;Gitk with a long commit message on a single line&quot; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;with-the-commit-message-split-into-subject-and-body-1&quot;&gt;With the commit message split into subject and body&lt;/h3&gt;
+&lt;h3&gt;With the commit message split into subject and body&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/git-commit-message-gitk-good.png&quot; alt=&quot;Gitk with the commit message split into subject and body&quot; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;gitxhttpgitxfrimnl&quot;&gt;&lt;a href=&quot;http://gitx.frim.nl/&quot;&gt;GitX&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&quot;http://gitx.frim.nl/&quot;&gt;GitX&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&quot;with-a-long-commit-message-on-a-single-line-2&quot;&gt;With a long commit message on a single line&lt;/h3&gt;
+&lt;h3&gt;With a long commit message on a single line&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/git-commit-message-gitx-bad.png&quot; alt=&quot;GitX with a long commit message on a single line&quot; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;with-the-commit-message-split-into-subject-and-body-2&quot;&gt;With the commit message split into subject and body&lt;/h3&gt;
+&lt;h3&gt;With the commit message split into subject and body&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/git-commit-message-gitx-good.png&quot; alt=&quot;GitX with the commit message split into subject and body&quot; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;git-clihttpgit-scmcom&quot;&gt;&lt;a href=&quot;http://git-scm.com/&quot;&gt;Git cli&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&quot;http://git-scm.com/&quot;&gt;Git cli&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&quot;with-a-long-commit-message-on-a-single-line-3&quot;&gt;With a long commit message on a single line&lt;/h3&gt;
+&lt;h3&gt;With a long commit message on a single line&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/git-commit-message-git-cli-bad.png&quot; alt=&quot;Git cli with a long commit message on a single line&quot; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;with-the-commit-message-split-into-subject-and-body-3&quot;&gt;With the commit message split into subject and body&lt;/h3&gt;
+&lt;h3&gt;With the commit message split into subject and body&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/git-commit-message-git-cli-good.png&quot; alt=&quot;GitX with the commit message split into subject and body&quot; /&gt;&lt;/p&gt;
 </description>
@@ -594,7 +594,7 @@ end
 
 &lt;p&gt;Where I talk about Chrome, Safari and Firefox, I’m talking specifically about Chrome Stable 25.0.1364.155, Safari 6.0.2 (8536.26.17) and Firefox 19.02.&lt;/p&gt;
 
-&lt;h3 id=&quot;before-cors&quot;&gt;Before CORS&lt;/h3&gt;
+&lt;h3&gt;Before CORS&lt;/h3&gt;
 
 &lt;p&gt;Before &lt;a href=&quot;http://www.w3.org/TR/cors/&quot;&gt;CORS&lt;/a&gt;, executing the following Javascript snippet from a domain other than the one hosting the Rails app (you can do this by visiting &lt;a href=&quot;http://example.com&quot;&gt;example.com&lt;/a&gt; and executing the javascript in Chrome’s developer console) would have resulted in an error.&lt;/p&gt;
 
@@ -618,7 +618,7 @@ req.send();
   &lt;p&gt;GET http://rails-json-cors-and-http-auth.herokuapp.com/people 200 OK.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;cors-to-the-rescue&quot;&gt;CORS to the rescue&lt;/h3&gt;
+&lt;h3&gt;CORS to the rescue&lt;/h3&gt;
 
 &lt;p&gt;If we make that same request again (ensuring we’re still on a different domain to that of the Rails app), but this time tell the server to send us some CORS headers, we’ll see that we can now make a cross domain Javascript GET request.&lt;/p&gt;
 
@@ -633,7 +633,7 @@ req.send();
 
 &lt;p&gt;This was tested as working (i.e. the browser rendered the JSON response) in Chrome, Firefox and Safari.&lt;/p&gt;
 
-&lt;h3 id=&quot;cors-and-http-basic-authentication-without-the-withcredentials-option&quot;&gt;CORS and HTTP Basic Authentication without the &lt;code&gt;withCredentials&lt;/code&gt; option&lt;/h3&gt;
+&lt;h3&gt;CORS and HTTP Basic Authentication without the &lt;code&gt;withCredentials&lt;/code&gt; option&lt;/h3&gt;
 
 &lt;p&gt;So far so good, but what happens if we protect our Rails app using HTTP Authentication?&lt;/p&gt;
 
@@ -660,7 +660,7 @@ req.send();
   &lt;p&gt;“NetworkError: 401 Unauthorized  - http://rails-json-cors-and-http-auth.herokuapp.com/people?enable_cors_headers=true&amp;amp;enable_http_auth=true”&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;cors-and-http-basic-authentication-with-the-withcredentials-option&quot;&gt;CORS and HTTP Basic Authentication with the &lt;code&gt;withCredentials&lt;/code&gt; option&lt;/h3&gt;
+&lt;h3&gt;CORS and HTTP Basic Authentication with the &lt;code&gt;withCredentials&lt;/code&gt; option&lt;/h3&gt;
 
 &lt;p&gt;OK, so what’s the &lt;code&gt;withCredentials&lt;/code&gt; option all about? Let’s set it and find.&lt;/p&gt;
 
@@ -694,7 +694,7 @@ req.send();
 
 &lt;p&gt;In summary, the use of &lt;code&gt;withCredentials&lt;/code&gt; tells all the browsers to send the Authorization header (and cookies but I’m not so interested in those) with the XMLHttpRequest. In addition, when set, it also allows Firefox to display the http auth dialog in response to a 401 from the XMLHttpRequest.&lt;/p&gt;
 
-&lt;h2 id=&quot;wow-thats-awesome-but-what-does-this-have-to-do-with-passing-a-username-and-password-to-xmlhttprequestopen&quot;&gt;Wow that’s awesome, but what does this have to do with passing a username and password to &lt;code&gt;XMLHttpRequest.open()&lt;/code&gt;&lt;/h2&gt;
+&lt;h2&gt;Wow that’s awesome, but what does this have to do with passing a username and password to &lt;code&gt;XMLHttpRequest.open()&lt;/code&gt;&lt;/h2&gt;
 
 &lt;p&gt;Well, it turns out that the answer to that is absolutely nothing.&lt;/p&gt;
 
@@ -726,7 +726,7 @@ req.send();
 
 &lt;p&gt;Interestingly enough, we don’t see any request being made to the server in this case so something in the code must be stopping the request from even going out.&lt;/p&gt;
 
-&lt;h2 id=&quot;finally-manually-setting-the-authorization-header&quot;&gt;Finally, manually setting the Authorization header&lt;/h2&gt;
+&lt;h2&gt;Finally, manually setting the Authorization header&lt;/h2&gt;
 
 &lt;p&gt;This is just here for a bit of completeness, really. It demonstrates that given the &lt;a href=&quot;https://github.com/chrisroos/rails-json-cors-and-http-auth/commit/800ad64186f3d8814d8dcde0005225ce43af5172&quot;&gt;relevant CORS headers&lt;/a&gt;, and client side logic (to generate the username/password hash) you can avoid the use of &lt;code&gt;withCredentials&lt;/code&gt; and of supplying the username and password to &lt;code&gt;open()&lt;/code&gt;.&lt;/p&gt;
 
@@ -742,7 +742,7 @@ req.setRequestHeader(&#39;Authorization&#39;, &#39;Basic dXNlcm5hbWU6cGFzc3dvcmQ
 req.send();
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&quot;what-does-this-all-even-mean&quot;&gt;What does this all even mean&lt;/h3&gt;
+&lt;h3&gt;What does this all even mean&lt;/h3&gt;
 
 &lt;p&gt;This whole investigation started because I wanted to add a JSON API to &lt;a href=&quot;https://github.com/chrisroos/roosmarks&quot;&gt;Roosmarks&lt;/a&gt; so that I could build a &lt;a href=&quot;https://github.com/chrisroos/roosmarks-chrome-extension&quot;&gt;Chrome extension&lt;/a&gt;. State changing actions on Roosmarks are protected by http authentication so I’d hoped to be able to have the extension authenticate to Roosmarks in order to provide a fairly seemless experience. It doesn’t look like this is going to be possible but, having done all this investigation, I’m not so worried about it anymore: I’m pretty happy that the extension can rely on the user having previously authenticated to Roosmarks before it works as expected. In fact, there’s every chance that I won’t even use the JSON API in the extension, and just render the actual website itself. I need to explore than idea further, though.&lt;/p&gt;
 
@@ -762,7 +762,7 @@ req.send();
 
 &lt;p&gt;Developing this little bookmark application (&lt;a href=&quot;https://github.com/freerange/printer-bookmarks&quot;&gt;source on github&lt;/a&gt;) allowed me to use the Printer platform in anger, which was great as I’d only really been following &lt;a href=&quot;http://gofreerange.com/james-adam&quot;&gt;James A&lt;/a&gt;’s impressive work from the sidelines.&lt;/p&gt;
 
-&lt;h2 id=&quot;building-the-bookmark-service&quot;&gt;Building the bookmark service&lt;/h2&gt;
+&lt;h2&gt;Building the bookmark service&lt;/h2&gt;
 
 &lt;p&gt;The rest of this post is a fairly high level view of how I approached the development of this little service.  Hopefully I’ll convey how simple it is to build your own Printer service.&lt;/p&gt;
 
@@ -786,14 +786,14 @@ req.send();
 
 &lt;p&gt;There are slightly more detailed &lt;a href=&quot;https://github.com/adhearsion/adhearsion/wiki/Getting-Started&quot;&gt;Getting Started instructions&lt;/a&gt; on the Adhearsion wiki should you wish to explore further.&lt;/p&gt;
 
-&lt;h2 id=&quot;install-asterisk&quot;&gt;Install Asterisk&lt;/h2&gt;
+&lt;h2&gt;Install Asterisk&lt;/h2&gt;
 
 &lt;p&gt;&lt;em&gt;NOTE&lt;/em&gt; Asterisk, by default, doesn’t come with any config files.  You can install the sample config files by supplying the &lt;code&gt;--with-sample-config&lt;/code&gt; flag to the command below.  It might be an idea to install Asterisk with the sample config files and move them elsewhere on your system to refer back to.  The rest of these notes assume that you don’t have any asterisk configuration files.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ brew install asterisk
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&quot;generate-basic-configuration-files-to-allow-us-to-test-that-asterisk-is-working&quot;&gt;Generate basic configuration files to allow us to test that Asterisk is working&lt;/h2&gt;
+&lt;h2&gt;Generate basic configuration files to allow us to test that Asterisk is working&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;# Load all modules so that Asterisk can understand SIP, among other things
 $ cat &amp;gt; `brew --prefix`/etc/asterisk/modules.conf
@@ -817,12 +817,12 @@ context=hello-world-demo
 &amp;lt;ctrl-d&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&quot;start-asterisk&quot;&gt;Start Asterisk&lt;/h2&gt;
+&lt;h2&gt;Start Asterisk&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;$ asterisk
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&quot;testing-the-asterisk-configuration&quot;&gt;Testing the Asterisk configuration&lt;/h2&gt;
+&lt;h2&gt;Testing the Asterisk configuration&lt;/h2&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
@@ -846,19 +846,19 @@ context=hello-world-demo
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;install-adhearsion&quot;&gt;Install Adhearsion&lt;/h2&gt;
+&lt;h2&gt;Install Adhearsion&lt;/h2&gt;
 
 &lt;p&gt;This installs version 1.0.2 at the time of writing.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ gem install adhearsion
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&quot;create-an-adhearsion-project&quot;&gt;Create an Adhearsion project&lt;/h2&gt;
+&lt;h2&gt;Create an Adhearsion project&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;$ ahn create ~/sample-adhearsion-project
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&quot;configure-the-adhearsion-project&quot;&gt;Configure the Adhearsion project&lt;/h2&gt;
+&lt;h2&gt;Configure the Adhearsion project&lt;/h2&gt;
 
 &lt;p&gt;We need to create a ‘hello_world_demo’ context to mirror the ‘hello-world-demo’ context we created above in extensions.conf.  The ‘simon_game’ line tells adhearsion to use the simon_game component that you’ll find in ~/sample-adhearsion-project/components.&lt;/p&gt;
 
@@ -869,13 +869,13 @@ hello_world_demo {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&quot;start-the-adhearsion-server&quot;&gt;Start the Adhearsion server&lt;/h2&gt;
+&lt;h2&gt;Start the Adhearsion server&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;$ cd ~/sample-adhearsion-project
 $ ahn start .
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&quot;extend-the-asterisk-configuration-files-with-the-location-of-our-adhearsion-server&quot;&gt;Extend the Asterisk configuration files with the location of our Adhearsion server&lt;/h2&gt;
+&lt;h2&gt;Extend the Asterisk configuration files with the location of our Adhearsion server&lt;/h2&gt;
 
 &lt;p&gt;This assumes you followed the instructions above exactly as they were written, i.e. this is going to add to the ‘hello-world-demo’ context in extensions.conf.&lt;/p&gt;
 
@@ -884,14 +884,14 @@ exten =&amp;gt; 2,1,AGI(agi://localhost)
 &amp;lt;ctrl-d&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&quot;start-asterisk-1&quot;&gt;Start Asterisk&lt;/h2&gt;
+&lt;h2&gt;Start Asterisk&lt;/h2&gt;
 
 &lt;p&gt;You’ll probably want to do this in another terminal window unless you started the adhearsion server as a daemon.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ asterisk
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&quot;test-that-adhearsion-and-asterisk-are-configured-to-work-together&quot;&gt;Test that Adhearsion and Asterisk are configured to work together&lt;/h2&gt;
+&lt;h2&gt;Test that Adhearsion and Asterisk are configured to work together&lt;/h2&gt;
 
 &lt;p&gt;Use the telephone app mentioned above but this time dial extension 2 (i.e. number 2) rather than extension 1.  You should be prompted to play the &lt;a href=&quot;http://en.wikipedia.org/wiki/Simon_(game)&quot;&gt;Simon game&lt;/a&gt;: simply repeat the numbers that you hear read out.&lt;/p&gt;
 
@@ -1947,7 +1947,7 @@ exten =&amp;gt; 2,1,AGI(agi://localhost)
     
       <item>
         <title>Day notes - Tues 12th Oct 2010</title>
-        <description>&lt;h2 id=&quot;work-stuff&quot;&gt;Work stuff&lt;/h2&gt;
+        <description>&lt;h2&gt;Work stuff&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -1961,7 +1961,7 @@ exten =&amp;gt; 2,1,AGI(agi://localhost)
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;other-stuff&quot;&gt;Other stuff&lt;/h2&gt;
+&lt;h2&gt;Other stuff&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;http://twitter.com/serenamchugh&quot;&gt;Serena&lt;/a&gt; and I went for an assessment session with &lt;a href=&quot;http://www.rickkiddle.com/&quot;&gt;Rick Kiddle&lt;/a&gt; in the hope that we might, one day, be able to have a crack at &lt;a href=&quot;http://www.channelswimmingassociation.com/&quot;&gt;swimming the channel&lt;/a&gt;.&lt;/li&gt;
