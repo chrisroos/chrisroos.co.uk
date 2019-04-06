@@ -1,0 +1,97 @@
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Exploring my Google Location History - Chris Roos</title>
+  <link href="/blog/2014-02-07-notes-from-the-first-international-conference-on-software-archaeology" rel="prev" />
+  <link href="/blog/2015-10-29-getting-my-webby-powered-website-running-on-mac-os-x-el-capitan" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+  <meta content="Using command line tools to start exploring my Google Location History" name="description" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2014-11-01T09:44:26+00:00">Sat, 01 Nov 14</abbr>
+      <h1>Exploring my Google Location History</h1>
+      <p>I used <a href="https://www.google.com/settings/takeout">Google Takeout</a> to export my <a href="https://maps.google.co.uk/locationhistory/b/0">Location History</a> as JSON. I wanted to know what date range the file covered (it’s not obvious from the Location History site) and figured I’d use command line tools rather than parsing the JSON.</p>
+      <p>This is the command I ended up with to display the earliest timestamp in the file:</p>
+      <pre><code>  $ cat LocationHistory.json | \
+  grep timestampMs | \
+  grep -o -E "\d+" | \
+  sort | \
+  head -n1 | \
+  cut -c1-10 | \
+  xargs -J% date -j -f "%s" %
+
+  #=&gt; Sun  4 Mar 2012 12:33:29 GMT
+</code></pre>
+      <p>## Building the command</p>
+      <p>Use <code>grep</code> to extract all the lines containing timestamps.</p>
+      <pre><code>  $ head LocationHistory.json | \
+  grep timestampMs
+
+  #=&gt; "timestampMs" : "1414831041235",
+</code></pre>
+      <p>Use <code>grep</code> to extract the timestamp from each line.</p>
+      <pre><code>  $ head LocationHistory.json | \
+  grep timestampMs | \
+  grep -o -E "\d+"              # Find 1 or more digits and print the matching string
+
+  #=&gt; 1414831041235
+</code></pre>
+      <p>Use <code>cut</code> to strip off the milliseconds from the timestamp.</p>
+      <pre><code>  $ head LocationHistory.json | \
+  grep timestampMs | \
+  grep -o -E "\d+" | \
+  cut -c1-10                    # Ignore the last three digits (milliseconds) of the timestamp
+
+  #=&gt; 1414831041
+</code></pre>
+      <p>Use <code>date</code> to display the timestamp in a human friendly format.</p>
+      <pre><code>  $ head LocationHistory.json | \
+  grep timestampMs | \
+  grep -o -E "\d+" | \
+  cut -c1-10 | \
+  xargs -J% date -j -f "%s" %   # Use `-j` to avoid setting the date
+                                # and -f "%s" to tell date to parse the string as unix time
+
+  #=&gt; Sat  1 Nov 2014 08:37:21 GMT
+</code></pre>
+      <p>The full command adds <code>sort</code> to ensure all timestamps are ordered and then either <code>head -n1</code> or <code>tail -n1</code> to print the earliest and latest dates respectively.</p>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2014-02-07-notes-from-the-first-international-conference-on-software-archaeology" rel="prev" title="Notes from The First International Conference on Software Archaeology">Notes from The First International Conference on Software Archaeology</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2015-10-29-getting-my-webby-powered-website-running-on-mac-os-x-el-capitan" rel="next" title="Getting my Webby powered website running on Mac OS X El Capitan">Getting my Webby powered website running on Mac OS X El Capitan</a> (newer) »</li>
+      </ul>
+    </div>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
+</html>

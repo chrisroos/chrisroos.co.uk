@@ -1,0 +1,84 @@
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Instiki-AR with sqlite3 on Windows XP - Chris Roos</title>
+  <link href="/blog/2005-09-18-zen-adsl-dial-up-account-cant-be-used-at-the-same-time" rel="prev" />
+  <link href="/blog/2005-10-02-online-news-reader" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2005-10-01T15:39:00+01:00">Sat, 01 Oct 05</abbr>
+      <h1>Instiki-AR with sqlite3 on Windows XP</h1>
+      <p>I’ve used <a href="http://www.instiki.org">Instiki</a> quite a bit for storing what are essentially notes.</p>
+      <p>Although it’s been a true <a href="http://www.rubyonrails.com">Rails</a> app for a while, due to it’s use of <a href="http://madeleine.sourceforge.net/">Madeleine</a> for object persistence, it required a couple of workarounds to host it using <a href="http://httpd.apache.org">apache</a>. Namely, run Instiki on <a href="http://www.webrick.org">WEBrick</a> and then use mod_proxy in apache to forward requests for a given url to the webrick server.</p>
+      <p>Just a couple of days ago Alexey Verkhovsky (Instiki maintainer) <a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/158000">announced</a> that a beta version of Instiki (<a href="http://rubyforge.org/frs/download.php/6258/instiki-ar-beta1.zip">Instiki-AR</a>) running on <a href="http://ar.rubyonrails.com/">Active Record</a> was available. This basically means that Instiki can now be run directly via apache using <a href="http://www.fastcgi.com/">fast cgi</a>, negating the need for mod_proxy and running in ‘production’ on WEBrick.</p>
+      <p>I downloaded the beta this morning and had a quick play. Initially I created a <a href="http://www.mysql.org">MySQL</a> database and ran script/create_db to create the relevant tables in the database. Everything worked as expected, although I didn’t actually try to import any existing data.</p>
+      <p>I’ve read about <a href="http://sqlite.org/">sqlite</a> quite a few times but have never got round to actually playing with it. As such, I spent a short time getting Instiki-AR to use sqlite as it’s backend.</p>
+      <p>First off, I installed the sqlite3 gem (sqlite3-ruby 1.1.0 (mswin32)).</p>
+      <pre class="code">
+$ gem install sqlite3
+</pre>
+      <p>This was followed by downloading the <a href="http://www.sqlite.org/sqlitedll-3_2_7.zip">sqlite dll</a> and placing it in a directory in my path environment variable. This was all that was actually required.</p>
+      <p>I used script/create_db to create the database files and tables as with the mysql implementation and everything just worked.</p>
+      <p><strong><em>Update 17:30</em></strong></p>
+      <p>I’ve just played a little further and actually imported data from an existing instiki instance to the sqlite database.</p>
+      <p>First of all, I created a copy of my original instiki with the madeleine storage in the storage directory.</p>
+      <p>In the instiki-ar version I then ran the following (from Alexey’s original email) to output a sql script that will import all of my wiki content into the database.</p>
+      <pre class="code">
+$ ruby script\import_storage -i d:\instiki -t d:\instiki-ar\storage\2500 -o i.sql -d sqlite
+</pre>
+      <p>I then downloaded the <a href="http://sqlite.org/sqlite-3_2_7.zip">sqlite3</a> utility to administer sqlite databases. I placed this in a directory included in my path environment variable.</p>
+      <p>Start sqlite3 with the location of the production database as the argument.</p>
+      <pre class="code">
+$ sqlite3 db\prod.db
+</pre>
+      <p>Execute the i.sql script to import all of the data to sqlite.</p>
+      <pre class="code">
+sqlite&gt; .read i.sql
+sqlite&gt; .quit
+</pre>
+      <p>That’s it. My original wiki content is now in the AR version and everything seems to work great.</p>
+      <p><strong>Note</strong> To get instiki-ar from subversion.</p>
+      <pre class="code">
+$ svn export --revision 397 http://svn.instiki.org/instiki/branches/instiki-ar/
+</pre>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2005-09-18-zen-adsl-dial-up-account-cant-be-used-at-the-same-time" rel="prev" title="Zen ADSL/Dial-up account can't be used at the same time">Zen ADSL/Dial-up account can't be used at the same time</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2005-10-02-online-news-reader" rel="next" title="Online news reader">Online news reader</a> (newer) »</li>
+      </ul>
+    </div>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
+</html>

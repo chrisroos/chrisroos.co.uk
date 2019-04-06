@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta name="microid" content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta charset="utf-8">
+<link rel="icon" href="/images/favicon.gif" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/DeferredUntilInspirationHits" />
+<link rel="stylesheet" href="/stylesheets/reset.css" type="text/css" media="all" />
+<link rel="stylesheet" href="/stylesheets/congobongo.css" type="text/css" media="all" />
+<link rel="openid.server" href="http://www.myopenid.com/server" />
+<link rel="openid.delegate" href="http://chrisroos.myopenid.com/" />
+<title>Version Control Commit Note Best Practice (or not, you decide) - Chris Roos</title>
+
+
+    
+      
+        <link rel="prev" href="/blog/2008-03-04-version-0-2-of-the-del-icio-us-trackback-extension" />
+      
+      
+        <link rel="next" href="/blog/2008-03-29-files-hosted-on-google-groups-cannot-be-opened-in-safari-or-internet-explorer" />
+      
+      <link rel="first" href="/blog/2005-09-06-linspire" />
+      <link rel="last" href="/blog/2015-11-20-confusing-git-log-behaviour" />
+      <link rel="index" href="/blog" />
+      
+    
+  <body>
+    <div id="page">
+      <div id="header" class="group">
+        <p id="site_name">
+  <a href="/">chris roos</a>
+</p>
+
+        <ul class="navigation group">
+  <li>
+    <a href="/about" title="About me">about me</a>
+  </li>
+  <li>
+    <a href="/contact" title="Contact me">contact me</a>
+  </li>
+  <li>
+    <a href="/blog" title="Blog">blog</a>
+  </li>
+  <li>
+    <a href="/projects" title="Projects">projects</a>
+  </li>
+  <li>
+    <a href="/utilities" title="Utilities">utilities</a>
+  </li>
+</ul>
+
+        <form id="searchForm" action="http://www.google.co.uk/search">
+  <div>
+    <input type="hidden" name="q" value="site:chrisroos.co.uk" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+
+      </div>
+      <div id="content">
+        <abbr class="createdAt" title="2008-03-28T19:17:57+00:00">Fri, 28 Mar 08</abbr>
+        <h1>Version Control Commit Note Best Practice (or not, you decide)</h1>
+        <p>This is my own opinion but it has evolved from the need to dig back into past commit notes <strong>a lot</strong>.  The lazy approach to writing commit notes is just to explain what&#8217;s in the changeset (much like a code comment that says &#8220;set x to 1&#8221;):  It&#8217;s exactly what I used to write (and still do if I&#8217;m not concentrating).  The more useful approach is to explain why the changeset is there.  I can take two of my own commit notes as examples.</p>
+<h2>Useless commit note</h2>
+<blockquote>
+<p>Capistrano deploy:setup should generate apache proxy cluster configuration.</p>
+</blockquote>
+<p>This is a fairly useless commit note: If I was to come back to this (as I did today when looking at it) I would have no idea what I was trying to achieve.  Why should the config be generated at setup and not at some other point in the deploy process?  If I&#8217;d spent an extra 30 seconds writing the note in the first place I wouldn&#8217;t have to try to work out what I was trying to achieve.</p>
+<h2>More useful commit note</h2>
+<blockquote>
+<p>This isn't a card but _has_ been bugging me for a long time. You can now click on the <product_type> in the 'Top 3 <product_type>' headings on super category pages to visit that product type. Oh, I also made them h2s as having multiple h1s on a page just doesn't make sense.</p>
+</blockquote>
+<p>This is a much more useful (imho) comment.  If at some point in the future we want to know why the &#8216;top 3 product types&#8217; is now a link, we can come back to the note and see that it was because I, personally, was fed up of it not being so.  I also explain why I&#8217;ve changed the heading from a h1 to h2 (although that comment could be open to interpretation: why doesn&#8217;t it make sense?).</p>
+<p>This all ties into submitting small checkins that are only doing one thing, but I might try to give some examples of that separately.</p>
+<p>Anyone else have any thoughts or alternative approaches?</p>
+
+        <hr />
+        
+  <ul class="navigation group">
+    
+      <li class="previousPost">
+        &laquo; (older)
+        <a class="previousPost" rel="prev" href="/blog/2008-03-04-version-0-2-of-the-del-icio-us-trackback-extension" title="Version 0.2 of the del.icio.us trackback extension">
+          Version 0.2 of the del.icio.us trackback extension
+        </a>
+      </li>
+    
+
+    
+      <li class="nextPost">
+        <a class="nextPost" rel="next" href="/blog/2008-03-29-files-hosted-on-google-groups-cannot-be-opened-in-safari-or-internet-explorer" title="Files hosted on Google Groups cannot be opened in Safari (or Internet Explorer)">
+          Files hosted on Google Groups cannot be opened in Safari (or Internet Explorer)
+        </a>
+        (newer) &raquo;
+      </li>
+    
+  </ul>
+
+
+      </div>
+      <div id="footer">
+        <p class="license">
+  <a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/">
+    <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" />
+  </a>
+  <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type">
+    deferred until inspiration hits
+  </span>
+  by
+  <span class="vcard">
+    <a xmlns:cc="http://creativecommons.org/ns#" href="/contact" property="cc:attributionName" rel="cc:attributionURL" class="url fn">
+      Chris Roos
+    </a>
+  </span>
+  is licensed under a
+  <a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/">
+    Creative Commons Attribution 2.0 UK: England &amp; Wales License
+  </a>
+</p>
+
+      </div>
+    </div>
+    <script src="/javascripts/google-custom-search.js" type="text/javascript" charset="utf-8"></script>
+  </body>
+</html>

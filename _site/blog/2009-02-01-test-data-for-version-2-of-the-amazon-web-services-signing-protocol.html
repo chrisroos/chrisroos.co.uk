@@ -1,0 +1,87 @@
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Test Data for Version 2 of the Amazon Web Services Signing Protocol - Chris Roos</title>
+  <link href="/blog/2009-01-31-implementing-version-2-of-the-amazon-aws-http-request-signature-in-ruby" rel="prev" />
+  <link href="/blog/2009-02-03-free-technical-books-for-anyone-thats-interested" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+  <meta content="I'm hoping this data might be useful for someone else trying to develop code to sign requests to Amazon Web Services" name="description" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2009-02-01T12:56:26+00:00">Sun, 01 Feb 09</abbr>
+      <h1>Test Data for Version 2 of the Amazon Web Services Signing Protocol</h1>
+      <p>This sort of data would have been incredibly handy when I was <a href="/blog/2009-01-31-implementing-version-2-of-the-amazon-aws-http-request-signature-in-ruby">trying to implement</a> the <a href="http://docs.amazonwebservices.com/AmazonSimpleDB/2007-11-07/DeveloperGuide/REST_RESTAuth.html">Amazon request signing functionality</a>. It might be of use to anyone else that wants to implement it in another language.</p>
+      <p>I chose to test using the <a href="http://docs.amazonwebservices.com/AmazonSimpleDB/2007-11-07/DeveloperGuide/SDB_API_ListDomains.html">List domains</a> method as it seemed fairly straightforward. These are request parameters I used (you’ll obviously need to use the exact same values when testing your implementation).</p>
+      <pre class="code">
+AWSAccessKeyId = access
+Action = ListDomains
+SignatureMethod = HmacSHA256
+SignatureVersion = 2
+Timestamp = 2009-02-01T12:53:20+00:00
+Version = 2007-11-07
+</pre>
+      <p>The following numbered steps correspond to the numbered steps in the <a href="http://docs.amazonwebservices.com/AmazonSimpleDB/2007-11-07/DeveloperGuide/REST_RESTAuth.html">Authenticating <span class="caps">REST</span> Requests</a> part of the <a href="http://docs.amazonwebservices.com/AmazonSimpleDB/2007-11-07/DeveloperGuide">Amazon Simple DB developer guide</a>.</p>
+      <p>1. We <span class="caps">URL</span> encode the above request parameters (the key value pairs) and sort them to generate this ‘canonicalized query string’.</p>
+      <pre class="code">
+AWSAccessKeyId=access&amp;Action=ListDomains&amp;SignatureMethod=HmacSHA256&amp;SignatureVersion=2&amp;Timestamp=2009-02-01T12%3A53%3A20%2B00%3A00&amp;Version=2007-11-07
+</pre>
+      <p>2. We use this canonicalized query string within this string that we’re going to hash.</p>
+      <pre class="code">
+GET
+sdb.amazonaws.com
+/
+AWSAccessKeyId=access&amp;Action=ListDomains&amp;SignatureMethod=HmacSHA256&amp;SignatureVersion=2&amp;Timestamp=2009-02-01T12%3A53%3A20%2B00%3A00&amp;Version=2007-11-07
+</pre>
+      <p>3 and 4. We generate the following, <a href="http://en.wikipedia.org/wiki/Base64">base64</a> encoded, <a href="http://en.wikipedia.org/wiki/HMAC"><span class="caps">HMAC</span></a> of the string above using the SHA256 hashing algorithm and a secret key of ‘secret’.</p>
+      <pre class="code">
+okj96/5ucWBSc1uR2zXVfm6mDHtgfNv657rRtt/aunQ=
+</pre>
+      <p>5. We <span class="caps">URL</span> encode this signature and add it to the list of request parameters (note that the order of the request parameters doesn’t matter for the request itself).</p>
+      <pre class="code">
+Action=ListDomains&amp;Signature=okj96%2F5ucWBSc1uR2zXVfm6mDHtgfNv657rRtt%2FaunQ%3D&amp;Version=2007-11-07&amp;AWSAccessKeyId=access&amp;Timestamp=2009-02-01T12%3A53%3A20%2B00%3A00&amp;SignatureVersion=2&amp;SignatureMethod=HmacSHA256
+</pre>
+      <p>Once you’re happy that you’ve implemented the request signing functionality correctly you can use your real security credentials (access and secret keys) and test using <a href="http://curl.haxx.se/">curl</a>. Note that the <span class="caps">HTTP</span> method, sdb host (sdb.amazonaws.com) and path (/) must match those that were used in the string that we hashed.</p>
+      <pre class="code">
+curl -X"GET" "https://sdb.amazonaws.com/?Action=ListDomains&amp;Signature=okj96%2F5ucWBSc1uR2zXVfm6mDHtgfNv657rRtt%2FaunQ%3D&amp;Version=2007-11-07&amp;AWSAccessKeyId=access&amp;Timestamp=2009-02-01T12%3A53%3A20%2B00%3A00&amp;SignatureVersion=2&amp;SignatureMethod=HmacSHA256"
+</pre>
+      <p>That should be it. It possibly would’ve made more sense to generate these as tests using <a href="http://www.ruby-doc.org/stdlib/libdoc/test/unit/rdoc/">test/unit</a> so that you could easily convert them to the <a href="http://en.wikipedia.org/wiki/XUnit">xunit</a> tool of your choice before implementing your solution. Actually, what I believe would have made sense was for Amazon to release such a set of tests themselves.</p>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2009-01-31-implementing-version-2-of-the-amazon-aws-http-request-signature-in-ruby" rel="prev" title="Implementing Version 2 of the Amazon AWS HTTP Request Signature in Ruby">Implementing Version 2 of the Amazon AWS HTTP Request Signature in Ruby</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2009-02-03-free-technical-books-for-anyone-thats-interested" rel="next" title="Free Technical Books for Anyone That's Interested">Free Technical Books for Anyone That's Interested</a> (newer) »</li>
+      </ul>
+    </div>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
+</html>

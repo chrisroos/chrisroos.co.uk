@@ -1,0 +1,59 @@
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>I hope I didn't break rubyforge... - Chris Roos</title>
+  <link href="/blog/2006-08-17-i-guess-thats-one-way-to-do-it" rel="prev" />
+  <link href="/blog/2006-08-22-feed-reading-feature-requests" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2006-08-21T23:30:00+01:00">Mon, 21 Aug 06</abbr>
+      <h1>I hope I didn't break rubyforge...</h1>
+      <p>A couple of days ago I was playing around with <a href="http://search.cpan.org/~clkao/SVN-Mirror-0.68/lib/SVN/Mirror.pm"><span class="caps">SVN</span>::Mirror</a>, trying to remove some <a href="http://wiki.rubyonrails.org/rails/pages/Plugins">dependencies</a> on third party repositories not in our control.</p>
+      <p>All was going well until I tried to mirror a <a href="http://rubyforge.org/projects/mocha/">project</a> hosted on rubyforge. On initialising the mirror, I kept receiving the error “source url not under source root” from line 72 in Ra.pm.</p>
+      <p>After some very careful debugging (yeah, like I know anything about perl – <code>print "1";</code> was about the extent of it) of that perl file; I noticed that the $source_root variable didn’t contain the double slash<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>. This causes a problem for the line <code>if substr($path, 0, length($source_root), '') ne $source_root;</code> as at this point, $path does contain the double slash.</p>
+      <p>The value of $source_root is returned from a call to RA→get_repos_root (Subversion Repository Access code). So; it would seem that the url was being normalised somewhere in the bowels of <a href="http://subversion.tigris.org">Subversion</a>.</p>
+      <p>This was kinda confirmed by testing the svn client (which uses the code in the RA module just like <span class="caps">SVN</span>::Mirror) with urls containing additional slashes. The url was always resolved and svn info would always show the normalised variant. It was additionally(ish) tested by using the <a href="http://www.ruby-lang.org">Ruby</a> <a href="http://svn.collab.net/viewvc/svn/trunk/subversion/bindings/swig/ruby/">bindings</a> (which, as an aside, contain just about the most difficult to read Ruby code I’ve ever come across!)</p>
+      <p>I would love to have followed the actual subversion c code to find the normalisation routine but I’m sadly not clever enough; so my findings had to suffice.</p>
+      <p>Anyhoo, the outcome of the story is that I emailed Tom Copeland of rubyforge fame to ask about the deal with the double slashes. Turns out that it was probably just a <a href="http://gforge.org/">gforge</a> default thing and Tom went ahead and promptly changed it. I suddenly got very nervous that lots of arms would be thrown up with cries of “Who broke rubyforge?”, but so far it would appears to be ok. Phew.</p>
+      <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> Not sure if anyone else had really noticed but the svn repositories on rubyforge used to contain a double slash between the domain and var path (i.e. rubyforge.org//var).</p>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2006-08-17-i-guess-thats-one-way-to-do-it" rel="prev" title="I guess that's one way to do it...">I guess that's one way to do it...</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2006-08-22-feed-reading-feature-requests" rel="next" title="Feed reading feature requests">Feed reading feature requests</a> (newer) »</li>
+      </ul>
+    </div>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
+</html>

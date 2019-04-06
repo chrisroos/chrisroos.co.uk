@@ -1,0 +1,93 @@
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Searching subversion history - Chris Roos</title>
+  <link href="/blog/2007-12-18-extracting-my-del-icio-us-permalinks-functionality-into-its-own-firefox-extension" rel="prev" />
+  <link href="/blog/2008-01-14-fun-with-mod_rewrite-and-its-special-variables-request_uri-is_subreq-and-the_request" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2008-01-14T09:59:00+00:00">Mon, 14 Jan 08</abbr>
+      <h1>Searching subversion history</h1>
+      <p>I’ve often felt the need to search through our <a href="http://subversion.tigris.org/">subversion</a> repository to find, for example, when a method was removed/renamed. As far as I’m aware there’s no easy way to do this using the standard subversion, or <a href="http://trac.edgewall.org/">trac</a>, tools. A few days ago the need arose once more: I wanted to know when a particular class had stopped being used within our codebase. It struck me that if I had a <a href="http://en.wikipedia.org/wiki/Diff">diff</a> file for each changeset that I’d be able to <a href="http://en.wikipedia.org/wiki/Grep">grep</a> for the change I was looking for. I hacked together a script to produce a diff of each changeset (actually, as I knew when the class was added, I only produced a diff for a subset of the changesets) and was able to find the information I needed. The script is pasted below and on <a href="http://chrisroos.googlecode.com/svn/trunk/svn_changesets/">google code</a>. It assumes that you are running it from within an svn working direction. It took a while to produce the diff files (I’m afraid I don’t have any stats) but the result was a really fast way of finding, otherwise hard to find, information. I guess it’d be quite easy to automate the diff creation process so that you had an always up-to-date bunch of diff fies…</p>
+      <p>Is this useful, or have I missed something obvious in Subversion or Trac that does exactly this?</p>
+      <pre class="code ruby">
+require 'fileutils'
+
+stop_at_revision = ARGV[0]
+raise "Please specify the revision that you wish to go back to as the only argument to this script." unless stop_at_revision
+stop_at_revision = Integer(stop_at_revision)
+
+class Time
+  def friendly_format
+    strftime("%Y-%m-%d %H:%M:%S")
+  end
+end
+
+def msg(message)
+  puts "#{Time.now.friendly_format} - #{message}"
+end
+
+def produce_diff(revisions, earlier_revision = nil)
+  if revisions.empty?
+    msg "All finished."
+    exit
+  end
+
+  later_revision = earlier_revision ? earlier_revision : revisions.shift
+  earlier_revision = revisions.shift
+
+  msg "Creating diff from revision #{earlier_revision} to #{later_revision}."
+  `svn diff -r#{earlier_revision}:#{later_revision} &gt; patches/#{later_revision}.patch`
+  produce_diff(revisions, earlier_revision)
+end
+
+FileUtils.mkdir_p 'patches'
+
+msg "Scanning output of svn log to find all revisions that we care about..."
+log = `svn log -rHEAD:#{stop_at_revision} -q`
+revisions = log.scan(/^r(\d+)/)
+revisions = revisions.flatten.collect { |revision| Integer(revision) }
+
+produce_diff(revisions)
+</pre>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-12-18-extracting-my-del-icio-us-permalinks-functionality-into-its-own-firefox-extension" rel="prev" title="Extracting my del.icio.us permalinks functionality into its own firefox extension">Extracting my del.icio.us permalinks functionality into its own firefox extension</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2008-01-14-fun-with-mod_rewrite-and-its-special-variables-request_uri-is_subreq-and-the_request" rel="next" title="Fun with mod_rewrite (and its special variables REQUEST_URI, IS_SUBREQ and THE_REQUEST)">Fun with mod_rewrite (and its special variables REQUEST_URI, IS_SUBREQ and THE_REQUEST)</a> (newer) »</li>
+      </ul>
+    </div>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
+</html>

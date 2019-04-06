@@ -1,0 +1,70 @@
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Converting Egg Statements and Transactions to Ofx - Chris Roos</title>
+  <link href="/blog/2009-11-07-a-letter-to-adrian-gillan-at-euroferries" rel="prev" />
+  <link href="/blog/2010-03-26-libxml2-problems-when-installing-nokogiri" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+  <meta content="I've refreshed the little utility that converts egg html statements to ofx." name="description" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2009-11-17T21:06:49+00:00">Tue, 17 Nov 09</abbr>
+      <h1>Converting Egg Statements and Transactions to Ofx</h1>
+      <p>Wow, it was around <a href="/blog/2007-04-01-converting-egg-credit-card-statements-to-ofx-for-upload-to-wesabe">two and half years ago</a> that I first hacked together a little utility to do this. I’ve pretty much neglected the code since then but have always intended to get back to it. Over the last week or so I’ve done just that (<a href="http://github.com/chrisroos/egg2ofx">egg2ofx on github</a>).</p>
+      <p>I’d like to think that this version is a little more usable. You can install it as a gem for a start.</p>
+      <pre class="code shell">
+$ gem install egg2ofx --source http://gemcutter.org
+</pre>
+      <p>With that, you get a nice little binary that you can use to convert a downloaded copy of your statement or recent transactions.</p>
+      <pre class="code shell">
+$ egg2ofx downloaded-statement.html &gt; egg-statement.ofx
+</pre>
+      <p>As if that wasn’t enough, I’ve also created a little <a href="http://github.com/chrisroos/egg2ofx-server">web service</a> that exposes the conversion functionality over http. Assuming you’ve got <a href="http://www.ruby-lang.org/en/">ruby</a> and <a href="http://curl.haxx.se/">curl</a> (and probably other stuff) installed you should be able to do something like this to try it out.</p>
+      <pre class="code shell">
+$ cat downloaded-statement.html | ruby -rcgi -e "puts 'documentHtml=' + CGI.escape(STDIN.read)" | curl http://egg2ofx.seagul.co.uk -d@-
+</pre>
+      <p>Where we pipe the content of the downloaded statement into a single line ruby script that constructs the key/value pair that we need to send to the service and pipes that into curl that actually makes the <span class="caps">POST</span> request (the magic <code>-d@-</code> means, read from stdin).</p>
+      <p>The final little treat is a <a href="http://en.wikipedia.org/wiki/Greasemonkey">greasemonkey</a> script that adds a button to the egg transactions and statement pages allowing you to download them as Ofx right there. Whoah.</p>
+      <p><a href="http://www.flickr.com/photos/chrisjroos/4113433456/"><img alt="" src="http://farm3.static.flickr.com/2764/4113433456_662c0fec1e_m.jpg" /></a></p>
+      <p><strong><span class="caps">VERY</span> <span class="caps">IMPORTANT</span></strong> If you happen to use the greasemonkey script, or manually send your data to the web service, you should be aware that you’re sending your account details (including account number, balance and transactions) <strong>IN <span class="caps">THE</span> <span class="caps">CLEAR</span></strong> to my server. I certainly won’t keep any logs of what gets sent but I can’t promise the same thing of any of the servers in between your computer and my server. I might see if I can get an <span class="caps">SSL</span> certificate installed but, unless I can get one freely or incredibly cheaply, you shouldn’t hold out much hope for this.</p>
+      <p>A much better idea would be to install the web service on your own machine. I don’t know how this might work on Windows but the combination of <a href="http://httpd.apache.org/">Apache</a>, <a href="http://www.modrails.com/">passenger</a> and the <a href="http://www.fngtps.com/passenger-preference-pane">passenger preference pane</a> make it trivial on a Mac. There are <a href="http://github.com/chrisroos/egg2ofx-server#readme">instructions</a> to get the web service installed locally on github, along with <a href="http://github.com/chrisroos/egg2ofx-greasemonkey#readme">instructions</a> to change the server that the greasemonkey script sends the data to.</p>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2009-11-07-a-letter-to-adrian-gillan-at-euroferries" rel="prev" title="A Letter to Adrian Gillan at Euroferries">A Letter to Adrian Gillan at Euroferries</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2010-03-26-libxml2-problems-when-installing-nokogiri" rel="next" title="Libxml2 Problems When Installing Nokogiri">Libxml2 Problems When Installing Nokogiri</a> (newer) »</li>
+      </ul>
+    </div>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
+</html>

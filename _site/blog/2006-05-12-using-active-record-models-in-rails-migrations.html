@@ -1,0 +1,95 @@
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Using active record models in rails migrations - Chris Roos</title>
+  <link href="/blog/2006-05-06-storing-passwords-online" rel="prev" />
+  <link href="/blog/2006-05-13-improving-search-results" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2006-05-12T16:32:00+01:00">Fri, 12 May 06</abbr>
+      <h1>Using active record models in rails migrations</h1>
+      <p>I seem to remember that <a href="http://www.reevoo.com">we</a> first came across the “migrations out of sync with code” problems around the time that Scott Laird <a href="http://scottstuff.net/blog/articles/2005/10/31/migrating-in-two-dimensions">posted</a> about it regarding <a href="http://www.typosphere.org">typo</a>.</p>
+      <p>Having just read <a href="http://www.reevoo.com/blogs/bengriffiths">Ben’s</a> <a href="http://www.reevoo.com/blogs/bengriffiths/2006/05/10/misrepresenting-rails-reliability/">post</a> about rails reliability, I was reminded again about the pitfalls of using model code in migrations.</p>
+      <blockquote>
+        <p>“Migrations can be problematic if the code under which the migration was written changes before the migration is deployed and released.”</p>
+      </blockquote>
+      <p>We’re a small team working on the same codebase, yet we still get bitten relatively frequently. A while back we started to re-define our AR classes within our migrations to ensure that we weren’t relying on model code. This has been <a href="http://rails.techno-weenie.net/tip/2006/2/23/safely_using_models_in_migrations">documented</a> <a href="http://wrath.rubyonrails.org/pipermail/rails-core/2006-February/000830.html">elsewhere</a>. The typo codebase has gone slightly further and created a <a href="http://www.typosphere.org/trac/browser/trunk/lib/bare_migration.rb">BareMigration module</a> that takes care of some magic for you. To be fair, I haven’t looked in detail so am not entirely sure what it does..</p>
+      <p>The problem with re-defining models in the migrations is that it relies on you remembering to re-define them (I’m good at ‘forgetting’ to do things unless I really have to). There is nothing to stop you using the real models; that is, until someone complains that the migrations are broken and you have to fix it.</p>
+      <p>We are currently using a slightly more robust (I think) solution that forces you to re-define any AR models that you wish to use in migrations. It does this by hijacking the ‘zero’ migration (a migration starting with 0 that gets loaded along with all other migrations but doesn’t interfere in any other way) to ensure any AR derived classes are defined in a module. It’s naive but seems to work ok.</p>
+      <p>If you don’t already have a zero migration, then create one. The name is important as you will need to create an empty class of the same name in the file itself (for migrations to be happy). Ours is called 000_rails_ext.rb. The code is below. Our code isn’t identical (yet) as I just realised that we had an ineffective call to super in the inherited method, now replaced with alias_method.</p>
+      <pre class="code ruby">
+class RailsExt
+end
+
+class ActiveRecord::Base
+  class &lt;&lt; self
+    alias_method :__original__inherited, :inherited
+    def inherited(base)
+      raise "You're trying to use an ActiveRecord::Base derived class (--#{base}--) that is not defined in this migration." unless base.to_s =~ /^Migration.*/
+      __original__inherited(base)
+    end
+  end
+end
+
+Dispatcher.reset_application!
+</pre>
+      <p>The inherited callback is triggered everytime we define a class that inherits from ActiveRecord::Base. All we do is check that its name starts with Migration and raise an error if not (failing fast is good). The name is the fully qualified name and so includes namespaces. This is good as it allows us to place all re-defined classes in a module named Migration&lt;number&gt;. This module can then be included in the migration class itself. Although I can’t remember exactly now, I think the reason we need to reset_application! is because we have some calls to our models in environment.rb. These models would already be loaded and therefore any future references to them (in the migrations) would bypass our custom inherited method. By resetting the app, we are sure that we have no AR models loaded.</p>
+      <p>To re-define the models in the migration, we use something like..</p>
+      <pre class="code ruby">
+class MyFirstMigration &lt; ActiveRecord::Migration
+  def self.up
+  end
+  def self.down
+  end
+end
+
+module Migration001
+  class Person &lt; ActiveRecord::Base
+  end
+end
+MyFirstMigration.send(:include, Migration001)
+</pre>
+      <p>Although sending the migration class the include message with the module isn’t great, we use it as it allows us to re-define all our classes below the actual migration. If we were to place the module at the top then this wouldn’t be required but I feel that it gets in the way of being able to read the migration clearly.</p>
+      <h2>A problem with this method and re-defining classes directly in the migration</h2>
+      <p>Both methods create AR derived classes in a namespace that isn’t the root namespace. We came across a problem where we were serializing the contents of one of these re-defined classes to the database from within our migration. When we came to read the serialized data in our code, it didn’t ‘know’ what a Migration001::Person was and so raised an exception. Without thinking about it too much, I think this might cause problems with <span class="caps">STI</span> too (I’ve seen notes to this effect from the Typo migration solution).</p>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2006-05-06-storing-passwords-online" rel="prev" title="Storing passwords online">Storing passwords online</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2006-05-13-improving-search-results" rel="next" title="Improving search results">Improving search results</a> (newer) »</li>
+      </ul>
+    </div>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Automatically downloading my recent transactions from Lloyds Tsb - Chris Roos</title>
+  <link href="/blog/2007-05-04-automatically-downloading-my-most-recent-hsbc-transactions" rel="prev" />
+  <link href="/blog/2007-05-17-pesky-scammers" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2007-05-14T22:39:00+01:00">Mon, 14 May 07</abbr>
+      <h1>Automatically downloading my recent transactions from Lloyds Tsb</h1>
+      <p>In my continuing quest to cut down my use of banking websites (and increase my use of <a href="http://www.wesabe.com">wesabe</a>), I’ve hacked together a script to download my recent transactions from <a href="http://www.lloydstsb.com">Lloyds Tsb</a>. Sadly, the transactions are in <a href="http://en.wikipedia.org/wiki/QIF"><span class="caps">QIF</span></a> format, as only <span class="caps">QIF</span> and <a href="http://en.wikipedia.org/wiki/Comma-separated_values"><span class="caps">CSV</span></a> formats are offered. Maybe I’ll get round to exporting the data in <a href="http://www.ofx.net"><span class="caps">OFX</span></a> format sometime in the future.</p>
+      <p>Code is hosted on <a href="http://chrisroos.googlecode.com/svn/trunk/lloydstsb/">google code</a>, and pasted in all its syntax-highlighted glory below.</p>
+      <pre class="code ruby">
+require 'lloydstsb_credentials'
+
+require 'rubygems'
+require 'hpricot'
+
+def execute_curl(cmd)
+  `#{cmd}`
+end
+
+COOKIE_LOCATION = '/Users/chrisroos/lloydstsb_cookie'
+DOWNLOADED_STATEMENT_LOCATION = '/Users/chrisroos/Desktop/lloyds.qif'
+
+# Store some cookies for later
+curl_cmd = %[curl -s -c"#{COOKIE_LOCATION}" "https://online.lloydstsb.co.uk/customer.ibc"]
+html = execute_curl(curl_cmd)
+
+# Obtain the key that we need to POST along with our Username and Password
+doc = Hpricot(html)
+key = (doc/'input[@name=Key]').first.attributes['value']
+
+# POST the key, userid and password
+curl_cmd = %[curl -s -b"#{COOKIE_LOCATION}" "https://online.lloydstsb.co.uk/logon.ibc" -d"Java=Off" -d"Key=#{key}" -d"UserId1=#{USERID}" -d"Password=#{PASSWORD}"]
+html = execute_curl(curl_cmd)
+
+# Obtain the three characters from our memorable info that we need to POST
+doc = Hpricot(html)
+position_of_char1 = Integer((doc/'input[@name=ResponseKey0]').first.attributes['value'])
+position_of_char2 = Integer((doc/'input[@name=ResponseKey1]').first.attributes['value'])
+position_of_char3 = Integer((doc/'input[@name=ResponseKey2]').first.attributes['value'])
+char1 = MEMORABLE.split('')[position_of_char1 - 1]
+char2 = MEMORABLE.split('')[position_of_char2 - 1]
+char3 = MEMORABLE.split('')[position_of_char3 - 1]
+
+# POST our memorable info
+curl_cmd = %[curl -s -L -b"#{COOKIE_LOCATION}" "https://online.lloydstsb.co.uk/miheld.ibc" -d"ResponseKey0=#{position_of_char1}" -d"ResponseValue0=#{char1}" -d"ResponseKey1=#{position_of_char2}" -d"ResponseValue1=#{char2}" -d"ResponseKey2=#{position_of_char3}" -d"ResponseValue2=#{char3}"]
+execute_curl curl_cmd
+
+# SELECT OUR ACCOUNT
+curl_cmd = %[curl -s -b"#{COOKIE_LOCATION}" "https://online.lloydstsb.co.uk/account.ibc?Account=#{SORT_CODE_AND_ACCOUNT_NUMBER}"]
+execute_curl curl_cmd
+
+# GET OUR MOST RECENT TRANSACTIONS
+curl_cmd = %[curl -s -b"#{COOKIE_LOCATION}" "https://online.lloydstsb.co.uk/statement.ibc?Account=#{SORT_CODE_AND_ACCOUNT_NUMBER}&amp;PageRequired=MostRecent"]
+execute_curl curl_cmd
+
+# GET THE DOWNLOAD STATEMENT FORM
+curl_cmd = %[curl -s -b"#{COOKIE_LOCATION}" "https://online.lloydstsb.co.uk/statement.ibc?Account=#{SORT_CODE_AND_ACCOUNT_NUMBER}&amp;selectbox=6"]
+execute_curl curl_cmd
+
+# DOWNLOAD THE MOST RECENT TRANSACTIONS IN QIF FORMAT
+curl_cmd = %[curl -s -L -b"#{COOKIE_LOCATION}" "https://online.lloydstsb.co.uk/statementdownload.ibc?Account=#{SORT_CODE_AND_ACCOUNT_NUMBER}&amp;Download=DownloadLatest&amp;Format=104" -o"#{DOWNLOADED_STATEMENT_LOCATION}"]
+execute_curl curl_cmd
+
+# Remove the cookie
+`rm #{COOKIE_LOCATION}`
+</pre>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-05-04-automatically-downloading-my-most-recent-hsbc-transactions" rel="prev" title="Automatically downloading my most recent Hsbc transactions">Automatically downloading my most recent Hsbc transactions</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2007-05-17-pesky-scammers" rel="next" title="Pesky Scammers">Pesky Scammers</a> (newer) »</li>
+      </ul>
+    </div>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
+</html>

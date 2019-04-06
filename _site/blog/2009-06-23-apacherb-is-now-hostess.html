@@ -1,0 +1,72 @@
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Apacherb Is Now Hostess - Chris Roos</title>
+  <link href="/blog/2009-06-23-introducing-deliciolytics" rel="prev" />
+  <link href="/blog/2009-06-24-down-for-everyone-or-just-me-greasemonkey-script" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+  <meta content="The utility for serving local directories as virtual hosts in a local apache installation has been gemificated and moved to github" name="description" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2009-06-23T21:41:27+01:00">Tue, 23 Jun 09</abbr>
+      <h1>Apacherb Is Now Hostess</h1>
+      <p>A little while ago I wrote about a utility called <a href="/blog/2008-12-15-a-utility-to-manage-apache-virtual-hosts-on-a-mac-like-the-passenger-pref-pane-but-for-simple-static-sites">apacherb</a>. It took the concept of the <a href="http://www.fngtps.com/2008/06/putting-the-pane-back-into-deployment">passenger preference pane</a> and applied it to any local directory (rather than specifically rails apps). I’d always meant to turn the utility into a <a href="http://rubygems.org/">gem</a> but never quite got round to it. Luckily, <a href="http://interblah.net/">James Adam</a> moved the code to <a href="http://github.com/lazyatom/hostess/tree/master">github</a>, tidied it a little (notably making it restart apache after a change), renamed it and gemifimibulated it.</p>
+      <p>Install it with:</p>
+      <pre class="code shell">
+$ gem install hostess
+</pre>
+      <p>Executing it without any arguments will display some simple instructions.</p>
+      <pre class="code shell">
+$ hostess
+  Usage:
+    hostess create domain directory - create a new virtual host
+    hostess delete domain           - delete a virtual host
+    hostess list                    - list hostess virtual hosts
+    hostess help                    - this info
+</pre>
+      <p>You’ll need to run it as <a href="http://en.wikipedia.org/wiki/Sudo">sudo</a> as it writes the configuration into /etc/apache2 and restarts apache.</p>
+      <p>To create a domain pointing at a local directory, you’d do something like:</p>
+      <pre class="code shell">
+$ sudo hostess create example.local ~/Sites/example.local/
+</pre>
+      <p>This will register the local domain (the .local suffix is a convention rather than a rule) using <a href="http://developer.apple.com/opensource/dirservices/">directory services</a> and add the <a href="http://httpd.apache.org/">apache</a> <a href="http://httpd.apache.org/docs/1.3/vhosts/">virtual host</a>. Open your browser and visit example.local to see your local site. Good huh.</p>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2009-06-23-introducing-deliciolytics" rel="prev" title="Introducing Deliciolytics">Introducing Deliciolytics</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2009-06-24-down-for-everyone-or-just-me-greasemonkey-script" rel="next" title="Down for Everyone or Just Me Greasemonkey Script">Down for Everyone or Just Me Greasemonkey Script</a> (newer) »</li>
+      </ul>
+    </div>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
+</html>

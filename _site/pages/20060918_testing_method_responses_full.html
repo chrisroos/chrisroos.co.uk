@@ -1,0 +1,333 @@
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Testing Method Responses - Full - Chris Roos</title>
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2006-09-18T21:45:42+01:00">Mon, 18 Sep 06</abbr>
+      <h1>Testing Method Responses - Full</h1>
+      <pre class="code ruby">
+class Foo
+  def foo; end; public :foo
+  def bar; end; protected :bar
+  def baz; end; private :baz
+end
+
+require 'test/unit'
+
+IncludePrivate = true
+IncludeSuper = true
+
+FooMethod = :foo.to_s
+BarMethod = :bar.to_s
+BazMethod = :baz.to_s
+
+class Test::Unit::TestCase
+  def assert_not(expr, msg = '')
+    assert ! expr, msg
+  end
+end
+
+%%
+Module
+------
+instance_methods(include_super=true)
+instance_method
+method_defined?
+private_instance_methods(include_super=true)
+private_method_defined?
+protected_instance_methods(include_super=true)
+protected_method_defined?
+public_instance_methods(include_super=true)
+public_method_defined?
+%
+
+# Testing a Class.  Module methods. (CM)
+Class.new(Test::Unit::TestCase) do
+
+  def test_CM_instance_methods
+    assert Foo.instance_methods.include?(FooMethod)
+    assert Foo.instance_methods.include?(BarMethod)
+    assert_not Foo.instance_methods.include?(BazMethod)
+  end
+
+  def test_CM_instance_method
+    assert_not_nil Foo.instance_method(FooMethod)
+    assert_not_nil Foo.instance_method(BarMethod)
+    assert_not_nil Foo.instance_method(BazMethod)
+  end
+
+  def test_CM_method_defined?
+    assert Foo.method_defined?(FooMethod)
+    assert Foo.method_defined?(BarMethod)
+    assert_not Foo.method_defined?(BazMethod)
+  end
+
+  def test_CM_public_instance_methods
+    assert Foo.public_instance_methods.include?('foo')
+    assert_not Foo.public_instance_methods.include?('bar')
+    assert_not Foo.public_instance_methods.include?('baz')
+    assert Foo.public_instance_methods(IncludeSuper).include?('foo')
+    assert_not Foo.public_instance_methods(IncludeSuper).include?('bar')
+    assert_not Foo.public_instance_methods(IncludeSuper).include?('baz')
+  end
+
+  def test_CM_protected_instance_methods
+    assert_not Foo.protected_instance_methods.include?('foo')
+    assert Foo.protected_instance_methods.include?('bar')
+    assert_not Foo.protected_instance_methods.include?('baz')
+    assert_not Foo.protected_instance_methods(IncludeSuper).include?('foo')
+    assert Foo.protected_instance_methods(IncludeSuper).include?('bar')
+    assert_not Foo.protected_instance_methods(IncludeSuper).include?('baz')
+  end
+
+  def test_CM_private_instance_methods
+    assert_not Foo.private_instance_methods.include?('foo')
+    assert_not Foo.private_instance_methods.include?('bar')
+    assert Foo.private_instance_methods.include?('baz')
+    assert_not Foo.private_instance_methods(IncludeSuper).include?('foo')
+    assert_not Foo.private_instance_methods(IncludeSuper).include?('bar')
+    assert Foo.private_instance_methods(IncludeSuper).include?('baz')
+  end
+
+  def test_CM_public_method_defined?
+    assert Foo.public_method_defined?(FooMethod)
+    assert_not Foo.public_method_defined?(BarMethod)
+    assert_not Foo.public_method_defined?(BazMethod)
+  end
+
+  def test_CM_protected_method_defined?
+    assert_not Foo.protected_method_defined?(FooMethod)
+    assert Foo.protected_method_defined?(BarMethod)
+    assert_not Foo.protected_method_defined?(BazMethod)
+  end
+
+  def test_CM_private_method_defined?
+    assert_not Foo.private_method_defined?(FooMethod)
+    assert_not Foo.private_method_defined?(BarMethod)
+    assert Foo.private_method_defined?(BazMethod)
+  end
+
+end
+
+# # Testing on instance.  Module methods. (IM)
+# Class.new(Test::Unit::TestCase) do
+#
+#   def setup
+#     @foo = Foo.new
+#   end
+#
+#   def test_IM_private_instance_methods
+#     assert_not @foo.private_instance_methods.include?(FooMethod)
+#     assert_not @foo.private_instance_methods.include?(BarMethod)
+#     assert_not @foo.private_instance_methods.include?(BazMethod)
+#     assert_not @foo.private_instance_methods(true).include?(FooMethod)
+#     assert_not @foo.private_instance_methods(true).include?(BarMethod)
+#     assert_not @foo.private_instance_methods(true).include?(BazMethod)
+#   end
+#
+#   def test_IM_protected_instance_methods
+#     assert_not @foo.protected_instance_methods.include?(FooMethod)
+#     assert_not @foo.protected_instance_methods.include?(BarMethod)
+#     assert_not @foo.protected_instance_methods.include?(BazMethod)
+#     assert_not @foo.protected_instance_methods(true).include?(FooMethod)
+#     assert_not @foo.protected_instance_methods(true).include?(BarMethod)
+#     assert_not @foo.protected_instance_methods(true).include?(BazMethod)
+#   end
+#
+#   def test_IM_public_instance_methods
+#     assert_not @foo.public_instance_methods.include?(FooMethod)
+#     assert_not @foo.public_instance_methods.include?(BarMethod)
+#     assert_not @foo.public_instance_methods.include?(BazMethod)
+#     assert_not @foo.public_instance_methods(true).include?(FooMethod)
+#     assert_not @foo.public_instance_methods(true).include?(BarMethod)
+#     assert_not @foo.public_instance_methods(true).include?(BazMethod)
+#   end
+#
+#   def test_IM_instance_method
+#     assert_not_nil @foo.instance_method(FooMethod)
+#     assert_not_nil @foo.instance_method(BarMethod)
+#     assert_not_nil @foo.instance_method(BazMethod)
+#   end
+#
+#   def test_IM_method_defined?
+#     assert @foo.method_defined?(FooMethod)
+#     assert @foo.method_defined?(BarMethod)
+#     assert_not @foo.method_defined?(BazMethod)
+#   end
+#
+#   def test_IM_private_method_defined?
+#     assert_not @foo.private_method_defined?(FooMethod)
+#     assert_not @foo.private_method_defined?(BarMethod)
+#     assert @foo.private_method_defined?(BazMethod)
+#   end
+#
+#   def test_IM_protected_method_defined?
+#     assert_not @foo.protected_method_defined?(FooMethod)
+#     assert @foo.protected_method_defined?(BarMethod)
+#     assert_not @foo.protected_method_defined?(BazMethod)
+#   end
+#
+#   def test_IM_public_method_defined?
+#     assert @foo.public_method_defined?(FooMethod)
+#     assert_not @foo.public_method_defined?(BarMethod)
+#     assert_not @foo.public_method_defined?(BazMethod)
+#   end
+#
+# end
+
+%%
+Object
+------
+method
+methods
+private_methods
+protected_methods
+public_methods
+respond_to?(sym, include_private=false)
+%
+
+# Testing a class.  Object methods. (KO)
+Class.new(Test::Unit::TestCase) do
+
+  def test_KO_method
+    assert_raise(NameError) { Foo.method(FooMethod) }
+    assert_raise(NameError) { Foo.method(BarMethod) }
+    assert_raise(NameError) { Foo.method(BazMethod) }
+  end
+
+  def test_KO_methods
+    assert_not Foo.methods.include?(FooMethod)
+    assert_not Foo.methods.include?(BarMethod)
+    assert_not Foo.methods.include?(BazMethod)
+  end
+
+  def test_KO_private_methods
+     assert_not Foo.private_methods.include?(FooMethod)
+     assert_not Foo.private_methods.include?(BarMethod)
+     assert_not Foo.private_methods.include?(BazMethod)
+     assert_not Foo.private_methods(IncludeSuper).include?(FooMethod)
+     assert_not Foo.private_methods(IncludeSuper).include?(BarMethod)
+     assert_not Foo.private_methods(IncludeSuper).include?(BazMethod)
+  end
+
+  def test_KO_protected_methods
+     assert_not Foo.protected_methods.include?(FooMethod)
+     assert_not Foo.protected_methods.include?(BarMethod)
+     assert_not Foo.protected_methods.include?(BazMethod)
+     assert_not Foo.protected_methods(IncludeSuper).include?(FooMethod)
+     assert_not Foo.protected_methods(IncludeSuper).include?(BarMethod)
+     assert_not Foo.protected_methods(IncludeSuper).include?(BazMethod)
+  end
+
+  def test_KO_public_methods
+     assert_not Foo.public_methods.include?(FooMethod)
+     assert_not Foo.public_methods.include?(BarMethod)
+     assert_not Foo.public_methods.include?(BazMethod)
+     assert_not Foo.public_methods(IncludeSuper).include?(FooMethod)
+     assert_not Foo.public_methods(IncludeSuper).include?(BarMethod)
+     assert_not Foo.public_methods(IncludeSuper).include?(BazMethod)
+  end
+
+  def test_KO_respond_to?
+    assert_not Foo.respond_to?(FooMethod)
+    assert_not Foo.respond_to?(BarMethod)
+    assert_not Foo.respond_to?(BazMethod)
+    assert_not Foo.respond_to?(FooMethod, IncludePrivate)
+    assert_not Foo.respond_to?(BarMethod, IncludePrivate)
+    assert_not Foo.respond_to?(BazMethod, IncludePrivate)
+  end
+
+end
+
+# Testing an instance.  Object methods. (IO)
+Class.new(Test::Unit::TestCase) do
+
+  def setup
+    @foo = Foo.new
+  end
+
+  def test_IO_method
+    assert_not_nil @foo.method(FooMethod)
+    assert_not_nil @foo.method(BarMethod)
+    assert_not_nil @foo.method(BazMethod)
+  end
+
+  def test_IO_methods
+    assert @foo.methods.include?(FooMethod)
+    assert @foo.methods.include?(BarMethod)
+    assert_not @foo.methods.include?(BazMethod)
+  end
+
+  def test_IO_private_methods
+     assert_not @foo.private_methods.include?(FooMethod)
+     assert_not @foo.private_methods.include?(BarMethod)
+     assert @foo.private_methods.include?(BazMethod)
+     assert_not @foo.private_methods(IncludeSuper).include?(FooMethod)
+     assert_not @foo.private_methods(IncludeSuper).include?(BarMethod)
+     assert @foo.private_methods(IncludeSuper).include?(BazMethod)
+  end
+
+  def test_IO_protected_methods
+     assert_not @foo.protected_methods.include?(FooMethod)
+     assert @foo.protected_methods.include?(BarMethod)
+     assert_not @foo.protected_methods.include?(BazMethod)
+     assert_not @foo.protected_methods(IncludeSuper).include?(FooMethod)
+     assert @foo.protected_methods(IncludeSuper).include?(BarMethod)
+     assert_not @foo.protected_methods(IncludeSuper).include?(BazMethod)
+  end
+
+  def test_IO_public_methods
+     assert @foo.public_methods.include?(FooMethod)
+     assert_not @foo.public_methods.include?(BarMethod)
+     assert_not @foo.public_methods.include?(BazMethod)
+     assert @foo.public_methods(IncludeSuper).include?(FooMethod)
+     assert_not @foo.public_methods(IncludeSuper).include?(BarMethod)
+     assert_not @foo.public_methods(IncludeSuper).include?(BazMethod)
+  end
+
+  def test_IO_respond_to?
+    assert @foo.respond_to?(FooMethod)
+    assert @foo.respond_to?(BarMethod)
+    assert_not @foo.respond_to?(BazMethod)
+    assert @foo.respond_to?(FooMethod, IncludePrivate)
+    assert @foo.respond_to?(BarMethod, IncludePrivate)
+    assert @foo.respond_to?(BazMethod, IncludePrivate)
+  end
+
+end
+</pre>
+      <hr />
+    </div>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
+</html>

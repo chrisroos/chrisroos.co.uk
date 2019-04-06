@@ -1,0 +1,122 @@
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Permalinks for del.icio.us bookmarks (posts) - Chris Roos</title>
+  <link href="/blog/2007-08-31-blue-card-user-stories-coming-out-of-the-reevoo-com-feedback" rel="prev" />
+  <link href="/blog/2007-09-05-patching-the-del-icio-us-firefox-extension-to-add-permalinks" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2007-09-04T23:23:00+01:00">Tue, 04 Sep 07</abbr>
+      <h1>Permalinks for del.icio.us bookmarks (posts)</h1>
+      <div class="notice">
+        28-Apr-2009. This is now a firefox extension hosted at <a href="https://addons.mozilla.org/en-US/firefox/addon/11664">addons.mozilla.org</a>.
+      </div>
+      <p>I’ve wondered in the <a href="http://tech.groups.yahoo.com/group/ydn-delicious/message/1447">past</a> about sending <a href="http://en.wikipedia.org/wiki/Trackback">trackbacks</a> (or <a href="http://en.wikipedia.org/wiki/Pingback">pingbacks</a>) to bookmarked resources on <a href="http://del.icio.us">del.icio.us</a>. As with most things, you can either wait for someone to do it for you, or you can do it yourself… I started to investigate last Thursday afternoon and soon got sucked into the much more interesting issue of the missing <a href="http://en.wikipedia.org/wiki/Permalink">permalinks</a> for bookmarks. You see, every time you bookmark something on del.icio.us, you are creating a new <a href="http://en.wikipedia.org/wiki/Representational_State_Transfer#REST.27s_Central_Principle:_Resources">resource</a>. Unfortunately, it’s a very sad :-( resource. Sad because it doesn’t have a <a href="http://www.wikipedia.org/wiki/URL"><span class="caps">URL</span></a> and so can’t be linked to. An anonymous resource floating around the world wide web looking for love. Boo hoo. Anyway, enough of that. I figured that if we could assign a unique tag to each of these resources then they would, as a side effect, get a permalink (you can already get your bookmarks containing a given tag by using http://del.icio.us/<span class="caps">USERNAME</span>/MY_TAG). I experimented with using the url as a tag. Although there seem to be some limits on what you can use, I found that if you strip the protocol and trailing slash from a url you are generally OK. So, if we bookmark <a href="http://news.bbc.co.uk"><span class="caps">BBC</span> News</a> and tag it with news.bbc.co.uk then we can access that individual bookmark at <a href="http://del.icio.us/chrisjroos/news.bbc.co.uk">http://del.icio.us/chrisjroos/news.bbc.co.uk</a>.</p>
+      <p><a href="http://flickr.com/photos/chrisjroos/1293075032/"><img alt="" src="http://farm2.static.flickr.com/1140/1293075032_372cce286d_m.jpg" /></a></p>
+      <p>As you can only bookmark the same <span class="caps">URL</span> once, it should guarantee that the url-tag is unique. I can, however, see a problem with the trailing slash. Although it’s possible to bookmark URLs that differ only in the trailing slash (http://example.com/article1 and http://example.com/article1/ for example), it doesn’t seem possible to create a tag that contains that same trailing slash. OK, so we could always ensure that we remove the trailing slashes from the URLs we bookmark but that doesn’t seem like a very robust solution.</p>
+      <p>While experimenting, I found that I could use forward slashes within my tags, www.foo.com/bar/baz for example. So, I started prepending url/ to my url-tag so that I could easily recognise posts that already had permalinks. It was at this time that I noticed the similarity between the del.icio.us url history page del.icio.us/url/MD5_OF_URL (e.g. <a href="http://del.icio.us/url/4961e08b5118fbfddec7fb18fa303151"><span class="caps">BBC</span> News</a>) and my permalinked bookmark, del.icio.us/chrisjroos/url/<span class="caps">URL</span>. If I was to <a href="http://en.wikipedia.org/wiki/MD5">hash</a> the bookmarked url in the same way as del.icio.us then I would end up with a url like del.icio.us/chrisjroos/url/MD5_OF_URL. You can see the similarity in the URLs below.</p>
+      <ul>
+        <li><a href="http://del.icio.us/chrisjroos/url/4961e08b5118fbfddec7fb18fa303151">http://del.icio.us/chrisjroos/url/4961e08b5118fbfddec7fb18fa303151</a></li>
+        <li><a href="http://del.icio.us/url/4961e08b5118fbfddec7fb18fa303151">http://del.icio.us/url/4961e08b5118fbfddec7fb18fa303151</a></li>
+      </ul>
+      <p>It looks as though it’s part of del.icio.us itself doesn’t it? Cool huh. It’d be really cool to extend the del.icio.us <a href="http://www.mozilla.com/en-US/firefox/">firefox</a> <a href="https://addons.mozilla.org/en-US/firefox/addon/1532">extension</a> to automatically add this tag when bookmarking a site.</p>
+      <p>I’ve created a crappy script that will add this url/MD5_OF_URL tag to each of your posts. It’s hosted on <a href="http://chrisroos.googlecode.com/svn/trunk/delicious_url_tags">google code</a> and pasted below. Err, use at your own risk by the way.</p>
+      <pre class="code ruby">
+USERNAME = 'YOUR_USERNAME'
+PASSWORD = 'YOUR_PASSWORD'
+POSTS_CACHE = 'FILE_TO_STORE_YOUR_EXISTING_DELICIOUS_POSTS_IN'
+
+# GET ALL POSTS
+unless File.exists?(POSTS_CACHE)
+  puts "Downloading all posts..."
+  curl_cmd = &lt;&lt;-EndCurl
+curl "https://api.del.icio.us/v1/posts/all" \
+-u"#{USERNAME}:#{PASSWORD}" \
+-s
+&gt; #{POSTS_CACHE}
+  EndCurl
+  `#{curl_cmd}`
+end
+
+require 'hpricot'
+require 'md5'
+require 'cgi'
+
+def add_url_hash_to_post(post)
+  url = CGI.unescapeHTML(post['href'])
+  url_hash = MD5.md5(url)
+  url = CGI.escape(url)
+
+  tags = post['tag'].split(' ').collect { |tag| CGI.unescapeHTML(tag) }
+  tags &lt;&lt; "url/#{url_hash}" unless tags.include?("url/#{url_hash}")
+  tags = tags.collect { |tag| CGI.escape(tag) }
+  tags = tags.join(' ')
+
+  shared = post['shared']
+  description = CGI.escape(CGI.unescapeHTML(post['description']))
+  extended = CGI.escape(CGI.unescapeHTML(post['extended']))
+
+  curl_cmd = &lt;&lt;-EndCurl
+curl "https://api.del.icio.us/v1/posts/add" \
+-u"#{USERNAME}:#{PASSWORD}" \
+-d"url=#{url}" \
+-d"description=#{description}" \
+-d"extended=#{extended}" \
+-d"tags=#{tags}" \
+-d"shared=#{shared}" \
+-s
+  EndCurl
+  `#{curl_cmd}`
+end
+
+# ADD THE URL/&lt;md5_hash&gt; TAG TO EACH POST
+posts_xml = File.open(POSTS_CACHE) { |f| f.read }
+posts_doc = Hpricot(posts_xml)
+count = 1
+(posts_doc/'posts'/'post').each do |post_xml|
+  puts "Bookmark: #{count}" if (count % 5) == 0
+  add_url_hash_to_post(post_xml.attributes)
+  count += 1
+end
+</pre>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-08-31-blue-card-user-stories-coming-out-of-the-reevoo-com-feedback" rel="prev" title="Blue card user stories coming out of the reevoo.com feedback">Blue card user stories coming out of the reevoo.com feedback</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2007-09-05-patching-the-del-icio-us-firefox-extension-to-add-permalinks" rel="next" title="Patching the del.icio.us firefox extension to add permalinks">Patching the del.icio.us firefox extension to add permalinks</a> (newer) »</li>
+      </ul>
+    </div>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
+</html>

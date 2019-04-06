@@ -1,0 +1,55 @@
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Small, specific mongrel web servers - Chris Roos</title>
+  <link href="/blog/2007-04-11-getting-to-grips-with-pwdhash" rel="prev" />
+  <link href="/blog/2007-04-14-ebay-feedback" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2007-04-14T00:44:00+01:00">Sat, 14 Apr 07</abbr>
+      <h1>Small, specific mongrel web servers</h1>
+      <p>I’ve created a simple <a href="http://mongrel.rubyforge.org/">mongrel</a> server that allows you to upload text files for subsequent deletion and retrieval. If it sounds pretty pointless, that’s because it is…currently. I wonder though, if the basic premise couldn’t be used to create some text-transformation tools. I’m thinking of really simple tools that might spell-check a text file, or convert text from <a href="http://www.textism.com/tools/textile/">textile</a> to html. My end goal would be to have lots of super simple tools that I can chain together to use as a blogging platform, removing my current dependence on <a href="http://trac.typosphere.org/">typo</a>.</p>
+      <p>I’ve made the <a href="http://chrisroos.googlecode.com/svn/trunk/text_file_server/server.rb">server</a> slightly more complex than it needs to be by imposing some artificial constraints (<a href="http://chrisroos.googlecode.com/svn/trunk/text_file_server/server-test.rb">examples</a>). The basic premise is that you <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5">post</a> a text file, between 1 and 5000 bytes in size, with a <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17">content-type</a> of <a href="http://www.iana.org/assignments/media-types/text/">plain/text</a>. All being well, the server responds with <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.2">201 Created</a> and the <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30">location</a> of the new resource. The resource is actually retrieved by <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.7">deleting</a> it – the contents of the file are returned in the <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html#sec4.3">body</a> with a “200 OK” response. I’ve tried to use the relevant <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4"><span class="caps">HTTP</span> error</a> when resource creation fails. The whole ‘post’ and ‘delete’ pattern for these transformations feels kinda <a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">restful</a>, but I may be way off the mark.</p>
+      <p>I’m wondering how much of <a href="http://pipes.yahoo.com/pipes/">yahoo pipes</a> could be replicated with lots of small, specific web servers.</p>
+      <p>Anyone have any thoughts on any of this?</p>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-04-11-getting-to-grips-with-pwdhash" rel="prev" title="Getting to grips with pwdhash">Getting to grips with pwdhash</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2007-04-14-ebay-feedback" rel="next" title="ebay feedback">ebay feedback</a> (newer) »</li>
+      </ul>
+    </div>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
+</html>

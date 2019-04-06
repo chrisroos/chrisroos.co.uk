@@ -1,0 +1,64 @@
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Converting Google Code Wiki Content to Html - Chris Roos</title>
+  <link href="/blog/2008-07-30-plans-for-the-my-blog" rel="prev" />
+  <link href="/blog/2008-08-01-changing-the-repository-of-code-being-managed-by-piston-an-alternative-to-piston-switch" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2008-07-30T21:53:02+01:00">Wed, 30 Jul 08</abbr>
+      <h1>Converting Google Code Wiki Content to Html</h1>
+      <p>I’ve created a little script that allows me to convert documents in the <a href="http://code.google.com">google code</a> <a href="http://code.google.com/p/support/wiki/WikiSyntax">wiki format</a> to <a href="http://en.wikipedia.org/wiki/HTML"><span class="caps">HTML</span></a>.</p>
+      <p>The script lives in <a href="http://chrisroos.googlecode.com">my google code repository</a>. Check it out from subversion:</p>
+      <pre class="code shell">
+svn co http://chrisroos.googlecode.com/svn/trunk/google-wiki-syntax
+</pre>
+      <p>The wiki_convertor script takes two arguments. The first is the wiki file, or directory containing multiple wiki files, and the second is the output directory. So, to use it to create an html copy of the <a href="http://code.google.com/doctype/">google-doctype</a> wiki content, in my home Sites directory, I’d use the following command:</p>
+      <pre class="code shell">
+wiki_convertor.rb ~/Code/third-party/google-doctype/wiki/ ~/Sites/google-doctype/
+</pre>
+      <p>This is the first step towards being able to, hopefully, create a <a href="http://en.wikipedia.org/wiki/Portable_Document_Format">pdf</a> copy of the google-doctype content. Actually, if anyone has any thoughts on this I’d love to hear them: should I output a different format (<a href="http://en.wikipedia.org/wiki/DocBook">docbook</a>, for example) or is it easy enough to convert from (x)html to pdf?</p>
+      <p>The code is covered by quite a few tests but, if peeps find problems converting their own wiki content (for example) then I’d love to hear from you.</p>
+      <p><strong>Note</strong> There’s a chance that this becomes less important <a href="http://code.google.com/docreader/#p(google-documentation-reader)s(google-documentation-reader)t(OfflineSupport">if/when</a> Google use <a href="http://gears.google.com/">gears</a> in their <a href="http://code.google.com/docreader/#p(google-documentation-reader)s(google-documentation-reader)t(google-documentation-reader">google docreader</a> app to allow offline access.</p>
+      <p><strong>Note</strong> If you don’t want to go through this process then you can use a standalone version of <a href="http://moinmoin.wikiwikiweb.de/">moinmoin</a> to <a href="http://groups.google.com/group/google-doctype/browse_thread/thread/5fe1d26a0afdc4c7">view your wiki content offline</a>.</p>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2008-07-30-plans-for-the-my-blog" rel="prev" title="Plans for the my blog">Plans for the my blog</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2008-08-01-changing-the-repository-of-code-being-managed-by-piston-an-alternative-to-piston-switch" rel="next" title="Changing the repository of code being managed by Piston (an alternative to piston switch)">Changing the repository of code being managed by Piston (an alternative to piston switch)</a> (newer) »</li>
+      </ul>
+    </div>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
+</html>

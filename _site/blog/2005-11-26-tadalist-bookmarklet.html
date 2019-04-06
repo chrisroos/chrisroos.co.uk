@@ -1,0 +1,64 @@
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Tadalist bookmarklet - Chris Roos</title>
+  <link href="/blog/2005-11-26-rojo-replaces-bloglines-for-me-at-least" rel="prev" />
+  <link href="/blog/2005-11-26-firefox-close-tabs-like-safari" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2005-11-26T20:30:00+00:00">Sat, 26 Nov 05</abbr>
+      <h1>Tadalist bookmarklet</h1>
+      <p>I’ve been aware of, and used periodically, <a href="http://www.tadalists.com">tadalist</a> from <a href="http://www.37signals.com">37 signals</a>.</p>
+      <p>Over about the last week I’ve started to use tadalist far more. It’s great but I really want a way to add items without having to use tada each time. Apparently there <a href="http://www.keeganjones.com/widgets/tada/">used to be</a> a <a href="http://www.apple.com/uk/downloads/dashboard/">dashboard</a> widget (which would be handy as I use mac’s at work) but it’s been long lost.</p>
+      <p>I’d eventually like to develop a dashboard widget myself but until I get there I wondered about developing a <a href="http://en.wikipedia.org/wiki/Bookmarklet">bookmarklet</a> to achieve similar effect.</p>
+      <p>I played around for a bit and came up with the following.</p>
+      <pre class="code javascript">
+var new_item=prompt('Add Item');
+location.href='http://USERNAME.tadalist.com/item/add?list_id=LISTID&amp;content='+encodeURIComponent(new_item);
+alert('Added');
+location.href='http://USERNAME.tadalist.com/lists/show/LISTID';
+</pre>
+      <p>It even kinda works, although if you press cancel when it prompts for the list text, it will add a new item of null, obviously…</p>
+      <p>If you really feel the need to try this, just copy this <a href="javascript:var%20new_item=prompt('Add%20Item');%20location.href%20=%20'http://USERNAME.tadalist.com/item/add?list_id=LIST_ID&amp;content='+encodeURIComponent(new_item);%20alert('Added');%20location.href='http://USERNAME.tadalist.com/lists/show/LIST_ID';">link</a> to your bookmarks. You will need to replace <span class="caps">USERNAME</span> with your username and <span class="caps">LISTID</span> with the id of the list that you want items to be added to. To find the id (I’d suggest creating a new list like ‘added from browser’) click on the relevant list in tada and copy the number from the url after lists/show.</p>
+      <p>Oh yeah, you will also need to be logged into tada for this to work, otherwise you get a nasty looking <a href="http://www.tadalist.com/no_page_here">error page</a>.</p>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2005-11-26-rojo-replaces-bloglines-for-me-at-least" rel="prev" title="Rojo replaces bloglines (for me at least)">Rojo replaces bloglines (for me at least)</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2005-11-26-firefox-close-tabs-like-safari" rel="next" title="Firefox close tabs like Safari">Firefox close tabs like Safari</a> (newer) »</li>
+      </ul>
+    </div>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
+</html>

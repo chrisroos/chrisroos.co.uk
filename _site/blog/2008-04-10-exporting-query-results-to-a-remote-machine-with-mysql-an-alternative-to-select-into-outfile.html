@@ -1,0 +1,65 @@
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Exporting query results to a remote machine with MySql (an alternative to SELECT INTO OUTFILE) - Chris Roos</title>
+  <link href="/blog/2008-03-31-another-project-public-swimming-pools-in-the-uk" rel="prev" />
+  <link href="/blog/2008-04-29-redesigning-my-blog" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2008-04-10T16:45:29+01:00">Thu, 10 Apr 08</abbr>
+      <h1>Exporting query results to a remote machine with MySql (an alternative to SELECT INTO OUTFILE)</h1>
+      <p>Exporting query results to a remote machine with MySql (an alternative to <span class="caps">SELECT</span> <span class="caps">INTO</span> <span class="caps">OUTFILE</span>)</p>
+      <p><a href="http://mysql.com">MySql’s</a> <a href="http://dev.mysql.com/doc/refman/5.0/en/select.html"><span class="caps">SELECT</span> <span class="caps">INTO</span> <span class="caps">OUTFILE</span></a> syntax provides a nice way to export the results of a query into a tab delimited (by default) text file. Unfortunately, the file has to be created on the MySql host (by a user with file permissions), rendering it unsuitable for dumping the data to a remote machine. If you wish to dump the query results to a different machine then the <a href="http://dev.mysql.com/doc/">mysql docs</a> suggest redirecting the output from the mysql command line client:</p>
+      <blockquote>
+        <p>The <span class="caps">SELECT</span> … <span class="caps">INTO</span> <span class="caps">OUTFILE</span> statement is intended primarily to let you very quickly dump a table to a text file on the server machine. If you want to create the resulting file on some client host other than the server host, you cannot use <span class="caps">SELECT</span> … <span class="caps">INTO</span> <span class="caps">OUTFILE</span>. In that case, you should instead use a command such as mysql -e “<span class="caps">SELECT</span> …” &gt; file_name to generate the file on the client host.</p>
+      </blockquote>
+      <p>This works great but the default output you’ll get from redirecting <span class="caps">STDOUT</span> won’t be the same as using <span class="caps">SELECT</span> <span class="caps">INTO</span> <span class="caps">OUTFILE</span>. The two main (only?) differences are, in the redirected output, the addition of the headers and that <span class="caps">NULL</span> values are output as <span class="caps">NULL</span> instead of the special \N (backslash-N) sequence. We can fix both of these things by specifying an optional switch (skip-column-names) to the mysql client and employing some <a href="http://en.wikipedia.org/wiki/Sed">sed</a> magic.</p>
+      <pre class="code shell">
+mysql -h"my-host" -u"my-user" -p"my-password" -e"select * from my-database.my-table" --skip-column-names |\
+  sed -e 's/[[:&lt;:]]NULL[[:&gt;:]]/\\N/g' &gt;\
+  my-export-directory/my-table.csv`
+</pre>
+      <p>That sed magic is replacing instances of <span class="caps">NULL</span>, surrounded by some whitespace, with the special \N escape sequence.</p>
+      <p>Oh, and it’s probably worth mentioning that this is only really important if you want to load this data back into mysql (using <a href="http://dev.mysql.com/doc/refman/5.0/en/load-data.html"><span class="caps">LOAD</span> <span class="caps">DATA</span> <span class="caps">INFILE</span></a> for example). If you were to load the default output, from redirecting the mysql client, back into mysql then you’d end up with an unwanted header row and <span class="caps">NULL</span> strings (or 0 for numeric columns) where you expected actual <span class="caps">NULL</span> values.</p>
+      <p>It took us a while to figure this out so I thought it might be of some use to others.</p>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2008-03-31-another-project-public-swimming-pools-in-the-uk" rel="prev" title="Another project - Public Swimming Pools in the UK">Another project - Public Swimming Pools in the UK</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2008-04-29-redesigning-my-blog" rel="next" title="Redesigning my blog">Redesigning my blog</a> (newer) »</li>
+      </ul>
+    </div>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
+</html>

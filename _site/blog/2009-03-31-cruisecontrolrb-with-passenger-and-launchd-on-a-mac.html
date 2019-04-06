@@ -1,0 +1,147 @@
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>CruiseControlrb With Passenger and Launchd on a Mac - Chris Roos</title>
+  <link href="/blog/2009-03-30-installing-passenger-2-1-2-on-centos-5-2" rel="prev" />
+  <link href="/blog/2009-04-14-generating-and-inserting-a-rel=canonical-link-into-pages-with-firefox-and-greasemonkey" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+  <meta content="Getting CruiseControl.rb running under Passenger (mod_rails) with the builders being started automatically via launchd (on a Mac)." name="description" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2009-03-31T18:27:25+01:00">Tue, 31 Mar 09</abbr>
+      <h1>CruiseControlrb With Passenger and Launchd on a Mac</h1>
+      <p>This has taken me ages, is quite fiddly and I’m still not 100% happy with it but it seems to work well enough to document here.</p>
+      <h2>Configuring the server to run under Passenger</h2>
+      <ul>
+        <li>Buy a Mac. Hmm, maybe that’s starting a little too early in the process…</li>
+      </ul>
+      <ul>
+        <li>Install <a href="http://www.modrails.com/">Passenger</a>.</li>
+      </ul>
+      <ul>
+        <li>Download <a href="http://cruisecontrolrb.thoughtworks.com/">cruisecontrol.rb</a> (from <a href="http://github.com/thoughtworks/cruisecontrol.rb/tree/master">github</a> or <a href="http://rubyforge.org/projects/cruisecontrolrb/">rubyforge</a>). We’re using the version from <a href="http://github.com/">github</a> as it has <a href="http://git-scm.com/">git</a> support built in.</li>
+      </ul>
+      <ul>
+        <li>Edit the cruisecontrol.rb production environment (cc.rb/config/environments/production.rb) so that we can disable the builders by setting an environment variable. By default, starting the server (even through Passenger) starts the builders too. This doesn’t work by default because the <span class="caps">PATH</span> environment variable isn’t set which means the builders can’t find git. Although it doesn’t feel like entirely the right approach I actually wonder if I could use the ruby-wrapper-approach (detailed below) to have these builders work correctly.</li>
+      </ul>
+      <pre class="code diff">
+   config.after_initialize do
+     require CRUISE_DATA_ROOT + '/site_config' if File.exists?(CRUISE_DATA_ROOT + "/site_config.rb")
+     require RAILS_ROOT + '/config/dashboard_initialize'
+  -  BuilderStarter.start_builders
+  +  BuilderStarter.start_builders unless ENV['CCRB_WITHOUT_BUILDERS']
+   end
+</pre>
+      <ul>
+        <li>Create a wrapper around <a href="http://www.ruby-lang.org/">ruby</a> that allows us to pass environment variables to our Passenger apps. I actually made the amendment to the code above before realising that it’s not entirely trivial to pass environment variables from <a href="http://httpd.apache.org/">Apache</a> to a Passenger app (<a href="http://code.google.com/p/phusion-passenger/issues/detail?id=81">this ticket</a> details the problem). I wasn’t keen on the idea of this wrapper (<a href="http://blog.phusion.nl/2008/12/16/passing-environment-variables-to-ruby-from-phusion-passenger/">explanation on the phusion blog</a>) at first but I ended up thinking it was the neatest solution.</li>
+      </ul>
+      <pre class="code shell">
+  $ cat &gt; ~/ruby_for_passenger
+  #!/bin/sh
+
+  export CCRB_WITHOUT_BUILDERS=true
+
+  exec "/usr/bin/ruby" "$@"
+
+  $ sudo mv ~/ruby_for_passenger /usr/local/bin/
+  $ sudo chmod +x /usr/local/bin/ruby_for_passenger
+</pre>
+      <ul>
+        <li>Change the value of the PassengerRuby configuration option in your apache httpd config. We need to tell Passenger to use our wrapper script instead of the default ruby binary it found during installation.</li>
+      </ul>
+      <pre class="code shell">
+  $ sudo vi /etc/apache2/httpd.conf
+  #PassengerRuby /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby
+  PassengerRuby /usr/local/bin/ruby_for_passenger
+</pre>
+      <ul>
+        <li>Configure the passenger virtual host for your cruise instance. I strongly recommend using the <a href="http://www.fngtps.com/passenger-preference-pane">Passenger preference pane</a> to do this (remember to set it to use the production environment).</li>
+      </ul>
+      <ul>
+        <li>Navigate to your chosen local domain and you should be presented with the default cruise web interface.</li>
+      </ul>
+      <h2>Configuring the builders to start under launchd</h2>
+      <ul>
+        <li>Edit the cc.rb/script/builder file to set the default log directory to a path relative to the project root. This is so that we can run the builders from a location other than within cc.rb and still have them log correctly (the default behaviour is that we receive a warning about a missing log directory and the log output is redirected to stdout).</li>
+      </ul>
+      <pre class="code diff">
+  -  CRUISE_OPTIONS[:log_file_name] = "log/#{CRUISE_OPTIONS[:project_name]}_builder.log"
+  +  CRUISE_OPTIONS[:log_file_name] = File.join(RAILS_ROOT, 'log', "#{CRUISE_OPTIONS[:project_name]}_builder.log")
+</pre>
+      <ul>
+        <li>Create a <a href="http://en.wikipedia.org/wiki/Launchd">launchd</a> <a href="http://en.wikipedia.org/wiki/Property_list">property list</a> for each task. I’ve got mine in ~/Library/LaunchAgents/label-from-plist in the home directory of a user that has public key access to the git repository. This is my one annoyance with this current solution: It requires the user mentioned above to be logged in. I spent a very long time trying to get the builders working as <a href="http://developer.apple.com/technotes/tn2005/tn2083.html#SECDAEMONS">launch daemons</a>, rather than <a href="http://developer.apple.com/technotes/tn2005/tn2083.html#SECAGENTS">agents</a>, so that they would build without a user having to be logged in. I was hoping to find an environment variable I could set so that git or <a href="http://en.wikipedia.org/wiki/Secure_Shell"><span class="caps">SSH</span></a> knew to use the public key from a user other than root (who the launch daemons run as) but didn’t have any such luck. If anyone has any ideas about this I’d love to hear them. <strong>Note</strong> Although I haven’t tried it, I suspect that it’d be trivial to get non-public-key subversion builders to run as daemons.</li>
+      </ul>
+      <pre class="code xml">
+  &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+  &lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+  &lt;plist version="1.0"&gt;
+    &lt;dict&gt;
+      &lt;key&gt;EnvironmentVariables&lt;/key&gt;
+      &lt;dict&gt;
+        &lt;key&gt;PATH&lt;/key&gt;
+        &lt;string&gt;/usr/bin:/opt/local/bin&lt;/string&gt;
+      &lt;/dict&gt;
+      &lt;key&gt;Label&lt;/key&gt;
+      &lt;string&gt;label-describing-your-builder&lt;/string&gt;
+      &lt;key&gt;ProgramArguments&lt;/key&gt;
+      &lt;array&gt;
+        &lt;string&gt;/Users/chrisroos/cruisecontrol.rb/cruise&lt;/string&gt;
+        &lt;string&gt;build&lt;/string&gt;
+        &lt;string&gt;name-of-project-to-build&lt;/string&gt;
+      &lt;/array&gt;
+      &lt;key&gt;RunAtLoad&lt;/key&gt;
+      &lt;true/&gt;
+    &lt;/dict&gt;
+  &lt;/plist&gt;
+
+  # Notes:
+  # We set the PATH environment variable so that both git and ruby can be found.
+  # We set RunAtLoad so that as soon as the plist is loaded by launchctl it will start to run.
+</pre>
+      <ul>
+        <li>Load the agent using <a href="http://developer.apple.com/DOCUMENTATION/DARWIN/Reference/ManPages/man1/launchctl.1.html">launchctl</a> as the user named above (i.e. not root).</li>
+      </ul>
+      <pre class="code shell">
+  $ launchctl load ~/Library/LaunchAgents/label-from-plist
+</pre>
+      <p>And that should be about it. I’d appreciate any feedback anyone has about this approach and to hear about alternative approaches of getting cruise running automatically on system boot.</p>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2009-03-30-installing-passenger-2-1-2-on-centos-5-2" rel="prev" title="Installing Passenger 2.1.2 on CentOS 5.2">Installing Passenger 2.1.2 on CentOS 5.2</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2009-04-14-generating-and-inserting-a-rel=canonical-link-into-pages-with-firefox-and-greasemonkey" rel="next" title="Generating and Inserting a Rel=Canonical Link Into Pages With Firefox and Greasemonkey">Generating and Inserting a Rel=Canonical Link Into Pages With Firefox and Greasemonkey</a> (newer) »</li>
+      </ul>
+    </div>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
+</html>

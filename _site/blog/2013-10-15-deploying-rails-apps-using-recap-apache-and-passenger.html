@@ -1,0 +1,100 @@
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Deploying Rails apps using Recap, Apache and Passenger - Chris Roos</title>
+  <link href="/blog/2013-10-13-moving-my-timelapse-app-from-heroku-to-aws" rel="prev" />
+  <link href="/blog/2014-02-07-notes-from-the-first-international-conference-on-software-archaeology" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+  <meta content="Instructions covering how to deploy a Rails app using recap, Apache and Passenger" name="description" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2013-10-15T15:49:07+01:00">Tue, 15 Oct 13</abbr>
+      <h1>Deploying Rails apps using Recap, Apache and Passenger</h1>
+      <p>This assumes that you already have <a href="http://httpd.apache.org/">Apache</a> and <a href="https://www.phusionpassenger.com/">Passenger</a> installed; and that you’ve run <code>recap setup</code> and configured your <code>Capfile</code> with the address of your server.</p>
+      <p>I’m going to use ‘thames-time-lapse’ as an example application name but you’ll want to replace that with the name of your app in the instructions below.</p>
+      <p>The first step is to set-up the server and get the code deployed.</p>
+      <pre><code>$ cap bootstrap
+$ cap deploy:setup
+$ cap deploy
+</code></pre>
+      <p>We now want to make <a href="https://github.com/freerange/recap">Recap’s</a> configuration options available to Passenger. We can do this by changing the application user’s shell to bash and loading Recap’s environment variables in that user’s <code>.bashrc</code>.</p>
+      <pre><code># Set the app user's shell to bash
+# So that Passenger can pick up environment variables from .bashrc
+$ sudo chsh -s /bin/bash thames-time-lapse
+
+# Create a .bashrc that loads the recap environment variables
+$ sudo su - thames-time-lapse
+$ echo 'source ~/.recap-env-export' &gt; ~/.bashrc
+</code></pre>
+      <p>Add an Apache virtual host for our application. Note that I’m setting the <code>PassengerRuby</code> option as it defaults to the user that owns <code>config.ru</code>, which happens to be the user that deployed rather than the application user.</p>
+      <pre><code>$ sudo vi /etc/apache2/sites-available/thames-time-lapse.chrisroos.co.uk.conf
+
+# Paste the following content
+&lt;VirtualHost *:80&gt;
+  # Set PassengerRuby if you're using a non-system Ruby
+  PassengerRuby /usr/local/bin/ruby
+  # We have to set the user because config.ru is owned by the user that deployed
+  PassengerUser thames-time-lapse
+  ServerName thames-time-lapse.chrisroos.co.uk
+  DocumentRoot /home/thames-time-lapse/app/public
+  &lt;Directory /home/thames-time-lapse/app/public&gt;
+    Allow from all
+    Options -MultiViews
+  &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+
+# Make the site available to Apache
+$ sudo a2ensite thames-time-lapse.chrisroos.co.uk.conf
+
+# Restart Apache
+$ sudo service apache2 reload
+</code></pre>
+      <p>All being well, your Rails app has now been deployed with Recap and is being served with Apache and Passenger.</p>
+      <p>The final step is to define the <code>deploy:restart</code> Capistrano task so that the app is restarted after deployment. Add the following task to your Capfile.</p>
+      <pre><code>namespace :deploy do
+  task :restart do
+    as_app 'touch tmp/restart.txt'
+  end
+end
+</code></pre>
+      <p>And that should be everything you need to get your app deployed using recap, and served by Apache and Passenger.</p>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2013-10-13-moving-my-timelapse-app-from-heroku-to-aws" rel="prev" title="Moving my timelapse app from Heroku to AWS">Moving my timelapse app from Heroku to AWS</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2014-02-07-notes-from-the-first-international-conference-on-software-archaeology" rel="next" title="Notes from The First International Conference on Software Archaeology">Notes from The First International Conference on Software Archaeology</a> (newer) »</li>
+      </ul>
+    </div>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
+</html>

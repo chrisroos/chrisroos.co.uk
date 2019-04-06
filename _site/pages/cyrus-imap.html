@@ -1,0 +1,74 @@
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Cyrus Imap on FreeBsd - Chris Roos</title>
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2005-10-02T20:16:58+01:00">Sun, 02 Oct 05</abbr>
+      <h1>Cyrus Imap on FreeBsd</h1>
+      <p>I’ve spent some time today looking into getting <a href="http://asg.web.cmu.edu/cyrus/">Cyrus Imap</a> installed on <a href="http://www.freebsd.org">FreeBsd</a> 5.3R.</p>
+      <p>I haven’t got too far yet but think I’ve probably learned a few things I didn’t know.</p>
+      <p>Initially I just installed cyrus-imap from the ports and left it with all the default values. Once I had this and played around a bit, I un-installed and started re-installing the <a href="http://asg.web.cmu.edu/sasl/">cyrus-sasl</a> library manually, playing with various configuration options.</p>
+      <p>When installed using the default options, all of the following ‘plugins’ are installed in .</p>
+      <ul>
+        <li>liblogin</li>
+        <li>libanonymous</li>
+        <li>libcrammd5</li>
+        <li>libdigestmd5</li>
+        <li>libgssapiv2</li>
+        <li>libntlm</li>
+        <li>libotp</li>
+        <li>libplain</li>
+        <li>libsasldb</li>
+      </ul>
+      <p>My preference at this stage is to get the imap server running with plaintext passwords over a <span class="caps">TLS</span> encrypted pipe. As such I started looking at the options available to <code>configure</code>. Some of the options seem to be represented in the Makefile so my first approach was to ‘disable’ them on the command line.</p>
+      <pre class="code shell">
+$ make -DWITHOUT_OTP -DWITHOUT_CRAM -DWITHOUT_DIGEST -DWITHOUT_GSSAPI
+</pre>
+      <p>I also really wanted to disable anonymous access (which I could see how to do in the options in <code>configure</code> but not in the Makefile) but I ignored that for now.</p>
+      <p>When installed, having been built with the above options, I had all of the above ‘plugins’ except the following.</p>
+      <ul>
+        <li>libcrammd5</li>
+        <li>libdigestmd5</li>
+        <li>libgssapiv2</li>
+        <li>libotp</li>
+      </ul>
+      <p>This was better but I still had some ‘plugins’ that I didn’t really want. Once again, I un-installed the sasl port and this time built it passing arguments directly to <code>configure</code>.</p>
+      <pre class="code shell">
+$ make CONFIGURE_ARGS+='--disable-cram --disable-digest --disable-otp --disable-gssapi --disable-anon'
+</pre>
+      <p>This time I ended up with just the libplain and libsasldb ‘plugins’ which seems much closer to what I want – at least I think it does based on my very very limited knowledge at present.</p>
+      <hr />
+    </div>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
+</html>

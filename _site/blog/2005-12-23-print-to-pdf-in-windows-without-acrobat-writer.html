@@ -1,0 +1,88 @@
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Print to Pdf in Windows without Acrobat Writer - Chris Roos</title>
+  <link href="/blog/2005-12-13-patching-the-rails" rel="prev" />
+  <link href="/blog/2006-01-09-inland-revenue-as-bad-as-ticket-master" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2005-12-23T10:57:00+00:00">Fri, 23 Dec 05</abbr>
+      <h1>Print to Pdf in Windows without Acrobat Writer</h1>
+      <p>(Probably) the standard way to print to <a href="http://en.wikipedia.org/wiki/PDF">Pdf</a> in Windows is to buy <a href="http://www.adobe.com/products/acrobat/main.html">Adobe Acrobat</a> or use one of the alternatives (which come with various different licences and are of varying quality; from experience over the last couple of years).</p>
+      <p>There is, however, a completely free alternative, providing you don’t mind going through a couple of steps to implement it (which I don’t).</p>
+      <p>The basic premise is that you print to <a href="http://en.wikipedia.org/wiki/PostScript">PostScript</a> using a PostScript compatible printer driver and then use <a href="http://www.cs.wisc.edu/~ghost/">Ghostscript</a> to convert from PostScript to Pdf.</p>
+      <p>These instructions work in Windows XP but should be very similar in all versions of Windows.</p>
+      <h2>Install PostScript compatible printer.</h2>
+      <ol>
+        <li>Add a Printer.</li>
+        <li>Choose ‘Local printer’ and do not ‘automatically detect’.</li>
+        <li>Select ‘<span class="caps">FILE</span>: (Print to File)’ in the list next to ‘Use the following port’.</li>
+        <li>Choose a PS printer. I’m currently using HP Color LaserJet PS.</li>
+        <li>Select whether you want to use this as your default printer and choose no to printing a test page.</li>
+      </ol>
+      <h2>Download and install <span class="caps">AFPL</span> Ghostscript</h2>
+      <ol>
+        <li>Visit the <a href="http://www.cs.wisc.edu/~ghost/">Ghostscript site</a> and follow the ‘Obtaining <span class="caps">AFPL</span> Ghostscript &lt;version&gt;’ link.</li>
+        <li>Download the version for Windows, which at the time of writing is called gs853w32.exe.</li>
+        <li>Double click the downloaded file to install. Use the defaults during installation.</li>
+      </ol>
+      <h2>Download and install GSview</h2>
+      <ol>
+        <li>Visit the <a href="http://www.cs.wisc.edu/~ghost/gsview/index.htm">GSview site</a> and follow the ‘Obtaining GSview 4.7 link’.</li>
+        <li>Download the version for Windows, which at the time of writing is called gsv47w32.exe.</li>
+        <li>Double click the downloaded file to install. Use the defaults during installation.</li>
+      </ol>
+      <h2>Print something</h2>
+      <ol>
+        <li>Open a file and choose to print to your PostScript printer.</li>
+        <li>On clicking the Print button, you will be prompted to specify a filename to save the PostScript document to. Supply the full path to the file here, for example ‘c:\page.ps’. Although the .ps extension is optional it makes it easier to open directly in GSview if this is supplied.</li>
+      </ol>
+      <h2>Convert the PostScript file to Pdf</h2>
+      <ol>
+        <li>Double click on the ‘c:\page.ps’ file to open it in GSview.</li>
+        <li>Click OK to close the software registration prompt and you will see the PostScript interpretation of your file on the screen.</li>
+        <li>Click File &gt; Convert and choose ‘pdfwrite’ as the device, a suitable resolution (default of 600 should be fine) and click OK. You will be prompted to save the converted Pdf file somewhere</li>
+        <li>Enter the filename to save the file with, noting that .pdf doesn’t get added automatically, e.g. specify page.pdf.</li>
+        <li>Open the new .pdf file in either <a href="http://www.adobe.com/products/acrobat/readstep2.html">Adobe Reader</a> or <a href="/blog/2005-11-13-windows-adobe-acrobat-reader-alternative">an alternative</a></li>
+      </ol>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2005-12-13-patching-the-rails" rel="prev" title="Patching the rails">Patching the rails</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2006-01-09-inland-revenue-as-bad-as-ticket-master" rel="next" title="Inland Revenue as bad as Ticket Master">Inland Revenue as bad as Ticket Master</a> (newer) »</li>
+      </ul>
+    </div>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
+</html>

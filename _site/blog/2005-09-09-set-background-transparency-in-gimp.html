@@ -1,0 +1,68 @@
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Set background transparency in GIMP - Chris Roos</title>
+  <link href="/blog/2005-09-08-netgear-wpn824-disappointment" rel="prev" />
+  <link href="/blog/2005-09-18-zen-adsl-dial-up-account-cant-be-used-at-the-same-time" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2005-09-09T17:37:00+01:00">Fri, 09 Sep 05</abbr>
+      <h1>Set background transparency in GIMP</h1>
+      <p>I’m very much <strong>not</strong> a graphical person but when forced to dabble in any kind of image manipulation have always tried to use <a href="http://www.gimp.org/">The <span class="caps">GIMP</span></a>, over any commercial offerings.</p>
+      <p>Just this afternoon I’ve spent some time trying to make the background of a very simple image transparent. The image is a filled shape on a white background. I wanted the white background to be transparent.</p>
+      <p>I <em>think</em> I’ve finally found the best way to achieve this but may be way off mark.</p>
+      <ol>
+        <li>Open the original image (jpeg image in this case).</li>
+        <li>Use the ‘magic wand’ (Select contiguous regions) and select the coloured shape.</li>
+        <li>Move the selected shape to the side of the image.</li>
+        <li>In the Layers view you should now have a new ‘Floating Selection (Floated Layer)’. Right click on this layer and select ‘New layer’. This converts the transient layer into a real layer.</li>
+        <li>Click on the background layer to ‘select’ the background of the image.</li>
+        <li>Select Layer &gt; Transparency &gt; Add Alpha Channel.</li>
+        <li>We can now set the background to transparent by using Layer &gt; Transparency &gt; Colour to Alpha and selecting our background colour (white in my case) as the From colour.</li>
+        <li>Click Ok to set the background to transparent.</li>
+        <li>Click on the Floated Layer (this is what the layer will be called unless you renamed it) to display it to the side of the image.</li>
+        <li>Click the cross-hair (Move layers &amp; selections) tool and move the shape onto the now transparent background.</li>
+        <li>That’s it, apart from saving the image in a format that either saves the layers (.xcf at least, maybe more) or at least deals with transparency (.gif and .png).</li>
+      </ol>
+      <p><em><strong>Update 18:07</strong> It seems that anything over and above simple shapes as I had and this practice fails because it’s not easy to initially cut the ‘foreground’ image out. But then again, maybe that’s just because I don’t know how to effectively ‘cut’ images…</em></p>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2005-09-08-netgear-wpn824-disappointment" rel="prev" title="Netgear WPN824 disappointment">Netgear WPN824 disappointment</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2005-09-18-zen-adsl-dial-up-account-cant-be-used-at-the-same-time" rel="next" title="Zen ADSL/Dial-up account can't be used at the same time">Zen ADSL/Dial-up account can't be used at the same time</a> (newer) »</li>
+      </ul>
+    </div>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
+</html>

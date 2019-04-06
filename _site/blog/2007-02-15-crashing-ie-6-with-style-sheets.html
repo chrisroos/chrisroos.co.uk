@@ -1,0 +1,85 @@
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Crashing IE 6 with style(sheets) - Chris Roos</title>
+  <link href="/blog/2007-01-29-visualising-the-changing-responsibilities-of-objects" rel="prev" />
+  <link href="/blog/2007-03-04-digital-photo-prints-from-photobox" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2007-02-15T22:49:00+00:00">Thu, 15 Feb 07</abbr>
+      <h1>Crashing IE 6 with style(sheets)</h1>
+      <p>Over about the last day and a half, if you used <a href="http://en.wikipedia.org/wiki/Internet_Explorer_6">Internet Explorer 6</a> to browse any of the reviews on <a href="http://www.reevoo.com">reevoo.com</a>, then we should apologise. It seems that, apart from breaking the layout somewhat, we’d actually managed to cause IE 6 to crash. Not cool. A concerted effort this morning got the problem sorted, but it took longer than it should’ve done, especially when you consider that about 75% of our traffic is from users of IE 6…</p>
+      <p>Anyway, with the embarrassment out of the way, I thought I’d share the remotely interesting<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> findings of the investigation into the browser crash. It turns out that a combination of these three little lines of <a href="http://en.wikipedia.org/wiki/CSS">css</a>, and any <a href="http://en.wikipedia.org/wiki/Doctype">doctype</a> declaration<sup class="footnote" id="fnr2"><a href="#fn2">2</a></sup>, will cause IE 6 to hang while waiting for the magic <a href="http://en.wikipedia.org/wiki/Control-Alt-Delete#Windows_NT">Windows kiss of life</a>.</p>
+      <pre class="code css">
+margin-left: 240px;
+margin-right: 10%;
+width: expression(document.body.offsetWidth - 256);
+</pre>
+      <p>It is not the specific values (240px, 10% and 256) in the lines above that are of interest – I was able to express and suppress the problem by altering those. Unfortunately, I didn’t spend any time trying to find the threshold of the problem, and am therefore unsure as to the reason for this behaviour.</p>
+      <p>The offending, nasty, IE hack has now been removed. In addition, the day has been spent working with the <a href="http://daftpixel.wordpress.com">designer monkey</a> (ahh, you can call him Adam if you like) to start tidying up the, still somewhat cumbersome, stylesheets.</p>
+      <p>For the curious, the simplest html page I could come up with that exhibits the crash behaviour in IE 6 is below.</p>
+      <pre class="code html">
+&lt;!-- &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"&gt; --&gt;
+&lt;!-- &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt; --&gt;
+&lt;!-- &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt; --&gt;
+&lt;!-- &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt; --&gt;
+&lt;!-- ANY OF THE ABOVE DOCTYPES CAUSE THE PROBLEM.  NO DOCTYPE = NO PROBLEM --&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;style type="text/css"&gt;
+      #content {
+        margin-left: 240px;
+        margin-right: 10%;
+        width: expression(document.body.offsetWidth - 256);
+      }
+    &lt;/style&gt;
+    &lt;title&gt;testing ie6&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="content"&gt;blurgh&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+      <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> They’re really not interesting.</p>
+      <p class="footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a> If there is no doctype declaration, the browser doesn’t crash (something to do with standards mode I believe).</p>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-01-29-visualising-the-changing-responsibilities-of-objects" rel="prev" title="Visualising the changing responsibilities of objects">Visualising the changing responsibilities of objects</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2007-03-04-digital-photo-prints-from-photobox" rel="next" title="Digital Photo Prints from PhotoBox">Digital Photo Prints from PhotoBox</a> (newer) »</li>
+      </ul>
+    </div>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
+</html>

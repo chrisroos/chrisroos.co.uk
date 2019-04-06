@@ -1,0 +1,86 @@
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Reference Trackback Server implementation - Chris Roos</title>
+  <link href="/blog/2008-03-29-files-hosted-on-google-groups-cannot-be-opened-in-safari-or-internet-explorer" rel="prev" />
+  <link href="/blog/2008-03-31-another-project-public-swimming-pools-in-the-uk" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2008-03-29T06:27:05+00:00">Sat, 29 Mar 08</abbr>
+      <h1>Reference Trackback Server implementation</h1>
+      <p>To aid my development of the <a href="/blog/2008-03-04-version-0-2-of-the-del-icio-us-trackback-extension">del.icio.us trackbacks firefox extension</a> I created a reference <a href="http://en.wikipedia.org/wiki/Trackback">trackback</a> server implementation based on the <a href="http://www.sixapart.com/pronet/docs/trackback_spec">trackback specification</a>.</p>
+      <p>It’s written in <a href="http://www.ruby-lang.org">Ruby</a> as a <a href="http://mongrel.rubyforge.org/">Mongrel</a> handler and stores the trackbacks serialized to <a href="http://en.wikipedia.org/wiki/YAML"><span class="caps">YAML</span></a> on the filesystem. The code is over in <a href="http://code.google.com/p/chrisroos/">my google code repository</a> (no direct link as I plan to move the trackback-server from its current home in /trunk/scratch to /trunk/www/trackbacks.seagul.co.uk).</p>
+      <p>On the off-chance that someone else might find it useful I’m currently hosting it at <a href="http://trackbacks.seagul.co.uk">http://trackbacks.seagul.co.uk</a>. You might use it to see the del.icio.us trackbacks extension in action or to test the sending of trackbacks from your blog (the trackback <span class="caps">URL</span> is <a href="http://trackbacks.seagul.co.uk/trackback">http://trackbacks.seagul.co.uk/trackback</a>). Or, you could just play with it using <a href="http://curl.haxx.se">curl</a>.</p>
+      <pre class="code shell">
+# Let's just try to GET the trackback URL
+$ curl http://trackbacks.seagul.co.uk/trackback
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;response&gt;
+  &lt;error&gt;1&lt;/error&gt;
+  &lt;message&gt;Http Method MUST be POST&lt;/message&gt;
+&lt;/response&gt;
+
+# OK, so we'll POST to the trackback URL
+$ curl http://trackbacks.seagul.co.uk/trackback -X"POST"
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;response&gt;
+  &lt;error&gt;1&lt;/error&gt;
+  &lt;message&gt;Content-Type MUST be 'application/x-www-form-urlencoded' with OPTIONAL character encoding&lt;/message&gt;
+&lt;/response&gt;
+
+# Posting with the correct Content-Type
+$ curl http://trackbacks.seagul.co.uk/trackback -X"POST" -H"Content-Type: application/x-wencoded"
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;response&gt;
+  &lt;error&gt;1&lt;/error&gt;
+  &lt;message&gt;You MUST send the URL of your post (permalink) that mentions this post.&lt;/message&gt;
+&lt;/response&gt;
+
+# Post with the correct Content-Type and the required URL parameter to actually have a trackback created on the server
+$ curl http://trackbacks.seagul.co.uk/trackback -X"POST" -H"Content-Type: application/x-wencoded" -d"url=http://example.com"
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;response&gt;
+  &lt;error&gt;0&lt;/error&gt;
+&lt;/response&gt;
+</pre>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2008-03-29-files-hosted-on-google-groups-cannot-be-opened-in-safari-or-internet-explorer" rel="prev" title="Files hosted on Google Groups cannot be opened in Safari (or Internet Explorer)">Files hosted on Google Groups cannot be opened in Safari (or Internet Explorer)</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2008-03-31-another-project-public-swimming-pools-in-the-uk" rel="next" title="Another project - Public Swimming Pools in the UK">Another project - Public Swimming Pools in the UK</a> (newer) »</li>
+      </ul>
+    </div>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
+</html>

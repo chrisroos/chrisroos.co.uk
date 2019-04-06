@@ -1,0 +1,106 @@
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Unified method_exists method for ruby - Chris Roos</title>
+  <link href="/blog/2006-09-18-gdisk-very-cheap-free-online-storage" rel="prev" />
+  <link href="/blog/2006-09-22-testing-against-the-garbage-collection-clock-or-dont-create-your-test-cases-as-anonymous-classes" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2006-09-18T22:59:00+01:00">Mon, 18 Sep 06</abbr>
+      <h1>Unified method_exists method for ruby</h1>
+      <p>There are loads of different ways to check whether an object (class or instance) contains a given method.</p>
+      <p>In fact, there are so many different ways that I spent some time working out what was what.</p>
+      <p>I started out testing each of the relevant Module methods on both a class and instance. This was followed up by testing each of the relevant Object methods on both a class and instance. The full test suite is <a href="/pages/20060918_testing_method_responses_full">here</a>.</p>
+      <p>I summarised the results into a more compact test suite <a href="/pages/20060918_testing_method_responses_compact">here</a>.</p>
+      <p>I think I’m correct in stating that there’s no one way to check for the existence of a method (be it public, protected or private) on a class. However, the test results make it slightly easier to scan and create such a method – <a href="/pages/20060918_testing_class_method_exists">three variants</a> none-the-less.</p>
+      <p>The same statement goes for uniformly determining the existence of a method on an instance. Once again the tests helped derive the three implementations <a href="/pages/20060918_testing_instance_method_exists">here</a>.</p>
+      <p>Combining these two imlpementations provides us with a uniform method to determine whether the receiver contains a method represented by <em>method_sym</em>.</p>
+      <pre class="code ruby">
+class Object
+  def method_exists?(method_sym)
+    methods = public_methods + protected_methods + private_methods
+    methods.include?(method_sym.to_s)
+  end
+end
+class Class
+  def method_exists?(method_sym)
+    methods = public_instance_methods + protected_instance_methods + private_instance_methods
+    methods.include?(method_sym.to_s)
+  end
+end
+
+class Foo
+  def foo; end; public :foo
+  def bar; end; protected :bar
+  def baz; end; private :baz
+end
+
+require 'test/unit'
+
+Class.new(Test::Unit::TestCase) do
+
+  def assert_not(expr)
+    assert ! expr
+  end
+
+  def assert_method_exists_is_working(receiver)
+    [:foo, :bar, :baz].each do |sym|
+      assert receiver.method_exists?(sym)
+      assert receiver.method_exists?(sym.to_s)
+    end
+    assert_not receiver.method_exists?(:made_up_method)
+    assert_not receiver.method_exists?('made_up_method')
+  end
+
+  def test_class
+    assert_method_exists_is_working(Foo)
+  end
+
+  def test_instance
+    assert_method_exists_is_working(Foo.new)
+  end
+
+end
+</pre>
+      <p>What’s the point you ask? I genuinely have no idea. I’m sure there was one when I started but then my compulsiveness took over and I had to finish for no other reason than to finish.</p>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2006-09-18-gdisk-very-cheap-free-online-storage" rel="prev" title="gDisk - very cheap (free) online storage">gDisk - very cheap (free) online storage</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2006-09-22-testing-against-the-garbage-collection-clock-or-dont-create-your-test-cases-as-anonymous-classes" rel="next" title="Testing against the (Garbage Collection) Clock, or, Don't create your Test Cases as anonymous classes">Testing against the (Garbage Collection) Clock, or, Don't create your Test Cases as anonymous classes</a> (newer) »</li>
+      </ul>
+    </div>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
+</html>
