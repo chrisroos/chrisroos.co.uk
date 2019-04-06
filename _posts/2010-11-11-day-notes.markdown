@@ -5,5 +5,6 @@ title:      Day notes - Thu 11th Nov 2010
 date:       2010-11-18 17:52:17.205042 +00:00
 guid:       739ecd69-0838-4272-92b0-61cd38b3e683
 layout:     blog
+permalink:  blog/2010-11-11-day-notes.html
 ---
 Continued pairing with [James A](http://interblah.net/) to get our staging server provisioned with [Puppet](http://www.puppetlabs.com/).  We'd previously spent quite a while setting up puppet to provision our application servers as [CentOS](http://www.centos.org/) on [AWS](http://aws.amazon.com/).  The work to migrate [#blue](https://hashblue.com/) to AWS was put on hold yet we didn't want to lose our investment in puppet so we decided to make the relevant changes so that we could use [our scripts](https://github.com/freerange/freerange-puppet) to provision our [ubuntu](http://www.ubuntu.com/) staging server.

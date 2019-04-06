@@ -5,6 +5,7 @@ title:      Day notes - Weds 13th Oct 2010
 date:       2010-10-15 10:28:27.838206 +01:00
 guid:       28743236-d997-40a6-b8ed-dc46f6bedef8
 layout:     blog
+permalink:  blog/2010-10-13-day-notes.html
 ---
 
 * Weekly meeting with O2.

@@ -5,5 +5,6 @@ title:      Day notes - Mon 17th Jan 2011
 date:       2011-01-21 17:19:41.963928 +00:00
 guid:       eb319359-0122-4bcc-8021-2a92a93325e1
 layout:     blog
+permalink:  blog/2011-01-17-day-notes.html
 ---
 Spent a chunk of time trying to get our VPN configured so that we could communicate with the live MMSC within O2.

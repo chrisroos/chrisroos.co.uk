@@ -5,6 +5,7 @@ title:      Day notes - Thu 4th Nov 2010
 date:       2010-11-08 09:56:05.191136 +00:00
 guid:       9affda4d-0a80-4f14-85de-1aca3d46b51a
 layout:     blog
+permalink:  blog/2010-11-04-day-notes.html
 ---
 Caught up on my outstanding 'day notes'.
 

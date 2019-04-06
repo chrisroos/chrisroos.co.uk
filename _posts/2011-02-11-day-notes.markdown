@@ -5,5 +5,6 @@ title:      Day notes - Fri 11th Feb 2011
 date:       2011-02-15 18:32:56.184833 +00:00
 guid:       90dc3c39-0dca-4bdd-93bd-d7cbae75879b
 layout:     blog
+permalink:  blog/2011-02-11-day-notes.html
 ---
 After a little more investigation, I wrote up a [ticket for the RedCloth 4.2.6 issue](http://jgarber.lighthouseapp.com/projects/13054-redcloth/tickets/210-redcloth-426-is-broken-on-mac-os-x).

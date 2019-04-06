@@ -5,6 +5,7 @@ title:      Day notes - Sun 30th Jan 2011
 date:       2011-01-31 12:09:55.790194 +00:00
 guid:       cd655f93-c6eb-4c9b-b231-5a872528a109
 layout:     blog
+permalink:  blog/2011-01-30-day-notes.html
 ---
 I finished listening to [An Evening with Ranulph Fiennes](http://www.audible.co.uk/aduk/site/product.jsp?p=BK_HODD_000094UK).  It's a seriously good listen and I'd recommend it to anyone.  It's a recording of a talk he gave in front of an audience and it sounds as though there were probably slides to go along with it: I don't think it's made any worse by the lack of slides but I suspect they might've made some of the funnier points even funnier.
 

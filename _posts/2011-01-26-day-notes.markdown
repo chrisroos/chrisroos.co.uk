@@ -5,6 +5,7 @@ title:      Day notes - Wed 26th Jan 2011
 date:       2011-01-31 11:35:25.747585 +00:00
 guid:       37054d84-9276-4ffe-a548-8096c242955d
 layout:     blog
+permalink:  blog/2011-01-26-day-notes.html
 ---
 [James M](http://jamesmead.org/) helped me try to diagnose my broken [Joggler](http://en.wikipedia.org/wiki/O2_Joggler).
 

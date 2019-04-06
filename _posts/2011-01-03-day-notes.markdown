@@ -5,6 +5,7 @@ title:      Day notes - Mon 3rd Jan 2011
 date:       2011-01-05 18:34:31.940776 +00:00
 guid:       fd3c2f5a-2487-4c3c-9525-6089f8415086
 layout:     blog
+permalink:  blog/2011-01-03-day-notes.html
 ---
 Happy New Year everybody peeps.
 

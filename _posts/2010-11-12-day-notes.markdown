@@ -5,6 +5,7 @@ title:      Day notes - Fri 12th Nov 2010
 date:       2010-11-18 17:52:26.500653 +00:00
 guid:       abd2ebc5-3999-4a2f-99d7-40c7c1a07e5e
 layout:     blog
+permalink:  blog/2010-11-12-day-notes.html
 ---
 I had the day off today to travel up to Sheffield with [Eliot](http://www.eliotfineberg.com/) for [Interesting North](http://www.interestingnorth.com/) tomorrow.
 

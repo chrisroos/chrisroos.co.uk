@@ -5,6 +5,7 @@ title:      Day notes - Thu 27th Jan 2011
 date:       2011-01-31 11:45:12.795529 +00:00
 guid:       b9e9d281-d6fa-4b02-b571-f090f1216488
 layout:     blog
+permalink:  blog/2011-01-27-day-notes.html
 ---
 Fixed some failing tests in [Team Stream](https://github.com/freerange/teamstream).
 

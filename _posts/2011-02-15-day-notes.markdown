@@ -5,6 +5,7 @@ title:      Day notes - Tue 15th Feb 2011
 date:       2011-02-16 18:32:50.258712 +00:00
 guid:       e9f6d1aa-aff3-414c-8f00-3ab70b24ef58
 layout:     blog
+permalink:  blog/2011-02-15-day-notes.html
 ---
 [Kalv](http://kalv.co.uk/) and I paired on some message encoding oddness we're seeing with certain messages coming to us from the SMSCs.
 

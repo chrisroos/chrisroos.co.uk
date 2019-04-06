@@ -5,5 +5,6 @@ title:      Day notes - Thu 28th Oct 2010
 date:       2010-11-04 14:32:39.425599 +00:00
 guid:       54ff0d2d-7784-4875-af9d-ff138c2a1ed3
 layout:     blog
+permalink:  blog/2010-10-28-day-notes.html
 ---
 Err, an unexpected day off.  Shhhhhh.

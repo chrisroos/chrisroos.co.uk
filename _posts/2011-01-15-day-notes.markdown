@@ -5,6 +5,7 @@ title:      Day notes - Sat 15th Jan 2011
 date:       2011-01-21 16:49:16.534908 +00:00
 guid:       dde38961-5882-4f18-882e-ae2a54f0271c
 layout:     blog
+permalink:  blog/2011-01-15-day-notes.html
 ---
 I went to [the Outdoors show](http://www.theoutdoorsshow.co.uk/) and saw some climbing, some great bike trickery from [The Clan](http://www.mb7.com/TheClan/) and talks by [Ray Mears](http://www.raymears.com/) and [Ben Fogle](http://www.benfogle.com/).
 

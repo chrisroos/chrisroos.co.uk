@@ -5,6 +5,7 @@ title:      Day notes - Tue 26th Oct 2010
 date:       2010-10-27 10:19:44.497453 +01:00
 guid:       6fe0383f-43e8-46ee-be37-425c6bbe6628
 layout:     blog
+permalink:  blog/2010-10-26-day-notes.html
 ---
 Paired with [Jase](http://jasoncale.com/) on multiple minor problems we found in [hashblue](http://hashblue.com).  We've decided to fix bugs as we come across them rather than logging them in [Pivotal Tracker](http://www.pivotaltracker.com/), and we found a few recently while working on another story.
 

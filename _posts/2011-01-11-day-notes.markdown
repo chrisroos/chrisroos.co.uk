@@ -5,6 +5,7 @@ title:      Day notes - Tue 11th Jan 2011
 date:       2011-01-12 13:47:07.611419 +00:00
 guid:       9bd7176f-44bf-4494-824e-084b27d9c3e2
 layout:     blog
+permalink:  blog/2011-01-11-day-notes.html
 ---
 [James M](http://jamesmead.org/), [James A](http://interblah.net/), [Jase](http://jasoncale.com/), [Tom](http://tomafro.net/) and I spent the day working from the [O2](http://www.o2.co.uk/) offices in Slough.  We managed to do a little development but the main purpose was to discuss the future of [#blue](https://hashblue.com/).  We chatted legal, API, SMS, MMS and about potential feature ideas for the site itself.  Our hope at the moment is that we'll have [automatic message copy back up and running by the end of February](http://blog.hashblue.com/post/2639180365/message-backup-progress).
 

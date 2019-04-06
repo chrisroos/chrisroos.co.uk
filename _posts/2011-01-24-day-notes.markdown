@@ -5,6 +5,7 @@ title:      Day notes - Mon 24th Jan 2011
 date:       2011-01-31 11:19:11.916889 +00:00
 guid:       73960598-472b-4850-8398-e7e305bc6fdf
 layout:     blog
+permalink:  blog/2011-01-24-day-notes.html
 ---
 We ordered some [Designer Swedish furniture](http://www.ikea.com/) for the office.
 

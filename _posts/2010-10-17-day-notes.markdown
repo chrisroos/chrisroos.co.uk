@@ -5,6 +5,7 @@ title:      Day notes - Sun 17th Oct 2010
 date:       2010-11-04 14:30:19.278626 +00:00
 guid:       3f51301b-c7b7-4ee6-9465-be66232cad2e
 layout:     blog
+permalink:  blog/2010-10-17-day-notes.html
 ---
 Started using [1password](http://agilewebsolutions.com/products/1Password) to see whether it could replace my [gpg](http://www.gnupg.org/) encrypted text files (on [dropbox](https://www.dropbox.com/)) that I use to store passwords and the like.
 

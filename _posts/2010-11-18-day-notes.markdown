@@ -5,6 +5,7 @@ title:      Day notes - Thu 18th Nov 2010
 date:       2010-11-19 10:41:55.575730 +00:00
 guid:       761c6f5f-2da6-48a6-bcb3-04211077064c
 layout:     blog
+permalink:  blog/2010-11-18-day-notes.html
 ---
 I've got this idea about explaining iterative software development using the analogy of bridging a gap to get to something you can see on the other side.  I did some reading around this to see if other people had already written similar things.
 

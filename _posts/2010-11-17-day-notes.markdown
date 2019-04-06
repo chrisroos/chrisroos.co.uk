@@ -5,6 +5,7 @@ title:      Day notes - Wed 17th Nov 2010
 date:       2010-11-18 17:54:46.117445 +00:00
 guid:       2ed043fc-c6e5-42bf-b753-3011281be59f
 layout:     blog
+permalink:  blog/2010-11-17-day-notes.html
 ---
 Invoicing with [Kalv](http://kalv.co.uk/).
 

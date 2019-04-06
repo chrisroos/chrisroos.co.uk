@@ -5,6 +5,7 @@ title:      Day notes - Mon 14th Feb 2011
 date:       2011-02-15 18:33:41.676727 +00:00
 guid:       dffaa760-3d00-44bb-883a-7fb7fcb4ce53
 layout:     blog
+permalink:  blog/2011-02-14-day-notes.html
 ---
 [Tom](http://tomafro.net/) started to re-enable some of our existing [#blue](https://hashblue.com/) accounts now that we've pretty much got everything we need to integrate fully with [O2](http://www.o2.co.uk/).
 

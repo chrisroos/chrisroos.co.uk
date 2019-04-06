@@ -5,6 +5,7 @@ title:      Day notes - Wed 3rd Nov 2010
 date:       2010-11-04 14:33:48.438996 +00:00
 guid:       c6007ff9-7659-4866-adad-5f039a637d28
 layout:     blog
+permalink:  blog/2010-11-03-day-notes.html
 ---
 O2 meeting followed by a lunchtime discussion about [Go Free Range](http://gofreerange.com/) at the incredible [Windsor Castle](http://www.beerintheevening.com/pubs/s/87/873/Windsor_Castle/Marylebone) (home of the [handlebar club](http://www.handlebarclub.co.uk/meetings.shtml)).
 

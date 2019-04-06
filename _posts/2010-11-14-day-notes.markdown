@@ -5,5 +5,6 @@ title:      Day notes - Sun 14th Nov 2010
 date:       2010-11-18 17:54:03.927705 +00:00
 guid:       bc11b4db-22d5-4eac-8dca-cfff168a3157
 layout:     blog
+permalink:  blog/2010-11-14-day-notes.html
 ---
 Travelled back to London with [Eliot](http://www.eliotfineberg.com/) and found a great little pub called the [Gladstone](http://www.beerintheevening.com/pubs/s/25/25891/Gladstone_Arms/Borough) with some live music.

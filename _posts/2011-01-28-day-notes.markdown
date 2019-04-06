@@ -5,6 +5,7 @@ title:      Day notes - Fri 28th Jan 2011
 date:       2011-01-31 11:46:56.761851 +00:00
 guid:       9665a11d-eb03-4471-a71c-ac129ba870b0
 layout:     blog
+permalink:  blog/2011-01-28-day-notes.html
 ---
 [Tom](http://tomafro.net/) and I paired on fixing our CI machine.  The way in which it was re-provisioned meant that certain application dependencies were missing.
 

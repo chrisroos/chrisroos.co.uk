@@ -5,6 +5,7 @@ title:      Day notes - Tue 8th Feb 2011
 date:       2011-02-15 18:31:35.174606 +00:00
 guid:       008564b6-1a35-4b18-a21f-9a4e102e2a1a
 layout:     blog
+permalink:  blog/2011-02-08-day-notes.html
 ---
 Had a bit of a general discussion around our [Go Free Range](http://gofreerange.com/) accounts.
 

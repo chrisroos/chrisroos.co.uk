@@ -5,6 +5,7 @@ title:      Day notes - Fri 15th Oct 2010
 date:       2010-10-20 07:47:25.105781 +01:00
 guid:       94ff2b5a-3055-4369-9ce5-68c6c094e5f4
 layout:     blog
+permalink:  blog/2010-10-15-day-notes.html
 ---
 I hijacked [Jase](http://jasoncale.com/) to help tidy up this site.  It was really quite bad, see [before](http://www.flickr.com/photos/chrisjroos/5085423101/) and [after](http://www.flickr.com/photos/chrisjroos/5086019350/).  It previously used the reset, grids and fonts [YUI](http://developer.yahoo.com/yui/) stylesheets with some crappy hand-crafted CSS on top.  Jase ripped all of that out, started with a basic reset stylesheet and built it back up from there.  I like it.  Thanks Jase.
 

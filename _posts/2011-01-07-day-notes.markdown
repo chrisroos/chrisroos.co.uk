@@ -5,6 +5,7 @@ title:      Day notes - Fri 7th Jan 2011
 date:       2011-01-10 09:41:35.681602 +00:00
 guid:       b98ab788-501c-4fb8-8bb5-e81b152b1de9
 layout:     blog
+permalink:  blog/2011-01-07-day-notes.html
 ---
 We spent some more time this morning discussing work for the first part of this year.  We even managed to come to a descision which felt great.
 
