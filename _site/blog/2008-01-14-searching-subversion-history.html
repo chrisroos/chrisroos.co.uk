@@ -38,46 +38,16 @@
       <h1>Searching subversion history</h1>
       <p>I’ve often felt the need to search through our <a href="http://subversion.tigris.org/">subversion</a> repository to find, for example, when a method was removed/renamed. As far as I’m aware there’s no easy way to do this using the standard subversion, or <a href="http://trac.edgewall.org/">trac</a>, tools. A few days ago the need arose once more: I wanted to know when a particular class had stopped being used within our codebase. It struck me that if I had a <a href="http://en.wikipedia.org/wiki/Diff">diff</a> file for each changeset that I’d be able to <a href="http://en.wikipedia.org/wiki/Grep">grep</a> for the change I was looking for. I hacked together a script to produce a diff of each changeset (actually, as I knew when the class was added, I only produced a diff for a subset of the changesets) and was able to find the information I needed. The script is pasted below and on <a href="http://chrisroos.googlecode.com/svn/trunk/svn_changesets/">google code</a>. It assumes that you are running it from within an svn working direction. It took a while to produce the diff files (I’m afraid I don’t have any stats) but the result was a really fast way of finding, otherwise hard to find, information. I guess it’d be quite easy to automate the diff creation process so that you had an always up-to-date bunch of diff fies…</p>
       <p>Is this useful, or have I missed something obvious in Subversion or Trac that does exactly this?</p>
-      <pre class="code ruby">
-require 'fileutils'
-
-stop_at_revision = ARGV[0]
-raise "Please specify the revision that you wish to go back to as the only argument to this script." unless stop_at_revision
-stop_at_revision = Integer(stop_at_revision)
-
-class Time
-  def friendly_format
-    strftime("%Y-%m-%d %H:%M:%S")
-  end
-end
-
-def msg(message)
-  puts "#{Time.now.friendly_format} - #{message}"
-end
-
-def produce_diff(revisions, earlier_revision = nil)
-  if revisions.empty?
-    msg "All finished."
-    exit
-  end
-
-  later_revision = earlier_revision ? earlier_revision : revisions.shift
-  earlier_revision = revisions.shift
-
-  msg "Creating diff from revision #{earlier_revision} to #{later_revision}."
-  `svn diff -r#{earlier_revision}:#{later_revision} &gt; patches/#{later_revision}.patch`
-  produce_diff(revisions, earlier_revision)
-end
-
-FileUtils.mkdir_p 'patches'
-
-msg "Scanning output of svn log to find all revisions that we care about..."
-log = `svn log -rHEAD:#{stop_at_revision} -q`
-revisions = log.scan(/^r(\d+)/)
-revisions = revisions.flatten.collect { |revision| Integer(revision) }
-
-produce_diff(revisions)
-</pre>
+      <p>``` code require ‘fileutils’</p>
+      <p>stop_at_revision = ARGV[0] raise “Please specify the revision that you wish to go back to as the only argument to this script.” unless stop_at_revision stop_at_revision = Integer(stop_at_revision)</p>
+      <p>class Time def friendly_format strftime(“%Y-%m-%d %H:%M:%S”) end end</p>
+      <p>def msg(message) puts “#{Time.now.friendly_format} - #{message}” end</p>
+      <p>def produce_diff(revisions, earlier_revision = nil) if revisions.empty? msg “All finished.” exit end</p>
+      <p>later_revision = earlier_revision ? earlier_revision : revisions.shift earlier_revision = revisions.shift</p>
+      <p>msg “Creating diff from revision #{earlier_revision} to #{later_revision}.” <code>svn diff -r#{earlier_revision}:#{later_revision} &gt; patches/#{later_revision}.patch</code> produce_diff(revisions, earlier_revision) end</p>
+      <p>FileUtils.mkdir_p ‘patches’</p>
+      <p>msg “Scanning output of svn log to find all revisions that we care about…” log = <code>svn log -rHEAD:#{stop_at_revision} -q</code> revisions = log.scan(/^r(\d+)/) revisions = revisions.flatten.collect { |revision| Integer(revision) }</p>
+      <p>produce_diff(revisions) ```</p>
       <hr />
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-12-18-extracting-my-del-icio-us-permalinks-functionality-into-its-own-firefox-extension" rel="prev" title="Extracting my del.icio.us permalinks functionality into its own firefox extension">Extracting my del.icio.us permalinks functionality into its own firefox extension</a></li>

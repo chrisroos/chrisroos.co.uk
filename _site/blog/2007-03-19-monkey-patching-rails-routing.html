@@ -41,11 +41,7 @@
         <li>Permanently redirecting requests for urls that end in a slash to the equivalent url with no slash, helping disambiguate urls, as <a href="http://simonwillison.net/2007/Feb/4/urls/">explained</a> by <a href="http://simonwillison.net/">Simon Willison</a>.</li>
         <li>The addition of ActionController::Routing::RouteSet::Mapper#permanently_redirect, allowing us to declare permanent redirections within our <a href="http://api.rubyonrails.com/classes/ActionController/Routing.html">route config</a>.</li>
       </ol>
-      <pre class="code ruby">
-ActionController::Routing:Routes.draw do |map|
-  map.permanently_redirect 'legacy/view/:id', :controller =&gt; 'current', :action =&gt; 'show'
-end
-</pre>
+      <p><code>code ActionController::Routing:Routes.draw do |map| map.permanently_redirect 'legacy/view/:id', :controller =&gt; 'current', :action =&gt; 'show' end</code></p>
       <p>A quick <a href="http://www.google.co.uk/search?hl=en&amp;q=rails+disambiguated+urls&amp;btnG=Search">google</a> reveals that <a href="http://fleetingideas.com/">Rob McKinnon</a> has an <a href="http://fleetingideas.com/2007/2/6/disambiguated-urls-with-ruby-on-rails">alternative suggestion</a> for removing the trailing slashes.</p>
       <p>The plugin is known to work with Rails 1.1.6.</p>
       <hr />

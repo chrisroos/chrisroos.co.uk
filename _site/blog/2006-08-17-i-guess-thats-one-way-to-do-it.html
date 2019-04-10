@@ -37,17 +37,7 @@
       <abbr class="createdAt" title="2006-08-17T08:08:00+01:00">Thu, 17 Aug 06</abbr>
       <h1>I guess that's one way to do it...</h1>
       <p>We’re not <em>quite</em> at this stage yet…</p>
-      <pre class="code ruby">
-class ActiveRecord::ConnectionAdapters::MysqlAdapter
-  alias :execute_before_test_hijack :execute
-  def execute(*args)
-    unless args.first =~ /^SHOW FIELDS FROM/ || %w[BEGIN COMMIT ROLLBACK END].include?(args.first)
-      raise "You know you're not allowed to use the database in your tests..." # We could be more gentle with a warn
-    end
-    execute_before_unit_test_hijack(*args)
-  end
-end
-</pre>
+      <p><code>code class ActiveRecord::ConnectionAdapters::MysqlAdapter alias :execute_before_test_hijack :execute def execute(*args) unless args.first =~ /^SHOW FIELDS FROM/ || %w[BEGIN COMMIT ROLLBACK END].include?(args.first) raise "You know you're not allowed to use the database in your tests..." # We could be more gentle with a warn end execute_before_unit_test_hijack(*args) end end</code></p>
       <hr />
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2006-08-14-tickling-link_to-into-submission" rel="prev" title="Tickling link_to into submission">Tickling link_to into submission</a></li>

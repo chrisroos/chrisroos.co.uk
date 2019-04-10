@@ -1,0 +1,78 @@
+---
+summary:    I had to re-install apr-util-devel in order to get Passenger (mod_rails) 2.1.2 to install on CentOS 5.2.
+blog_post:  true
+title:      Installing Passenger 2.1.2 on CentOS 5.2
+date:       2009-03-30 08:24:00.287922 +01:00
+guid:       7a9d1abe-ec9c-4752-ae4d-0f973c51de12
+layout:     blog
+---
+
+I needed to upgrade [Passenger](http://www.modrails.com/) on our web
+server last week (so that we could run [Rails](http://rubyonrails.org/)
+2.3 apps) but ran into a little problem getting it installed.
+
+We’re running [CentOS](http://www.centos.org/) 5.2 on our staging
+server.
+
+``` code
+  [root@rails-staging0 ~]# cat /etc/redhat-release
+  CentOS release 5.2 (Final)
+```
+
+The passenger gem installed OK but when I ran
+passenger-install-apache2-module I got the following error.
+
+``` code
+  ... other lines snipped ...
+
+  /usr/bin/ld: skipping incompatible /usr/lib/libaprutil-1.so when searching for -laprutil-1
+  /usr/bin/ld: cannot find -laprutil-1
+  collect2: ld returned 1 exit status
+  rake aborted!
+  Command failed with status (1): [g++ -shared SystemTime.o Utils.o Bucket.o ...]
+  /var/ruby-enterprise-1.8.6-20080810/lib/ruby/gems/1.8/gems/passenger-2.1.2/Rakefile:157
+  (See full trace by running task with --trace)
+
+  --------------------------------------------
+  It looks like something went wrong
+```
+
+Searching for this error didn’t yield any definite fixes but a couple of
+posts mentioned re-installing the apr-devel packages. I tried apr-devel
+to begin with but was told that it was already up-to-date.
+
+``` code
+  [root@rails-staging0 ~]# yum install apr-devel
+  ... other lines snipped ...
+  Nothing to do
+```
+
+I can’t remember why but I tried apr-util-devel next which did result in
+the package being installed.
+
+``` code
+  [root@rails-staging0 ~]# yum install apr-util-devel
+  ... other lines snipped ...
+  Installed: apr-util-devel.x86_64 0:1.2.7-7.el5
+  Complete!
+```
+
+With this package re-installed I was able to go ahead and install the
+passenger apache module (i.e. passenger-install-apache2-module
+succeeded).
+
+One slightly interesting/odd thing was that
+[yum](http://en.wikipedia.org/wiki/Yellow_dog_Updater,_Modified)
+reported that the same version (1.2.7-7.el5) of apr-util-dev was already
+installed. The only difference after the re-install was that its status
+changed from ‘base’ to ‘installed’.
+
+``` code
+  # before the re-install
+  [root@rails-staging0 ~]# yum list | grep apr-util-devel
+  apr-util-devel.x86_64                    1.2.7-7.el5            base
+
+  # after the re-install
+  [root@rails-staging0 ~]# yum list | grep apr-util-devel
+  apr-util-devel.x86_64                    1.2.7-7.el5            installed
+```

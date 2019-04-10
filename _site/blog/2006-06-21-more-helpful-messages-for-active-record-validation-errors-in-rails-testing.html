@@ -38,38 +38,16 @@
       <h1>More helpful messages for Active Record validation errors in Rails testing</h1>
       <p>In testing (and production code) <a href="http://www.reevoo.com">we</a> always try to persist <a href="http://api.rubyonrails.com/classes/ActiveRecord/Base.html">Active Record</a> models with the bang variants (save! and create!). This allows us to <a href="http://www.martinfowler.com/ieeeSoftware/failFast.pdf">fail fast</a> if any of our models fail our <a href="http://api.rubyonrails.com/classes/ActiveRecord/Validations/ClassMethods.html">validation</a> rules.</p>
       <p>The problem is that the standard <a href="http://ruby-doc.org/stdlib/libdoc/test/unit/rdoc/index.html">test/unit</a> reporting framework displays the exception without any details of why the validation failed.</p>
-      <pre class="code">
- 1) Error:​
-test_should_fail_validation(AardvarkTest):​
-ActiveRecord::RecordInvalid:​ActiveRecord::RecordInvalid
-   /opt/local/lib/ruby/gems/1.8/gems/activerecord-1.13.2/lib/active_record/validations.rb:711:in 'save!'
-   /opt/local/lib/ruby/gems/1.8/gems/activerecord-1.13.2/lib/active_record/validations.rb:673:in 'create!'
-   /Users/chrisroos/dev/example_rails/test/unit/aardvark_test.rb:22:in 'test_should_fail_validation'
-
-1 tests, 0 assertions, 0 failures, 1 errors
-</pre>
+      <p>``` code 1) Error:​ test_should_fail_validation(AardvarkTest):​ ActiveRecord::RecordInvalid:​ActiveRecord::RecordInvalid /opt/local/lib/ruby/gems/1.8/gems/activerecord-1.13.2/lib/active_record/validations.rb:711:in ‘save!’ /opt/local/lib/ruby/gems/1.8/gems/activerecord-1.13.2/lib/active_record/validations.rb:673:in ‘create!’ /Users/chrisroos/dev/example_rails/test/unit/aardvark_test.rb:22:in ‘test_should_fail_validation’</p>
+      <p>1 tests, 0 assertions, 0 failures, 1 errors ```</p>
       <p><strong>Note.</strong> This isn’t the fault of test/unit. It has to deal with generic exceptions and so cannot ‘know’ that Active Record Exceptions can be used to find the reason for the failure.</p>
       <p>At this point, it would be very easy to jump into the code of the Active Record model, check out the validations and satisfy them within your code. However, it’d be much cooler if we could just add the reason for the failures to the error message that is displayed.</p>
       <p>I initially played around with a method that took a block and would wrap the block with a begin/rescue clause to explicitly catch RecordInvalid exceptions, displaying the reason for failure.</p>
       <p>Then I thought it’d be cool if we could integrate slightly more with both test/unit and <a href="http://www.rubyonrails.com">rails</a>. The result is a <a href="http://wiki.rubyonrails.org/rails/pages/Plugins">plugin</a> (<a href="http://chrisroos.googlecode.com/svn/trunk/plugins/test_unit_active_record_errors/">source</a>) that can be installed as follows.</p>
-      <pre class="code shell">
-$ script/plugin install http://chrisroos.googlecode.com/svn/trunk/plugins/test_unit_active_record_errors/
-</pre>
+      <p><code>code $ script/plugin install http://chrisroos.googlecode.com/svn/trunk/plugins/test_unit_active_record_errors/</code></p>
       <p>The output from a failed validation now includes the validation errors. Yay.</p>
-      <pre class="code">
- 1) Error:​
-test_should_fail_validation(AardvarkTest):​
-ActiveRecord::RecordInvalid: ActiveRecord::RecordInvalid
-   /opt/local/lib//gems/1.8/gems/activerecord-1.13.2/lib/active_record/validations.rb:711:in `save!'
-   /opt/local/lib/ruby/gems/1.8/gems/activerecord-1.13.2/lib/active_record/validations.rb:673:in `create!'
-   /Users/chrisroos/dev/example_rails/test/unit/aardvark_test.rb:22:in `__test_should_fail_validation_without_custom_error_handling'
-   /Users/chrisroos/dev/example_rails/config/../vendor/plugins/test_unit_active_record_errors/lib/test_unit_active_record_errors.rb:29:in `__send__'
-   /Users/chrisroos/dev/example_rails/config/../vendor/plugins/test_unit_active_record_errors/lib/test_unit_active_record_errors.rb:29:in `test_should_fail_validation'
-   /Users/chrisroos/dev/example_rails/config/../vendor/plugins/test_unit_active_record_errors/lib/test_unit_active_record_errors.rb:27:in `test_should_fail_validation'
-ActiveRecord Errors:​Surname can't be blank, Email can't be blank
-
-1 tests, 0 assertions, 0 failures, 1 errors
-</pre>
+      <p>``` code 1) Error:​ test_should_fail_validation(AardvarkTest):​ ActiveRecord::RecordInvalid: ActiveRecord::RecordInvalid /opt/local/lib//gems/1.8/gems/activerecord-1.13.2/lib/active_record/validations.rb:711:in <code>save!' /opt/local/lib/ruby/gems/1.8/gems/activerecord-1.13.2/lib/active_record/validations.rb:673:in</code> create!’ /Users/chrisroos/dev/example_rails/test/unit/aardvark_test.rb:22:in <code>__test_should_fail_validation_without_custom_error_handling' /Users/chrisroos/dev/example_rails/config/../vendor/plugins/test_unit_active_record_errors/lib/test_unit_active_record_errors.rb:29:in</code> <strong>send</strong>’ /Users/chrisroos/dev/example_rails/config/../vendor/plugins/test_unit_active_record_errors/lib/test_unit_active_record_errors.rb:29:in <code>test_should_fail_validation' /Users/chrisroos/dev/example_rails/config/../vendor/plugins/test_unit_active_record_errors/lib/test_unit_active_record_errors.rb:27:in</code> test_should_fail_validation’ ActiveRecord Errors:​Surname can’t be blank, Email can’t be blank</p>
+      <p>1 tests, 0 assertions, 0 failures, 1 errors ```</p>
       <p>The code is pretty hacky and includes no tests. It’s only been tested on Mac Os X 10.4.6 with Ruby 1.8.2 and Rails 1.0.0 but please feel free to do what you will with it if you think it might be of some use to you.</p>
       <hr />
       <ul class="navigation group">

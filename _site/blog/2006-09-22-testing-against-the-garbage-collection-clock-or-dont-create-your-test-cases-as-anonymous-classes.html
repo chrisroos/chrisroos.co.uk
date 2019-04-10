@@ -39,8 +39,7 @@
       <p>I <a href="/blog/2006-07-17-some-realisations-about-testing">wrote</a> a while ago about how I’d started creating my test cases as anonymous classes.</p>
       <p>I continued this practice until I was slapped in the face by my own stoopidity yesterday. We were seeing a problem where tests were failing individually but appearing to run fine in rake.</p>
       <p><a href="http://blog.floehopper.org">James</a> was looking into it…</p>
-      <pre>
-James: it seems like the ones defined by Class.new(Test::Unit::TestCase) aren't always being found in the ObjectSpace
+      <pre><code>James: it seems like the ones defined by Class.new(Test::Unit::TestCase) aren't always being found in the ObjectSpace
 James: but I can't quite work out why
 James: i'm tempted to name them all as defined classes
 Chris: oh ok
@@ -65,7 +64,7 @@ Chris: oops
 James: aha
 Chris: no more anonymous test classes for christopher
 James: that explains - why they were in the ObjectSpace one minute and not the next
-</pre>
+</code></pre>
       <p>Note that p_l_i_test mentioned above is just a shorthand for one of our tests that was failing individually but ‘running’ (or as we now know, not running) from rake.</p>
       <p>So, although you get a little added excitement to your testing (“Will this test class run before it gets garbage collected???”), it’s probably a lot safer to not use anonymous classes when testing.</p>
       <p>James has just informed me that we gained about 230 tests in rake by naming all of our test cases…</p>

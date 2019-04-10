@@ -37,47 +37,15 @@
       <abbr class="createdAt" title="2006-10-20T00:19:00+01:00">Fri, 20 Oct 06</abbr>
       <h1>Boolean method in Ruby (sibling of Array, Float, Integer and String)</h1>
       <p>I was reading in data from a file and expected one particular column to contain either ‘true’ or ‘false’. I wanted a nice way to convert the string representation into its object counterpart. I thought to the Kernel#Float (and kin) and decided I wanted a Kernel#Boolean method. So I made one. Tada…</p>
-      <pre class="code ruby">
-module Kernel
-
-  def Boolean(string)
-    return true if string == true || string =~ /^true$/i
-    return false if string == false || string.nil? || string =~ /^false$/i
-    raise ArgumentError.new("invalid value for Boolean: \"#{string}\"")
-  end
-
-end
-
-require File.dirname(__FILE__) + '/../test_helper'
-
-class KernelTest &lt; Test::Unit::TestCase
-
-  def test_should_return_true
-    assert_equal true, Boolean('true')
-    assert_equal true, Boolean('TrUe')
-    assert_equal true, Boolean(true)
-  end
-
-  def test_should_return_false
-    assert_equal false, Boolean(nil)
-    assert_equal false, Boolean('false')
-    assert_equal false, Boolean('FaLsE')
-    assert_equal false, Boolean(false)
-  end
-
-  def test_should_raise_exception
-    assert_raise(ArgumentError) { Boolean('true ') }
-    assert_raise(ArgumentError) { Boolean(' true') }
-    assert_raise(ArgumentError) { Boolean(' true ') }
-    assert_raise(ArgumentError) { Boolean('false ') }
-    assert_raise(ArgumentError) { Boolean(' false') }
-    assert_raise(ArgumentError) { Boolean(' false ') }
-    assert_raise(ArgumentError) { Boolean('BLAH') }
-    assert_raise(ArgumentError) { Boolean(1) }
-  end
-
-end
-</pre>
+      <p>``` code module Kernel</p>
+      <p>def Boolean(string) return true if string == true || string =~ /^true$/i return false if string == false || string.nil? || string =~ /^false$/i raise ArgumentError.new(“invalid value for Boolean: "#{string}"”) end</p>
+      <p>end</p>
+      <p>require File.dirname(<strong>FILE</strong>) + ‘/../test_helper’</p>
+      <p>class KernelTest &lt; Test::Unit::TestCase</p>
+      <p>def test_should_return_true assert_equal true, Boolean(‘true’) assert_equal true, Boolean(‘TrUe’) assert_equal true, Boolean(true) end</p>
+      <p>def test_should_return_false assert_equal false, Boolean(nil) assert_equal false, Boolean(‘false’) assert_equal false, Boolean(‘FaLsE’) assert_equal false, Boolean(false) end</p>
+      <p>def test_should_raise_exception assert_raise(ArgumentError) { Boolean(‘true ‘) } assert_raise(ArgumentError) { Boolean(‘ true’) } assert_raise(ArgumentError) { Boolean(‘ true ‘) } assert_raise(ArgumentError) { Boolean(‘false ‘) } assert_raise(ArgumentError) { Boolean(‘ false’) } assert_raise(ArgumentError) { Boolean(‘ false ‘) } assert_raise(ArgumentError) { Boolean(‘BLAH’) } assert_raise(ArgumentError) { Boolean(1) } end</p>
+      <p>end ```</p>
       <hr />
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2006-10-18-inactive-keywords-too-high-mincpc-when-using-google-adwords-api" rel="prev" title="Inactive keywords (too high minCpc) when using Google Adwords Api">Inactive keywords (too high minCpc) when using Google Adwords Api</a></li>

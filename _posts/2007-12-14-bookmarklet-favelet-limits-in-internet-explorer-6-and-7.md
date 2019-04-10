@@ -1,0 +1,111 @@
+---
+blog_post: true
+guid: 958ddabd-4102-4da1-8e3b-18a07bb38d35
+title: Bookmarklet (Favelet) limits in Internet Explorer 6 (and 7?)
+date:       2007-12-14 08:46:00 +00:00
+layout: blog
+---
+
+**Update - 20th May 2011.** [Lee](http://www.webdeavour.co.uk) was kind
+enough to email and point out the 505/508 character descrepency. It’s
+because of the three backslashes in the example. Programmatically
+evaluating the length of “\\n” in ruby correctly returns 1 as the \\n is
+turned into a single newline. This isn’t what happens in my javascript
+though: To make the test better replicate what was happening in
+javascript I should’ve used single quotes so that ‘\\n’ is indeed
+recognised as 2 characters. In addition, re-reading this post made me
+realise that my original test wasn’t exactly as simple as it could be
+(what with all the spaces and newlines) so I created a [crappy
+html/javascript bookmarklet
+generator](https://github.com/chrisroos/bookmarklet-generator) to more
+accurately test the limits on bookmarklet lengths.
+
+I wasted quite a bit of time over the last couple of days trying to get
+a [bookmarklet](http://en.wikipedia.org/wiki/Bookmarklet) (or favelet)
+working in Internet Explorer 6. It worked perfectly in Firefox and
+Safari but wasn’t doing anything at all in IE. Through lots of trial and
+error, I came to the conclusion that it was because of the length of the
+bookmarklet: it seems that Microsoft [reduced the maximum length of a
+bookmarklet in IE
+6](http://www.squarefree.com/2005/01/12/internet-explorer-drops-support-for-bookmarklets/)
+
+Although my original bookmarklet wasn’t all that long, I had it spread
+over multiple lines for readability. The fix in my case was to remove
+all the spaces and place the bookmarklet on one line.
+
+I started to think that it might be nice to have a bookmarklet
+[rails](http://www.rubyonrails.com) helper. The bookmarklet helper would
+allow you to format your javascript for readability but shorten it all
+in the resulting html (it could even warn if the bookmarklet is too long
+for IE). I couldn’t find anything similar, and I probably won’t get
+around to doing it myself, but I did decide to investigate the limit in
+IE (which could form the basis of such a helper).
+
+I used the html page below to test the limits of Internet Explorer. This
+is the longest bookmarklet that I could get to work: one more character
+(a 2 on the end of those numbers, for example) and the bookmarklet won’t
+work (it still works if you click the link in the page - it only fails
+when used as an actual bookmarklet).
+
+``` code
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <a href="javascript:
+      var msg = 'hello world, this is my message.  i\'m trying to see how long i can be until internet explorer blows up in my face.';
+      var msg = msg + '\n';
+      var msg = msg + 'this is the second line of my long message';
+      var msg = msg + '\n';
+      var msg = msg + '12345679012345678901';
+      alert(msg);">bookmarklet</a>
+  </body>
+</html>
+```
+
+I noticed that, once added to Internet Explorer, the bookmarklet
+appeared to be [URL
+encoded](http://www.blooberry.com/indexdot/html/topics/urlencoding.htm)
+(my assumption was based on the conversion of spaces to %20.)
+
+[![](http://farm3.static.flickr.com/2321/2109757023_0f69015c44.jpg)](http://www.flickr.com/photos/chrisjroos/2109757023/)
+
+I tried to replicate this encoded string in
+[ruby](http://www.ruby-lang.org) but failed: A simple URI.escape in ruby
+was escaping too much. Inspecting the bookmarklet again seemed to
+suggest that the only encoding performed is to remove newlines and
+convert spaces to %20. Replicating this in irb gave me the same string
+that Internet Explorer had in its favourites.
+
+``` code
+irb) str = "javascript:
+  var msg = 'hello world, this is my message.  i\'m trying to see how long i can be until internet explorer blows up in my face.';
+  var msg = msg + '\n';
+  var msg = msg + 'this is the second line of my long message';
+  var msg = msg + '\n';
+  var msg = msg + '12345679012345678901';
+  alert(msg);"
+irb) p str.gsub("'\n'", "'--NEW-LINE--'").gsub("\n", '').gsub("'--NEW-LINE--'", "'\n'").gsub(' ', "%20").length
+=> 505
+```
+
+Everything I’d read about these bookmarklets in Internet Explorer
+suggested that the limit was 508 characters: the length of the
+bookmarklet above (once encoded) is only 505 characters. Adding one more
+character makes it fail as a bookmarklet. Hmm, maybe I’m doing something
+dumb?
+
+I’ve cheated a bit in the ‘encoding’ above. IE removes all newlines (I
+wonder if this happens in the DOM or just when you add it as a
+favourite?) so that the bookmarklet appears on one line. I needed to do
+the same but also needed those newlines in the msg to remain (hence the
+NEW-LINE replacement stuff). This is a very naive imlpementation: if you
+have ‘\\n\\n’, for example, then it breaks. The ‘encoding’ would need to
+be a little more intelligent in an actual helper (but only if you wanted
+to report on the size of the bookmarklet).
+
+I couldn’t find any reference to source of this 508 character limit in
+Internet Explorer: all the blog articles just state it as fact. So,
+maybe it’s not 508. Maybe it’s actually 505…

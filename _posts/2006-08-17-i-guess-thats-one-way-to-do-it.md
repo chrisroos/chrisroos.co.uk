@@ -1,0 +1,21 @@
+---
+blog_post: true
+guid: d2997012-e4fc-46b4-a04d-19cd8516c0a3
+title: I guess that's one way to do it...
+date:       2006-08-17 08:08:00 +01:00
+layout: blog
+---
+
+We’re not *quite* at this stage yet…
+
+``` code
+class ActiveRecord::ConnectionAdapters::MysqlAdapter
+  alias :execute_before_test_hijack :execute
+  def execute(*args)
+    unless args.first =~ /^SHOW FIELDS FROM/ || %w[BEGIN COMMIT ROLLBACK END].include?(args.first)
+      raise "You know you're not allowed to use the database in your tests..." # We could be more gentle with a warn
+    end
+    execute_before_unit_test_hijack(*args)
+  end
+end
+```

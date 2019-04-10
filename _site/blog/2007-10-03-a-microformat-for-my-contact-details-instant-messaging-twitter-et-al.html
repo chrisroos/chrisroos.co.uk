@@ -15,6 +15,7 @@
   <link href="/blog/2005-09-06-linspire" rel="first" />
   <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
   <link href="/blog" rel="index" />
+  <title>Contact Details</title>
 </head>
 <body>
   <div id="page">
@@ -43,73 +44,29 @@
       <p>If the author’s contact details were semantically marked up, either on the page I was looking at or linked to elsewhere on the web, then I could use a simple parser to extract those details and select the best communication tool to use manually.</p>
       <p>Maybe some code can help explain what I mean.</p>
       <h3>A semantically marked up contact page.</h3>
-      <pre class="code html">
-&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;
-
-&lt;html&gt;
-
-  &lt;head&gt;
-    &lt;title&gt;Contact Details&lt;/title&gt;
-  &lt;/head&gt;
-
-  &lt;body&gt;
-    &lt;dl class="contactDetails"&gt;
-      &lt;dt&gt;Skype&lt;/dt&gt;
-      &lt;dd class="skype identifier"&gt;skype-username&lt;/dd&gt;
-      &lt;dt&gt;MSN&lt;/dt&gt;
-      &lt;dd class="msn identifier"&gt;msn-username&lt;/dd&gt;
-    &lt;/dl&gt;
-  &lt;/body&gt;
-
-&lt;/html&gt;
-</pre>
+      <p>``` code &lt;!DOCTYPE html PUBLIC “-//W3C//DTD HTML 4.01//EN”&gt;</p>
+      <dl class="contactDetails">
+        <dt>Skype</dt>
+        <dd class="skype identifier">skype-username</dd>
+        <dt>MSN</dt>
+        <dd class="msn identifier">msn-username</dd>
+      </dl>
+      <p>```</p>
       <h3>A parser in <a href="http://www.ruby-lang.org/">ruby</a></h3>
-      <pre class="code ruby">
-require 'rubygems'
-require 'hpricot'
-
-class ContactParser
-  def self.from_html(html)
-    doc = Hpricot(html)
-    new(doc)
-  end
-  def initialize(hpricot_doc)
-    @hpricot_doc = hpricot_doc
-  end
-  def service_identifiers
-    (@hpricot_doc/'.contactDetails .identifier').inject({}) do |hash, e|
-       service = (e.classes - ['identifier']).first
-       identifier = e.inner_text
-       hash[service] = identifier
-       hash
-    end
-  end
-  def identifier(service)
-    (@hpricot_doc/".contactDetails .#{service}.identifier").inner_text
-  end
-end
-
-contact_details_file = File.dirname(__FILE__) + '/contact-details.html'
-html = File.open(contact_details_file) { |f| f.read }
-parser = ContactParser.from_html(html)
-
-p parser.service_identifiers
-# =&gt; {"skype"=&gt;"skype-username", "msn"=&gt;"msn-username"}
-p parser.identifier('skype')
-# =&gt; 'skype-username'
-p parser.identifier('blurgh')
-# =&gt; ''
-</pre>
+      <p>``` code require ‘rubygems’ require ‘hpricot’</p>
+      <p>class ContactParser def self.from_html(html) doc = Hpricot(html) new(doc) end def initialize(hpricot_doc) @hpricot_doc = hpricot_doc end def service_identifiers (@hpricot_doc/’.contactDetails .identifier’).inject({}) do |hash, e| service = (e.classes - [‘identifier’]).first identifier = e.inner_text hash[service] = identifier hash end end def identifier(service) (@hpricot_doc/”.contactDetails .#{service}.identifier”).inner_text end end</p>
+      <p>contact_details_file = File.dirname(<strong>FILE</strong>) + ‘/contact-details.html’ html = File.open(contact_details_file) { |f| f.read } parser = ContactParser.from_html(html)</p>
+      <p>p parser.service_identifiers # =&gt; {“skype”=&gt;”skype-username”, “msn”=&gt;”msn-username”} p parser.identifier(‘skype’) # =&gt; ‘skype-username’ p parser.identifier(‘blurgh’) # =&gt; ‘’ ```</p>
       <h2>Further considerations</h2>
       <ul>
-        <li>If existing communication tools<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> were to integrate this parser then it would be easy to add a contact by giving the url of, for example, their blog.</li>
+        <li>If existing communication tools[1] were to integrate this parser then it would be easy to add a contact by giving the url of, for example, their blog.</li>
         <li>Author’s should be able to specify the order of the tools that they wish to use for communication. We could just assume that the list of contact details is in the author’s preferred order.</li>
         <li>This would be open to spam. Err, not too sure what to do about this.</li>
         <li>Ultimately, I’d like to hit a ‘communicate’ button in <a href="http://www.mozilla.com/en-US/firefox/">firefox</a> that automatically decides which communication protocols we have in common and allows me to get my message through.</li>
       </ul>
       <p>Anyone have any thoughts?</p>
       <p>Code is all over on <a href="http://chrisroos.googlecode.com/svn/trunk/contact-microformat/">google code</a>.</p>
-      <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> I’m thinking of multi protocol tools, like <a href="http://www.adiumx.com/">adium</a>, in particular.</p>
+      <p>[1] I’m thinking of multi protocol tools, like <a href="http://www.adiumx.com/">adium</a>, in particular.</p>
       <hr />
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-10-03-finding-similar-sites-by-mining-the-del-icio-us-data" rel="prev" title="Finding similar sites by mining the del.icio.us data">Finding similar sites by mining the del.icio.us data</a></li>

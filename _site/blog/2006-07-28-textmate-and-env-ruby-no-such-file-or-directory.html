@@ -39,34 +39,18 @@
       <p>So, I was coming up against this problem in TextMate just recently.</p>
       <p>It’s a bit of a strange error in that you get seemingly conflicting output from TextMate.</p>
       <p>In a new TextMate document, I could run (by using the well handy, and very new to me, Ctrl-r key combo)..</p>
-      <pre class="code">
-$ /usr/bin/env ruby --version
-=&gt; ruby 1.8.4 (2005-12-24) [i686-darwin8.7.1]
-
-$ /usr/bin/which ruby
-=&gt; /usr/local/bin/ruby
-
-#!/usr/local/bin/ruby
-
-puts "hello world"
-=&gt; hello world
-</pre>
+      <p>``` code $ /usr/bin/env ruby –version =&gt; ruby 1.8.4 (2005-12-24) [i686-darwin8.7.1]</p>
+      <p>$ /usr/bin/which ruby =&gt; /usr/local/bin/ruby</p>
+      <h1>!/usr/local/bin/ruby</h1>
+      <p>puts “hello world” =&gt; hello world ```</p>
       <p>However, if I ran..</p>
-      <pre class="code">
-#!/usr/bin/env ruby
-
-puts "hello world again"
-=&gt; env: ruby: No such file or directory
-</pre>
-      <p>Hmm, so <code>/usr/bin/env ruby --version</code> works, but when using the very same as the shebang interpreter we get an error. Odd huh.</p>
+      <p>``` code #!/usr/bin/env ruby</p>
+      <p>puts “hello world again” =&gt; env: ruby: No such file or directory ```</p>
+      <p>Hmm, so <code>/usr/bin/env ruby —version</code> works, but when using the very same as the shebang interpreter we get an error. Odd huh.</p>
       <p>Well, apparently not; if we read the textmate docs about <a href="http://macromates.com/textmate/manual/shell_commands#search_path">shell commands</a>.</p>
       <p>Although I, in no way, understand this completely; I blindly followed the instructions on that page and got TextMate back to health.</p>
       <p>In summary for those that don’t wish to read the docs..</p>
-      <pre class="code">
-$ mkdir ~/.MacOSX/
-$ cat &gt;&gt; ~/.MacOSX/environment.plist
-{ PATH = "/usr/local/bin"; }
-</pre>
+      <p><code>code $ mkdir ~/.MacOSX/ $ cat &gt;&gt; ~/.MacOSX/environment.plist { PATH = "/usr/local/bin"; }</code></p>
       <p><strong>Note</strong> You’ll want to change the path to the location of the binaries you want found.</p>
       <p>Then a quick log out and back in, and all is well with TextMate. Yay.</p>
       <hr />

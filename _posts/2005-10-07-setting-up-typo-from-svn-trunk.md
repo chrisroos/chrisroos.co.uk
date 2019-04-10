@@ -1,0 +1,62 @@
+---
+blog_post: true
+guid: a8792b94-ea94-49b1-bc88-c95fa5fcc02a
+title: Setting up Typo from SVN Trunk
+date:       2005-10-07 17:26:00 +01:00
+layout: blog
+---
+
+This is for [Apache](http://httpd.apache.org) 1.3 with
+[FastCgi](http://www.fastcgi.com), [Ruby](http://www.ruby-lang.org),
+[MySql](http://www.mysql.org) 4 and
+[Subversion](http://subversion.tigris.org) already installed on
+[FreeBsd](http://www.freebsd.org) 4.11 Stable.
+
+``` code
+$ svn checkout svn://leetsoft.com/typo/trunk typo
+```
+
+In the public directory, within the newly created typo directory, edit
+the dispatch.fcgi file, changing the \#! (shebang) line to
+/usr/local/bin/ruby.
+
+Create a database for the typo install.
+
+``` code
+$ mysql
+mysql> create database typo;
+mysql> quit
+```
+
+Copy the default database.yml.example file in config directory to
+database.yml. Edit the file with the mysql credentials for your server.
+Ignore (possibly remove) the development and test sections of the config
+file as these are not required in ‘production’.
+
+Use the mysql script in the db directory to create database tables.
+
+``` code
+$ mysql -Dtypo < db/schema.mysql.sql
+```
+
+**NB.** There is a mysql-v3 script as well. As far as I can tell the
+only difference is the database engine (InnoDb by default and MyIsam in
+v3).
+
+Add a new FastCgiServer to the Apache config (httpd.conf).
+
+``` code
+FastCgiServer /home/web/typo/public/dispatch.fcgi -initial-env RAILS_ENV=production
+```
+
+Add a virtual host for this new site.
+
+*To do*
+
+Restart apache.
+
+``` code
+$ apachectl graceful
+```
+
+That’s it.

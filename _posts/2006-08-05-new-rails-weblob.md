@@ -1,0 +1,9 @@
+---
+blog_post: true
+guid: c76a4986-7a68-41e9-a641-d0a4d8ec2716
+title: New rails weblob
+date:       2006-08-05 00:47:00 +01:00
+layout: blog
+---
+
+[he he he](http://railsblob.blogspot.com/)

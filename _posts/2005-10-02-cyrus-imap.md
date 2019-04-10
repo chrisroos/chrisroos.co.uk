@@ -1,0 +1,10 @@
+---
+blog_post: true
+guid: 34a7d349-977d-4f94-8d29-88af932f92e5
+title: Cyrus Imap
+date:       2005-10-02 20:18:16 +01:00
+layout: blog
+---
+
+I’ve been trying to install Cyrus Imap today. Initial writing is
+[here](/pages/cyrus-imap).
