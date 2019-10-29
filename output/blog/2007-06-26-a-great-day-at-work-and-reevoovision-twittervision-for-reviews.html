@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta charset="utf-8" />
+    <link href="/images/favicon.gif" rel="icon" />
+    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="http://www.myopenid.com/server" rel="openid.server" />
+    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+    <title>A great day at work and reevoovision (twittervision for reviews) - Chris Roos</title>
+    <link href="/blog/2007-06-23-automatically-downloading-my-ing-direct-transactions" rel="prev" />
+    <link href="/blog/2007-07-12-wesabe-open-up-their-api-and-ask-me-to-help-write-their-press-release" rel="next" />
+    <link href="/blog/2005-09-06-linspire" rel="first" />
+    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+    <link href="/blog" rel="index" />
+  </head>
+  <body>
+    <div id="page">
+      <div class="group" id="header">
+        <p id="site_name">
+          <a href="/">chris roos</a>
+        </p>
+        <ul class="navigation group">
+          <li>
+            <a href="/about" title="About me">about me</a>
+          </li>
+          <li>
+            <a href="/contact" title="Contact me">contact me</a>
+          </li>
+          <li>
+            <a href="/blog" title="Blog">blog</a>
+          </li>
+          <li>
+            <a href="/projects" title="Projects">projects</a>
+          </li>
+          <li>
+            <a href="/utilities" title="Utilities">utilities</a>
+          </li>
+        </ul>
+        <form action="http://www.google.co.uk/search" id="searchForm">
+          <div>
+            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
+            <input name="q" size="31" type="text" />
+            <input name="sa" type="submit" value="Search" />
+          </div>
+        </form>
+      </div>
+      <div id="content">
+        <abbr class="createdAt" title="2007-06-26T08:20:00+00:00">Tue, 26 Jun 07</abbr>
+        <h1>A great day at work and reevoovision (twittervision for reviews)</h1>
+        <p>A few of days ago I <a href="http://twitter.com/chrisroos/statuses/114202552">came across</a> <a href="http://twittervision.com/">twittervision</a>.  Just ten hours later I had checked some code into <a href="http://www.reevoo.com">our</a> repository that allows us to do the same thing (as twittervision) but for our reviews.  Yup, it was a very good day indeed.  Although the initial code was complete within a few hours, it needed a bit of polishing (kudos to <a href="http://po-ru.com">Paul</a>) which meant that we only got it deployed yesterday.  I guess one working day between proof of concept and deployment isn&#8217;t that bad&#8230;  Anyway, go check it out &#8211; <a href="http://www.reevoo.com/vision.html">reevoovision</a>.</p>
+        <h2>The days events</h2>
+        <p>I started the morning by creating an <a href="http://en.wikipedia.org/wiki/Xml">xml</a> feed of the ten most recently published reviews.  On filling a review, the reviewer is asked to enter their town, which needed to be converted to latitude/longitude to allow us to plot a point on the map.  Luckily, a little googling revealed the <a href="http://www.geonames.org/">geonames</a> web service that did exactly what I wanted.  So, using a combination of <a href="http://www.ruby-lang.org/en/">ruby</a>, <a href="http://rubyonrails.com/">rails</a>, <a href="http://curl.haxx.se/">curl</a>, <a href="http://code.whytheluckystiff.net/hpricot/">hpricot</a> and <a href="http://mongrel.rubyforge.org/">mongrel</a> I had a simple web server that downloaded and parsed the reviews, converted place name to lat/long, and plotted the results on a google map (with help from the <a href="http://pragmaticprogrammer.com/fridays.html">fridays</a> <a href="http://pragmaticprogrammer.com/titles/sdgmapi2/index.html">google map book</a>).  A good proof of concept but not quite right.</p>
+        <p>I was reminded that we collect the purchaser&#8217;s postcode from our retailers.  This, in combination with a <a href="http://www.easypeasy.com/guides/article.php?article=64">free list</a> of UK <a href="http://en.wikipedia.org/wiki/UK_postcodes">outcodes</a> (the first bit of the postcode) against latitude/longitude, allowed for much greater accuracy (well, to within about 2km) in plotting the location of the reviewer.</p>
+        <p>The next step was to polish up the rough demo.  Instead of the previous server side hackery, I used the excellent <a href="http://jquery.com">jquery</a> javascript library to perform an &#8220;Ajax&#8221; request of the reviews and parse the xml to build a simple hash of the required data.  Using the twittervision source as reference, I got a &#8216;proper&#8217; (i.e. reviews popping up in sequence) demo running.</p>
+        <p>From here, it was a basic case of tidying up some rough edges.  Instead of returning the reviews data as xml, I converted it to <a href="http://json.org/">json</a> to make for trivial parsing in javascript.  I also added the jquery <a href="http://jquery.com/plugins/project/dimensions">dimensions</a> plugin to resize the containing div, and in turn the map, to the size of the page.  The final touch was attempting to keep the UK centered in the window.</p>
+        <p>Reevoovision currently selects and displays published reviews at random to provide a constantly updating map, although maybe it&#8217;d be cool to get it to display submitted/published reviews in real-time.</p>
+        <p>I can&#8217;t get over how addictive it is to watch the reviews pop-up all over the country, it really emphasises the fact that these are actually real people writing about their experiences.  Hmm, that sounds a bit sales &amp; marketing.  I do mean it though, honest.</p>
+        <hr />
+        <ul class="navigation group">
+          <li class="previousPost">
+            &laquo; (older)
+            <a class="previousPost" href="/blog/2007-06-23-automatically-downloading-my-ing-direct-transactions" rel="prev" title="Automatically downloading my Ing Direct transactions">
+              Automatically downloading my Ing Direct transactions
+            </a>
+          </li>
+          <li class="nextPost">
+            <a class="nextPost" href="/blog/2007-07-12-wesabe-open-up-their-api-and-ask-me-to-help-write-their-press-release" rel="next" title="Wesabe open up their API and ask me to help write their press release...">
+              Wesabe open up their API and ask me to help write their press release...
+            </a>
+            (newer) &raquo;
+          </li>
+        </ul>
+      </div>
+      <div id="footer">
+        <p class="license">
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
+            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
+          </a>
+          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
+          by
+          <span class="vcard">
+            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
+          </span>
+          is licensed under a
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
+        </p>
+      </div>
+    </div>
+    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+  </body>
+</html>

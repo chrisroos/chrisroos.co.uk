@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta charset="utf-8" />
+    <link href="/images/favicon.gif" rel="icon" />
+    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="http://www.myopenid.com/server" rel="openid.server" />
+    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+    <title>Hack the Government Day (Rewired State) - Chris Roos</title>
+    <link href="/blog/2009-03-04-posting-bookmarks-to-delicious-from-my-android-g1" rel="prev" />
+    <link href="/blog/2009-03-30-installing-passenger-2-1-2-on-centos-5-2" rel="next" />
+    <link href="/blog/2005-09-06-linspire" rel="first" />
+    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+    <link href="/blog" rel="index" />
+    <meta content='An overview of what "team activeplaces" achieved at rewiredstate.' name="description" />
+  </head>
+  <body>
+    <div id="page">
+      <div class="group" id="header">
+        <p id="site_name">
+          <a href="/">chris roos</a>
+        </p>
+        <ul class="navigation group">
+          <li>
+            <a href="/about" title="About me">about me</a>
+          </li>
+          <li>
+            <a href="/contact" title="Contact me">contact me</a>
+          </li>
+          <li>
+            <a href="/blog" title="Blog">blog</a>
+          </li>
+          <li>
+            <a href="/projects" title="Projects">projects</a>
+          </li>
+          <li>
+            <a href="/utilities" title="Utilities">utilities</a>
+          </li>
+        </ul>
+        <form action="http://www.google.co.uk/search" id="searchForm">
+          <div>
+            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
+            <input name="q" size="31" type="text" />
+            <input name="sa" type="submit" value="Search" />
+          </div>
+        </form>
+      </div>
+      <div id="content">
+        <abbr class="createdAt" title="2009-03-09T22:14:51+00:00">Mon, 09 Mar 09</abbr>
+        <h1>Hack the Government Day (Rewired State)</h1>
+        <p><a href="http://coupde.com/">James Darling</a>, <a href="http://www.memespring.co.uk/">Richard Pope</a> and <a href="http://www.emmamulqueeny.com/">Emma Mulqueeny</a> organised the excellent <a href="http://rewiredstate.org/">Rewired State</a> on Saturday (7th March) at the new <a href="http://www.guardian.co.uk/">Guardian</a> offices in Kings Cross.  The idea behind rewiredstate was pretty simple (from rewiredstate.org):</p>
+        <p>bq.<br />
+          Government isn&#8217;t very good at computers.<br />
+          They spend millions to produce mediocre websites, hide away really useful public information and generally get it wrong. Which is a shame.</p>
+        <p>I had a plan for the day.  It&#8217;s a plan I&#8217;d had for about a year or so and it involved the atrocity that is <a href="http://activeplaces.com/">Active Places</a> (a <a href="http://www.sportengland.org/">Sport England</a> funded project).  It&#8217;s really hard to find information about sports facilities (I was specifically interested in public swimming pools) in the UK.  I know this because I&#8217;ve tried to find public swimming pools that are either near where I stay (when in London), easily accessible from a station on the commute, or near work.  At the moment that involves finding and searching the websites of each of the councils whose boundaries I cross or am near.  This is certainly not ideal.  It&#8217;s more frustrating because the government have this information locked up (the entire site requires cookies so there&#8217;s no chance of it appearing in google) in activeplaces.  Oh, and there&#8217;s another little gem of information: <a href="http://www.theyworkforyou.com/wrans/?id=2005-06-13b.3605.h">activeplaces cost £5.2 million over three years</a>.</p>
+        <p>Before the event on Saturday, I spent quite a while scraping the data out of activeplaces.  This involved issuing a search for each of the postcode outcodes in England (I thought I had this postcode data for the UK but apparently didn&#8217;t) and parsing the search results to get a unique list of sports centres.  I could then download the relevant site, and facility (which is in separate pages and displayed through an iframe on the main site page), information for each centre.</p>
+        <p>On the day I was lucky enough to get help from <a href="http://lazyatom.com/">James Adam</a>, <a href="http://jamesandre.ws/">James Andrews</a> and <a href="http://tomtaylor.co.uk/">Tom Taylor</a> to work on the <a href="http://projects.rewiredstate.org/projects/active-places">active places project</a>.  I had a rough plan to <a href="http://en.wikipedia.org/wiki/Geocoding">geocode</a> the sports facility data we had, parse the downloaded site data to extract the access type of the facility (i.e. private membership or publicly accessible) and create a simple alternative to activeplaces.  Tom helped me geocode the data (using <a href="http://graticule.rubyforge.org/graticule/">graticule</a> and the <a href="http://www.multimap.com/openapi/">multimap api</a>), while James Adam parsed the access type and James Andrews worked on the <a href="http://github.com/ja/activeplaces/tree/master">site</a>.  The geocoded data made it incredibly easy to produce a <a href="http://en.wikipedia.org/wiki/Keyhole_Markup_Language"><span class="caps">KML</span></a> file of sites that Tom could consume in his excellent <a href="http://www.iamnear.net/">I am near</a> service (<a href="http://swimmingpools.iamnear.net/">swimming pools I am near</a>).  At the last minute I put together a very simple <a href="http://www.sinatrarb.com/">sinatra</a> webservice that allows for the querying of the activeplaces data (by facility and access type) and returns the data in kml (<a href="http://chrisroos.googlecode.com/svn/trunk/scratch/public-swimming-pools.co.uk">source</a>).  You can plug the url of this kml file directly into <a href="http://maps.google.co.uk">google maps</a> or download it and plug it into <a href="http://earth.google.com/">google earth</a>.  All that was left was to present (&#8216;slides&#8217; are on <a href="http://www.flickr.com/photos/chrisjroos/sets/72157614969161427/">flickr</a>) what we&#8217;d done (in just two minutes) and go to the pub.</p>
+        <p><embed src="http://blip.tv/play/AfHWWAA" type="application/x-shockwave-flash" width="640" height="510" allowscriptaccess="always" allowfullscreen="true"></embed></p>
+        <p>There was a chap from <a href="http://www.direct.gov.uk">DirectGov</a> at the event and he mentioned that he was interested in us continuing the work we&#8217;d started.  I&#8217;ve also spoken to someone from <a href="http://www.london2012.com/">London 2012</a> as it sounds like they&#8217;re aiming to do something similar.  So, not only was it a great day but there&#8217;s a chance that we might be able to help shape some of the stuff that the government plans to work on.</p>
+        <hr />
+        <ul class="navigation group">
+          <li class="previousPost">
+            &laquo; (older)
+            <a class="previousPost" href="/blog/2009-03-04-posting-bookmarks-to-delicious-from-my-android-g1" rel="prev" title="Posting Bookmarks to Delicious From My Android G1">
+              Posting Bookmarks to Delicious From My Android G1
+            </a>
+          </li>
+          <li class="nextPost">
+            <a class="nextPost" href="/blog/2009-03-30-installing-passenger-2-1-2-on-centos-5-2" rel="next" title="Installing Passenger 2.1.2 on CentOS 5.2">
+              Installing Passenger 2.1.2 on CentOS 5.2
+            </a>
+            (newer) &raquo;
+          </li>
+        </ul>
+      </div>
+      <div id="footer">
+        <p class="license">
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
+            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
+          </a>
+          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
+          by
+          <span class="vcard">
+            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
+          </span>
+          is licensed under a
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
+        </p>
+      </div>
+    </div>
+    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+  </body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta charset="utf-8" />
+    <link href="/images/favicon.gif" rel="icon" />
+    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="http://www.myopenid.com/server" rel="openid.server" />
+    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+    <title>Combining distributed small tools as an alternative to Backpack et al - Chris Roos</title>
+    <link href="/blog/2007-01-12-encapsulation-in-active-record-objects" rel="prev" />
+    <link href="/blog/2007-01-29-visualising-the-changing-responsibilities-of-objects" rel="next" />
+    <link href="/blog/2005-09-06-linspire" rel="first" />
+    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+    <link href="/blog" rel="index" />
+  </head>
+  <body>
+    <div id="page">
+      <div class="group" id="header">
+        <p id="site_name">
+          <a href="/">chris roos</a>
+        </p>
+        <ul class="navigation group">
+          <li>
+            <a href="/about" title="About me">about me</a>
+          </li>
+          <li>
+            <a href="/contact" title="Contact me">contact me</a>
+          </li>
+          <li>
+            <a href="/blog" title="Blog">blog</a>
+          </li>
+          <li>
+            <a href="/projects" title="Projects">projects</a>
+          </li>
+          <li>
+            <a href="/utilities" title="Utilities">utilities</a>
+          </li>
+        </ul>
+        <form action="http://www.google.co.uk/search" id="searchForm">
+          <div>
+            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
+            <input name="q" size="31" type="text" />
+            <input name="sa" type="submit" value="Search" />
+          </div>
+        </form>
+      </div>
+      <div id="content">
+        <abbr class="createdAt" title="2007-01-12T11:53:00+00:00">Fri, 12 Jan 07</abbr>
+        <h1>Combining distributed small tools as an alternative to Backpack et al</h1>
+        <p>For a while now, I&#8217;ve been thinking/dreaming of having a number of very specific, distributed services.  These would be no more than additions to the single purpose services we already use (notably, in my case, <a href="http://flickr.com">flickr</a> for photos, this blog for articulating thought and <a href="http://del.icio.us">del.icio.us</a> for storing bookmarks).  Some additions I&#8217;d like to see<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> are:</p>
+        <ul>
+        	<li>A way to record and tag financial transactions</li>
+        </ul>
+        <p>Although I want to be able to record the transactions in some kind of accounting app, I also want each transaction to be a resource on the web that I can link to and bookmark (a RESTful accounts app if you like)</p>
+        <ul>
+        	<li>A way to record and tag any text (i.e. thoughts and ideas that are not quite blog posts)</li>
+        </ul>
+        <p>To be fair, a secondary blog could be set-up to do this.</p>
+        <ul>
+        	<li>A way to add multiple comments to any resource on the web</li>
+        </ul>
+        <p>Think &#8211; being able to bookmark the same uri multiple times in del.icio.us with different notes against each bookmark.  Actually, I wonder why these sort of distributed comment systems are not more prevalent &#8211; it seems kinda odd that every blogging engine re-implements something that could be done once, and done well.</p>
+        <ul>
+        	<li>A way to expose an email or an email conversation at a given uri (a permailink maybe? he he)</li>
+        </ul>
+        <p>I think one immediate benefit of this is the ability to share emails with people in the same organisation/group as you without having to forward them all on.</p>
+        <p>So, how would having these types of services help us re-create a backpack type page at present?</p>
+        <p>Well, I&#8217;m not sure how good this example is, but let&#8217;s think of selling an item on <a href="http://www.ebay.co.uk">ebay</a>.  At the moment, I end up with lots of distributed information about a single sale:</p>
+        <ul>
+        	<li>invoices from ebay</li>
+        	<li>transactions on a statement (from my bank and paypal)</li>
+        	<li>emails from ebay and buyers</li>
+        	<li>a page that represents the item on ebay</li>
+        	<li>pictures of the item on flickr</li>
+        	<li>physical receipts for posting the item</li>
+        </ul>
+        <p>This is fine until you want to interrogate the data.  Try finding out how much money you made/lost, when it was sent, who it was sent to, and the problems are obvious.</p>
+        <p>One solution would be to record all the information for a given item in a page in backpack (or any similar service &#8211; a simple wiki would do).  But now try to query the data for two items sold, or partially query one item and the problems become evident again.</p>
+        <p>I think this is where our funky new distributed system can help.  Following the same ebay selling process as above:</p>
+        <ul>
+        	<li>We create a text snippet that provides us with a placeholder uri for this item.  This would be something like &#8216;sale of computer&#8217;</li>
+        	<li>We upload photos of the item to flickr, tagged with our placeholder</li>
+        	<li>We list the item in ebay, tagged with our placeholder</li>
+        	<li>We record a financial transaction that represents the cost of listing the item, tagged with our placeholder</li>
+        	<li>We upload any relevant emails from ebay about the listing/sale of our item, tagged with our placeholder</li>
+        	<li>We record a financial transaction that represents our income from the sale of the item, tagged with our placeholder</li>
+        	<li>We record a note that states when and how we sent the item, tagged with our placeholder</li>
+        	<li>We record a financial transaction that represents our cost for sending the item, tagged with our placeholder</li>
+        </ul>
+        <p>The important thing is that all of these resources are tagged with a common uri.  The uri that represents our item for sale.  At the simplest level, this makes auto-generating a backpack type page very simple &#8211; we just aggregate<sup class="footnote" id="fnr2"><a href="#fn2">2</a></sup> all of the data tagged with our item uri.  Tagging these items with a higher level tag, such as &#8216;ebay&#8217;, will allow us to search across multiple sales/purchase.</p>
+        <p>Going even further, using opensearch with a simple custom front-end (basically just a parser) gives us even greater querying capabilities.  I could imagine searching for something like &#8220;ebay finance:expenditure&#8221; to get a list of all items (descriptions, notes, pictures etc) we&#8217;ve sold on ebay along with our expenditure.  Our simple search engine would know to search for all items tagged with ebay, but only those transactions that are tagged with expenditure (i.e. costs to us).</p>
+        <p>Does this make sense/sound feasible to anyone else?  Indeed, has someone else already presented these ideas in a more legible/understandable way?  It all seems to make great sense to me but I&#8217;ve spent quite a while thinking about it (and what seems like ages just writing this post), meaning there&#8217;s every chance I&#8217;ve missed something obvious.  I&#8217;d appreciate any thoughts.</p>
+        <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> I did had every intention of developing these things as a proof of concept, but, on the basis that I&#8217;m unlikely to get around to it, and that I do actually think something like this is a good idea, I thought I&#8217;d jot my thoughts here.</p>
+        <p class="footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a> I started out thinking that the tags would be stored against the resource itself &#8211; the same way that the tag for a photo in flickr is stored against that photo.  I was also assuming that these services would be <a href="http://opensearch.org">opensearch</a> enabled to allow searching of the tags.  As I&#8217;ve been writing the post I&#8217;ve realised that, providing everything has a uri, we can use del.icio.us as our tagging mechanism and as our search engine.</p>
+        <hr />
+        <ul class="navigation group">
+          <li class="previousPost">
+            &laquo; (older)
+            <a class="previousPost" href="/blog/2007-01-12-encapsulation-in-active-record-objects" rel="prev" title="Encapsulation in Active Record objects">
+              Encapsulation in Active Record objects
+            </a>
+          </li>
+          <li class="nextPost">
+            <a class="nextPost" href="/blog/2007-01-29-visualising-the-changing-responsibilities-of-objects" rel="next" title="Visualising the changing responsibilities of objects">
+              Visualising the changing responsibilities of objects
+            </a>
+            (newer) &raquo;
+          </li>
+        </ul>
+      </div>
+      <div id="footer">
+        <p class="license">
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
+            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
+          </a>
+          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
+          by
+          <span class="vcard">
+            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
+          </span>
+          is licensed under a
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
+        </p>
+      </div>
+    </div>
+    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+  </body>
+</html>

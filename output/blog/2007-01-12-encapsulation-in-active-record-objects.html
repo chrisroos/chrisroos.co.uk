@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta charset="utf-8" />
+    <link href="/images/favicon.gif" rel="icon" />
+    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="http://www.myopenid.com/server" rel="openid.server" />
+    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+    <title>Encapsulation in Active Record objects - Chris Roos</title>
+    <link href="/blog/2007-01-12-move-over-seetickets-com-youve-got-nothing-on-orange-co-uk" rel="prev" />
+    <link href="/blog/2007-01-12-combining-distributed-small-tools-as-an-alternative-to-backpack-et-al" rel="next" />
+    <link href="/blog/2005-09-06-linspire" rel="first" />
+    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+    <link href="/blog" rel="index" />
+  </head>
+  <body>
+    <div id="page">
+      <div class="group" id="header">
+        <p id="site_name">
+          <a href="/">chris roos</a>
+        </p>
+        <ul class="navigation group">
+          <li>
+            <a href="/about" title="About me">about me</a>
+          </li>
+          <li>
+            <a href="/contact" title="Contact me">contact me</a>
+          </li>
+          <li>
+            <a href="/blog" title="Blog">blog</a>
+          </li>
+          <li>
+            <a href="/projects" title="Projects">projects</a>
+          </li>
+          <li>
+            <a href="/utilities" title="Utilities">utilities</a>
+          </li>
+        </ul>
+        <form action="http://www.google.co.uk/search" id="searchForm">
+          <div>
+            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
+            <input name="q" size="31" type="text" />
+            <input name="sa" type="submit" value="Search" />
+          </div>
+        </form>
+      </div>
+      <div id="content">
+        <abbr class="createdAt" title="2007-01-12T01:37:00+00:00">Fri, 12 Jan 07</abbr>
+        <h1>Encapsulation in Active Record objects</h1>
+        <p>I&#8217;ve been meaning to finish a post on this subject for ages.  As I probably won&#8217;t finish it in its current incarnation, I thought I&#8217;d at least get something up here.</p>
+        <p><a href="http://www.rubyonrails.org/api/classes/ActiveRecord/Base.html">Active Record</a> <a href="http://www.rubyonrails.org/api/classes/ActiveRecord/Associations/ClassMethods.html">associations</a> are brilliant for quickly putting together an object graph.  They&#8217;re not so brilliant for testing, or keeping the code particularly tidy.  They quickly lead to (and even encourage) train-wreck expressions in your code.  Diving straight into an example:</p>
+        <pre class="code ruby">&#x000A;class Person &lt; ActiveRecord::Base&#x000A;  has_many :hobbies&#x000A;end&#x000A;class Hobby &lt; ActiveRecord::Base&#x000A;  belongs_to :person&#x000A;end</pre>
+        <p>Because the hobbies object is publicly accessible from a person object, it allows us to reach in and touch things we shouldn&#8217;t.</p>
+        <pre class="code ruby">&#x000A;cycling = Hobby.new&#x000A;&#x000A;# We shouldn't manipulate the hobbies object directly...&#x000A;chris = Person.new&#x000A;chris.hobbies.add(cycling) # Uh oh - touching things we shouldn't&#x000A;&#x000A;# ...rather, it'd be better to add a wrapper method for the functionality we actually need&#x000A;class Person &lt; ActiveRecord::Base&#x000A;  def add_hobby(hobby)&#x000A;    hobbies.add(hobby)&#x000A;  end&#x000A;end&#x000A;chris = Person.new&#x000A;chris.add_hobby(cycling) # Ahh, that's much better</pre>
+        <p>The revised Person class above follows the <a href="http://en.wikipedia.org/wiki/Law_of_Demeter">law of demeter</a>.  As well as making the code look a little neater (no train-wrecks to see here), it makes it easier to test.  To illustrate the testing point, I&#8217;m going to <a href="http://weblog.jamisbuck.org/2007/1/9/extending-activerecord-associations">extend</a> the <a href="http://ryandaigle.com/articles/2006/12/03/extend-your-activerecord-association-methods">association</a> in this example.</p>
+        <pre class="code ruby">&#x000A;# We end up with a large and not very clear test&#x000A;class Person &lt; ActiveRecord::Base&#x000A;  has_many :hobbies do&#x000A;    def find_favourite&#x000A;      find(:first, :conditions =&gt; ['favourite = true'])&#x000A;    end&#x000A;  end&#x000A;end&#x000A;&#x000A;class MyContrivedTest &lt; Test::Unit::TestCase&#x000A;  def test_should_find_my_favourite_hobby&#x000A;    hobbies = mock&#x000A;    hobbies.expects(:find_favourite)&#x000A;    person = stub(:hobbies =&gt; hobbies)&#x000A;    hobby_finder = HobbyFinder.new&#x000A;    hobby_finder.find_favourite(person)&#x000A;  end&#x000A;end&#x000A;&#x000A;# This way, we end up with a slightly cleaner looking class (imo) and a smaller, cleaner test&#x000A;class Person &lt; ActiveRecord::Base&#x000A;  has_many :hobbies&#x000A;  def find_my_favourite_hobby&#x000A;    hobbies.find(:first, :conditions =&gt; ['favourite = true'])&#x000A;  end&#x000A;end&#x000A;&#x000A;class MyContrivedTest &lt; Test::Unit::TestCase&#x000A;  def test_should_find_my_favourite_hobby&#x000A;    person = mock&#x000A;    person.expects(:find_my_favourite_hobby)&#x000A;    hobby_finder = HobbyFinder.new&#x000A;    hobby_finder.find_favourite(person)&#x000A;  end&#x000A;end</pre>
+        <p>Interestingly enough, if we had <a href="http://en.wikipedia.org/wiki/Test_driven_development">test driven</a> the development of the above code, we would almost certainly have ended up with something similar (interface-wise) to the example that has a wrapper around the association proxy.</p>
+        <p>So, with all of this in mind, I&#8217;ve hacked together a real quick <a href="http://chrisroos.googlecode.com/svn/trunk/plugins/private_associations/">plugin</a> that adds a corresponding <em>private method for each of the four (has_one, has_many, belongs_to and has_and_belongs_to</em>many) associations.  Using the _private alternative will do exactly the same as the original method but it will make all of the dynamically created methods private.  So.  It&#8217;ll still be possible to write the wrapper around the association (as we did in the test above) but it won&#8217;t be possible to reach in and touch things that we shouldn&#8217;t.<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup></p>
+        <p>There is at least one problem (there may be many more I&#8217;m not aware of) with using the <em>private association methods.  If you have validation set-up for one of the associations (e.g. validates</em>associated) it will fail.  This is because validation happens from outside the instance of the object and therefore needs to access the association.  Although I haven&#8217;t thought this through fully, I&#8217;m actually wondering if validation (in its current form) takes a bit of a back seat under this new world order.  I think that one of the reasons validation is on the object itself is because there are many many ways to create the said object.  However, using these private associations and disabling the persistence methods (create, save, update etc) on an associated object may allow us to have a single point of object creation and persistence.  If we had that, then we wouldn&#8217;t need the Active Record validations anyway.  Just a thought&#8230;</p>
+        <p>Just one final note.  <a href="http://www.daveastels.com/">Dave Astels</a> has a good <a href="http://blog.daveastels.com/articles/2006/10/24/encapsulation-in-action">article</a> about encapsulation in rails, as <a href="http://www.reevoo.com/blogs/bengriffiths/2006/10/24/rails-like-or-oo/">referred to</a> by <a href="http://www.reevoo.com/blogs/bengriffiths">Ben</a></p>
+        <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> Ok.  That is, of course, a blatant lie &#8211; we can still access the private association &#8211; this is <a href="http://www.ruby-lang.org">ruby</a> remember.  The important point is that we&#8217;ve made our intentions more explicit.</p>
+        <hr />
+        <ul class="navigation group">
+          <li class="previousPost">
+            &laquo; (older)
+            <a class="previousPost" href="/blog/2007-01-12-move-over-seetickets-com-youve-got-nothing-on-orange-co-uk" rel="prev" title="Move over seetickets.com - you've got nothing on orange.co.uk">
+              Move over seetickets.com - you've got nothing on orange.co.uk
+            </a>
+          </li>
+          <li class="nextPost">
+            <a class="nextPost" href="/blog/2007-01-12-combining-distributed-small-tools-as-an-alternative-to-backpack-et-al" rel="next" title="Combining distributed small tools as an alternative to Backpack et al">
+              Combining distributed small tools as an alternative to Backpack et al
+            </a>
+            (newer) &raquo;
+          </li>
+        </ul>
+      </div>
+      <div id="footer">
+        <p class="license">
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
+            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
+          </a>
+          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
+          by
+          <span class="vcard">
+            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
+          </span>
+          is licensed under a
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
+        </p>
+      </div>
+    </div>
+    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta charset="utf-8" />
+    <link href="/images/favicon.gif" rel="icon" />
+    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="http://www.myopenid.com/server" rel="openid.server" />
+    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+    <title>Testing ActionMailer::Base.server_settings - Chris Roos</title>
+    <link href="/blog/2007-12-07-more-on-those-friendly-urls" rel="prev" />
+    <link href="/blog/2007-12-14-bookmarklet-favelet-limits-in-internet-explorer-6-and-7" rel="next" />
+    <link href="/blog/2005-09-06-linspire" rel="first" />
+    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+    <link href="/blog" rel="index" />
+  </head>
+  <body>
+    <div id="page">
+      <div class="group" id="header">
+        <p id="site_name">
+          <a href="/">chris roos</a>
+        </p>
+        <ul class="navigation group">
+          <li>
+            <a href="/about" title="About me">about me</a>
+          </li>
+          <li>
+            <a href="/contact" title="Contact me">contact me</a>
+          </li>
+          <li>
+            <a href="/blog" title="Blog">blog</a>
+          </li>
+          <li>
+            <a href="/projects" title="Projects">projects</a>
+          </li>
+          <li>
+            <a href="/utilities" title="Utilities">utilities</a>
+          </li>
+        </ul>
+        <form action="http://www.google.co.uk/search" id="searchForm">
+          <div>
+            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
+            <input name="q" size="31" type="text" />
+            <input name="sa" type="submit" value="Search" />
+          </div>
+        </form>
+      </div>
+      <div id="content">
+        <abbr class="createdAt" title="2007-12-07T17:23:00+00:00">Fri, 07 Dec 07</abbr>
+        <h1>Testing ActionMailer::Base.server_settings</h1>
+        <p>I needed to use an external <span class="caps">SMTP</span> server to get mail through to certain providers (notably, hotmail).</p>
+        <p>I was sending my <a href="http://api.rubyonrails.org/classes/ActionMailer/Base.html">action mailer</a> email but couldn&#8217;t be sure that I&#8217;d configured the settings correctly as I didn&#8217;t get any detailed log output (or at least not where I was looking).</p>
+        <p>I dug into the code and found the lines that were responsible for sending the email.  Replaying that code in the console allowed me to identify the problem immediately (a missing domain in my case).  I thought I&#8217;d paste those few lines here in case they&#8217;re of some use to someone else.</p>
+        <pre class="code ruby">&#x000A;message, from, to = 'test message', 'sender-email', 'recipient-email'&#x000A;s = ActionMailer::Base.server_settings&#x000A;Net::SMTP.start(s[:address], s[:port], s[:domain], s[:user_name], s[:password], s[:authentication]) do |smtp|&#x000A;  smtp.sendmail(message, from, to)&#x000A;end</pre>
+        <hr />
+        <ul class="navigation group">
+          <li class="previousPost">
+            &laquo; (older)
+            <a class="previousPost" href="/blog/2007-12-07-more-on-those-friendly-urls" rel="prev" title="More on those friendly URLs">
+              More on those friendly URLs
+            </a>
+          </li>
+          <li class="nextPost">
+            <a class="nextPost" href="/blog/2007-12-14-bookmarklet-favelet-limits-in-internet-explorer-6-and-7" rel="next" title="Bookmarklet (Favelet) limits in Internet Explorer 6 (and 7?)">
+              Bookmarklet (Favelet) limits in Internet Explorer 6 (and 7?)
+            </a>
+            (newer) &raquo;
+          </li>
+        </ul>
+      </div>
+      <div id="footer">
+        <p class="license">
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
+            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
+          </a>
+          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
+          by
+          <span class="vcard">
+            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
+          </span>
+          is licensed under a
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
+        </p>
+      </div>
+    </div>
+    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+  </body>
+</html>

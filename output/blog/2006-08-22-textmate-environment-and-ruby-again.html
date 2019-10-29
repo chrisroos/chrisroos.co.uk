@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta charset="utf-8" />
+    <link href="/images/favicon.gif" rel="icon" />
+    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="http://www.myopenid.com/server" rel="openid.server" />
+    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+    <title>Textmate environment and ruby (again) - Chris Roos</title>
+    <link href="/blog/2006-08-22-rails-leaking-some-strings-in-development" rel="prev" />
+    <link href="/blog/2006-09-09-recommended-web-host" rel="next" />
+    <link href="/blog/2005-09-06-linspire" rel="first" />
+    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+    <link href="/blog" rel="index" />
+  </head>
+  <body>
+    <div id="page">
+      <div class="group" id="header">
+        <p id="site_name">
+          <a href="/">chris roos</a>
+        </p>
+        <ul class="navigation group">
+          <li>
+            <a href="/about" title="About me">about me</a>
+          </li>
+          <li>
+            <a href="/contact" title="Contact me">contact me</a>
+          </li>
+          <li>
+            <a href="/blog" title="Blog">blog</a>
+          </li>
+          <li>
+            <a href="/projects" title="Projects">projects</a>
+          </li>
+          <li>
+            <a href="/utilities" title="Utilities">utilities</a>
+          </li>
+        </ul>
+        <form action="http://www.google.co.uk/search" id="searchForm">
+          <div>
+            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
+            <input name="q" size="31" type="text" />
+            <input name="sa" type="submit" value="Search" />
+          </div>
+        </form>
+      </div>
+      <div id="content">
+        <abbr class="createdAt" title="2006-08-22T22:53:00+00:00">Tue, 22 Aug 06</abbr>
+        <h1>Textmate environment and ruby (again)</h1>
+        <p>I&#8217;ve recently upgraded the version of ruby on my machine and came up against problems similar to <a href="/blog/2006-07-28-textmate-and-env-ruby-no-such-file-or-directory">this</a>.  The problem previously was that <a href="http://www.macromates.com">textmate</a> wasn&#8217;t finding <a href="http://www.ruby-lang.org">ruby</a> at all.  This time, textmate was finding the wrong version of ruby.</p>
+        <p>I found the following script useful in determining exactly which ruby binary textmate was using.</p>
+        <pre class="code ruby">&#x000A;#!/usr/bin/env ruby&#x000A;&#x000A;require 'rbconfig'&#x000A;puts Config::CONFIG['bindir']</pre>
+        <p>Simply paste that into a textmate document, select it and hit Ctrl-r.  The path of the ruby binary should print right there in the window.</p>
+        <p>To see far more info than you&#8217;ll ever likely need, replace the line starting <code>puts</code> above, with the following..</p>
+        <pre class="code ruby">&#x000A;Config::CONFIG.sort.each do |key, value|&#x000A;  puts "#{key} = #{value}"&#x000A;end</pre>
+        <hr />
+        <ul class="navigation group">
+          <li class="previousPost">
+            &laquo; (older)
+            <a class="previousPost" href="/blog/2006-08-22-rails-leaking-some-strings-in-development" rel="prev" title="Rails leaking some strings in development">
+              Rails leaking some strings in development
+            </a>
+          </li>
+          <li class="nextPost">
+            <a class="nextPost" href="/blog/2006-09-09-recommended-web-host" rel="next" title="Recommended web host">
+              Recommended web host
+            </a>
+            (newer) &raquo;
+          </li>
+        </ul>
+      </div>
+      <div id="footer">
+        <p class="license">
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
+            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
+          </a>
+          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
+          by
+          <span class="vcard">
+            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
+          </span>
+          is licensed under a
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
+        </p>
+      </div>
+    </div>
+    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+  </body>
+</html>

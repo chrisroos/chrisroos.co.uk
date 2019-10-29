@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta charset="utf-8" />
+    <link href="/images/favicon.gif" rel="icon" />
+    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="http://www.myopenid.com/server" rel="openid.server" />
+    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+    <title>Posting Bookmarks to Delicious From My Android G1 - Chris Roos</title>
+    <link href="/blog/2009-02-24-gracefully-degrade-the-google-custom-search-form-so-that-it-works-without-javascript" rel="prev" />
+    <link href="/blog/2009-03-09-hack-the-government-day-rewired-state" rel="next" />
+    <link href="/blog/2005-09-06-linspire" rel="first" />
+    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+    <link href="/blog" rel="index" />
+    <meta content="By hooking together Email, a simple Ruby/Rack server and the delicious API I'm able to post bookmarks from my G1 to delicious" name="description" />
+  </head>
+  <body>
+    <div id="page">
+      <div class="group" id="header">
+        <p id="site_name">
+          <a href="/">chris roos</a>
+        </p>
+        <ul class="navigation group">
+          <li>
+            <a href="/about" title="About me">about me</a>
+          </li>
+          <li>
+            <a href="/contact" title="Contact me">contact me</a>
+          </li>
+          <li>
+            <a href="/blog" title="Blog">blog</a>
+          </li>
+          <li>
+            <a href="/projects" title="Projects">projects</a>
+          </li>
+          <li>
+            <a href="/utilities" title="Utilities">utilities</a>
+          </li>
+        </ul>
+        <form action="http://www.google.co.uk/search" id="searchForm">
+          <div>
+            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
+            <input name="q" size="31" type="text" />
+            <input name="sa" type="submit" value="Search" />
+          </div>
+        </form>
+      </div>
+      <div id="content">
+        <abbr class="createdAt" title="2009-03-04T23:09:41+00:00">Wed, 04 Mar 09</abbr>
+        <h1>Posting Bookmarks to Delicious From My Android G1</h1>
+        <p>For a while I&#8217;ve wanted the ability to bookmark pages in <a href="http://delicious.com">delicious</a> from my <a href="http://code.google.com/android/">Android</a> <a href="http://www.t-mobileg1.com/">G1</a>.  After a few weeks of occasionally looking to see if anyone had done the work for me I started to investigate building an Android app.  I got about as far as reading through some of the tutorials but never seemed to find the time to really get stuck in.  In the meantime, to get around the limitations of the client side only bookmarks on the G1, I would save a draft email containing the <a href="http://en.wikipedia.org/wiki/Uniform_Resource_Locator"><span class="caps">URL</span></a> of the page I was interested in and later open it on a desktop machine and post to delicious.  Saving a draft is fairly trivial in that you visit a page in the browser, hit the share menu item, choose <a href="http://mail.google.com">gmail</a> and hit save draft (sharing via gmail pastes the <span class="caps">URL</span> of the current page into the body of the email) but the whole process was a bit cumbersome.  I think it was about a week ago when I realised that I should just be able to email my bookmarks to delicious directly.  A little searching appeared to suggest that there was nothing to let me do this<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> so I went about hooking a few things together in order to get the functionality I was after.</p>
+        <p>I have recently discovered just how simple and powerful <a href="http://rack.rubyforge.org/">rack</a> is, especially when combined with <a href="http://www.modrails.com/">Phusion Passenger</a> (which makes it stupidly easy to deploy rack apps).  It seemed ideal for the job.  Combine that with <a href="http://smtp2web.com/">smtp2web</a> (I recently rediscovered this after catching up on all the <a href="http://blog.webhooks.org/">webhook</a> buzz that seems to be doing the rounds) and a little bit of <a href="http://www.ruby-lang.org/en/">ruby</a> to talk to delicious and I had everything I needed.  So, I spent an hour or so last night getting a little end to end proof of concept up and running.  Happy that I could hook all the components together I spent a further two or three hours tidying everything up and getting an app together (<a href="http://chrisroos.googlecode.com/svn/trunk/scratch/mail-to-delicious/">source in google code</a>) that I could deploy to my <a href="http://www.exonetric.com/">exonetric</a> <a href="http://en.wikipedia.org/wiki/Virtual_private_server"><span class="caps">VPS</span></a>.  I was even able to use the service for real on the train this morning.</p>
+        <p>Feel free to deploy the code to your own server (or the awesome <a href="http://heroku.com/">heroku</a>) if you wish to post bookmarks to your own account.  You&#8217;ll need to copy config/delicious.yml.example to config/delicious.yml and enter your delicious credentials.  The email parser expects to get the bookmark title in the subject line of the email (required), the <span class="caps">URL</span> on the first line of the email body (required) and tags on a line in the body beginning with T (i.e. /^T (.*)/).  The rest of the body is treated as the notes.  I was originally going to see if there was any interest in a hosted service whereby you register your delicious credentials and receive a secret email address to use in order to post to delicious.  It seems that ping.fm already has this covered so I&#8217;m not going to worry about hosting it for anyone but me.</p>
+        <p>I love how relatively easy it is to hook these things together, in a short period of time, to produce something useful.</p>
+        <p><strong>Note</strong>.  I searched again for android delicious clients just before I started writing this post and was slightly surprised to see that there are now two apps that offer this functionality: <a href="http://code.google.com/p/android-delicious-bookmarks/">Android delicious bookmarks</a> and Beelicious (for which I couldn&#8217;t find a link).</p>
+        <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> Having just repeated the search I found <a href="http://www.labnol.org/internet/post-links-to-delicious-via-email-mobile/4470/">this post</a> that suggests using <a href="http://ping.fm">ping.fm</a> to do exactly what I&#8217;m after.  Oh well.</p>
+        <hr />
+        <ul class="navigation group">
+          <li class="previousPost">
+            &laquo; (older)
+            <a class="previousPost" href="/blog/2009-02-24-gracefully-degrade-the-google-custom-search-form-so-that-it-works-without-javascript" rel="prev" title="Gracefully Degrade the Google Custom Search Form So That It Works Without Javascript">
+              Gracefully Degrade the Google Custom Search Form So That It Works Without Javascript
+            </a>
+          </li>
+          <li class="nextPost">
+            <a class="nextPost" href="/blog/2009-03-09-hack-the-government-day-rewired-state" rel="next" title="Hack the Government Day (Rewired State)">
+              Hack the Government Day (Rewired State)
+            </a>
+            (newer) &raquo;
+          </li>
+        </ul>
+      </div>
+      <div id="footer">
+        <p class="license">
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
+            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
+          </a>
+          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
+          by
+          <span class="vcard">
+            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
+          </span>
+          is licensed under a
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
+        </p>
+      </div>
+    </div>
+    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+  </body>
+</html>

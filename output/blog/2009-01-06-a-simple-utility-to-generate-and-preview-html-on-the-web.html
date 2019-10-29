@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta charset="utf-8" />
+    <link href="/images/favicon.gif" rel="icon" />
+    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="http://www.myopenid.com/server" rel="openid.server" />
+    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+    <title>A Simple Utility to Generate and Preview Html on the Web - Chris Roos</title>
+    <link href="/blog/2009-01-06-using-ssi-to-expose-http-request-headers-sent-by-your-browser" rel="prev" />
+    <link href="/blog/2009-01-13-24-hours-of-ramsgate-outer-harbour" rel="next" />
+    <link href="/blog/2005-09-06-linspire" rel="first" />
+    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+    <link href="/blog" rel="index" />
+    <meta content="I found, what I believed to be, a strange problem with images that had explicit width and heights set.  I created a little utility that allowed me to dig into the problem." name="description" />
+  </head>
+  <body>
+    <div id="page">
+      <div class="group" id="header">
+        <p id="site_name">
+          <a href="/">chris roos</a>
+        </p>
+        <ul class="navigation group">
+          <li>
+            <a href="/about" title="About me">about me</a>
+          </li>
+          <li>
+            <a href="/contact" title="Contact me">contact me</a>
+          </li>
+          <li>
+            <a href="/blog" title="Blog">blog</a>
+          </li>
+          <li>
+            <a href="/projects" title="Projects">projects</a>
+          </li>
+          <li>
+            <a href="/utilities" title="Utilities">utilities</a>
+          </li>
+        </ul>
+        <form action="http://www.google.co.uk/search" id="searchForm">
+          <div>
+            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
+            <input name="q" size="31" type="text" />
+            <input name="sa" type="submit" value="Search" />
+          </div>
+        </form>
+      </div>
+      <div id="content">
+        <abbr class="createdAt" title="2009-01-06T12:52:21+00:00">Tue, 06 Jan 09</abbr>
+        <h1>A Simple Utility to Generate and Preview Html on the Web</h1>
+        <p>This happened a few months ago so I might be missing some of the specific details.</p>
+        <p>While at <a href="http://www.reevoo.com">reevoo</a> we noticed that some of the images on our pages were being collapsed when the image source couldn&#8217;t be found.  Trying to force the image to retain its size by specifying the dimensions in <a href="http://en.wikipedia.org/wiki/Cascading_Style_Sheets"><span class="caps">CSS</span></a> or by setting the relevant attributes on the image tag had no effect.  I knew that I&#8217;d seen &#8216;blank&#8217; (or broken) images in the past with specific sizes so couldn&#8217;t understand what was going on.  Through a little trial and error I worked out that the collapsing of the images only occurred when a <a href="http://en.wikipedia.org/wiki/Document_Type_Declaration">doctype</a> was set.  I probably should&#8217;ve left it there but instead proceeded to spend a couple of hours creating a little <a href="/utilities/html-generator">web based html editor</a> (<span class="caps">NOTE</span>. this is only tested in <a href="http://www.mozilla.com/en-US/firefox/">Firefox</a>) that allowed me to see the effects different doctypes had on the html.</p>
+        <p>You can replicate my image experiment by entering something like <code>&lt;img src="" width="100px" height="100px" border="1px"&gt;</code> in the html body textarea.  When the doctype is left out (set to &#8216;none&#8217;) you&#8217;ll see that the image element is 100 &#215; 100px (or whatever you&#8217;ve defined as the width and height).  Changing the doctype to anything else will result in the image element being &#8216;collapsed&#8217;.  I&#8217;m afraid I never did get as far as working out why this was the case and I&#8217;ve not had any use for the html generator since (good, huh).  If anyone knows why the broken images are collapsed when a doctype is set I&#8217;d be interested to hear from you.</p>
+        <hr />
+        <ul class="navigation group">
+          <li class="previousPost">
+            &laquo; (older)
+            <a class="previousPost" href="/blog/2009-01-06-using-ssi-to-expose-http-request-headers-sent-by-your-browser" rel="prev" title="Using SSI to Expose Http Request Headers Sent by Your Browser">
+              Using SSI to Expose Http Request Headers Sent by Your Browser
+            </a>
+          </li>
+          <li class="nextPost">
+            <a class="nextPost" href="/blog/2009-01-13-24-hours-of-ramsgate-outer-harbour" rel="next" title="24 Hours of Ramsgate Outer Harbour">
+              24 Hours of Ramsgate Outer Harbour
+            </a>
+            (newer) &raquo;
+          </li>
+        </ul>
+      </div>
+      <div id="footer">
+        <p class="license">
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
+            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
+          </a>
+          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
+          by
+          <span class="vcard">
+            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
+          </span>
+          is licensed under a
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
+        </p>
+      </div>
+    </div>
+    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+  </body>
+</html>

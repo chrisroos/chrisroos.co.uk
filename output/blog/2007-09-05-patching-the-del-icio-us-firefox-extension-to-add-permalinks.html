@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta charset="utf-8" />
+    <link href="/images/favicon.gif" rel="icon" />
+    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="http://www.myopenid.com/server" rel="openid.server" />
+    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+    <title>Patching the del.icio.us firefox extension to add permalinks - Chris Roos</title>
+    <link href="/blog/2007-09-04-permalinks-for-del-icio-us-bookmarks-posts" rel="prev" />
+    <link href="/blog/2007-09-21-companies-you-must-make-it-simple-for-me-to-unsubscribe-from-your-marketing-shite" rel="next" />
+    <link href="/blog/2005-09-06-linspire" rel="first" />
+    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+    <link href="/blog" rel="index" />
+  </head>
+  <body>
+    <div id="page">
+      <div class="group" id="header">
+        <p id="site_name">
+          <a href="/">chris roos</a>
+        </p>
+        <ul class="navigation group">
+          <li>
+            <a href="/about" title="About me">about me</a>
+          </li>
+          <li>
+            <a href="/contact" title="Contact me">contact me</a>
+          </li>
+          <li>
+            <a href="/blog" title="Blog">blog</a>
+          </li>
+          <li>
+            <a href="/projects" title="Projects">projects</a>
+          </li>
+          <li>
+            <a href="/utilities" title="Utilities">utilities</a>
+          </li>
+        </ul>
+        <form action="http://www.google.co.uk/search" id="searchForm">
+          <div>
+            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
+            <input name="q" size="31" type="text" />
+            <input name="sa" type="submit" value="Search" />
+          </div>
+        </form>
+      </div>
+      <div id="content">
+        <abbr class="createdAt" title="2007-09-05T21:41:00+00:00">Wed, 05 Sep 07</abbr>
+        <h1>Patching the del.icio.us firefox extension to add permalinks</h1>
+        <div class="notice">28-Apr-2009.  This is now a firefox extension hosted at <a href="https://addons.mozilla.org/en-US/firefox/addon/11664">addons.mozilla.org</a>.</div>
+        <p>I spent some of my train time today hacking around with the <a href="http://del.icio.us">del.icio.us</a> <a href="http://www.mozilla.com/en-US/firefox/">firefox</a> <a href="https://addons.mozilla.org/en-US/firefox/addon/3615">extension</a>.  Although I&#8217;m sure it&#8217;s bad in many, many ways, I&#8217;ve managed to add the <a href="http://en.wikipedia.org/wiki/Permalink">permalink</a> functionality I <a href="/blog/2007-09-04-permalinks-for-del-icio-us-bookmarks-posts">mentioned</a> yesterday.  You can either apply the patch yourself, or download the patched jar file.</p>
+        <h2>To apply the patch.</h2>
+        <pre class="code shell">&#x000A;# Install Firefox extension 1.5.43&#x000A;$ cd MY_FIREFOX_PROFILE_DIRECTORY # ~/Library/Application Support/Firefox/Profiles/RAND_CHARS.default for me&#x000A;$ cd extensions/{2fa4ed95-0317-4c6a-a74c-5f3e3912c1f9}/chrome&#x000A;$ svn export http://chrisroos.googlecode.com/svn/trunk/delicious_url_tags/delicious-extension-url-tag.patch&#x000A;$ unzip deliciousBookmarks.jar&#x000A;$ rm deliciousBookmarks.jar&#x000A;$ patch -p1 &lt; delicious-extension-url-tag.patch&#x000A;$ zip -r deliciousBookmarks.jar content/ locale/ skin/&#x000A;$ rm -rf content/ locale/ skin/&#x000A;# Restart Firefox</pre>
+        <h2>To use the patched compressed file</h2>
+        <pre class="code shell">&#x000A;# Install Firefox extension 1.5.43&#x000A;$ cd MY_FIREFOX_PROFILE_DIRECTORY # ~/Library/Application Support/Firefox/Profiles/RAND_CHARS.default for me&#x000A;$ cd extensions/{2fa4ed95-0317-4c6a-a74c-5f3e3912c1f9}/chrome&#x000A;$ rm deliciousBookmarks.jar&#x000A;$ svn export http://chrisroos.googlecode.com/svn/trunk/delicious_url_tags/deliciousBookmarks.jar&#x000A;# Restart Firefox</pre>
+        <p>Now, anytime you bookmark a site, the tags field will be pre-populated with a url-tag (&#8220;url/MD5_OF_URL&#8221;).  Cool huh.  Oh, and the patched extension uses this javascript <a href="http://pajhome.org.uk/crypt/md5/">md5</a> library.</p>
+        <hr />
+        <ul class="navigation group">
+          <li class="previousPost">
+            &laquo; (older)
+            <a class="previousPost" href="/blog/2007-09-04-permalinks-for-del-icio-us-bookmarks-posts" rel="prev" title="Permalinks for del.icio.us bookmarks (posts)">
+              Permalinks for del.icio.us bookmarks (posts)
+            </a>
+          </li>
+          <li class="nextPost">
+            <a class="nextPost" href="/blog/2007-09-21-companies-you-must-make-it-simple-for-me-to-unsubscribe-from-your-marketing-shite" rel="next" title="Companies.  You must make it simple for me to unsubscribe from your marketing shite.">
+              Companies.  You must make it simple for me to unsubscribe from your marketing shite.
+            </a>
+            (newer) &raquo;
+          </li>
+        </ul>
+      </div>
+      <div id="footer">
+        <p class="license">
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
+            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
+          </a>
+          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
+          by
+          <span class="vcard">
+            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
+          </span>
+          is licensed under a
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
+        </p>
+      </div>
+    </div>
+    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+  </body>
+</html>

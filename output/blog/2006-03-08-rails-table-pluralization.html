@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta charset="utf-8" />
+    <link href="/images/favicon.gif" rel="icon" />
+    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="http://www.myopenid.com/server" rel="openid.server" />
+    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+    <title>Rails table pluralization - Chris Roos</title>
+    <link href="/blog/2006-03-06-cool-google-map-of-the-tube-network" rel="prev" />
+    <link href="/blog/2006-03-08-my-first-reevoo" rel="next" />
+    <link href="/blog/2005-09-06-linspire" rel="first" />
+    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+    <link href="/blog" rel="index" />
+  </head>
+  <body>
+    <div id="page">
+      <div class="group" id="header">
+        <p id="site_name">
+          <a href="/">chris roos</a>
+        </p>
+        <ul class="navigation group">
+          <li>
+            <a href="/about" title="About me">about me</a>
+          </li>
+          <li>
+            <a href="/contact" title="Contact me">contact me</a>
+          </li>
+          <li>
+            <a href="/blog" title="Blog">blog</a>
+          </li>
+          <li>
+            <a href="/projects" title="Projects">projects</a>
+          </li>
+          <li>
+            <a href="/utilities" title="Utilities">utilities</a>
+          </li>
+        </ul>
+        <form action="http://www.google.co.uk/search" id="searchForm">
+          <div>
+            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
+            <input name="q" size="31" type="text" />
+            <input name="sa" type="submit" value="Search" />
+          </div>
+        </form>
+      </div>
+      <div id="content">
+        <abbr class="createdAt" title="2006-03-08T07:48:00+00:00">Wed, 08 Mar 06</abbr>
+        <h1>Rails table pluralization</h1>
+        <p>I was talking to someone recently about the pluralisation of table names in <a href="http://www.rubyonrails.org">rails</a>.  It was grating him because some hand built queries no longer read very naturally.</p>
+        <pre class="code sql">&#x000A;-- (in rails) requesting the forename of the 'first' person&#x000A;SELECT forename FROM people WHERE people.id = 1;&#x000A;&#x000A;-- would read better as&#x000A;SELECT forename FROM person WHERE person.id = 1;</pre>
+        <p><a href="http://po-ru.com/">Paul</a> (a colleague at <a href="http://www.reevoo.com">reevoo</a>) pointed out that there are two sides to the singular/plural table name debate.  You will always have some queries (as above) that will work better when the table is singular; and others (as below) that will work better when the table is plural.</p>
+        <pre class="code sql">&#x000A;-- requesting all people having a country of 'uk'&#x000A;SELECT * FROM person WHERE country = 'UK';&#x000A;&#x000A;-- (in rails) would read better as&#x000A;SELECT * FROM people WHERE country = 'UK';</pre>
+        <p>Personally, because of the very small amount of hand written sql I&#8217;ve had to use with Rails this has never been an issue to me.  However, it did make me think about a slight adaptation to Active Record&#8230;</p>
+        <p>By default (in Rails), you create a singular (active record) model (person) that maps to the plural table (people).  Although very convenient (it&#8217;s the reason I&#8217;ve rarely had to touch sql), it too suffers from the same problems outlined in the queries above.  I think the two statements below show the same sort of natural vs unnatural language that appears in the sql above.</p>
+        <pre class="code ruby">&#x000A;# good english (acting on a single person)&#x000A;Person.name = 'chris'&#x000A;Person.save&#x000A;&#x000A;# bad english (we are asking for multiple people)&#x000A;Person.find(:all, :conditions =&gt; "country = 'uk'")</pre>
+        <p>The adaptation to active record I was thinking about would allow you to operate on both a Person and People, using the variant that made the code read more naturally.  That is, we could leave the Person.name example above as is, but change the Person.find to People.find<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>.  There are different ways to go about this but to get some of the way there with a little code (i.e. not having to manually create both singular and plural classes for each table); I came up with the following simple hack.</p>
+        <pre class="code ruby">&#x000A;class ActiveRecord::Base&#x000A;  class &lt;&lt; self&#x000A;    alias_method :__existing_inherited, :inherited&#x000A;    def inherited(child)&#x000A;      __existing_inherited(child)&#x000A;      plural_class = child.to_s.pluralize&#x000A;      unless plural_class =~ /#&lt;Class:./ or Object.constants.include?(plural_class)&#x000A;        Object.const_set(plural_class, Class.new(child))&#x000A;      end&#x000A;    end&#x000A;  end&#x000A;end</pre>
+        <p>Just add it to the bottom of your environment.rb file and when you first reference one of your singular classes it will automatically descend a plural class from it.</p>
+        <p>There are lots of things wrong with this code and many better ways for it to be implemented but it was really just for me to see if I could do it.</p>
+        <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> Boring and sad.  I was going to start that sentence with i.e. but wasn&#8217;t sure whether that was grammatically correct (I&#8217;m not very good at English).  I did a quick search and found that it translates as &#8216;that is&#8217; from the Latin which is much better.</p>
+        <hr />
+        <ul class="navigation group">
+          <li class="previousPost">
+            &laquo; (older)
+            <a class="previousPost" href="/blog/2006-03-06-cool-google-map-of-the-tube-network" rel="prev" title="Cool google map of the tube network...">
+              Cool google map of the tube network...
+            </a>
+          </li>
+          <li class="nextPost">
+            <a class="nextPost" href="/blog/2006-03-08-my-first-reevoo" rel="next" title="My first reevoo!">
+              My first reevoo!
+            </a>
+            (newer) &raquo;
+          </li>
+        </ul>
+      </div>
+      <div id="footer">
+        <p class="license">
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
+            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
+          </a>
+          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
+          by
+          <span class="vcard">
+            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
+          </span>
+          is licensed under a
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
+        </p>
+      </div>
+    </div>
+    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+  </body>
+</html>

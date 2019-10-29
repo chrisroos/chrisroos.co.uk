@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta charset="utf-8" />
+    <link href="/images/favicon.gif" rel="icon" />
+    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="http://www.myopenid.com/server" rel="openid.server" />
+    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+    <title>Changing the repository of code being managed by Piston (an alternative to piston switch) - Chris Roos</title>
+    <link href="/blog/2008-07-30-converting-google-code-wiki-content-to-html" rel="prev" />
+    <link href="/blog/2008-09-03-listening-to-itunes-on-my-intempo-gx-01" rel="next" />
+    <link href="/blog/2005-09-06-linspire" rel="first" />
+    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+    <link href="/blog" rel="index" />
+  </head>
+  <body>
+    <div id="page">
+      <div class="group" id="header">
+        <p id="site_name">
+          <a href="/">chris roos</a>
+        </p>
+        <ul class="navigation group">
+          <li>
+            <a href="/about" title="About me">about me</a>
+          </li>
+          <li>
+            <a href="/contact" title="Contact me">contact me</a>
+          </li>
+          <li>
+            <a href="/blog" title="Blog">blog</a>
+          </li>
+          <li>
+            <a href="/projects" title="Projects">projects</a>
+          </li>
+          <li>
+            <a href="/utilities" title="Utilities">utilities</a>
+          </li>
+        </ul>
+        <form action="http://www.google.co.uk/search" id="searchForm">
+          <div>
+            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
+            <input name="q" size="31" type="text" />
+            <input name="sa" type="submit" value="Search" />
+          </div>
+        </form>
+      </div>
+      <div id="content">
+        <abbr class="createdAt" title="2008-08-01T17:17:35+00:00">Fri, 01 Aug 08</abbr>
+        <h1>Changing the repository of code being managed by Piston (an alternative to piston switch)</h1>
+        <p>I&#8217;ve been working on a little script that gives us visibility of the state of the <a href="http://piston.rubyforge.org/">pistonised</a> components of <a href="http://www.reevoo.com">our</a> applications.  One of the things I noticed was that we&#8217;d used multiple domains to pistonise content from our own <a href="http://subversion.tigris.org/">repository</a>.  I wanted to standardise them all and thought I&#8217;d be able to use the <a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/235517">piston switch</a> command to do just that.  Unfortunately, the piston switch command appears to work only when switching between URLs where the domain remains constant (switching between example.com/tag/1 and example.com/tag/2, for example).  I needed to change the domain part of the <span class="caps">URL</span> (svn.example.com to www.example.com) and in some cases the port (example.com:8080 to example.com).  I figured I could just change the &#8220;piston:root&#8221; <a href="http://svnbook.red-bean.com/en/1.1/ch07s02.html">subversion property</a> and used svn propedit to do just that.  Unfortunately, on committing the change I could no longer piston update, I was getting a &#8216;command not found&#8217; error from the shell.  This was a bit odd so I dug into the code.  It turns out that there was an extra newline in the piston:root property that was screwing up the svn checkout (the bit after the newline was being treated as a new command by the shell, hence the error).  The solution was to use svn propset rather than svn propedit to set the piston:root property: for some reason svn propedit introduces this unwanted newline, where svn propset doesn&#8217;t.</p>
+        <hr />
+        <ul class="navigation group">
+          <li class="previousPost">
+            &laquo; (older)
+            <a class="previousPost" href="/blog/2008-07-30-converting-google-code-wiki-content-to-html" rel="prev" title="Converting Google Code Wiki Content to Html">
+              Converting Google Code Wiki Content to Html
+            </a>
+          </li>
+          <li class="nextPost">
+            <a class="nextPost" href="/blog/2008-09-03-listening-to-itunes-on-my-intempo-gx-01" rel="next" title="Listening to iTunes on my Intempo GX-01">
+              Listening to iTunes on my Intempo GX-01
+            </a>
+            (newer) &raquo;
+          </li>
+        </ul>
+      </div>
+      <div id="footer">
+        <p class="license">
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
+            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
+          </a>
+          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
+          by
+          <span class="vcard">
+            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
+          </span>
+          is licensed under a
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
+        </p>
+      </div>
+    </div>
+    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+  </body>
+</html>

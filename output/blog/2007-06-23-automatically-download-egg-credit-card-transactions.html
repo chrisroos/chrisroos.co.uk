@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta charset="utf-8" />
+    <link href="/images/favicon.gif" rel="icon" />
+    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="http://www.myopenid.com/server" rel="openid.server" />
+    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+    <title>Automatically download egg credit card transactions - Chris Roos</title>
+    <link href="/blog/2007-06-13-i-really-dont-know-whether-this-is-spam-or-not" rel="prev" />
+    <link href="/blog/2007-06-23-this-makes-me-happy" rel="next" />
+    <link href="/blog/2005-09-06-linspire" rel="first" />
+    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+    <link href="/blog" rel="index" />
+  </head>
+  <body>
+    <div id="page">
+      <div class="group" id="header">
+        <p id="site_name">
+          <a href="/">chris roos</a>
+        </p>
+        <ul class="navigation group">
+          <li>
+            <a href="/about" title="About me">about me</a>
+          </li>
+          <li>
+            <a href="/contact" title="Contact me">contact me</a>
+          </li>
+          <li>
+            <a href="/blog" title="Blog">blog</a>
+          </li>
+          <li>
+            <a href="/projects" title="Projects">projects</a>
+          </li>
+          <li>
+            <a href="/utilities" title="Utilities">utilities</a>
+          </li>
+        </ul>
+        <form action="http://www.google.co.uk/search" id="searchForm">
+          <div>
+            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
+            <input name="q" size="31" type="text" />
+            <input name="sa" type="submit" value="Search" />
+          </div>
+        </form>
+      </div>
+      <div id="content">
+        <abbr class="createdAt" title="2007-06-23T11:34:00+00:00">Sat, 23 Jun 07</abbr>
+        <h1>Automatically download egg credit card transactions</h1>
+        <p>I&#8217;ve followed in my <a href="/blog/2007-05-14-automatically-downloading-my-recent-transactions-from-lloyds-tsb">previous</a> <a href="/blog/2007-05-04-automatically-downloading-my-most-recent-hsbc-transactions">footsteps</a> and automated the download of my <a href="http://egg.com">egg</a> credit card transactions and statements.  Using this in combination with my <a href="/blog/2007-04-01-converting-egg-credit-card-statements-to-ofx-for-upload-to-wesabe">ofx convertor</a> makes it easier for me to upload my financial data to <a href="http://www.wesabe.com">wesabe</a>.</p>
+        <p>As always, the code is in <a href="http://chrisroos.googlecode.com/svn/trunk/egg/">google code</a> and pasted below for your viewing pleasure&#8230;</p>
+        <pre class="code ruby">&#x000A;require 'egg-credentials'&#x000A;&#x000A;def execute_curl(cmd)&#x000A;  `#{cmd}`&#x000A;end&#x000A;&#x000A;COOKIE_LOCATION = "/tmp/egg.cookie"&#x000A;STATEMENT_DATE = '18 January 2007'&#x000A;&#x000A;RECENT_TRANSACTIONS_FILE = '/Users/chrisroos/Desktop/egg-recent-transactions.html'&#x000A;STATEMENT_FILE = '/Users/chrisroos/Desktop/egg-statement.html'&#x000A;&#x000A;# Logging in requires a cookie that is set when we first visit the login page&#x000A;curl_cmd = %[curl -s -c"#{COOKIE_LOCATION}" "https://new.egg.com/security/customer/logon?URI=https://new.egg.com/customer/youraccounts"]&#x000A;execute_curl curl_cmd&#x000A;&#x000A;# POST our login credentials&#x000A;curl_cmd = %[curl -s -b"#{COOKIE_LOCATION}" -c"#{COOKIE_LOCATION}" -L "https://logon.egg.com/LoginWebServer/services/CustomerLogin" -d"firstName=#{FIRST_NAME}" -d"lastName=#{LAST_NAME}" -d"dobDay=#{DOB_DAY}" -d"dobMonth=#{DOB_MONTH}" -d"dobYear=#{DOB_YEAR}" -d"postcode=#{POSTCODE}" -d"mmn=#{MOTHERS_MAIDEN_NAME}" -d"password=#{PASSWORD}" -d"HiddenURI=https%3A%2F%2Fnew.egg.com%2Fcustomer%2Fyouraccounts"]&#x000A;execute_curl curl_cmd&#x000A;&#x000A;# List and save recent transactions&#x000A;curl_cmd = %[curl -s -o"#{RECENT_TRANSACTIONS_FILE}" -b"#{COOKIE_LOCATION}" "https://your.egg.com/customer/eggcard/recenttransactions.aspx"]&#x000A;execute_curl curl_cmd&#x000A;&#x000A;# There is no sensible way to get your statements.  I'd hope for something like /statements/18-jun-2007.html but no such luck&#x000A;# Instead, there is a zero indexed array of statement dates.  Selecting one of these statement dates allows us to construct&#x000A;# a uri using the index of the date in the list.  So, if 18 June 2007 is the first date in the list (i.e. index 0) then we can view that&#x000A;# statement at https://your.egg.com/customer/eggcard/statements.aspx?index=0&#x000A;# Interestingly, this is how it works from the recent transactions page, from any actual statement page, it appears that this is&#x000A;# too hard (it's not) and instead the developers have resorted to using some magical .net/javascript voodoo to obtain a different&#x000A;# statement.&#x000A;require 'rubygems'&#x000A;require 'hpricot'&#x000A;&#x000A;recent_transactions = File.open(RECENT_TRANSACTIONS_FILE) { |f| f.read }&#x000A;doc = Hpricot(recent_transactions)&#x000A;statement_dates = []&#x000A;(doc/'select#ctl01_content_recenttransactions_lstPreviousStatements/option').each { |e| statement_dates &lt;&lt; e.inner_text }&#x000A;statement_index = statement_dates.index(STATEMENT_DATE)&#x000A;&#x000A;curl_cmd = %[curl -s -o"#{STATEMENT_FILE}" -b"#{COOKIE_LOCATION}" "https://your.egg.com/customer/eggcard/statements.aspx?index=#{statement_index}"]&#x000A;execute_curl curl_cmd</pre>
+        <hr />
+        <ul class="navigation group">
+          <li class="previousPost">
+            &laquo; (older)
+            <a class="previousPost" href="/blog/2007-06-13-i-really-dont-know-whether-this-is-spam-or-not" rel="prev" title="I really don't know whether this is spam or not...">
+              I really don't know whether this is spam or not...
+            </a>
+          </li>
+          <li class="nextPost">
+            <a class="nextPost" href="/blog/2007-06-23-this-makes-me-happy" rel="next" title="This makes me happy">
+              This makes me happy
+            </a>
+            (newer) &raquo;
+          </li>
+        </ul>
+      </div>
+      <div id="footer">
+        <p class="license">
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
+            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
+          </a>
+          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
+          by
+          <span class="vcard">
+            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
+          </span>
+          is licensed under a
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
+        </p>
+      </div>
+    </div>
+    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+  </body>
+</html>

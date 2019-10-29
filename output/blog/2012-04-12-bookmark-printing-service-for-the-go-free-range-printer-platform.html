@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta charset="utf-8" />
+    <link href="/images/favicon.gif" rel="icon" />
+    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="http://www.myopenid.com/server" rel="openid.server" />
+    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+    <title>Bookmark printing service for the Go Free Range Printer platform - Chris Roos</title>
+    <link href="/blog/2011-04-21-getting-started-with-asterisk-and-adhearsion-on-a-mac" rel="prev" />
+    <link href="/blog/2013-03-08-the-behaviour-of-xmlhttprequest-withcredentials-when-used-with-cors" rel="next" />
+    <link href="/blog/2005-09-06-linspire" rel="first" />
+    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+    <link href="/blog" rel="index" />
+    <meta content="An introduction to the simple Bookmark printing service for the Go Free Range Printer platform." name="description" />
+  </head>
+  <body>
+    <div id="page">
+      <div class="group" id="header">
+        <p id="site_name">
+          <a href="/">chris roos</a>
+        </p>
+        <ul class="navigation group">
+          <li>
+            <a href="/about" title="About me">about me</a>
+          </li>
+          <li>
+            <a href="/contact" title="Contact me">contact me</a>
+          </li>
+          <li>
+            <a href="/blog" title="Blog">blog</a>
+          </li>
+          <li>
+            <a href="/projects" title="Projects">projects</a>
+          </li>
+          <li>
+            <a href="/utilities" title="Utilities">utilities</a>
+          </li>
+        </ul>
+        <form action="http://www.google.co.uk/search" id="searchForm">
+          <div>
+            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
+            <input name="q" size="31" type="text" />
+            <input name="sa" type="submit" value="Search" />
+          </div>
+        </form>
+      </div>
+      <div id="content">
+        <abbr class="createdAt" title="2012-04-12T16:36:00+00:00">Thu, 12 Apr 12</abbr>
+        <h1>Bookmark printing service for the Go Free Range Printer platform</h1>
+        <p>I've spent the last couple of days creating a simple service for the <a href="http://gofreerange.com/printer">Printer platform</a>.  This service allows you to print a bookmark (in the traditional sense) for the book you're reading.  Although it's probably of most use to those people with their own printers, you can definitely have a play with generating your own bookmarks (and see a printed example) over on the <a href="http://printer-bookmarks.heroku.com/">Printer bookmarks app on Heroku</a>.</p>
+        
+        <p>The idea of a book-specific bookmark, on which I can record when I start and finish along with some reading notes, appeals to me.  I can actually imagine that a custom bookmark printing service like this might be useful outside of this little experiment with the Printer platform.</p>
+        
+        <p>Developing this little bookmark application (<a href="https://github.com/freerange/printer-bookmarks">source on github</a>) allowed me to use the Printer platform in anger, which was great as I'd only really been following <a href="http://gofreerange.com/james-adam">James A</a>'s impressive work from the sidelines.</p>
+        
+        <h2>Building the bookmark service</h2>
+        
+        <p>The rest of this post is a fairly high level view of how I approached the development of this little service.  Hopefully I'll convey how simple it is to build your own Printer service.</p>
+        
+        <p>I started by looking at the example <a href="https://github.com/freerange/printer-mail">Printer Mail</a>, <a href="https://github.com/freerange/printer-paint">Printer Paint</a> and <a href="https://github.com/freerange/printer-weather">Printer Weather</a> apps.  While these services are geared toward sending content (from a person in the case of mail and paint, and from a machine in the case of weather) to another person's printer, I think the bookmark service is most useful for someone wanting to print to their own printer.  This made my life a little easier as it meant I didn't need to worry about storing printer details in my app: I could rely on the user entering their printer address at the time they wanted to print the bookmark.</p>
+        
+        <p>The first thing I did was create a simple html bookmark (see <a href="https://github.com/freerange/printer-bookmarks/commit/7652ba185832ecf1e7e7bad44442d4292b5d5e1a">7652ba</a>) that I could preview using the <a href="https://github.com/freerange/printer/wiki/API">Printer API</a> (you can think of the Printer API as something like <a href="http://www.google.com/cloudprint/learn/">Google Cloud Print</a> for receipt printers).  Once happy that the preview looked OK I moved on to making the bookmark dynamic based on a supplied Amazon URL (see <a href="https://github.com/freerange/printer-bookmarks/commit/3f5377c3b8809565ebb6cc26aad11075a073a625">3f5377</a>).  The addition of some tests allowed me to refactor the code in preparation for the simple Sinatra web interface (see <a href="https://github.com/freerange/printer-bookmarks/commit/a75e4aa20a3eb3f3f90480636719443322841502">a75e4a</a>).  Once able to view the bookmarks in a browser I wanted them to look a little closer to how they'd look once printed.  Fortunately, I was able to borrow the template from the Printer Mail app to do just that (see <a href="https://github.com/freerange/printer-bookmarks/commit/0ba53664fc3cfa091567ef678cad0211811acb8e">0ba536</a>).  I had the app deployed to <a href="http://www.heroku.com/">Heroku</a> by this time so I was "done" in the most simple of senses: I could use the publicly accessible bookmark preview (e.g. <a href="http://printer-bookmarks.heroku.com/bookmark?url=http%3A%2F%2Fwww.amazon.co.uk%2FThe-Vinci-Code-Dan-Brown%2Fdp%2F0552149519%2Fref%3Dsr_1_2%3Fie%3DUTF8%26qid%3D1334252406%26sr%3D8-2">bookmark for The Da Vinci Code</a>) to print to the <a href="http://printer.gofreerange.com/">Go Free Range Printer backend</a>.  After that, apart from making it easier to print (see <a href="https://github.com/freerange/printer-bookmarks/commit/d84b751bda676fefceb286519cda31d6610b7e79">d84b75</a>) and preview (see <a href="https://github.com/freerange/printer-bookmarks/commit/617d24ff5d1ed2460b151aa09f4cbfa2f510015b">617d24</a>) bookmarks, the remainder of the changes were mainly aesthetic.  Pretty simple, huh.</p>
+        
+        <p>For more information about the Printer platform and how to get involved, checkout any or all of the <a href="http://gofreerange.com/hello-printer">introductory blog post</a>, the <a href="https://github.com/freerange/printer/wiki">Printer wiki</a> and the <a href="http://gofreerange.com/printer">Printer platform</a>.  For more information about building these sort of content applications see <a href="https://github.com/freerange/printer/wiki/Building-content-services">Building Content Services</a> on the wiki.</p>
+        <hr />
+        <ul class="navigation group">
+          <li class="previousPost">
+            &laquo; (older)
+            <a class="previousPost" href="/blog/2011-04-21-getting-started-with-asterisk-and-adhearsion-on-a-mac" rel="prev" title="Getting Started With Asterisk And Adhearsion On A Mac">
+              Getting Started With Asterisk And Adhearsion On A Mac
+            </a>
+          </li>
+          <li class="nextPost">
+            <a class="nextPost" href="/blog/2013-03-08-the-behaviour-of-xmlhttprequest-withcredentials-when-used-with-cors" rel="next" title="Investigation into CORS And XMLHttpRequest">
+              Investigation into CORS And XMLHttpRequest
+            </a>
+            (newer) &raquo;
+          </li>
+        </ul>
+      </div>
+      <div id="footer">
+        <p class="license">
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
+            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
+          </a>
+          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
+          by
+          <span class="vcard">
+            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
+          </span>
+          is licensed under a
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
+        </p>
+      </div>
+    </div>
+    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+  </body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta charset="utf-8" />
+    <link href="/images/favicon.gif" rel="icon" />
+    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="http://www.myopenid.com/server" rel="openid.server" />
+    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+    <title>A microformat for my contact details (instant messaging, twitter et al) - Chris Roos</title>
+    <link href="/blog/2007-10-03-finding-similar-sites-by-mining-the-del-icio-us-data" rel="prev" />
+    <link href="/blog/2007-10-05-trying-to-speak-to-someone-in-development-at-hsbc-can-anyone-help" rel="next" />
+    <link href="/blog/2005-09-06-linspire" rel="first" />
+    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+    <link href="/blog" rel="index" />
+  </head>
+  <body>
+    <div id="page">
+      <div class="group" id="header">
+        <p id="site_name">
+          <a href="/">chris roos</a>
+        </p>
+        <ul class="navigation group">
+          <li>
+            <a href="/about" title="About me">about me</a>
+          </li>
+          <li>
+            <a href="/contact" title="Contact me">contact me</a>
+          </li>
+          <li>
+            <a href="/blog" title="Blog">blog</a>
+          </li>
+          <li>
+            <a href="/projects" title="Projects">projects</a>
+          </li>
+          <li>
+            <a href="/utilities" title="Utilities">utilities</a>
+          </li>
+        </ul>
+        <form action="http://www.google.co.uk/search" id="searchForm">
+          <div>
+            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
+            <input name="q" size="31" type="text" />
+            <input name="sa" type="submit" value="Search" />
+          </div>
+        </form>
+      </div>
+      <div id="content">
+        <abbr class="createdAt" title="2007-10-03T22:52:00+00:00">Wed, 03 Oct 07</abbr>
+        <h1>A microformat for my contact details (instant messaging, twitter et al)</h1>
+        <p>I haven&#8217;t done any research on this so it may have already been proposed over at the <a href="http://microformats.org/">microformats</a> site.</p>
+        <h2>The problem</h2>
+        <p>Sometimes I want to communicate with the author of a webpage.  I don&#8217;t want to have to hunt around to find contact details and I probably don&#8217;t want to fill in a form.</p>
+        <h2>A proposal to fix part of the problem</h2>
+        <p>If the author&#8217;s contact details were semantically marked up, either on the page I was looking at or linked to elsewhere on the web, then I could use a simple parser to extract those details and select the best communication tool to use manually.</p>
+        <p>Maybe some code can help explain what I mean.</p>
+        <h3>A semantically marked up contact page.</h3>
+        <pre class="code html">&#x000A;&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;&#x000A;&#x000A;&lt;html&gt;&#x000A;&#x000A;  &lt;head&gt;&#x000A;    &lt;title&gt;Contact Details&lt;/title&gt;&#x000A;  &lt;/head&gt;&#x000A;&#x000A;  &lt;body&gt;&#x000A;    &lt;dl class="contactDetails"&gt;&#x000A;      &lt;dt&gt;Skype&lt;/dt&gt;&#x000A;      &lt;dd class="skype identifier"&gt;skype-username&lt;/dd&gt;&#x000A;      &lt;dt&gt;MSN&lt;/dt&gt;&#x000A;      &lt;dd class="msn identifier"&gt;msn-username&lt;/dd&gt;&#x000A;    &lt;/dl&gt;&#x000A;  &lt;/body&gt;&#x000A;&#x000A;&lt;/html&gt;</pre>
+        <h3>A parser in <a href="http://www.ruby-lang.org/">ruby</a></h3>
+        <pre class="code ruby">&#x000A;require 'rubygems'&#x000A;require 'hpricot'&#x000A;&#x000A;class ContactParser&#x000A;  def self.from_html(html)&#x000A;    doc = Hpricot(html)&#x000A;    new(doc)&#x000A;  end&#x000A;  def initialize(hpricot_doc)&#x000A;    @hpricot_doc = hpricot_doc&#x000A;  end&#x000A;  def service_identifiers&#x000A;    (@hpricot_doc/'.contactDetails .identifier').inject({}) do |hash, e|&#x000A;       service = (e.classes - ['identifier']).first&#x000A;       identifier = e.inner_text&#x000A;       hash[service] = identifier&#x000A;       hash&#x000A;    end&#x000A;  end&#x000A;  def identifier(service)&#x000A;    (@hpricot_doc/".contactDetails .#{service}.identifier").inner_text&#x000A;  end&#x000A;end&#x000A;&#x000A;contact_details_file = File.dirname(__FILE__) + '/contact-details.html'&#x000A;html = File.open(contact_details_file) { |f| f.read }&#x000A;parser = ContactParser.from_html(html)&#x000A;&#x000A;p parser.service_identifiers&#x000A;# =&gt; {"skype"=&gt;"skype-username", "msn"=&gt;"msn-username"}&#x000A;p parser.identifier('skype')&#x000A;# =&gt; 'skype-username'&#x000A;p parser.identifier('blurgh')&#x000A;# =&gt; ''</pre>
+        <h2>Further considerations</h2>
+        <ul>
+        	<li>If existing communication tools<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> were to integrate this parser then it would be easy to add a contact by giving the url of, for example, their blog.</li>
+        	<li>Author&#8217;s should be able to specify the order of the tools that they wish to use for communication.  We could just assume that the list of contact details is in the author&#8217;s preferred order.</li>
+        	<li>This would be open to spam.  Err, not too sure what to do about this.</li>
+        	<li>Ultimately, I&#8217;d like to hit a &#8216;communicate&#8217; button in <a href="http://www.mozilla.com/en-US/firefox/">firefox</a> that automatically decides which communication protocols we have in common and allows me to get my message through.</li>
+        </ul>
+        <p>Anyone have any thoughts?</p>
+        <p>Code is all over on <a href="http://chrisroos.googlecode.com/svn/trunk/contact-microformat/">google code</a>.</p>
+        <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> I&#8217;m thinking of multi protocol tools, like <a href="http://www.adiumx.com/">adium</a>, in particular.</p>
+        <hr />
+        <ul class="navigation group">
+          <li class="previousPost">
+            &laquo; (older)
+            <a class="previousPost" href="/blog/2007-10-03-finding-similar-sites-by-mining-the-del-icio-us-data" rel="prev" title="Finding similar sites by mining the del.icio.us data">
+              Finding similar sites by mining the del.icio.us data
+            </a>
+          </li>
+          <li class="nextPost">
+            <a class="nextPost" href="/blog/2007-10-05-trying-to-speak-to-someone-in-development-at-hsbc-can-anyone-help" rel="next" title="Trying to speak to someone in development at Hsbc - can anyone help?">
+              Trying to speak to someone in development at Hsbc - can anyone help?
+            </a>
+            (newer) &raquo;
+          </li>
+        </ul>
+      </div>
+      <div id="footer">
+        <p class="license">
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
+            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
+          </a>
+          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
+          by
+          <span class="vcard">
+            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
+          </span>
+          is licensed under a
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
+        </p>
+      </div>
+    </div>
+    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+  </body>
+</html>

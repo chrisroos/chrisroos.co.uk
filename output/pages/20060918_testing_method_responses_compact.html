@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta charset="utf-8" />
+    <link href="/images/favicon.gif" rel="icon" />
+    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="http://www.myopenid.com/server" rel="openid.server" />
+    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+    <title>Testing Method Responses - Compact - Chris Roos</title>
+  </head>
+  <body>
+    <div id="page">
+      <div class="group" id="header">
+        <p id="site_name">
+          <a href="/">chris roos</a>
+        </p>
+        <ul class="navigation group">
+          <li>
+            <a href="/about" title="About me">about me</a>
+          </li>
+          <li>
+            <a href="/contact" title="Contact me">contact me</a>
+          </li>
+          <li>
+            <a href="/blog" title="Blog">blog</a>
+          </li>
+          <li>
+            <a href="/projects" title="Projects">projects</a>
+          </li>
+          <li>
+            <a href="/utilities" title="Utilities">utilities</a>
+          </li>
+        </ul>
+        <form action="http://www.google.co.uk/search" id="searchForm">
+          <div>
+            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
+            <input name="q" size="31" type="text" />
+            <input name="sa" type="submit" value="Search" />
+          </div>
+        </form>
+      </div>
+      <div id="content">
+        <abbr class="createdAt" title="2006-09-18T20:47:00+00:00">Mon, 18 Sep 06</abbr>
+        <h1>Testing Method Responses - Compact</h1>
+        <pre class="code ruby">&#x000A;require 'test/unit'&#x000A;&#x000A;class Foo&#x000A;  def foo; end; public :foo&#x000A;  def bar; end; protected :bar&#x000A;  def baz; end; private :baz&#x000A;end&#x000A;&#x000A;# Testing from Class&#x000A;Class.new(Test::Unit::TestCase) do&#x000A;&#x000A;  def test_public_method_access&#x000A;    method_name = 'foo'&#x000A;&#x000A;    assert Foo.instance_methods.include?(method_name)&#x000A;    assert Foo.public_instance_methods.include?(method_name)&#x000A;&#x000A;    assert Foo.method_defined?(method_name)&#x000A;    assert Foo.public_method_defined?(method_name)&#x000A;&#x000A;    assert_equal UnboundMethod, Foo.instance_method(method_name).class&#x000A;  end&#x000A;&#x000A;  def test_protected_method_access&#x000A;    method_name = 'bar'&#x000A;&#x000A;    assert Foo.instance_methods.include?(method_name)&#x000A;    assert Foo.protected_instance_methods.include?(method_name)&#x000A;&#x000A;    assert Foo.method_defined?(method_name)&#x000A;    assert Foo.protected_method_defined?(method_name)&#x000A;&#x000A;    assert_equal UnboundMethod, Foo.instance_method(method_name).class&#x000A;  end&#x000A;&#x000A;  def test_private_method_access&#x000A;    method_name = 'baz'&#x000A;&#x000A;    assert Foo.private_instance_methods.include?(method_name)&#x000A;    assert Foo.private_method_defined?(method_name)&#x000A;    assert_equal UnboundMethod, Foo.instance_method(method_name).class&#x000A;  end&#x000A;&#x000A;end&#x000A;&#x000A;# Testing from instance&#x000A;Class.new(Test::Unit::TestCase) do&#x000A;&#x000A;  def setup&#x000A;    @foo = Foo.new&#x000A;  end&#x000A;&#x000A;  def test_public_method_access&#x000A;    method_name = 'foo'&#x000A;&#x000A;    assert @foo.methods.include?(method_name)&#x000A;    assert @foo.public_methods.include?(method_name)&#x000A;&#x000A;    assert @foo.respond_to?(method_name)&#x000A;&#x000A;    assert_equal Method, @foo.method(method_name).class&#x000A;  end&#x000A;&#x000A;  def test_protected_method_access&#x000A;    method_name = 'bar'&#x000A;&#x000A;    assert @foo.methods.include?(method_name)&#x000A;    assert @foo.protected_methods.include?(method_name)&#x000A;&#x000A;    assert @foo.respond_to?(method_name)&#x000A;&#x000A;    assert_equal Method, @foo.method(method_name).class&#x000A;  end&#x000A;&#x000A;  def test_private_method_access&#x000A;    method_name = 'baz'&#x000A;&#x000A;    assert @foo.private_methods.include?(method_name)&#x000A;    assert @foo.respond_to?(method_name, include_private=true)&#x000A;    assert_equal Method, @foo.method(method_name).class&#x000A;  end&#x000A;&#x000A;end</pre>
+        <hr />
+        
+      </div>
+      <div id="footer">
+        <p class="license">
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
+            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
+          </a>
+          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
+          by
+          <span class="vcard">
+            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
+          </span>
+          is licensed under a
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
+        </p>
+      </div>
+    </div>
+    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta charset="utf-8" />
+    <link href="/images/favicon.gif" rel="icon" />
+    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="http://www.myopenid.com/server" rel="openid.server" />
+    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+    <title>OCR on the Mac with Tesseract - Chris Roos</title>
+    <link href="/blog/2008-09-03-listening-to-itunes-on-my-intempo-gx-01" rel="prev" />
+    <link href="/blog/2008-12-05-a-javascript-querystring-printer" rel="next" />
+    <link href="/blog/2005-09-06-linspire" rel="first" />
+    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+    <link href="/blog" rel="index" />
+    <meta content="A comparison of the output from tesseract given different quality inputs." name="description" />
+  </head>
+  <body>
+    <div id="page">
+      <div class="group" id="header">
+        <p id="site_name">
+          <a href="/">chris roos</a>
+        </p>
+        <ul class="navigation group">
+          <li>
+            <a href="/about" title="About me">about me</a>
+          </li>
+          <li>
+            <a href="/contact" title="Contact me">contact me</a>
+          </li>
+          <li>
+            <a href="/blog" title="Blog">blog</a>
+          </li>
+          <li>
+            <a href="/projects" title="Projects">projects</a>
+          </li>
+          <li>
+            <a href="/utilities" title="Utilities">utilities</a>
+          </li>
+        </ul>
+        <form action="http://www.google.co.uk/search" id="searchForm">
+          <div>
+            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
+            <input name="q" size="31" type="text" />
+            <input name="sa" type="submit" value="Search" />
+          </div>
+        </form>
+      </div>
+      <div id="content">
+        <abbr class="createdAt" title="2008-12-02T16:27:18+00:00">Tue, 02 Dec 08</abbr>
+        <h1>OCR on the Mac with Tesseract</h1>
+        <p>I wanted to <a href="http://en.wikipedia.org/wiki/Optical_character_recognition"><span class="caps">OCR</span></a> another letter this morning and, as <a href="/articles/2008-07-21-open-source-optical-character-recognition-ocr-on-the-mac">before</a>, I used <a href="http://code.google.com/p/tesseract-ocr/">tesseract</a> for the job.</p>
+        <p>I ended up spending some time testing the quality of the output (the generated text) against different quality inputs (as defined by the <a href="http://en.wikipedia.org/wiki/Dots_per_inch">dpi</a> setting in my scanner software).  The results were not surprising. The best output, with only a couple of errors in the whole letter, came from the 300dpi scan (the highest I tried). The scan at 150dpi contained a handful of mistakes and at 96dpi the output was, in places, complete gibberish.</p>
+        <p>In case this is of use to anyone I have copies of the, smaller, second page of the letter I was scanning, along with the OCRd output.  The scanner is an <a href="http://www.epson.co.uk/products/all_in_one_products/Stylus_DX4800.htm">Epson Stylus DX4800</a> and I used <a href="http://seashore.sourceforge.net/">seashore</a> to convert the images, from colour jpegs, to greyscale tiffs.</p>
+        <h2>At 300dpi</h2>
+        <p><a href="http://flickr.com/photos/chrisjroos/3076819819/"><img src="http://farm4.static.flickr.com/3202/3076819819_d4f1a3f3cd_t.jpg" alt="" /></a></p>
+        <div class="letter">
+        <p>Nothing is ruled out in terms of further development, and I have met with a representative of mySociety to discuss ways of continuing to improve what we do.<br />
+        I am fully supportive of the aims of the Free Our Bills campaign, and I am keen to work with the relevant House authorities to see what can be done to open up the legislative process to a broader audience.<br />
+        I hope that this is helpful to your constituent.</p>
+        </div>
+        <h2>At 150dpi</h2>
+        <p><a href="http://flickr.com/photos/chrisjroos/3076622097/"><img src="http://farm4.static.flickr.com/3202/3076819819_d4f1a3f3cd_t.jpg" alt="" /></a></p>
+        <div class="letter">
+        <p>Nothing is ruled out in terms of further development, and I have met with a representative of mySociety to discuss ways of continuing to improve what we do.<br />
+        I am fully supportive ofthe aims ofthe Free Our Bills campaign, and I am keen to work with the relevant House authorities to see what can be done to open up the legislative process to a broader audience.<br />
+        I hope that this is helpful to your constituent.</p>
+        </div>
+        <h2>At 96dpi</h2>
+        <p><a href="http://flickr.com/photos/chrisjroos/3076624115/"><img src="http://farm4.static.flickr.com/3202/3076819819_d4f1a3f3cd_t.jpg" alt="" /></a></p>
+        <div class="letter">
+        <p>Nothing is ruled out in tcmts cI` further develcpntcnt, and I have met with u rcpresentmivc ul&#8217; mysociety tn discuss ways nfccnvsinuing to improve what we dc.<br />
+        I am titlly supportive oI&#8217;thc uirns ofthe I-`rce Our Bills campaign, und I urn keen vn work with the relevant House authorities to sec what can he done to open up thc legislative process In at broader audience.<br />
+        I hope that this is hclphtl to your constituent.</p>
+        </div>
+        <hr />
+        <ul class="navigation group">
+          <li class="previousPost">
+            &laquo; (older)
+            <a class="previousPost" href="/blog/2008-09-03-listening-to-itunes-on-my-intempo-gx-01" rel="prev" title="Listening to iTunes on my Intempo GX-01">
+              Listening to iTunes on my Intempo GX-01
+            </a>
+          </li>
+          <li class="nextPost">
+            <a class="nextPost" href="/blog/2008-12-05-a-javascript-querystring-printer" rel="next" title="A Javascript QueryString Printer">
+              A Javascript QueryString Printer
+            </a>
+            (newer) &raquo;
+          </li>
+        </ul>
+      </div>
+      <div id="footer">
+        <p class="license">
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
+            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
+          </a>
+          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
+          by
+          <span class="vcard">
+            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
+          </span>
+          is licensed under a
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
+        </p>
+      </div>
+    </div>
+    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+  </body>
+</html>

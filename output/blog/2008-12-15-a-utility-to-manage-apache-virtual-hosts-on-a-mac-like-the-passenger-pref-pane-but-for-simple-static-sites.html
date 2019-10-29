@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta charset="utf-8" />
+    <link href="/images/favicon.gif" rel="icon" />
+    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="http://www.myopenid.com/server" rel="openid.server" />
+    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+    <title>A Utility to Manage Apache Virtual Hosts on a Mac (Like the Passenger Pref Pane but for Simple Static Sites) - Chris Roos</title>
+    <link href="/blog/2008-12-05-a-javascript-querystring-printer" rel="prev" />
+    <link href="/blog/2008-12-17-please-sir-can-i-have-a-job" rel="next" />
+    <link href="/blog/2005-09-06-linspire" rel="first" />
+    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+    <link href="/blog" rel="index" />
+    <meta content="A neat (if I may say so myself) little utility that simplifies the process of setting up an apache virtual host and associated domain." name="description" />
+  </head>
+  <body>
+    <div id="page">
+      <div class="group" id="header">
+        <p id="site_name">
+          <a href="/">chris roos</a>
+        </p>
+        <ul class="navigation group">
+          <li>
+            <a href="/about" title="About me">about me</a>
+          </li>
+          <li>
+            <a href="/contact" title="Contact me">contact me</a>
+          </li>
+          <li>
+            <a href="/blog" title="Blog">blog</a>
+          </li>
+          <li>
+            <a href="/projects" title="Projects">projects</a>
+          </li>
+          <li>
+            <a href="/utilities" title="Utilities">utilities</a>
+          </li>
+        </ul>
+        <form action="http://www.google.co.uk/search" id="searchForm">
+          <div>
+            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
+            <input name="q" size="31" type="text" />
+            <input name="sa" type="submit" value="Search" />
+          </div>
+        </form>
+      </div>
+      <div id="content">
+        <abbr class="createdAt" title="2008-12-15T20:21:47+00:00">Mon, 15 Dec 08</abbr>
+        <h1>A Utility to Manage Apache Virtual Hosts on a Mac (Like the Passenger Pref Pane but for Simple Static Sites)</h1>
+        <div class="notice">29 June 2009.  See the <a href="/blog/2009-06-23-apacherb-is-now-hostess">updated post</a> about this utility.</div>
+        <p>I really like the <a href="http://www.fngtps.com/2008/06/putting-the-pane-back-into-deployment">Passenger preference pane</a>, for both its functionality and simplicity.  I wondered whether there was anything similar that would allow me to create simple <a href="http://en.wikipedia.org/wiki/Virtual_hosting">virtual hosts</a> in the same way (i.e. create the <a href="http://httpd.apache.org/">apache</a> config and register the hostname with <a href="http://developer.apple.com/opensource/dirservices/">directory services</a>).  I saw mention of something called headdress (that supposedly makes apache config easier) but the site&#8217;s been down for the last couple of days and I believe it&#8217;s pay-for software anyway.  I decided to steal the concepts (and the code for the <a href="http://developer.apple.com/documentation/Darwin/Reference/ManPages/man1/dscl.1.html">dscl</a> stuff) from the <a href="http://github.com/alloy/passengerpane/tree/master">passenger pref pane code</a> and create a little shell script that allows me to manage virtual hosts on my Mac.</p>
+        <p>You can get it by checking out the <a href="http://chrisroos.googlecode.com/svn/trunk/apacherb/">source</a>:</p>
+        <pre class="code">&#x000A;svn co http://chrisroos.googlecode.com/svn/trunk/apacherb</pre>
+        <p>It works in a very similar way to the Passenger preference pane: you give it a domain and directory (<code>sudo apacherb create chrisroos.local /path/to/chrisroos.local</code>) and it&#8217;ll create the necessary config (in /etc/apache2/apacherb_vhosts/) and register the domain with directory services.  You can also delete (<code>sudo apacherb delete chrisroos.local</code>) and list (<code>apacherb list</code>) these vhosts.  Just execute the script to see the help message (or look at the code).</p>
+        <p>I use this script to generate apache virtual hosts, instead of using the built in <a href="http://www.webrick.org/">webrick</a> server, for my <a href="http://webby.rubyforge.org/">webby</a> sites so that I can see them exactly as they&#8217;ll appear when they&#8217;re deployed.</p>
+        <p>I&#8217;d be interested to know if this is of use to anyone else and if there&#8217;s anything else you&#8217;d like to see it do.</p>
+        <hr />
+        <ul class="navigation group">
+          <li class="previousPost">
+            &laquo; (older)
+            <a class="previousPost" href="/blog/2008-12-05-a-javascript-querystring-printer" rel="prev" title="A Javascript QueryString Printer">
+              A Javascript QueryString Printer
+            </a>
+          </li>
+          <li class="nextPost">
+            <a class="nextPost" href="/blog/2008-12-17-please-sir-can-i-have-a-job" rel="next" title="Please Sir Can I Have a Job">
+              Please Sir Can I Have a Job
+            </a>
+            (newer) &raquo;
+          </li>
+        </ul>
+      </div>
+      <div id="footer">
+        <p class="license">
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
+            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
+          </a>
+          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
+          by
+          <span class="vcard">
+            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
+          </span>
+          is licensed under a
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
+        </p>
+      </div>
+    </div>
+    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+  </body>
+</html>

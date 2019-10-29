@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta charset="utf-8" />
+    <link href="/images/favicon.gif" rel="icon" />
+    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="http://www.myopenid.com/server" rel="openid.server" />
+    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+    <title>Rails testing without database - Chris Roos</title>
+    <link href="/blog/2006-02-18-alternative-to-putty-ssh-on-windows" rel="prev" />
+    <link href="/blog/2006-02-23-rails-rake-testing-without-database" rel="next" />
+    <link href="/blog/2005-09-06-linspire" rel="first" />
+    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+    <link href="/blog" rel="index" />
+  </head>
+  <body>
+    <div id="page">
+      <div class="group" id="header">
+        <p id="site_name">
+          <a href="/">chris roos</a>
+        </p>
+        <ul class="navigation group">
+          <li>
+            <a href="/about" title="About me">about me</a>
+          </li>
+          <li>
+            <a href="/contact" title="Contact me">contact me</a>
+          </li>
+          <li>
+            <a href="/blog" title="Blog">blog</a>
+          </li>
+          <li>
+            <a href="/projects" title="Projects">projects</a>
+          </li>
+          <li>
+            <a href="/utilities" title="Utilities">utilities</a>
+          </li>
+        </ul>
+        <form action="http://www.google.co.uk/search" id="searchForm">
+          <div>
+            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
+            <input name="q" size="31" type="text" />
+            <input name="sa" type="submit" value="Search" />
+          </div>
+        </form>
+      </div>
+      <div id="content">
+        <abbr class="createdAt" title="2006-02-23T08:16:00+00:00">Thu, 23 Feb 06</abbr>
+        <h1>Rails testing without database</h1>
+        <p>Just yesterday I wanted to create a very quick rails app that didn&#8217;t rely on a database.</p>
+        <p>I removed :active_record from the frameworks loaded in evironment, but apparently this wasn&#8217;t quite enough.  The setup and teardown methods in Test::Unit::TestCase were still attempting to load fixtures (which implies that active record is still present somewhere), which require the presence of a database.  This was causing tests not to run.  Having had a quick look at how active record intercepts the setup and teardown methods, it was relatively simple to stop it from doing so.</p>
+        <p>Just add the code below within the Test::Unit::TestCase declaration in test_helper.</p>
+        <pre class="code ruby">&#x000A;def self.dont_use_fixtures&#x000A;  class_eval do&#x000A;    def self.method_added(method); end&#x000A;    def setup; end&#x000A;    def teardown; end&#x000A;  end&#x000A;end</pre>
+        <p>This still requires that you add dont_use_fixtures into each test class definition.</p>
+        <pre class="code ruby">&#x000A;class MyTest &lt; Test::Unit::TestCase&#x000A;  dont_use_fixtures&#x000A;  def test_&#x000A;    # my first test&#x000A;  end&#x000A;end</pre>
+        <p>Having just written this it&#8217;s obvious now that it would make more sense to not require the declaration in each test class (as we supposedly don&#8217;t even have access to active record).  We should probably also play fair and pass messages back to our parent if method_added isn&#8217;t being called with either setup or teardown.</p>
+        <p>The new code becomes (again, in Test::Unit::TestCase definition in test_helper).</p>
+        <pre class="code ruby">&#x000A;def self.method_added(method)&#x000A;  super unless [:setup, :teardown].include?(method.to_sym)&#x000A;end&#x000A;def setup; end&#x000A;def teardown; end</pre>
+        <p>This appears to work ok&#8230;</p>
+        <hr />
+        <ul class="navigation group">
+          <li class="previousPost">
+            &laquo; (older)
+            <a class="previousPost" href="/blog/2006-02-18-alternative-to-putty-ssh-on-windows" rel="prev" title="Alternative to Putty Ssh on Windows">
+              Alternative to Putty Ssh on Windows
+            </a>
+          </li>
+          <li class="nextPost">
+            <a class="nextPost" href="/blog/2006-02-23-rails-rake-testing-without-database" rel="next" title="Rails rake testing without database">
+              Rails rake testing without database
+            </a>
+            (newer) &raquo;
+          </li>
+        </ul>
+      </div>
+      <div id="footer">
+        <p class="license">
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
+            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
+          </a>
+          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
+          by
+          <span class="vcard">
+            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
+          </span>
+          is licensed under a
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
+        </p>
+      </div>
+    </div>
+    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+  </body>
+</html>

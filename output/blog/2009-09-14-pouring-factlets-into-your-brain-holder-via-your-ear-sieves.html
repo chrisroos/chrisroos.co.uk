@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta charset="utf-8" />
+    <link href="/images/favicon.gif" rel="icon" />
+    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="http://www.myopenid.com/server" rel="openid.server" />
+    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+    <title>Pouring Factlets Into Your Brain Holder via Your Ear Sieves - Chris Roos</title>
+    <link href="/blog/2009-07-21-creating-a-greasemonkey-script-that-applies-to-the-firefox-problem-loading-page-error-page" rel="prev" />
+    <link href="/blog/2009-09-17-things-i-learnt-at-interesting-2009" rel="next" />
+    <link href="/blog/2005-09-06-linspire" rel="first" />
+    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+    <link href="/blog" rel="index" />
+    <meta content="An idea for a dynamic audio guidebook on your gps enabled mobile device." name="description" />
+  </head>
+  <body>
+    <div id="page">
+      <div class="group" id="header">
+        <p id="site_name">
+          <a href="/">chris roos</a>
+        </p>
+        <ul class="navigation group">
+          <li>
+            <a href="/about" title="About me">about me</a>
+          </li>
+          <li>
+            <a href="/contact" title="Contact me">contact me</a>
+          </li>
+          <li>
+            <a href="/blog" title="Blog">blog</a>
+          </li>
+          <li>
+            <a href="/projects" title="Projects">projects</a>
+          </li>
+          <li>
+            <a href="/utilities" title="Utilities">utilities</a>
+          </li>
+        </ul>
+        <form action="http://www.google.co.uk/search" id="searchForm">
+          <div>
+            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
+            <input name="q" size="31" type="text" />
+            <input name="sa" type="submit" value="Search" />
+          </div>
+        </form>
+      </div>
+      <div id="content">
+        <abbr class="createdAt" title="2009-09-14T19:45:38+00:00">Mon, 14 Sep 09</abbr>
+        <h1>Pouring Factlets Into Your Brain Holder via Your Ear Sieves</h1>
+        <p>I was walking past <a href="http://www.haysgalleria.co.uk/">Hays Galleria</a> on the way to work the other morning and realised that I didn&#8217;t really know anything about it.  I was listening to <a href="http://listen.googlelabs.com/">streaming podcasts</a> on my <a href="http://en.wikipedia.org/wiki/Global_Positioning_System"><span class="caps">GPS</span></a> enabled <a href="http://www.android.com/">Android</a> <a href="http://www.htc.com/www/product/g1/overview.html">G1</a> and started thinking about receiving little factlets (I originally wrote factoid but apparently that means an unverified statement taken as truth<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>) as I walk around.  I&#8217;ve thought about this a bit more and think it&#8217;d be really quite a good thing.  It&#8217;d be like the audio tours you get in museums and the like but defined purely by where <strong>you</strong> go, rather than you having to follow a pre-determined path.  So, assuming there&#8217;s not already something similar out there (I wouldn&#8217;t be surprised if there was) then I&#8217;m going to build it.  Does this sound interesting to anyone else, specifically developer types that can help me actually build it?</p>
+        <p>An off-the-top-of-my-head plan:</p>
+        <ul>
+        	<li>Store some geotagged audio somewhere.
+        	<ul>
+        		<li>Could we use <a href="http://twaud.io/">twaud.io</a> (directly or build on top of it)?</li>
+        		<li>There is some <a href="http://www.google.co.uk/search?q=geotagged+audio">prior art</a> here</li>
+        	</ul></li>
+        	<li>Create an Android application.  We&#8217;d need to be able to:
+        	<ul>
+        		<li>Search for audio based on current location.</li>
+        		<li>Stream and play audio.</li>
+        	</ul></li>
+        	<li>Make the creation of geotagged audio easier.
+        	<ul>
+        		<li>Can we use text to voice to convert fragments of <a href="http://en.wikipedia.org/wiki/Geotagging#Wikipedia">geotagged wikipedia articles</a>?</li>
+        		<li>Can we create a game that makes the generation of this audio content appealing to more people?</li>
+        	</ul></li>
+        	<li>Allow people to upload their own factlets when they&#8217;re out and about.
+        	<ul>
+        		<li>twaud.io already enables uploading of audio, we&#8217;d just need to geotag it.</li>
+        	</ul></li>
+        </ul>
+        <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> Or does it?</p>
+        <hr />
+        <ul class="navigation group">
+          <li class="previousPost">
+            &laquo; (older)
+            <a class="previousPost" href="/blog/2009-07-21-creating-a-greasemonkey-script-that-applies-to-the-firefox-problem-loading-page-error-page" rel="prev" title="Creating a Greasemonkey Script That Applies to the Firefox 'Problem Loading Page' Error Page">
+              Creating a Greasemonkey Script That Applies to the Firefox 'Problem Loading Page' Error Page
+            </a>
+          </li>
+          <li class="nextPost">
+            <a class="nextPost" href="/blog/2009-09-17-things-i-learnt-at-interesting-2009" rel="next" title="Things I Learnt at Interesting 2009">
+              Things I Learnt at Interesting 2009
+            </a>
+            (newer) &raquo;
+          </li>
+        </ul>
+      </div>
+      <div id="footer">
+        <p class="license">
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
+            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
+          </a>
+          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
+          by
+          <span class="vcard">
+            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
+          </span>
+          is licensed under a
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
+        </p>
+      </div>
+    </div>
+    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+  </body>
+</html>

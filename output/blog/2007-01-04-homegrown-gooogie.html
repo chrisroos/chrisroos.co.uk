@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta charset="utf-8" />
+    <link href="/images/favicon.gif" rel="icon" />
+    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="http://www.myopenid.com/server" rel="openid.server" />
+    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+    <title>Homegrown gooogie - Chris Roos</title>
+    <link href="/blog/2006-12-24-curl-is-fast-becoming-my-favourite-toy" rel="prev" />
+    <link href="/blog/2007-01-05-bad-seetickets-com" rel="next" />
+    <link href="/blog/2005-09-06-linspire" rel="first" />
+    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+    <link href="/blog" rel="index" />
+  </head>
+  <body>
+    <div id="page">
+      <div class="group" id="header">
+        <p id="site_name">
+          <a href="/">chris roos</a>
+        </p>
+        <ul class="navigation group">
+          <li>
+            <a href="/about" title="About me">about me</a>
+          </li>
+          <li>
+            <a href="/contact" title="Contact me">contact me</a>
+          </li>
+          <li>
+            <a href="/blog" title="Blog">blog</a>
+          </li>
+          <li>
+            <a href="/projects" title="Projects">projects</a>
+          </li>
+          <li>
+            <a href="/utilities" title="Utilities">utilities</a>
+          </li>
+        </ul>
+        <form action="http://www.google.co.uk/search" id="searchForm">
+          <div>
+            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
+            <input name="q" size="31" type="text" />
+            <input name="sa" type="submit" value="Search" />
+          </div>
+        </form>
+      </div>
+      <div id="content">
+        <abbr class="createdAt" title="2007-01-04T14:37:00+00:00">Thu, 04 Jan 07</abbr>
+        <h1>Homegrown gooogie</h1>
+        <p>So, I just saw a <a href="http://blog.outer-court.com/archive/2007-01-04.html#n31">post</a> about <a href="http://www.gooogie.co.uk">gooogie</a>, and it reminded me of my <a href="/blog/2006-12-15-might-as-well-aim-high">own</a>, &#8216;did you mean&#8217;, page<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>.</p>
+        <p>You can achieve the same effect as gooogie by using the excellent <a href="https://addons.mozilla.org/firefox/1843/">firebug</a> firefox extension to execute javascript in the context of the page you are viewing.</p>
+        <p>To achieve the effect:</p>
+        <ul>
+        	<li>Open up <a href="http://www.google.co.uk">google</a></li>
+        </ul>
+        <ul>
+        	<li>Type something into the search box that will generate a &#8216;did you mean&#8217; response (tip. use any <a href="http://www.google.co.uk/search?hl=en&amp;q=mispeled&amp;btnG=Google+Search">misspelled</a> word)</li>
+        </ul>
+        <ul>
+        	<li>Use the handy <a href="https://addons.mozilla.org/firefox/1192/">XPather</a> firefox extension to find the XPath expression of the suggested word (in italics).  At this time, the relevant xpath seems to be &#8216;/html/body/p<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>/a/b/i&#8217;</li>
+        </ul>
+        <ul>
+        	<li>Fire up firebug and execute the following line in the console, substituting your desired suggestion first (the text on the page should change immediately)</li>
+        </ul>
+        <pre class="code javascript">&#x000A;document.evaluate('/html/body/p[1]/a/b/i', document, null, XPathResult.ANY_TYPE, null).iterateNext().textContent = 'THE_WORD_YOU_WANT_TO_SUGGEST'</pre>
+        <ul>
+        	<li>Finish by typing a new word into the search box and taking a screenshot to impress your friends (or not, as the case may be).</li>
+        </ul>
+        <p>On second thoughts, just use gooogie, it&#8217;s much quicker and cross-browser compatible.</p>
+        <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> A handful of people have stated that they don&#8217;t get the &#8216;did you mean reevoo&#8217; message when typing &#8216;review&#8217; into google.  Well, no, they wouldn&#8217;t.  It&#8217;s completely made up.  He he.</p>
+        <hr />
+        <ul class="navigation group">
+          <li class="previousPost">
+            &laquo; (older)
+            <a class="previousPost" href="/blog/2006-12-24-curl-is-fast-becoming-my-favourite-toy" rel="prev" title="cURL is fast becoming my favourite toy">
+              cURL is fast becoming my favourite toy
+            </a>
+          </li>
+          <li class="nextPost">
+            <a class="nextPost" href="/blog/2007-01-05-bad-seetickets-com" rel="next" title="Bad seetickets.com">
+              Bad seetickets.com
+            </a>
+            (newer) &raquo;
+          </li>
+        </ul>
+      </div>
+      <div id="footer">
+        <p class="license">
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
+            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
+          </a>
+          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
+          by
+          <span class="vcard">
+            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
+          </span>
+          is licensed under a
+          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
+        </p>
+      </div>
+    </div>
+    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+  </body>
+</html>
