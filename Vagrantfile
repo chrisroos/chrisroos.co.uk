@@ -12,6 +12,6 @@ Vagrant.configure("2") do |config|
     apt-get install -y make
 
     # Update Rubygems and install Bundler
-    gem update --system
+    gem update --system 2.7.10
   SHELL
 end
