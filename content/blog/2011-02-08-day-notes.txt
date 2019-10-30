@@ -5,11 +5,10 @@ title:      Day notes - Tue 8th Feb 2011
 created_at: 2011-02-15 18:31:35.174606 +00:00
 guid:       008564b6-1a35-4b18-a21f-9a4e102e2a1a
 layout:     blog
-filter:     haml
+filter:     markdown
 ---
-:markdown
-  Had a bit of a general discussion around our [Go Free Range](http://gofreerange.com/) accounts.
+Had a bit of a general discussion around our [Go Free Range](http://gofreerange.com/) accounts.
 
-  We ended up carrying over some of our [#blue](https://hashblue.com/) signup discussion from yesterday.  Although this felt a bit like going over old ground it was actually really useful.  It made us really focus on what we were trying to achieve, i.e. the problems we were trying to solve, and allowed us to get rid of some of the stories we came up with yesterday.
+We ended up carrying over some of our [#blue](https://hashblue.com/) signup discussion from yesterday.  Although this felt a bit like going over old ground it was actually really useful.  It made us really focus on what we were trying to achieve, i.e. the problems we were trying to solve, and allowed us to get rid of some of the stories we came up with yesterday.
 
-  [James A](http://interblah.net/) and I paired on moving the phone number from the beta request sign up, to the account sign up.  The way that #blue used to integrate with Bluebook meant that we required the number up front to check whether you were an existing customer.  This is no longer the case so we think we can make it simpler for new users to request an invite.
+[James A](http://interblah.net/) and I paired on moving the phone number from the beta request sign up, to the account sign up.  The way that #blue used to integrate with Bluebook meant that we required the number up front to check whether you were an existing customer.  This is no longer the case so we think we can make it simpler for new users to request an invite.

@@ -5,7 +5,6 @@ title:      Day notes - Tue 18th Jan 2011
 created_at: 2011-01-21 17:21:22.128974 +00:00
 guid:       ce7ee415-d8f0-4599-b81f-cc4705771622
 layout:     blog
-filter:     haml
+filter:     markdown
 ---
-:markdown
-  [James A](http://interblah.net/), [James M](http://jamesmead.org/), [Tom](http://tomafro.net/) and I spent the day at the [O2](http://www.o2.co.uk/) offices in Slough.  We spent some more time trying to connect to the live MMSC and talking about how we might integrate MMS functionality within [#blue](https://hashblue.com/).
+[James A](http://interblah.net/), [James M](http://jamesmead.org/), [Tom](http://tomafro.net/) and I spent the day at the [O2](http://www.o2.co.uk/) offices in Slough.  We spent some more time trying to connect to the live MMSC and talking about how we might integrate MMS functionality within [#blue](https://hashblue.com/).

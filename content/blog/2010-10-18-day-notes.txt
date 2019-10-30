@@ -5,17 +5,16 @@ title:      Day notes - Mon 18th Oct 2010
 created_at: 2010-10-19 12:59:13.518269 +01:00
 guid:       9823b6ec-4aba-48a1-8505-20791d8abc47
 layout:     blog
-filter:     haml
+filter:     markdown
 ---
-:markdown
-  Started using a shared [keychain](http://en.wikipedia.org/wiki/Keychain_\(Mac_OS\)) file (stored in shared [dropbox](https://www.dropbox.com/) instead of a password protected dmg containing a text file full of passwords.
+Started using a shared [keychain](http://en.wikipedia.org/wiki/Keychain_\(Mac_OS\)) file (stored in shared [dropbox](https://www.dropbox.com/) instead of a password protected dmg containing a text file full of passwords.
 
-  Worked with [Tom](http://tomafro.net/) to start migrating the hosting of an app from [linode](http://www.linode.com/) to [AWS](http://aws.amazon.com/).
+Worked with [Tom](http://tomafro.net/) to start migrating the hosting of an app from [linode](http://www.linode.com/) to [AWS](http://aws.amazon.com/).
 
-  O2 meeting with [Kalv](http://kalv.co.uk/).
+O2 meeting with [Kalv](http://kalv.co.uk/).
 
-  Worked with [James A](http://www.interblah.net/) to get a performance testing story accepted.
+Worked with [James A](http://www.interblah.net/) to get a performance testing story accepted.
 
-  Played around with the security command line tool to extract a private key from a secure note in the keychain.  You'll need something like this if you want to do the same.
+Played around with the security command line tool to extract a private key from a secure note in the keychain.  You'll need something like this if you want to do the same.
 
-        $ security find-generic-password -g -l "my-label" 2>&1 1>/dev/null | ruby -e 'puts STDIN.read[/-----BEGIN PRIVATE KEY-----.*-----END PRIVATE KEY-----/].gsub(/\\012/, "\n")' > ~/path-to-key
+      $ security find-generic-password -g -l "my-label" 2>&1 1>/dev/null | ruby -e 'puts STDIN.read[/-----BEGIN PRIVATE KEY-----.*-----END PRIVATE KEY-----/].gsub(/\\012/, "\n")' > ~/path-to-key

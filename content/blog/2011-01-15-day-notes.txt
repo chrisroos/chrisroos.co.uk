@@ -5,11 +5,10 @@ title:      Day notes - Sat 15th Jan 2011
 created_at: 2011-01-21 16:49:16.534908 +00:00
 guid:       dde38961-5882-4f18-882e-ae2a54f0271c
 layout:     blog
-filter:     haml
+filter:     markdown
 ---
-:markdown
-  I went to [the Outdoors show](http://www.theoutdoorsshow.co.uk/) and saw some climbing, some great bike trickery from [The Clan](http://www.mb7.com/TheClan/) and talks by [Ray Mears](http://www.raymears.com/) and [Ben Fogle](http://www.benfogle.com/).
+I went to [the Outdoors show](http://www.theoutdoorsshow.co.uk/) and saw some climbing, some great bike trickery from [The Clan](http://www.mb7.com/TheClan/) and talks by [Ray Mears](http://www.raymears.com/) and [Ben Fogle](http://www.benfogle.com/).
 
-  The talks were really interesting.  The main thing I took away from Ray's talk was the importance of the journey (versus the destination): The difference, in bushcraft terms, between being able to *survive* in the wild for a short period of time and being able to *live* in the wild.  I also really respect Ray's depth of knowledge in the subjects he spoke about.
+The talks were really interesting.  The main thing I took away from Ray's talk was the importance of the journey (versus the destination): The difference, in bushcraft terms, between being able to *survive* in the wild for a short period of time and being able to *live* in the wild.  I also really respect Ray's depth of knowledge in the subjects he spoke about.
 
-  Ben's talk was a brief history of his life and the challenges he's undertaken.  I'd read [The Crossing](http://www.amazon.co.uk/gp/product/184354511X) and watched [On Thin Ice](http://www.amazon.co.uk/Thin-Ice-DVD-Ben-Fogle/dp/B0028QGYZY) and really enjoyed them both.  Not wishing to take anything away from Ben's achievements, he makes it seem as though anyone can take on these sort of epic challenges, which is really inspiring.  One thing I didn't realise until seeing the talk was that [James Cracknell was in a serious road accident in July 2010](http://www.bbc.co.uk/news/entertainment-arts-10728094).  James has [written about his recovery in the Telegraph](http://www.telegraph.co.uk/sport/columnists/jamescracknell/8023949/James-Cracknell-I-feel-so-lucky-to-be-alive-but-Ill-never-be-the-same-again.html).
+Ben's talk was a brief history of his life and the challenges he's undertaken.  I'd read [The Crossing](http://www.amazon.co.uk/gp/product/184354511X) and watched [On Thin Ice](http://www.amazon.co.uk/Thin-Ice-DVD-Ben-Fogle/dp/B0028QGYZY) and really enjoyed them both.  Not wishing to take anything away from Ben's achievements, he makes it seem as though anyone can take on these sort of epic challenges, which is really inspiring.  One thing I didn't realise until seeing the talk was that [James Cracknell was in a serious road accident in July 2010](http://www.bbc.co.uk/news/entertainment-arts-10728094).  James has [written about his recovery in the Telegraph](http://www.telegraph.co.uk/sport/columnists/jamescracknell/8023949/James-Cracknell-I-feel-so-lucky-to-be-alive-but-Ill-never-be-the-same-again.html).

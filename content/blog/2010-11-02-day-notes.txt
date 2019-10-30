@@ -5,7 +5,6 @@ title:      Day notes - Tue 2nd Nov 2010
 created_at: 2010-11-04 14:33:29.334163 +00:00
 guid:       20548dbb-1d55-46ac-87bb-52dc96d87e4a
 layout:     blog
-filter:     haml
+filter:     markdown
 ---
-:markdown
-  More 'project for upcoming conference' work with [Jase](http://jasoncale.com/).  This time getting it to work as a [full screen app](http://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html#//apple_ref/doc/uid/TP40002051-CH3-SW2) from the iPhone/iPad desktop and attempting to add some basic authentication.
+More 'project for upcoming conference' work with [Jase](http://jasoncale.com/).  This time getting it to work as a [full screen app](http://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html#//apple_ref/doc/uid/TP40002051-CH3-SW2) from the iPhone/iPad desktop and attempting to add some basic authentication.

@@ -5,12 +5,11 @@ title:      Day notes - Wed 2nd Feb 2011
 created_at: 2011-02-07 17:46:54.563895 +00:00
 guid:       ecc3aacd-ca19-4a3a-bb34-25e6e49ed95f
 layout:     blog
-filter:     haml
+filter:     markdown
 ---
-:markdown
-  [Tom](http://tomafro.net/) and I fixed a couple of small bugs in [#blue](https://hashblue.com/):
+[Tom](http://tomafro.net/) and I fixed a couple of small bugs in [#blue](https://hashblue.com/):
 
-  * Invite URLs had changed and some of the older ones were no longer working.  We added a legacy route to ensure the old invites continued to work.
-  * It was possible to access the new account page without an invite.
+* Invite URLs had changed and some of the older ones were no longer working.  We added a legacy route to ensure the old invites continued to work.
+* It was possible to access the new account page without an invite.
 
-  We worked through some network shenanigans to allow us to communicate with the [O2](http://www.o2.co.uk/) abs so that we can start provisioning customers again.
+We worked through some network shenanigans to allow us to communicate with the [O2](http://www.o2.co.uk/) abs so that we can start provisioning customers again.

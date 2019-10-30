@@ -5,18 +5,16 @@ title:      Day notes - Tues 12th Oct 2010
 created_at: 2010-10-14 10:11:13.801080 +01:00
 guid:       8ee6d6e5-6cdf-4881-b83b-89906e189a2c
 layout:     blog
-filter:     haml
+filter:     markdown
 ---
-:markdown
+## Work stuff
 
-  ## Work stuff
+* [James M](http://blog.floehopper.org/) and I continued working with [httperf](http://www.hpl.hp.com/research/linux/httperf/) but found that ramping up the load caused the tool to segfault.  We're not sure if this is related to our changes to the source but decided to give up on httperf at this point.
 
-  * [James M](http://blog.floehopper.org/) and I continued working with [httperf](http://www.hpl.hp.com/research/linux/httperf/) but found that ramping up the load caused the tool to segfault.  We're not sure if this is related to our changes to the source but decided to give up on httperf at this point.
+* We switched back to looking at [tsung](http://tsung.erlang-projects.org/) but couldn't get around the problem with it not being able to connect to an http server over SSL.
 
-  * We switched back to looking at [tsung](http://tsung.erlang-projects.org/) but couldn't get around the problem with it not being able to connect to an http server over SSL.
+* We finally spent some time with [siege](http://www.joedog.org/index/siege-home).  This tool had problems with our session cookies.  A little foray into the source appeared to reveal that session cookies are retrieved and then immediately removed as they don't have an explicit expiry date set.
 
-  * We finally spent some time with [siege](http://www.joedog.org/index/siege-home).  This tool had problems with our session cookies.  A little foray into the source appeared to reveal that session cookies are retrieved and then immediately removed as they don't have an explicit expiry date set.
+## Other stuff
 
-  ## Other stuff
-
-  * [Serena](http://twitter.com/serenamchugh) and I went for an assessment session with [Rick Kiddle](http://www.rickkiddle.com/) in the hope that we might, one day, be able to have a crack at [swimming the channel](http://www.channelswimmingassociation.com/).
+* [Serena](http://twitter.com/serenamchugh) and I went for an assessment session with [Rick Kiddle](http://www.rickkiddle.com/) in the hope that we might, one day, be able to have a crack at [swimming the channel](http://www.channelswimmingassociation.com/).
