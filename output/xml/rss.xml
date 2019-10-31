@@ -16,15 +16,26 @@
 
 &lt;h2&gt;Create a new git repo&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cd /tmp&amp;#x000A;$ mkdir testing-git-log&amp;#x000A;$ cd testing-git-log&amp;#x000A;$ git init&amp;#x000A;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$ cd /tmp
+$ mkdir testing-git-log
+$ cd testing-git-log
+$ git init
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2&gt;Create a file and add it to the repo&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code&gt;$ touch file1&amp;#x000A;$ git add file1&amp;#x000A;$ git commit -m &quot;Add file1&quot;&amp;#x000A;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$ touch file1
+$ git add file1
+$ git commit -m &quot;Add file1&quot;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2&gt;Edit the author and commit date of the commit&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code&gt;$ GIT_COMMITTER_DATE=&quot;2015-01-02 09:00&quot; \&amp;#x000A;git commit --amend \&amp;#x000A;--date &quot;2015-01-01 09:00&quot; \&amp;#x000A;--reuse-message HEAD&amp;#x000A;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$ GIT_COMMITTER_DATE=&quot;2015-01-02 09:00&quot; \
+git commit --amend \
+--date &quot;2015-01-01 09:00&quot; \
+--reuse-message HEAD
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;The &lt;code&gt;--date&lt;/code&gt; option sets the author date of the commit.&lt;/p&gt;
 
@@ -32,15 +43,30 @@
 
 &lt;h2&gt;Check that the author and commit date have been set as expected&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code&gt;$ git log --pretty=fuller&amp;#x000A;Author:     Chris Roos &amp;lt;chris@seagul.co.uk&amp;gt;&amp;#x000A;AuthorDate: Thu Jan 1 09:00:00 2015 +0000&amp;#x000A;Commit:     Chris Roos &amp;lt;chris@seagul.co.uk&amp;gt;&amp;#x000A;CommitDate: Fri Jan 2 09:00:00 2015 +0000&amp;#x000A;&amp;#x000A;    Add file1&amp;#x000A;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$ git log --pretty=fuller
+Author:     Chris Roos &amp;lt;chris@seagul.co.uk&amp;gt;
+AuthorDate: Thu Jan 1 09:00:00 2015 +0000
+Commit:     Chris Roos &amp;lt;chris@seagul.co.uk&amp;gt;
+CommitDate: Fri Jan 2 09:00:00 2015 +0000
+
+    Add file1
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2&gt;Use git log to show commits on 1st Jan 2015&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code&gt;$ git log --after &quot;2015-01-01 00:00&quot; --before &quot;2015-01-01 23:59:59&quot;&amp;#x000A;# Nothing shown&amp;#x000A;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$ git log --after &quot;2015-01-01 00:00&quot; --before &quot;2015-01-01 23:59:59&quot;
+# Nothing shown
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2&gt;Use git log to show commits on 2nd Jan 2015&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code&gt;$ git log --after &quot;2015-01-02 00:00&quot; --before &quot;2015-01-02 23:59:59&quot;&amp;#x000A;commit 5f2c92e2b44ab697f92cb4336fd66c6206f56be2&amp;#x000A;Author: Chris Roos &amp;lt;chris@seagul.co.uk&amp;gt;&amp;#x000A;Date:   Thu Jan 1 09:00:00 2015 +0000&amp;#x000A;&amp;#x000A;    Add file1&amp;#x000A;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$ git log --after &quot;2015-01-02 00:00&quot; --before &quot;2015-01-02 23:59:59&quot;
+commit 5f2c92e2b44ab697f92cb4336fd66c6206f56be2
+Author: Chris Roos &amp;lt;chris@seagul.co.uk&amp;gt;
+Date:   Thu Jan 1 09:00:00 2015 +0000
+
+    Add file1
+&lt;/code&gt;&lt;/pre&gt;
 </description>
 
         <pubDate>Fri, 20 Nov 2015 16:20:25 +0000</pubDate>
@@ -74,7 +100,120 @@
         <title>Getting my Webby powered website running on Mac OS X El Capitan</title>
         <description>&lt;p&gt;This is what I needed to do to get &lt;a href=&quot;https://github.com/TwP/webby&quot;&gt;Webby&lt;/a&gt; powered &lt;a href=&quot;https://github.com/chrisroos/chrisroos.co.uk&quot;&gt;website&lt;/a&gt; working on my laptop.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cd ~/Code/github/chrisroos.co.uk&amp;#x000A;&amp;#x000A;$ cat .rbenv-version&amp;#x000A;1.8.7-p352&amp;#x000A;&amp;#x000A;$ rbenv install 1.8.7-p352&amp;#x000A;&amp;#x000A;ERROR: This package must be compiled with GCC, but ruby-build couldn't&amp;#x000A;find a suitable `gcc` executable on your system. Please install GCC&amp;#x000A;and try again.&amp;#x000A;&amp;#x000A;DETAILS: Apple no longer includes the official GCC compiler with Xcode&amp;#x000A;as of version 4.2. Instead, the `gcc` executable is a symlink to&amp;#x000A;`llvm-gcc`, a modified version of GCC which outputs LLVM bytecode.&amp;#x000A;&amp;#x000A;For most programs the `llvm-gcc` compiler works fine. However,&amp;#x000A;versions of Ruby older than 1.9.3-p125 are incompatible with&amp;#x000A;`llvm-gcc`. To build older versions of Ruby you must have the official&amp;#x000A;GCC compiler installed on your system.&amp;#x000A;&amp;#x000A;TO FIX THE PROBLEM: Install Homebrew's apple-gcc42 package with this&amp;#x000A;command: brew tap homebrew/dupes ; brew install apple-gcc42&amp;#x000A;&amp;#x000A;You will need to install the official GCC compiler to build older&amp;#x000A;versions of Ruby even if you have installed Apple's Command Line Tools&amp;#x000A;for Xcode package. The Command Line Tools for Xcode package only&amp;#x000A;includes `llvm-gcc`.&amp;#x000A;&amp;#x000A;BUILD FAILED (OS X 10.11.1 using ruby-build 20150818)&amp;#x000A;&amp;#x000A;$ brew tap homebrew/dupes ; brew install apple-gcc42&amp;#x000A;==&amp;gt; Tapping homebrew/dupes&amp;#x000A;Cloning into '/usr/local/Library/Taps/homebrew/homebrew-dupes'...&amp;#x000A;remote: Counting objects: 42, done.&amp;#x000A;remote: Compressing objects: 100% (42/42), done.&amp;#x000A;remote: Total 42 (delta 0), reused 4 (delta 0), pack-reused 0&amp;#x000A;Unpacking objects: 100% (42/42), done.&amp;#x000A;Checking connectivity... done.&amp;#x000A;Tapped 39 formulae (103 files, 420K)&amp;#x000A;==&amp;gt; Installing apple-gcc42 from homebrew/homebrew-dupes&amp;#x000A;==&amp;gt; Downloading http://r.research.att.com/tools/gcc-42-5666.3-darwin11.pkg&amp;#x000A;######################################################################## 100.0%&amp;#x000A;==&amp;gt; /bin/pax --insecure -rz -f usr.pkg/Payload -s ,./usr,/usr/local/Cellar/apple-gcc42/4.2.1-5666.3,&amp;#x000A;==&amp;gt; Caveats&amp;#x000A;NOTE:&amp;#x000A;This formula provides components that were removed from XCode in the 4.2&amp;#x000A;release. There is no reason to install this formula if you are using a&amp;#x000A;version of XCode prior to 4.2.&amp;#x000A;&amp;#x000A;This formula contains compilers built from Apple's GCC sources, build&amp;#x000A;5666.3, available from:&amp;#x000A;&amp;#x000A;  http://opensource.apple.com/tarballs/gcc&amp;#x000A;&amp;#x000A;All compilers have a `-4.2` suffix. A GFortran compiler is also included.&amp;#x000A;==&amp;gt; Summary&amp;#x000A;🍺  /usr/local/Cellar/apple-gcc42/4.2.1-5666.3: 104 files, 75M, built in 23 seconds&amp;#x000A;&amp;#x000A;$ rbenv install 1.8.7-p352&amp;#x000A;Downloading ruby-1.8.7-p352.tar.gz...&amp;#x000A;-&amp;gt; https://dqw8nmjcqpjn7.cloudfront.net/2325b9f9ab2af663469d057c6a1ef59d914a649808e9f6d1a4877c8973c2dad0&amp;#x000A;Installing ruby-1.8.7-p352...&amp;#x000A;Installed ruby-1.8.7-p352 to /Users/chrisroos/.rbenv/versions/1.8.7-p352&amp;#x000A;&amp;#x000A;Downloading rubygems-1.6.2.tgz...&amp;#x000A;-&amp;gt; https://dqw8nmjcqpjn7.cloudfront.net/cb5261818b931b5ea2cb54bc1d583c47823543fcf9682f0d6298849091c1cea7&amp;#x000A;Installing rubygems-1.6.2...&amp;#x000A;Installed rubygems-1.6.2 to /Users/chrisroos/.rbenv/versions/1.8.7-p352&amp;#x000A;&amp;#x000A;$ rbenv rehash&amp;#x000A;&amp;#x000A;$ gem install bundler&amp;#x000A;Fetching: bundler-1.10.6.gem (100%)&amp;#x000A;Successfully installed bundler-1.10.6&amp;#x000A;1 gem installed&amp;#x000A;&amp;#x000A;$ bundle install&amp;#x000A;Fetching gem metadata from http://rubygems.org/..........&amp;#x000A;Fetching version metadata from http://rubygems.org/..&amp;#x000A;Resolving dependencies...&amp;#x000A;Installing rake 0.9.2.2&amp;#x000A;Installing RedCloth 4.2.7 with native extensions&amp;#x000A;Installing activesupport 3.0.0&amp;#x000A;Installing addressable 2.2.6&amp;#x000A;Installing diff-lcs 1.1.3&amp;#x000A;Installing directory_watcher 1.4.1&amp;#x000A;Installing haml 3.0.25&amp;#x000A;Installing hpricot 0.8.5 with native extensions&amp;#x000A;Installing launchy 2.0.5&amp;#x000A;Installing little-plugger 1.1.3&amp;#x000A;Installing logging 1.6.1&amp;#x000A;Installing loquacious 1.9.1&amp;#x000A;Installing rdiscount 1.6.8 with native extensions&amp;#x000A;Installing rspec-core 2.7.1&amp;#x000A;Installing rspec-expectations 2.7.0&amp;#x000A;Installing rspec-mocks 2.7.0&amp;#x000A;Installing rspec 2.7.0&amp;#x000A;Installing webby 0.9.4&amp;#x000A;Using bundler 1.10.6&amp;#x000A;Bundle complete! 5 Gemfile dependencies, 19 gems now installed.&amp;#x000A;Use `bundle show [gemname]` to see where a bundled gem is installed.&amp;#x000A;&amp;#x000A;$ webby autobuild&amp;#x000A;WARNING: Global access to Rake DSL methods is deprecated.  Please include&amp;#x000A;...  Rake::DSL into classes and modules which use the Rake DSL methods.&amp;#x000A;WARNING: DSL method Webby::Apps::Main#import called at /Users/chrisroos/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/webby-0.9.4/lib/webby/apps/main.rb:177:in `import_default_tasks'&amp;#x000A;WARNING: DSL method Webby::Apps::Main#import called at /Users/chrisroos/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/webby-0.9.4/lib/webby/apps/main.rb:177:in `import_default_tasks'&amp;#x000A;WARNING: DSL method Webby::Apps::Main#import called at /Users/chrisroos/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/webby-0.9.4/lib/webby/apps/main.rb:177:in `import_default_tasks'&amp;#x000A;WARNING: DSL method Webby::Apps::Main#import called at /Users/chrisroos/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/webby-0.9.4/lib/webby/apps/main.rb:177:in `import_default_tasks'&amp;#x000A;WARNING: DSL method Webby::Apps::Main#import called at /Users/chrisroos/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/webby-0.9.4/lib/webby/apps/main.rb:177:in `import_default_tasks'&amp;#x000A;[17:22:46]  INFO: starting autobuild (Ctrl-C to stop)&amp;#x000A;[17:22:47]  INFO: running the build&amp;#x000A;[17:23:18]  INFO: running the build&amp;#x000A;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$ cd ~/Code/github/chrisroos.co.uk
+
+$ cat .rbenv-version
+1.8.7-p352
+
+$ rbenv install 1.8.7-p352
+
+ERROR: This package must be compiled with GCC, but ruby-build couldn't
+find a suitable `gcc` executable on your system. Please install GCC
+and try again.
+
+DETAILS: Apple no longer includes the official GCC compiler with Xcode
+as of version 4.2. Instead, the `gcc` executable is a symlink to
+`llvm-gcc`, a modified version of GCC which outputs LLVM bytecode.
+
+For most programs the `llvm-gcc` compiler works fine. However,
+versions of Ruby older than 1.9.3-p125 are incompatible with
+`llvm-gcc`. To build older versions of Ruby you must have the official
+GCC compiler installed on your system.
+
+TO FIX THE PROBLEM: Install Homebrew's apple-gcc42 package with this
+command: brew tap homebrew/dupes ; brew install apple-gcc42
+
+You will need to install the official GCC compiler to build older
+versions of Ruby even if you have installed Apple's Command Line Tools
+for Xcode package. The Command Line Tools for Xcode package only
+includes `llvm-gcc`.
+
+BUILD FAILED (OS X 10.11.1 using ruby-build 20150818)
+
+$ brew tap homebrew/dupes ; brew install apple-gcc42
+==&amp;gt; Tapping homebrew/dupes
+Cloning into '/usr/local/Library/Taps/homebrew/homebrew-dupes'...
+remote: Counting objects: 42, done.
+remote: Compressing objects: 100% (42/42), done.
+remote: Total 42 (delta 0), reused 4 (delta 0), pack-reused 0
+Unpacking objects: 100% (42/42), done.
+Checking connectivity... done.
+Tapped 39 formulae (103 files, 420K)
+==&amp;gt; Installing apple-gcc42 from homebrew/homebrew-dupes
+==&amp;gt; Downloading http://r.research.att.com/tools/gcc-42-5666.3-darwin11.pkg
+######################################################################## 100.0%
+==&amp;gt; /bin/pax --insecure -rz -f usr.pkg/Payload -s ,./usr,/usr/local/Cellar/apple-gcc42/4.2.1-5666.3,
+==&amp;gt; Caveats
+NOTE:
+This formula provides components that were removed from XCode in the 4.2
+release. There is no reason to install this formula if you are using a
+version of XCode prior to 4.2.
+
+This formula contains compilers built from Apple's GCC sources, build
+5666.3, available from:
+
+  http://opensource.apple.com/tarballs/gcc
+
+All compilers have a `-4.2` suffix. A GFortran compiler is also included.
+==&amp;gt; Summary
+🍺  /usr/local/Cellar/apple-gcc42/4.2.1-5666.3: 104 files, 75M, built in 23 seconds
+
+$ rbenv install 1.8.7-p352
+Downloading ruby-1.8.7-p352.tar.gz...
+-&amp;gt; https://dqw8nmjcqpjn7.cloudfront.net/2325b9f9ab2af663469d057c6a1ef59d914a649808e9f6d1a4877c8973c2dad0
+Installing ruby-1.8.7-p352...
+Installed ruby-1.8.7-p352 to /Users/chrisroos/.rbenv/versions/1.8.7-p352
+
+Downloading rubygems-1.6.2.tgz...
+-&amp;gt; https://dqw8nmjcqpjn7.cloudfront.net/cb5261818b931b5ea2cb54bc1d583c47823543fcf9682f0d6298849091c1cea7
+Installing rubygems-1.6.2...
+Installed rubygems-1.6.2 to /Users/chrisroos/.rbenv/versions/1.8.7-p352
+
+$ rbenv rehash
+
+$ gem install bundler
+Fetching: bundler-1.10.6.gem (100%)
+Successfully installed bundler-1.10.6
+1 gem installed
+
+$ bundle install
+Fetching gem metadata from http://rubygems.org/..........
+Fetching version metadata from http://rubygems.org/..
+Resolving dependencies...
+Installing rake 0.9.2.2
+Installing RedCloth 4.2.7 with native extensions
+Installing activesupport 3.0.0
+Installing addressable 2.2.6
+Installing diff-lcs 1.1.3
+Installing directory_watcher 1.4.1
+Installing haml 3.0.25
+Installing hpricot 0.8.5 with native extensions
+Installing launchy 2.0.5
+Installing little-plugger 1.1.3
+Installing logging 1.6.1
+Installing loquacious 1.9.1
+Installing rdiscount 1.6.8 with native extensions
+Installing rspec-core 2.7.1
+Installing rspec-expectations 2.7.0
+Installing rspec-mocks 2.7.0
+Installing rspec 2.7.0
+Installing webby 0.9.4
+Using bundler 1.10.6
+Bundle complete! 5 Gemfile dependencies, 19 gems now installed.
+Use `bundle show [gemname]` to see where a bundled gem is installed.
+
+$ webby autobuild
+WARNING: Global access to Rake DSL methods is deprecated.  Please include
+...  Rake::DSL into classes and modules which use the Rake DSL methods.
+WARNING: DSL method Webby::Apps::Main#import called at /Users/chrisroos/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/webby-0.9.4/lib/webby/apps/main.rb:177:in `import_default_tasks'
+WARNING: DSL method Webby::Apps::Main#import called at /Users/chrisroos/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/webby-0.9.4/lib/webby/apps/main.rb:177:in `import_default_tasks'
+WARNING: DSL method Webby::Apps::Main#import called at /Users/chrisroos/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/webby-0.9.4/lib/webby/apps/main.rb:177:in `import_default_tasks'
+WARNING: DSL method Webby::Apps::Main#import called at /Users/chrisroos/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/webby-0.9.4/lib/webby/apps/main.rb:177:in `import_default_tasks'
+WARNING: DSL method Webby::Apps::Main#import called at /Users/chrisroos/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/webby-0.9.4/lib/webby/apps/main.rb:177:in `import_default_tasks'
+[17:22:46]  INFO: starting autobuild (Ctrl-C to stop)
+[17:22:47]  INFO: running the build
+[17:23:18]  INFO: running the build
+&lt;/code&gt;&lt;/pre&gt;
 </description>
 
         <pubDate>Thu, 29 Oct 2015 17:20:00 +0000</pubDate>
@@ -89,25 +228,57 @@
 
 &lt;p&gt;This is the command I ended up with to display the earliest timestamp in the file:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cat LocationHistory.json | \&amp;#x000A;grep timestampMs | \&amp;#x000A;grep -o -E &quot;\d+&quot; | \&amp;#x000A;sort | \&amp;#x000A;head -n1 | \&amp;#x000A;cut -c1-10 | \&amp;#x000A;xargs -J% date -j -f &quot;%s&quot; %&amp;#x000A;&amp;#x000A;#=&amp;gt; Sun  4 Mar 2012 12:33:29 GMT&amp;#x000A;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$ cat LocationHistory.json | \
+grep timestampMs | \
+grep -o -E &quot;\d+&quot; | \
+sort | \
+head -n1 | \
+cut -c1-10 | \
+xargs -J% date -j -f &quot;%s&quot; %
+
+#=&amp;gt; Sun  4 Mar 2012 12:33:29 GMT
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2&gt;Building the command&lt;/h2&gt;
 
 &lt;p&gt;Use &lt;code&gt;grep&lt;/code&gt; to extract all the lines containing timestamps.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ head LocationHistory.json | \&amp;#x000A;grep timestampMs&amp;#x000A;&amp;#x000A;#=&amp;gt; &quot;timestampMs&quot; : &quot;1414831041235&quot;,&amp;#x000A;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$ head LocationHistory.json | \
+grep timestampMs
+
+#=&amp;gt; &quot;timestampMs&quot; : &quot;1414831041235&quot;,
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Use &lt;code&gt;grep&lt;/code&gt; to extract the timestamp from each line.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ head LocationHistory.json | \&amp;#x000A;grep timestampMs | \&amp;#x000A;grep -o -E &quot;\d+&quot;              # Find 1 or more digits and print the matching string&amp;#x000A;&amp;#x000A;#=&amp;gt; 1414831041235&amp;#x000A;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$ head LocationHistory.json | \
+grep timestampMs | \
+grep -o -E &quot;\d+&quot;              # Find 1 or more digits and print the matching string
+
+#=&amp;gt; 1414831041235
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Use &lt;code&gt;cut&lt;/code&gt; to strip off the milliseconds from the timestamp.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ head LocationHistory.json | \&amp;#x000A;grep timestampMs | \&amp;#x000A;grep -o -E &quot;\d+&quot; | \&amp;#x000A;cut -c1-10                    # Ignore the last three digits (milliseconds) of the timestamp&amp;#x000A;&amp;#x000A;#=&amp;gt; 1414831041&amp;#x000A;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$ head LocationHistory.json | \
+grep timestampMs | \
+grep -o -E &quot;\d+&quot; | \
+cut -c1-10                    # Ignore the last three digits (milliseconds) of the timestamp
+
+#=&amp;gt; 1414831041
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Use &lt;code&gt;date&lt;/code&gt; to display the timestamp in a human friendly format.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ head LocationHistory.json | \&amp;#x000A;grep timestampMs | \&amp;#x000A;grep -o -E &quot;\d+&quot; | \&amp;#x000A;cut -c1-10 | \&amp;#x000A;xargs -J% date -j -f &quot;%s&quot; %   # Use `-j` to avoid setting the date&amp;#x000A;                              # and -f &quot;%s&quot; to tell date to parse the string as unix time&amp;#x000A;&amp;#x000A;#=&amp;gt; Sat  1 Nov 2014 08:37:21 GMT&amp;#x000A;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$ head LocationHistory.json | \
+grep timestampMs | \
+grep -o -E &quot;\d+&quot; | \
+cut -c1-10 | \
+xargs -J% date -j -f &quot;%s&quot; %   # Use `-j` to avoid setting the date
+                              # and -f &quot;%s&quot; to tell date to parse the string as unix time
+
+#=&amp;gt; Sat  1 Nov 2014 08:37:21 GMT
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;The full command adds &lt;code&gt;sort&lt;/code&gt; to ensure all timestamps are ordered and then either &lt;code&gt;head -n1&lt;/code&gt; or &lt;code&gt;tail -n1&lt;/code&gt; to print the earliest and latest dates respectively.&lt;/p&gt;
 </description>
@@ -189,21 +360,57 @@
 
 &lt;p&gt;The first step is to set-up the server and get the code deployed.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cap bootstrap&amp;#x000A;$ cap deploy:setup&amp;#x000A;$ cap deploy&amp;#x000A;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$ cap bootstrap
+$ cap deploy:setup
+$ cap deploy
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;We now want to make &lt;a href=&quot;https://github.com/freerange/recap&quot;&gt;Recap's&lt;/a&gt; configuration options available to Passenger. We can do this by changing the application user's shell to bash and loading Recap's environment variables in that user's &lt;code&gt;.bashrc&lt;/code&gt;.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;# Set the app user's shell to bash&amp;#x000A;# So that Passenger can pick up environment variables from .bashrc&amp;#x000A;$ sudo chsh -s /bin/bash thames-time-lapse&amp;#x000A;&amp;#x000A;# Create a .bashrc that loads the recap environment variables&amp;#x000A;$ sudo su - thames-time-lapse&amp;#x000A;$ echo 'source ~/.recap-env-export' &amp;gt; ~/.bashrc&amp;#x000A;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;# Set the app user's shell to bash
+# So that Passenger can pick up environment variables from .bashrc
+$ sudo chsh -s /bin/bash thames-time-lapse
+
+# Create a .bashrc that loads the recap environment variables
+$ sudo su - thames-time-lapse
+$ echo 'source ~/.recap-env-export' &amp;gt; ~/.bashrc
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Add an Apache virtual host for our application. Note that I'm setting the &lt;code&gt;PassengerRuby&lt;/code&gt; option as it defaults to the user that owns &lt;code&gt;config.ru&lt;/code&gt;, which happens to be the user that deployed rather than the application user.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ sudo vi /etc/apache2/sites-available/thames-time-lapse.chrisroos.co.uk.conf&amp;#x000A;&amp;#x000A;# Paste the following content&amp;#x000A;&amp;lt;VirtualHost *:80&amp;gt;&amp;#x000A;  # Set PassengerRuby if you're using a non-system Ruby&amp;#x000A;  PassengerRuby /usr/local/bin/ruby&amp;#x000A;  # We have to set the user because config.ru is owned by the user that deployed&amp;#x000A;  PassengerUser thames-time-lapse&amp;#x000A;  ServerName thames-time-lapse.chrisroos.co.uk&amp;#x000A;  DocumentRoot /home/thames-time-lapse/app/public&amp;#x000A;  &amp;lt;Directory /home/thames-time-lapse/app/public&amp;gt;&amp;#x000A;    Allow from all&amp;#x000A;    Options -MultiViews&amp;#x000A;  &amp;lt;/Directory&amp;gt;&amp;#x000A;&amp;lt;/VirtualHost&amp;gt;&amp;#x000A;&amp;#x000A;# Make the site available to Apache&amp;#x000A;$ sudo a2ensite thames-time-lapse.chrisroos.co.uk.conf&amp;#x000A;&amp;#x000A;# Restart Apache&amp;#x000A;$ sudo service apache2 reload&amp;#x000A;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo vi /etc/apache2/sites-available/thames-time-lapse.chrisroos.co.uk.conf
+
+# Paste the following content
+&amp;lt;VirtualHost *:80&amp;gt;
+  # Set PassengerRuby if you're using a non-system Ruby
+  PassengerRuby /usr/local/bin/ruby
+  # We have to set the user because config.ru is owned by the user that deployed
+  PassengerUser thames-time-lapse
+  ServerName thames-time-lapse.chrisroos.co.uk
+  DocumentRoot /home/thames-time-lapse/app/public
+  &amp;lt;Directory /home/thames-time-lapse/app/public&amp;gt;
+    Allow from all
+    Options -MultiViews
+  &amp;lt;/Directory&amp;gt;
+&amp;lt;/VirtualHost&amp;gt;
+
+# Make the site available to Apache
+$ sudo a2ensite thames-time-lapse.chrisroos.co.uk.conf
+
+# Restart Apache
+$ sudo service apache2 reload
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;All being well, your Rails app has now been deployed with Recap and is being served with Apache and Passenger.&lt;/p&gt;
 
 &lt;p&gt;The final step is to define the &lt;code&gt;deploy:restart&lt;/code&gt; Capistrano task so that the app is restarted after deployment. Add the following task to your Capfile.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;namespace :deploy do&amp;#x000A;  task :restart do&amp;#x000A;    as_app 'touch tmp/restart.txt'&amp;#x000A;  end&amp;#x000A;end&amp;#x000A;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;namespace :deploy do
+  task :restart do
+    as_app 'touch tmp/restart.txt'
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;And that should be everything you need to get your app deployed using recap, and served by Apache and Passenger.&lt;/p&gt;
 </description>

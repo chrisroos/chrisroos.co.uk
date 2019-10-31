@@ -60,15 +60,37 @@
         
         <p><em>NOTE</em> Asterisk, by default, doesn't come with any config files.  You can install the sample config files by supplying the <code>--with-sample-config</code> flag to the command below.  It might be an idea to install Asterisk with the sample config files and move them elsewhere on your system to refer back to.  The rest of these notes assume that you don't have any asterisk configuration files.</p>
         
-        <pre><code>$ brew install asterisk&#x000A;</code></pre>
+        <pre><code>$ brew install asterisk
+        </code></pre>
         
         <h2>Generate basic configuration files to allow us to test that Asterisk is working</h2>
         
-        <pre><code># Load all modules so that Asterisk can understand SIP, among other things&#x000A;$ cat &gt; `brew --prefix`/etc/asterisk/modules.conf&#x000A;[modules]&#x000A;autoload=yes&#x000A;&lt;ctrl-d&gt;&#x000A;&#x000A;# Create a demo context that answers extension 1 and plays 'hello world'&#x000A;$ cat &gt; `brew --prefix`/etc/asterisk/extensions.conf&#x000A;[hello-world-demo]&#x000A;exten =&gt; 1,1,Playback(hello-world)&#x000A;&lt;ctrl-d&gt;&#x000A;&#x000A;# Create a device that will forward all calls to our demo context&#x000A;$ cat &gt; `brew --prefix`/etc/asterisk/sip.conf&#x000A;[softphone]&#x000A;type=friend&#x000A;secret=password&#x000A;host=dynamic&#x000A;context=hello-world-demo&#x000A;&lt;ctrl-d&gt;&#x000A;</code></pre>
+        <pre><code># Load all modules so that Asterisk can understand SIP, among other things
+        $ cat &gt; `brew --prefix`/etc/asterisk/modules.conf
+        [modules]
+        autoload=yes
+        &lt;ctrl-d&gt;
+        
+        # Create a demo context that answers extension 1 and plays 'hello world'
+        $ cat &gt; `brew --prefix`/etc/asterisk/extensions.conf
+        [hello-world-demo]
+        exten =&gt; 1,1,Playback(hello-world)
+        &lt;ctrl-d&gt;
+        
+        # Create a device that will forward all calls to our demo context
+        $ cat &gt; `brew --prefix`/etc/asterisk/sip.conf
+        [softphone]
+        type=friend
+        secret=password
+        host=dynamic
+        context=hello-world-demo
+        &lt;ctrl-d&gt;
+        </code></pre>
         
         <h2>Start Asterisk</h2>
         
-        <pre><code>$ asterisk&#x000A;</code></pre>
+        <pre><code>$ asterisk
+        </code></pre>
         
         <h2>Testing the Asterisk configuration</h2>
         
@@ -92,33 +114,46 @@
         
         <p>This installs version 1.0.2 at the time of writing.</p>
         
-        <pre><code>$ gem install adhearsion&#x000A;</code></pre>
+        <pre><code>$ gem install adhearsion
+        </code></pre>
         
         <h2>Create an Adhearsion project</h2>
         
-        <pre><code>$ ahn create ~/sample-adhearsion-project&#x000A;</code></pre>
+        <pre><code>$ ahn create ~/sample-adhearsion-project
+        </code></pre>
         
         <h2>Configure the Adhearsion project</h2>
         
         <p>We need to create a 'hello_world_demo' context to mirror the 'hello-world-demo' context we created above in extensions.conf.  The 'simon_game' line tells adhearsion to use the simon_game component that you'll find in ~/sample-adhearsion-project/components.</p>
         
-        <pre><code>$ cd ~/sample-adhearsion-project&#x000A;$ cat &gt;&gt; dialplan.rb&#x000A;hello_world_demo {&#x000A;  simon_game&#x000A;}&#x000A;</code></pre>
+        <pre><code>$ cd ~/sample-adhearsion-project
+        $ cat &gt;&gt; dialplan.rb
+        hello_world_demo {
+          simon_game
+        }
+        </code></pre>
         
         <h2>Start the Adhearsion server</h2>
         
-        <pre><code>$ cd ~/sample-adhearsion-project&#x000A;$ ahn start .&#x000A;</code></pre>
+        <pre><code>$ cd ~/sample-adhearsion-project
+        $ ahn start .
+        </code></pre>
         
         <h2>Extend the Asterisk configuration files with the location of our Adhearsion server</h2>
         
         <p>This assumes you followed the instructions above exactly as they were written, i.e. this is going to add to the 'hello-world-demo' context in extensions.conf.</p>
         
-        <pre><code>$ cat &gt;&gt; `brew --prefix`/etc/asterisk/extensions.conf&#x000A;exten =&gt; 2,1,AGI(agi://localhost)&#x000A;&lt;ctrl-d&gt;&#x000A;</code></pre>
+        <pre><code>$ cat &gt;&gt; `brew --prefix`/etc/asterisk/extensions.conf
+        exten =&gt; 2,1,AGI(agi://localhost)
+        &lt;ctrl-d&gt;
+        </code></pre>
         
         <h2>Start Asterisk</h2>
         
         <p>You'll probably want to do this in another terminal window unless you started the adhearsion server as a daemon.</p>
         
-        <pre><code>$ asterisk&#x000A;</code></pre>
+        <pre><code>$ asterisk
+        </code></pre>
         
         <h2>Test that Adhearsion and Asterisk are configured to work together</h2>
         

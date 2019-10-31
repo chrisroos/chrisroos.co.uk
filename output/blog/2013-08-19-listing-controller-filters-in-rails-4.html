@@ -54,7 +54,10 @@
         <h1>Listing controller filters in Rails 4</h1>
         <p>While trying to debug some <a href="http://guides.rubyonrails.org/action_controller_overview.html#filters">filter/callback</a> weirdness in a Rails 4 app[1], I tried to work out how to list all the callbacks for an action. I spent a while digging through the code until I found out that you could get the callbacks from the <code>_process_action_callbacks</code> method. So, popping something like this in your index action will write all the callbacks to the page. Magic.</p>
         
-        <pre><code>def index&#x000A;  render text: self._process_action_callbacks&#x000A;end&#x000A;</code></pre>
+        <pre><code>def index
+          render text: self._process_action_callbacks
+        end
+        </code></pre>
         
         <p>[1] There's every chance that this same method works in earlier versions of Rails but I haven't tried it.</p>
         <hr />
