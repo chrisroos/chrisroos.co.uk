@@ -15,7 +15,7 @@ GEM
       little-plugger (>= 1.1.2)
     loquacious (1.9.1)
     rake (0.9.2.2)
-    rdiscount (1.6.8)
+    rdiscount (2.2.0.1)
     rspec (2.7.0)
       rspec-core (~> 2.7.0)
       rspec-expectations (~> 2.7.0)
@@ -44,4 +44,4 @@ DEPENDENCIES
   webby
 
 BUNDLED WITH
-   1.10.6
+   1.16.6
