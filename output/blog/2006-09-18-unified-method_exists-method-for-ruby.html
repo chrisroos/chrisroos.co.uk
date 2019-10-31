@@ -58,7 +58,53 @@
         <p>I think I&#8217;m correct in stating that there&#8217;s no one way to check for the existence of a method (be it public, protected or private) on a class.  However, the test results make it slightly easier to scan and create such a method &#8211; <a href="/pages/20060918_testing_class_method_exists">three variants</a> none-the-less.</p>
         <p>The same statement goes for uniformly determining the existence of a method on an instance.  Once again the tests helped derive the three implementations <a href="/pages/20060918_testing_instance_method_exists">here</a>.</p>
         <p>Combining these two imlpementations provides us with a uniform method to determine whether the receiver contains a method represented by <em>method_sym</em>.</p>
-        <pre class="code ruby">&#x000A;class Object&#x000A;  def method_exists?(method_sym)&#x000A;    methods = public_methods + protected_methods + private_methods&#x000A;    methods.include?(method_sym.to_s)&#x000A;  end&#x000A;end&#x000A;class Class&#x000A;  def method_exists?(method_sym)&#x000A;    methods = public_instance_methods + protected_instance_methods + private_instance_methods&#x000A;    methods.include?(method_sym.to_s)&#x000A;  end&#x000A;end&#x000A;&#x000A;class Foo&#x000A;  def foo; end; public :foo&#x000A;  def bar; end; protected :bar&#x000A;  def baz; end; private :baz&#x000A;end&#x000A;&#x000A;require 'test/unit'&#x000A;&#x000A;Class.new(Test::Unit::TestCase) do&#x000A;&#x000A;  def assert_not(expr)&#x000A;    assert ! expr&#x000A;  end&#x000A;&#x000A;  def assert_method_exists_is_working(receiver)&#x000A;    [:foo, :bar, :baz].each do |sym|&#x000A;      assert receiver.method_exists?(sym)&#x000A;      assert receiver.method_exists?(sym.to_s)&#x000A;    end&#x000A;    assert_not receiver.method_exists?(:made_up_method)&#x000A;    assert_not receiver.method_exists?('made_up_method')&#x000A;  end&#x000A;&#x000A;  def test_class&#x000A;    assert_method_exists_is_working(Foo)&#x000A;  end&#x000A;&#x000A;  def test_instance&#x000A;    assert_method_exists_is_working(Foo.new)&#x000A;  end&#x000A;&#x000A;end</pre>
+        <pre class="code ruby">
+        class Object
+          def method_exists?(method_sym)
+            methods = public_methods + protected_methods + private_methods
+            methods.include?(method_sym.to_s)
+          end
+        end
+        class Class
+          def method_exists?(method_sym)
+            methods = public_instance_methods + protected_instance_methods + private_instance_methods
+            methods.include?(method_sym.to_s)
+          end
+        end
+        
+        class Foo
+          def foo; end; public :foo
+          def bar; end; protected :bar
+          def baz; end; private :baz
+        end
+        
+        require 'test/unit'
+        
+        Class.new(Test::Unit::TestCase) do
+        
+          def assert_not(expr)
+            assert ! expr
+          end
+        
+          def assert_method_exists_is_working(receiver)
+            [:foo, :bar, :baz].each do |sym|
+              assert receiver.method_exists?(sym)
+              assert receiver.method_exists?(sym.to_s)
+            end
+            assert_not receiver.method_exists?(:made_up_method)
+            assert_not receiver.method_exists?('made_up_method')
+          end
+        
+          def test_class
+            assert_method_exists_is_working(Foo)
+          end
+        
+          def test_instance
+            assert_method_exists_is_working(Foo.new)
+          end
+        
+        end
+        </pre>
         <p>What&#8217;s the point you ask?  I genuinely have no idea.  I&#8217;m sure there was one when I started but then my compulsiveness took over and I had to finish for no other reason than to finish.</p>
         <hr />
         <ul class="navigation group">

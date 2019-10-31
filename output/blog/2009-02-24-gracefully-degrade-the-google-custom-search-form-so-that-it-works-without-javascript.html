@@ -53,9 +53,62 @@
         <abbr class="createdAt" title="2009-02-24T09:29:13+00:00">Tue, 24 Feb 09</abbr>
         <h1>Gracefully Degrade the Google Custom Search Form So That It Works Without Javascript</h1>
         <p>It struck me a couple of nights ago that it wasn&#8217;t possible to search my site without Javascript, because of <a href="http://www.google.com/coop/cse/">Google Custom Search&#8217;s</a> reliance on <a href="http://en.wikipedia.org/wiki/JavaScript">Javascript</a>.  I&#8217;m not sure whether I just overlooked the fact or whether I&#8217;d realised that it was bad and ignored it.  Either way, I decided it was time to do something about it.  I stripped out the google custom search form and replaced it with a form that actually searches the google index of my site.</p>
-        <pre class="code html">&#x000A;&lt;form action='http://www.google.co.uk/search' id='searchForm'&gt;&#x000A;  &lt;div&gt;&#x000A;    &lt;input name='q' type='hidden' value='site:chrisroos.co.uk' /&gt;&#x000A;    &lt;input name='q' size='31' type='text' /&gt;&#x000A;    &lt;input name='sa' type='submit' value='Search' /&gt;&#x000A;  &lt;/div&gt;&#x000A;&lt;/form&gt;</pre>
+        <pre class="code html">
+        &lt;form action='http://www.google.co.uk/search' id='searchForm'&gt;
+          &lt;div&gt;
+            &lt;input name='q' type='hidden' value='site:chrisroos.co.uk' /&gt;
+            &lt;input name='q' size='31' type='text' /&gt;
+            &lt;input name='sa' type='submit' value='Search' /&gt;
+          &lt;/div&gt;
+        &lt;/form&gt;
+        </pre>
         <p>So, the default behaviour (with javascript disabled) is now to search the content of my site in the google index.  I then use <a href="http://chrisroos.co.uk/javascripts/google-custom-search.js">javascript</a> to <a href="http://en.wikipedia.org/wiki/Progressive_enhancement">progressively enhance</a> the form to make it compatible with the google custom search.  Done.</p>
-        <pre class="code javascript">&#x000A;var googleCustomSearch = {&#x000A;  createHiddenField : function(name, value) {&#x000A;    var field = document.createElement('input');&#x000A;    field.setAttribute('type', 'hidden');&#x000A;    field.setAttribute('name', name);&#x000A;    field.setAttribute('value', value);&#x000A;    return field;&#x000A;  },&#x000A;  addHiddenField : function(form, name, value) {&#x000A;    var field = this.createHiddenField(name, value);&#x000A;    form.appendChild(field);&#x000A;  },&#x000A;  removeUnnecessaryField : function(form) {&#x000A;    var elems = form.getElementsByTagName('input');&#x000A;    for (var i = 0; i &lt; elems.length; i++) {&#x000A;      var elem = elems[i];&#x000A;      if (elem.getAttribute('value') == 'site:chrisroos.co.uk') {&#x000A;        elem.parentNode.removeChild(elem);&#x000A;      }&#x000A;    };&#x000A;  },&#x000A;  setupForm : function(form) {&#x000A;    form.setAttribute('action', '/search');&#x000A;    form.setAttribute('id', 'cse-search-box');&#x000A;  },&#x000A;  loadGoogleCustomSearchJavascript : function() {&#x000A;    var externalScript = document.createElement('script');&#x000A;    externalScript.setAttribute('type', 'text/javascript');&#x000A;    externalScript.setAttribute('src', 'http://www.google.com/coop/cse/brand?form=cse-search-box&amp;amp;lang=en');&#x000A;    document.body.appendChild(externalScript);&#x000A;  },&#x000A;  init : function() {&#x000A;    var searchForm = document.getElementById('searchForm');&#x000A;    if (searchForm) {&#x000A;      this.setupForm(searchForm);&#x000A;      this.removeUnnecessaryField(searchForm);&#x000A;      this.addHiddenField(searchForm, 'cx', '017216692514631406866:xbxiffq7rno');&#x000A;      this.addHiddenField(searchForm, 'cof', 'FORID:9');&#x000A;      this.addHiddenField(searchForm, 'ie', 'UTF-8');&#x000A;      this.loadGoogleCustomSearchJavascript();&#x000A;    }&#x000A;  }&#x000A;}&#x000A;googleCustomSearch.init();</pre>
+        <pre class="code javascript">
+        var googleCustomSearch = {
+          createHiddenField : function(name, value) {
+            var field = document.createElement('input');
+            field.setAttribute('type', 'hidden');
+            field.setAttribute('name', name);
+            field.setAttribute('value', value);
+            return field;
+          },
+          addHiddenField : function(form, name, value) {
+            var field = this.createHiddenField(name, value);
+            form.appendChild(field);
+          },
+          removeUnnecessaryField : function(form) {
+            var elems = form.getElementsByTagName('input');
+            for (var i = 0; i &lt; elems.length; i++) {
+              var elem = elems[i];
+              if (elem.getAttribute('value') == 'site:chrisroos.co.uk') {
+                elem.parentNode.removeChild(elem);
+              }
+            };
+          },
+          setupForm : function(form) {
+            form.setAttribute('action', '/search');
+            form.setAttribute('id', 'cse-search-box');
+          },
+          loadGoogleCustomSearchJavascript : function() {
+            var externalScript = document.createElement('script');
+            externalScript.setAttribute('type', 'text/javascript');
+            externalScript.setAttribute('src', 'http://www.google.com/coop/cse/brand?form=cse-search-box&amp;amp;lang=en');
+            document.body.appendChild(externalScript);
+          },
+          init : function() {
+            var searchForm = document.getElementById('searchForm');
+            if (searchForm) {
+              this.setupForm(searchForm);
+              this.removeUnnecessaryField(searchForm);
+              this.addHiddenField(searchForm, 'cx', '017216692514631406866:xbxiffq7rno');
+              this.addHiddenField(searchForm, 'cof', 'FORID:9');
+              this.addHiddenField(searchForm, 'ie', 'UTF-8');
+              this.loadGoogleCustomSearchJavascript();
+            }
+          }
+        }
+        googleCustomSearch.init();
+        </pre>
         <hr />
         <ul class="navigation group">
           <li class="previousPost">

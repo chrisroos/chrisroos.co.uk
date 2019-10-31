@@ -58,7 +58,21 @@
         	<li>One twitter account that is a friend of the first account (with the mobile)</li>
         	<li>A tiny bit of ruby script</li>
         </ul>
-        <pre class="code ruby">&#x000A;require 'rubygems'&#x000A;require 'json'&#x000A;&#x000A;RECEIVER_USERNAME = 'USERNAME_OF_MOBILE_ACCOUNT'&#x000A;RECEIVER_PASSWORD = 'PASSWORD_OF_MOBILE_ACCOUNT'&#x000A;js = `curl -u"#{RECEIVER_USERNAME}:#{RECEIVER_PASSWORD}" http://twitter.com/statuses/friends_timeline.json`&#x000A;&#x000A;text = JSON.parse(js).first['text']&#x000A;&#x000A;SENDER_USERNAME = 'USERNAME_OF_FRIEND'&#x000A;SENDER_PASSWORD = 'PASSWORD_OF_FRIEND'&#x000A;&#x000A;`curl -u"#{SENDER_USERNAME}:#{SENDER_PASSWORD}" -d"status=#{text.reverse}" http://twitter.com/statuses/update.xml`</pre>
+        <pre class="code ruby">
+        require 'rubygems'
+        require 'json'
+        
+        RECEIVER_USERNAME = 'USERNAME_OF_MOBILE_ACCOUNT'
+        RECEIVER_PASSWORD = 'PASSWORD_OF_MOBILE_ACCOUNT'
+        js = `curl -u"\#{RECEIVER_USERNAME}:\#{RECEIVER_PASSWORD}" http://twitter.com/statuses/friends_timeline.json`
+        
+        text = JSON.parse(js).first['text']
+        
+        SENDER_USERNAME = 'USERNAME_OF_FRIEND'
+        SENDER_PASSWORD = 'PASSWORD_OF_FRIEND'
+        
+        `curl -u"\#{SENDER_USERNAME}:\#{SENDER_PASSWORD}" -d"status=\#{text.reverse}" http://twitter.com/statuses/update.xml`
+        </pre>
         <p>The script just reads the most recent message sent to your mobile twitter account, reverses the text and sends it back to your mobile.</p>
         <p>This is all free stuff, and although the twitter terms of service don&#8217;t appear to explicitly disallow us doing this, I think you should probably be nice if you&#8217;re going to use it in this way.</p>
         <hr />

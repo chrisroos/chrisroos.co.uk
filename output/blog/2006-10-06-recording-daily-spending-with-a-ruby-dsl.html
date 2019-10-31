@@ -54,10 +54,32 @@
         <p>I&#8217;m very very very bad with money.  Don&#8217;t get me wrong, I&#8217;m very good at <del>spending</del> wasting money, just bad at all <a href="http://en.wikipedia.org/wiki/Savings">the</a> <a href="http://en.wikipedia.org/wiki/Investing">boring</a> <a href="http://en.wikipedia.org/wiki/Pension">stuff</a>.</p>
         <p>The main part of my problem is that I never know how much I have and therefore don&#8217;t know when to stop spending.  This is down to laziness.  It takes time to check balances at a cash point or via my bank&#8217;s website.  I feel that this time can be better spent withdrawing the cash and wandering to the pub.</p>
         <p>Anyhoo.  What I really need is a something that illustrates (preferably with big colourful graphs) the amount going out vs the amount coming in.  This needs to be as un-intrusive as possible or I&#8217;m not going to use it.  I&#8217;d also kinda like to see what sort of things I&#8217;m spending on, so that I can maybe shock myself into stopping.  So, I need a record of what I spend my money on.  Enter&#8230; The little dsl to do just that.</p>
-        <pre class="code ruby">&#x000A;payment_mechanisms :cash, :cheque&#x000A;&#x000A;day '6-oct-2006' do&#x000A;  cheque 9.99, lunch, 'expensivo restaurant', burger&#x000A;  cash 4.00, 'return ticket', train&#x000A;  cash 1.00, 'mars bar', coke&#x000A;end</pre>
+        <pre class="code ruby">
+        payment_mechanisms :cash, :cheque
+        
+        day '6-oct-2006' do
+          cheque 9.99, lunch, 'expensivo restaurant', burger
+          cash 4.00, 'return ticket', train
+          cash 1.00, 'mars bar', coke
+        end
+        </pre>
         <p>This basically records when and how much I spent, what I spent it on and how I paid for it.  It does nothing more than record at present (and offer some basic addition), but I&#8217;ve got some more ideas.</p>
         <p>There&#8217;s also a budgeting counterpart.  The idea being that my colourful graphs can show (very clearly) when I go over budget for a given day/week/month etc.</p>
-        <pre class="code ruby">&#x000A;weekly do&#x000A;  outgoing 18.00, lunch&#x000A;  outgoing 40.00, 'train travel'&#x000A;end&#x000A;&#x000A;monthly do&#x000A;  income 1_000_000, 'wages (not really my monthly wage)'&#x000A;  outgoing 500_000, tax&#x000A;end&#x000A;&#x000A;yearly do&#x000A;  outgoing 25.00, 'flickr subscription'&#x000A;end</pre>
+        <pre class="code ruby">
+        weekly do
+          outgoing 18.00, lunch
+          outgoing 40.00, 'train travel'
+        end
+        
+        monthly do
+          income 1_000_000, 'wages (not really my monthly wage)'
+          outgoing 500_000, tax
+        end
+        
+        yearly do
+          outgoing 25.00, 'flickr subscription'
+        end
+        </pre>
         <p>That&#8217;s about all I have at the moment.  Unfortunately, I&#8217;m already getting a bit bored with this project so this may be the last of it and I&#8217;ll continue spending over my limits.  Or, I&#8217;ll get those colourful graphs added and it&#8217;ll be heralded as the best budgeting app in the world ever<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>.</p>
         <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> This reminds me of the &#8216;best [dance|rock|urban|insert music genre here] album in the world ever&#8230;&#8217; type compilations, of which <a href="http://www.amazon.co.uk/Worst-Album-World-Ever-Ever-Shirehorses/dp/B000024V87">this</a> is undoubtedly the best.</p>
         <hr />

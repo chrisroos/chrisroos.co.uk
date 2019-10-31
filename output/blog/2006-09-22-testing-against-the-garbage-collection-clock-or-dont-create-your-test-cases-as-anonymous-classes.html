@@ -54,7 +54,33 @@
         <p>I <a href="/blog/2006-07-17-some-realisations-about-testing">wrote</a> a while ago about how I&#8217;d started creating my test cases as anonymous classes.</p>
         <p>I continued this practice until I was slapped in the face by my own stoopidity yesterday.  We were seeing a problem where tests were failing individually but appearing to run fine in rake.</p>
         <p><a href="http://blog.floehopper.org">James</a> was looking into it&#8230;</p>
-        <pre>&#x000A;James: it seems like the ones defined by Class.new(Test::Unit::TestCase) aren't always being found in the ObjectSpace&#x000A;James: but I can't quite work out why&#x000A;James: i'm tempted to name them all as defined classes&#x000A;Chris: oh ok&#x000A;Chris: go for it&#x000A;James: i'm pretty sure that works ok&#x000A;Chris: interesting&#x000A;James: only difference i can think of is that if the file is loaded twice you will create two instances of the anonymous class&#x000A;James: whereas with the named class it will just reopen same class&#x000A;Chris: why would that be a problem?&#x000A;James: but it doens't look like its being loaded twice anyway&#x000A;James: dunno&#x000A;James: its the only difference i can think of, but it doesn't explain anything&#x000A;James: can you think of any other differences&#x000A;Chris: so if you create named classes for the testcases in p_l_i_test does it then fail in rake?&#x000A;James: yup - and i've seen the problem in other tests where anonymous tests are defined&#x000A;James: so there are quite a few tests that haven't been running in rake&#x000A;Chris: bugger&#x000A;Chris: i think ben just explained the problem&#x000A;James: yeah?&#x000A;Chris: as the classes aren't assigned to constants they can be garbage collected&#x000A;Chris: oops&#x000A;James: aha&#x000A;Chris: no more anonymous test classes for christopher&#x000A;James: that explains - why they were in the ObjectSpace one minute and not the next</pre>
+        <pre>
+        James: it seems like the ones defined by Class.new(Test::Unit::TestCase) aren't always being found in the ObjectSpace
+        James: but I can't quite work out why
+        James: i'm tempted to name them all as defined classes
+        Chris: oh ok
+        Chris: go for it
+        James: i'm pretty sure that works ok
+        Chris: interesting
+        James: only difference i can think of is that if the file is loaded twice you will create two instances of the anonymous class
+        James: whereas with the named class it will just reopen same class
+        Chris: why would that be a problem?
+        James: but it doens't look like its being loaded twice anyway
+        James: dunno
+        James: its the only difference i can think of, but it doesn't explain anything
+        James: can you think of any other differences
+        Chris: so if you create named classes for the testcases in p_l_i_test does it then fail in rake?
+        James: yup - and i've seen the problem in other tests where anonymous tests are defined
+        James: so there are quite a few tests that haven't been running in rake
+        Chris: bugger
+        Chris: i think ben just explained the problem
+        James: yeah?
+        Chris: as the classes aren't assigned to constants they can be garbage collected
+        Chris: oops
+        James: aha
+        Chris: no more anonymous test classes for christopher
+        James: that explains - why they were in the ObjectSpace one minute and not the next
+        </pre>
         <p>Note that p_l_i_test mentioned above is just a shorthand for one of our tests that was failing individually but &#8216;running&#8217; (or as we now know, not running) from rake.</p>
         <p>So, although you get a little added excitement to your testing (&#8220;Will this test class run before it gets garbage collected???&#8221;), it&#8217;s probably a lot safer to not use anonymous classes when testing.</p>
         <p>James has just informed me that we gained about 230 tests in rake by naming all of our test cases&#8230;</p>

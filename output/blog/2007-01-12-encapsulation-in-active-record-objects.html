@@ -53,11 +53,69 @@
         <h1>Encapsulation in Active Record objects</h1>
         <p>I&#8217;ve been meaning to finish a post on this subject for ages.  As I probably won&#8217;t finish it in its current incarnation, I thought I&#8217;d at least get something up here.</p>
         <p><a href="http://www.rubyonrails.org/api/classes/ActiveRecord/Base.html">Active Record</a> <a href="http://www.rubyonrails.org/api/classes/ActiveRecord/Associations/ClassMethods.html">associations</a> are brilliant for quickly putting together an object graph.  They&#8217;re not so brilliant for testing, or keeping the code particularly tidy.  They quickly lead to (and even encourage) train-wreck expressions in your code.  Diving straight into an example:</p>
-        <pre class="code ruby">&#x000A;class Person &lt; ActiveRecord::Base&#x000A;  has_many :hobbies&#x000A;end&#x000A;class Hobby &lt; ActiveRecord::Base&#x000A;  belongs_to :person&#x000A;end</pre>
+        <pre class="code ruby">
+        class Person &lt; ActiveRecord::Base
+          has_many :hobbies
+        end
+        class Hobby &lt; ActiveRecord::Base
+          belongs_to :person
+        end
+        </pre>
         <p>Because the hobbies object is publicly accessible from a person object, it allows us to reach in and touch things we shouldn&#8217;t.</p>
-        <pre class="code ruby">&#x000A;cycling = Hobby.new&#x000A;&#x000A;# We shouldn't manipulate the hobbies object directly...&#x000A;chris = Person.new&#x000A;chris.hobbies.add(cycling) # Uh oh - touching things we shouldn't&#x000A;&#x000A;# ...rather, it'd be better to add a wrapper method for the functionality we actually need&#x000A;class Person &lt; ActiveRecord::Base&#x000A;  def add_hobby(hobby)&#x000A;    hobbies.add(hobby)&#x000A;  end&#x000A;end&#x000A;chris = Person.new&#x000A;chris.add_hobby(cycling) # Ahh, that's much better</pre>
+        <pre class="code ruby">
+        cycling = Hobby.new
+        
+        # We shouldn't manipulate the hobbies object directly...
+        chris = Person.new
+        chris.hobbies.add(cycling) # Uh oh - touching things we shouldn't
+        
+        # ...rather, it'd be better to add a wrapper method for the functionality we actually need
+        class Person &lt; ActiveRecord::Base
+          def add_hobby(hobby)
+            hobbies.add(hobby)
+          end
+        end
+        chris = Person.new
+        chris.add_hobby(cycling) # Ahh, that's much better
+        </pre>
         <p>The revised Person class above follows the <a href="http://en.wikipedia.org/wiki/Law_of_Demeter">law of demeter</a>.  As well as making the code look a little neater (no train-wrecks to see here), it makes it easier to test.  To illustrate the testing point, I&#8217;m going to <a href="http://weblog.jamisbuck.org/2007/1/9/extending-activerecord-associations">extend</a> the <a href="http://ryandaigle.com/articles/2006/12/03/extend-your-activerecord-association-methods">association</a> in this example.</p>
-        <pre class="code ruby">&#x000A;# We end up with a large and not very clear test&#x000A;class Person &lt; ActiveRecord::Base&#x000A;  has_many :hobbies do&#x000A;    def find_favourite&#x000A;      find(:first, :conditions =&gt; ['favourite = true'])&#x000A;    end&#x000A;  end&#x000A;end&#x000A;&#x000A;class MyContrivedTest &lt; Test::Unit::TestCase&#x000A;  def test_should_find_my_favourite_hobby&#x000A;    hobbies = mock&#x000A;    hobbies.expects(:find_favourite)&#x000A;    person = stub(:hobbies =&gt; hobbies)&#x000A;    hobby_finder = HobbyFinder.new&#x000A;    hobby_finder.find_favourite(person)&#x000A;  end&#x000A;end&#x000A;&#x000A;# This way, we end up with a slightly cleaner looking class (imo) and a smaller, cleaner test&#x000A;class Person &lt; ActiveRecord::Base&#x000A;  has_many :hobbies&#x000A;  def find_my_favourite_hobby&#x000A;    hobbies.find(:first, :conditions =&gt; ['favourite = true'])&#x000A;  end&#x000A;end&#x000A;&#x000A;class MyContrivedTest &lt; Test::Unit::TestCase&#x000A;  def test_should_find_my_favourite_hobby&#x000A;    person = mock&#x000A;    person.expects(:find_my_favourite_hobby)&#x000A;    hobby_finder = HobbyFinder.new&#x000A;    hobby_finder.find_favourite(person)&#x000A;  end&#x000A;end</pre>
+        <pre class="code ruby">
+        # We end up with a large and not very clear test
+        class Person &lt; ActiveRecord::Base
+          has_many :hobbies do
+            def find_favourite
+              find(:first, :conditions =&gt; ['favourite = true'])
+            end
+          end
+        end
+        
+        class MyContrivedTest &lt; Test::Unit::TestCase
+          def test_should_find_my_favourite_hobby
+            hobbies = mock
+            hobbies.expects(:find_favourite)
+            person = stub(:hobbies =&gt; hobbies)
+            hobby_finder = HobbyFinder.new
+            hobby_finder.find_favourite(person)
+          end
+        end
+        
+        # This way, we end up with a slightly cleaner looking class (imo) and a smaller, cleaner test
+        class Person &lt; ActiveRecord::Base
+          has_many :hobbies
+          def find_my_favourite_hobby
+            hobbies.find(:first, :conditions =&gt; ['favourite = true'])
+          end
+        end
+        
+        class MyContrivedTest &lt; Test::Unit::TestCase
+          def test_should_find_my_favourite_hobby
+            person = mock
+            person.expects(:find_my_favourite_hobby)
+            hobby_finder = HobbyFinder.new
+            hobby_finder.find_favourite(person)
+          end
+        end
+        </pre>
         <p>Interestingly enough, if we had <a href="http://en.wikipedia.org/wiki/Test_driven_development">test driven</a> the development of the above code, we would almost certainly have ended up with something similar (interface-wise) to the example that has a wrapper around the association proxy.</p>
         <p>So, with all of this in mind, I&#8217;ve hacked together a real quick <a href="http://chrisroos.googlecode.com/svn/trunk/plugins/private_associations/">plugin</a> that adds a corresponding <em>private method for each of the four (has_one, has_many, belongs_to and has_and_belongs_to</em>many) associations.  Using the _private alternative will do exactly the same as the original method but it will make all of the dynamically created methods private.  So.  It&#8217;ll still be possible to write the wrapper around the association (as we did in the test above) but it won&#8217;t be possible to reach in and touch things that we shouldn&#8217;t.<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup></p>
         <p>There is at least one problem (there may be many more I&#8217;m not aware of) with using the <em>private association methods.  If you have validation set-up for one of the associations (e.g. validates</em>associated) it will fail.  This is because validation happens from outside the instance of the object and therefore needs to access the association.  Although I haven&#8217;t thought this through fully, I&#8217;m actually wondering if validation (in its current form) takes a bit of a back seat under this new world order.  I think that one of the reasons validation is on the object itself is because there are many many ways to create the said object.  However, using these private associations and disabling the persistence methods (create, save, update etc) on an associated object may allow us to have a single point of object creation and persistence.  If we had that, then we wouldn&#8217;t need the Active Record validations anyway.  Just a thought&#8230;</p>

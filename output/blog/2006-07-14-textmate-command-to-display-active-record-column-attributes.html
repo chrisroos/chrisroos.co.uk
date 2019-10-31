@@ -56,7 +56,33 @@
         <p>Anyhoo, I just spent some time whilst on the train hacking together a basic <a href="http://macromates.com/">textmate</a> command that displays a tooltip containing the table structure.  It&#8217;s very basic (though you wouldn&#8217;t have thought it based on the amount of time it took me together<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>); but seems to work ok.</p>
         <p><img src="http://farm1.static.flickr.com/236/460082493_49ff4cd1ed_o.png" alt="" /></p>
         <p>The code is below.  You&#8217;ll need to add a ruby command in the ruby textmate bundle, setting the intput to &#8216;selected text&#8217; or &#8216;nothing&#8217;, the output to &#8216;show as tooltip&#8217; and preferably a hotkey that isn&#8217;t one of the ones you use every day (however tempting that is).</p>
-        <pre class="code ruby">&#x000A;#! /usr/local/bin/ruby&#x000A;&#x000A;project = ENV['TM_PROJECT_DIRECTORY']&#x000A;word = ENV['TM_CURRENT_WORD']&#x000A;&#x000A;require "#{project}/config/boot"&#x000A;require "#{project}/config/environment"&#x000A;&#x000A;klass = Object.const_get(word) rescue nil&#x000A;if klass and klass.class == Class and klass.ancestors.include?(ActiveRecord::Base)&#x000A;  columns = klass.columns_hash&#x000A;&#x000A;  data = []&#x000A;  data += [%w[column primary sql_type default]]&#x000A;  data += [%w[------ ------- -------- -------]]&#x000A;  data += columns.collect { |col, attrs| [col, attrs.primary.to_s, attrs.sql_type.to_s, attrs.default.to_s] }&#x000A;&#x000A;  STDOUT &lt;&lt; data.inject('') do |output, array|&#x000A;    output + array.inject('') { |row_str, value| row_str + value.ljust(20) } + "\n"&#x000A;  end&#x000A;elsif klass and klass.class == Class and not klass.ancestors.include?(ActiveRecord::Base)&#x000A;  STDOUT &lt;&lt; "#{word} is not an Active Record derived class"&#x000A;else&#x000A;  STDOUT &lt;&lt; "#{word} was not recognised as a class"&#x000A;end</pre>
+        <pre class="code ruby">
+        #! /usr/local/bin/ruby
+        
+        project = ENV['TM_PROJECT_DIRECTORY']
+        word = ENV['TM_CURRENT_WORD']
+        
+        require "\#{project}/config/boot"
+        require "\#{project}/config/environment"
+        
+        klass = Object.const_get(word) rescue nil
+        if klass and klass.class == Class and klass.ancestors.include?(ActiveRecord::Base)
+          columns = klass.columns_hash
+        
+          data = []
+          data += [%w[column primary sql_type default]]
+          data += [%w[------ ------- -------- -------]]
+          data += columns.collect { |col, attrs| [col, attrs.primary.to_s, attrs.sql_type.to_s, attrs.default.to_s] }
+        
+          STDOUT &lt;&lt; data.inject('') do |output, array|
+            output + array.inject('') { |row_str, value| row_str + value.ljust(20) } + "\n"
+          end
+        elsif klass and klass.class == Class and not klass.ancestors.include?(ActiveRecord::Base)
+          STDOUT &lt;&lt; "\#{word} is not an Active Record derived class"
+        else
+          STDOUT &lt;&lt; "\#{word} was not recognised as a class"
+        end
+        </pre>
         <p>It relies on you having your entire rails project (the folder right above app, config, script etc) open in textmate (in order to find the config files).  With that, just click on the name of an active record class (it has to be the actual class name at present, it&#8217;d be cool if it also worked based on the class definition you are currently in too) and hit your hotkey of choice (best to use the one you assigned to this command).  Hey presto, a tooltip containing your table structure.</p>
         <p>One odd thing I&#8217;ve noticed is that it never recognises standard class constants.  It should display &#8216;this is not an active record derived class&#8217; but instead always displays &#8216;was not recognised as a class&#8217;.  Oh well.</p>
         <p>Anyone find this remotely useful or want to finish off what I&#8217;ve started?</p>

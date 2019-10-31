@@ -54,12 +54,33 @@
         <p>Just yesterday I wanted to create a very quick rails app that didn&#8217;t rely on a database.</p>
         <p>I removed :active_record from the frameworks loaded in evironment, but apparently this wasn&#8217;t quite enough.  The setup and teardown methods in Test::Unit::TestCase were still attempting to load fixtures (which implies that active record is still present somewhere), which require the presence of a database.  This was causing tests not to run.  Having had a quick look at how active record intercepts the setup and teardown methods, it was relatively simple to stop it from doing so.</p>
         <p>Just add the code below within the Test::Unit::TestCase declaration in test_helper.</p>
-        <pre class="code ruby">&#x000A;def self.dont_use_fixtures&#x000A;  class_eval do&#x000A;    def self.method_added(method); end&#x000A;    def setup; end&#x000A;    def teardown; end&#x000A;  end&#x000A;end</pre>
+        <pre class="code ruby">
+        def self.dont_use_fixtures
+          class_eval do
+            def self.method_added(method); end
+            def setup; end
+            def teardown; end
+          end
+        end
+        </pre>
         <p>This still requires that you add dont_use_fixtures into each test class definition.</p>
-        <pre class="code ruby">&#x000A;class MyTest &lt; Test::Unit::TestCase&#x000A;  dont_use_fixtures&#x000A;  def test_&#x000A;    # my first test&#x000A;  end&#x000A;end</pre>
+        <pre class="code ruby">
+        class MyTest &lt; Test::Unit::TestCase
+          dont_use_fixtures
+          def test_
+            # my first test
+          end
+        end
+        </pre>
         <p>Having just written this it&#8217;s obvious now that it would make more sense to not require the declaration in each test class (as we supposedly don&#8217;t even have access to active record).  We should probably also play fair and pass messages back to our parent if method_added isn&#8217;t being called with either setup or teardown.</p>
         <p>The new code becomes (again, in Test::Unit::TestCase definition in test_helper).</p>
-        <pre class="code ruby">&#x000A;def self.method_added(method)&#x000A;  super unless [:setup, :teardown].include?(method.to_sym)&#x000A;end&#x000A;def setup; end&#x000A;def teardown; end</pre>
+        <pre class="code ruby">
+        def self.method_added(method)
+          super unless [:setup, :teardown].include?(method.to_sym)
+        end
+        def setup; end
+        def teardown; end
+        </pre>
         <p>This appears to work ok&#8230;</p>
         <hr />
         <ul class="navigation group">

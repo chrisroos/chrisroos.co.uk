@@ -54,16 +54,73 @@
         <p>Having found a <a href="/blog/2006-07-17-some-realisations-about-testing">new way to structure my tests</a>, the need for some common setup shared by multiple test cases became apparent.</p>
         <p>I think the traditional way to do this was to create a subclass of TestCase to contain the common setup code and then subclass that for your individual test cases.  This is fine, but in <a href="http://ruby-doc.org/stdlib/libdoc/test/unit/rdoc/index.html">test/unit</a>, a TestCase with no tests causes an error.</p>
         <p>One solution would be to use a module to contain the common setup and include that in your test case.</p>
-        <pre class="code ruby">&#x000A;module CommonSetup&#x000A;  def setup&#x000A;    @stack = Stack.new&#x000A;  end&#x000A;end&#x000A;class MyTest &lt; Test::Unit::TestCase&#x000A;  include CommonSetup&#x000A;  def test_should_accept_an_item_when_sent_push&#x000A;    assert_nothing_raised { @stack.push(1) }&#x000A;  end&#x000A;end</pre>
+        <pre class="code ruby">
+        module CommonSetup
+          def setup
+            @stack = Stack.new
+          end
+        end
+        class MyTest &lt; Test::Unit::TestCase
+          include CommonSetup
+          def test_should_accept_an_item_when_sent_push
+            assert_nothing_raised { @stack.push(1) }
+          end
+        end
+        </pre>
         <p>Although this is fine, I spent a short while creating an AbstractTestCase that doesn&#8217;t complain if no tests are specified.</p>
-        <pre class="code ruby">&#x000A;require 'test/unit'&#x000A;class Test::Unit::AbstractTestCase &lt; Test::Unit::TestCase&#x000A;  def default_test&#x000A;    klass = self.class.to_s&#x000A;    ancestors = (self.class.ancestors - [self.class]).collect { |ancestor| ancestor.to_s }&#x000A;    super unless klass =~ /AbstractTestCase/ or ancestors.first =~ /AbstractTestCase/&#x000A;  end&#x000A;end</pre>
+        <pre class="code ruby">
+        require 'test/unit'
+        class Test::Unit::AbstractTestCase &lt; Test::Unit::TestCase
+          def default_test
+            klass = self.class.to_s
+            ancestors = (self.class.ancestors - [self.class]).collect { |ancestor| ancestor.to_s }
+            super unless klass =~ /AbstractTestCase/ or ancestors.first =~ /AbstractTestCase/
+          end
+        end
+        </pre>
         <p>Any test case (TestBase in this example) that inherits from AbstractTestCase can now contain setup and teardown methods but not have to worry about missing tests.  In order to maintain expected behaviour, any test case subclassed from TestBase will still complain if tests are missing.</p>
-        <pre class="code ruby">&#x000A;class TestBase &lt; Test::Unit::AbstractTestCase&#x000A;  # 'No test were specified' error is not thrown&#x000A;  def setup&#x000A;    @bar = { :foo =&gt; 123 }&#x000A;  end&#x000A;end&#x000A;class RealTest &lt; TestBase&#x000A;  # Utilises TestBase#setup&#x000A;  def test_example&#x000A;    assert_equal 123, @bar[:foo]&#x000A;  end&#x000A;end&#x000A;class ShouldErrorTest &lt; TestBase&#x000A;  # 'No tests were specified' error&#x000A;end</pre>
+        <pre class="code ruby">
+        class TestBase &lt; Test::Unit::AbstractTestCase
+          # 'No test were specified' error is not thrown
+          def setup
+            @bar = { :foo =&gt; 123 }
+          end
+        end
+        class RealTest &lt; TestBase
+          # Utilises TestBase#setup
+          def test_example
+            assert_equal 123, @bar[:foo]
+          end
+        end
+        class ShouldErrorTest &lt; TestBase
+          # 'No tests were specified' error
+        end
+        </pre>
         <p>I then figured that you may want more than one level of abstract test case, i.e. be able to define at the TestCase class level whether or not a test case was abstract.  This isn&#8217;t properly tested but it seems to work ok.</p>
         <p><strong>Note</strong> This isn&#8217;t doing exactly what I thought (the default test case is default_test, not test_default).  This works because it just creates an empty test in your test case.  This breaks behaviour in test cases that subclass your abstract test case as they too will already have at least one test defined.</p>
-        <pre class="code ruby">&#x000A;require 'test/unit'&#x000A;class Test::Unit::TestCase&#x000A;  class &lt;&lt; self&#x000A;    def abstract&#x000A;      self.class_eval do&#x000A;        def test_default&#x000A;        end&#x000A;      end&#x000A;    end&#x000A;  end&#x000A;end</pre>
+        <pre class="code ruby">
+        require 'test/unit'
+        class Test::Unit::TestCase
+          class &lt;&lt; self
+            def abstract
+              self.class_eval do
+                def test_default
+                end
+              end
+            end
+          end
+        end
+        </pre>
         <p>By sending the abstract message to any TestCase class, no errors will be reported when no tests are specified.  It does this by overriding the test_default method; which is the method that raises the error if no other tests are specified.</p>
-        <pre class="code ruby">&#x000A;class AbstractTest &lt; Test::Unit::TestCase&#x000A;  abstract&#x000A;  # 'No test were specified' error is not thrown&#x000A;end&#x000A;class NormalTest &lt; Test::Unit::TestCase&#x000A;  # 'No test were specified' error&#x000A;end</pre>
+        <pre class="code ruby">
+        class AbstractTest &lt; Test::Unit::TestCase
+          abstract
+          # 'No test were specified' error is not thrown
+        end
+        class NormalTest &lt; Test::Unit::TestCase
+          # 'No test were specified' error
+        end
+        </pre>
         <hr />
         <ul class="navigation group">
           <li class="previousPost">

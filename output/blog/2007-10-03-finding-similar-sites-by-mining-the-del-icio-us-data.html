@@ -53,7 +53,19 @@
         <h1>Finding similar sites by mining the del.icio.us data</h1>
         <p>So this is very much proof of concept and definitely not very useful in its current form&#8230;</p>
         <p>You need to execute this javascript in the context of a webpage.  In <a href="http://getfirebug.com/">firebug</a> (for example), paste it into the console and run.</p>
-        <pre class="code javascript">&#x000A;// Execute this within an existing webpage, using, for example, firebug console&#x000A;function includeDelicious() {&#x000A;  function loadScript(scriptUrl) {&#x000A;    var scriptTag = document.createElement('script');&#x000A;    scriptTag.setAttribute('type', 'text/javascript');&#x000A;    scriptTag.src = scriptUrl;&#x000A;    document.body.appendChild(scriptTag);&#x000A;  }&#x000A;  loadScript('http://s3.amazonaws.com/seagul/delicious.js');&#x000A;}&#x000A;if (typeof(getRelatedPosts) != 'function') { includeDelicious(); }</pre>
+        <pre class="code javascript">
+        // Execute this within an existing webpage, using, for example, firebug console
+        function includeDelicious() {
+          function loadScript(scriptUrl) {
+            var scriptTag = document.createElement('script');
+            scriptTag.setAttribute('type', 'text/javascript');
+            scriptTag.src = scriptUrl;
+            document.body.appendChild(scriptTag);
+          }
+          loadScript('http://s3.amazonaws.com/seagul/delicious.js');
+        }
+        if (typeof(getRelatedPosts) != 'function') { includeDelicious(); }
+        </pre>
         <p>The javascript above loads this <a href="http://s3.amazonaws.com/seagul/delicious.js">script</a> that in turn loads <a href="http://s3.amazonaws.com/seagul/md5.js">md5.js</a>,  <a href="http://s3.amazonaws.com/seagul/jquery.js">jquery.js</a>, does some magic with the <a href="http://del.icio.us">del.icio.us</a> <a href="http://www.json.org">json</a> <a href="http://del.icio.us/help/json/">feeds</a> before finally writing some &#8216;similar&#8217; sites to the bottom of the page you&#8217;re currently looking.  At the moment it finds the three most recent sites you&#8217;ve bookmarked for each of the tags that people have used when bookmarking the site you&#8217;re looking at.  It writes all this to the bottom of the current page, as this <a href="http://flickr.com/photos/chrisjroos/1474875125/">screenshot</a> shows.</p>
         <p>Lots of things to do before this could possibly be deemed useful but I think it&#8217;s got some potential.</p>
         <hr />

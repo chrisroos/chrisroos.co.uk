@@ -54,11 +54,34 @@
         <p>I <a href="/blog/2006-06-21-more-helpful-messages-for-active-record-validation-errors-in-rails-testing">posted</a> a while back about displaying the reasons for an active record model failing validation.</p>
         <p>I knew the code was hacky and nasty but didn&#8217;t realise quite how bad until I noticed how <a href="http://dev.rubyonrails.org/browser/tags/rel_1-1-0/activerecord/lib/active_record/validations.rb">simply</a>  (1 line) the same thing was implemented in <a href="http://weblog.rubyonrails.com/2006/3/28/rails-1-1-rjs-active-record-respond_to-integration-tests-and-500-other-things">Rails 1.1</a> (and above).</p>
         <p>Although it&#8217;s only useful for people still on Rails 1.0, I made a quick plugin that backports this change.  I don&#8217;t really want to put it in my subversion repository, so have just pasted the necessary code below.</p>
-        <pre class="code ruby">&#x000A;# File init.rb&#x000A;require File.dirname(__FILE__) + '/lib/record_invalid'</pre>
+        <pre class="code ruby">
+        # File init.rb
+        require File.dirname(__FILE__) + '/lib/record_invalid'
+        </pre>
         
-        <pre class="code ruby">&#x000A;# File record_invalid.rb&#x000A;module ActiveRecord&#x000A;&#x000A;  class RecordInvalid &lt; ActiveRecordError&#x000A;    def initialize(record)&#x000A;      @record = record&#x000A;      super("Validation failed: #{@record.errors.full_messages.join(", ")}")&#x000A;    end&#x000A;  end&#x000A;&#x000A;end</pre>
+        <pre class="code ruby">
+        # File record_invalid.rb
+        module ActiveRecord
+        
+          class RecordInvalid &lt; ActiveRecordError
+            def initialize(record)
+              @record = record
+              super("Validation failed: \#{@record.errors.full_messages.join(", ")}")
+            end
+          end
+        
+        end
+        </pre>
         <p>To create a plugin from this, create the following structure in your rails_app/vendor/plugins directory.</p>
-        <pre class="code">&#x000A;active_record_validation_error/&#x000A;|&#x000A;|--init.rb (copy contents of code above)&#x000A;|&#x000A;|--lib/&#x000A;   |&#x000A;   |--record_invalid.rb (copy content of code above)</pre>
+        <pre class="code">
+        active_record_validation_error/
+        |
+        |--init.rb (copy contents of code above)
+        |
+        |--lib/
+           |
+           |--record_invalid.rb (copy content of code above)
+        </pre>
         <hr />
         <ul class="navigation group">
           <li class="previousPost">

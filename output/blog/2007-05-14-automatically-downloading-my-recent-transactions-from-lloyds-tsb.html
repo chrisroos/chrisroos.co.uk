@@ -51,9 +51,65 @@
       <div id="content">
         <abbr class="createdAt" title="2007-05-14T21:39:00+00:00">Mon, 14 May 07</abbr>
         <h1>Automatically downloading my recent transactions from Lloyds Tsb</h1>
-        <p>In my continuing quest to cut down my use of banking websites (and increase my use of <a href="http://www.wesabe.com">wesabe</a>), I&#8217;ve hacked together a script to download my recent transactions from <a href="http://www.lloydstsb.com">Lloyds Tsb</a>.  Sadly, the transactions are in <a href="http://en.wikipedia.org/wiki/QIF"><span class="caps">QIF</span></a> format, as only <span class="caps">QIF</span> and <a href="http://en.wikipedia.org/wiki/Comma-separated_values"><span class="caps">CSV</span></a> formats are offered.  Maybe I&#8217;ll get round to exporting the data in <a href="http://www.ofx.net"><span class="caps">OFX</span></a> format sometime in the future.</p>
+        <p>In my continuing quest to cut down my use of banking websites (and increase my use of <a href="http://www.wesabe.com">wesabe</a>), I&#8217;ve hacked together a script to download my recent transactions from <a href="http://www.lloydstsb.com">Lloyds Tsb</a>.  Sadly, the transactions are in <a href="http://en.wikipedia.org/wiki/QIF">QIF</a> format, as only QIF and <a href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> formats are offered.  Maybe I&#8217;ll get round to exporting the data in <a href="http://www.ofx.net">OFX</a> format sometime in the future.</p>
         <p>Code is hosted on <a href="http://chrisroos.googlecode.com/svn/trunk/lloydstsb/">google code</a>, and pasted in all its syntax-highlighted glory below.</p>
-        <pre class="code ruby">&#x000A;require 'lloydstsb_credentials'&#x000A;&#x000A;require 'rubygems'&#x000A;require 'hpricot'&#x000A;&#x000A;def execute_curl(cmd)&#x000A;  `#{cmd}`&#x000A;end&#x000A;&#x000A;COOKIE_LOCATION = '/Users/chrisroos/lloydstsb_cookie'&#x000A;DOWNLOADED_STATEMENT_LOCATION = '/Users/chrisroos/Desktop/lloyds.qif'&#x000A;&#x000A;# Store some cookies for later&#x000A;curl_cmd = %[curl -s -c"#{COOKIE_LOCATION}" "https://online.lloydstsb.co.uk/customer.ibc"]&#x000A;html = execute_curl(curl_cmd)&#x000A;&#x000A;# Obtain the key that we need to POST along with our Username and Password&#x000A;doc = Hpricot(html)&#x000A;key = (doc/'input[@name=Key]').first.attributes['value']&#x000A;&#x000A;# POST the key, userid and password&#x000A;curl_cmd = %[curl -s -b"#{COOKIE_LOCATION}" "https://online.lloydstsb.co.uk/logon.ibc" -d"Java=Off" -d"Key=#{key}" -d"UserId1=#{USERID}" -d"Password=#{PASSWORD}"]&#x000A;html = execute_curl(curl_cmd)&#x000A;&#x000A;# Obtain the three characters from our memorable info that we need to POST&#x000A;doc = Hpricot(html)&#x000A;position_of_char1 = Integer((doc/'input[@name=ResponseKey0]').first.attributes['value'])&#x000A;position_of_char2 = Integer((doc/'input[@name=ResponseKey1]').first.attributes['value'])&#x000A;position_of_char3 = Integer((doc/'input[@name=ResponseKey2]').first.attributes['value'])&#x000A;char1 = MEMORABLE.split('')[position_of_char1 - 1]&#x000A;char2 = MEMORABLE.split('')[position_of_char2 - 1]&#x000A;char3 = MEMORABLE.split('')[position_of_char3 - 1]&#x000A;&#x000A;# POST our memorable info&#x000A;curl_cmd = %[curl -s -L -b"#{COOKIE_LOCATION}" "https://online.lloydstsb.co.uk/miheld.ibc" -d"ResponseKey0=#{position_of_char1}" -d"ResponseValue0=#{char1}" -d"ResponseKey1=#{position_of_char2}" -d"ResponseValue1=#{char2}" -d"ResponseKey2=#{position_of_char3}" -d"ResponseValue2=#{char3}"]&#x000A;execute_curl curl_cmd&#x000A;&#x000A;# SELECT OUR ACCOUNT&#x000A;curl_cmd = %[curl -s -b"#{COOKIE_LOCATION}" "https://online.lloydstsb.co.uk/account.ibc?Account=#{SORT_CODE_AND_ACCOUNT_NUMBER}"]&#x000A;execute_curl curl_cmd&#x000A;&#x000A;# GET OUR MOST RECENT TRANSACTIONS&#x000A;curl_cmd = %[curl -s -b"#{COOKIE_LOCATION}" "https://online.lloydstsb.co.uk/statement.ibc?Account=#{SORT_CODE_AND_ACCOUNT_NUMBER}&amp;PageRequired=MostRecent"]&#x000A;execute_curl curl_cmd&#x000A;&#x000A;# GET THE DOWNLOAD STATEMENT FORM&#x000A;curl_cmd = %[curl -s -b"#{COOKIE_LOCATION}" "https://online.lloydstsb.co.uk/statement.ibc?Account=#{SORT_CODE_AND_ACCOUNT_NUMBER}&amp;selectbox=6"]&#x000A;execute_curl curl_cmd&#x000A;&#x000A;# DOWNLOAD THE MOST RECENT TRANSACTIONS IN QIF FORMAT&#x000A;curl_cmd = %[curl -s -L -b"#{COOKIE_LOCATION}" "https://online.lloydstsb.co.uk/statementdownload.ibc?Account=#{SORT_CODE_AND_ACCOUNT_NUMBER}&amp;Download=DownloadLatest&amp;Format=104" -o"#{DOWNLOADED_STATEMENT_LOCATION}"]&#x000A;execute_curl curl_cmd&#x000A;&#x000A;# Remove the cookie&#x000A;`rm #{COOKIE_LOCATION}`</pre>
+        <pre class="code ruby">
+        require 'lloydstsb_credentials'
+        
+        require 'rubygems'
+        require 'hpricot'
+        
+        def execute_curl(cmd)
+          `\#{cmd}`
+        end
+        
+        COOKIE_LOCATION = '/Users/chrisroos/lloydstsb_cookie'
+        DOWNLOADED_STATEMENT_LOCATION = '/Users/chrisroos/Desktop/lloyds.qif'
+        
+        # Store some cookies for later
+        curl_cmd = %[curl -s -c"\#{COOKIE_LOCATION}" "https://online.lloydstsb.co.uk/customer.ibc"]
+        html = execute_curl(curl_cmd)
+        
+        # Obtain the key that we need to POST along with our Username and Password
+        doc = Hpricot(html)
+        key = (doc/'input[@name=Key]').first.attributes['value']
+        
+        # POST the key, userid and password
+        curl_cmd = %[curl -s -b"\#{COOKIE_LOCATION}" "https://online.lloydstsb.co.uk/logon.ibc" -d"Java=Off" -d"Key=\#{key}" -d"UserId1=\#{USERID}" -d"Password=\#{PASSWORD}"]
+        html = execute_curl(curl_cmd)
+        
+        # Obtain the three characters from our memorable info that we need to POST
+        doc = Hpricot(html)
+        position_of_char1 = Integer((doc/'input[@name=ResponseKey0]').first.attributes['value'])
+        position_of_char2 = Integer((doc/'input[@name=ResponseKey1]').first.attributes['value'])
+        position_of_char3 = Integer((doc/'input[@name=ResponseKey2]').first.attributes['value'])
+        char1 = MEMORABLE.split('')[position_of_char1 - 1]
+        char2 = MEMORABLE.split('')[position_of_char2 - 1]
+        char3 = MEMORABLE.split('')[position_of_char3 - 1]
+        
+        # POST our memorable info
+        curl_cmd = %[curl -s -L -b"\#{COOKIE_LOCATION}" "https://online.lloydstsb.co.uk/miheld.ibc" -d"ResponseKey0=\#{position_of_char1}" -d"ResponseValue0=\#{char1}" -d"ResponseKey1=\#{position_of_char2}" -d"ResponseValue1=\#{char2}" -d"ResponseKey2=\#{position_of_char3}" -d"ResponseValue2=\#{char3}"]
+        execute_curl curl_cmd
+        
+        # SELECT OUR ACCOUNT
+        curl_cmd = %[curl -s -b"\#{COOKIE_LOCATION}" "https://online.lloydstsb.co.uk/account.ibc?Account=\#{SORT_CODE_AND_ACCOUNT_NUMBER}"]
+        execute_curl curl_cmd
+        
+        # GET OUR MOST RECENT TRANSACTIONS
+        curl_cmd = %[curl -s -b"\#{COOKIE_LOCATION}" "https://online.lloydstsb.co.uk/statement.ibc?Account=\#{SORT_CODE_AND_ACCOUNT_NUMBER}&amp;PageRequired=MostRecent"]
+        execute_curl curl_cmd
+        
+        # GET THE DOWNLOAD STATEMENT FORM
+        curl_cmd = %[curl -s -b"\#{COOKIE_LOCATION}" "https://online.lloydstsb.co.uk/statement.ibc?Account=\#{SORT_CODE_AND_ACCOUNT_NUMBER}&amp;selectbox=6"]
+        execute_curl curl_cmd
+        
+        # DOWNLOAD THE MOST RECENT TRANSACTIONS IN QIF FORMAT
+        curl_cmd = %[curl -s -L -b"\#{COOKIE_LOCATION}" "https://online.lloydstsb.co.uk/statementdownload.ibc?Account=\#{SORT_CODE_AND_ACCOUNT_NUMBER}&amp;Download=DownloadLatest&amp;Format=104" -o"\#{DOWNLOADED_STATEMENT_LOCATION}"]
+        execute_curl curl_cmd
+        
+        # Remove the cookie
+        `rm \#{COOKIE_LOCATION}`
+        </pre>
         <hr />
         <ul class="navigation group">
           <li class="previousPost">

@@ -52,7 +52,47 @@
         <abbr class="createdAt" title="2006-10-19T23:19:00+00:00">Thu, 19 Oct 06</abbr>
         <h1>Boolean method in Ruby (sibling of Array, Float, Integer and String)</h1>
         <p>I was reading in data from a file and expected one particular column to contain either &#8216;true&#8217; or &#8216;false&#8217;.  I wanted a nice way to convert the string representation into its object counterpart.  I thought to the Kernel#Float (and kin) and decided I wanted a Kernel#Boolean method.  So I made one.  Tada&#8230;</p>
-        <pre class="code ruby">&#x000A;module Kernel&#x000A;&#x000A;  def Boolean(string)&#x000A;    return true if string == true || string =~ /^true$/i&#x000A;    return false if string == false || string.nil? || string =~ /^false$/i&#x000A;    raise ArgumentError.new("invalid value for Boolean: \"#{string}\"")&#x000A;  end&#x000A;&#x000A;end&#x000A;&#x000A;require File.dirname(__FILE__) + '/../test_helper'&#x000A;&#x000A;class KernelTest &lt; Test::Unit::TestCase&#x000A;&#x000A;  def test_should_return_true&#x000A;    assert_equal true, Boolean('true')&#x000A;    assert_equal true, Boolean('TrUe')&#x000A;    assert_equal true, Boolean(true)&#x000A;  end&#x000A;&#x000A;  def test_should_return_false&#x000A;    assert_equal false, Boolean(nil)&#x000A;    assert_equal false, Boolean('false')&#x000A;    assert_equal false, Boolean('FaLsE')&#x000A;    assert_equal false, Boolean(false)&#x000A;  end&#x000A;&#x000A;  def test_should_raise_exception&#x000A;    assert_raise(ArgumentError) { Boolean('true ') }&#x000A;    assert_raise(ArgumentError) { Boolean(' true') }&#x000A;    assert_raise(ArgumentError) { Boolean(' true ') }&#x000A;    assert_raise(ArgumentError) { Boolean('false ') }&#x000A;    assert_raise(ArgumentError) { Boolean(' false') }&#x000A;    assert_raise(ArgumentError) { Boolean(' false ') }&#x000A;    assert_raise(ArgumentError) { Boolean('BLAH') }&#x000A;    assert_raise(ArgumentError) { Boolean(1) }&#x000A;  end&#x000A;&#x000A;end</pre>
+        <pre class="code ruby">
+        module Kernel
+        
+          def Boolean(string)
+            return true if string == true || string =~ /^true$/i
+            return false if string == false || string.nil? || string =~ /^false$/i
+            raise ArgumentError.new("invalid value for Boolean: \"\#{string}\"")
+          end
+        
+        end
+        
+        require File.dirname(__FILE__) + '/../test_helper'
+        
+        class KernelTest &lt; Test::Unit::TestCase
+        
+          def test_should_return_true
+            assert_equal true, Boolean('true')
+            assert_equal true, Boolean('TrUe')
+            assert_equal true, Boolean(true)
+          end
+        
+          def test_should_return_false
+            assert_equal false, Boolean(nil)
+            assert_equal false, Boolean('false')
+            assert_equal false, Boolean('FaLsE')
+            assert_equal false, Boolean(false)
+          end
+        
+          def test_should_raise_exception
+            assert_raise(ArgumentError) { Boolean('true ') }
+            assert_raise(ArgumentError) { Boolean(' true') }
+            assert_raise(ArgumentError) { Boolean(' true ') }
+            assert_raise(ArgumentError) { Boolean('false ') }
+            assert_raise(ArgumentError) { Boolean(' false') }
+            assert_raise(ArgumentError) { Boolean(' false ') }
+            assert_raise(ArgumentError) { Boolean('BLAH') }
+            assert_raise(ArgumentError) { Boolean(1) }
+          end
+        
+        end
+        </pre>
         <hr />
         <ul class="navigation group">
           <li class="previousPost">

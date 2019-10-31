@@ -52,10 +52,46 @@
       <div id="content">
         <abbr class="createdAt" title="2009-01-31T18:46:39+00:00">Sat, 31 Jan 09</abbr>
         <h1>Implementing Version 2 of the Amazon AWS HTTP Request Signature in Ruby</h1>
-        <p>This took me a long time to work out this afternoon so I guess it might be useful to others.  I couldn&#8217;t find an implementation (of version 2 of the request signing) in any of the existing Amazon <span class="caps">AWS</span> libraries and although I did find a promising looking post <a href="http://www.jamesmurty.com/2008/12/31/aws-query-signature-version-2/">here</a> it just didn&#8217;t work for me.  I ended up using the <a href="http://developer.amazonwebservices.com/connect/entry.jspa?externalID=1135">Simple DB <span class="caps">PHP</span> sample code</a> to obtain some test data<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> that I could use to debug my own code<sup class="footnote" id="fnr2"><a href="#fn2">2</a></sup> and eventually got it working.</p>
+        <p>This took me a long time to work out this afternoon so I guess it might be useful to others.  I couldn&#8217;t find an implementation (of version 2 of the request signing) in any of the existing Amazon AWS libraries and although I did find a promising looking post <a href="http://www.jamesmurty.com/2008/12/31/aws-query-signature-version-2/">here</a> it just didn&#8217;t work for me.  I ended up using the <a href="http://developer.amazonwebservices.com/connect/entry.jspa?externalID=1135">Simple DB PHP sample code</a> to obtain some test data<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> that I could use to debug my own code<sup class="footnote" id="fnr2"><a href="#fn2">2</a></sup> and eventually got it working.</p>
         <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> I plan to post some test data (to help others attempting to write a client) in a follow up post.</p>
         <p class="footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a> I printed the parameters and signature at various stages of the request so that I could compare it to the output from my client.</p>
-        <pre class="code">&#x000A;require 'rubygems'&#x000A;require 'cgi'&#x000A;require 'time'&#x000A;require 'hmac'&#x000A;require 'hmac-sha2'&#x000A;require 'base64'&#x000A;&#x000A;ACCESS_IDENTIFIER = 'your-access-identifier'&#x000A;SECRET_IDENTIFIER = 'your-secret-identifier'&#x000A;&#x000A;AMAZON_ENDPOINT = 'https://sdb.amazonaws.com/'&#x000A;&#x000A;params = {&#x000A;  'Action' =&gt; 'ListDomains',&#x000A;  'AWSAccessKeyId' =&gt; ACCESS_IDENTIFIER,&#x000A;  'SignatureMethod' =&gt; 'HmacSHA256',&#x000A;  'SignatureVersion' =&gt; 2,&#x000A;  'Timestamp' =&gt; Time.now.iso8601,&#x000A;  'Version' =&gt; '2007-11-07'&#x000A;}&#x000A;&#x000A;canonical_querystring = params.sort.collect { |key, value| [CGI.escape(key.to_s), CGI.escape(value.to_s)].join('=') }.join('&amp;')&#x000A;string_to_sign = "GET&#x000A;sdb.amazonaws.com&#x000A;/&#x000A;#{canonical_querystring}"&#x000A;&#x000A;hmac = HMAC::SHA256.new(SECRET_IDENTIFIER)&#x000A;hmac.update(string_to_sign)&#x000A;signature = Base64.encode64(hmac.digest).chomp # chomp is important!  the base64 encoded version will have a newline at the end&#x000A;&#x000A;params['Signature'] = signature&#x000A;querystring = params.collect { |key, value| [CGI.escape(key.to_s), CGI.escape(value.to_s)].join('=') }.join('&amp;') # order doesn't matter for the actual request&#x000A;&#x000A;puts `curl -X"GET" "#{AMAZON_ENDPOINT}?#{querystring}" -A"simple ruby aws sdb wrapper"`</pre>
+        <pre class="code">
+        require 'rubygems'
+        require 'cgi'
+        require 'time'
+        require 'hmac'
+        require 'hmac-sha2'
+        require 'base64'
+        
+        ACCESS_IDENTIFIER = 'your-access-identifier'
+        SECRET_IDENTIFIER = 'your-secret-identifier'
+        
+        AMAZON_ENDPOINT = 'https://sdb.amazonaws.com/'
+        
+        params = {
+          'Action' =&gt; 'ListDomains',
+          'AWSAccessKeyId' =&gt; ACCESS_IDENTIFIER,
+          'SignatureMethod' =&gt; 'HmacSHA256',
+          'SignatureVersion' =&gt; 2,
+          'Timestamp' =&gt; Time.now.iso8601,
+          'Version' =&gt; '2007-11-07'
+        }
+        
+        canonical_querystring = params.sort.collect { |key, value| [CGI.escape(key.to_s), CGI.escape(value.to_s)].join('=') }.join('&amp;')
+        string_to_sign = "GET
+        sdb.amazonaws.com
+        /
+        \#{canonical_querystring}"
+        
+        hmac = HMAC::SHA256.new(SECRET_IDENTIFIER)
+        hmac.update(string_to_sign)
+        signature = Base64.encode64(hmac.digest).chomp # chomp is important!  the base64 encoded version will have a newline at the end
+        
+        params['Signature'] = signature
+        querystring = params.collect { |key, value| [CGI.escape(key.to_s), CGI.escape(value.to_s)].join('=') }.join('&amp;') # order doesn't matter for the actual request
+        
+        puts `curl -X"GET" "\#{AMAZON_ENDPOINT}?\#{querystring}" -A"simple ruby aws sdb wrapper"`
+        </pre>
         <hr />
         <ul class="navigation group">
           <li class="previousPost">

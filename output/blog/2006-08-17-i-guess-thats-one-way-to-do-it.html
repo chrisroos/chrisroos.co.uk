@@ -52,7 +52,17 @@
         <abbr class="createdAt" title="2006-08-17T07:08:00+00:00">Thu, 17 Aug 06</abbr>
         <h1>I guess that's one way to do it...</h1>
         <p>We&#8217;re not <em>quite</em> at this stage yet&#8230;</p>
-        <pre class="code ruby">&#x000A;class ActiveRecord::ConnectionAdapters::MysqlAdapter&#x000A;  alias :execute_before_test_hijack :execute&#x000A;  def execute(*args)&#x000A;    unless args.first =~ /^SHOW FIELDS FROM/ || %w[BEGIN COMMIT ROLLBACK END].include?(args.first)&#x000A;      raise "You know you're not allowed to use the database in your tests..." # We could be more gentle with a warn&#x000A;    end&#x000A;    execute_before_unit_test_hijack(*args)&#x000A;  end&#x000A;end</pre>
+        <pre class="code ruby">
+        class ActiveRecord::ConnectionAdapters::MysqlAdapter
+          alias :execute_before_test_hijack :execute
+          def execute(*args)
+            unless args.first =~ /^SHOW FIELDS FROM/ || %w[BEGIN COMMIT ROLLBACK END].include?(args.first)
+              raise "You know you're not allowed to use the database in your tests..." # We could be more gentle with a warn
+            end
+            execute_before_unit_test_hijack(*args)
+          end
+        end
+        </pre>
         <hr />
         <ul class="navigation group">
           <li class="previousPost">

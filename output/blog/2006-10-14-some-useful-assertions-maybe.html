@@ -52,11 +52,71 @@
         <abbr class="createdAt" title="2006-10-14T09:27:00+00:00">Sat, 14 Oct 06</abbr>
         <h1>Some useful assertions, maybe</h1>
         <p>The first is to ensure two arrays contain the same elements not necessarily in the same order.</p>
-        <pre class="code ruby">&#x000A;require 'test/unit'&#x000A;&#x000A;require 'set'&#x000A;module AssertEqualArray&#x000A;&#x000A;  def assert_equal_array(array_1, array_2)&#x000A;    assert_equal array_1.size, array_2.size, "Arrays must be of the same size to be equal"&#x000A;    assert_equal array_1.to_set, array_2.to_set&#x000A;  end&#x000A;&#x000A;end&#x000A;&#x000A;class Test::Unit::TestCase&#x000A;  include AssertEqualArray&#x000A;end&#x000A;&#x000A;class MyTest &lt; Test::Unit::TestCase&#x000A;&#x000A;  def test_should_assert_equal_arrays&#x000A;    assert_equal_array [1, 2, 3], [2, 1, 3]&#x000A;  end&#x000A;&#x000A;end</pre>
+        <pre class="code ruby">
+        require 'test/unit'
+        
+        require 'set'
+        module AssertEqualArray
+        
+          def assert_equal_array(array_1, array_2)
+            assert_equal array_1.size, array_2.size, "Arrays must be of the same size to be equal"
+            assert_equal array_1.to_set, array_2.to_set
+          end
+        
+        end
+        
+        class Test::Unit::TestCase
+          include AssertEqualArray
+        end
+        
+        class MyTest &lt; Test::Unit::TestCase
+        
+          def test_should_assert_equal_arrays
+            assert_equal_array [1, 2, 3], [2, 1, 3]
+          end
+        
+        end
+        </pre>
         <p>The second is to test for generated warnings.  In my <a href="/blog/2006-10-06-recording-daily-spending-with-a-ruby-dsl">current project</a> app, I use method_missing and wanted to warn the user if the unknown message looks like it&#8217;s supposed to be a payment mechanism&#8230;</p>
-        <pre class="code ruby">&#x000A;day '25-oct-2006' do&#x000A;  cash 30.29, beer&#x000A;end&#x000A;&#x000A;# Results in NoMethodError and, more importantly, this friendly warning..&#x000A;# Maybe you expected 'cash' to be a payment mechanism?&#x000A;# Cool huh?</pre>
+        <pre class="code ruby">
+        day '25-oct-2006' do
+          cash 30.29, beer
+        end
+        
+        # Results in NoMethodError and, more importantly, this friendly warning..
+        # Maybe you expected 'cash' to be a payment mechanism?
+        # Cool huh?
+        </pre>
         <p>Anyway, I wanted a way to test that the warning was being generated and came up with another assertion&#8230;</p>
-        <pre class="code ruby">&#x000A;require 'test/unit'&#x000A;&#x000A;require 'stringio'&#x000A;module AssertWarning&#x000A;&#x000A;  def assert_warning(expected_warning, &amp;blk)&#x000A;    original_stderr = $stderr&#x000A;    $stderr = stderr = StringIO.new&#x000A;    yield&#x000A;    assert_equal expected_warning, stderr.string.chomp&#x000A;  ensure&#x000A;    $stderr = original_stderr&#x000A;  end&#x000A;&#x000A;end&#x000A;&#x000A;class Test::Unit::TestCase&#x000A;  include AssertWarning&#x000A;end&#x000A;&#x000A;class MyTest &lt; Test::Unit::TestCase&#x000A;&#x000A;  def test_should_assert_warning&#x000A;    assert_warning('this is a warning') { Kernel::warn('this is a warning') }&#x000A;  end&#x000A;&#x000A;end</pre>
+        <pre class="code ruby">
+        require 'test/unit'
+        
+        require 'stringio'
+        module AssertWarning
+        
+          def assert_warning(expected_warning, &amp;blk)
+            original_stderr = $stderr
+            $stderr = stderr = StringIO.new
+            yield
+            assert_equal expected_warning, stderr.string.chomp
+          ensure
+            $stderr = original_stderr
+          end
+        
+        end
+        
+        class Test::Unit::TestCase
+          include AssertWarning
+        end
+        
+        class MyTest &lt; Test::Unit::TestCase
+        
+          def test_should_assert_warning
+            assert_warning('this is a warning') { Kernel::warn('this is a warning') }
+          end
+        
+        end
+        </pre>
         <hr />
         <ul class="navigation group">
           <li class="previousPost">

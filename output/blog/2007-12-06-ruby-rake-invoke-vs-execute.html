@@ -53,10 +53,58 @@
         <h1>Ruby Rake - Invoke vs Execute</h1>
         <p>First up &#8211; I don&#8217;t know an awful lot about the magic that is <a href="http://rake.rubyforge.org/">Rake</a>.  As such, this is probably common knowledge to most people.</p>
         <p>I discovered the difference when trying to execute the db:migrate task from within another rake task (I already knew it worked when declared as a dependency).</p>
-        <pre class="code ruby">&#x000A;# Rakefile&#x000A;task :foo do&#x000A;  Rake::Task['db:migrate'].execute&#x000A;end&#x000A;&#x000A;#$ rake foo&#x000A;#=&gt; rake aborted!&#x000A;#=&gt; uninitialized constant ActiveRecord</pre>
+        <pre class="code ruby">
+        # Rakefile
+        task :foo do
+          Rake::Task['db:migrate'].execute
+        end
+        
+        #$ rake foo
+        #=&gt; rake aborted!
+        #=&gt; uninitialized constant ActiveRecord
+        </pre>
         <p>I changed <a href="http://rake.rubyforge.org/classes/Rake/Task.html#M000100">Task#execute</a> to <a href="http://rake.rubyforge.org/classes/Rake/Task.html#M000098">Task#invoke</a> and, voila, it all worked fine.  The rdoc for those methods is actually pretty self explanatory, having seen the differences in action.  Oh well.</p>
         <p>I put together a simple example to demonstrate the differences.</p>
-        <pre class="code ruby">&#x000A;# The task (task_1) and its dependency (to_be_run_before_task_1)&#x000A;&#x000A;task :to_be_run_before_task_1 do&#x000A;  puts "to_be_run_before_task_1"&#x000A;end&#x000A;&#x000A;task :task_1 =&gt; ['to_be_run_before_task_1'] do&#x000A;  puts "task_1"&#x000A;end&#x000A;&#x000A;# Three tasks that 'run' task_1&#x000A;&#x000A;task :invoke_task_1 do&#x000A;  Rake::Task['task_1'].invoke&#x000A;end&#x000A;&#x000A;task :execute_task_1 do&#x000A;  Rake::Task['task_1'].execute&#x000A;end&#x000A;&#x000A;task :run_task_1_using_dependencies =&gt; ['task_1']&#x000A;&#x000A;# 'Running' the tasks&#x000A;&#x000A;#$ rake task_1&#x000A;#=&gt; to_be_run_before_task_1&#x000A;#=&gt; task_1&#x000A;&#x000A;#$ rake invoke_task_1&#x000A;#=&gt; to_be_run_before_task_1&#x000A;#=&gt; task_1&#x000A;&#x000A;#$ rake execute_task_1&#x000A;#=&gt; task_1 #*** Note that the dependencies are not run&#x000A;&#x000A;#$ rake run_task_1_using_dependencies&#x000A;#=&gt; to_be_run_before_task_1&#x000A;#=&gt; task_1</pre>
+        <pre class="code ruby">
+        # The task (task_1) and its dependency (to_be_run_before_task_1)
+        
+        task :to_be_run_before_task_1 do
+          puts "to_be_run_before_task_1"
+        end
+        
+        task :task_1 =&gt; ['to_be_run_before_task_1'] do
+          puts "task_1"
+        end
+        
+        # Three tasks that 'run' task_1
+        
+        task :invoke_task_1 do
+          Rake::Task['task_1'].invoke
+        end
+        
+        task :execute_task_1 do
+          Rake::Task['task_1'].execute
+        end
+        
+        task :run_task_1_using_dependencies =&gt; ['task_1']
+        
+        # 'Running' the tasks
+        
+        #$ rake task_1
+        #=&gt; to_be_run_before_task_1
+        #=&gt; task_1
+        
+        #$ rake invoke_task_1
+        #=&gt; to_be_run_before_task_1
+        #=&gt; task_1
+        
+        #$ rake execute_task_1
+        #=&gt; task_1 #*** Note that the dependencies are not run
+        
+        #$ rake run_task_1_using_dependencies
+        #=&gt; to_be_run_before_task_1
+        #=&gt; task_1
+        </pre>
         <hr />
         <ul class="navigation group">
           <li class="previousPost">

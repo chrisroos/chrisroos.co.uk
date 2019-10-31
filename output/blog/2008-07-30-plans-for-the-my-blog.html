@@ -56,7 +56,7 @@
         	<li>Remove the archive pages.  These are the pages that exist so that you can see every post in a given year, month or day.  I don&#8217;t think I&#8217;ve ever wanted to read these archives on anyone elses site and I can&#8217;t think that anyone would want to do so here.  They are not linked from anywhere on this site (I removed the links when I switched to a <a href="/blog/2008-01-23-migration-from-typo-to-a-static-site-is-complete">static site</a>) but I know they are still in the <a href="http://www.google.co.uk">google</a> index.  I find it annoying if I click on a link to such an archive page as I then have to do a second search, within the page, to find what I&#8217;m looking for.  I guess this might be one of the reasons why google&#8217;s guidelines state that you should <a href="http://www.google.com/support/webmasters/bin/answer.py?answer=35769">use robots.txt to prevent crawling of SERPs</a> (more info from <a href="http://www.mattcutts.com/blog/search-results-in-search-results/">Matt Cutts</a>).  It&#8217;s for this reason that I removed all paging on the site and redirect anyone that follows a link to a paged page (e.g. articles/page/5) to my <a href="/contents">contents</a> page, explaining why they might not be expecting to see that page.</li>
         </ul>
         <ul>
-        	<li>Change the <a href="http://en.wikipedia.org/wiki/Uniform_Resource_Locator"><span class="caps">URL</span></a> structure to reflect the removal of the archive pages.  My URLs currently look something like /articles/2007/01/01/article-title.  I want to change them to /articles/2007-01-01-title.  This will still allow people, if they really, really wanted, to replicate the functionality of my archive pages by using the google site search functionality (site:blog.seagul.co.uk/articles/2007-05 for all articles in May 2007, for example).  Retaining the date in the <span class="caps">URL</span> has two (that I can think of) benefits: I find it really useful to get an idea of the age (and possibly relevancy) of a post, and it provides a neat way to generate permalinks.</li>
+        	<li>Change the <a href="http://en.wikipedia.org/wiki/Uniform_Resource_Locator">URL</a> structure to reflect the removal of the archive pages.  My URLs currently look something like /articles/2007/01/01/article-title.  I want to change them to /articles/2007-01-01-title.  This will still allow people, if they really, really wanted, to replicate the functionality of my archive pages by using the google site search functionality (site:blog.seagul.co.uk/articles/2007-05 for all articles in May 2007, for example).  Retaining the date in the URL has two (that I can think of) benefits: I find it really useful to get an idea of the age (and possibly relevancy) of a post, and it provides a neat way to generate permalinks.</li>
         </ul>
         <ul>
         	<li>Remove the tag pages.  For the same reason that I&#8217;ve removed the paged pages and want to remove the archive pages.  I haven&#8217;t been tagging any articles since the switch to a static site and only maintain these pages for the legacy tags.  If I really suffer from the lack of tags then I guess I&#8217;ll just use a tagging service (such as <a href="http://del.icio.us">del.icio.us</a>) to bookmark my posts with relevant tags.</li>
@@ -88,9 +88,9 @@
         <ul>
         	<li>Attempt to clear up any broken links in the content.</li>
         </ul>
-        <p><strong>Note</strong> A guiding principle behind the removal of composite pages (tags, archives and paged pages) is that a post should only appear at one <span class="caps">URL</span> on this site.</p>
+        <p><strong>Note</strong> A guiding principle behind the removal of composite pages (tags, archives and paged pages) is that a post should only appear at one URL on this site.</p>
         <p><strong>Note</strong> I believe there may be benefits of the archive and tag pages in that they allow search engines to effectively spider all your content. I&#8217;m fairly happy that my contents page and sitemap mean that I&#8217;m covered in this respect.</p>
-        <h2>Steps required to move towards the architecture (<span class="caps">URL</span>) changes</h2>
+        <h2>Steps required to move towards the architecture (URL) changes</h2>
         <ul>
         	<li>Add <a href="http://en.wikipedia.org/wiki/Noindex">noindex</a> to all the archive pages, and optionally request their removal, so that they disappear from the search engine indexes.</li>
         </ul>
@@ -104,7 +104,7 @@
         	<li>Redirect requests for tag pages to my contents page.</li>
         </ul>
         <ul>
-        	<li>Redirect all requests for URLs that start with /articles to the <span class="caps">URL</span> without /articles.</li>
+        	<li>Redirect all requests for URLs that start with /articles to the URL without /articles.</li>
         </ul>
         <ul>
         	<li>Redirect all requests for URLs on the blog.seagul.co.uk domain to chrisroos.co.uk/blog.</li>

@@ -53,7 +53,50 @@
         <h1>Automatically download egg credit card transactions</h1>
         <p>I&#8217;ve followed in my <a href="/blog/2007-05-14-automatically-downloading-my-recent-transactions-from-lloyds-tsb">previous</a> <a href="/blog/2007-05-04-automatically-downloading-my-most-recent-hsbc-transactions">footsteps</a> and automated the download of my <a href="http://egg.com">egg</a> credit card transactions and statements.  Using this in combination with my <a href="/blog/2007-04-01-converting-egg-credit-card-statements-to-ofx-for-upload-to-wesabe">ofx convertor</a> makes it easier for me to upload my financial data to <a href="http://www.wesabe.com">wesabe</a>.</p>
         <p>As always, the code is in <a href="http://chrisroos.googlecode.com/svn/trunk/egg/">google code</a> and pasted below for your viewing pleasure&#8230;</p>
-        <pre class="code ruby">&#x000A;require 'egg-credentials'&#x000A;&#x000A;def execute_curl(cmd)&#x000A;  `#{cmd}`&#x000A;end&#x000A;&#x000A;COOKIE_LOCATION = "/tmp/egg.cookie"&#x000A;STATEMENT_DATE = '18 January 2007'&#x000A;&#x000A;RECENT_TRANSACTIONS_FILE = '/Users/chrisroos/Desktop/egg-recent-transactions.html'&#x000A;STATEMENT_FILE = '/Users/chrisroos/Desktop/egg-statement.html'&#x000A;&#x000A;# Logging in requires a cookie that is set when we first visit the login page&#x000A;curl_cmd = %[curl -s -c"#{COOKIE_LOCATION}" "https://new.egg.com/security/customer/logon?URI=https://new.egg.com/customer/youraccounts"]&#x000A;execute_curl curl_cmd&#x000A;&#x000A;# POST our login credentials&#x000A;curl_cmd = %[curl -s -b"#{COOKIE_LOCATION}" -c"#{COOKIE_LOCATION}" -L "https://logon.egg.com/LoginWebServer/services/CustomerLogin" -d"firstName=#{FIRST_NAME}" -d"lastName=#{LAST_NAME}" -d"dobDay=#{DOB_DAY}" -d"dobMonth=#{DOB_MONTH}" -d"dobYear=#{DOB_YEAR}" -d"postcode=#{POSTCODE}" -d"mmn=#{MOTHERS_MAIDEN_NAME}" -d"password=#{PASSWORD}" -d"HiddenURI=https%3A%2F%2Fnew.egg.com%2Fcustomer%2Fyouraccounts"]&#x000A;execute_curl curl_cmd&#x000A;&#x000A;# List and save recent transactions&#x000A;curl_cmd = %[curl -s -o"#{RECENT_TRANSACTIONS_FILE}" -b"#{COOKIE_LOCATION}" "https://your.egg.com/customer/eggcard/recenttransactions.aspx"]&#x000A;execute_curl curl_cmd&#x000A;&#x000A;# There is no sensible way to get your statements.  I'd hope for something like /statements/18-jun-2007.html but no such luck&#x000A;# Instead, there is a zero indexed array of statement dates.  Selecting one of these statement dates allows us to construct&#x000A;# a uri using the index of the date in the list.  So, if 18 June 2007 is the first date in the list (i.e. index 0) then we can view that&#x000A;# statement at https://your.egg.com/customer/eggcard/statements.aspx?index=0&#x000A;# Interestingly, this is how it works from the recent transactions page, from any actual statement page, it appears that this is&#x000A;# too hard (it's not) and instead the developers have resorted to using some magical .net/javascript voodoo to obtain a different&#x000A;# statement.&#x000A;require 'rubygems'&#x000A;require 'hpricot'&#x000A;&#x000A;recent_transactions = File.open(RECENT_TRANSACTIONS_FILE) { |f| f.read }&#x000A;doc = Hpricot(recent_transactions)&#x000A;statement_dates = []&#x000A;(doc/'select#ctl01_content_recenttransactions_lstPreviousStatements/option').each { |e| statement_dates &lt;&lt; e.inner_text }&#x000A;statement_index = statement_dates.index(STATEMENT_DATE)&#x000A;&#x000A;curl_cmd = %[curl -s -o"#{STATEMENT_FILE}" -b"#{COOKIE_LOCATION}" "https://your.egg.com/customer/eggcard/statements.aspx?index=#{statement_index}"]&#x000A;execute_curl curl_cmd</pre>
+        <pre class="code ruby">
+        require 'egg-credentials'
+        
+        def execute_curl(cmd)
+          `\#{cmd}`
+        end
+        
+        COOKIE_LOCATION = "/tmp/egg.cookie"
+        STATEMENT_DATE = '18 January 2007'
+        
+        RECENT_TRANSACTIONS_FILE = '/Users/chrisroos/Desktop/egg-recent-transactions.html'
+        STATEMENT_FILE = '/Users/chrisroos/Desktop/egg-statement.html'
+        
+        # Logging in requires a cookie that is set when we first visit the login page
+        curl_cmd = %[curl -s -c"\#{COOKIE_LOCATION}" "https://new.egg.com/security/customer/logon?URI=https://new.egg.com/customer/youraccounts"]
+        execute_curl curl_cmd
+        
+        # POST our login credentials
+        curl_cmd = %[curl -s -b"\#{COOKIE_LOCATION}" -c"\#{COOKIE_LOCATION}" -L "https://logon.egg.com/LoginWebServer/services/CustomerLogin" -d"firstName=\#{FIRST_NAME}" -d"lastName=\#{LAST_NAME}" -d"dobDay=\#{DOB_DAY}" -d"dobMonth=\#{DOB_MONTH}" -d"dobYear=\#{DOB_YEAR}" -d"postcode=\#{POSTCODE}" -d"mmn=\#{MOTHERS_MAIDEN_NAME}" -d"password=\#{PASSWORD}" -d"HiddenURI=https%3A%2F%2Fnew.egg.com%2Fcustomer%2Fyouraccounts"]
+        execute_curl curl_cmd
+        
+        # List and save recent transactions
+        curl_cmd = %[curl -s -o"\#{RECENT_TRANSACTIONS_FILE}" -b"\#{COOKIE_LOCATION}" "https://your.egg.com/customer/eggcard/recenttransactions.aspx"]
+        execute_curl curl_cmd
+        
+        # There is no sensible way to get your statements.  I'd hope for something like /statements/18-jun-2007.html but no such luck
+        # Instead, there is a zero indexed array of statement dates.  Selecting one of these statement dates allows us to construct
+        # a uri using the index of the date in the list.  So, if 18 June 2007 is the first date in the list (i.e. index 0) then we can view that
+        # statement at https://your.egg.com/customer/eggcard/statements.aspx?index=0
+        # Interestingly, this is how it works from the recent transactions page, from any actual statement page, it appears that this is
+        # too hard (it's not) and instead the developers have resorted to using some magical .net/javascript voodoo to obtain a different
+        # statement.
+        require 'rubygems'
+        require 'hpricot'
+        
+        recent_transactions = File.open(RECENT_TRANSACTIONS_FILE) { |f| f.read }
+        doc = Hpricot(recent_transactions)
+        statement_dates = []
+        (doc/'select#ctl01_content_recenttransactions_lstPreviousStatements/option').each { |e| statement_dates &lt;&lt; e.inner_text }
+        statement_index = statement_dates.index(STATEMENT_DATE)
+        
+        curl_cmd = %[curl -s -o"\#{STATEMENT_FILE}" -b"\#{COOKIE_LOCATION}" "https://your.egg.com/customer/eggcard/statements.aspx?index=\#{statement_index}"]
+        execute_curl curl_cmd
+        </pre>
         <hr />
         <ul class="navigation group">
           <li class="previousPost">
