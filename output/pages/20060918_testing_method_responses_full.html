@@ -46,7 +46,297 @@
       <div id="content">
         <abbr class="createdAt" title="2006-09-18T20:45:42+00:00">Mon, 18 Sep 06</abbr>
         <h1>Testing Method Responses - Full</h1>
-        <pre class="code ruby">&#x000A;class Foo&#x000A;  def foo; end; public :foo&#x000A;  def bar; end; protected :bar&#x000A;  def baz; end; private :baz&#x000A;end&#x000A;&#x000A;require 'test/unit'&#x000A;&#x000A;IncludePrivate = true&#x000A;IncludeSuper = true&#x000A;&#x000A;FooMethod = :foo.to_s&#x000A;BarMethod = :bar.to_s&#x000A;BazMethod = :baz.to_s&#x000A;&#x000A;class Test::Unit::TestCase&#x000A;  def assert_not(expr, msg = '')&#x000A;    assert ! expr, msg&#x000A;  end&#x000A;end&#x000A;&#x000A;%%&#x000A;Module&#x000A;------&#x000A;instance_methods(include_super=true)&#x000A;instance_method&#x000A;method_defined?&#x000A;private_instance_methods(include_super=true)&#x000A;private_method_defined?&#x000A;protected_instance_methods(include_super=true)&#x000A;protected_method_defined?&#x000A;public_instance_methods(include_super=true)&#x000A;public_method_defined?&#x000A;%&#x000A;&#x000A;# Testing a Class.  Module methods. (CM)&#x000A;Class.new(Test::Unit::TestCase) do&#x000A;&#x000A;  def test_CM_instance_methods&#x000A;    assert Foo.instance_methods.include?(FooMethod)&#x000A;    assert Foo.instance_methods.include?(BarMethod)&#x000A;    assert_not Foo.instance_methods.include?(BazMethod)&#x000A;  end&#x000A;&#x000A;  def test_CM_instance_method&#x000A;    assert_not_nil Foo.instance_method(FooMethod)&#x000A;    assert_not_nil Foo.instance_method(BarMethod)&#x000A;    assert_not_nil Foo.instance_method(BazMethod)&#x000A;  end&#x000A;&#x000A;  def test_CM_method_defined?&#x000A;    assert Foo.method_defined?(FooMethod)&#x000A;    assert Foo.method_defined?(BarMethod)&#x000A;    assert_not Foo.method_defined?(BazMethod)&#x000A;  end&#x000A;&#x000A;  def test_CM_public_instance_methods&#x000A;    assert Foo.public_instance_methods.include?('foo')&#x000A;    assert_not Foo.public_instance_methods.include?('bar')&#x000A;    assert_not Foo.public_instance_methods.include?('baz')&#x000A;    assert Foo.public_instance_methods(IncludeSuper).include?('foo')&#x000A;    assert_not Foo.public_instance_methods(IncludeSuper).include?('bar')&#x000A;    assert_not Foo.public_instance_methods(IncludeSuper).include?('baz')&#x000A;  end&#x000A;&#x000A;  def test_CM_protected_instance_methods&#x000A;    assert_not Foo.protected_instance_methods.include?('foo')&#x000A;    assert Foo.protected_instance_methods.include?('bar')&#x000A;    assert_not Foo.protected_instance_methods.include?('baz')&#x000A;    assert_not Foo.protected_instance_methods(IncludeSuper).include?('foo')&#x000A;    assert Foo.protected_instance_methods(IncludeSuper).include?('bar')&#x000A;    assert_not Foo.protected_instance_methods(IncludeSuper).include?('baz')&#x000A;  end&#x000A;&#x000A;  def test_CM_private_instance_methods&#x000A;    assert_not Foo.private_instance_methods.include?('foo')&#x000A;    assert_not Foo.private_instance_methods.include?('bar')&#x000A;    assert Foo.private_instance_methods.include?('baz')&#x000A;    assert_not Foo.private_instance_methods(IncludeSuper).include?('foo')&#x000A;    assert_not Foo.private_instance_methods(IncludeSuper).include?('bar')&#x000A;    assert Foo.private_instance_methods(IncludeSuper).include?('baz')&#x000A;  end&#x000A;&#x000A;  def test_CM_public_method_defined?&#x000A;    assert Foo.public_method_defined?(FooMethod)&#x000A;    assert_not Foo.public_method_defined?(BarMethod)&#x000A;    assert_not Foo.public_method_defined?(BazMethod)&#x000A;  end&#x000A;&#x000A;  def test_CM_protected_method_defined?&#x000A;    assert_not Foo.protected_method_defined?(FooMethod)&#x000A;    assert Foo.protected_method_defined?(BarMethod)&#x000A;    assert_not Foo.protected_method_defined?(BazMethod)&#x000A;  end&#x000A;&#x000A;  def test_CM_private_method_defined?&#x000A;    assert_not Foo.private_method_defined?(FooMethod)&#x000A;    assert_not Foo.private_method_defined?(BarMethod)&#x000A;    assert Foo.private_method_defined?(BazMethod)&#x000A;  end&#x000A;&#x000A;end&#x000A;&#x000A;# # Testing on instance.  Module methods. (IM)&#x000A;# Class.new(Test::Unit::TestCase) do&#x000A;#&#x000A;#   def setup&#x000A;#     @foo = Foo.new&#x000A;#   end&#x000A;#&#x000A;#   def test_IM_private_instance_methods&#x000A;#     assert_not @foo.private_instance_methods.include?(FooMethod)&#x000A;#     assert_not @foo.private_instance_methods.include?(BarMethod)&#x000A;#     assert_not @foo.private_instance_methods.include?(BazMethod)&#x000A;#     assert_not @foo.private_instance_methods(true).include?(FooMethod)&#x000A;#     assert_not @foo.private_instance_methods(true).include?(BarMethod)&#x000A;#     assert_not @foo.private_instance_methods(true).include?(BazMethod)&#x000A;#   end&#x000A;#&#x000A;#   def test_IM_protected_instance_methods&#x000A;#     assert_not @foo.protected_instance_methods.include?(FooMethod)&#x000A;#     assert_not @foo.protected_instance_methods.include?(BarMethod)&#x000A;#     assert_not @foo.protected_instance_methods.include?(BazMethod)&#x000A;#     assert_not @foo.protected_instance_methods(true).include?(FooMethod)&#x000A;#     assert_not @foo.protected_instance_methods(true).include?(BarMethod)&#x000A;#     assert_not @foo.protected_instance_methods(true).include?(BazMethod)&#x000A;#   end&#x000A;#&#x000A;#   def test_IM_public_instance_methods&#x000A;#     assert_not @foo.public_instance_methods.include?(FooMethod)&#x000A;#     assert_not @foo.public_instance_methods.include?(BarMethod)&#x000A;#     assert_not @foo.public_instance_methods.include?(BazMethod)&#x000A;#     assert_not @foo.public_instance_methods(true).include?(FooMethod)&#x000A;#     assert_not @foo.public_instance_methods(true).include?(BarMethod)&#x000A;#     assert_not @foo.public_instance_methods(true).include?(BazMethod)&#x000A;#   end&#x000A;#&#x000A;#   def test_IM_instance_method&#x000A;#     assert_not_nil @foo.instance_method(FooMethod)&#x000A;#     assert_not_nil @foo.instance_method(BarMethod)&#x000A;#     assert_not_nil @foo.instance_method(BazMethod)&#x000A;#   end&#x000A;#&#x000A;#   def test_IM_method_defined?&#x000A;#     assert @foo.method_defined?(FooMethod)&#x000A;#     assert @foo.method_defined?(BarMethod)&#x000A;#     assert_not @foo.method_defined?(BazMethod)&#x000A;#   end&#x000A;#&#x000A;#   def test_IM_private_method_defined?&#x000A;#     assert_not @foo.private_method_defined?(FooMethod)&#x000A;#     assert_not @foo.private_method_defined?(BarMethod)&#x000A;#     assert @foo.private_method_defined?(BazMethod)&#x000A;#   end&#x000A;#&#x000A;#   def test_IM_protected_method_defined?&#x000A;#     assert_not @foo.protected_method_defined?(FooMethod)&#x000A;#     assert @foo.protected_method_defined?(BarMethod)&#x000A;#     assert_not @foo.protected_method_defined?(BazMethod)&#x000A;#   end&#x000A;#&#x000A;#   def test_IM_public_method_defined?&#x000A;#     assert @foo.public_method_defined?(FooMethod)&#x000A;#     assert_not @foo.public_method_defined?(BarMethod)&#x000A;#     assert_not @foo.public_method_defined?(BazMethod)&#x000A;#   end&#x000A;#&#x000A;# end&#x000A;&#x000A;%%&#x000A;Object&#x000A;------&#x000A;method&#x000A;methods&#x000A;private_methods&#x000A;protected_methods&#x000A;public_methods&#x000A;respond_to?(sym, include_private=false)&#x000A;%&#x000A;&#x000A;# Testing a class.  Object methods. (KO)&#x000A;Class.new(Test::Unit::TestCase) do&#x000A;&#x000A;  def test_KO_method&#x000A;    assert_raise(NameError) { Foo.method(FooMethod) }&#x000A;    assert_raise(NameError) { Foo.method(BarMethod) }&#x000A;    assert_raise(NameError) { Foo.method(BazMethod) }&#x000A;  end&#x000A;&#x000A;  def test_KO_methods&#x000A;    assert_not Foo.methods.include?(FooMethod)&#x000A;    assert_not Foo.methods.include?(BarMethod)&#x000A;    assert_not Foo.methods.include?(BazMethod)&#x000A;  end&#x000A;&#x000A;  def test_KO_private_methods&#x000A;     assert_not Foo.private_methods.include?(FooMethod)&#x000A;     assert_not Foo.private_methods.include?(BarMethod)&#x000A;     assert_not Foo.private_methods.include?(BazMethod)&#x000A;     assert_not Foo.private_methods(IncludeSuper).include?(FooMethod)&#x000A;     assert_not Foo.private_methods(IncludeSuper).include?(BarMethod)&#x000A;     assert_not Foo.private_methods(IncludeSuper).include?(BazMethod)&#x000A;  end&#x000A;&#x000A;  def test_KO_protected_methods&#x000A;     assert_not Foo.protected_methods.include?(FooMethod)&#x000A;     assert_not Foo.protected_methods.include?(BarMethod)&#x000A;     assert_not Foo.protected_methods.include?(BazMethod)&#x000A;     assert_not Foo.protected_methods(IncludeSuper).include?(FooMethod)&#x000A;     assert_not Foo.protected_methods(IncludeSuper).include?(BarMethod)&#x000A;     assert_not Foo.protected_methods(IncludeSuper).include?(BazMethod)&#x000A;  end&#x000A;&#x000A;  def test_KO_public_methods&#x000A;     assert_not Foo.public_methods.include?(FooMethod)&#x000A;     assert_not Foo.public_methods.include?(BarMethod)&#x000A;     assert_not Foo.public_methods.include?(BazMethod)&#x000A;     assert_not Foo.public_methods(IncludeSuper).include?(FooMethod)&#x000A;     assert_not Foo.public_methods(IncludeSuper).include?(BarMethod)&#x000A;     assert_not Foo.public_methods(IncludeSuper).include?(BazMethod)&#x000A;  end&#x000A;&#x000A;  def test_KO_respond_to?&#x000A;    assert_not Foo.respond_to?(FooMethod)&#x000A;    assert_not Foo.respond_to?(BarMethod)&#x000A;    assert_not Foo.respond_to?(BazMethod)&#x000A;    assert_not Foo.respond_to?(FooMethod, IncludePrivate)&#x000A;    assert_not Foo.respond_to?(BarMethod, IncludePrivate)&#x000A;    assert_not Foo.respond_to?(BazMethod, IncludePrivate)&#x000A;  end&#x000A;&#x000A;end&#x000A;&#x000A;# Testing an instance.  Object methods. (IO)&#x000A;Class.new(Test::Unit::TestCase) do&#x000A;&#x000A;  def setup&#x000A;    @foo = Foo.new&#x000A;  end&#x000A;&#x000A;  def test_IO_method&#x000A;    assert_not_nil @foo.method(FooMethod)&#x000A;    assert_not_nil @foo.method(BarMethod)&#x000A;    assert_not_nil @foo.method(BazMethod)&#x000A;  end&#x000A;&#x000A;  def test_IO_methods&#x000A;    assert @foo.methods.include?(FooMethod)&#x000A;    assert @foo.methods.include?(BarMethod)&#x000A;    assert_not @foo.methods.include?(BazMethod)&#x000A;  end&#x000A;&#x000A;  def test_IO_private_methods&#x000A;     assert_not @foo.private_methods.include?(FooMethod)&#x000A;     assert_not @foo.private_methods.include?(BarMethod)&#x000A;     assert @foo.private_methods.include?(BazMethod)&#x000A;     assert_not @foo.private_methods(IncludeSuper).include?(FooMethod)&#x000A;     assert_not @foo.private_methods(IncludeSuper).include?(BarMethod)&#x000A;     assert @foo.private_methods(IncludeSuper).include?(BazMethod)&#x000A;  end&#x000A;&#x000A;  def test_IO_protected_methods&#x000A;     assert_not @foo.protected_methods.include?(FooMethod)&#x000A;     assert @foo.protected_methods.include?(BarMethod)&#x000A;     assert_not @foo.protected_methods.include?(BazMethod)&#x000A;     assert_not @foo.protected_methods(IncludeSuper).include?(FooMethod)&#x000A;     assert @foo.protected_methods(IncludeSuper).include?(BarMethod)&#x000A;     assert_not @foo.protected_methods(IncludeSuper).include?(BazMethod)&#x000A;  end&#x000A;&#x000A;  def test_IO_public_methods&#x000A;     assert @foo.public_methods.include?(FooMethod)&#x000A;     assert_not @foo.public_methods.include?(BarMethod)&#x000A;     assert_not @foo.public_methods.include?(BazMethod)&#x000A;     assert @foo.public_methods(IncludeSuper).include?(FooMethod)&#x000A;     assert_not @foo.public_methods(IncludeSuper).include?(BarMethod)&#x000A;     assert_not @foo.public_methods(IncludeSuper).include?(BazMethod)&#x000A;  end&#x000A;&#x000A;  def test_IO_respond_to?&#x000A;    assert @foo.respond_to?(FooMethod)&#x000A;    assert @foo.respond_to?(BarMethod)&#x000A;    assert_not @foo.respond_to?(BazMethod)&#x000A;    assert @foo.respond_to?(FooMethod, IncludePrivate)&#x000A;    assert @foo.respond_to?(BarMethod, IncludePrivate)&#x000A;    assert @foo.respond_to?(BazMethod, IncludePrivate)&#x000A;  end&#x000A;&#x000A;end</pre>
+        <pre class="code ruby">
+        class Foo
+          def foo; end; public :foo
+          def bar; end; protected :bar
+          def baz; end; private :baz
+        end
+        
+        require 'test/unit'
+        
+        IncludePrivate = true
+        IncludeSuper = true
+        
+        FooMethod = :foo.to_s
+        BarMethod = :bar.to_s
+        BazMethod = :baz.to_s
+        
+        class Test::Unit::TestCase
+          def assert_not(expr, msg = '')
+            assert ! expr, msg
+          end
+        end
+        
+        %%
+        Module
+        ------
+        instance_methods(include_super=true)
+        instance_method
+        method_defined?
+        private_instance_methods(include_super=true)
+        private_method_defined?
+        protected_instance_methods(include_super=true)
+        protected_method_defined?
+        public_instance_methods(include_super=true)
+        public_method_defined?
+        %
+        
+        # Testing a Class.  Module methods. (CM)
+        Class.new(Test::Unit::TestCase) do
+        
+          def test_CM_instance_methods
+            assert Foo.instance_methods.include?(FooMethod)
+            assert Foo.instance_methods.include?(BarMethod)
+            assert_not Foo.instance_methods.include?(BazMethod)
+          end
+        
+          def test_CM_instance_method
+            assert_not_nil Foo.instance_method(FooMethod)
+            assert_not_nil Foo.instance_method(BarMethod)
+            assert_not_nil Foo.instance_method(BazMethod)
+          end
+        
+          def test_CM_method_defined?
+            assert Foo.method_defined?(FooMethod)
+            assert Foo.method_defined?(BarMethod)
+            assert_not Foo.method_defined?(BazMethod)
+          end
+        
+          def test_CM_public_instance_methods
+            assert Foo.public_instance_methods.include?('foo')
+            assert_not Foo.public_instance_methods.include?('bar')
+            assert_not Foo.public_instance_methods.include?('baz')
+            assert Foo.public_instance_methods(IncludeSuper).include?('foo')
+            assert_not Foo.public_instance_methods(IncludeSuper).include?('bar')
+            assert_not Foo.public_instance_methods(IncludeSuper).include?('baz')
+          end
+        
+          def test_CM_protected_instance_methods
+            assert_not Foo.protected_instance_methods.include?('foo')
+            assert Foo.protected_instance_methods.include?('bar')
+            assert_not Foo.protected_instance_methods.include?('baz')
+            assert_not Foo.protected_instance_methods(IncludeSuper).include?('foo')
+            assert Foo.protected_instance_methods(IncludeSuper).include?('bar')
+            assert_not Foo.protected_instance_methods(IncludeSuper).include?('baz')
+          end
+        
+          def test_CM_private_instance_methods
+            assert_not Foo.private_instance_methods.include?('foo')
+            assert_not Foo.private_instance_methods.include?('bar')
+            assert Foo.private_instance_methods.include?('baz')
+            assert_not Foo.private_instance_methods(IncludeSuper).include?('foo')
+            assert_not Foo.private_instance_methods(IncludeSuper).include?('bar')
+            assert Foo.private_instance_methods(IncludeSuper).include?('baz')
+          end
+        
+          def test_CM_public_method_defined?
+            assert Foo.public_method_defined?(FooMethod)
+            assert_not Foo.public_method_defined?(BarMethod)
+            assert_not Foo.public_method_defined?(BazMethod)
+          end
+        
+          def test_CM_protected_method_defined?
+            assert_not Foo.protected_method_defined?(FooMethod)
+            assert Foo.protected_method_defined?(BarMethod)
+            assert_not Foo.protected_method_defined?(BazMethod)
+          end
+        
+          def test_CM_private_method_defined?
+            assert_not Foo.private_method_defined?(FooMethod)
+            assert_not Foo.private_method_defined?(BarMethod)
+            assert Foo.private_method_defined?(BazMethod)
+          end
+        
+        end
+        
+        # # Testing on instance.  Module methods. (IM)
+        # Class.new(Test::Unit::TestCase) do
+        #
+        #   def setup
+        #     @foo = Foo.new
+        #   end
+        #
+        #   def test_IM_private_instance_methods
+        #     assert_not @foo.private_instance_methods.include?(FooMethod)
+        #     assert_not @foo.private_instance_methods.include?(BarMethod)
+        #     assert_not @foo.private_instance_methods.include?(BazMethod)
+        #     assert_not @foo.private_instance_methods(true).include?(FooMethod)
+        #     assert_not @foo.private_instance_methods(true).include?(BarMethod)
+        #     assert_not @foo.private_instance_methods(true).include?(BazMethod)
+        #   end
+        #
+        #   def test_IM_protected_instance_methods
+        #     assert_not @foo.protected_instance_methods.include?(FooMethod)
+        #     assert_not @foo.protected_instance_methods.include?(BarMethod)
+        #     assert_not @foo.protected_instance_methods.include?(BazMethod)
+        #     assert_not @foo.protected_instance_methods(true).include?(FooMethod)
+        #     assert_not @foo.protected_instance_methods(true).include?(BarMethod)
+        #     assert_not @foo.protected_instance_methods(true).include?(BazMethod)
+        #   end
+        #
+        #   def test_IM_public_instance_methods
+        #     assert_not @foo.public_instance_methods.include?(FooMethod)
+        #     assert_not @foo.public_instance_methods.include?(BarMethod)
+        #     assert_not @foo.public_instance_methods.include?(BazMethod)
+        #     assert_not @foo.public_instance_methods(true).include?(FooMethod)
+        #     assert_not @foo.public_instance_methods(true).include?(BarMethod)
+        #     assert_not @foo.public_instance_methods(true).include?(BazMethod)
+        #   end
+        #
+        #   def test_IM_instance_method
+        #     assert_not_nil @foo.instance_method(FooMethod)
+        #     assert_not_nil @foo.instance_method(BarMethod)
+        #     assert_not_nil @foo.instance_method(BazMethod)
+        #   end
+        #
+        #   def test_IM_method_defined?
+        #     assert @foo.method_defined?(FooMethod)
+        #     assert @foo.method_defined?(BarMethod)
+        #     assert_not @foo.method_defined?(BazMethod)
+        #   end
+        #
+        #   def test_IM_private_method_defined?
+        #     assert_not @foo.private_method_defined?(FooMethod)
+        #     assert_not @foo.private_method_defined?(BarMethod)
+        #     assert @foo.private_method_defined?(BazMethod)
+        #   end
+        #
+        #   def test_IM_protected_method_defined?
+        #     assert_not @foo.protected_method_defined?(FooMethod)
+        #     assert @foo.protected_method_defined?(BarMethod)
+        #     assert_not @foo.protected_method_defined?(BazMethod)
+        #   end
+        #
+        #   def test_IM_public_method_defined?
+        #     assert @foo.public_method_defined?(FooMethod)
+        #     assert_not @foo.public_method_defined?(BarMethod)
+        #     assert_not @foo.public_method_defined?(BazMethod)
+        #   end
+        #
+        # end
+        
+        %%
+        Object
+        ------
+        method
+        methods
+        private_methods
+        protected_methods
+        public_methods
+        respond_to?(sym, include_private=false)
+        %
+        
+        # Testing a class.  Object methods. (KO)
+        Class.new(Test::Unit::TestCase) do
+        
+          def test_KO_method
+            assert_raise(NameError) { Foo.method(FooMethod) }
+            assert_raise(NameError) { Foo.method(BarMethod) }
+            assert_raise(NameError) { Foo.method(BazMethod) }
+          end
+        
+          def test_KO_methods
+            assert_not Foo.methods.include?(FooMethod)
+            assert_not Foo.methods.include?(BarMethod)
+            assert_not Foo.methods.include?(BazMethod)
+          end
+        
+          def test_KO_private_methods
+             assert_not Foo.private_methods.include?(FooMethod)
+             assert_not Foo.private_methods.include?(BarMethod)
+             assert_not Foo.private_methods.include?(BazMethod)
+             assert_not Foo.private_methods(IncludeSuper).include?(FooMethod)
+             assert_not Foo.private_methods(IncludeSuper).include?(BarMethod)
+             assert_not Foo.private_methods(IncludeSuper).include?(BazMethod)
+          end
+        
+          def test_KO_protected_methods
+             assert_not Foo.protected_methods.include?(FooMethod)
+             assert_not Foo.protected_methods.include?(BarMethod)
+             assert_not Foo.protected_methods.include?(BazMethod)
+             assert_not Foo.protected_methods(IncludeSuper).include?(FooMethod)
+             assert_not Foo.protected_methods(IncludeSuper).include?(BarMethod)
+             assert_not Foo.protected_methods(IncludeSuper).include?(BazMethod)
+          end
+        
+          def test_KO_public_methods
+             assert_not Foo.public_methods.include?(FooMethod)
+             assert_not Foo.public_methods.include?(BarMethod)
+             assert_not Foo.public_methods.include?(BazMethod)
+             assert_not Foo.public_methods(IncludeSuper).include?(FooMethod)
+             assert_not Foo.public_methods(IncludeSuper).include?(BarMethod)
+             assert_not Foo.public_methods(IncludeSuper).include?(BazMethod)
+          end
+        
+          def test_KO_respond_to?
+            assert_not Foo.respond_to?(FooMethod)
+            assert_not Foo.respond_to?(BarMethod)
+            assert_not Foo.respond_to?(BazMethod)
+            assert_not Foo.respond_to?(FooMethod, IncludePrivate)
+            assert_not Foo.respond_to?(BarMethod, IncludePrivate)
+            assert_not Foo.respond_to?(BazMethod, IncludePrivate)
+          end
+        
+        end
+        
+        # Testing an instance.  Object methods. (IO)
+        Class.new(Test::Unit::TestCase) do
+        
+          def setup
+            @foo = Foo.new
+          end
+        
+          def test_IO_method
+            assert_not_nil @foo.method(FooMethod)
+            assert_not_nil @foo.method(BarMethod)
+            assert_not_nil @foo.method(BazMethod)
+          end
+        
+          def test_IO_methods
+            assert @foo.methods.include?(FooMethod)
+            assert @foo.methods.include?(BarMethod)
+            assert_not @foo.methods.include?(BazMethod)
+          end
+        
+          def test_IO_private_methods
+             assert_not @foo.private_methods.include?(FooMethod)
+             assert_not @foo.private_methods.include?(BarMethod)
+             assert @foo.private_methods.include?(BazMethod)
+             assert_not @foo.private_methods(IncludeSuper).include?(FooMethod)
+             assert_not @foo.private_methods(IncludeSuper).include?(BarMethod)
+             assert @foo.private_methods(IncludeSuper).include?(BazMethod)
+          end
+        
+          def test_IO_protected_methods
+             assert_not @foo.protected_methods.include?(FooMethod)
+             assert @foo.protected_methods.include?(BarMethod)
+             assert_not @foo.protected_methods.include?(BazMethod)
+             assert_not @foo.protected_methods(IncludeSuper).include?(FooMethod)
+             assert @foo.protected_methods(IncludeSuper).include?(BarMethod)
+             assert_not @foo.protected_methods(IncludeSuper).include?(BazMethod)
+          end
+        
+          def test_IO_public_methods
+             assert @foo.public_methods.include?(FooMethod)
+             assert_not @foo.public_methods.include?(BarMethod)
+             assert_not @foo.public_methods.include?(BazMethod)
+             assert @foo.public_methods(IncludeSuper).include?(FooMethod)
+             assert_not @foo.public_methods(IncludeSuper).include?(BarMethod)
+             assert_not @foo.public_methods(IncludeSuper).include?(BazMethod)
+          end
+        
+          def test_IO_respond_to?
+            assert @foo.respond_to?(FooMethod)
+            assert @foo.respond_to?(BarMethod)
+            assert_not @foo.respond_to?(BazMethod)
+            assert @foo.respond_to?(FooMethod, IncludePrivate)
+            assert @foo.respond_to?(BarMethod, IncludePrivate)
+            assert @foo.respond_to?(BazMethod, IncludePrivate)
+          end
+        
+        end
+        </pre>
         <hr />
         
       </div>
