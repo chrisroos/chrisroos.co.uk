@@ -1,95 +1,61 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
-    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-    <meta charset="utf-8" />
-    <link href="/images/favicon.gif" rel="icon" />
-    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
-    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="http://www.myopenid.com/server" rel="openid.server" />
-    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
-    <title>Converting Egg Credit Card Statements to Ofx (for upload to wesabe) - Chris Roos</title>
-    <link href="/blog/2007-03-19-monkey-patching-rails-routing" rel="prev" />
-    <link href="/blog/2007-04-03-obtaining-latitude-longitude-for-uk-postcodes" rel="next" />
-    <link href="/blog/2005-09-06-linspire" rel="first" />
-    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
-    <link href="/blog" rel="index" />
-  </head>
-  <body>
-    <div id="page">
-      <div class="group" id="header">
-        <p id="site_name">
-          <a href="/">chris roos</a>
-        </p>
-        <ul class="navigation group">
-          <li>
-            <a href="/about" title="About me">about me</a>
-          </li>
-          <li>
-            <a href="/contact" title="Contact me">contact me</a>
-          </li>
-          <li>
-            <a href="/blog" title="Blog">blog</a>
-          </li>
-          <li>
-            <a href="/projects" title="Projects">projects</a>
-          </li>
-          <li>
-            <a href="/utilities" title="Utilities">utilities</a>
-          </li>
-        </ul>
-        <form action="http://www.google.co.uk/search" id="searchForm">
-          <div>
-            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
-            <input name="q" size="31" type="text" />
-            <input name="sa" type="submit" value="Search" />
-          </div>
-        </form>
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Converting Egg Credit Card Statements to Ofx (for upload to wesabe) - Chris Roos</title>
+  <link href="/blog/2007-03-19-monkey-patching-rails-routing" rel="prev" />
+  <link href="/blog/2007-04-03-obtaining-latitude-longitude-for-uk-postcodes" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2007-04-01T12:48:00+00:00">Sun, 01 Apr 07</abbr>
+      <h1>Converting Egg Credit Card Statements to Ofx (for upload to wesabe)</h1>
+      <div class="notice">
+        17th Nov 2009. I’ve finally got around to updating this utility. See <a href="/blog/2009-11-17-converting-egg-statements-and-transactions-to-ofx">this later post</a> for more details.
       </div>
-      <div id="content">
-        <abbr class="createdAt" title="2007-04-01T12:48:00+00:00">Sun, 01 Apr 07</abbr>
-        <h1>Converting Egg Credit Card Statements to Ofx (for upload to wesabe)</h1>
-        <div class="notice">17th Nov 2009. I&#8217;ve finally got around to updating this utility.  See <a href="/blog/2009-11-17-converting-egg-statements-and-transactions-to-ofx">this later post</a> for more details.</div>
-        <p>I&#8217;ve cobbled together some pretty nasty code to convert an <a href="http://www.egg.com">Egg</a> Credit Card statement to <a href="http://www.ofx.net">Ofx</a>.</p>
-        <p>Grab the <a href="http://chrisroos.googlecode.com/svn/trunk/egg-ofx/">source</a> from <a href="http://code.google.com">google code</a>.</p>
-        <pre class="code shell">
+      <p>I’ve cobbled together some pretty nasty code to convert an <a href="http://www.egg.com">Egg</a> Credit Card statement to <a href="http://www.ofx.net">Ofx</a>.</p>
+      <p>Grab the <a href="http://chrisroos.googlecode.com/svn/trunk/egg-ofx/">source</a> from <a href="http://code.google.com">google code</a>.</p>
+      <pre class="code shell">
         $ svn checkout http://chrisroos.googlecode.com/svn/trunk/egg-ofx
         </pre>
-        <p>As well as requiring <a href="http://code.whytheluckystiff.net/hpricot/">hpricot</a>, you will need to edit the StatementsFolder and OfxOutputFolder variables in egg.rb.  These need to point to a directory containing html statements, and an empty output directory respectively.</p>
-        <p>I&#8217;ve used the script to upload my last 12 statements to <a href="http://www.wesabe.com">wesabe</a> and everything seems to work Ok. If you have any questions, just post a comment here.</p>
-        <hr />
-        <ul class="navigation group">
-          <li class="previousPost">
-            &laquo; (older)
-            <a class="previousPost" href="/blog/2007-03-19-monkey-patching-rails-routing" rel="prev" title="Monkey patching rails routing">
-              Monkey patching rails routing
-            </a>
-          </li>
-          <li class="nextPost">
-            <a class="nextPost" href="/blog/2007-04-03-obtaining-latitude-longitude-for-uk-postcodes" rel="next" title="Obtaining latitude/longitude for UK postcodes">
-              Obtaining latitude/longitude for UK postcodes
-            </a>
-            (newer) &raquo;
-          </li>
-        </ul>
-      </div>
-      <div id="footer">
-        <p class="license">
-          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
-            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
-          </a>
-          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
-          by
-          <span class="vcard">
-            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
-          </span>
-          is licensed under a
-          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
-        </p>
-      </div>
+      <p>As well as requiring <a href="http://code.whytheluckystiff.net/hpricot/">hpricot</a>, you will need to edit the StatementsFolder and OfxOutputFolder variables in egg.rb. These need to point to a directory containing html statements, and an empty output directory respectively.</p>
+      <p>I’ve used the script to upload my last 12 statements to <a href="http://www.wesabe.com">wesabe</a> and everything seems to work Ok. If you have any questions, just post a comment here.</p>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-03-19-monkey-patching-rails-routing" rel="prev" title="Monkey patching rails routing">Monkey patching rails routing</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2007-04-03-obtaining-latitude-longitude-for-uk-postcodes" rel="next" title="Obtaining latitude/longitude for UK postcodes">Obtaining latitude/longitude for UK postcodes</a> (newer) »</li>
+      </ul>
     </div>
-    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
-  </body>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
 </html>

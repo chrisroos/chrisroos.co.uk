@@ -1,102 +1,68 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
-    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-    <meta charset="utf-8" />
-    <link href="/images/favicon.gif" rel="icon" />
-    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
-    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="http://www.myopenid.com/server" rel="openid.server" />
-    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
-    <title>Day notes - Tues 12th Oct 2010 - Chris Roos</title>
-    <link href="/blog/2010-10-11-day-notes" rel="prev" />
-    <link href="/blog/2010-10-13-day-notes" rel="next" />
-    <link href="/blog/2005-09-06-linspire" rel="first" />
-    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
-    <link href="/blog" rel="index" />
-    <meta content="More performance testing fun and some exercise" name="description" />
-  </head>
-  <body>
-    <div id="page">
-      <div class="group" id="header">
-        <p id="site_name">
-          <a href="/">chris roos</a>
-        </p>
-        <ul class="navigation group">
-          <li>
-            <a href="/about" title="About me">about me</a>
-          </li>
-          <li>
-            <a href="/contact" title="Contact me">contact me</a>
-          </li>
-          <li>
-            <a href="/blog" title="Blog">blog</a>
-          </li>
-          <li>
-            <a href="/projects" title="Projects">projects</a>
-          </li>
-          <li>
-            <a href="/utilities" title="Utilities">utilities</a>
-          </li>
-        </ul>
-        <form action="http://www.google.co.uk/search" id="searchForm">
-          <div>
-            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
-            <input name="q" size="31" type="text" />
-            <input name="sa" type="submit" value="Search" />
-          </div>
-        </form>
-      </div>
-      <div id="content">
-        <abbr class="createdAt" title="2010-10-14T09:11:13+00:00">Thu, 14 Oct 10</abbr>
-        <h1>Day notes - Tues 12th Oct 2010</h1>
-        <h2>Work stuff</h2>
-        
-        <ul>
-        <li><p><a href="http://blog.floehopper.org/">James M</a> and I continued working with <a href="http://www.hpl.hp.com/research/linux/httperf/">httperf</a> but found that ramping up the load caused the tool to segfault.  We're not sure if this is related to our changes to the source but decided to give up on httperf at this point.</p></li>
-        <li><p>We switched back to looking at <a href="http://tsung.erlang-projects.org/">tsung</a> but couldn't get around the problem with it not being able to connect to an http server over SSL.</p></li>
-        <li><p>We finally spent some time with <a href="http://www.joedog.org/index/siege-home">siege</a>.  This tool had problems with our session cookies.  A little foray into the source appeared to reveal that session cookies are retrieved and then immediately removed as they don't have an explicit expiry date set.</p></li>
-        </ul>
-        
-        
-        <h2>Other stuff</h2>
-        
-        <ul>
-        <li><a href="http://twitter.com/serenamchugh">Serena</a> and I went for an assessment session with <a href="http://www.rickkiddle.com/">Rick Kiddle</a> in the hope that we might, one day, be able to have a crack at <a href="http://www.channelswimmingassociation.com/">swimming the channel</a>.</li>
-        </ul>
-        <hr />
-        <ul class="navigation group">
-          <li class="previousPost">
-            &laquo; (older)
-            <a class="previousPost" href="/blog/2010-10-11-day-notes" rel="prev" title="Day notes - Mon 11th Oct 2010">
-              Day notes - Mon 11th Oct 2010
-            </a>
-          </li>
-          <li class="nextPost">
-            <a class="nextPost" href="/blog/2010-10-13-day-notes" rel="next" title="Day notes - Weds 13th Oct 2010">
-              Day notes - Weds 13th Oct 2010
-            </a>
-            (newer) &raquo;
-          </li>
-        </ul>
-      </div>
-      <div id="footer">
-        <p class="license">
-          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
-            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
-          </a>
-          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
-          by
-          <span class="vcard">
-            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
-          </span>
-          is licensed under a
-          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
-        </p>
-      </div>
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Day notes - Tues 12th Oct 2010 - Chris Roos</title>
+  <link href="/blog/2010-10-11-day-notes" rel="prev" />
+  <link href="/blog/2010-10-13-day-notes" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+  <meta content="More performance testing fun and some exercise" name="description" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
     </div>
-    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
-  </body>
+    <div id="content">
+      <abbr class="createdAt" title="2010-10-14T09:11:13+00:00">Thu, 14 Oct 10</abbr>
+      <h1>Day notes - Tues 12th Oct 2010</h1>
+      <h2>Work stuff</h2>
+      <ul>
+        <li>
+          <p><a href="http://blog.floehopper.org/">James M</a> and I continued working with <a href="http://www.hpl.hp.com/research/linux/httperf/">httperf</a> but found that ramping up the load caused the tool to segfault. We're not sure if this is related to our changes to the source but decided to give up on httperf at this point.</p>
+        </li>
+        <li>
+          <p>We switched back to looking at <a href="http://tsung.erlang-projects.org/">tsung</a> but couldn't get around the problem with it not being able to connect to an http server over SSL.</p>
+        </li>
+        <li>
+          <p>We finally spent some time with <a href="http://www.joedog.org/index/siege-home">siege</a>. This tool had problems with our session cookies. A little foray into the source appeared to reveal that session cookies are retrieved and then immediately removed as they don't have an explicit expiry date set.</p>
+        </li>
+      </ul>
+      <h2>Other stuff</h2>
+      <ul>
+        <li><a href="http://twitter.com/serenamchugh">Serena</a> and I went for an assessment session with <a href="http://www.rickkiddle.com/">Rick Kiddle</a> in the hope that we might, one day, be able to have a crack at <a href="http://www.channelswimmingassociation.com/">swimming the channel</a>.</li>
+      </ul>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2010-10-11-day-notes" rel="prev" title="Day notes - Mon 11th Oct 2010">Day notes - Mon 11th Oct 2010</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2010-10-13-day-notes" rel="next" title="Day notes - Weds 13th Oct 2010">Day notes - Weds 13th Oct 2010</a> (newer) »</li>
+      </ul>
+    </div>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
 </html>

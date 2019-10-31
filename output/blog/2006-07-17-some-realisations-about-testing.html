@@ -1,70 +1,55 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
-    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-    <meta charset="utf-8" />
-    <link href="/images/favicon.gif" rel="icon" />
-    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
-    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="http://www.myopenid.com/server" rel="openid.server" />
-    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
-    <title>Some realisations about testing - Chris Roos</title>
-    <link href="/blog/2006-07-14-textmate-command-to-display-active-record-column-attributes" rel="prev" />
-    <link href="/blog/2006-07-17-test-unit-abstract-test-case" rel="next" />
-    <link href="/blog/2005-09-06-linspire" rel="first" />
-    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
-    <link href="/blog" rel="index" />
-  </head>
-  <body>
-    <div id="page">
-      <div class="group" id="header">
-        <p id="site_name">
-          <a href="/">chris roos</a>
-        </p>
-        <ul class="navigation group">
-          <li>
-            <a href="/about" title="About me">about me</a>
-          </li>
-          <li>
-            <a href="/contact" title="Contact me">contact me</a>
-          </li>
-          <li>
-            <a href="/blog" title="Blog">blog</a>
-          </li>
-          <li>
-            <a href="/projects" title="Projects">projects</a>
-          </li>
-          <li>
-            <a href="/utilities" title="Utilities">utilities</a>
-          </li>
-        </ul>
-        <form action="http://www.google.co.uk/search" id="searchForm">
-          <div>
-            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
-            <input name="q" size="31" type="text" />
-            <input name="sa" type="submit" value="Search" />
-          </div>
-        </form>
-      </div>
-      <div id="content">
-        <abbr class="createdAt" title="2006-07-17T08:19:00+00:00">Mon, 17 Jul 06</abbr>
-        <h1>Some realisations about testing</h1>
-        <p>Having been predominantly involved in <a href="http://www.rubyonrails.com">Rails</a> development just recently, <a href="http://api.rubyonrails.com/classes/Fixtures.html">fixtures</a> have taken on a slightly different meaning to what I now believe to be the original understanding.  Having recently re-read <a href="http://www.amazon.co.uk/gp/product/0321146530/202-8808398-1811851?v=glance&amp;n=266239">Test Driven Development: By Example</a> I re-discovered the &#8216;original&#8217; meaning of the word (essentially shared objects used by all tests in a test case).</p>
-        <p>This has made me think about the way that I&#8217;ve been structuring my tests (or not structuring them as the case may be).  I have never been a fan of the setup and teardown methods provided to us in <a href="http://en.wikipedia.org/wiki/XUnit">xUnit</a> and I now believe this to be due to my misunderstanding of the term fixture and therefore their intention.  This has led to my test cases growing very large and containing many disparate tests.  If there was any separation of the testcase then it was usually based on functionality of a particular method (which separately leads me to believe that they may have been better expressed in a new object).  I now understand that test cases should be split to contain tests that rely on a common test fixture.  As soon as I started to do this, the setup and (to a lesser degree) teardown methods have become much more useful.</p>
-        <p>I&#8217;ve also started to create my test cases as anonymous classes derived from Test::Unit::TestCase.</p>
-        <pre class="code ruby">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Some realisations about testing - Chris Roos</title>
+  <link href="/blog/2006-07-14-textmate-command-to-display-active-record-column-attributes" rel="prev" />
+  <link href="/blog/2006-07-17-test-unit-abstract-test-case" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2006-07-17T08:19:00+00:00">Mon, 17 Jul 06</abbr>
+      <h1>Some realisations about testing</h1>
+      <p>Having been predominantly involved in <a href="http://www.rubyonrails.com">Rails</a> development just recently, <a href="http://api.rubyonrails.com/classes/Fixtures.html">fixtures</a> have taken on a slightly different meaning to what I now believe to be the original understanding. Having recently re-read <a href="http://www.amazon.co.uk/gp/product/0321146530/202-8808398-1811851?v=glance&amp;n=266239">Test Driven Development: By Example</a> I re-discovered the ‘original’ meaning of the word (essentially shared objects used by all tests in a test case).</p>
+      <p>This has made me think about the way that I’ve been structuring my tests (or not structuring them as the case may be). I have never been a fan of the setup and teardown methods provided to us in <a href="http://en.wikipedia.org/wiki/XUnit">xUnit</a> and I now believe this to be due to my misunderstanding of the term fixture and therefore their intention. This has led to my test cases growing very large and containing many disparate tests. If there was any separation of the testcase then it was usually based on functionality of a particular method (which separately leads me to believe that they may have been better expressed in a new object). I now understand that test cases should be split to contain tests that rely on a common test fixture. As soon as I started to do this, the setup and (to a lesser degree) teardown methods have become much more useful.</p>
+      <p>I’ve also started to create my test cases as anonymous classes derived from Test::Unit::TestCase.</p>
+      <pre class="code ruby">
         Class.new(Test::Unit::TestCase) do
           def test_
             assert true
           end
         end
         </pre>
-        <p>I find that this helps when trying to determine where a new test should be placed.  If the class has a name I&#8217;m tempted to scan that and make a decision as to whether a new test belongs in this case.  By keeping them anonymous, I have to inspect the test fixture in order to understand whether a new test belongs here.</p>
-        <p><strong>Note</strong> I may also add a comment right below Class.new to explicitly specify the fixture for this testcase.  This may seem to go against not naming the classes in the first place but I think part of the problem with class names is the lack of punctuation and therefore the difficulty in clearly expressing the test fixture.</p>
-        <p>I&#8217;ve chosen a somewhat contrived example to demonstrate my new found test structure.</p>
-        <pre class="code ruby">
+      <p>I find that this helps when trying to determine where a new test should be placed. If the class has a name I’m tempted to scan that and make a decision as to whether a new test belongs in this case. By keeping them anonymous, I have to inspect the test fixture in order to understand whether a new test belongs here.</p>
+      <p><strong>Note</strong> I may also add a comment right below Class.new to explicitly specify the fixture for this testcase. This may seem to go against not naming the classes in the first place but I think part of the problem with class names is the lack of punctuation and therefore the difficulty in clearly expressing the test fixture.</p>
+      <p>I’ve chosen a somewhat contrived example to demonstrate my new found test structure.</p>
+      <pre class="code ruby">
         Class.new(Test::Unit::TestCase) do
           # An empty stack
         
@@ -86,40 +71,19 @@
         
         end
         </pre>
-        <p>The fixture for this test is an empty stack.  The individual tests prod and query the empty stack to ensure that it behaves as expected.  Although the example above is incredibly simple, I have consistently found that my individual test methods become much smaller.</p>
-        <p>Notice that the names of the tests all start &#8216;test_should&#8217;.  Not only does this help us think about the responsibilities of the object; but it enables us to maintain living system specifications based on the tests.  I believe this idea first came from <a href="http://agiledox.sourceforge.net/index.html">testdox for Java</a> but was introduced to me by <a href="http://www.reevoo.com/blogs/bengriffiths/">Ben</a> at <a href="http://www.reevoo.com">work</a>.  In fact Ben has written a cool <a href="http://www.reevoo.com/blogs/bengriffiths/2006/04/05/rails-agiledox-browser/">Agiledox server</a> that displays the system specifications for your rails project.</p>
-        <p>The realisations set out above have come at around the same time as my taking more of an interest in <a href="http://rspec.rubyforge.org/">rSpec</a> (the stack test above has been adapted directly from one of the rSpec examples); a <a href="http://behaviour-driven.org/">behaviour driven development</a> framework for <a href="http://www.ruby-lang.org">ruby</a>.  I haven&#8217;t done any real work with rSpec yet but am hoping it might improve the way I think of both testing and OO design in general.</p>
-        <hr />
-        <ul class="navigation group">
-          <li class="previousPost">
-            &laquo; (older)
-            <a class="previousPost" href="/blog/2006-07-14-textmate-command-to-display-active-record-column-attributes" rel="prev" title="Textmate command to display Active Record column attributes">
-              Textmate command to display Active Record column attributes
-            </a>
-          </li>
-          <li class="nextPost">
-            <a class="nextPost" href="/blog/2006-07-17-test-unit-abstract-test-case" rel="next" title="Test::Unit abstract test case">
-              Test::Unit abstract test case
-            </a>
-            (newer) &raquo;
-          </li>
-        </ul>
-      </div>
-      <div id="footer">
-        <p class="license">
-          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
-            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
-          </a>
-          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
-          by
-          <span class="vcard">
-            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
-          </span>
-          is licensed under a
-          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
-        </p>
-      </div>
+      <p>The fixture for this test is an empty stack. The individual tests prod and query the empty stack to ensure that it behaves as expected. Although the example above is incredibly simple, I have consistently found that my individual test methods become much smaller.</p>
+      <p>Notice that the names of the tests all start ‘test_should’. Not only does this help us think about the responsibilities of the object; but it enables us to maintain living system specifications based on the tests. I believe this idea first came from <a href="http://agiledox.sourceforge.net/index.html">testdox for Java</a> but was introduced to me by <a href="http://www.reevoo.com/blogs/bengriffiths/">Ben</a> at <a href="http://www.reevoo.com">work</a>. In fact Ben has written a cool <a href="http://www.reevoo.com/blogs/bengriffiths/2006/04/05/rails-agiledox-browser/">Agiledox server</a> that displays the system specifications for your rails project.</p>
+      <p>The realisations set out above have come at around the same time as my taking more of an interest in <a href="http://rspec.rubyforge.org/">rSpec</a> (the stack test above has been adapted directly from one of the rSpec examples); a <a href="http://behaviour-driven.org/">behaviour driven development</a> framework for <a href="http://www.ruby-lang.org">ruby</a>. I haven’t done any real work with rSpec yet but am hoping it might improve the way I think of both testing and OO design in general.</p>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2006-07-14-textmate-command-to-display-active-record-column-attributes" rel="prev" title="Textmate command to display Active Record column attributes">Textmate command to display Active Record column attributes</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2006-07-17-test-unit-abstract-test-case" rel="next" title="Test::Unit abstract test case">Test::Unit abstract test case</a> (newer) »</li>
+      </ul>
     </div>
-    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
-  </body>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
 </html>

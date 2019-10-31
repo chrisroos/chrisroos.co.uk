@@ -1,59 +1,44 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
-    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-    <meta charset="utf-8" />
-    <link href="/images/favicon.gif" rel="icon" />
-    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
-    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="http://www.myopenid.com/server" rel="openid.server" />
-    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
-    <title>More helpful messages for Active Record validation errors in Rails testing - Chris Roos</title>
-    <link href="/blog/2006-06-02-rails-plugin-to-utilise-sqlite-for-testing" rel="prev" />
-    <link href="/blog/2006-06-25-generating-a-microid-with-ruby" rel="next" />
-    <link href="/blog/2005-09-06-linspire" rel="first" />
-    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
-    <link href="/blog" rel="index" />
-  </head>
-  <body>
-    <div id="page">
-      <div class="group" id="header">
-        <p id="site_name">
-          <a href="/">chris roos</a>
-        </p>
-        <ul class="navigation group">
-          <li>
-            <a href="/about" title="About me">about me</a>
-          </li>
-          <li>
-            <a href="/contact" title="Contact me">contact me</a>
-          </li>
-          <li>
-            <a href="/blog" title="Blog">blog</a>
-          </li>
-          <li>
-            <a href="/projects" title="Projects">projects</a>
-          </li>
-          <li>
-            <a href="/utilities" title="Utilities">utilities</a>
-          </li>
-        </ul>
-        <form action="http://www.google.co.uk/search" id="searchForm">
-          <div>
-            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
-            <input name="q" size="31" type="text" />
-            <input name="sa" type="submit" value="Search" />
-          </div>
-        </form>
-      </div>
-      <div id="content">
-        <abbr class="createdAt" title="2006-06-21T07:10:00+00:00">Wed, 21 Jun 06</abbr>
-        <h1>More helpful messages for Active Record validation errors in Rails testing</h1>
-        <p>In testing (and production code) <a href="http://www.reevoo.com">we</a> always try to persist <a href="http://api.rubyonrails.com/classes/ActiveRecord/Base.html">Active Record</a> models with the bang variants (save! and create!).  This allows us to <a href="http://www.martinfowler.com/ieeeSoftware/failFast.pdf">fail fast</a> if any of our models fail our  <a href="http://api.rubyonrails.com/classes/ActiveRecord/Validations/ClassMethods.html">validation</a> rules.</p>
-        <p>The problem is that the standard <a href="http://ruby-doc.org/stdlib/libdoc/test/unit/rdoc/index.html">test/unit</a> reporting framework displays the exception without any details of why the validation failed.</p>
-        <pre class="code">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>More helpful messages for Active Record validation errors in Rails testing - Chris Roos</title>
+  <link href="/blog/2006-06-02-rails-plugin-to-utilise-sqlite-for-testing" rel="prev" />
+  <link href="/blog/2006-06-25-generating-a-microid-with-ruby" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2006-06-21T07:10:00+00:00">Wed, 21 Jun 06</abbr>
+      <h1>More helpful messages for Active Record validation errors in Rails testing</h1>
+      <p>In testing (and production code) <a href="http://www.reevoo.com">we</a> always try to persist <a href="http://api.rubyonrails.com/classes/ActiveRecord/Base.html">Active Record</a> models with the bang variants (save! and create!). This allows us to <a href="http://www.martinfowler.com/ieeeSoftware/failFast.pdf">fail fast</a> if any of our models fail our <a href="http://api.rubyonrails.com/classes/ActiveRecord/Validations/ClassMethods.html">validation</a> rules.</p>
+      <p>The problem is that the standard <a href="http://ruby-doc.org/stdlib/libdoc/test/unit/rdoc/index.html">test/unit</a> reporting framework displays the exception without any details of why the validation failed.</p>
+      <pre class="code">
          1) Error:​
         test_should_fail_validation(AardvarkTest):​
         ActiveRecord::RecordInvalid:​ActiveRecord::RecordInvalid
@@ -63,15 +48,15 @@
         
         1 tests, 0 assertions, 0 failures, 1 errors
         </pre>
-        <p><strong>Note.</strong> This isn&#8217;t the fault of test/unit.  It has to deal with generic exceptions and so cannot &#8216;know&#8217; that Active Record Exceptions can be used to find the reason for the failure.</p>
-        <p>At this point, it would be very easy to jump into the code of the Active Record model, check out the validations and satisfy them within your code.  However, it&#8217;d be much cooler if we could just add the reason for the failures to the error message that is displayed.</p>
-        <p>I initially played around with a method that took a block and would wrap the block with a begin/rescue clause to explicitly catch RecordInvalid exceptions, displaying the reason for failure.</p>
-        <p>Then I thought it&#8217;d be cool if we could integrate slightly more with both test/unit and <a href="http://www.rubyonrails.com">rails</a>.  The result is a <a href="http://wiki.rubyonrails.org/rails/pages/Plugins">plugin</a> (<a href="http://chrisroos.googlecode.com/svn/trunk/plugins/test_unit_active_record_errors/">source</a>) that can be installed as follows.</p>
-        <pre class="code shell">
+      <p><strong>Note.</strong> This isn’t the fault of test/unit. It has to deal with generic exceptions and so cannot ‘know’ that Active Record Exceptions can be used to find the reason for the failure.</p>
+      <p>At this point, it would be very easy to jump into the code of the Active Record model, check out the validations and satisfy them within your code. However, it’d be much cooler if we could just add the reason for the failures to the error message that is displayed.</p>
+      <p>I initially played around with a method that took a block and would wrap the block with a begin/rescue clause to explicitly catch RecordInvalid exceptions, displaying the reason for failure.</p>
+      <p>Then I thought it’d be cool if we could integrate slightly more with both test/unit and <a href="http://www.rubyonrails.com">rails</a>. The result is a <a href="http://wiki.rubyonrails.org/rails/pages/Plugins">plugin</a> (<a href="http://chrisroos.googlecode.com/svn/trunk/plugins/test_unit_active_record_errors/">source</a>) that can be installed as follows.</p>
+      <pre class="code shell">
         $ script/plugin install http://chrisroos.googlecode.com/svn/trunk/plugins/test_unit_active_record_errors/
         </pre>
-        <p>The output from a failed validation now includes the validation errors.  Yay.</p>
-        <pre class="code">
+      <p>The output from a failed validation now includes the validation errors. Yay.</p>
+      <pre class="code">
          1) Error:​
         test_should_fail_validation(AardvarkTest):​
         ActiveRecord::RecordInvalid: ActiveRecord::RecordInvalid
@@ -85,38 +70,17 @@
         
         1 tests, 0 assertions, 0 failures, 1 errors
         </pre>
-        <p>The code is pretty hacky and includes no tests.  It&#8217;s only been tested on Mac Os X 10.4.6 with Ruby 1.8.2 and Rails 1.0.0 but please feel free to do what you will with it if you think it might be of some use to you.</p>
-        <hr />
-        <ul class="navigation group">
-          <li class="previousPost">
-            &laquo; (older)
-            <a class="previousPost" href="/blog/2006-06-02-rails-plugin-to-utilise-sqlite-for-testing" rel="prev" title="Rails plugin to utilise Sqlite for testing">
-              Rails plugin to utilise Sqlite for testing
-            </a>
-          </li>
-          <li class="nextPost">
-            <a class="nextPost" href="/blog/2006-06-25-generating-a-microid-with-ruby" rel="next" title="Generating a MicroId with Ruby">
-              Generating a MicroId with Ruby
-            </a>
-            (newer) &raquo;
-          </li>
-        </ul>
-      </div>
-      <div id="footer">
-        <p class="license">
-          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
-            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
-          </a>
-          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
-          by
-          <span class="vcard">
-            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
-          </span>
-          is licensed under a
-          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
-        </p>
-      </div>
+      <p>The code is pretty hacky and includes no tests. It’s only been tested on Mac Os X 10.4.6 with Ruby 1.8.2 and Rails 1.0.0 but please feel free to do what you will with it if you think it might be of some use to you.</p>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2006-06-02-rails-plugin-to-utilise-sqlite-for-testing" rel="prev" title="Rails plugin to utilise Sqlite for testing">Rails plugin to utilise Sqlite for testing</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2006-06-25-generating-a-microid-with-ruby" rel="next" title="Generating a MicroId with Ruby">Generating a MicroId with Ruby</a> (newer) »</li>
+      </ul>
     </div>
-    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
-  </body>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
 </html>

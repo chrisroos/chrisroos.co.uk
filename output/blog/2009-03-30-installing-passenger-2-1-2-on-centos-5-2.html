@@ -1,65 +1,50 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
-    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-    <meta charset="utf-8" />
-    <link href="/images/favicon.gif" rel="icon" />
-    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
-    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="http://www.myopenid.com/server" rel="openid.server" />
-    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
-    <title>Installing Passenger 2.1.2 on CentOS 5.2 - Chris Roos</title>
-    <link href="/blog/2009-03-09-hack-the-government-day-rewired-state" rel="prev" />
-    <link href="/blog/2009-03-31-cruisecontrolrb-with-passenger-and-launchd-on-a-mac" rel="next" />
-    <link href="/blog/2005-09-06-linspire" rel="first" />
-    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
-    <link href="/blog" rel="index" />
-    <meta content="I had to re-install apr-util-devel in order to get Passenger (mod_rails) 2.1.2 to install on CentOS 5.2." name="description" />
-  </head>
-  <body>
-    <div id="page">
-      <div class="group" id="header">
-        <p id="site_name">
-          <a href="/">chris roos</a>
-        </p>
-        <ul class="navigation group">
-          <li>
-            <a href="/about" title="About me">about me</a>
-          </li>
-          <li>
-            <a href="/contact" title="Contact me">contact me</a>
-          </li>
-          <li>
-            <a href="/blog" title="Blog">blog</a>
-          </li>
-          <li>
-            <a href="/projects" title="Projects">projects</a>
-          </li>
-          <li>
-            <a href="/utilities" title="Utilities">utilities</a>
-          </li>
-        </ul>
-        <form action="http://www.google.co.uk/search" id="searchForm">
-          <div>
-            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
-            <input name="q" size="31" type="text" />
-            <input name="sa" type="submit" value="Search" />
-          </div>
-        </form>
-      </div>
-      <div id="content">
-        <abbr class="createdAt" title="2009-03-30T07:24:00+00:00">Mon, 30 Mar 09</abbr>
-        <h1>Installing Passenger 2.1.2 on CentOS 5.2</h1>
-        <p>I needed to upgrade <a href="http://www.modrails.com/">Passenger</a> on our web server last week (so that we could run <a href="http://rubyonrails.org/">Rails</a> 2.3 apps) but ran into a little problem getting it installed.</p>
-        <p>We&#8217;re running <a href="http://www.centos.org/">CentOS</a> 5.2 on our staging server.</p>
-        <pre class="code shell">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Installing Passenger 2.1.2 on CentOS 5.2 - Chris Roos</title>
+  <link href="/blog/2009-03-09-hack-the-government-day-rewired-state" rel="prev" />
+  <link href="/blog/2009-03-31-cruisecontrolrb-with-passenger-and-launchd-on-a-mac" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+  <meta content="I had to re-install apr-util-devel in order to get Passenger (mod_rails) 2.1.2 to install on CentOS 5.2." name="description" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2009-03-30T07:24:00+00:00">Mon, 30 Mar 09</abbr>
+      <h1>Installing Passenger 2.1.2 on CentOS 5.2</h1>
+      <p>I needed to upgrade <a href="http://www.modrails.com/">Passenger</a> on our web server last week (so that we could run <a href="http://rubyonrails.org/">Rails</a> 2.3 apps) but ran into a little problem getting it installed.</p>
+      <p>We’re running <a href="http://www.centos.org/">CentOS</a> 5.2 on our staging server.</p>
+      <pre class="code shell">
           [root@rails-staging0 ~]# cat /etc/redhat-release
           CentOS release 5.2 (Final)
         </pre>
-        <p>The passenger gem installed OK but when I ran passenger-install-apache2-module I got the following error.</p>
-        <pre class="code shell">
+      <p>The passenger gem installed OK but when I ran passenger-install-apache2-module I got the following error.</p>
+      <pre class="code shell">
           ... other lines snipped ...
         
           /usr/bin/ld: skipping incompatible /usr/lib/libaprutil-1.so when searching for -laprutil-1
@@ -73,22 +58,22 @@
           --------------------------------------------
           It looks like something went wrong
         </pre>
-        <p>Searching for this error didn&#8217;t yield any definite fixes but a couple of posts mentioned re-installing the apr-devel packages.  I tried apr-devel to begin with but was told that it was already up-to-date.</p>
-        <pre class="code shell">
+      <p>Searching for this error didn’t yield any definite fixes but a couple of posts mentioned re-installing the apr-devel packages. I tried apr-devel to begin with but was told that it was already up-to-date.</p>
+      <pre class="code shell">
           [root@rails-staging0 ~]# yum install apr-devel
           ... other lines snipped ...
           Nothing to do
         </pre>
-        <p>I can&#8217;t remember why but I tried apr-util-devel next which did result in the package being installed.</p>
-        <pre class="code shell">
+      <p>I can’t remember why but I tried apr-util-devel next which did result in the package being installed.</p>
+      <pre class="code shell">
           [root@rails-staging0 ~]# yum install apr-util-devel
           ... other lines snipped ...
           Installed: apr-util-devel.x86_64 0:1.2.7-7.el5
           Complete!
         </pre>
-        <p>With this package re-installed I was able to go ahead and install the passenger apache module (i.e. passenger-install-apache2-module succeeded).</p>
-        <p>One slightly interesting/odd thing was that <a href="http://en.wikipedia.org/wiki/Yellow_dog_Updater,_Modified">yum</a> reported that the same version (1.2.7-7.el5) of apr-util-dev was already installed.  The only difference after the re-install was that its status changed from &#8216;base&#8217; to &#8216;installed&#8217;.</p>
-        <pre class="code shell">
+      <p>With this package re-installed I was able to go ahead and install the passenger apache module (i.e. passenger-install-apache2-module succeeded).</p>
+      <p>One slightly interesting/odd thing was that <a href="http://en.wikipedia.org/wiki/Yellow_dog_Updater,_Modified">yum</a> reported that the same version (1.2.7-7.el5) of apr-util-dev was already installed. The only difference after the re-install was that its status changed from ‘base’ to ‘installed’.</p>
+      <pre class="code shell">
           # before the re-install
           [root@rails-staging0 ~]# yum list | grep apr-util-devel
           apr-util-devel.x86_64                    1.2.7-7.el5            base
@@ -97,37 +82,16 @@
           [root@rails-staging0 ~]# yum list | grep apr-util-devel
           apr-util-devel.x86_64                    1.2.7-7.el5            installed
         </pre>
-        <hr />
-        <ul class="navigation group">
-          <li class="previousPost">
-            &laquo; (older)
-            <a class="previousPost" href="/blog/2009-03-09-hack-the-government-day-rewired-state" rel="prev" title="Hack the Government Day (Rewired State)">
-              Hack the Government Day (Rewired State)
-            </a>
-          </li>
-          <li class="nextPost">
-            <a class="nextPost" href="/blog/2009-03-31-cruisecontrolrb-with-passenger-and-launchd-on-a-mac" rel="next" title="CruiseControlrb With Passenger and Launchd on a Mac">
-              CruiseControlrb With Passenger and Launchd on a Mac
-            </a>
-            (newer) &raquo;
-          </li>
-        </ul>
-      </div>
-      <div id="footer">
-        <p class="license">
-          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
-            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
-          </a>
-          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
-          by
-          <span class="vcard">
-            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
-          </span>
-          is licensed under a
-          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
-        </p>
-      </div>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2009-03-09-hack-the-government-day-rewired-state" rel="prev" title="Hack the Government Day (Rewired State)">Hack the Government Day (Rewired State)</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2009-03-31-cruisecontrolrb-with-passenger-and-launchd-on-a-mac" rel="next" title="CruiseControlrb With Passenger and Launchd on a Mac">CruiseControlrb With Passenger and Launchd on a Mac</a> (newer) »</li>
+      </ul>
     </div>
-    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
-  </body>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
 </html>

@@ -1,62 +1,47 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
-    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-    <meta charset="utf-8" />
-    <link href="/images/favicon.gif" rel="icon" />
-    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
-    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="http://www.myopenid.com/server" rel="openid.server" />
-    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
-    <title>Textmate command to display Active Record column attributes - Chris Roos</title>
-    <link href="/blog/2006-07-12-using-in-memory-active-record-objects-with-associations-for-testing" rel="prev" />
-    <link href="/blog/2006-07-17-some-realisations-about-testing" rel="next" />
-    <link href="/blog/2005-09-06-linspire" rel="first" />
-    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
-    <link href="/blog" rel="index" />
-  </head>
-  <body>
-    <div id="page">
-      <div class="group" id="header">
-        <p id="site_name">
-          <a href="/">chris roos</a>
-        </p>
-        <ul class="navigation group">
-          <li>
-            <a href="/about" title="About me">about me</a>
-          </li>
-          <li>
-            <a href="/contact" title="Contact me">contact me</a>
-          </li>
-          <li>
-            <a href="/blog" title="Blog">blog</a>
-          </li>
-          <li>
-            <a href="/projects" title="Projects">projects</a>
-          </li>
-          <li>
-            <a href="/utilities" title="Utilities">utilities</a>
-          </li>
-        </ul>
-        <form action="http://www.google.co.uk/search" id="searchForm">
-          <div>
-            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
-            <input name="q" size="31" type="text" />
-            <input name="sa" type="submit" value="Search" />
-          </div>
-        </form>
-      </div>
-      <div id="content">
-        <abbr class="createdAt" title="2006-07-14T07:18:00+00:00">Fri, 14 Jul 06</abbr>
-        <h1>Textmate command to display Active Record column attributes</h1>
-        <p>I find myself constantly visiting either the console or the mysql command line to check out the attributes (columns) of <a href="http://api.rubyonrails.com/classes/ActiveRecord/Base.html">active record</a> objects.</p>
-        <p>I know there is a <a href="http://blogs.pragprog.com/cgi-bin/pragdave.cgi/Tech/Ruby/AnnotateModels.rdoc">plugin</a> by <a href="http://blogs.pragprog.com/cgi-bin/pragdave.cgi">Dave Thomas</a> that places the table structure within the model code itself.  To be honest I&#8217;ve never tried this and it might well suffice (although I&#8217;m not 100% convinced I like the idea).</p>
-        <p>Anyhoo, I just spent some time whilst on the train hacking together a basic <a href="http://macromates.com/">textmate</a> command that displays a tooltip containing the table structure.  It&#8217;s very basic (though you wouldn&#8217;t have thought it based on the amount of time it took me together<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>); but seems to work ok.</p>
-        <p><img src="http://farm1.static.flickr.com/236/460082493_49ff4cd1ed_o.png" alt="" /></p>
-        <p>The code is below.  You&#8217;ll need to add a ruby command in the ruby textmate bundle, setting the intput to &#8216;selected text&#8217; or &#8216;nothing&#8217;, the output to &#8216;show as tooltip&#8217; and preferably a hotkey that isn&#8217;t one of the ones you use every day (however tempting that is).</p>
-        <pre class="code ruby">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Textmate command to display Active Record column attributes - Chris Roos</title>
+  <link href="/blog/2006-07-12-using-in-memory-active-record-objects-with-associations-for-testing" rel="prev" />
+  <link href="/blog/2006-07-17-some-realisations-about-testing" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2006-07-14T07:18:00+00:00">Fri, 14 Jul 06</abbr>
+      <h1>Textmate command to display Active Record column attributes</h1>
+      <p>I find myself constantly visiting either the console or the mysql command line to check out the attributes (columns) of <a href="http://api.rubyonrails.com/classes/ActiveRecord/Base.html">active record</a> objects.</p>
+      <p>I know there is a <a href="http://blogs.pragprog.com/cgi-bin/pragdave.cgi/Tech/Ruby/AnnotateModels.rdoc">plugin</a> by <a href="http://blogs.pragprog.com/cgi-bin/pragdave.cgi">Dave Thomas</a> that places the table structure within the model code itself. To be honest I’ve never tried this and it might well suffice (although I’m not 100% convinced I like the idea).</p>
+      <p>Anyhoo, I just spent some time whilst on the train hacking together a basic <a href="http://macromates.com/">textmate</a> command that displays a tooltip containing the table structure. It’s very basic (though you wouldn’t have thought it based on the amount of time it took me together<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>); but seems to work ok.</p>
+      <p><img alt="" src="http://farm1.static.flickr.com/236/460082493_49ff4cd1ed_o.png" /></p>
+      <p>The code is below. You’ll need to add a ruby command in the ruby textmate bundle, setting the intput to ‘selected text’ or ‘nothing’, the output to ‘show as tooltip’ and preferably a hotkey that isn’t one of the ones you use every day (however tempting that is).</p>
+      <pre class="code ruby">
         #! /usr/local/bin/ruby
         
         project = ENV['TM_PROJECT_DIRECTORY']
@@ -83,41 +68,20 @@
           STDOUT &lt;&lt; "\#{word} was not recognised as a class"
         end
         </pre>
-        <p>It relies on you having your entire rails project (the folder right above app, config, script etc) open in textmate (in order to find the config files).  With that, just click on the name of an active record class (it has to be the actual class name at present, it&#8217;d be cool if it also worked based on the class definition you are currently in too) and hit your hotkey of choice (best to use the one you assigned to this command).  Hey presto, a tooltip containing your table structure.</p>
-        <p>One odd thing I&#8217;ve noticed is that it never recognises standard class constants.  It should display &#8216;this is not an active record derived class&#8217; but instead always displays &#8216;was not recognised as a class&#8217;.  Oh well.</p>
-        <p>Anyone find this remotely useful or want to finish off what I&#8217;ve started?</p>
-        <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> I spent ages trying to develop within the textmate bundle editor before realising it&#8217;d be a helluva lot quicker and easier to develop in textmate proper.  Hmmm.</p>
-        <hr />
-        <ul class="navigation group">
-          <li class="previousPost">
-            &laquo; (older)
-            <a class="previousPost" href="/blog/2006-07-12-using-in-memory-active-record-objects-with-associations-for-testing" rel="prev" title="Using in memory Active Record objects with associations for testing">
-              Using in memory Active Record objects with associations for testing
-            </a>
-          </li>
-          <li class="nextPost">
-            <a class="nextPost" href="/blog/2006-07-17-some-realisations-about-testing" rel="next" title="Some realisations about testing">
-              Some realisations about testing
-            </a>
-            (newer) &raquo;
-          </li>
-        </ul>
-      </div>
-      <div id="footer">
-        <p class="license">
-          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
-            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
-          </a>
-          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
-          by
-          <span class="vcard">
-            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
-          </span>
-          is licensed under a
-          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
-        </p>
-      </div>
+      <p>It relies on you having your entire rails project (the folder right above app, config, script etc) open in textmate (in order to find the config files). With that, just click on the name of an active record class (it has to be the actual class name at present, it’d be cool if it also worked based on the class definition you are currently in too) and hit your hotkey of choice (best to use the one you assigned to this command). Hey presto, a tooltip containing your table structure.</p>
+      <p>One odd thing I’ve noticed is that it never recognises standard class constants. It should display ‘this is not an active record derived class’ but instead always displays ‘was not recognised as a class’. Oh well.</p>
+      <p>Anyone find this remotely useful or want to finish off what I’ve started?</p>
+      <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> I spent ages trying to develop within the textmate bundle editor before realising it’d be a helluva lot quicker and easier to develop in textmate proper. Hmmm.</p>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2006-07-12-using-in-memory-active-record-objects-with-associations-for-testing" rel="prev" title="Using in memory Active Record objects with associations for testing">Using in memory Active Record objects with associations for testing</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2006-07-17-some-realisations-about-testing" rel="next" title="Some realisations about testing">Some realisations about testing</a> (newer) »</li>
+      </ul>
     </div>
-    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
-  </body>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
 </html>

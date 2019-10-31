@@ -1,60 +1,45 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
-    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-    <meta charset="utf-8" />
-    <link href="/images/favicon.gif" rel="icon" />
-    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
-    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="http://www.myopenid.com/server" rel="openid.server" />
-    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
-    <title>Cross browser (well, IE 6, Firefox 2 and Safari 3) bookmarklet script - Chris Roos</title>
-    <link href="/blog/2007-12-14-web-pages-should-specify-their-canonical-url-permalink" rel="prev" />
-    <link href="/blog/2007-12-18-extracting-my-del-icio-us-permalinks-functionality-into-its-own-firefox-extension" rel="next" />
-    <link href="/blog/2005-09-06-linspire" rel="first" />
-    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
-    <link href="/blog" rel="index" />
-  </head>
-  <body>
-    <div id="page">
-      <div class="group" id="header">
-        <p id="site_name">
-          <a href="/">chris roos</a>
-        </p>
-        <ul class="navigation group">
-          <li>
-            <a href="/about" title="About me">about me</a>
-          </li>
-          <li>
-            <a href="/contact" title="Contact me">contact me</a>
-          </li>
-          <li>
-            <a href="/blog" title="Blog">blog</a>
-          </li>
-          <li>
-            <a href="/projects" title="Projects">projects</a>
-          </li>
-          <li>
-            <a href="/utilities" title="Utilities">utilities</a>
-          </li>
-        </ul>
-        <form action="http://www.google.co.uk/search" id="searchForm">
-          <div>
-            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
-            <input name="q" size="31" type="text" />
-            <input name="sa" type="submit" value="Search" />
-          </div>
-        </form>
-      </div>
-      <div id="content">
-        <abbr class="createdAt" title="2007-12-14T21:27:00+00:00">Fri, 14 Dec 07</abbr>
-        <h1>Cross browser (well, IE 6, Firefox 2 and Safari 3) bookmarklet script</h1>
-        <p>I <a href="/blog/2007-12-14-bookmarklet-favelet-limits-in-internet-explorer-6-and-7">mentioned</a> that I&#8217;d been playing with bookmarklets in Internet Explorer 6 (among other, proper, browsers).</p>
-        <p>I thought it might be useful to paste the script that bootstraps the bookmarklet.  The concept is that we use the bookmarklet javascript to insert a script tag into the page that links to the full javascript file containing the function(s) that we wish to execute.  I know this has been documented elsewhere and I&#8217;ve probably missed some important stuff out but it may prove useful to someone.</p>
-        <h2>The commented, un-compressed, version</h2>
-        <pre class="code javascript">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Cross browser (well, IE 6, Firefox 2 and Safari 3) bookmarklet script - Chris Roos</title>
+  <link href="/blog/2007-12-14-web-pages-should-specify-their-canonical-url-permalink" rel="prev" />
+  <link href="/blog/2007-12-18-extracting-my-del-icio-us-permalinks-functionality-into-its-own-firefox-extension" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2007-12-14T21:27:00+00:00">Fri, 14 Dec 07</abbr>
+      <h1>Cross browser (well, IE 6, Firefox 2 and Safari 3) bookmarklet script</h1>
+      <p>I <a href="/blog/2007-12-14-bookmarklet-favelet-limits-in-internet-explorer-6-and-7">mentioned</a> that I’d been playing with bookmarklets in Internet Explorer 6 (among other, proper, browsers).</p>
+      <p>I thought it might be useful to paste the script that bootstraps the bookmarklet. The concept is that we use the bookmarklet javascript to insert a script tag into the page that links to the full javascript file containing the function(s) that we wish to execute. I know this has been documented elsewhere and I’ve probably missed some important stuff out but it may prove useful to someone.</p>
+      <h2>The commented, un-compressed, version</h2>
+      <pre class="code javascript">
         if (typeof(rvmBM) == 'undefined') { // Best to name rvmBM to something unlikely to clash with pre-defined variables
           var s = document.createElement('script'); // Use of s versus script saves some precious space
           s.type = 'text/javascript';
@@ -72,41 +57,20 @@
         };
         addRvm(); // Ask our wrapper function to call the actual bookmarklet function
         </pre>
-        <h2>The compressed version</h2>
-        <pre class="code javascript">
+      <h2>The compressed version</h2>
+      <pre class="code javascript">
         javascript:if(typeof(rvmBM)=='undefined'){var s=document.createElement('script');s.type='text/javascript';s.src='http://example.com/my-external-bookmarklet.js';void(rvmBM=true);void(document.body.appendChild(s));};function addRvm(){if(typeof(addReevooMark)=='function'){addReevooMark();}else{void(setTimeout(addRvm,100));};};addRvm();
         </pre>
-        <hr />
-        <ul class="navigation group">
-          <li class="previousPost">
-            &laquo; (older)
-            <a class="previousPost" href="/blog/2007-12-14-web-pages-should-specify-their-canonical-url-permalink" rel="prev" title="Web pages should specify their canonical URL (permalink)">
-              Web pages should specify their canonical URL (permalink)
-            </a>
-          </li>
-          <li class="nextPost">
-            <a class="nextPost" href="/blog/2007-12-18-extracting-my-del-icio-us-permalinks-functionality-into-its-own-firefox-extension" rel="next" title="Extracting my del.icio.us permalinks functionality into its own firefox extension">
-              Extracting my del.icio.us permalinks functionality into its own firefox extension
-            </a>
-            (newer) &raquo;
-          </li>
-        </ul>
-      </div>
-      <div id="footer">
-        <p class="license">
-          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
-            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
-          </a>
-          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
-          by
-          <span class="vcard">
-            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
-          </span>
-          is licensed under a
-          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
-        </p>
-      </div>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-12-14-web-pages-should-specify-their-canonical-url-permalink" rel="prev" title="Web pages should specify their canonical URL (permalink)">Web pages should specify their canonical URL (permalink)</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2007-12-18-extracting-my-del-icio-us-permalinks-functionality-into-its-own-firefox-extension" rel="next" title="Extracting my del.icio.us permalinks functionality into its own firefox extension">Extracting my del.icio.us permalinks functionality into its own firefox extension</a> (newer) »</li>
+      </ul>
     </div>
-    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
-  </body>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
 </html>

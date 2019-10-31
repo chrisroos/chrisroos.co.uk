@@ -1,62 +1,47 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
-    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-    <meta charset="utf-8" />
-    <link href="/images/favicon.gif" rel="icon" />
-    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
-    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="http://www.myopenid.com/server" rel="openid.server" />
-    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
-    <title>Bookmarklet (Favelet) limits in Internet Explorer 6 (and 7?) - Chris Roos</title>
-    <link href="/blog/2007-12-07-testing-actionmailer-base-server_settings" rel="prev" />
-    <link href="/blog/2007-12-14-web-pages-should-specify-their-canonical-url-permalink" rel="next" />
-    <link href="/blog/2005-09-06-linspire" rel="first" />
-    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
-    <link href="/blog" rel="index" />
-  </head>
-  <body>
-    <div id="page">
-      <div class="group" id="header">
-        <p id="site_name">
-          <a href="/">chris roos</a>
-        </p>
-        <ul class="navigation group">
-          <li>
-            <a href="/about" title="About me">about me</a>
-          </li>
-          <li>
-            <a href="/contact" title="Contact me">contact me</a>
-          </li>
-          <li>
-            <a href="/blog" title="Blog">blog</a>
-          </li>
-          <li>
-            <a href="/projects" title="Projects">projects</a>
-          </li>
-          <li>
-            <a href="/utilities" title="Utilities">utilities</a>
-          </li>
-        </ul>
-        <form action="http://www.google.co.uk/search" id="searchForm">
-          <div>
-            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
-            <input name="q" size="31" type="text" />
-            <input name="sa" type="submit" value="Search" />
-          </div>
-        </form>
-      </div>
-      <div id="content">
-        <abbr class="createdAt" title="2007-12-14T08:46:00+00:00">Fri, 14 Dec 07</abbr>
-        <h1>Bookmarklet (Favelet) limits in Internet Explorer 6 (and 7?)</h1>
-        <p><strong>Update &#8211; 20th May 2011.</strong> <a href="http://www.webdeavour.co.uk">Lee</a> was kind enough to email and point out the 505/508 character descrepency.  It&#8217;s because of the three backslashes in the example.  Programmatically evaluating the length of &#8220;\n&#8221; in ruby correctly returns 1 as the \n is turned into a single newline.  This isn&#8217;t what happens in my javascript though: To make the test better replicate what was happening in javascript I should&#8217;ve used single quotes so that &#8216;\n&#8217; is indeed recognised as 2 characters.  In addition, re-reading this post made me realise that my original test wasn&#8217;t exactly as simple as it could be (what with all the spaces and newlines) so I created a <a href="https://github.com/chrisroos/bookmarklet-generator">crappy html/javascript bookmarklet generator</a> to more accurately test the limits on bookmarklet lengths.</p>
-        <p>I wasted quite a bit of time over the last couple of days trying to get a <a href="http://en.wikipedia.org/wiki/Bookmarklet">bookmarklet</a> (or favelet) working in Internet Explorer 6.  It worked perfectly in Firefox and Safari but wasn&#8217;t doing anything at all in IE.  Through lots of trial and error, I came to the conclusion that it was because of the length of the bookmarklet: it seems that Microsoft <a href="http://www.squarefree.com/2005/01/12/internet-explorer-drops-support-for-bookmarklets/">reduced the maximum length of a bookmarklet in IE 6</a></p>
-        <p>Although my original bookmarklet wasn&#8217;t all that long, I had it spread over multiple lines for readability.  The fix in my case was to remove all the spaces and place the bookmarklet on one line.</p>
-        <p>I started to think that it might be nice to have a bookmarklet <a href="http://www.rubyonrails.com">rails</a> helper.  The bookmarklet helper would allow you to format your javascript for readability but shorten it all in the resulting html (it could even warn if the bookmarklet is too long for IE).  I couldn&#8217;t find anything similar, and I probably won&#8217;t get around to doing it myself, but I did decide to investigate the limit in IE (which could form the basis of such a helper).</p>
-        <p>I used the html page below to test the limits of Internet Explorer.  This is the longest bookmarklet that I could get to work: one more character (a 2 on the end of those numbers, for example) and the bookmarklet won&#8217;t work (it still works if you click the link in the page &#8211; it only fails when used as an actual bookmarklet).</p>
-        <pre class="code html">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Bookmarklet (Favelet) limits in Internet Explorer 6 (and 7?) - Chris Roos</title>
+  <link href="/blog/2007-12-07-testing-actionmailer-base-server_settings" rel="prev" />
+  <link href="/blog/2007-12-14-web-pages-should-specify-their-canonical-url-permalink" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2007-12-14T08:46:00+00:00">Fri, 14 Dec 07</abbr>
+      <h1>Bookmarklet (Favelet) limits in Internet Explorer 6 (and 7?)</h1>
+      <p><strong>Update – 20th May 2011.</strong> <a href="http://www.webdeavour.co.uk">Lee</a> was kind enough to email and point out the 505/508 character descrepency. It’s because of the three backslashes in the example. Programmatically evaluating the length of “\n” in ruby correctly returns 1 as the \n is turned into a single newline. This isn’t what happens in my javascript though: To make the test better replicate what was happening in javascript I should’ve used single quotes so that ‘\n’ is indeed recognised as 2 characters. In addition, re-reading this post made me realise that my original test wasn’t exactly as simple as it could be (what with all the spaces and newlines) so I created a <a href="https://github.com/chrisroos/bookmarklet-generator">crappy html/javascript bookmarklet generator</a> to more accurately test the limits on bookmarklet lengths.</p>
+      <p>I wasted quite a bit of time over the last couple of days trying to get a <a href="http://en.wikipedia.org/wiki/Bookmarklet">bookmarklet</a> (or favelet) working in Internet Explorer 6. It worked perfectly in Firefox and Safari but wasn’t doing anything at all in IE. Through lots of trial and error, I came to the conclusion that it was because of the length of the bookmarklet: it seems that Microsoft <a href="http://www.squarefree.com/2005/01/12/internet-explorer-drops-support-for-bookmarklets/">reduced the maximum length of a bookmarklet in IE 6</a></p>
+      <p>Although my original bookmarklet wasn’t all that long, I had it spread over multiple lines for readability. The fix in my case was to remove all the spaces and place the bookmarklet on one line.</p>
+      <p>I started to think that it might be nice to have a bookmarklet <a href="http://www.rubyonrails.com">rails</a> helper. The bookmarklet helper would allow you to format your javascript for readability but shorten it all in the resulting html (it could even warn if the bookmarklet is too long for IE). I couldn’t find anything similar, and I probably won’t get around to doing it myself, but I did decide to investigate the limit in IE (which could form the basis of such a helper).</p>
+      <p>I used the html page below to test the limits of Internet Explorer. This is the longest bookmarklet that I could get to work: one more character (a 2 on the end of those numbers, for example) and the bookmarklet won’t work (it still works if you click the link in the page – it only fails when used as an actual bookmarklet).</p>
+      <pre class="code html">
         &lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;
         &lt;html&gt;
           &lt;head&gt;
@@ -73,10 +58,10 @@
           &lt;/body&gt;
         &lt;/html&gt;
         </pre>
-        <p>I noticed that, once added to Internet Explorer, the bookmarklet appeared to be <a href="http://www.blooberry.com/indexdot/html/topics/urlencoding.htm">URL encoded</a> (my assumption was based on the conversion of spaces to %20.)</p>
-        <p><a href="http://www.flickr.com/photos/chrisjroos/2109757023/"><img src="http://farm3.static.flickr.com/2321/2109757023_0f69015c44.jpg" alt="" /></a></p>
-        <p>I tried to replicate this encoded string in <a href="http://www.ruby-lang.org">ruby</a> but failed:  A simple URI.escape in ruby was escaping too much.  Inspecting the bookmarklet again seemed to suggest that the only encoding performed is to remove newlines and convert spaces to %20.  Replicating this in irb gave me the same string that Internet Explorer had in its favourites.</p>
-        <pre class="code ruby">
+      <p>I noticed that, once added to Internet Explorer, the bookmarklet appeared to be <a href="http://www.blooberry.com/indexdot/html/topics/urlencoding.htm">URL encoded</a> (my assumption was based on the conversion of spaces to %20.)</p>
+      <p><a href="http://www.flickr.com/photos/chrisjroos/2109757023/"><img alt="" src="http://farm3.static.flickr.com/2321/2109757023_0f69015c44.jpg" /></a></p>
+      <p>I tried to replicate this encoded string in <a href="http://www.ruby-lang.org">ruby</a> but failed: A simple URI.escape in ruby was escaping too much. Inspecting the bookmarklet again seemed to suggest that the only encoding performed is to remove newlines and convert spaces to %20. Replicating this in irb gave me the same string that Internet Explorer had in its favourites.</p>
+      <pre class="code ruby">
         irb) str = "javascript:
           var msg = 'hello world, this is my message.  i\'m trying to see how long i can be until internet explorer blows up in my face.';
           var msg = msg + '\n';
@@ -87,40 +72,19 @@
         irb) p str.gsub("'\n'", "'--NEW-LINE--'").gsub("\n", '').gsub("'--NEW-LINE--'", "'\n'").gsub(' ', "%20").length
         =&gt; 505
         </pre>
-        <p>Everything I&#8217;d read about these bookmarklets in Internet Explorer suggested that the limit was 508 characters: the length of the bookmarklet above (once encoded) is only 505 characters.  Adding one more character makes it fail as a bookmarklet.  Hmm, maybe I&#8217;m doing something dumb?</p>
-        <p>I&#8217;ve cheated a bit in the &#8216;encoding&#8217; above.  IE removes all newlines (I wonder if this happens in the DOM or just when you add it as a favourite?) so that the bookmarklet appears on one line.  I needed to do the same but also needed those newlines in the msg to remain (hence the NEW-LINE replacement stuff).  This is a very naive imlpementation: if you have &#8216;\n\n&#8217;, for example, then it breaks.  The &#8216;encoding&#8217; would need to be a little more intelligent in an actual helper (but only if you wanted to report on the size of the bookmarklet).</p>
-        <p>I couldn&#8217;t find any reference to source of this 508 character limit in Internet Explorer: all the blog articles just state it as fact.  So, maybe it&#8217;s not 508.  Maybe it&#8217;s actually 505&#8230;</p>
-        <hr />
-        <ul class="navigation group">
-          <li class="previousPost">
-            &laquo; (older)
-            <a class="previousPost" href="/blog/2007-12-07-testing-actionmailer-base-server_settings" rel="prev" title="Testing ActionMailer::Base.server_settings">
-              Testing ActionMailer::Base.server_settings
-            </a>
-          </li>
-          <li class="nextPost">
-            <a class="nextPost" href="/blog/2007-12-14-web-pages-should-specify-their-canonical-url-permalink" rel="next" title="Web pages should specify their canonical URL (permalink)">
-              Web pages should specify their canonical URL (permalink)
-            </a>
-            (newer) &raquo;
-          </li>
-        </ul>
-      </div>
-      <div id="footer">
-        <p class="license">
-          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
-            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
-          </a>
-          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
-          by
-          <span class="vcard">
-            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
-          </span>
-          is licensed under a
-          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
-        </p>
-      </div>
+      <p>Everything I’d read about these bookmarklets in Internet Explorer suggested that the limit was 508 characters: the length of the bookmarklet above (once encoded) is only 505 characters. Adding one more character makes it fail as a bookmarklet. Hmm, maybe I’m doing something dumb?</p>
+      <p>I’ve cheated a bit in the ‘encoding’ above. IE removes all newlines (I wonder if this happens in the DOM or just when you add it as a favourite?) so that the bookmarklet appears on one line. I needed to do the same but also needed those newlines in the msg to remain (hence the NEW-LINE replacement stuff). This is a very naive imlpementation: if you have ‘\n\n’, for example, then it breaks. The ‘encoding’ would need to be a little more intelligent in an actual helper (but only if you wanted to report on the size of the bookmarklet).</p>
+      <p>I couldn’t find any reference to source of this 508 character limit in Internet Explorer: all the blog articles just state it as fact. So, maybe it’s not 508. Maybe it’s actually 505…</p>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-12-07-testing-actionmailer-base-server_settings" rel="prev" title="Testing ActionMailer::Base.server_settings">Testing ActionMailer::Base.server_settings</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2007-12-14-web-pages-should-specify-their-canonical-url-permalink" rel="next" title="Web pages should specify their canonical URL (permalink)">Web pages should specify their canonical URL (permalink)</a> (newer) »</li>
+      </ul>
     </div>
-    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
-  </body>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
 </html>

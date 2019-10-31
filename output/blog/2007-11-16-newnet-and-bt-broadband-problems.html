@@ -1,89 +1,53 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
-    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-    <meta charset="utf-8" />
-    <link href="/images/favicon.gif" rel="icon" />
-    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
-    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="http://www.myopenid.com/server" rel="openid.server" />
-    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
-    <title>NewNet and BT Broadband problems - Chris Roos</title>
-    <link href="/blog/2007-11-15-hsbc-conclusion" rel="prev" />
-    <link href="/blog/2007-11-18-the-skypephone-so-far" rel="next" />
-    <link href="/blog/2005-09-06-linspire" rel="first" />
-    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
-    <link href="/blog" rel="index" />
-  </head>
-  <body>
-    <div id="page">
-      <div class="group" id="header">
-        <p id="site_name">
-          <a href="/">chris roos</a>
-        </p>
-        <ul class="navigation group">
-          <li>
-            <a href="/about" title="About me">about me</a>
-          </li>
-          <li>
-            <a href="/contact" title="Contact me">contact me</a>
-          </li>
-          <li>
-            <a href="/blog" title="Blog">blog</a>
-          </li>
-          <li>
-            <a href="/projects" title="Projects">projects</a>
-          </li>
-          <li>
-            <a href="/utilities" title="Utilities">utilities</a>
-          </li>
-        </ul>
-        <form action="http://www.google.co.uk/search" id="searchForm">
-          <div>
-            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
-            <input name="q" size="31" type="text" />
-            <input name="sa" type="submit" value="Search" />
-          </div>
-        </form>
-      </div>
-      <div id="content">
-        <abbr class="createdAt" title="2007-11-16T13:38:00+00:00">Fri, 16 Nov 07</abbr>
-        <h1>NewNet and BT Broadband problems</h1>
-        <p>I&#8217;ve been having broadband problems for about 6 weeks now.  My connection continually drops in and out and when it does connect, it does so at about 100Kbps.  I held off getting a <a href="http://www.bt.com">BT</a> engineer involved because I didn&#8217;t want to have to pay the £200 if it turned out to be my fault.  Having satisfied myself that I hadn&#8217;t done anything stoopid, I called <a href="http://www.newnet.co.uk/">NewNet</a> and arranged for the BT engineer to come round this morning.  He was able to confirm that my line was capable of connecting at around 5Mbps (I&#8217;m on the upto 8Mbps service) but noticed that there was a high <a href="http://en.wikipedia.org/wiki/Signal-to-noise_ratio">Signal to Noise</a> ratio on the line (around 19dB I think).  He mentioned that the SNR should be around 10dB and that this might be the cause of my connectivity problems.  He then went to the local junction box to test the line between my house and the junction box and the junction box and the exchange.  The line between the house and the junction box was OK but he changed the line between the junction box and the exchange to rule out any problems at that end.  Even with these changes, he was still seeing a high SNR.  He then mentioned that he&#8217;d spoken to the helpdesk and they informed him that my line had been limited at 135Kbps.  This explained the poor performance once I was actually connected.  It also explains (I think) why I would see downstream connections of around 5Mbps in my router status but only actually download at around 100Kbps according to the <a href="http://www.thinkbroadband.com/">thinkbroadband</a> <a href="http://www.thinkbroadband.com/speedtest.html">speedtest</a>.  I guess that my <a href="http://www.netgear.co.uk/wireless_adslrouter_dg834g.php">Netgear DG834G</a> actually reports the potential line speed rather than the actual speed of the connection.  In theory, the fact that my line is limited should sort itself out but I&#8217;ve been informed to call NewNet if it&#8217;s no better within the next couple of days.</p>
-        <p>Fun and games eh.</p>
-        <hr />
-        <ul class="navigation group">
-          <li class="previousPost">
-            &laquo; (older)
-            <a class="previousPost" href="/blog/2007-11-15-hsbc-conclusion" rel="prev" title="HSBC Conclusion">
-              HSBC Conclusion
-            </a>
-          </li>
-          <li class="nextPost">
-            <a class="nextPost" href="/blog/2007-11-18-the-skypephone-so-far" rel="next" title="The Skypephone so far">
-              The Skypephone so far
-            </a>
-            (newer) &raquo;
-          </li>
-        </ul>
-      </div>
-      <div id="footer">
-        <p class="license">
-          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
-            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
-          </a>
-          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
-          by
-          <span class="vcard">
-            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
-          </span>
-          is licensed under a
-          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
-        </p>
-      </div>
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>NewNet and BT Broadband problems - Chris Roos</title>
+  <link href="/blog/2007-11-15-hsbc-conclusion" rel="prev" />
+  <link href="/blog/2007-11-18-the-skypephone-so-far" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
     </div>
-    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
-  </body>
+    <div id="content">
+      <abbr class="createdAt" title="2007-11-16T13:38:00+00:00">Fri, 16 Nov 07</abbr>
+      <h1>NewNet and BT Broadband problems</h1>
+      <p>I’ve been having broadband problems for about 6 weeks now. My connection continually drops in and out and when it does connect, it does so at about 100Kbps. I held off getting a <a href="http://www.bt.com">BT</a> engineer involved because I didn’t want to have to pay the £200 if it turned out to be my fault. Having satisfied myself that I hadn’t done anything stoopid, I called <a href="http://www.newnet.co.uk/">NewNet</a> and arranged for the BT engineer to come round this morning. He was able to confirm that my line was capable of connecting at around 5Mbps (I’m on the upto 8Mbps service) but noticed that there was a high <a href="http://en.wikipedia.org/wiki/Signal-to-noise_ratio">Signal to Noise</a> ratio on the line (around 19dB I think). He mentioned that the SNR should be around 10dB and that this might be the cause of my connectivity problems. He then went to the local junction box to test the line between my house and the junction box and the junction box and the exchange. The line between the house and the junction box was OK but he changed the line between the junction box and the exchange to rule out any problems at that end. Even with these changes, he was still seeing a high SNR. He then mentioned that he’d spoken to the helpdesk and they informed him that my line had been limited at 135Kbps. This explained the poor performance once I was actually connected. It also explains (I think) why I would see downstream connections of around 5Mbps in my router status but only actually download at around 100Kbps according to the <a href="http://www.thinkbroadband.com/">thinkbroadband</a> <a href="http://www.thinkbroadband.com/speedtest.html">speedtest</a>. I guess that my <a href="http://www.netgear.co.uk/wireless_adslrouter_dg834g.php">Netgear DG834G</a> actually reports the potential line speed rather than the actual speed of the connection. In theory, the fact that my line is limited should sort itself out but I’ve been informed to call NewNet if it’s no better within the next couple of days.</p>
+      <p>Fun and games eh.</p>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-11-15-hsbc-conclusion" rel="prev" title="HSBC Conclusion">HSBC Conclusion</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2007-11-18-the-skypephone-so-far" rel="next" title="The Skypephone so far">The Skypephone so far</a> (newer) »</li>
+      </ul>
+    </div>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
 </html>

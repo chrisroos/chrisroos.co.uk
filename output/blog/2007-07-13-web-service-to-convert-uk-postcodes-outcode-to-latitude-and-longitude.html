@@ -1,65 +1,50 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
-    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-    <meta charset="utf-8" />
-    <link href="/images/favicon.gif" rel="icon" />
-    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
-    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="http://www.myopenid.com/server" rel="openid.server" />
-    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
-    <title>Web service to convert UK Postcodes (outcode) to Latitude and Longitude - Chris Roos</title>
-    <link href="/blog/2007-07-12-wesabe-open-up-their-api-and-ask-me-to-help-write-their-press-release" rel="prev" />
-    <link href="/blog/2007-07-17-free-google-website-optimizer-isnt-actually-free" rel="next" />
-    <link href="/blog/2005-09-06-linspire" rel="first" />
-    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
-    <link href="/blog" rel="index" />
-  </head>
-  <body>
-    <div id="page">
-      <div class="group" id="header">
-        <p id="site_name">
-          <a href="/">chris roos</a>
-        </p>
-        <ul class="navigation group">
-          <li>
-            <a href="/about" title="About me">about me</a>
-          </li>
-          <li>
-            <a href="/contact" title="Contact me">contact me</a>
-          </li>
-          <li>
-            <a href="/blog" title="Blog">blog</a>
-          </li>
-          <li>
-            <a href="/projects" title="Projects">projects</a>
-          </li>
-          <li>
-            <a href="/utilities" title="Utilities">utilities</a>
-          </li>
-        </ul>
-        <form action="http://www.google.co.uk/search" id="searchForm">
-          <div>
-            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
-            <input name="q" size="31" type="text" />
-            <input name="sa" type="submit" value="Search" />
-          </div>
-        </form>
-      </div>
-      <div id="content">
-        <abbr class="createdAt" title="2007-07-13T13:41:00+00:00">Fri, 13 Jul 07</abbr>
-        <h1>Web service to convert UK Postcodes (outcode) to Latitude and Longitude</h1>
-        <p>Using the data supplied in this <a href="http://postcodes.easypeasy.com">article</a>, by <a href="http://www.niksargent.com">Nik Sargent</a>, I&#8217;ve created a simple web service that returns <a href="http://www.json.org">JSON</a> formatted data about UK Outcodes (the first bit of the postcode).</p>
-        <p>The idea is that you can request, for example, /postcodes/se1 and get some json in return.  For se1, we receive the following data.</p>
-        <pre class="code javascript">
+<head>
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <link href="/images/favicon.gif" rel="icon" />
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://www.myopenid.com/server" rel="openid.server" />
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <title>Web service to convert UK Postcodes (outcode) to Latitude and Longitude - Chris Roos</title>
+  <link href="/blog/2007-07-12-wesabe-open-up-their-api-and-ask-me-to-help-write-their-press-release" rel="prev" />
+  <link href="/blog/2007-07-17-free-google-website-optimizer-isnt-actually-free" rel="next" />
+  <link href="/blog/2005-09-06-linspire" rel="first" />
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+  <link href="/blog" rel="index" />
+</head>
+<body>
+  <div id="page">
+    <div class="group" id="header">
+      <p id="site_name"><a href="/">chris roos</a></p>
+      <ul class="navigation group">
+        <li><a href="/about" title="About me">about me</a></li>
+        <li><a href="/contact" title="Contact me">contact me</a></li>
+        <li><a href="/blog" title="Blog">blog</a></li>
+        <li><a href="/projects" title="Projects">projects</a></li>
+        <li><a href="/utilities" title="Utilities">utilities</a></li>
+      </ul>
+      <form action="http://www.google.co.uk/search" id="searchForm">
+        <div>
+          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+        </div>
+      </form>
+    </div>
+    <div id="content">
+      <abbr class="createdAt" title="2007-07-13T13:41:00+00:00">Fri, 13 Jul 07</abbr>
+      <h1>Web service to convert UK Postcodes (outcode) to Latitude and Longitude</h1>
+      <p>Using the data supplied in this <a href="http://postcodes.easypeasy.com">article</a>, by <a href="http://www.niksargent.com">Nik Sargent</a>, I’ve created a simple web service that returns <a href="http://www.json.org">JSON</a> formatted data about UK Outcodes (the first bit of the postcode).</p>
+      <p>The idea is that you can request, for example, /postcodes/se1 and get some json in return. For se1, we receive the following data.</p>
+      <pre class="code javascript">
         {"latitude":"51.498","x":"532600","postcode":"SE1","y":"179500","longitude":"51.498"}
         </pre>
-        <p>The service is currently running at <a href="http://seagul.co.uk/postcodes">http://seagul.co.uk/postcodes</a> (<a href="http://seagul.co.uk/postcodes/se1">se1</a>) but I make no guarantees as to its reliability.  I&#8217;d suggest that if anyone actually finds this useful that they go host it somewhere for themselves in order to control the availability.</p>
-        <p>The code is, as always, on <a href="http://chrisroos.googlecode.com/svn/trunk/uk-postcodes/">google code</a> and pasted below.</p>
-        <p>I&#8217;ve created it as a proof of concept but I figure that, given a little love, it may prove useful to some folks.</p>
-        <pre class="code ruby">
+      <p>The service is currently running at <a href="http://seagul.co.uk/postcodes">http://seagul.co.uk/postcodes</a> (<a href="http://seagul.co.uk/postcodes/se1">se1</a>) but I make no guarantees as to its reliability. I’d suggest that if anyone actually finds this useful that they go host it somewhere for themselves in order to control the availability.</p>
+      <p>The code is, as always, on <a href="http://chrisroos.googlecode.com/svn/trunk/uk-postcodes/">google code</a> and pasted below.</p>
+      <p>I’ve created it as a proof of concept but I figure that, given a little love, it may prove useful to some folks.</p>
+      <pre class="code ruby">
         require 'rubygems'
         require 'mongrel'
         require 'json'
@@ -95,37 +80,16 @@
         
         config.join
         </pre>
-        <hr />
-        <ul class="navigation group">
-          <li class="previousPost">
-            &laquo; (older)
-            <a class="previousPost" href="/blog/2007-07-12-wesabe-open-up-their-api-and-ask-me-to-help-write-their-press-release" rel="prev" title="Wesabe open up their API and ask me to help write their press release...">
-              Wesabe open up their API and ask me to help write their press release...
-            </a>
-          </li>
-          <li class="nextPost">
-            <a class="nextPost" href="/blog/2007-07-17-free-google-website-optimizer-isnt-actually-free" rel="next" title="Free google website optimizer isn't actually free">
-              Free google website optimizer isn't actually free
-            </a>
-            (newer) &raquo;
-          </li>
-        </ul>
-      </div>
-      <div id="footer">
-        <p class="license">
-          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">
-            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" />
-          </a>
-          <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span>
-          by
-          <span class="vcard">
-            <a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a>
-          </span>
-          is licensed under a
-          <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>
-        </p>
-      </div>
+      <hr />
+      <ul class="navigation group">
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-07-12-wesabe-open-up-their-api-and-ask-me-to-help-write-their-press-release" rel="prev" title="Wesabe open up their API and ask me to help write their press release...">Wesabe open up their API and ask me to help write their press release...</a></li>
+        <li class="nextPost"><a class="nextPost" href="/blog/2007-07-17-free-google-website-optimizer-isnt-actually-free" rel="next" title="Free google website optimizer isn't actually free">Free google website optimizer isn't actually free</a> (newer) »</li>
+      </ul>
     </div>
-    <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
-  </body>
+    <div id="footer">
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+    </div>
+  </div>
+  <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>
+</body>
 </html>
