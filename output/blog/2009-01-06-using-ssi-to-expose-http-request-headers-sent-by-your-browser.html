@@ -1,36 +1,47 @@
-<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
-  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
-  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-  <link href="/images/favicon.gif" rel="icon" />
-  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
-  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="http://www.myopenid.com/server" rel="openid.server" />
-  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator">
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid">
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <link href="/images/favicon.gif" rel="icon">
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml">
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css">
+  <link href="http://www.myopenid.com/server" rel="openid.server">
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate">
   <title>Using SSI to Expose Http Request Headers Sent by Your Browser - Chris Roos</title>
-  <link href="/blog/2009-01-04-initial-thoughts-about-the-t-mobile-g1-the-google-android-phone" rel="prev" />
-  <link href="/blog/2009-01-06-a-simple-utility-to-generate-and-preview-html-on-the-web" rel="next" />
-  <link href="/blog/2005-09-06-linspire" rel="first" />
-  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
-  <link href="/blog" rel="index" />
-  <meta content="I explain why I reinvented the wheel and created another page on the web that will display the http request headers sent by your browser." name="description" />
+  <link href="/blog/2009-01-04-initial-thoughts-about-the-t-mobile-g1-the-google-android-phone" rel="prev">
+  <link href="/blog/2009-01-06-a-simple-utility-to-generate-and-preview-html-on-the-web" rel="next">
+  <link href="/blog/2005-09-06-linspire" rel="first">
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last">
+  <link href="/blog" rel="index">
+  <meta content="I explain why I reinvented the wheel and created another page on the web that will display the http request headers sent by your browser." name="description">
 </head>
 <body>
   <div id="page">
     <div class="group" id="header">
       <p id="site_name"><a href="/">chris roos</a></p>
       <ul class="navigation group">
-        <li><a href="/about" title="About me">about me</a></li>
-        <li><a href="/contact" title="Contact me">contact me</a></li>
-        <li><a href="/blog" title="Blog">blog</a></li>
-        <li><a href="/projects" title="Projects">projects</a></li>
-        <li><a href="/utilities" title="Utilities">utilities</a></li>
+        <li>
+          <a href="/about" title="About me">about me</a>
+        </li>
+        <li>
+          <a href="/contact" title="Contact me">contact me</a>
+        </li>
+        <li>
+          <a href="/blog" title="Blog">blog</a>
+        </li>
+        <li>
+          <a href="/projects" title="Projects">projects</a>
+        </li>
+        <li>
+          <a href="/utilities" title="Utilities">utilities</a>
+        </li>
       </ul>
-      <form action="http://www.google.co.uk/search" id="searchForm">
+      <form action="http://www.google.co.uk/search" id="searchForm" name="searchForm">
         <div>
-          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+          <input name="q" type="hidden" value="site:chrisroos.co.uk"> <input name="q" size="31" type="text"> <input name="sa" type="submit" value="Search">
         </div>
       </form>
     </div>
@@ -39,14 +50,17 @@
       <h1>Using SSI to Expose Http Request Headers Sent by Your Browser</h1>
       <p>Playing around with my <a href="http://www.t-mobile.co.uk/g1-with-google-phone/">T-Mobile G1</a> made me wonder what the included web browser was. I knew that I needed a site that would display the <a href="http://en.wikipedia.org/wiki/List_of_HTTP_headers#Requests">http request headers</a> and through the magic of google happened upon <a href="http://andylangton.co.uk">Andy Langton’s</a> <a href="http://andylangton.co.uk/online-tools/check-browser-headers">check browser headers</a> utility. This did the job and let me know that the browser is some kind of mobile safari client built on <a href="http://webkit.org/">webkit</a>.</p>
       <p>That was all well and good but I started to wonder whether I could create an equivalent page without having to resort to a scripting language. It turns out that I could use <a href="http://en.wikipedia.org/wiki/Server_Side_Includes">Server Side Includes</a> to do just that. I had a couple of reasons to reinvent this particular wheel: a) to satisfy myself that I could do such a thing in a very short time, and b) to make the output as clear as possible. The clarity thing is a big deal for me, I often find myself asking google for my <a href="http://en.wikipedia.org/wiki/IP_address">IP</a> only to follow a link to a page that contains my IP buried in a lot of noise (adverts, unnecessary text and lots of links). I appreciate that Andy’s utility doesn’t contain any advertising but it still has some noise in the form of the blog template. So, without further ado, I present my own little utility to <a href="/utilities/http-request-headers/">display http request headers</a>.</p>
-      <hr />
+      <hr>
       <ul class="navigation group">
-        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2009-01-04-initial-thoughts-about-the-t-mobile-g1-the-google-android-phone" rel="prev" title="Initial Thoughts About the T-Mobile G1 (the Google Android Phone)">Initial Thoughts About the T-Mobile G1 (the Google Android Phone)</a></li>
-        <li class="nextPost"><a class="nextPost" href="/blog/2009-01-06-a-simple-utility-to-generate-and-preview-html-on-the-web" rel="next" title="A Simple Utility to Generate and Preview Html on the Web">A Simple Utility to Generate and Preview Html on the Web</a> (newer) »</li>
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2009-01-04-initial-thoughts-about-the-t-mobile-g1-the-google-android-phone" rel="prev" title="Initial Thoughts About the T-Mobile G1 (the Google Android Phone)">Initial Thoughts About the T-Mobile G1 (the Google Android Phone)</a>
+        </li>
+        <li class="nextPost">
+          <a class="nextPost" href="/blog/2009-01-06-a-simple-utility-to-generate-and-preview-html-on-the-web" rel="next" title="A Simple Utility to Generate and Preview Html on the Web">A Simple Utility to Generate and Preview Html on the Web</a> (newer) »
+        </li>
       </ul>
     </div>
     <div id="footer">
-      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0"></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England & Wales License</a></p>
     </div>
   </div>
   <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>

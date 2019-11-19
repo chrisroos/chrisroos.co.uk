@@ -1,35 +1,46 @@
-<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
-  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
-  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-  <link href="/images/favicon.gif" rel="icon" />
-  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
-  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="http://www.myopenid.com/server" rel="openid.server" />
-  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator">
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid">
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <link href="/images/favicon.gif" rel="icon">
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml">
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css">
+  <link href="http://www.myopenid.com/server" rel="openid.server">
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate">
   <title>Getting to grips with pwdhash - Chris Roos</title>
-  <link href="/blog/2007-04-04-i-want-fast-trains" rel="prev" />
-  <link href="/blog/2007-04-14-small-specific-mongrel-web-servers" rel="next" />
-  <link href="/blog/2005-09-06-linspire" rel="first" />
-  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
-  <link href="/blog" rel="index" />
+  <link href="/blog/2007-04-04-i-want-fast-trains" rel="prev">
+  <link href="/blog/2007-04-14-small-specific-mongrel-web-servers" rel="next">
+  <link href="/blog/2005-09-06-linspire" rel="first">
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last">
+  <link href="/blog" rel="index">
 </head>
 <body>
   <div id="page">
     <div class="group" id="header">
       <p id="site_name"><a href="/">chris roos</a></p>
       <ul class="navigation group">
-        <li><a href="/about" title="About me">about me</a></li>
-        <li><a href="/contact" title="Contact me">contact me</a></li>
-        <li><a href="/blog" title="Blog">blog</a></li>
-        <li><a href="/projects" title="Projects">projects</a></li>
-        <li><a href="/utilities" title="Utilities">utilities</a></li>
+        <li>
+          <a href="/about" title="About me">about me</a>
+        </li>
+        <li>
+          <a href="/contact" title="Contact me">contact me</a>
+        </li>
+        <li>
+          <a href="/blog" title="Blog">blog</a>
+        </li>
+        <li>
+          <a href="/projects" title="Projects">projects</a>
+        </li>
+        <li>
+          <a href="/utilities" title="Utilities">utilities</a>
+        </li>
       </ul>
-      <form action="http://www.google.co.uk/search" id="searchForm">
+      <form action="http://www.google.co.uk/search" id="searchForm" name="searchForm">
         <div>
-          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+          <input name="q" type="hidden" value="site:chrisroos.co.uk"> <input name="q" size="31" type="text"> <input name="sa" type="submit" value="Search">
         </div>
       </form>
     </div>
@@ -60,7 +71,7 @@
       <pre class="code ruby">
         class Integer
           def zero_fill_right_shift(count)
-            (self &gt;&gt; count) &amp; ((2 ** (size_in_bits-count))-1) # defined in Integer, size_in_bits is self.size * 8
+            (self &gt;&gt; count) & ((2 ** (size_in_bits-count))-1) # defined in Integer, size_in_bits is self.size * 8
           end
         end
         </pre>
@@ -80,7 +91,7 @@
         javascript: hex_hmac_md5(key, data) =&gt; "9d5c73ef85594d34ec4438b7c97e51d8"
         ruby: HMAC::MD5.hexdigest(key, data) =&gt; "9d5c73ef85594d34ec4438b7c97e51d8"
         </pre>
-      <p>Although we can easily replicate the result of hex_hmac_md5 in ruby, we actually want to replicate the result of b64_hmac_md5 (i.e. the hashed data encoded in base64 representation.)<br />
+      <p>Although we can easily replicate the result of hex_hmac_md5 in ruby, we actually want to replicate the result of b64_hmac_md5 (i.e. the hashed data encoded in base64 representation.)<br>
       With a bit of thinking, and some trial and error, I realised that I needed to calculate the binary digest of the key and data, and then base64 encode the result. <strong>Note</strong>. My original problems arose when comparing the output of the binary string data, what with Javascript being able to display unicode characters and ruby just displaying their code points in octal representation.</p>
       <pre class="code">
         javascript: b64_hmac_md5(key, data) =&gt; "nVxz74VZTTTsRDi3yX5R2A"
@@ -104,14 +115,17 @@
       <h2>Next steps</h2>
       <p>Rubify the code. Although I’ve copied it almost directly from the javascript I think I’ve actually managed to make it slightly less readable.</p>
       <p>Investigate the whole world of <a href="http://www.unicode.org">unicode</a> a bit more – I definitely don’t know as much about it as I should.</p>
-      <hr />
+      <hr>
       <ul class="navigation group">
-        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-04-04-i-want-fast-trains" rel="prev" title="I want fast trains">I want fast trains</a></li>
-        <li class="nextPost"><a class="nextPost" href="/blog/2007-04-14-small-specific-mongrel-web-servers" rel="next" title="Small, specific mongrel web servers">Small, specific mongrel web servers</a> (newer) »</li>
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-04-04-i-want-fast-trains" rel="prev" title="I want fast trains">I want fast trains</a>
+        </li>
+        <li class="nextPost">
+          <a class="nextPost" href="/blog/2007-04-14-small-specific-mongrel-web-servers" rel="next" title="Small, specific mongrel web servers">Small, specific mongrel web servers</a> (newer) »
+        </li>
       </ul>
     </div>
     <div id="footer">
-      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0"></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England & Wales License</a></p>
     </div>
   </div>
   <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>

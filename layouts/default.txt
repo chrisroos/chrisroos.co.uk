@@ -3,7 +3,7 @@ extension: html
 filter:    haml
 ---
 !!! 5
-%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en"}
+%html{:lang => "en"}
 
   %head
     = render(:partial => "/html-header")

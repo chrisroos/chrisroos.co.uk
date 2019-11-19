@@ -1,36 +1,47 @@
-<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
-  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
-  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-  <link href="/images/favicon.gif" rel="icon" />
-  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
-  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="http://www.myopenid.com/server" rel="openid.server" />
-  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator">
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid">
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <link href="/images/favicon.gif" rel="icon">
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml">
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css">
+  <link href="http://www.myopenid.com/server" rel="openid.server">
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate">
   <title>Initial Thoughts About the T-Mobile G1 (the Google Android Phone) - Chris Roos</title>
-  <link href="/blog/2008-12-17-please-sir-can-i-have-a-job" rel="prev" />
-  <link href="/blog/2009-01-06-using-ssi-to-expose-http-request-headers-sent-by-your-browser" rel="next" />
-  <link href="/blog/2005-09-06-linspire" rel="first" />
-  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
-  <link href="/blog" rel="index" />
-  <meta content="Some thoughts about the T-Mobile G1 now that I've had it in my possession for a couple of days." name="description" />
+  <link href="/blog/2008-12-17-please-sir-can-i-have-a-job" rel="prev">
+  <link href="/blog/2009-01-06-using-ssi-to-expose-http-request-headers-sent-by-your-browser" rel="next">
+  <link href="/blog/2005-09-06-linspire" rel="first">
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last">
+  <link href="/blog" rel="index">
+  <meta content="Some thoughts about the T-Mobile G1 now that I've had it in my possession for a couple of days." name="description">
 </head>
 <body>
   <div id="page">
     <div class="group" id="header">
       <p id="site_name"><a href="/">chris roos</a></p>
       <ul class="navigation group">
-        <li><a href="/about" title="About me">about me</a></li>
-        <li><a href="/contact" title="Contact me">contact me</a></li>
-        <li><a href="/blog" title="Blog">blog</a></li>
-        <li><a href="/projects" title="Projects">projects</a></li>
-        <li><a href="/utilities" title="Utilities">utilities</a></li>
+        <li>
+          <a href="/about" title="About me">about me</a>
+        </li>
+        <li>
+          <a href="/contact" title="Contact me">contact me</a>
+        </li>
+        <li>
+          <a href="/blog" title="Blog">blog</a>
+        </li>
+        <li>
+          <a href="/projects" title="Projects">projects</a>
+        </li>
+        <li>
+          <a href="/utilities" title="Utilities">utilities</a>
+        </li>
       </ul>
-      <form action="http://www.google.co.uk/search" id="searchForm">
+      <form action="http://www.google.co.uk/search" id="searchForm" name="searchForm">
         <div>
-          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+          <input name="q" type="hidden" value="site:chrisroos.co.uk"> <input name="q" size="31" type="text"> <input name="sa" type="submit" value="Search">
         </div>
       </form>
     </div>
@@ -44,15 +55,22 @@
       <ul>
         <li>I can’t play songs from my iTunes library (more specifically, the songs that have been downloaded from iTunes). This will result in me carrying two devices: this phone and an iPod (I guess this annoyance only applies when you consider that the iPhone will replace two devices with one, most other mobiles would suffer the same problem).</li>
         <li>There’s no video playback functionality out of the box.</li>
-        <li>The battery life is very, very poor. I’ve installed the <a href="http://code.google.com/p/watts/">Watts</a> application to track battery life over time. It appears to indicate that my handset goes from 100% charge to 0% in just over a day (like, around 26 hours). As I mention, this is only with very light use with <a href="http://en.wikipedia.org/wiki/Wi-Fi">WiFi</a> enabled but no phone calls or text messages. I wonder if I’d think slightly differently if I was to treat the handset as a computer rather than a mobile (26 hours battery life for a computer, even the new <a href="http://en.wikipedia.org/wiki/Netbook">netbooks</a> is unheard of, or at least I think it is).</li>
-        <li>The handset relies on you having one <a href="https://www.google.com/accounts">google account</a>. Although I’m trying to consolidate mine, I currently still have services split across two google accounts.</li>
+        <li>The battery life is very, very poor. I’ve installed the <a href="http://code.google.com/p/watts/">Watts</a> application to track battery life over time. It appears to indicate that my handset goes from 100% charge to 0% in just over a day (like, around 26 hours). As I mention, this is only with very light use with <a href="http://en.wikipedia.org/wiki/Wi-Fi">WiFi</a> enabled but no phone calls or text messages. I wonder if I’d think slightly differently if I was to treat the handset as a computer rather than a mobile (26 hours battery life for a computer, even the new <a href="http://en.wikipedia.org/wiki/Netbook">netbooks</a> is unheard of, or at least I think it is).
+        </li>
+        <li>The handset relies on you having one <a href="https://www.google.com/accounts">google account</a>. Although I’m trying to consolidate mine, I currently still have services split across two google accounts.
+        </li>
         <li>I’m finding it hard to know which apps to install. The comments are often useless and there doesn’t seem to be quite enough information to allow me to make a decision. A related annoyance is that the market app is only available from the phone: I wonder if it’d be easier to browse if it was available from a computer.</li>
-        <li>The supplied instant messenger client is <a href="http://www.google.com/talk/">Google Talk</a> only. That happens to be one of the services that I haven’t moved from one google account to the other so I’m currently unable to use that functionality. I also have contacts on other instant messenger networks that I’d like to be able to chat to when mobile. Maybe there’s an <a href="http://www.adiumx.com/">adium</a> like app that I can install, or even some kind of bridge between google talk and the other protocols that I can configure.</li>
-        <li>There’s no ability to read <a href="http://en.wikipedia.org/wiki/Portable_Document_Format">PDFs</a> out of the box. I’ve installed the <a href="http://www.westtek.com/android/">Jetcet PDF app</a> which, although it does the job, isn’t great.</li>
+        <li>The supplied instant messenger client is <a href="http://www.google.com/talk/">Google Talk</a> only. That happens to be one of the services that I haven’t moved from one google account to the other so I’m currently unable to use that functionality. I also have contacts on other instant messenger networks that I’d like to be able to chat to when mobile. Maybe there’s an <a href="http://www.adiumx.com/">adium</a> like app that I can install, or even some kind of bridge between google talk and the other protocols that I can configure.
+        </li>
+        <li>There’s no ability to read <a href="http://en.wikipedia.org/wiki/Portable_Document_Format">PDFs</a> out of the box. I’ve installed the <a href="http://www.westtek.com/android/">Jetcet PDF app</a> which, although it does the job, isn’t great.
+        </li>
         <li>I’ve found it difficult to find further information about apps I’ve installed. Specifically, the movie player. The author is listed as Jeff Hamilton and with the help of Google I think I’ve found that he’s an Android developer. The fact that he’s an android developer is probably important (I’m likely to trust his creations more than I might a third party developer) and I’d just like to be able to find that stuff out more easily.</li>
-        <li>There doesn’t appear to be a way of storing my bookmarks in the cloud, or (more importantly) a <a href="http://delicious.com/">delicious</a> plugin for the mobile Safari browser supplied.</li>
-        <li>There’s no <a href="http://en.wikipedia.org/wiki/Jack_(connector)">headphone jack</a>. The headphones supplied have a <a href="http://en.wikipedia.org/wiki/Universal_Serial_Bus#Mini.2C_Micro">mini USB</a> connection. I guess that’s OK but as I mentioned above I’m going to have to keep my iPod with me which will currently mean two sets of headphones. I think I can probably buy a mini USB adapter so that I can cut out one pair of headphones.</li>
-        <li>Trying to use the <a href="http://en.wikipedia.org/wiki/Accelerometer">accelerometer</a> to play <a href="http://en.wikipedia.org/wiki/Pacman">Pac Man</a> just doesn’t appear to work at all.</li>
+        <li>There doesn’t appear to be a way of storing my bookmarks in the cloud, or (more importantly) a <a href="http://delicious.com/">delicious</a> plugin for the mobile Safari browser supplied.
+        </li>
+        <li>There’s no <a href="http://en.wikipedia.org/wiki/Jack_(connector)">headphone jack</a>. The headphones supplied have a <a href="http://en.wikipedia.org/wiki/Universal_Serial_Bus#Mini.2C_Micro">mini USB</a> connection. I guess that’s OK but as I mentioned above I’m going to have to keep my iPod with me which will currently mean two sets of headphones. I think I can probably buy a mini USB adapter so that I can cut out one pair of headphones.
+        </li>
+        <li>Trying to use the <a href="http://en.wikipedia.org/wiki/Accelerometer">accelerometer</a> to play <a href="http://en.wikipedia.org/wiki/Pacman">Pac Man</a> just doesn’t appear to work at all.
+        </li>
       </ul>
       <h2>Annoyances that I’ve solved while writing this post</h2>
       <ul>
@@ -61,25 +79,32 @@
       </ul>
       <h2>Things to consider</h2>
       <ul>
-        <li>The handset is only supplied with a 2GB <a href="http://en.wikipedia.org/wiki/MicroSD">Micro SD</a> card. I may well not run into a problem with this but it seems a bit stingy when you consider the 8GB and 16GB iPhones.</li>
+        <li>The handset is only supplied with a 2GB <a href="http://en.wikipedia.org/wiki/MicroSD">Micro SD</a> card. I may well not run into a problem with this but it seems a bit stingy when you consider the 8GB and 16GB iPhones.
+        </li>
       </ul>
       <h2>Good points</h2>
       <p>I wouldn’t be surprised if most of these good points apply to the other large screen, internet enabled phones available at the moment.</p>
       <ul>
-        <li>Copy and paste. If this had been missing (as it is in the iPhone) it would’ve been very difficult for me to log into most of the websites I use frequently, as I use <a href="https://www.pwdhash.com/">pwdhash</a> to generate a unique password for each site. Although it’s not ideal, the copy/paste functionality allows me to generate my password on pwdhash.com, copy it and then paste it into the site I’m trying to access.</li>
-        <li>Having contacts synced immediately. I’ve never had this on any phone I’ve owned so I consider it to be a great feature. This is especially useful because I recently spent some time organising my google contacts and syncing them (using <a href="http://www.soocial.com/">soocial</a>) with my Mac Address book.</li>
-        <li>Having my calendar immediately available on my phone and on the web. I would previously rely on <a href="http://en.wikipedia.org/wiki/Short_message_service">SMS</a> notifications from my google calendar to tell me when I was supposed to do something. That worked fine but this is just a whole lot better.</li>
+        <li>Copy and paste. If this had been missing (as it is in the iPhone) it would’ve been very difficult for me to log into most of the websites I use frequently, as I use <a href="https://www.pwdhash.com/">pwdhash</a> to generate a unique password for each site. Although it’s not ideal, the copy/paste functionality allows me to generate my password on pwdhash.com, copy it and then paste it into the site I’m trying to access.
+        </li>
+        <li>Having contacts synced immediately. I’ve never had this on any phone I’ve owned so I consider it to be a great feature. This is especially useful because I recently spent some time organising my google contacts and syncing them (using <a href="http://www.soocial.com/">soocial</a>) with my Mac Address book.
+        </li>
+        <li>Having my calendar immediately available on my phone and on the web. I would previously rely on <a href="http://en.wikipedia.org/wiki/Short_message_service">SMS</a> notifications from my google calendar to tell me when I was supposed to do something. That worked fine but this is just a whole lot better.
+        </li>
         <li>Mobile email and web access. This sounds obvious, but I’ve not had an Internet enabled mobile (or at least not one that I’ve kept long enough) before so it’s a real plus.</li>
         <li>Notifications. I don’t know whether the iPhone has something similar but having chats/tweets/emails/calendar reminders/downloads etc pop up when they’re ready is really useful.</li>
       </ul>
-      <hr />
+      <hr>
       <ul class="navigation group">
-        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2008-12-17-please-sir-can-i-have-a-job" rel="prev" title="Please Sir Can I Have a Job">Please Sir Can I Have a Job</a></li>
-        <li class="nextPost"><a class="nextPost" href="/blog/2009-01-06-using-ssi-to-expose-http-request-headers-sent-by-your-browser" rel="next" title="Using SSI to Expose Http Request Headers Sent by Your Browser">Using SSI to Expose Http Request Headers Sent by Your Browser</a> (newer) »</li>
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2008-12-17-please-sir-can-i-have-a-job" rel="prev" title="Please Sir Can I Have a Job">Please Sir Can I Have a Job</a>
+        </li>
+        <li class="nextPost">
+          <a class="nextPost" href="/blog/2009-01-06-using-ssi-to-expose-http-request-headers-sent-by-your-browser" rel="next" title="Using SSI to Expose Http Request Headers Sent by Your Browser">Using SSI to Expose Http Request Headers Sent by Your Browser</a> (newer) »
+        </li>
       </ul>
     </div>
     <div id="footer">
-      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0"></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England & Wales License</a></p>
     </div>
   </div>
   <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>

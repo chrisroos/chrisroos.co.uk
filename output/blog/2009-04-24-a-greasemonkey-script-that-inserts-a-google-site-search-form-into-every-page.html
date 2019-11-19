@@ -1,36 +1,47 @@
-<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
-  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
-  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-  <link href="/images/favicon.gif" rel="icon" />
-  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
-  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="http://www.myopenid.com/server" rel="openid.server" />
-  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator">
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid">
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <link href="/images/favicon.gif" rel="icon">
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml">
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css">
+  <link href="http://www.myopenid.com/server" rel="openid.server">
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate">
   <title>A Greasemonkey Script that inserts a Google Site Search form into every page - Chris Roos</title>
-  <link href="/blog/2009-04-19-rails-2-3-and-the-ability-to-update-created_at-created_on-updated_at-and-updated_on-timestamps" rel="prev" />
-  <link href="/blog/2009-06-23-introducing-deliciolytics" rel="next" />
-  <link href="/blog/2005-09-06-linspire" rel="first" />
-  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
-  <link href="/blog" rel="index" />
-  <meta content="A greasemonkey script that makes it really easy to use google to search within the current site. Press ctrl-9 to visit the search form." name="description" />
+  <link href="/blog/2009-04-19-rails-2-3-and-the-ability-to-update-created_at-created_on-updated_at-and-updated_on-timestamps" rel="prev">
+  <link href="/blog/2009-06-23-introducing-deliciolytics" rel="next">
+  <link href="/blog/2005-09-06-linspire" rel="first">
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last">
+  <link href="/blog" rel="index">
+  <meta content="A greasemonkey script that makes it really easy to use google to search within the current site. Press ctrl-9 to visit the search form." name="description">
 </head>
 <body>
   <div id="page">
     <div class="group" id="header">
       <p id="site_name"><a href="/">chris roos</a></p>
       <ul class="navigation group">
-        <li><a href="/about" title="About me">about me</a></li>
-        <li><a href="/contact" title="Contact me">contact me</a></li>
-        <li><a href="/blog" title="Blog">blog</a></li>
-        <li><a href="/projects" title="Projects">projects</a></li>
-        <li><a href="/utilities" title="Utilities">utilities</a></li>
+        <li>
+          <a href="/about" title="About me">about me</a>
+        </li>
+        <li>
+          <a href="/contact" title="Contact me">contact me</a>
+        </li>
+        <li>
+          <a href="/blog" title="Blog">blog</a>
+        </li>
+        <li>
+          <a href="/projects" title="Projects">projects</a>
+        </li>
+        <li>
+          <a href="/utilities" title="Utilities">utilities</a>
+        </li>
       </ul>
-      <form action="http://www.google.co.uk/search" id="searchForm">
+      <form action="http://www.google.co.uk/search" id="searchForm" name="searchForm">
         <div>
-          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+          <input name="q" type="hidden" value="site:chrisroos.co.uk"> <input name="q" size="31" type="text"> <input name="sa" type="submit" value="Search">
         </div>
       </form>
     </div>
@@ -39,17 +50,20 @@
       <h1>A Greasemonkey Script that inserts a Google Site Search form into every page</h1>
       <p>I often find myself wanting to use <a href="http://google.com">google</a> to search within a site I’m visiting. My current method is to navigate to the search box in <a href="http://firefox.com">firefox</a> (cmd-k) and type “site:domain-of-site search-term”. That’s a bit painful so I finally got around to creating a <a href="http://en.wikipedia.org/wiki/Greasemonkey">greasemonkey</a> script to make it easier. <a href="http://userscripts.org/scripts/show/47192">Install the script</a> from the <a href="http://userscripts.org">userscripts</a> site.</p>
       <p>Once installed, you can hit ctrl-9 on any page (except google, that’d be crazy) and a search form will appear at the top of the page ready for you to type into.</p>
-      <p><a href="http://www.flickr.com/photos/chrisjroos/3470172619/"><img alt="" src="http://farm4.static.flickr.com/3536/3470172619_99f12d3ca9.jpg" /></a></p>
+      <p><a href="http://www.flickr.com/photos/chrisjroos/3470172619/"><img alt="" src="http://farm4.static.flickr.com/3536/3470172619_99f12d3ca9.jpg"></a></p>
       <p>The simplest thing is to type your search term and tap enter to view the google results. However, it’s often useful to restrict your search to more than just the domain of the site (I might want to search for things I’ve said in twitter, site:twitter.com/chrisroos, for example) so there’s a drop down list of url components that you can use to restrict which areas of the site you want to search. Pressing escape within any of the fields in the search form will hide it again.</p>
       <p>A previous version of this script would display the search form at the top of each page all the time. That didn’t play nice with absolutely positioned elements already in the page though, hence my decision to only show it when you actually need it. There’s still work to do (one of the main problems is that the search form will currently be inserted into every frame on a page, including iframes) but I think it’s useful enough to get out there.</p>
-      <hr />
+      <hr>
       <ul class="navigation group">
-        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2009-04-19-rails-2-3-and-the-ability-to-update-created_at-created_on-updated_at-and-updated_on-timestamps" rel="prev" title="Rails 2.3 and the ability to update created_at, created_on, updated_at and updated_on timestamps">Rails 2.3 and the ability to update created_at, created_on, updated_at and updated_on timestamps</a></li>
-        <li class="nextPost"><a class="nextPost" href="/blog/2009-06-23-introducing-deliciolytics" rel="next" title="Introducing Deliciolytics">Introducing Deliciolytics</a> (newer) »</li>
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2009-04-19-rails-2-3-and-the-ability-to-update-created_at-created_on-updated_at-and-updated_on-timestamps" rel="prev" title="Rails 2.3 and the ability to update created_at, created_on, updated_at and updated_on timestamps">Rails 2.3 and the ability to update created_at, created_on, updated_at and updated_on timestamps</a>
+        </li>
+        <li class="nextPost">
+          <a class="nextPost" href="/blog/2009-06-23-introducing-deliciolytics" rel="next" title="Introducing Deliciolytics">Introducing Deliciolytics</a> (newer) »
+        </li>
       </ul>
     </div>
     <div id="footer">
-      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0"></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England & Wales License</a></p>
     </div>
   </div>
   <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>

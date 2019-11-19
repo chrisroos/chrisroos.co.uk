@@ -1,35 +1,46 @@
-<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
-  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
-  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-  <link href="/images/favicon.gif" rel="icon" />
-  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
-  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="http://www.myopenid.com/server" rel="openid.server" />
-  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator">
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid">
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <link href="/images/favicon.gif" rel="icon">
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml">
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css">
+  <link href="http://www.myopenid.com/server" rel="openid.server">
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate">
   <title>Connecting to gmail with Ruby (or Connecting to POP3 servers over SSL with Ruby) - Chris Roos</title>
-  <link href="/blog/2006-10-20-boolean-method-in-ruby-sibling-of-array-float-integer-and-string" rel="prev" />
-  <link href="/blog/2006-11-01-google-adwords-api-internal-error-using-the-sandbox" rel="next" />
-  <link href="/blog/2005-09-06-linspire" rel="first" />
-  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
-  <link href="/blog" rel="index" />
+  <link href="/blog/2006-10-20-boolean-method-in-ruby-sibling-of-array-float-integer-and-string" rel="prev">
+  <link href="/blog/2006-11-01-google-adwords-api-internal-error-using-the-sandbox" rel="next">
+  <link href="/blog/2005-09-06-linspire" rel="first">
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last">
+  <link href="/blog" rel="index">
 </head>
 <body>
   <div id="page">
     <div class="group" id="header">
       <p id="site_name"><a href="/">chris roos</a></p>
       <ul class="navigation group">
-        <li><a href="/about" title="About me">about me</a></li>
-        <li><a href="/contact" title="Contact me">contact me</a></li>
-        <li><a href="/blog" title="Blog">blog</a></li>
-        <li><a href="/projects" title="Projects">projects</a></li>
-        <li><a href="/utilities" title="Utilities">utilities</a></li>
+        <li>
+          <a href="/about" title="About me">about me</a>
+        </li>
+        <li>
+          <a href="/contact" title="Contact me">contact me</a>
+        </li>
+        <li>
+          <a href="/blog" title="Blog">blog</a>
+        </li>
+        <li>
+          <a href="/projects" title="Projects">projects</a>
+        </li>
+        <li>
+          <a href="/utilities" title="Utilities">utilities</a>
+        </li>
       </ul>
-      <form action="http://www.google.co.uk/search" id="searchForm">
+      <form action="http://www.google.co.uk/search" id="searchForm" name="searchForm">
         <div>
-          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+          <input name="q" type="hidden" value="site:chrisroos.co.uk"> <input name="q" size="31" type="text"> <input name="sa" type="submit" value="Search">
         </div>
       </form>
     </div>
@@ -38,7 +49,8 @@
       <h1>Connecting to gmail with Ruby (or Connecting to POP3 servers over SSL with Ruby)</h1>
       <h2>Short version (or, “I want to connect to gmail NOW”)</h2>
       <ul>
-        <li>Download the <a href="http://ruby-doc.org/stdlib-1.9/libdoc/net/pop/rdoc/index.html">pop3 library</a> from <a href="http://www.ruby-lang.org/cgi-bin/cvsweb.cgi//?only_with_tag=HEAD">Ruby HEAD</a> (Ruby 1.9) (<a href="http://www.ruby-lang.org/cgi-bin/cvsweb.cgi/~checkout~/ruby/lib/net/pop.rb?rev=1.73;content-type=application%2Fx-ruby;only_with_tag=HEAD">download file</a>)</li>
+        <li>Download the <a href="http://ruby-doc.org/stdlib-1.9/libdoc/net/pop/rdoc/index.html">pop3 library</a> from <a href="http://www.ruby-lang.org/cgi-bin/cvsweb.cgi//?only_with_tag=HEAD">Ruby HEAD</a> (Ruby 1.9) (<a href="http://www.ruby-lang.org/cgi-bin/cvsweb.cgi/~checkout~/ruby/lib/net/pop.rb?rev=1.73;content-type=application%2Fx-ruby;only_with_tag=HEAD">download file</a>)
+        </li>
         <li>Use the following script to get started (making sure that you explicitly reference the downloaded pop3 file)…</li>
       </ul>
       <pre class="code ruby">
@@ -62,7 +74,8 @@
       <p>This is identical to the short version except that we verify the ssl certificate this time round.</p>
       <ul>
         <li>Follow the first step above (i.e. download new version of pop3 lib).</li>
-        <li>Download the CA Root Certificates bundle from <a href="http://curl.haxx.se/">cURL site</a> (<a href="http://curl.haxx.se/ca/cacert.pem">download file</a>)</li>
+        <li>Download the CA Root Certificates bundle from <a href="http://curl.haxx.se/">cURL site</a> (<a href="http://curl.haxx.se/ca/cacert.pem">download file</a>)
+        </li>
         <li>Copy the code above but change the Net::POP3.enable_ssl line to read…</li>
       </ul>
       <pre class="code ruby">
@@ -82,18 +95,22 @@
       <ul>
         <li>I’ve spent a lot more than the intended couple of hours investigating this stuff, yet still have no rails app receiving emails (although I’m a lot closer now…)</li>
         <li>There’s very little information on the ssl enabled libraries (net/https, net/pop, http-access2 to name but a few) in ruby. Maybe everybody else just knows about this stuff already, but I’m certainly pretty unclear.</li>
-        <li>I have a feeling that it should be possible to use net/https to connect (unverified) to a site that uses ssl and obtain the certificate for use in subsequent verified connections. Indeed, another <a href="http://curl.haxx.se/docs/sslcerts.html">document</a> hosted on curl.haxx.se seems to indicate that this is possible.</li>
+        <li>I have a feeling that it should be possible to use net/https to connect (unverified) to a site that uses ssl and obtain the certificate for use in subsequent verified connections. Indeed, another <a href="http://curl.haxx.se/docs/sslcerts.html">document</a> hosted on curl.haxx.se seems to indicate that this is possible.
+        </li>
         <li>I still know very little about ssl and certificates.</li>
         <li>I hope that what little information is here can help someone else in a similar situation.</li>
       </ul>
-      <hr />
+      <hr>
       <ul class="navigation group">
-        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2006-10-20-boolean-method-in-ruby-sibling-of-array-float-integer-and-string" rel="prev" title="Boolean method in Ruby (sibling of Array, Float, Integer and String) ">Boolean method in Ruby (sibling of Array, Float, Integer and String)</a></li>
-        <li class="nextPost"><a class="nextPost" href="/blog/2006-11-01-google-adwords-api-internal-error-using-the-sandbox" rel="next" title="Google AdWords Api Internal Error using the Sandbox">Google AdWords Api Internal Error using the Sandbox</a> (newer) »</li>
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2006-10-20-boolean-method-in-ruby-sibling-of-array-float-integer-and-string" rel="prev" title="Boolean method in Ruby (sibling of Array, Float, Integer and String) ">Boolean method in Ruby (sibling of Array, Float, Integer and String)</a>
+        </li>
+        <li class="nextPost">
+          <a class="nextPost" href="/blog/2006-11-01-google-adwords-api-internal-error-using-the-sandbox" rel="next" title="Google AdWords Api Internal Error using the Sandbox">Google AdWords Api Internal Error using the Sandbox</a> (newer) »
+        </li>
       </ul>
     </div>
     <div id="footer">
-      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0"></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England & Wales License</a></p>
     </div>
   </div>
   <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>

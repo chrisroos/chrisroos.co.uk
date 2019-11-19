@@ -1,36 +1,47 @@
-<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
-  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
-  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-  <link href="/images/favicon.gif" rel="icon" />
-  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
-  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="http://www.myopenid.com/server" rel="openid.server" />
-  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator">
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid">
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <link href="/images/favicon.gif" rel="icon">
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml">
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css">
+  <link href="http://www.myopenid.com/server" rel="openid.server">
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate">
   <title>Idea - Firefox Extension to Clearly Indicate the Age of a Page - Chris Roos</title>
-  <link href="/blog/2009-01-13-24-hours-of-ramsgate-outer-harbour" rel="prev" />
-  <link href="/blog/2009-01-24-backing-up-jobs-in-a-print-queue-on-windows-xp-and-printing-prn-files" rel="next" />
-  <link href="/blog/2005-09-06-linspire" rel="first" />
-  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
-  <link href="/blog" rel="index" />
-  <meta content="I find myself getting annoyed when reading webpages, blog posts in particular, that contain out of date information." name="description" />
+  <link href="/blog/2009-01-13-24-hours-of-ramsgate-outer-harbour" rel="prev">
+  <link href="/blog/2009-01-24-backing-up-jobs-in-a-print-queue-on-windows-xp-and-printing-prn-files" rel="next">
+  <link href="/blog/2005-09-06-linspire" rel="first">
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last">
+  <link href="/blog" rel="index">
+  <meta content="I find myself getting annoyed when reading webpages, blog posts in particular, that contain out of date information." name="description">
 </head>
 <body>
   <div id="page">
     <div class="group" id="header">
       <p id="site_name"><a href="/">chris roos</a></p>
       <ul class="navigation group">
-        <li><a href="/about" title="About me">about me</a></li>
-        <li><a href="/contact" title="Contact me">contact me</a></li>
-        <li><a href="/blog" title="Blog">blog</a></li>
-        <li><a href="/projects" title="Projects">projects</a></li>
-        <li><a href="/utilities" title="Utilities">utilities</a></li>
+        <li>
+          <a href="/about" title="About me">about me</a>
+        </li>
+        <li>
+          <a href="/contact" title="Contact me">contact me</a>
+        </li>
+        <li>
+          <a href="/blog" title="Blog">blog</a>
+        </li>
+        <li>
+          <a href="/projects" title="Projects">projects</a>
+        </li>
+        <li>
+          <a href="/utilities" title="Utilities">utilities</a>
+        </li>
       </ul>
-      <form action="http://www.google.co.uk/search" id="searchForm">
+      <form action="http://www.google.co.uk/search" id="searchForm" name="searchForm">
         <div>
-          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+          <input name="q" type="hidden" value="site:chrisroos.co.uk"> <input name="q" size="31" type="text"> <input name="sa" type="submit" value="Search">
         </div>
       </form>
     </div>
@@ -38,14 +49,17 @@
       <abbr class="createdAt" title="2009-01-22T20:59:39+00:00">Thu, 22 Jan 09</abbr>
       <h1>Idea - Firefox Extension to Clearly Indicate the Age of a Page</h1>
       <p>I think it’s probably fairly common to see out of date content at the top of the search results when searching for phrases associated with fast moving technologies. I imagine there are lots of posts to do with <a href="http://rubyonrails.org/">Rails</a>, and everything associated therein, that don’t apply anymore (unless you’re developing against an old version of Rails maybe) but still appear high up the rankings. I’ve been thinking that it’d be good to have some visual cue as to the age of the content: as a <a href="http://www.mozilla.com/firefox">firefox</a> user an extension would be ideal (or maybe even a <a href="http://en.wikipedia.org/wiki/Greasemonkey">greasemonkey</a> script). At the very least it should display the date of the post in a standard place/format but it might be more useful to display the age as some quickly scannable text (2 years old, for example). I’m not sure how practical this would be: some pages will contain multiple dates, some won’t contain any, some will contain the date in the <a href="http://en.wikipedia.org/wiki/URL">URL</a>, some will have it marked up as a <a href="http://microformats.org/">microformat</a> and other things I can’t think of right now. This has been on a list of ideas for a while and as I’ll probably never do anything with it I thought I’d record it here.</p>
-      <hr />
+      <hr>
       <ul class="navigation group">
-        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2009-01-13-24-hours-of-ramsgate-outer-harbour" rel="prev" title="24 Hours of Ramsgate Outer Harbour">24 Hours of Ramsgate Outer Harbour</a></li>
-        <li class="nextPost"><a class="nextPost" href="/blog/2009-01-24-backing-up-jobs-in-a-print-queue-on-windows-xp-and-printing-prn-files" rel="next" title="Backing Up Jobs in a Print Queue on Windows XP (and Printing .prn files)">Backing Up Jobs in a Print Queue on Windows XP (and Printing .prn files)</a> (newer) »</li>
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2009-01-13-24-hours-of-ramsgate-outer-harbour" rel="prev" title="24 Hours of Ramsgate Outer Harbour">24 Hours of Ramsgate Outer Harbour</a>
+        </li>
+        <li class="nextPost">
+          <a class="nextPost" href="/blog/2009-01-24-backing-up-jobs-in-a-print-queue-on-windows-xp-and-printing-prn-files" rel="next" title="Backing Up Jobs in a Print Queue on Windows XP (and Printing .prn files)">Backing Up Jobs in a Print Queue on Windows XP (and Printing .prn files)</a> (newer) »
+        </li>
       </ul>
     </div>
     <div id="footer">
-      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0"></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England & Wales License</a></p>
     </div>
   </div>
   <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>

@@ -1,36 +1,47 @@
-<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
-  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
-  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-  <link href="/images/favicon.gif" rel="icon" />
-  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
-  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="http://www.myopenid.com/server" rel="openid.server" />
-  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator">
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid">
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <link href="/images/favicon.gif" rel="icon">
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml">
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css">
+  <link href="http://www.myopenid.com/server" rel="openid.server">
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate">
   <title>Libxml2 Problems When Installing Nokogiri - Chris Roos</title>
-  <link href="/blog/2009-11-17-converting-egg-statements-and-transactions-to-ofx" rel="prev" />
-  <link href="/blog/2010-10-07-day-notes" rel="next" />
-  <link href="/blog/2005-09-06-linspire" rel="first" />
-  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
-  <link href="/blog" rel="index" />
-  <meta content="My solution to the problem of Nokogiri checking for a universal (ppc, i386) version of libxml2 and failing to install." name="description" />
+  <link href="/blog/2009-11-17-converting-egg-statements-and-transactions-to-ofx" rel="prev">
+  <link href="/blog/2010-10-07-day-notes" rel="next">
+  <link href="/blog/2005-09-06-linspire" rel="first">
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last">
+  <link href="/blog" rel="index">
+  <meta content="My solution to the problem of Nokogiri checking for a universal (ppc, i386) version of libxml2 and failing to install." name="description">
 </head>
 <body>
   <div id="page">
     <div class="group" id="header">
       <p id="site_name"><a href="/">chris roos</a></p>
       <ul class="navigation group">
-        <li><a href="/about" title="About me">about me</a></li>
-        <li><a href="/contact" title="Contact me">contact me</a></li>
-        <li><a href="/blog" title="Blog">blog</a></li>
-        <li><a href="/projects" title="Projects">projects</a></li>
-        <li><a href="/utilities" title="Utilities">utilities</a></li>
+        <li>
+          <a href="/about" title="About me">about me</a>
+        </li>
+        <li>
+          <a href="/contact" title="Contact me">contact me</a>
+        </li>
+        <li>
+          <a href="/blog" title="Blog">blog</a>
+        </li>
+        <li>
+          <a href="/projects" title="Projects">projects</a>
+        </li>
+        <li>
+          <a href="/utilities" title="Utilities">utilities</a>
+        </li>
       </ul>
-      <form action="http://www.google.co.uk/search" id="searchForm">
+      <form action="http://www.google.co.uk/search" id="searchForm" name="searchForm">
         <div>
-          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+          <input name="q" type="hidden" value="site:chrisroos.co.uk"> <input name="q" size="31" type="text"> <input name="sa" type="submit" value="Search">
         </div>
       </form>
     </div>
@@ -73,7 +84,7 @@
         </pre>
       <p>After a little digging I discovered that the error was being raised by line 124 of <a href="http://github.com/tenderlove/nokogiri/blob/master/ext/nokogiri/extconf.rb">extconf.rb in nokogiri</a>. In fact, I could replicate the error by checking out a copy of nokogiri and running the following command.</p>
       <pre class="code shell">
-          $ cd /path/to/clone/of/nokogiri &amp;&amp; ruby ext/nokogiri/extconf.rb
+          $ cd /path/to/clone/of/nokogiri &amp;& ruby ext/nokogiri/extconf.rb
         </pre>
       <p>Trial and error using The One True Ruby Debugger (scattering p statements throughout the file) lead me to realise that the problem was being caused by the <a href="http://ruby-doc.org/stdlib/libdoc/mkmf/rdoc/files/mkmf_rb.html#M000549">dir_config</a> call on line 62 of that same file.</p>
       <p>The simplest example I came up with to expose the problem was as follows.</p>
@@ -201,14 +212,17 @@
       <p>But, the rubygems/rbconfig discovery changes things. You see, when I install nokogiri now (using sudo and as my user), and compare the gcc commands from mkmf.log I see that the only difference is the lack of the ARCHFLAGS (-arch ppc -arch i386) when installed as sudo, and their presence when installed as my user. NOTE. The -L /opt/local/lib argument is present in both cases.</p>
       <p>I can’t replicate my initial findings (the absence/presence of -L /opt/local/lib in the gcc commands) so can only assume that something else on the system has changed between my original writeup and continued investigation, or that I’m going mad.</p>
       <p>I’m still not 100% sure that I’ve answered all my questions about everything I came across in my investigation but I’ve got to stop at some point. I’ve been dipping into this post on and off for about a month and just want to get it published.</p>
-      <hr />
+      <hr>
       <ul class="navigation group">
-        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2009-11-17-converting-egg-statements-and-transactions-to-ofx" rel="prev" title="Converting Egg Statements and Transactions to Ofx">Converting Egg Statements and Transactions to Ofx</a></li>
-        <li class="nextPost"><a class="nextPost" href="/blog/2010-10-07-day-notes" rel="next" title="Day notes - Thurs 7th Oct 2010">Day notes - Thurs 7th Oct 2010</a> (newer) »</li>
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2009-11-17-converting-egg-statements-and-transactions-to-ofx" rel="prev" title="Converting Egg Statements and Transactions to Ofx">Converting Egg Statements and Transactions to Ofx</a>
+        </li>
+        <li class="nextPost">
+          <a class="nextPost" href="/blog/2010-10-07-day-notes" rel="next" title="Day notes - Thurs 7th Oct 2010">Day notes - Thurs 7th Oct 2010</a> (newer) »
+        </li>
       </ul>
     </div>
     <div id="footer">
-      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0"></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England & Wales License</a></p>
     </div>
   </div>
   <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>

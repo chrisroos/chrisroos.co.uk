@@ -1,36 +1,47 @@
-<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
-  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
-  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-  <link href="/images/favicon.gif" rel="icon" />
-  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
-  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="http://www.myopenid.com/server" rel="openid.server" />
-  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator">
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid">
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <link href="/images/favicon.gif" rel="icon">
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml">
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css">
+  <link href="http://www.myopenid.com/server" rel="openid.server">
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate">
   <title>Creating a Greasemonkey Script That Applies to the Firefox 'Problem Loading Page' Error Page - Chris Roos</title>
-  <link href="/blog/2009-06-24-down-for-everyone-or-just-me-greasemonkey-script" rel="prev" />
-  <link href="/blog/2009-09-14-pouring-factlets-into-your-brain-holder-via-your-ear-sieves" rel="next" />
-  <link href="/blog/2005-09-06-linspire" rel="first" />
-  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
-  <link href="/blog" rel="index" />
-  <meta content="Some notes about applying a greasemonkey script to the Firefox 'Problem Loading Page' error page." name="description" />
+  <link href="/blog/2009-06-24-down-for-everyone-or-just-me-greasemonkey-script" rel="prev">
+  <link href="/blog/2009-09-14-pouring-factlets-into-your-brain-holder-via-your-ear-sieves" rel="next">
+  <link href="/blog/2005-09-06-linspire" rel="first">
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last">
+  <link href="/blog" rel="index">
+  <meta content="Some notes about applying a greasemonkey script to the Firefox 'Problem Loading Page' error page." name="description">
 </head>
 <body>
   <div id="page">
     <div class="group" id="header">
       <p id="site_name"><a href="/">chris roos</a></p>
       <ul class="navigation group">
-        <li><a href="/about" title="About me">about me</a></li>
-        <li><a href="/contact" title="Contact me">contact me</a></li>
-        <li><a href="/blog" title="Blog">blog</a></li>
-        <li><a href="/projects" title="Projects">projects</a></li>
-        <li><a href="/utilities" title="Utilities">utilities</a></li>
+        <li>
+          <a href="/about" title="About me">about me</a>
+        </li>
+        <li>
+          <a href="/contact" title="Contact me">contact me</a>
+        </li>
+        <li>
+          <a href="/blog" title="Blog">blog</a>
+        </li>
+        <li>
+          <a href="/projects" title="Projects">projects</a>
+        </li>
+        <li>
+          <a href="/utilities" title="Utilities">utilities</a>
+        </li>
       </ul>
-      <form action="http://www.google.co.uk/search" id="searchForm">
+      <form action="http://www.google.co.uk/search" id="searchForm" name="searchForm">
         <div>
-          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+          <input name="q" type="hidden" value="site:chrisroos.co.uk"> <input name="q" size="31" type="text"> <input name="sa" type="submit" value="Search">
         </div>
       </form>
     </div>
@@ -53,14 +64,17 @@
       <p>It turns out that you can’t directly view the source of the ‘Problem loading page’ error page: Press Ctrl-U, or select View &gt; Page Source from the menu, and you’ll be presented with the error page in a popup window. In order to view the source you’ll need to load it, using the chrome protocol, from <a href="chrome://global/content/netError.xhtml">chrome://global/content/netError.xhtml</a> (paste that into the location bar). The error page (which lives in firefox-dir/chrome/toolkit.jar/content/global/netError.xhtml) is pretty empty as it uses javascript to read querystring parameters and populate it on the fly. This allows the same error page to be used for multiple types of error. You can see an example of changing the description in this link: <a href="chrome://global/content/netError.xhtml?e=dnsNotFound&amp;u=http%3A//example.com&amp;d=I%20can%20see%20you...">about:neterror?e=dnsNotFound&amp;u=http%3A//example.com&amp;d=I%20can%20see%20you…</a> (paste that link into the location bar).</p>
       <p>I initially tried to add a button next to the ‘Try Again’ button that appears on the page. My first attempt was to create a xul:button (which is the type of the ‘Try Again’ button) but that didn’t work. I don’t remember the exact details but I don’t think I was able to get addEventListener working in order to attach events to the button. I was able to create a standard html button but the xul.css stylesheet didn’t get applied and it therefore looked odd next to the ‘Try Again’ button. Comments in the source of the <a href="http://userscripts.org/scripts/review/4125">Server not found? Try and try again</a> script lead me to believe that the developer of that script ran into these same problems with the button.</p>
       <p>While digging through the firefox source files I noticed a few files that I found interesting/amusing and hadn’t come across before: <a href="about:mozilla">about:mozilla</a>, <a href="about:robots">about:robots</a> and <a href="about:crashes">about:crashes</a> (I’m not sure why but this link doesn’t appear to work directly, copy and paste it to the location bar to see the page).</p>
-      <hr />
+      <hr>
       <ul class="navigation group">
-        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2009-06-24-down-for-everyone-or-just-me-greasemonkey-script" rel="prev" title="Down for Everyone or Just Me Greasemonkey Script">Down for Everyone or Just Me Greasemonkey Script</a></li>
-        <li class="nextPost"><a class="nextPost" href="/blog/2009-09-14-pouring-factlets-into-your-brain-holder-via-your-ear-sieves" rel="next" title="Pouring Factlets Into Your Brain Holder via Your Ear Sieves">Pouring Factlets Into Your Brain Holder via Your Ear Sieves</a> (newer) »</li>
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2009-06-24-down-for-everyone-or-just-me-greasemonkey-script" rel="prev" title="Down for Everyone or Just Me Greasemonkey Script">Down for Everyone or Just Me Greasemonkey Script</a>
+        </li>
+        <li class="nextPost">
+          <a class="nextPost" href="/blog/2009-09-14-pouring-factlets-into-your-brain-holder-via-your-ear-sieves" rel="next" title="Pouring Factlets Into Your Brain Holder via Your Ear Sieves">Pouring Factlets Into Your Brain Holder via Your Ear Sieves</a> (newer) »
+        </li>
       </ul>
     </div>
     <div id="footer">
-      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0"></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England & Wales License</a></p>
     </div>
   </div>
   <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>

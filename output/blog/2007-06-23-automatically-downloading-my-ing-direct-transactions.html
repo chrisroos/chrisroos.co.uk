@@ -1,35 +1,46 @@
-<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator" />
-  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
-  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-  <link href="/images/favicon.gif" rel="icon" />
-  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
-  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="http://www.myopenid.com/server" rel="openid.server" />
-  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+  <meta content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" name="generator">
+  <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid">
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <link href="/images/favicon.gif" rel="icon">
+  <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml">
+  <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css">
+  <link href="http://www.myopenid.com/server" rel="openid.server">
+  <link href="http://chrisroos.myopenid.com/" rel="openid.delegate">
   <title>Automatically downloading my Ing Direct transactions - Chris Roos</title>
-  <link href="/blog/2007-06-23-this-makes-me-happy" rel="prev" />
-  <link href="/blog/2007-06-26-a-great-day-at-work-and-reevoovision-twittervision-for-reviews" rel="next" />
-  <link href="/blog/2005-09-06-linspire" rel="first" />
-  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
-  <link href="/blog" rel="index" />
+  <link href="/blog/2007-06-23-this-makes-me-happy" rel="prev">
+  <link href="/blog/2007-06-26-a-great-day-at-work-and-reevoovision-twittervision-for-reviews" rel="next">
+  <link href="/blog/2005-09-06-linspire" rel="first">
+  <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last">
+  <link href="/blog" rel="index">
 </head>
 <body>
   <div id="page">
     <div class="group" id="header">
       <p id="site_name"><a href="/">chris roos</a></p>
       <ul class="navigation group">
-        <li><a href="/about" title="About me">about me</a></li>
-        <li><a href="/contact" title="Contact me">contact me</a></li>
-        <li><a href="/blog" title="Blog">blog</a></li>
-        <li><a href="/projects" title="Projects">projects</a></li>
-        <li><a href="/utilities" title="Utilities">utilities</a></li>
+        <li>
+          <a href="/about" title="About me">about me</a>
+        </li>
+        <li>
+          <a href="/contact" title="Contact me">contact me</a>
+        </li>
+        <li>
+          <a href="/blog" title="Blog">blog</a>
+        </li>
+        <li>
+          <a href="/projects" title="Projects">projects</a>
+        </li>
+        <li>
+          <a href="/utilities" title="Utilities">utilities</a>
+        </li>
       </ul>
-      <form action="http://www.google.co.uk/search" id="searchForm">
+      <form action="http://www.google.co.uk/search" id="searchForm" name="searchForm">
         <div>
-          <input name="q" type="hidden" value="site:chrisroos.co.uk" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" />
+          <input name="q" type="hidden" value="site:chrisroos.co.uk"> <input name="q" size="31" type="text"> <input name="sa" type="submit" value="Search">
         </div>
       </form>
     </div>
@@ -40,7 +51,7 @@
       <h2>Earlier</h2>
       <p>Open the <a href="http://www.ingdirect.co.uk">homepage</a></p>
       <p>Click the login link. (goes to https://secure.ingdirect.co.uk/InitialINGDirect.html?command=displayLogin&amp;device=web&amp;locale=en_GB)</p>
-      <p><a href="http://www.flickr.com/photos/chrisjroos/601727552/"><img alt="" src="http://farm2.static.flickr.com/1358/601727552_238151d7e8_m.jpg" /></a></p>
+      <p><a href="http://www.flickr.com/photos/chrisjroos/601727552/"><img alt="" src="http://farm2.static.flickr.com/1358/601727552_238151d7e8_m.jpg"></a></p>
       <p>Type our Customer Number and Last Name into the login form.</p>
       <p>Before submitting the form, we open the <a href="http://livehttpheaders.mozdev.org/">Live Http headers</a> <a href="http://www.mozilla.com/en-US/firefox/">firefox</a> extension.</p>
       <p>We see that the following information gets POSTed to InitialINGDirect.html</p>
@@ -48,7 +59,7 @@
         command=enterCustomerNumber&amp;locale=en_GB&amp;device=web&amp;ACN=&lt;YOUR_CUSTOMER_NUMBER&gt;&amp;LNAME=&lt;YOUR_LAST_NAME&gt;&amp;GO.x=23&amp;GO.y=12
         </pre>
       <p>We are redirected to a second security page.</p>
-      <p><a href="http://www.flickr.com/photos/chrisjroos/601727868/"><img alt="" src="http://farm2.static.flickr.com/1344/601727868_4569c11af6_m.jpg" /></a></p>
+      <p><a href="http://www.flickr.com/photos/chrisjroos/601727868/"><img alt="" src="http://farm2.static.flickr.com/1344/601727868_4569c11af6_m.jpg"></a></p>
       <p>The first use of <a href="http://curl.haxx.se/">curl</a> is to see whether we can get this far from the command line.</p>
       <pre class="code shell">
         $ curl -X"POST" -d"command=enterCustomerNumber" -d"locale=en_GB" -d"device=web" -d"ACN=YOUR_CUSTOMER_NUMBER" -d"LNAME=YOUR_LAST_NAME" -d"GO.x=23" -d"GO.y=12" "https://secure.ingdirect.co.uk/InitialINGDirect.html" -o"&lt;FILENAME_FOR_OUTPUT&gt;"
@@ -62,7 +73,7 @@
       <p>So we amend the curl command to see exactly what’s going on (the removal of -o and the addition of -v)</p>
       <p>Right, so this is interesting – I was expecting to see an <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30">HTTP Location</a> header directing us to the second security page. Instead the body of the response is the javascript seen above. I guess they want to ensure that we have javascript enabled eh.</p>
       <p>Let’s just see what happens if we request the page returned in the javascript (https://secure.ingdirect.co.uk/INGDirect.html?command=displayValidateCustomer&amp;fill=1)</p>
-      <p><a href="http://www.flickr.com/photos/chrisjroos/601442615/"><img alt="" src="http://farm2.static.flickr.com/1130/601442615_2ce8dafc21_m.jpg" /></a></p>
+      <p><a href="http://www.flickr.com/photos/chrisjroos/601442615/"><img alt="" src="http://farm2.static.flickr.com/1130/601442615_2ce8dafc21_m.jpg"></a></p>
       <p>Ok, so that’s not unexpected. How about, if we store the cookies sent to us in the original response, and then request the page returned in the javascript.</p>
       <pre class="code shell">
         $ curl -X"POST" -c"/Users/chrisroos/Desktop/ing-cookie" -d"command=enterCustomerNumber" -d"locale=en_GB" -d"device=web" -d"ACN=YOUR_CUSTOMER_NUMBER" -d"LNAME=YOUR_LAST_NAME" -d"GO.x=23" -d"GO.y=12" "https://secure.ingdirect.co.uk/InitialINGDirect.html"
@@ -148,14 +159,17 @@
         </pre>
       <p>Fine, let’s GET that url then (starting to get bored now). And, wait for it… Yeah, we have downloaded transactions. Phew. Right then, just a little code tidying and I’ll get it uploaded to google code and this article can be posted. Yay.</p>
       <p>Ok, so we’re uploaded to <a href="http://chrisroos.googlecode.com/svn/trunk/ing-direct">google code</a>. Now to set this little fella free… An we’re done.</p>
-      <hr />
+      <hr>
       <ul class="navigation group">
-        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-06-23-this-makes-me-happy" rel="prev" title="This makes me happy">This makes me happy</a></li>
-        <li class="nextPost"><a class="nextPost" href="/blog/2007-06-26-a-great-day-at-work-and-reevoovision-twittervision-for-reviews" rel="next" title="A great day at work and reevoovision (twittervision for reviews)">A great day at work and reevoovision (twittervision for reviews)</a> (newer) »</li>
+        <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-06-23-this-makes-me-happy" rel="prev" title="This makes me happy">This makes me happy</a>
+        </li>
+        <li class="nextPost">
+          <a class="nextPost" href="/blog/2007-06-26-a-great-day-at-work-and-reevoovision-twittervision-for-reviews" rel="next" title="A great day at work and reevoovision (twittervision for reviews)">A great day at work and reevoovision (twittervision for reviews)</a> (newer) »
+        </li>
       </ul>
     </div>
     <div id="footer">
-      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0" /></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a></p>
+      <p class="license"><a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" style="border-width:0"></a> <span href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type" xmlns:dc="http://purl.org/dc/elements/1.1/">deferred until inspiration hits</span> by <span class="vcard"><a class="url fn" href="/contact" property="cc:attributionName" rel="cc:attributionURL" xmlns:cc="http://creativecommons.org/ns#">Chris Roos</a></span> is licensed under a <a href="http://creativecommons.org/licenses/by/2.0/uk/" rel="license">Creative Commons Attribution 2.0 UK: England & Wales License</a></p>
     </div>
   </div>
   <script charset="utf-8" src="/javascripts/google-custom-search.js" type="text/javascript"></script>

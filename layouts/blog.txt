@@ -2,8 +2,8 @@
 extension: html
 filter:    haml
 ---
-!!!
-%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en"}
+!!! 5
+%html{:lang => "en"}
 
   %head
     = render(:partial => "/html-header")
