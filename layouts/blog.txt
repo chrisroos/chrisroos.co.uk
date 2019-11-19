@@ -35,4 +35,4 @@ filter:    haml
         = render(:partial => "/blog_post_navigation")
       #footer
         = render(:partial => "/footer")
-    %script{ :src => "/javascripts/google-custom-search.js", :type => "text/javascript", :charset => "utf-8" }
+    %script{ :src => "/javascripts/google-custom-search.js" }
