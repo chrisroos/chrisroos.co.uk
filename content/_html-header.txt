@@ -3,7 +3,6 @@ filter: haml
 ---
 %meta{:name => "microid", :content => "ff511e16d7108be450fccd6f4611cf8d1d5416d1"}
 %meta{"http-equiv" => "content-type", :content => "text/html; charset=utf-8"}
-%meta{:charset => "utf-8"}
 %link{:rel => "icon", :href => "/images/favicon.gif"}
 %link{:rel => "alternate", :type => "application/rss+xml", :title => "RSS", :href => "http://feeds.feedburner.com/DeferredUntilInspirationHits"}
 %link{:rel => "stylesheet", :href => "/stylesheets/reset.css", :type => "text/css", :media => "all"}
