@@ -49,14 +49,14 @@
       <h1>Generating a MicroId with Ruby</h1>
       <p>Very naive Ruby method to create a <a href="http://www.microid.org">MicroId</a> for a given email and url.</p>
       <pre class="code ruby">
-        require 'digest/sha1'
-        
-        def micro_id(email, url)
-          email_digest = Digest::SHA1.new(email).to_s
-          url_digest = Digest::SHA1.new(url).to_s
-          Digest::SHA1.new(email_digest + url_digest).to_s
-        end
-        </pre>
+require 'digest/sha1'
+
+def micro_id(email, url)
+  email_digest = Digest::SHA1.new(email).to_s
+  url_digest = Digest::SHA1.new(url).to_s
+  Digest::SHA1.new(email_digest + url_digest).to_s
+end
+</pre>
       <p>Note that there is no validation of the MicroId in this code at all.</p>
       <hr>
       <ul class="navigation group">

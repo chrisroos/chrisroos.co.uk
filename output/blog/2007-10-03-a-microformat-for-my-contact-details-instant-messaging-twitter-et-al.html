@@ -55,62 +55,62 @@
       <p>Maybe some code can help explain what I mean.</p>
       <h3>A semantically marked up contact page.</h3>
       <pre class="code html">
-        &lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;
-        
-        &lt;html&gt;
-        
-          &lt;head&gt;
-            &lt;title&gt;Contact Details&lt;/title&gt;
-          &lt;/head&gt;
-        
-          &lt;body&gt;
-            &lt;dl class="contactDetails"&gt;
-              &lt;dt&gt;Skype&lt;/dt&gt;
-              &lt;dd class="skype identifier"&gt;skype-username&lt;/dd&gt;
-              &lt;dt&gt;MSN&lt;/dt&gt;
-              &lt;dd class="msn identifier"&gt;msn-username&lt;/dd&gt;
-            &lt;/dl&gt;
-          &lt;/body&gt;
-        
-        &lt;/html&gt;
-        </pre>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;
+
+&lt;html&gt;
+
+  &lt;head&gt;
+    &lt;title&gt;Contact Details&lt;/title&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;dl class="contactDetails"&gt;
+      &lt;dt&gt;Skype&lt;/dt&gt;
+      &lt;dd class="skype identifier"&gt;skype-username&lt;/dd&gt;
+      &lt;dt&gt;MSN&lt;/dt&gt;
+      &lt;dd class="msn identifier"&gt;msn-username&lt;/dd&gt;
+    &lt;/dl&gt;
+  &lt;/body&gt;
+
+&lt;/html&gt;
+</pre>
       <h3>A parser in <a href="http://www.ruby-lang.org/">ruby</a></h3>
       <pre class="code ruby">
-        require 'rubygems'
-        require 'hpricot'
-        
-        class ContactParser
-          def self.from_html(html)
-            doc = Hpricot(html)
-            new(doc)
-          end
-          def initialize(hpricot_doc)
-            @hpricot_doc = hpricot_doc
-          end
-          def service_identifiers
-            (@hpricot_doc/'.contactDetails .identifier').inject({}) do |hash, e|
-               service = (e.classes - ['identifier']).first
-               identifier = e.inner_text
-               hash[service] = identifier
-               hash
-            end
-          end
-          def identifier(service)
-            (@hpricot_doc/".contactDetails .\#{service}.identifier").inner_text
-          end
-        end
-        
-        contact_details_file = File.dirname(__FILE__) + '/contact-details.html'
-        html = File.open(contact_details_file) { |f| f.read }
-        parser = ContactParser.from_html(html)
-        
-        p parser.service_identifiers
-        # =&gt; {"skype"=&gt;"skype-username", "msn"=&gt;"msn-username"}
-        p parser.identifier('skype')
-        # =&gt; 'skype-username'
-        p parser.identifier('blurgh')
-        # =&gt; ''
-        </pre>
+require 'rubygems'
+require 'hpricot'
+
+class ContactParser
+  def self.from_html(html)
+    doc = Hpricot(html)
+    new(doc)
+  end
+  def initialize(hpricot_doc)
+    @hpricot_doc = hpricot_doc
+  end
+  def service_identifiers
+    (@hpricot_doc/'.contactDetails .identifier').inject({}) do |hash, e|
+       service = (e.classes - ['identifier']).first
+       identifier = e.inner_text
+       hash[service] = identifier
+       hash
+    end
+  end
+  def identifier(service)
+    (@hpricot_doc/".contactDetails .\#{service}.identifier").inner_text
+  end
+end
+
+contact_details_file = File.dirname(__FILE__) + '/contact-details.html'
+html = File.open(contact_details_file) { |f| f.read }
+parser = ContactParser.from_html(html)
+
+p parser.service_identifiers
+# =&gt; {"skype"=&gt;"skype-username", "msn"=&gt;"msn-username"}
+p parser.identifier('skype')
+# =&gt; 'skype-username'
+p parser.identifier('blurgh')
+# =&gt; ''
+</pre>
       <h2>Further considerations</h2>
       <ul>
         <li>If existing communication tools<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> were to integrate this parser then it would be easy to add a contact by giving the url of, for example, their blog.</li>

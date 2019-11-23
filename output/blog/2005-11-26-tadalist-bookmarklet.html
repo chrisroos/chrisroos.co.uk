@@ -52,11 +52,11 @@
       <p>I’d eventually like to develop a dashboard widget myself but until I get there I wondered about developing a <a href="http://en.wikipedia.org/wiki/Bookmarklet">bookmarklet</a> to achieve similar effect.</p>
       <p>I played around for a bit and came up with the following.</p>
       <pre class="code javascript">
-        var new_item=prompt('Add Item');
-        location.href='http://USERNAME.tadalist.com/item/add?list_id=LISTID&amp;content='+encodeURIComponent(new_item);
-        alert('Added');
-        location.href='http://USERNAME.tadalist.com/lists/show/LISTID';
-        </pre>
+var new_item=prompt('Add Item');
+location.href='http://USERNAME.tadalist.com/item/add?list_id=LISTID&amp;content='+encodeURIComponent(new_item);
+alert('Added');
+location.href='http://USERNAME.tadalist.com/lists/show/LISTID';
+</pre>
       <p>It even kinda works, although if you press cancel when it prompts for the list text, it will add a new item of null, obviously…</p>
       <p>If you really feel the need to try this, just copy this <a href="javascript:var%20new_item=prompt('Add%20Item');%20location.href%20=%20'http://USERNAME.tadalist.com/item/add?list_id=LIST_ID&amp;content='+encodeURIComponent(new_item);%20alert('Added');%20location.href='http://USERNAME.tadalist.com/lists/show/LIST_ID';">link</a> to your bookmarks. You will need to replace USERNAME with your username and LISTID with the id of the list that you want items to be added to. To find the id (I’d suggest creating a new list like ‘added from browser’) click on the relevant list in tada and copy the number from the url after lists/show.</p>
       <p>Oh yeah, you will also need to be logged into tada for this to work, otherwise you get a nasty looking <a href="http://www.tadalist.com/no_page_here">error page</a>.</p>

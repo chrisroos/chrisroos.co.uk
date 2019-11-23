@@ -65,63 +65,63 @@
       <p>It looks as though it’s part of del.icio.us itself doesn’t it? Cool huh. It’d be really cool to extend the del.icio.us <a href="http://www.mozilla.com/en-US/firefox/">firefox</a> <a href="https://addons.mozilla.org/en-US/firefox/addon/1532">extension</a> to automatically add this tag when bookmarking a site.</p>
       <p>I’ve created a crappy script that will add this url/MD5_OF_URL tag to each of your posts. It’s hosted on <a href="http://chrisroos.googlecode.com/svn/trunk/delicious_url_tags">google code</a> and pasted below. Err, use at your own risk by the way.</p>
       <pre class="code ruby">
-        USERNAME = 'YOUR_USERNAME'
-        PASSWORD = 'YOUR_PASSWORD'
-        POSTS_CACHE = 'FILE_TO_STORE_YOUR_EXISTING_DELICIOUS_POSTS_IN'
-        
-        # GET ALL POSTS
-        unless File.exists?(POSTS_CACHE)
-          puts "Downloading all posts..."
-          curl_cmd = &lt;&lt;-EndCurl
-        curl "https://api.del.icio.us/v1/posts/all" \
-        -u"\#{USERNAME}:\#{PASSWORD}" \
-        -s
-        &gt; \#{POSTS_CACHE}
-          EndCurl
-          `\#{curl_cmd}`
-        end
-        
-        require 'hpricot'
-        require 'md5'
-        require 'cgi'
-        
-        def add_url_hash_to_post(post)
-          url = CGI.unescapeHTML(post['href'])
-          url_hash = MD5.md5(url)
-          url = CGI.escape(url)
-        
-          tags = post['tag'].split(' ').collect { |tag| CGI.unescapeHTML(tag) }
-          tags &lt;&lt; "url/\#{url_hash}" unless tags.include?("url/\#{url_hash}")
-          tags = tags.collect { |tag| CGI.escape(tag) }
-          tags = tags.join(' ')
-        
-          shared = post['shared']
-          description = CGI.escape(CGI.unescapeHTML(post['description']))
-          extended = CGI.escape(CGI.unescapeHTML(post['extended']))
-        
-          curl_cmd = &lt;&lt;-EndCurl
-        curl "https://api.del.icio.us/v1/posts/add" \
-        -u"\#{USERNAME}:\#{PASSWORD}" \
-        -d"url=\#{url}" \
-        -d"description=\#{description}" \
-        -d"extended=\#{extended}" \
-        -d"tags=\#{tags}" \
-        -d"shared=\#{shared}" \
-        -s
-          EndCurl
-          `\#{curl_cmd}`
-        end
-        
-        # ADD THE URL/&lt;md5_hash&gt; TAG TO EACH POST
-        posts_xml = File.open(POSTS_CACHE) { |f| f.read }
-        posts_doc = Hpricot(posts_xml)
-        count = 1
-        (posts_doc/'posts'/'post').each do |post_xml|
-          puts "Bookmark: \#{count}" if (count % 5) == 0
-          add_url_hash_to_post(post_xml.attributes)
-          count += 1
-        end
-        </pre>
+USERNAME = 'YOUR_USERNAME'
+PASSWORD = 'YOUR_PASSWORD'
+POSTS_CACHE = 'FILE_TO_STORE_YOUR_EXISTING_DELICIOUS_POSTS_IN'
+
+# GET ALL POSTS
+unless File.exists?(POSTS_CACHE)
+  puts "Downloading all posts..."
+  curl_cmd = &lt;&lt;-EndCurl
+curl "https://api.del.icio.us/v1/posts/all" \
+-u"\#{USERNAME}:\#{PASSWORD}" \
+-s
+&gt; \#{POSTS_CACHE}
+  EndCurl
+  `\#{curl_cmd}`
+end
+
+require 'hpricot'
+require 'md5'
+require 'cgi'
+
+def add_url_hash_to_post(post)
+  url = CGI.unescapeHTML(post['href'])
+  url_hash = MD5.md5(url)
+  url = CGI.escape(url)
+
+  tags = post['tag'].split(' ').collect { |tag| CGI.unescapeHTML(tag) }
+  tags &lt;&lt; "url/\#{url_hash}" unless tags.include?("url/\#{url_hash}")
+  tags = tags.collect { |tag| CGI.escape(tag) }
+  tags = tags.join(' ')
+
+  shared = post['shared']
+  description = CGI.escape(CGI.unescapeHTML(post['description']))
+  extended = CGI.escape(CGI.unescapeHTML(post['extended']))
+
+  curl_cmd = &lt;&lt;-EndCurl
+curl "https://api.del.icio.us/v1/posts/add" \
+-u"\#{USERNAME}:\#{PASSWORD}" \
+-d"url=\#{url}" \
+-d"description=\#{description}" \
+-d"extended=\#{extended}" \
+-d"tags=\#{tags}" \
+-d"shared=\#{shared}" \
+-s
+  EndCurl
+  `\#{curl_cmd}`
+end
+
+# ADD THE URL/&lt;md5_hash&gt; TAG TO EACH POST
+posts_xml = File.open(POSTS_CACHE) { |f| f.read }
+posts_doc = Hpricot(posts_xml)
+count = 1
+(posts_doc/'posts'/'post').each do |post_xml|
+  puts "Bookmark: \#{count}" if (count % 5) == 0
+  add_url_hash_to_post(post_xml.attributes)
+  count += 1
+end
+</pre>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-08-31-blue-card-user-stories-coming-out-of-the-reevoo-com-feedback" rel="prev" title="Blue card user stories coming out of the reevoo.com feedback">Blue card user stories coming out of the reevoo.com feedback</a>

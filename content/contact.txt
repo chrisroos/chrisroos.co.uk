@@ -1,85 +1,108 @@
 ---
 title:      Contact details
 created_at: 2008-12-16 12:18:38.134789 +00:00
-filter:     haml
+filter:     erb
 ---
-#hcard-Chris-Roos.vcard
+<div class="vcard" id="hcard-Chris-Roos">
+  <h1>
+    Contact details for me,
+    <a class="url fn" href="/">Chris Roos</a>
+  </h1>
 
-  %h1
-    =h(@page.title)
-    for me,
-    %a.url.fn{ :href => "/"} Chris Roos
-
-  %h2 Email, twitter and instant messenger
-
-  %ul
-    %li
+  <h2>Email, twitter and instant messenger</h2>
+  <ul>
+    <li>
       Email:
-      %a.email{ :href => "mailto:chris@seagul.co.uk" } chris@seagul.co.uk
-    %li
+      <a class="email" href="mailto:chris@seagul.co.uk">chris@seagul.co.uk</a>
+    </li>
+    <li>
       Skype:
-      %a.url{ :href => "skype:chrisjroos?add" } chrisjroos
-    %li
+      <a class="url" href="skype:chrisjroos?add">chrisjroos</a>
+    </li>
+    <li>
       Jabber/GTalk:
-      %a.url{ :href => "xmpp:chris@seagul.co.uk" } chris@seagul.co.uk
-    %li
+      <a class="url" href="xmpp:chris@seagul.co.uk">chris@seagul.co.uk</a>
+    </li>
+    <li>
       MSN:
-      %a.url{ :href => "msn:chrisjroos@hotmail.com" } chrisjroos@hotmail.com
-    %li
+      <a class="url" href="msn:chrisjroos@hotmail.com">chrisjroos@hotmail.com</a>
+    </li>
+    <li>
       YIM:
-      %a.url{ :href => "ymsgr:sendIM?chrisjroos" } chrisjroos
-    %li
+      <a class="url" href="ymsgr:sendIM?chrisjroos">chrisjroos</a>
+    </li>
+    <li>
       AIM:
-      %a.url{ :href => "aim:goim?screenname=chrisjroos" } chrisjroos
+      <a class="url" href="aim:goim?screenname=chrisjroos">chrisjroos</a>
+    </li>
+  </ul>
 
-  %h2 Elsewhere on the web
+  <h2>Elsewhere on the web</h2>
+  <p>In no particular order, these are my profiles at various other sites.  If it's not here then it's almost certainly not me (unless I've missed it).  I don't have a profile on facebook or linkedin.  Oh, and I'm not even active on some of these sites anymore but it feels right to include everything that I can.</p>
 
-  %p In no particular order, these are my profiles at various other sites.  If it's not here then it's almost certainly not me (unless I've missed it).  I don't have a profile on facebook or linkedin.  Oh, and I'm not even active on some of these sites anymore but it feels right to include everything that I can.
+  <h3>Frequent use</h3>
+  <ul>
+    <li>
+      <a class="url" href="https://github.com/chrisroos" rel="me">Github</a>
+    </li>
+  </ul>
 
-  %h3 Frequent use
+  <h3>Infrequent use</h3>
+  <ul>
+    <li>
+      <a class="url" href="http://twitter.com/chrisroos">Twitter</a>
+    </li>
+    <li>
+      <a class="url" href="http://delicious.com/chrisjroos">Delicious</a>
+    </li>
+    <li>
+      <a class="url" href="http://flickr.com/photos/chrisjroos">Flickr</a>
+    </li>
+    <li>
+      <a class="url" href="http://www.last.fm/user/chrisroos">Last.fm</a>
+    </li>
+    <li>
+      <a class="url" href="http://getsatisfaction.com/people/chrisroos">Get Satisfaction</a>
+    </li>
+    <li>
+      <a class="url" href="http://www.dailymugshot.com/main/show/13817">Daily Mug Shot</a>
+    </li>
+    <li>
+      <a class="url" href="http://userscripts.org/users/87038">Userscripts</a>
+    </li>
+    <li>
+      <a class="url" href="http://vimeo.com/chrisroos">Vimeo</a>
+    </li>
+    <li>
+      <a class="url" href="http://www.workingwithrails.com/person/973-chris-roos">Working with Rails</a>
+    </li>
+    <li>
+      <a class="url" href="http://rubyforge.org/users/chrisjroos">Rubyforge</a>
+    </li>
+    <li>
+      <a class="url" href="http://www.beerintheevening.com/user_profile.shtml?username=chrisroos">Beer in the evening</a>
+    </li>
+    <li>
+      <a class="url" href="http://www.43things.com/person/chrisjroos">43 things</a>
+    </li>
+    <li>
+      <a class="url" href="http://allconsuming.net/person/chrisjroos">All consuming</a>
+    </li>
+  </ul>
 
-  %ul
-    %li
-      %a.url{ :href => "https://github.com/chrisroos", :rel => 'me' } Github
-
-  %h3 Infrequent use
-
-  %ul
-    %li
-      %a.url{ :href => "http://twitter.com/chrisroos" } Twitter
-    %li
-      %a.url{ :href => "http://delicious.com/chrisjroos" } Delicious
-    %li
-      %a.url{ :href => "http://flickr.com/photos/chrisjroos" } Flickr
-    %li
-      %a.url{ :href => "http://www.last.fm/user/chrisroos" } Last.fm
-    %li
-      %a.url{ :href => "http://getsatisfaction.com/people/chrisroos" } Get Satisfaction
-    %li
-      %a.url{ :href => "http://www.dailymugshot.com/main/show/13817" } Daily Mug Shot
-    %li
-      %a.url{ :href => "http://userscripts.org/users/87038" } Userscripts
-    %li
-      %a.url{ :href => "http://vimeo.com/chrisroos" } Vimeo
-    %li
-      %a.url{ :href => "http://www.workingwithrails.com/person/973-chris-roos" } Working with Rails
-    %li
-      %a.url{ :href => "http://rubyforge.org/users/chrisjroos" } Rubyforge
-    %li
-      %a.url{ :href => "http://www.beerintheevening.com/user_profile.shtml?username=chrisroos" } Beer in the evening
-    %li
-      %a.url{ :href => "http://www.43things.com/person/chrisjroos" } 43 things
-    %li
-      %a.url{ :href => "http://allconsuming.net/person/chrisjroos" } All consuming
-
-  %h3 Dead sites
-
-  %ul
-    %li
-      %a.url{ :href => "http://upcoming.yahoo.com/user/486473/" } Upcoming
-    %li
-      %a.url{ :href => "https://www.wesabe.com/users/chris-roos" } Wesabe
-    %li
-      %a.url{ :href => "http://claimid.com/chrisroos" } ClaimId
-    %li
-      %a.url{ :href => "http://www.43places.com/person/chrisjroos" } 43 places
+  <h3>Dead sites</h3>
+  <ul>
+    <li>
+      <a class="url" href="http://upcoming.yahoo.com/user/486473/">Upcoming</a>
+    </li>
+    <li>
+      <a class="url" href="https://www.wesabe.com/users/chris-roos">Wesabe</a>
+    </li>
+    <li>
+      <a class="url" href="http://claimid.com/chrisroos">ClaimId</a>
+    </li>
+    <li>
+      <a class="url" href="http://www.43places.com/person/chrisjroos">43 places</a>
+    </li>
+  </ul>
+</div>

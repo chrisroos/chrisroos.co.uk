@@ -50,35 +50,35 @@
       <p>Over about the last day and a half, if you used <a href="http://en.wikipedia.org/wiki/Internet_Explorer_6">Internet Explorer 6</a> to browse any of the reviews on <a href="http://www.reevoo.com">reevoo.com</a>, then we should apologise. It seems that, apart from breaking the layout somewhat, we’d actually managed to cause IE 6 to crash. Not cool. A concerted effort this morning got the problem sorted, but it took longer than it should’ve done, especially when you consider that about 75% of our traffic is from users of IE 6…</p>
       <p>Anyway, with the embarrassment out of the way, I thought I’d share the remotely interesting<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> findings of the investigation into the browser crash. It turns out that a combination of these three little lines of <a href="http://en.wikipedia.org/wiki/CSS">css</a>, and any <a href="http://en.wikipedia.org/wiki/Doctype">doctype</a> declaration<sup class="footnote" id="fnr2"><a href="#fn2">2</a></sup>, will cause IE 6 to hang while waiting for the magic <a href="http://en.wikipedia.org/wiki/Control-Alt-Delete#Windows_NT">Windows kiss of life</a>.</p>
       <pre class="code css">
-        margin-left: 240px;
-        margin-right: 10%;
-        width: expression(document.body.offsetWidth - 256);
-        </pre>
+margin-left: 240px;
+margin-right: 10%;
+width: expression(document.body.offsetWidth - 256);
+</pre>
       <p>It is not the specific values (240px, 10% and 256) in the lines above that are of interest – I was able to express and suppress the problem by altering those. Unfortunately, I didn’t spend any time trying to find the threshold of the problem, and am therefore unsure as to the reason for this behaviour.</p>
       <p>The offending, nasty, IE hack has now been removed. In addition, the day has been spent working with the <a href="http://daftpixel.wordpress.com">designer monkey</a> (ahh, you can call him Adam if you like) to start tidying up the, still somewhat cumbersome, stylesheets.</p>
       <p>For the curious, the simplest html page I could come up with that exhibits the crash behaviour in IE 6 is below.</p>
       <pre class="code html">
-        &lt;!-- &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"&gt; --&gt;
-        &lt;!-- &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt; --&gt;
-        &lt;!-- &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt; --&gt;
-        &lt;!-- &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt; --&gt;
-        &lt;!-- ANY OF THE ABOVE DOCTYPES CAUSE THE PROBLEM.  NO DOCTYPE = NO PROBLEM --&gt;
-        &lt;html&gt;
-          &lt;head&gt;
-            &lt;style type="text/css"&gt;
-              #content {
-                margin-left: 240px;
-                margin-right: 10%;
-                width: expression(document.body.offsetWidth - 256);
-              }
-            &lt;/style&gt;
-            &lt;title&gt;testing ie6&lt;/title&gt;
-          &lt;/head&gt;
-          &lt;body&gt;
-            &lt;div id="content"&gt;blurgh&lt;/div&gt;
-          &lt;/body&gt;
-        &lt;/html&gt;
-        </pre>
+&lt;!-- &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"&gt; --&gt;
+&lt;!-- &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt; --&gt;
+&lt;!-- &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt; --&gt;
+&lt;!-- &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt; --&gt;
+&lt;!-- ANY OF THE ABOVE DOCTYPES CAUSE THE PROBLEM.  NO DOCTYPE = NO PROBLEM --&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;style type="text/css"&gt;
+      #content {
+        margin-left: 240px;
+        margin-right: 10%;
+        width: expression(document.body.offsetWidth - 256);
+      }
+    &lt;/style&gt;
+    &lt;title&gt;testing ie6&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="content"&gt;blurgh&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
       <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> They’re really not interesting.</p>
       <p class="footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a> If there is no doctype declaration, the browser doesn’t crash (something to do with standards mode I believe).</p>
       <hr>

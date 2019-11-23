@@ -54,7 +54,7 @@
       <p>Worked with <a href="http://www.interblah.net/">James A</a> to get a performance testing story accepted.</p>
       <p>Played around with the security command line tool to extract a private key from a secure note in the keychain. You'll need something like this if you want to do the same.</p>
       <pre><code>  $ security find-generic-password -g -l "my-label" 2&gt;&amp;1 1&gt;/dev/null | ruby -e 'puts STDIN.read[/-----BEGIN PRIVATE KEY-----.*-----END PRIVATE KEY-----/].gsub(/\\012/, "\n")' &gt; ~/path-to-key
-        </code></pre>
+</code></pre>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2010-10-13-day-notes" rel="prev" title="Day notes - Weds 13th Oct 2010">Day notes - Weds 13th Oct 2010</a>

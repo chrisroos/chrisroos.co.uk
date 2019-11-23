@@ -49,21 +49,21 @@
       <h1>Changing Irb context</h1>
       <p>I picked up on this yesterday and now cannot find the article (it was something to do with manipulating a rails app from the console). Sorry.</p>
       <pre class="code ruby">
-        irb(main):001:0&gt; class Foo
-        irb(main):002:1&gt; private
-        irb(main):003:1&gt; def bar
-        irb(main):004:2&gt; 'bar'
-        irb(main):005:2&gt; end
-        irb(main):006:1&gt; end
-        =&gt; nil
-        irb(main):007:0&gt; Foo.new.bar
-        NoMethodError: private method `bar' called for #&lt;Foo:0x358304&gt;
-                from (irb):7
-                from :0
-        irb(main):009:0&gt; irb Foo.new # IMPORTANT BIT
-        irb#1(#&lt;Foo:0x31c5fc&gt;):001:0&gt; bar
-        =&gt; "bar"
-        </pre>
+irb(main):001:0&gt; class Foo
+irb(main):002:1&gt; private
+irb(main):003:1&gt; def bar
+irb(main):004:2&gt; 'bar'
+irb(main):005:2&gt; end
+irb(main):006:1&gt; end
+=&gt; nil
+irb(main):007:0&gt; Foo.new.bar
+NoMethodError: private method `bar' called for #&lt;Foo:0x358304&gt;
+        from (irb):7
+        from :0
+irb(main):009:0&gt; irb Foo.new # IMPORTANT BIT
+irb#1(#&lt;Foo:0x31c5fc&gt;):001:0&gt; bar
+=&gt; "bar"
+</pre>
       <p>Although cool, I can’t think of any situations where this would have been useful. Ho hum.</p>
       <hr>
       <ul class="navigation group">

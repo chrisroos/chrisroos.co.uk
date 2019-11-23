@@ -1,10 +1,15 @@
 ---
-filter: haml
+filter: erb
 ---
-%ol.posts
-  - blog_posts.each do |post|
-    %li.post
-      %h2.title
-        %a{ :href => "#{h(friendly_url(post))}" }
-          = h(post.title)
-      %p= h(post.summary)
+<ol class="posts">
+  <% blog_posts.each do |post| %>
+    <li class="post">
+      <h2 class="title">
+        <a href="<%= h(friendly_url(post)) %>">
+          <%= h(post.title) %>
+        </a>
+      </h2>
+      <p><%= h(post.summary) %></p>
+    </li>
+  <% end %>
+</ol>

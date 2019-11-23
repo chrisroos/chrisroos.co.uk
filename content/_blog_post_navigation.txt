@@ -1,19 +1,27 @@
 ---
-filter: haml
+filter: erb
 ---
-- if @page.blog_post
-  %ul.navigation.group
-    - posts = blog_posts(:all, :reverse => false)
-    - post_index = posts.index(@page)
+<% if @page.blog_post %>
+  <ul class="navigation group">
+    <% posts = blog_posts(:all, :reverse => false) %>
+    <% post_index = posts.index(@page) %>
 
-    - if post_index > 0 && previous_post = posts[post_index - 1]
-      %li.previousPost
+    <% if post_index > 0 && previous_post = posts[post_index - 1] %>
+      <li class="previousPost">
         &laquo; (older)
-        %a.previousPost{:rel => "prev", :href => "#{friendly_url(previous_post)}", :title => "#{h(previous_post.title)}"}
-          = h(previous_post.title)
+        <a class="previousPost" href="<%= friendly_url(previous_post) %>" rel="prev" title="<%= h(previous_post.title) %>">
+          <%= h(previous_post.title) %>
+        </a>
+      </li>
+    <% end %>
 
-    - if next_post = posts[post_index + 1]
-      %li.nextPost
-        %a.nextPost{:rel => "next", :href => "#{friendly_url(next_post)}", :title => "#{h(next_post.title)}"}
-          = h(next_post.title)
+    <% if next_post = posts[post_index + 1] %>
+      <li class="nextPost">
+        <a class="nextPost" href="<%= friendly_url(next_post) %>" rel="next" title="<%= h(next_post.title) %>">
+          <%= h(next_post.title) %>
+        </a>
         (newer) &raquo;
+      </li>
+    <% end %>
+  </ul>
+<% end %>

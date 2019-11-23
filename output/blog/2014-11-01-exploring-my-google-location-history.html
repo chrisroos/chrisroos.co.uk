@@ -51,47 +51,47 @@
       <p>I used <a href="https://www.google.com/settings/takeout">Google Takeout</a> to export my <a href="https://maps.google.co.uk/locationhistory/b/0">Location History</a> as JSON. I wanted to know what date range the file covered (it's not obvious from the Location History site) and figured I'd use command line tools rather than parsing the JSON.</p>
       <p>This is the command I ended up with to display the earliest timestamp in the file:</p>
       <pre><code>$ cat LocationHistory.json | \
-        grep timestampMs | \
-        grep -o -E "\d+" | \
-        sort | \
-        head -n1 | \
-        cut -c1-10 | \
-        xargs -J% date -j -f "%s" %
-        
-        #=&gt; Sun  4 Mar 2012 12:33:29 GMT
-        </code></pre>
+grep timestampMs | \
+grep -o -E "\d+" | \
+sort | \
+head -n1 | \
+cut -c1-10 | \
+xargs -J% date -j -f "%s" %
+
+#=&gt; Sun  4 Mar 2012 12:33:29 GMT
+</code></pre>
       <h2>Building the command</h2>
       <p>Use <code>grep</code> to extract all the lines containing timestamps.</p>
       <pre><code>$ head LocationHistory.json | \
-        grep timestampMs
-        
-        #=&gt; "timestampMs" : "1414831041235",
-        </code></pre>
+grep timestampMs
+
+#=&gt; "timestampMs" : "1414831041235",
+</code></pre>
       <p>Use <code>grep</code> to extract the timestamp from each line.</p>
       <pre><code>$ head LocationHistory.json | \
-        grep timestampMs | \
-        grep -o -E "\d+"              # Find 1 or more digits and print the matching string
-        
-        #=&gt; 1414831041235
-        </code></pre>
+grep timestampMs | \
+grep -o -E "\d+"              # Find 1 or more digits and print the matching string
+
+#=&gt; 1414831041235
+</code></pre>
       <p>Use <code>cut</code> to strip off the milliseconds from the timestamp.</p>
       <pre><code>$ head LocationHistory.json | \
-        grep timestampMs | \
-        grep -o -E "\d+" | \
-        cut -c1-10                    # Ignore the last three digits (milliseconds) of the timestamp
-        
-        #=&gt; 1414831041
-        </code></pre>
+grep timestampMs | \
+grep -o -E "\d+" | \
+cut -c1-10                    # Ignore the last three digits (milliseconds) of the timestamp
+
+#=&gt; 1414831041
+</code></pre>
       <p>Use <code>date</code> to display the timestamp in a human friendly format.</p>
       <pre><code>$ head LocationHistory.json | \
-        grep timestampMs | \
-        grep -o -E "\d+" | \
-        cut -c1-10 | \
-        xargs -J% date -j -f "%s" %   # Use `-j` to avoid setting the date
-                                      # and -f "%s" to tell date to parse the string as unix time
-        
-        #=&gt; Sat  1 Nov 2014 08:37:21 GMT
-        </code></pre>
+grep timestampMs | \
+grep -o -E "\d+" | \
+cut -c1-10 | \
+xargs -J% date -j -f "%s" %   # Use `-j` to avoid setting the date
+                              # and -f "%s" to tell date to parse the string as unix time
+
+#=&gt; Sat  1 Nov 2014 08:37:21 GMT
+</code></pre>
       <p>The full command adds <code>sort</code> to ensure all timestamps are ordered and then either <code>head -n1</code> or <code>tail -n1</code> to print the earliest and latest dates respectively.</p>
       <hr>
       <ul class="navigation group">

@@ -1,38 +1,49 @@
 ---
 extension: html
-filter:    haml
+filter:    erb
 ---
-!!! 5
-%html{:lang => "en"}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%= render(:partial => "/html-header") %>
 
-  %head
-    = render(:partial => "/html-header")
-    
-    - if @page.blog_post
-      - posts = blog_posts(:all, :reverse => false)
-      - post_index = posts.index(@page)
-      - if post_index > 0 && previous_post = posts[post_index - 1]
-        %link{:rel => "prev", :href => "#{friendly_url(previous_post)}"}
-      - if next_post = posts[post_index + 1]
-        %link{:rel => "next", :href => "#{friendly_url(next_post)}"}
-      %link{:rel => "first", :href => "#{friendly_url(posts.first)}"}
-      %link{:rel => "last", :href => "#{friendly_url(posts.last)}"}
-      %link{:rel => "index", :href => "/blog"}
-      - if @page.summary
-        %meta{:name => "description", :content => "#{h(@page.summary)}"}
-  %body
-    #page
-      #header.group
-        = render(:partial => "/header")
-        = render(:partial => "/navigation")
-        = render(:partial => "/google-search")
-      #content
-        = short_date(@page)
-        %h1= @page.title
-        = @content
-      
-        %hr
-        = render(:partial => "/blog_post_navigation")
-      #footer
-        = render(:partial => "/footer")
-    %script{ :src => "/javascripts/google-custom-search.js" }
+    <% if @page.blog_post %>
+      <% posts = blog_posts(:all, :reverse => false) %>
+      <% post_index = posts.index(@page) %>
+      <% if post_index > 0 && previous_post = posts[post_index - 1] %>
+        <link href="<%= friendly_url(previous_post) %>" rel="prev" />
+      <% end %>
+      <% if next_post = posts[post_index + 1] %>
+        <link href="<%= friendly_url(next_post) %>" rel="next" />
+      <% end %>
+      <link href="<%= friendly_url(posts.first) %>" rel="first" />
+      <link href="<%= friendly_url(posts.last) %>" rel="last" />
+      <link href="/blog" rel="index" />
+    <% end %>
+
+    <% if @page.summary %>
+      <meta name="description" content="<%= h(@page.summary) %>">
+    <% end %>
+  </head>
+  <body>
+    <div id="page">
+      <div class="group" id="header">
+        <%= render(:partial => "/header") %>
+        <%= render(:partial => "/navigation") %>
+        <%= render(:partial => "/google-search") %>
+      </div>
+      <div id="content">
+        <%= short_date(@page) %>
+        <h1><%= @page.title %></h1>
+        <%= @content %>
+
+        <hr />
+        <%= render(:partial => "/blog_post_navigation") %>
+      </div>
+      <div id="footer">
+        <%= render(:partial => "/footer") %>
+      </div>
+    </div>
+    <script src="/javascripts/google-custom-search.js"></script>
+  </body>
+</html>

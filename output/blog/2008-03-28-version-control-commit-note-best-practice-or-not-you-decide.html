@@ -2,94 +2,122 @@
 <html lang="en">
   <head>
     <meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
-    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-    <link href="/images/favicon.gif" rel="icon" />
-    <link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
-    <link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="http://www.myopenid.com/server" rel="openid.server" />
-    <link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
-    <title>Version Control Commit Note Best Practice (or not, you decide) - Chris Roos</title>
-    <link href="/blog/2008-03-04-version-0-2-of-the-del-icio-us-trackback-extension" rel="prev" />
-    <link href="/blog/2008-03-29-files-hosted-on-google-groups-cannot-be-opened-in-safari-or-internet-explorer" rel="next" />
-    <link href="/blog/2005-09-06-linspire" rel="first" />
-    <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
-    <link href="/blog" rel="index" />
+<meta content="text/html; charset=utf-8" http-equiv="content-type" />
+<link href="/images/favicon.gif" rel="icon" />
+<link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+<link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+<link href="http://www.myopenid.com/server" rel="openid.server" />
+<link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+<title>Version Control Commit Note Best Practice (or not, you decide) - Chris Roos</title>
+
+
+    
+      
+      
+      
+        <link href="/blog/2008-03-04-version-0-2-of-the-del-icio-us-trackback-extension" rel="prev" />
+      
+      
+        <link href="/blog/2008-03-29-files-hosted-on-google-groups-cannot-be-opened-in-safari-or-internet-explorer" rel="next" />
+      
+      <link href="/blog/2005-09-06-linspire" rel="first" />
+      <link href="/blog/2015-11-20-confusing-git-log-behaviour" rel="last" />
+      <link href="/blog" rel="index" />
+    
+
+    
   </head>
   <body>
     <div id="page">
       <div class="group" id="header">
         <p id="site_name">
-          <a href="/">chris roos</a>
-        </p>
+  <a href="/">chris roos</a>
+</p>
+
         <ul class="navigation group">
-          <li>
-            <a href="/about" title="About me">about me</a>
-          </li>
-          <li>
-            <a href="/contact" title="Contact me">contact me</a>
-          </li>
-          <li>
-            <a href="/blog" title="Blog">blog</a>
-          </li>
-          <li>
-            <a href="/projects" title="Projects">projects</a>
-          </li>
-          <li>
-            <a href="/utilities" title="Utilities">utilities</a>
-          </li>
-        </ul>
+  <li>
+    <a href="/about" title="About me">about me</a>
+  </li>
+  <li>
+    <a href="/contact" title="Contact me">contact me</a>
+  </li>
+  <li>
+    <a href="/blog" title="Blog">blog</a>
+  </li>
+  <li>
+    <a href="/projects" title="Projects">projects</a>
+  </li>
+  <li>
+    <a href="/utilities" title="Utilities">utilities</a>
+  </li>
+</ul>
+
         <form action="http://www.google.co.uk/search" id="searchForm">
-          <div>
-            <input name="q" type="hidden" value="site:chrisroos.co.uk" />
-            <input name="q" size="31" type="text" />
-            <input name="sa" type="submit" value="Search" />
-          </div>
-        </form>
+  <div>
+    <input name="q" type="hidden" value="site:chrisroos.co.uk" />
+    <input name="q" size="31" type="text" />
+    <input name="sa" type="submit" value="Search" />
+  </div>
+</form>
+
       </div>
       <div id="content">
         <abbr class="createdAt" title="2008-03-28T19:17:57+00:00">Fri, 28 Mar 08</abbr>
         <h1>Version Control Commit Note Best Practice (or not, you decide)</h1>
         <p>This is my own opinion but it has evolved from the need to dig back into past commit notes <strong>a lot</strong>.  The lazy approach to writing commit notes is just to explain what&#8217;s in the changeset (much like a code comment that says &#8220;set x to 1&#8221;):  It&#8217;s exactly what I used to write (and still do if I&#8217;m not concentrating).  The more useful approach is to explain why the changeset is there.  I can take two of my own commit notes as examples.</p>
-        <h2>Useless commit note</h2>
-        <blockquote>
-        <p>Capistrano deploy:setup should generate apache proxy cluster configuration.</p>
-        </blockquote>
-        <p>This is a fairly useless commit note: If I was to come back to this (as I did today when looking at it) I would have no idea what I was trying to achieve.  Why should the config be generated at setup and not at some other point in the deploy process?  If I&#8217;d spent an extra 30 seconds writing the note in the first place I wouldn&#8217;t have to try to work out what I was trying to achieve.</p>
-        <h2>More useful commit note</h2>
-        <blockquote>
-        <p>This isn't a card but _has_ been bugging me for a long time. You can now click on the <product_type> in the 'Top 3 <product_type>' headings on super category pages to visit that product type. Oh, I also made them h2s as having multiple h1s on a page just doesn't make sense.</p>
-        </blockquote>
-        <p>This is a much more useful (imho) comment.  If at some point in the future we want to know why the &#8216;top 3 product types&#8217; is now a link, we can come back to the note and see that it was because I, personally, was fed up of it not being so.  I also explain why I&#8217;ve changed the heading from a h1 to h2 (although that comment could be open to interpretation: why doesn&#8217;t it make sense?).</p>
-        <p>This all ties into submitting small checkins that are only doing one thing, but I might try to give some examples of that separately.</p>
-        <p>Anyone else have any thoughts or alternative approaches?</p>
+<h2>Useless commit note</h2>
+<blockquote>
+<p>Capistrano deploy:setup should generate apache proxy cluster configuration.</p>
+</blockquote>
+<p>This is a fairly useless commit note: If I was to come back to this (as I did today when looking at it) I would have no idea what I was trying to achieve.  Why should the config be generated at setup and not at some other point in the deploy process?  If I&#8217;d spent an extra 30 seconds writing the note in the first place I wouldn&#8217;t have to try to work out what I was trying to achieve.</p>
+<h2>More useful commit note</h2>
+<blockquote>
+<p>This isn't a card but _has_ been bugging me for a long time. You can now click on the <product_type> in the 'Top 3 <product_type>' headings on super category pages to visit that product type. Oh, I also made them h2s as having multiple h1s on a page just doesn't make sense.</p>
+</blockquote>
+<p>This is a much more useful (imho) comment.  If at some point in the future we want to know why the &#8216;top 3 product types&#8217; is now a link, we can come back to the note and see that it was because I, personally, was fed up of it not being so.  I also explain why I&#8217;ve changed the heading from a h1 to h2 (although that comment could be open to interpretation: why doesn&#8217;t it make sense?).</p>
+<p>This all ties into submitting small checkins that are only doing one thing, but I might try to give some examples of that separately.</p>
+<p>Anyone else have any thoughts or alternative approaches?</p>
+
         <hr />
-        <ul class="navigation group">
-          <li class="previousPost">
-            &laquo; (older)
-            <a class="previousPost" href="/blog/2008-03-04-version-0-2-of-the-del-icio-us-trackback-extension" rel="prev" title="Version 0.2 of the del.icio.us trackback extension">
-              Version 0.2 of the del.icio.us trackback extension
-            </a>
-          </li>
-          <li class="nextPost">
-            <a class="nextPost" href="/blog/2008-03-29-files-hosted-on-google-groups-cannot-be-opened-in-safari-or-internet-explorer" rel="next" title="Files hosted on Google Groups cannot be opened in Safari (or Internet Explorer)">
-              Files hosted on Google Groups cannot be opened in Safari (or Internet Explorer)
-            </a>
-            (newer) &raquo;
-          </li>
-        </ul>
+        
+  <ul class="navigation group">
+    
+    
+
+    
+      <li class="previousPost">
+        &laquo; (older)
+        <a class="previousPost" href="/blog/2008-03-04-version-0-2-of-the-del-icio-us-trackback-extension" rel="prev" title="Version 0.2 of the del.icio.us trackback extension">
+          Version 0.2 of the del.icio.us trackback extension
+        </a>
+      </li>
+    
+
+    
+      <li class="nextPost">
+        <a class="nextPost" href="/blog/2008-03-29-files-hosted-on-google-groups-cannot-be-opened-in-safari-or-internet-explorer" rel="next" title="Files hosted on Google Groups cannot be opened in Safari (or Internet Explorer)">
+          Files hosted on Google Groups cannot be opened in Safari (or Internet Explorer)
+        </a>
+        (newer) &raquo;
+      </li>
+    
+  </ul>
+
+
       </div>
       <div id="footer">
         <p class="license">
-          <a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/">
-            <img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by/2.0/uk/80x15.png" />
-          </a>
-          <br />
-          This work is licensed under a
-          <a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/">
-            Creative Commons Attribution 2.0 UK: England &amp; Wales License
-          </a>.
-        </p>
+  <a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/">
+    <img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by/2.0/uk/80x15.png" />
+  </a>
+  <br />
+  This work is licensed under a
+  <a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/">
+    Creative Commons Attribution 2.0 UK: England &amp; Wales License
+  </a>.
+</p>
+
       </div>
     </div>
     <script src="/javascripts/google-custom-search.js"></script>

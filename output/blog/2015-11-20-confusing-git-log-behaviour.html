@@ -51,44 +51,44 @@
       <p>I can demonstrate the behaviour in an empty repository.</p>
       <h2>Create a new git repo</h2>
       <pre><code>$ cd /tmp
-        $ mkdir testing-git-log
-        $ cd testing-git-log
-        $ git init
-        </code></pre>
+$ mkdir testing-git-log
+$ cd testing-git-log
+$ git init
+</code></pre>
       <h2>Create a file and add it to the repo</h2>
       <pre><code>$ touch file1
-        $ git add file1
-        $ git commit -m "Add file1"
-        </code></pre>
+$ git add file1
+$ git commit -m "Add file1"
+</code></pre>
       <h2>Edit the author and commit date of the commit</h2>
       <pre><code>$ GIT_COMMITTER_DATE="2015-01-02 09:00" \
-        git commit --amend \
-        --date "2015-01-01 09:00" \
-        --reuse-message HEAD
-        </code></pre>
+git commit --amend \
+--date "2015-01-01 09:00" \
+--reuse-message HEAD
+</code></pre>
       <p>The <code>--date</code> option sets the author date of the commit.</p>
       <p>Setting <code>GIT_COMMITTER_DATE</code> affects the commit date of the commit when it’s amended.</p>
       <h2>Check that the author and commit date have been set as expected</h2>
       <pre><code>$ git log --pretty=fuller
-        Author:     Chris Roos &lt;chris@seagul.co.uk&gt;
-        AuthorDate: Thu Jan 1 09:00:00 2015 +0000
-        Commit:     Chris Roos &lt;chris@seagul.co.uk&gt;
-        CommitDate: Fri Jan 2 09:00:00 2015 +0000
-        
-            Add file1
-        </code></pre>
+Author:     Chris Roos &lt;chris@seagul.co.uk&gt;
+AuthorDate: Thu Jan 1 09:00:00 2015 +0000
+Commit:     Chris Roos &lt;chris@seagul.co.uk&gt;
+CommitDate: Fri Jan 2 09:00:00 2015 +0000
+
+    Add file1
+</code></pre>
       <h2>Use git log to show commits on 1st Jan 2015</h2>
       <pre><code>$ git log --after "2015-01-01 00:00" --before "2015-01-01 23:59:59"
-        # Nothing shown
-        </code></pre>
+# Nothing shown
+</code></pre>
       <h2>Use git log to show commits on 2nd Jan 2015</h2>
       <pre><code>$ git log --after "2015-01-02 00:00" --before "2015-01-02 23:59:59"
-        commit 5f2c92e2b44ab697f92cb4336fd66c6206f56be2
-        Author: Chris Roos &lt;chris@seagul.co.uk&gt;
-        Date:   Thu Jan 1 09:00:00 2015 +0000
-        
-            Add file1
-        </code></pre>
+commit 5f2c92e2b44ab697f92cb4336fd66c6206f56be2
+Author: Chris Roos &lt;chris@seagul.co.uk&gt;
+Date:   Thu Jan 1 09:00:00 2015 +0000
+
+    Add file1
+</code></pre>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2015-11-14-manually-uploading-activities-from-garmin-fit-app" rel="prev" title="Manually uploading activities from Garmin Fit app">Manually uploading activities from Garmin Fit app</a>

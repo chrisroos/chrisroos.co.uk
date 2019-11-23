@@ -50,47 +50,47 @@
       <p>Using the data supplied in this <a href="http://postcodes.easypeasy.com">article</a>, by <a href="http://www.niksargent.com">Nik Sargent</a>, I’ve created a simple web service that returns <a href="http://www.json.org">JSON</a> formatted data about UK Outcodes (the first bit of the postcode).</p>
       <p>The idea is that you can request, for example, /postcodes/se1 and get some json in return. For se1, we receive the following data.</p>
       <pre class="code javascript">
-        {"latitude":"51.498","x":"532600","postcode":"SE1","y":"179500","longitude":"51.498"}
-        </pre>
+{"latitude":"51.498","x":"532600","postcode":"SE1","y":"179500","longitude":"51.498"}
+</pre>
       <p>The service is currently running at <a href="http://seagul.co.uk/postcodes">http://seagul.co.uk/postcodes</a> (<a href="http://seagul.co.uk/postcodes/se1">se1</a>) but I make no guarantees as to its reliability. I’d suggest that if anyone actually finds this useful that they go host it somewhere for themselves in order to control the availability.</p>
       <p>The code is, as always, on <a href="http://chrisroos.googlecode.com/svn/trunk/uk-postcodes/">google code</a> and pasted below.</p>
       <p>I’ve created it as a proof of concept but I figure that, given a little love, it may prove useful to some folks.</p>
       <pre class="code ruby">
-        require 'rubygems'
-        require 'mongrel'
-        require 'json'
-        
-        postcodes_file = File.dirname(__FILE__) + '/uk-postcodes.json'
-        Postcodes = JSON.parse(File.open(postcodes_file) { |f| f.read })
-        Index = Postcodes.inject([]) { |index, postcode| index &lt;&lt; postcode['postcode'].downcase }
-        
-        class PostcodeHandler &lt; Mongrel::HttpHandler
-          def process(request, response)
-            outcode = request.params['PATH_INFO'].sub(/^\//, '').downcase
-            postcode_index = Index.index(outcode)
-            if postcode_index
-              response.start do |head, out|
-                head["Content-Type"] = "text/plain"
-                out &lt;&lt; Postcodes[postcode_index].to_json
-              end
-            else
-              response.start(404) do |head,out|
-                out &lt;&lt; "Postcode not found\n"
-              end
-            end
-          end
-        end
-        
-        config = Mongrel::Configurator.new :host =&gt; 'localhost', :port =&gt; '4000' do
-          listener do
-            uri "/postcodes", :handler =&gt; PostcodeHandler.new
-          end
-          trap("INT") { stop }
-          run
-        end
-        
-        config.join
-        </pre>
+require 'rubygems'
+require 'mongrel'
+require 'json'
+
+postcodes_file = File.dirname(__FILE__) + '/uk-postcodes.json'
+Postcodes = JSON.parse(File.open(postcodes_file) { |f| f.read })
+Index = Postcodes.inject([]) { |index, postcode| index &lt;&lt; postcode['postcode'].downcase }
+
+class PostcodeHandler &lt; Mongrel::HttpHandler
+  def process(request, response)
+    outcode = request.params['PATH_INFO'].sub(/^\//, '').downcase
+    postcode_index = Index.index(outcode)
+    if postcode_index
+      response.start do |head, out|
+        head["Content-Type"] = "text/plain"
+        out &lt;&lt; Postcodes[postcode_index].to_json
+      end
+    else
+      response.start(404) do |head,out|
+        out &lt;&lt; "Postcode not found\n"
+      end
+    end
+  end
+end
+
+config = Mongrel::Configurator.new :host =&gt; 'localhost', :port =&gt; '4000' do
+  listener do
+    uri "/postcodes", :handler =&gt; PostcodeHandler.new
+  end
+  trap("INT") { stop }
+  run
+end
+
+config.join
+</pre>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-07-12-wesabe-open-up-their-api-and-ask-me-to-help-write-their-press-release" rel="prev" title="Wesabe open up their API and ask me to help write their press release...">Wesabe open up their API and ask me to help write their press release...</a>

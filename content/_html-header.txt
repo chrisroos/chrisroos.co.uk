@@ -1,12 +1,12 @@
 ---
-filter: haml
+filter: erb
 ---
-%meta{:name => "microid", :content => "ff511e16d7108be450fccd6f4611cf8d1d5416d1"}
-%meta{"http-equiv" => "content-type", :content => "text/html; charset=utf-8"}
-%link{:rel => "icon", :href => "/images/favicon.gif"}
-%link{:rel => "alternate", :type => "application/rss+xml", :title => "RSS", :href => "http://feeds.feedburner.com/DeferredUntilInspirationHits"}
-%link{:rel => "stylesheet", :href => "/stylesheets/reset.css", :type => "text/css", :media => "all"}
-%link{:rel => "stylesheet", :href => "/stylesheets/congobongo.css", :type => "text/css", :media => "all"}
-%link{:rel => "openid.server", :href => "http://www.myopenid.com/server"}
-%link{:rel => "openid.delegate", :href => "http://chrisroos.myopenid.com/"}
-%title= @page.title + ' - Chris Roos'
+<meta content="ff511e16d7108be450fccd6f4611cf8d1d5416d1" name="microid" />
+<meta content="text/html; charset=utf-8" http-equiv="content-type" />
+<link href="/images/favicon.gif" rel="icon" />
+<link href="http://feeds.feedburner.com/DeferredUntilInspirationHits" rel="alternate" title="RSS" type="application/rss+xml" />
+<link href="/stylesheets/reset.css" media="all" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/congobongo.css" media="all" rel="stylesheet" type="text/css" />
+<link href="http://www.myopenid.com/server" rel="openid.server" />
+<link href="http://chrisroos.myopenid.com/" rel="openid.delegate" />
+<title><%= @page.title + ' - Chris Roos' %></title>

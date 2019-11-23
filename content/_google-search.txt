@@ -1,8 +1,10 @@
 ---
-filter: haml
+filter: erb
 ---
-%form#searchForm{:action => "http://www.google.co.uk/search"}
-  %div
-    %input{:type => "hidden", :name => "q", :value => "site:chrisroos.co.uk"}
-    %input{:type => "text", :name => "q", :size => "31"}
-    %input{:type => "submit", :name => "sa", :value => "Search"}
+<form action="http://www.google.co.uk/search" id="searchForm">
+  <div>
+    <input name="q" type="hidden" value="site:chrisroos.co.uk" />
+    <input name="q" size="31" type="text" />
+    <input name="sa" type="submit" value="Search" />
+  </div>
+</form>

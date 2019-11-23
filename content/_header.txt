@@ -1,5 +1,6 @@
 ---
-filter: haml
+filter: erb
 ---
-%p#site_name
-  %a{:href => "/"}chris roos
+<p id="site_name">
+  <a href="/">chris roos</a>
+</p>

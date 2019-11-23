@@ -55,91 +55,91 @@
         <li>Get a copy of rails</li>
       </ul>
       <pre class="code shell">
-          $ cd /path/to/code
-          $ git clone git://github.com/rails/rails.git
-        </pre>
+  $ cd /path/to/code
+  $ git clone git://github.com/rails/rails.git
+</pre>
       <ul>
         <li>Create a <a href="http://www.mysql.com/">mysql</a> database called rails_timestamps_test, and create a table within that database called people.
         </li>
       </ul>
       <pre class="code sql">
-          mysql&gt; CREATE DATABASE rails_timestamps_test;
-          mysql&gt; USE rails_timestamps_test;
-          mysql&gt; CREATE TABLE people (id INTEGER AUTO_INCREMENT, created_on DATE, created_at DATETIME, updated_on DATE, updated_at DATETIME, PRIMARY KEY (id));
-        </pre>
+  mysql&gt; CREATE DATABASE rails_timestamps_test;
+  mysql&gt; USE rails_timestamps_test;
+  mysql&gt; CREATE TABLE people (id INTEGER AUTO_INCREMENT, created_on DATE, created_at DATETIME, updated_on DATE, updated_at DATETIME, PRIMARY KEY (id));
+</pre>
       <ul>
         <li>Get a copy of my test script</li>
       </ul>
       <pre class="code shell">
-          $ cd /path/to/code
-          $ svn co http://chrisroos.googlecode.com/svn/trunk/scratch/rails_timestamps_test
-        </pre>
+  $ cd /path/to/code
+  $ svn co http://chrisroos.googlecode.com/svn/trunk/scratch/rails_timestamps_test
+</pre>
       <ul>
         <li>Run my script against rails 2.3 (run setup_rails_project.rb without any arguments to see the options) and hopefully see output similar to below (which means that the tests passed as expected).</li>
       </ul>
       <pre class="code shell">
-          $ cd /path/to/code/rails_timestamps_test
-          $ ruby setup_rails_project.rb 2.3.0 /path/to/code/rails
-        
-          *** Removing the rails app at /path/to/code/rails_timestamps_test/projects/rails-app-2-3-0
-          *** Checking out the rails version tagged v2.3.0
-          HEAD is now at beca1f2... Template#mime_type should not use Mime::Type when Action Controller is not included
-          *** Creating the rails app at /path/to/code/rails_timestamps_test/projects/rails-app-2-3-0
-          *** Vendorising rails from /path/to/code/rails to /path/to/code/rails_timestamps_test/projects/rails-app-2-3-0
-          *** Generating rails_version_test.rb in /path/to/code/rails_timestamps_test/projects/rails-app-2-3-0/test/unit to ensure we are testing against the correct version of rails
-          *** Copying assets to the new rails app
-          ****** Linking /path/to/code/rails_timestamps_test/assets/person_test.rb to /path/to/code/rails_timestamps_test/projects/rails-app-2-3-0/test/unit/person_test.rb
-          ****** Linking /path/to/code/rails_timestamps_test/assets/person.rb to /path/to/code/rails_timestamps_test/projects/rails-app-2-3-0/app/models/person.rb
-          ****** Linking /path/to/code/rails_timestamps_test/assets/database.yml to /path/to/code/rails_timestamps_test/projects/rails-app-2-3-0/config/database.yml
-          *** Running the rails version test to ensure that we're testing against the correct version of rails
-          Loaded suite test/unit/rails_version_test
-          Started
-          .
-          Finished in 0.000327 seconds.
-        
-          1 tests, 1 assertions, 0 failures, 0 errors
-          *** Running the timestamps test
-          Loaded suite test/unit/person_test
-          Started
-          ....
-          Finished in 0.078819 seconds.
-        
-          4 tests, 8 assertions, 0 failures, 0 errors
-        </pre>
+  $ cd /path/to/code/rails_timestamps_test
+  $ ruby setup_rails_project.rb 2.3.0 /path/to/code/rails
+
+  *** Removing the rails app at /path/to/code/rails_timestamps_test/projects/rails-app-2-3-0
+  *** Checking out the rails version tagged v2.3.0
+  HEAD is now at beca1f2... Template#mime_type should not use Mime::Type when Action Controller is not included
+  *** Creating the rails app at /path/to/code/rails_timestamps_test/projects/rails-app-2-3-0
+  *** Vendorising rails from /path/to/code/rails to /path/to/code/rails_timestamps_test/projects/rails-app-2-3-0
+  *** Generating rails_version_test.rb in /path/to/code/rails_timestamps_test/projects/rails-app-2-3-0/test/unit to ensure we are testing against the correct version of rails
+  *** Copying assets to the new rails app
+  ****** Linking /path/to/code/rails_timestamps_test/assets/person_test.rb to /path/to/code/rails_timestamps_test/projects/rails-app-2-3-0/test/unit/person_test.rb
+  ****** Linking /path/to/code/rails_timestamps_test/assets/person.rb to /path/to/code/rails_timestamps_test/projects/rails-app-2-3-0/app/models/person.rb
+  ****** Linking /path/to/code/rails_timestamps_test/assets/database.yml to /path/to/code/rails_timestamps_test/projects/rails-app-2-3-0/config/database.yml
+  *** Running the rails version test to ensure that we're testing against the correct version of rails
+  Loaded suite test/unit/rails_version_test
+  Started
+  .
+  Finished in 0.000327 seconds.
+
+  1 tests, 1 assertions, 0 failures, 0 errors
+  *** Running the timestamps test
+  Loaded suite test/unit/person_test
+  Started
+  ....
+  Finished in 0.078819 seconds.
+
+  4 tests, 8 assertions, 0 failures, 0 errors
+</pre>
       <ul>
         <li>Re-run the script against rails 2.2.2 (the last tag before 2.3) and you should see the same as above except for the last test which should now contain two failures.</li>
       </ul>
       <pre class="code shell">
-          $ cd /path/to/code/rails_timestamps_test
-          $ ruby setup_rails_project.rb 2.2.2 /path/to/code/rails
-        
-          ... some lines snipped ...
-          *** Running the timestamps test
-          Loaded suite test/unit/person_test
-          Started
-          ..FF
-          Finished in 0.069429 seconds.
-        
-            1) Failure:
-          test_should_be_able_to_set_updated_at(PersonTest)
-              [test/unit/person_test.rb:35:in `test_should_be_able_to_set_updated_at'
-               /path/to/code/rails_timestamps_test/projects/rails-app-2-2-2/vendor/rails/activesupport/lib/active_support/testing/setup_and_teardown.rb:94:in `__send__'
-               /path/to/code/rails_timestamps_test/projects/rails-app-2-2-2/vendor/rails/activesupport/lib/active_support/testing/setup_and_teardown.rb:94:in `run']:
-          FAIL: Couldn't persist the mass assigned updated_at attribute.
-          &lt;Thu Jan 01 00:00:00 +0000 2009&gt; expected but was
-          &lt;Sun, 19 Apr 2009 09:23:46 UTC +00:00&gt;.
-        
-            2) Failure:
-          test_should_be_able_to_set_updated_on(PersonTest)
-              [test/unit/person_test.rb:28:in `test_should_be_able_to_set_updated_on'
-               /path/to/code/rails_timestamps_test/projects/rails-app-2-2-2/vendor/rails/activesupport/lib/active_support/testing/setup_and_teardown.rb:94:in `__send__'
-               /path/to/code/rails_timestamps_test/projects/rails-app-2-2-2/vendor/rails/activesupport/lib/active_support/testing/setup_and_teardown.rb:94:in `run']:
-          FAIL: Couldn't persist the mass assigned updated_on attribute.
-          &lt;Thu, 01 Jan 2009&gt; expected but was
-          &lt;Sun Apr 19 09:23:46 UTC 2009&gt;.
-        
-          4 tests, 8 assertions, 2 failures, 0 errors
-        </pre>
+  $ cd /path/to/code/rails_timestamps_test
+  $ ruby setup_rails_project.rb 2.2.2 /path/to/code/rails
+
+  ... some lines snipped ...
+  *** Running the timestamps test
+  Loaded suite test/unit/person_test
+  Started
+  ..FF
+  Finished in 0.069429 seconds.
+
+    1) Failure:
+  test_should_be_able_to_set_updated_at(PersonTest)
+      [test/unit/person_test.rb:35:in `test_should_be_able_to_set_updated_at'
+       /path/to/code/rails_timestamps_test/projects/rails-app-2-2-2/vendor/rails/activesupport/lib/active_support/testing/setup_and_teardown.rb:94:in `__send__'
+       /path/to/code/rails_timestamps_test/projects/rails-app-2-2-2/vendor/rails/activesupport/lib/active_support/testing/setup_and_teardown.rb:94:in `run']:
+  FAIL: Couldn't persist the mass assigned updated_at attribute.
+  &lt;Thu Jan 01 00:00:00 +0000 2009&gt; expected but was
+  &lt;Sun, 19 Apr 2009 09:23:46 UTC +00:00&gt;.
+
+    2) Failure:
+  test_should_be_able_to_set_updated_on(PersonTest)
+      [test/unit/person_test.rb:28:in `test_should_be_able_to_set_updated_on'
+       /path/to/code/rails_timestamps_test/projects/rails-app-2-2-2/vendor/rails/activesupport/lib/active_support/testing/setup_and_teardown.rb:94:in `__send__'
+       /path/to/code/rails_timestamps_test/projects/rails-app-2-2-2/vendor/rails/activesupport/lib/active_support/testing/setup_and_teardown.rb:94:in `run']:
+  FAIL: Couldn't persist the mass assigned updated_on attribute.
+  &lt;Thu, 01 Jan 2009&gt; expected but was
+  &lt;Sun Apr 19 09:23:46 UTC 2009&gt;.
+
+  4 tests, 8 assertions, 2 failures, 0 errors
+</pre>
       <ul>
         <li>Re-run the script against any other tagged version of rails you wish.</li>
       </ul>
@@ -148,25 +148,25 @@
         <li>If you specify an invalid tag (i.e. a tag that doesn’t exist in the rails repository) then the rails_version_test.rb will fail.</li>
       </ul>
       <pre class="code shell">
-          $ cd /path/to/code/rails_timestamps_test
-          $ ruby setup_rails_project.rb made.up.tag /path/to/code/rails
-        
-          ... some lines snipped ...
-          Loaded suite test/unit/rails_version_test
-          Started
-          F
-          Finished in 0.045543 seconds.
-        
-            1) Failure:
-          test_should_be_using_rails_made_up_tag(RailsVersionTest)
-              [test/unit/rails_version_test.rb:6:in `test_should_be_using_rails_made_up_tag'
-               /path/to/code/rails_timestamps_test/projects/rails-app-made-up-tag/vendor/rails/activesupport/lib/active_support/testing/setup_and_teardown.rb:94:in `__send__'
-               /path/to/code/rails_timestamps_test/projects/rails-app-made-up-tag/vendor/rails/activesupport/lib/active_support/testing/setup_and_teardown.rb:94:in `run']:
-          &lt;"made.up.tag"&gt; expected but was
-          &lt;"2.2.2"&gt;.
-        
-          1 tests, 1 assertions, 1 failures, 0 errors
-        </pre>
+  $ cd /path/to/code/rails_timestamps_test
+  $ ruby setup_rails_project.rb made.up.tag /path/to/code/rails
+
+  ... some lines snipped ...
+  Loaded suite test/unit/rails_version_test
+  Started
+  F
+  Finished in 0.045543 seconds.
+
+    1) Failure:
+  test_should_be_using_rails_made_up_tag(RailsVersionTest)
+      [test/unit/rails_version_test.rb:6:in `test_should_be_using_rails_made_up_tag'
+       /path/to/code/rails_timestamps_test/projects/rails-app-made-up-tag/vendor/rails/activesupport/lib/active_support/testing/setup_and_teardown.rb:94:in `__send__'
+       /path/to/code/rails_timestamps_test/projects/rails-app-made-up-tag/vendor/rails/activesupport/lib/active_support/testing/setup_and_teardown.rb:94:in `run']:
+  &lt;"made.up.tag"&gt; expected but was
+  &lt;"2.2.2"&gt;.
+
+  1 tests, 1 assertions, 1 failures, 0 errors
+</pre>
       <ul>
         <li>If you specify a tag of rails that is anything other than a 3 part version number (e.g. the four part version 2.3.2.1, or the release candidate 2.1.0_RC1) then the version test will fail because the Rails::VERSION constant only contains the MAJOR, MINOR and TINY components and that’s what we use to check the version our app uses.</li>
       </ul>
