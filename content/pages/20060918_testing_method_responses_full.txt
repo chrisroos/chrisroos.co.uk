@@ -1,10 +1,10 @@
 ---
 title: Testing Method Responses - Full
-filter: textile
+filter: markdown
 created_at: 2006-09-18 21:45:42 +01:00
 layout: blog
 ---
-<pre class="code ruby">
+```
 class Foo
   def foo; end; public :foo
   def bar; end; protected :bar
@@ -294,4 +294,4 @@ Class.new(Test::Unit::TestCase) do
   end
 
 end
-</pre>
+```
