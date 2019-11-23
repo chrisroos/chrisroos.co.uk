@@ -1,18 +1,25 @@
 ---
 title:       PwdHash Dashboard Widget
 created_at:  2008-08-02 14:06:40.000000 -06:00
-filter:      textile
+filter:      markdown
 ---
-h1. PwdHash Dashboard Widget
+PwdHash Dashboard Widget
+========================
 
-A ["dashboard":http://en.wikipedia.org/wiki/Dashboard_(software)] widget that's identical in functionality to "pwdhash.com":http://pwdhash.com.  I find it useful when a website I'm signed up to also offers client-side, other than a browser, access to their service ("twitter":http://twitter.com, for example).
+A <a href="http://en.wikipedia.org/wiki/Dashboard_(software)">dashboard</a> widget that's identical in functionality to [pwdhash.com](http://pwdhash.com). I find it useful when a website I'm signed up to also offers client-side, other than a browser, access to their service ([twitter](http://twitter.com), for example).
 
-See the "introductory blog post":/articles/2008-05-19-pwdhash-widget for a little more information.
+See the [introductory blog post](/articles/2008-05-19-pwdhash-widget) for a little more information.
 
-h2. Download
+Download
+--------
 
-!/images/mac-osx-zip.png!:/files/pwdhash.zip
+<p>
+  <a href="/files/pwdhash.zip">
+    <img alt="" src="/images/mac-osx-zip.png">
+  </a>
+</p>
 
-h2. Screenshot
+Screenshot
+----------
 
-!http://farm4.static.flickr.com/3005/3079956214_dd59ce8609.jpg?v=0(Screenshot of the PwdHash Widget)!
+![Screenshot of the PwdHash Widget](http://farm4.static.flickr.com/3005/3079956214_dd59ce8609.jpg?v=0 "Screenshot of the PwdHash Widget")
