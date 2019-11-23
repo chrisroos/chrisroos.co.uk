@@ -1,23 +1,22 @@
 ---
 title:       Welcome
 created_at:  2008-08-02 14:06:40.000000 -06:00
-filter:      haml
+filter:      erb
 ---
-:textile
-  h1. #{h(@page.title)}
+<h1>Welcome</h1>
 
-  h2. A little about me
+<h2>A little about me</h2>
 
-  I work with my friends at "Go Free Range":http://gofreerange.com/.  It's awesome.
+<p>I work with my friends at <a href="http://gofreerange.com/">Go Free Range</a>.  It's awesome.</p>
 
-  h2. Elsewhere
+<h2>Elsewhere</h2>
 
-  <ul>
-    <li>
-      <a href="https://github.com/chrisroos" rel="me">Github</a>
-    </li>
-  </ul>
+<ul>
+  <li>
+    <a href="https://github.com/chrisroos" rel="me">Github</a>
+  </li>
+</ul>
 
-  h2. Recent blog posts ("View all":/blog)
+<h2>Recent blog posts (<a href="/blog">View all</a>)</h2>
 
-= render(:partial => "/blog_post_list", :locals => {:blog_posts => blog_posts(3)})
+<%= render(:partial => "/blog_post_list", :locals => {:blog_posts => blog_posts(3)}) %>
