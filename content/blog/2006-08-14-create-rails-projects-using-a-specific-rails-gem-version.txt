@@ -12,18 +12,18 @@ If the first argument to the rails command is a valid (i.e. installed) version n
 
 So (with 1.0.0 and 1.1.6 gems installed)..
 
-<pre>
+<pre><code>
 $ rails _1.0.0_ my-rails-proj
 #-> uses rails version 1
 
 $ rails my-rails-proj
 #-> uses latest rails version (1.1.6)
-</pre>
+</code></pre>
 
 Although you can normally place the rails libraries into the vendor directory of a given rails app (to use that specific rails version); I had problems when placing rails 1.0.0 into a rails 1.1.6 generated app.  An error is encountered when trying to boot webrick..
 
-<pre>
+<pre><code>
 ./script/../config/../vendor/rails/railties/lib/initializer.rb:256:in `send': undefined method `cache_template_extensions=' for ActionView::Base:Class (NoMethodError)
-</pre>
+</code></pre>
 
 By passing the version argument to the rails command and then placing rails 1.0.0 into the vendor directory, everything works as expected.

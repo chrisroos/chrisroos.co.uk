@@ -10,19 +10,19 @@ I've recently upgraded the version of ruby on my machine and came up against pro
 
 I found the following script useful in determining exactly which ruby binary textmate was using.
 
-<pre>
+<pre><code>
 #!/usr/bin/env ruby
 
 require 'rbconfig'
 puts Config::CONFIG['bindir']
-</pre>
+</code></pre>
 
 Simply paste that into a textmate document, select it and hit Ctrl-r.  The path of the ruby binary should print right there in the window.
 
 To see far more info than you'll ever likely need, replace the line starting <code>puts</code> above, with the following..
 
-<pre>
+<pre><code>
 Config::CONFIG.sort.each do |key, value|
   puts "\#{key} = \#{value}"
 end
-</pre>
+</code></pre>

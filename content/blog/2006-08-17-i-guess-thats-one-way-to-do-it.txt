@@ -8,7 +8,7 @@ layout: blog
 ---
 We're not _quite_ at this stage yet...
 
-<pre>
+<pre><code>
 class ActiveRecord::ConnectionAdapters::MysqlAdapter
   alias :execute_before_test_hijack :execute
   def execute(*args)
@@ -18,4 +18,4 @@ class ActiveRecord::ConnectionAdapters::MysqlAdapter
     execute_before_unit_test_hijack(*args)
   end
 end
-</pre>
+</code></pre>

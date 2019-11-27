@@ -48,7 +48,7 @@
       <abbr class="createdAt" title="2006-10-19T23:19:00+00:00">Thu, 19 Oct 06</abbr>
       <h1>Boolean method in Ruby (sibling of Array, Float, Integer and String)</h1>
       <p>I was reading in data from a file and expected one particular column to contain either ‘true’ or ‘false’. I wanted a nice way to convert the string representation into its object counterpart. I thought to the Kernel#Float (and kin) and decided I wanted a Kernel#Boolean method. So I made one. Tada…</p>
-      <pre>
+      <pre><code>
 module Kernel
 
   def Boolean(string)
@@ -88,7 +88,7 @@ class KernelTest &lt; Test::Unit::TestCase
   end
 
 end
-</pre>
+</code></pre>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2006-10-18-inactive-keywords-too-high-mincpc-when-using-google-adwords-api" rel="prev" title="Inactive keywords (too high minCpc) when using Google Adwords Api">Inactive keywords (too high minCpc) when using Google Adwords Api</a>

@@ -12,7 +12,7 @@ I continued this practice until I was slapped in the face by my own stoopidity y
 
 "James":http://blog.floehopper.org was looking into it...
 
-<pre>
+<pre><code>
 James: it seems like the ones defined by Class.new(Test::Unit::TestCase) aren't always being found in the ObjectSpace
 James: but I can't quite work out why
 James: i'm tempted to name them all as defined classes
@@ -38,7 +38,7 @@ Chris: oops
 James: aha
 Chris: no more anonymous test classes for christopher
 James: that explains - why they were in the ObjectSpace one minute and not the next
-</pre>
+</code></pre>
 
 Note that p_l_i_test mentioned above is just a shorthand for one of our tests that was failing individually but 'running' (or as we now know, not running) from rake.
 

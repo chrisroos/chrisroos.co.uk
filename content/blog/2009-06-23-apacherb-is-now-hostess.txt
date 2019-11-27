@@ -11,27 +11,27 @@ A little while ago I wrote about a utility called "apacherb":/blog/2008-12-15-a-
 
 Install it with:
 
-<pre>
+<pre><code>
 $ gem install hostess
-</pre>
+</code></pre>
 
 Executing it without any arguments will display some simple instructions.
 
-<pre>
+<pre><code>
 $ hostess
   Usage:
     hostess create domain directory - create a new virtual host
     hostess delete domain           - delete a virtual host
     hostess list                    - list hostess virtual hosts
     hostess help                    - this info
-</pre>
+</code></pre>
 
 You'll need to run it as "sudo":http://en.wikipedia.org/wiki/Sudo as it writes the configuration into /etc/apache2 and restarts apache.
 
 To create a domain pointing at a local directory, you'd do something like:
 
-<pre>
+<pre><code>
 $ sudo hostess create example.local ~/Sites/example.local/
-</pre>
+</code></pre>
 
 This will register the local domain (the .local suffix is a convention rather than a rule) using "directory services":http://developer.apple.com/opensource/dirservices/ and add the "apache":http://httpd.apache.org/ "virtual host":http://httpd.apache.org/docs/1.3/vhosts/.  Open your browser and visit example.local to see your local site.  Good huh.

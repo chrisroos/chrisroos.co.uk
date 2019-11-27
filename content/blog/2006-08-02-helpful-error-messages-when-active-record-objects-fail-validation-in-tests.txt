@@ -12,12 +12,12 @@ I knew the code was hacky and nasty but didn't realise quite how bad until I not
 
 Although it's only useful for people still on Rails 1.0, I made a quick plugin that backports this change.  I don't really want to put it in my subversion repository, so have just pasted the necessary code below.
 
-<pre>
+<pre><code>
 # File init.rb
 require File.dirname(__FILE__) + '/lib/record_invalid'
-</pre>
+</code></pre>
 
-<pre>
+<pre><code>
 # File record_invalid.rb
 module ActiveRecord
 
@@ -29,11 +29,11 @@ module ActiveRecord
   end
 
 end
-</pre>
+</code></pre>
 
 To create a plugin from this, create the following structure in your rails_app/vendor/plugins directory.
 
-<pre>
+<pre><code>
 active_record_validation_error/
 |
 |--init.rb (copy contents of code above)
@@ -41,4 +41,4 @@ active_record_validation_error/
 |--lib/
    |
    |--record_invalid.rb (copy content of code above)
-</pre>
+</code></pre>

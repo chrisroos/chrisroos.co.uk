@@ -54,30 +54,30 @@
       <ul>
         <li>Get a copy of rails</li>
       </ul>
-      <pre>
+      <pre><code>
   $ cd /path/to/code
   $ git clone git://github.com/rails/rails.git
-</pre>
+</code></pre>
       <ul>
         <li>Create a <a href="http://www.mysql.com/">mysql</a> database called rails_timestamps_test, and create a table within that database called people.
         </li>
       </ul>
-      <pre>
+      <pre><code>
   mysql&gt; CREATE DATABASE rails_timestamps_test;
   mysql&gt; USE rails_timestamps_test;
   mysql&gt; CREATE TABLE people (id INTEGER AUTO_INCREMENT, created_on DATE, created_at DATETIME, updated_on DATE, updated_at DATETIME, PRIMARY KEY (id));
-</pre>
+</code></pre>
       <ul>
         <li>Get a copy of my test script</li>
       </ul>
-      <pre>
+      <pre><code>
   $ cd /path/to/code
   $ svn co http://chrisroos.googlecode.com/svn/trunk/scratch/rails_timestamps_test
-</pre>
+</code></pre>
       <ul>
         <li>Run my script against rails 2.3 (run setup_rails_project.rb without any arguments to see the options) and hopefully see output similar to below (which means that the tests passed as expected).</li>
       </ul>
-      <pre>
+      <pre><code>
   $ cd /path/to/code/rails_timestamps_test
   $ ruby setup_rails_project.rb 2.3.0 /path/to/code/rails
 
@@ -105,11 +105,11 @@
   Finished in 0.078819 seconds.
 
   4 tests, 8 assertions, 0 failures, 0 errors
-</pre>
+</code></pre>
       <ul>
         <li>Re-run the script against rails 2.2.2 (the last tag before 2.3) and you should see the same as above except for the last test which should now contain two failures.</li>
       </ul>
-      <pre>
+      <pre><code>
   $ cd /path/to/code/rails_timestamps_test
   $ ruby setup_rails_project.rb 2.2.2 /path/to/code/rails
 
@@ -139,7 +139,7 @@
   &lt;Sun Apr 19 09:23:46 UTC 2009&gt;.
 
   4 tests, 8 assertions, 2 failures, 0 errors
-</pre>
+</code></pre>
       <ul>
         <li>Re-run the script against any other tagged version of rails you wish.</li>
       </ul>
@@ -147,7 +147,7 @@
       <ul>
         <li>If you specify an invalid tag (i.e. a tag that doesn’t exist in the rails repository) then the rails_version_test.rb will fail.</li>
       </ul>
-      <pre>
+      <pre><code>
   $ cd /path/to/code/rails_timestamps_test
   $ ruby setup_rails_project.rb made.up.tag /path/to/code/rails
 
@@ -166,7 +166,7 @@
   &lt;"2.2.2"&gt;.
 
   1 tests, 1 assertions, 1 failures, 0 errors
-</pre>
+</code></pre>
       <ul>
         <li>If you specify a tag of rails that is anything other than a 3 part version number (e.g. the four part version 2.3.2.1, or the release candidate 2.1.0_RC1) then the version test will fail because the Rails::VERSION constant only contains the MAJOR, MINOR and TINY components and that’s what we use to check the version our app uses.</li>
       </ul>

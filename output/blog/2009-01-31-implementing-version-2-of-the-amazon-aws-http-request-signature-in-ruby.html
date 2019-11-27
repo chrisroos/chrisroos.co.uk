@@ -51,7 +51,7 @@
       <p>This took me a long time to work out this afternoon so I guess it might be useful to others. I couldn’t find an implementation (of version 2 of the request signing) in any of the existing Amazon AWS libraries and although I did find a promising looking post <a href="http://www.jamesmurty.com/2008/12/31/aws-query-signature-version-2/">here</a> it just didn’t work for me. I ended up using the <a href="http://developer.amazonwebservices.com/connect/entry.jspa?externalID=1135">Simple DB PHP sample code</a> to obtain some test data<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> that I could use to debug my own code<sup class="footnote" id="fnr2"><a href="#fn2">2</a></sup> and eventually got it working.</p>
       <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> I plan to post some test data (to help others attempting to write a client) in a follow up post.</p>
       <p class="footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a> I printed the parameters and signature at various stages of the request so that I could compare it to the output from my client.</p>
-      <pre>
+      <pre><code>
 require 'rubygems'
 require 'cgi'
 require 'time'
@@ -87,7 +87,7 @@ params['Signature'] = signature
 querystring = params.collect { |key, value| [CGI.escape(key.to_s), CGI.escape(value.to_s)].join('=') }.join('&amp;') # order doesn't matter for the actual request
 
 puts `curl -X"GET" "\#{AMAZON_ENDPOINT}?\#{querystring}" -A"simple ruby aws sdb wrapper"`
-</pre>
+</code></pre>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2009-01-31-turning-off-my-national-rail-twitter-bot" rel="prev" title="Turning Off My National Rail Twitter Bot">Turning Off My National Rail Twitter Bot</a>

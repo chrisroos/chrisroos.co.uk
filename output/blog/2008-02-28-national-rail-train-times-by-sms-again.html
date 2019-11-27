@@ -52,9 +52,9 @@
       </div>
       <p>A while back I <a href="/blog/2007-07-24-train-times-by-sms-or-improving-national-rail-enquiries">hacked</a> a simple <a href="http://en.wikipedia.org/wiki/Short_message_service">SMS</a> interface onto the <a href="http://www.nationalrail.co.uk/">national rail enquiries</a> website. It turned out to be more gimmicky than functional and I left it to die. Over the past couple of weeks I’ve found myself, once again, in need of such a service and so spent a couple of hours last night reviving it: making it work, making it simpler and tidying the code. The previous interface required the source station and destination station as well as the date and time of travel. The format was very strict (requiring you to use the unique three digit station codes) and, as I found, overly complex (I could never remember what it was). All I really wanted to do was specify the source and destination stations and get a list of the next few departures/arrival times.</p>
       <p>The new interface is simply in the format of SOURCE_STATION to DESTINATION_STATION. So, to find the next few trains from <a href="http://en.wikipedia.org/wiki/Ramsgate_railway_station">Ramsgate</a> to <a href="http://en.wikipedia.org/wiki/Waterloo_East_railway_station">London Waterloo East</a> we can send the following <a href="http://help.twitter.com/index.php?pg=kb.page&amp;id=15">direct message</a> to the <a href="http://twitter.com/natrailenq">natrailenq</a> user on <a href="http://twitter.com">twitter</a></p>
-      <pre>
+      <pre><code>
 d natrailenq ramsgate to london waterloo east
-</pre>
+</code></pre>
       <p>Although you can now use the full station name it will only, currently, work if you know the exact name of the station (so, waterloo east wouldn’t work in that above example, but london waterloo east will). It will still work if you supply the three digit station code.</p>
       <p>In order to use this service, you will need to create a twitter account, <a href="http://twitter.com/help/follow">follow</a> the natrailenq user and enable SMS notifications from natrailenq.</p>
       <hr>

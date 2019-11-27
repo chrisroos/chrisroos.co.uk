@@ -20,7 +20,7 @@ Maybe some code can help explain what I mean.
 
 h3. A semantically marked up contact page.
 
-<pre>
+<pre><code>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 
 <html>
@@ -39,11 +39,11 @@ h3. A semantically marked up contact page.
   </body>
 
 </html>
-</pre>
+</code></pre>
 
 h3. A parser in "ruby":http://www.ruby-lang.org/
 
-<pre>
+<pre><code>
 require 'rubygems'
 require 'hpricot'
 
@@ -78,7 +78,7 @@ p parser.identifier('skype')
 # => 'skype-username'
 p parser.identifier('blurgh')
 # => ''
-</pre>
+</code></pre>
 
 h2. Further considerations
 

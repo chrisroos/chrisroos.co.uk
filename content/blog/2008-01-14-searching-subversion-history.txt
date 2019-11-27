@@ -10,7 +10,7 @@ I've often felt the need to search through our "subversion":http://subversion.ti
 
 Is this useful, or have I missed something obvious in Subversion or Trac that does exactly this?
 
-<pre>
+<pre><code>
 require 'fileutils'
 
 stop_at_revision = ARGV[0]
@@ -49,4 +49,4 @@ revisions = log.scan(/^r(\d+)/)
 revisions = revisions.flatten.collect { |revision| Integer(revision) }
 
 produce_diff(revisions)
-</pre>
+</code></pre>

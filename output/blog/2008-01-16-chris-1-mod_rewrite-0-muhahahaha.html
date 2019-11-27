@@ -58,7 +58,7 @@
         </li>
       </ul>
       <h2>The mod_rewrite rules</h2>
-      <pre>
+      <pre><code>
 # Permanently (301) redirect /index.html to / (regex copied from http://www.webmasterworld.com/apache/3155094.htm)
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*index\.html\ HTTP/
 RewriteRule ^(.*)index\.html$ $1 [R=301,L]
@@ -84,7 +84,7 @@ RewriteRule ^(.*)$ http://the-local-paper.co.uk/$1 [R=301,L]
   Deny from all
   Satisfy All
 &lt;/DirectoryMatch&gt;
-</pre>
+</code></pre>
       <p>I figured that there’s a chance some of these rules might come in useful to someone else.</p>
       <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> This has all been for the <a href="/blog/2007-06-01-an-open-letter-to-my-local-newspapers">local paper idea</a> I mentioned a while back. I’ve actually <a href="http://twitter.com/chrisroos/statuses/570937102">started</a> to get some content up on <a href="http://the-local-paper.co.uk">the-local-paper.co.uk</a> if you want to play along and see how it’s shaping up..</p>
       <hr>

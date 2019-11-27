@@ -48,7 +48,7 @@
       <abbr class="createdAt" title="2006-10-14T09:27:00+00:00">Sat, 14 Oct 06</abbr>
       <h1>Some useful assertions, maybe</h1>
       <p>The first is to ensure two arrays contain the same elements not necessarily in the same order.</p>
-      <pre>
+      <pre><code>
 require 'test/unit'
 
 require 'set'
@@ -72,9 +72,9 @@ class MyTest &lt; Test::Unit::TestCase
   end
 
 end
-</pre>
+</code></pre>
       <p>The second is to test for generated warnings. In my <a href="/blog/2006-10-06-recording-daily-spending-with-a-ruby-dsl">current project</a> app, I use method_missing and wanted to warn the user if the unknown message looks like it’s supposed to be a payment mechanism…</p>
-      <pre>
+      <pre><code>
 day '25-oct-2006' do
   cash 30.29, beer
 end
@@ -82,9 +82,9 @@ end
 # Results in NoMethodError and, more importantly, this friendly warning..
 # Maybe you expected 'cash' to be a payment mechanism?
 # Cool huh?
-</pre>
+</code></pre>
       <p>Anyway, I wanted a way to test that the warning was being generated and came up with another assertion…</p>
-      <pre>
+      <pre><code>
 require 'test/unit'
 
 require 'stringio'
@@ -112,7 +112,7 @@ class MyTest &lt; Test::Unit::TestCase
   end
 
 end
-</pre>
+</code></pre>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2006-10-06-recording-daily-spending-with-a-ruby-dsl" rel="prev" title="Recording daily spending with a Ruby Dsl">Recording daily spending with a Ruby Dsl</a>

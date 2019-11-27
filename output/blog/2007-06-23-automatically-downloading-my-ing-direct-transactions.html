@@ -55,49 +55,49 @@
       <p>Type our Customer Number and Last Name into the login form.</p>
       <p>Before submitting the form, we open the <a href="http://livehttpheaders.mozdev.org/">Live Http headers</a> <a href="http://www.mozilla.com/en-US/firefox/">firefox</a> extension.</p>
       <p>We see that the following information gets POSTed to InitialINGDirect.html</p>
-      <pre>
+      <pre><code>
 command=enterCustomerNumber&amp;locale=en_GB&amp;device=web&amp;ACN=&lt;YOUR_CUSTOMER_NUMBER&gt;&amp;LNAME=&lt;YOUR_LAST_NAME&gt;&amp;GO.x=23&amp;GO.y=12
-</pre>
+</code></pre>
       <p>We are redirected to a second security page.</p>
       <p><a href="http://www.flickr.com/photos/chrisjroos/601727868/"><img alt="" src="http://farm2.static.flickr.com/1344/601727868_4569c11af6_m.jpg"></a></p>
       <p>The first use of <a href="http://curl.haxx.se/">curl</a> is to see whether we can get this far from the command line.</p>
-      <pre>
+      <pre><code>
 $ curl -X"POST" -d"command=enterCustomerNumber" -d"locale=en_GB" -d"device=web" -d"ACN=YOUR_CUSTOMER_NUMBER" -d"LNAME=YOUR_LAST_NAME" -d"GO.x=23" -d"GO.y=12" "https://secure.ingdirect.co.uk/InitialINGDirect.html" -o"&lt;FILENAME_FOR_OUTPUT&gt;"
-</pre>
+</code></pre>
       <p>The actual output in this instance is</p>
-      <pre>
+      <pre><code>
 &lt;SCRIPT&gt;
 location.replace("/INGDirect.html?command=displayValidateCustomer&amp;fill=1");
 &lt;/SCRIPT&gt;
-</pre>
+</code></pre>
       <p>So we amend the curl command to see exactly what’s going on (the removal of -o and the addition of -v)</p>
       <p>Right, so this is interesting – I was expecting to see an <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30">HTTP Location</a> header directing us to the second security page. Instead the body of the response is the javascript seen above. I guess they want to ensure that we have javascript enabled eh.</p>
       <p>Let’s just see what happens if we request the page returned in the javascript (https://secure.ingdirect.co.uk/INGDirect.html?command=displayValidateCustomer&amp;fill=1)</p>
       <p><a href="http://www.flickr.com/photos/chrisjroos/601442615/"><img alt="" src="http://farm2.static.flickr.com/1130/601442615_2ce8dafc21_m.jpg"></a></p>
       <p>Ok, so that’s not unexpected. How about, if we store the cookies sent to us in the original response, and then request the page returned in the javascript.</p>
-      <pre>
+      <pre><code>
 $ curl -X"POST" -c"/Users/chrisroos/Desktop/ing-cookie" -d"command=enterCustomerNumber" -d"locale=en_GB" -d"device=web" -d"ACN=YOUR_CUSTOMER_NUMBER" -d"LNAME=YOUR_LAST_NAME" -d"GO.x=23" -d"GO.y=12" "https://secure.ingdirect.co.uk/InitialINGDirect.html"
 
 $ curl -b"/Users/chrisroos/Desktop/ing-cookie" "https://secure.ingdirect.co.uk/INGDirect.html?command=displayValidateCustomer&amp;fill=1" -o"/Users/chrisroos/Desktop/ing.html"
-</pre>
+</code></pre>
       <p>Ok, this looks promising. We can now proceed to the second security page.</p>
       <p>Let’s use firefox to log in and get to the second security page again. Fill in the details as requested, open live http headers and get hold of the data we are sending. Right, so we POST the following details to InitialINGDirect.html</p>
-      <pre>
+      <pre><code>
 command=validateCustomer&amp;locale=en_GB&amp;device=web&amp;PIN_A=5&amp;PIN_B=1&amp;PIN_C=4&amp;DAYS=65&amp;MONTHS=65&amp;YEARS=66&amp;GO.x=41&amp;GO.y=9
-</pre>
+</code></pre>
       <p>Ah, so this looks interesting. It seems that each key on the keypad is assigned a number (potentially different to the number displayed on the key). It is that number that gets sent. The numbers on the keypad appear in a random order, so I wonder if the same number is always assigned to the same key, or whether something else is required to tell the server the order of the keys. Let’s log in one more time and see if the results differ. The assumption being that if they do then the server must know what order the keys have been displayed in.</p>
       <p>Bugger – now it won’t let me log in anymore (too many failed attempts) and I have to call the call centre. Ooops.</p>
       <h2>Later</h2>
       <p>Right, so it’s now about 5 weeks after starting this investigation. I’m going to attempt to pick up where I left off and see if we can’t get it finished. Previously, before I got locked out of my account, I was going to test whether each digit on the keypad got assigned a different number each time. In order to test, I logged into my account twice. Each time, I saved the content of the page containing the keypad, and the output from Live Http Headers. A quick examination of the differences between the output seems to suggest that we only ever send the position of a number on the keypad. A made-up example might help to make this clear, starting with a keypad in no particular order.</p>
-      <pre>
+      <pre><code>
 5 1 2
 4 7 3
 0 8 9
   6
-</pre>
+</code></pre>
       <p>If our pin number is 1234 and we are asked for the first digit then, although we would push the button labeled 1 on the keypad, we would actually send the value 2 to the server. The buttons (but not the values they represent) all have a constant position, where the top-left button is position 1, the bottom-right is position 9 and the bottom button is position 0 (same layout as phone keypads). For the above example, the button labeled 1 is in position 2, hence us sending a 2 to the server.</p>
       <p>Right, so unless I’m missing something, the server must ‘know’ which three digits we’re being asked for, along with the order of the keypad. If we’re to log in automatically then we’re going to need to parse the text that asks us for certain digits and determine the order of the keypad. A little experimentation with <a href="http://code.whytheluckystiff.net/hpricot/">hpricot</a> yielded the following code.</p>
-      <pre>
+      <pre><code>
 require 'rubygems'
 require 'hpricot'
 
@@ -128,35 +128,35 @@ keypad.unshift(keypad.pop)
 # We can then use Array#index to dive in grab the keypad position of a number
 # keypad.index(5) #=&gt; 1
 # keypad.index(7) #=&gt; 5
-</pre>
+</code></pre>
       <p>Cool, so we should be able to string together what we have and automatically login to our account, we need to dip into ruby so that we might parse the keypad page using our code above.</p>
       <p>Right, I’ve cobbled the code together but instead of seeing an account overview page, I’m actually receiving a page with more javascript relocation magic.</p>
-      <pre>
+      <pre><code>
 &lt;SCRIPT&gt;
 location.replace("/InitialINGDirect.html?command=displayLoggedOutError&amp;locale=en_GB&amp;device=web");
 &lt;/SCRIPT&gt;
-</pre>
+</code></pre>
       <p>I’m wondering if I’m missing some cookies – maybe some more cookies get added to the jar on the keypad page. Using the <a href="https://addons.mozilla.org/en-US/firefox/addon/60">web developer extension</a> this is trivial to check. Two cookies are set when we first visit the login page… Hmm, and there are still two when we get to the keypad page. So something else is different. Ok, so I found it. Somehow, I’d managed to miss out some data that was required for the login to work correctly. I was not sending the command=validateCustomer key/pair even though I’d already pasted it once above. Oh well. With this ‘command’ added, we still get a page with some javascript relocation but this time we get relocated to the account summary..</p>
-      <pre>
+      <pre><code>
 &lt;SCRIPT&gt;
 location.replace("/INGDirect.html?command=accountSummary&amp;locale=en_GB&amp;device=web&amp;method=fetchClientAccountSummary");
 &lt;/SCRIPT&gt;
-</pre>
+</code></pre>
       <p>If we finally GET this page then we should be able to ‘see’ our account overview on the command line. Of course it wasn’t that simple. This just yields another javascript redirect.</p>
-      <pre>
+      <pre><code>
 &lt;SCRIPT&gt;
 location.replace("/INGDirect.html?command=displayClientAccountSummary&amp;fill=1");
 &lt;/SCRIPT&gt;
-</pre>
+</code></pre>
       <p>Let’s try to GET this page then. Woohoo, we’re finally at the account overview page. Wow that was hard work, so, so much harder than it should be for a web application.</p>
       <p>The final step is to GET and save the transaction page. The url to the account page in the browser is:</p>
       <p>https://secure.ingdirect.co.uk/INGDirect.html?command=accountSummary&amp;method=fetchClientAccountSummary&amp;account=0&amp;stepName=saving</p>
       <p>GETting that url on the command line yields yet another javascript redirect (really, you do surprise me).</p>
-      <pre>
+      <pre><code>
 &lt;SCRIPT&gt;
 location.replace("/INGDirect.html?command=displayAccountDetails");
 &lt;/SCRIPT&gt;
-</pre>
+</code></pre>
       <p>Fine, let’s GET that url then (starting to get bored now). And, wait for it… Yeah, we have downloaded transactions. Phew. Right then, just a little code tidying and I’ll get it uploaded to google code and this article can be posted. Yay.</p>
       <p>Ok, so we’re uploaded to <a href="http://chrisroos.googlecode.com/svn/trunk/ing-direct">google code</a>. Now to set this little fella free… An we’re done.</p>
       <hr>

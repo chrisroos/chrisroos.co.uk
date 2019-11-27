@@ -8,9 +8,9 @@ layout: blog
 ---
 Summary..
 
-<pre>
+<pre><code>
 $ ruby [programfile] -n [testmethod]
-</pre>
+</code></pre>
 
 "Source Page":http://wiki.rubyonrails.com/rails/pages/HowtoRunOneTest
 
