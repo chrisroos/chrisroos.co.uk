@@ -42,10 +42,10 @@
     <div id="content">
       <abbr class="createdAt" title="2005-10-02T19:16:58+00:00">Sun, 02 Oct 05</abbr>
       <h1>Cyrus Imap on FreeBsd</h1>
-      <p>I've spent some time today looking into getting <a href="http://asg.web.cmu.edu/cyrus/">Cyrus Imap</a> installed on <a href="http://www.freebsd.org">FreeBsd</a> 5.3R.</p>
-      <p>I haven't got too far yet but think I've probably learned a few things I didn't know.</p>
+      <p>I’ve spent some time today looking into getting <a href="http://asg.web.cmu.edu/cyrus/">Cyrus Imap</a> installed on <a href="http://www.freebsd.org">FreeBsd</a> 5.3R.</p>
+      <p>I haven’t got too far yet but think I’ve probably learned a few things I didn’t know.</p>
       <p>Initially I just installed cyrus-imap from the ports and left it with all the default values. Once I had this and played around a bit, I un-installed and started re-installing the <a href="http://asg.web.cmu.edu/sasl/">cyrus-sasl</a> library manually, playing with various configuration options.</p>
-      <p>When installed using the default options, all of the following 'plugins' are installed in .</p>
+      <p>When installed using the default options, all of the following ‘plugins’ are installed in .</p>
       <ul>
         <li>liblogin</li>
         <li>libanonymous</li>
@@ -57,21 +57,21 @@
         <li>libplain</li>
         <li>libsasldb</li>
       </ul>
-      <p>My preference at this stage is to get the imap server running with plaintext passwords over a TLS encrypted pipe. As such I started looking at the options available to <code>configure</code>. Some of the options seem to be represented in the Makefile so my first approach was to 'disable' them on the command line.</p>
+      <p>My preference at this stage is to get the imap server running with plaintext passwords over a TLS encrypted pipe. As such I started looking at the options available to <code>configure</code>. Some of the options seem to be represented in the Makefile so my first approach was to ‘disable’ them on the command line.</p>
       <pre><code>$ make -DWITHOUT_OTP -DWITHOUT_CRAM -DWITHOUT_DIGEST -DWITHOUT_GSSAPI
 </code></pre>
       <p>I also really wanted to disable anonymous access (which I could see how to do in the options in <code>configure</code> but not in the Makefile) but I ignored that for now.</p>
-      <p>When installed, having been built with the above options, I had all of the above 'plugins' except the following.</p>
+      <p>When installed, having been built with the above options, I had all of the above ‘plugins’ except the following.</p>
       <ul>
         <li>libcrammd5</li>
         <li>libdigestmd5</li>
         <li>libgssapiv2</li>
         <li>libotp</li>
       </ul>
-      <p>This was better but I still had some 'plugins' that I didn't really want. Once again, I un-installed the sasl port and this time built it passing arguments directly to <code>configure</code>.</p>
+      <p>This was better but I still had some ‘plugins’ that I didn’t really want. Once again, I un-installed the sasl port and this time built it passing arguments directly to <code>configure</code>.</p>
       <pre><code>$ make CONFIGURE_ARGS+='--disable-cram --disable-digest --disable-otp --disable-gssapi --disable-anon'
 </code></pre>
-      <p>This time I ended up with just the libplain and libsasldb 'plugins' which seems much closer to what I want - at least I think it does based on my very very limited knowledge at present.</p>
+      <p>This time I ended up with just the libplain and libsasldb ‘plugins’ which seems much closer to what I want - at least I think it does based on my very very limited knowledge at present.</p>
       <hr>
     </div>
     <div id="footer">

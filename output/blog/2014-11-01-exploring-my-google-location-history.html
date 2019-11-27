@@ -48,7 +48,7 @@
     <div id="content">
       <abbr class="createdAt" title="2014-11-01T09:44:26+00:00">Sat, 01 Nov 14</abbr>
       <h1>Exploring my Google Location History</h1>
-      <p>I used <a href="https://www.google.com/settings/takeout">Google Takeout</a> to export my <a href="https://maps.google.co.uk/locationhistory/b/0">Location History</a> as JSON. I wanted to know what date range the file covered (it's not obvious from the Location History site) and figured I'd use command line tools rather than parsing the JSON.</p>
+      <p>I used <a href="https://www.google.com/settings/takeout">Google Takeout</a> to export my <a href="https://maps.google.co.uk/locationhistory/b/0">Location History</a> as JSON. I wanted to know what date range the file covered (it’s not obvious from the Location History site) and figured I’d use command line tools rather than parsing the JSON.</p>
       <p>This is the command I ended up with to display the earliest timestamp in the file:</p>
       <pre><code>$ cat LocationHistory.json | \
 grep timestampMs | \

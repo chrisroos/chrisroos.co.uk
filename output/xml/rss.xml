@@ -77,7 +77,7 @@ Date:   Thu Jan 1 09:00:00 2015 +0000
     
       <item>
         <title>Manually uploading activities from Garmin Fit app</title>
-        <description>&lt;p&gt;I had two activities recorded on 12 Nov 2015 that weren’t syncing to Garmin Connect from the Garmin Fit app on my phone. I signed out and back in a number of times to try to force the sync (as per &lt;a href=&quot;https://support.garmin.com/support/searchSupport/case.faces?caseId=%7Ba3c0eb60-ff54-11e0-73d0-000000000000%7D&quot;&gt;Garmin's support page&lt;/a&gt;), but to no avail.&lt;/p&gt;
+        <description>&lt;p&gt;I had two activities recorded on 12 Nov 2015 that weren’t syncing to Garmin Connect from the Garmin Fit app on my phone. I signed out and back in a number of times to try to force the sync (as per &lt;a href=&quot;https://support.garmin.com/support/searchSupport/case.faces?caseId=%7Ba3c0eb60-ff54-11e0-73d0-000000000000%7D&quot;&gt;Garmin&amp;rsquo;s support page&lt;/a&gt;), but to no avail.&lt;/p&gt;
 
 &lt;p&gt;I eventually used &lt;a href=&quot;https://play.google.com/store/apps/details?id=com.sand.airdroid&amp;amp;hl=en_GB&quot;&gt;Airdroid&lt;/a&gt; to download the two .fit files (stored in /SD Card/Android/data/com.garmin.android.apps.fitness/files/) from my phone to my laptop.&lt;/p&gt;
 
@@ -87,7 +87,7 @@ Date:   Thu Jan 1 09:00:00 2015 +0000
 
 &lt;h2&gt;Garmin Fit app has been removed&lt;/h2&gt;
 
-&lt;p&gt;While writing this I tried to find a link to the Garmin Fit app in the Google Play Store. While I can see it in my list of installed apps, it no longer appears in the public store. I also followed the link to the app in iTunes but that reports that it's no longer available in the UK store. I can't find any official information about the app being removed but &lt;a href=&quot;https://forums.garmin.com/showthread.php?314912-Is-Garmin-Fit-gone&quot;&gt;this thread on the Garmin forums suggests that it was removed in early 2015!&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;While writing this I tried to find a link to the Garmin Fit app in the Google Play Store. While I can see it in my list of installed apps, it no longer appears in the public store. I also followed the link to the app in iTunes but that reports that it&amp;rsquo;s no longer available in the UK store. I can&amp;rsquo;t find any official information about the app being removed but &lt;a href=&quot;https://forums.garmin.com/showthread.php?314912-Is-Garmin-Fit-gone&quot;&gt;this thread on the Garmin forums suggests that it was removed in early 2015!&lt;/a&gt;.&lt;/p&gt;
 </description>
 
         <pubDate>Sat, 14 Nov 2015 08:06:40 +0000</pubDate>
@@ -224,7 +224,7 @@ WARNING: DSL method Webby::Apps::Main#import called at /Users/chrisroos/.rbenv/v
     
       <item>
         <title>Exploring my Google Location History</title>
-        <description>&lt;p&gt;I used &lt;a href=&quot;https://www.google.com/settings/takeout&quot;&gt;Google Takeout&lt;/a&gt; to export my &lt;a href=&quot;https://maps.google.co.uk/locationhistory/b/0&quot;&gt;Location History&lt;/a&gt; as JSON. I wanted to know what date range the file covered (it's not obvious from the Location History site) and figured I'd use command line tools rather than parsing the JSON.&lt;/p&gt;
+        <description>&lt;p&gt;I used &lt;a href=&quot;https://www.google.com/settings/takeout&quot;&gt;Google Takeout&lt;/a&gt; to export my &lt;a href=&quot;https://maps.google.co.uk/locationhistory/b/0&quot;&gt;Location History&lt;/a&gt; as JSON. I wanted to know what date range the file covered (it&amp;rsquo;s not obvious from the Location History site) and figured I&amp;rsquo;d use command line tools rather than parsing the JSON.&lt;/p&gt;
 
 &lt;p&gt;This is the command I ended up with to display the earliest timestamp in the file:&lt;/p&gt;
 
@@ -293,17 +293,17 @@ xargs -J% date -j -f &quot;%s&quot; %   # Use `-j` to avoid setting the date
         <title>Notes from The First International Conference on Software Archaeology</title>
         <description>&lt;p&gt;&lt;a href=&quot;http://jamesmead.org/&quot;&gt;James&lt;/a&gt; and I attended &lt;a href=&quot;http://ticosa.org/&quot;&gt;The First International Conference on Software Archaeology&lt;/a&gt; last week.&lt;/p&gt;
 
-&lt;p&gt;I've spent some time going through the notes I made and have categorised the things I took from the presentations into three broad themes. I'm not sure how effective a picture this paints for anyone that wasn't there but hopefully there's something useful in here. For an alternative overview, please see &lt;a href=&quot;http://www.fatvat.co.uk/2014/02/the-first-international-conference-on.html&quot;&gt;Jeff Foster's TICOSA writeup&lt;/a&gt; or the &lt;a href=&quot;http://ticosa.org/sessions.html&quot;&gt;TICOSA sessions&lt;/a&gt; page which contains some of the presentation slides.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve spent some time going through the notes I made and have categorised the things I took from the presentations into three broad themes. I&amp;rsquo;m not sure how effective a picture this paints for anyone that wasn&amp;rsquo;t there but hopefully there&amp;rsquo;s something useful in here. For an alternative overview, please see &lt;a href=&quot;http://www.fatvat.co.uk/2014/02/the-first-international-conference-on.html&quot;&gt;Jeff Foster&amp;rsquo;s TICOSA writeup&lt;/a&gt; or the &lt;a href=&quot;http://ticosa.org/sessions.html&quot;&gt;TICOSA sessions&lt;/a&gt; page which contains some of the presentation slides.&lt;/p&gt;
 
 &lt;p&gt;The three broad themes are analysing legacy code (the past), working on legacy code (the present) and helping our future selves (the future).&lt;/p&gt;
 
 &lt;h2&gt;Analysing legacy code&lt;/h2&gt;
 
-&lt;p&gt;&lt;em&gt;I think the main thing I took away from this theme was that there's quite a lot of work going into what still appears to be a fairly new idea.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;I think the main thing I took away from this theme was that there&amp;rsquo;s quite a lot of work going into what still appears to be a fairly new idea.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://twitter.com/mfeathers&quot;&gt;Michael Feathers&lt;/a&gt; demonstrated the use of his &lt;a href=&quot;https://github.com/michaelfeathers/delta-flora&quot;&gt;delta-flora&lt;/a&gt; tool to analyse Ruby projects over the history of the git repository.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://twitter.com/dmitrykandalov&quot;&gt;Dmitry Kandalov&lt;/a&gt; demonstrated his &lt;a href=&quot;https://github.com/dkandalov/code-history-mining&quot;&gt;code-history-mining IntelliJ plugin&lt;/a&gt; that was inspired by Michael's delta-flora.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/dmitrykandalov&quot;&gt;Dmitry Kandalov&lt;/a&gt; demonstrated his &lt;a href=&quot;https://github.com/dkandalov/code-history-mining&quot;&gt;code-history-mining IntelliJ plugin&lt;/a&gt; that was inspired by Michael&amp;rsquo;s delta-flora.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://twitter.com/robsmallshire&quot;&gt;Robert Smallshire&lt;/a&gt; showed us a number of ways of visualising complexity, including maps of complexity density, and explained how we can use these to identify areas of concern in a system.&lt;/p&gt;
 
@@ -311,21 +311,21 @@ xargs -J% date -j -f &quot;%s&quot; %   # Use `-j` to avoid setting the date
 
 &lt;h2&gt;Working on legacy code&lt;/h2&gt;
 
-&lt;p&gt;&lt;em&gt;The main thing I took away from this theme was the reinforcement of my belief that we shouldn't be so quick to think that we can improve something by throwing it away and rewriting it.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The main thing I took away from this theme was the reinforcement of my belief that we shouldn&amp;rsquo;t be so quick to think that we can improve something by throwing it away and rewriting it.&lt;/em&gt;&lt;/p&gt;
 
-&lt;h3&gt;Avoiding the temptation to throw away what's there&lt;/h3&gt;
+&lt;h3&gt;Avoiding the temptation to throw away what&amp;rsquo;s there&lt;/h3&gt;
 
-&lt;p&gt;Stéphane Ducasse reminded us that, &quot;Early decisions were certainly good at that time&quot;&lt;/p&gt;
+&lt;p&gt;Stéphane Ducasse reminded us that, &amp;ldquo;Early decisions were certainly good at that time&amp;rdquo;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://twitter.com/keithb_b&quot;&gt;Keith Braithwaite&lt;/a&gt; explained that different types of people approach problems in slightly different ways: Computer scientists might prefer a single longer method that contains all the logic, while OO advocates might prefer many smaller methods. There are merits to both approaches and we should remember that projects coded in a style different to our own aren't wrong; they're just different.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/keithb_b&quot;&gt;Keith Braithwaite&lt;/a&gt; explained that different types of people approach problems in slightly different ways: Computer scientists might prefer a single longer method that contains all the logic, while OO advocates might prefer many smaller methods. There are merits to both approaches and we should remember that projects coded in a style different to our own aren&amp;rsquo;t wrong; they&amp;rsquo;re just different.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://twitter.com/chrisoldwood&quot;&gt;Chris Oldwood&lt;/a&gt;'s lightning talk &lt;a href=&quot;https://twitter.com/dmitrykandalov/status/429401314234494977&quot;&gt;contained a paraphrased quote&lt;/a&gt; (coined by either &lt;a href=&quot;http://en.wikiquote.org/wiki/Talk:Robert_Frost&quot;&gt;Robert Frost&lt;/a&gt; or &lt;a href=&quot;http://platitudesundone.blogspot.co.uk/2010/04/dont-take-fence-down-until-you-know-why.html&quot;&gt;G.K. Chesterton&lt;/a&gt;) that really resonated with me:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/chrisoldwood&quot;&gt;Chris Oldwood&lt;/a&gt;&amp;rsquo;s lightning talk &lt;a href=&quot;https://twitter.com/dmitrykandalov/status/429401314234494977&quot;&gt;contained a paraphrased quote&lt;/a&gt; (coined by either &lt;a href=&quot;http://en.wikiquote.org/wiki/Talk:Robert_Frost&quot;&gt;Robert Frost&lt;/a&gt; or &lt;a href=&quot;http://platitudesundone.blogspot.co.uk/2010/04/dont-take-fence-down-until-you-know-why.html&quot;&gt;G.K. Chesterton&lt;/a&gt;) that really resonated with me:&lt;/p&gt;
 
-&lt;blockquote&gt;&lt;p&gt;Don't ever take a fence down until you know why it was put up&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;&lt;p&gt;Don&amp;rsquo;t ever take a fence down until you know why it was put up&lt;/p&gt;&lt;/blockquote&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://twitter.com/stuartcurran&quot;&gt;Stuart Curran&lt;/a&gt; reminded us of George Santayana's quote, &quot;Those who cannot remember the past are condemned to repeat it&quot;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/stuartcurran&quot;&gt;Stuart Curran&lt;/a&gt; reminded us of George Santayana&amp;rsquo;s quote, &amp;ldquo;Those who cannot remember the past are condemned to repeat it&amp;rdquo;&lt;/p&gt;
 
-&lt;h3&gt;Using tools to get an overview of the code we're working on&lt;/h3&gt;
+&lt;h3&gt;Using tools to get an overview of the code we&amp;rsquo;re working on&lt;/h3&gt;
 
 &lt;p&gt;Michael Feathers (using delta-flora), Dmitry Kandalov (using his IntelliJ plugin) and Robert Smallshire (in his dependency structure matrices) all demonstrated ways of visualising which parts of the system are tightly coupled.&lt;/p&gt;
 
@@ -335,13 +335,13 @@ xargs -J% date -j -f &quot;%s&quot; %   # Use `-j` to avoid setting the date
 
 &lt;p&gt;Stéphane Ducasse reminded us that software is a living entity and will probably survive for longer that we might imagine. Stéphane gave examples of military and insurance systems that have been around for 15/20 years, which seemed like a long time until I realised that &lt;a href=&quot;https://github.com/freerange/mocha&quot;&gt;Mocha&lt;/a&gt; has been around for about &lt;a href=&quot;https://github.com/freerange/mocha/commit/df720ef11f8cdb21cf5dfbc5f84f35e325fa8258&quot;&gt;8 years&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Robert Smallshire showed some graphs that suggest code is likely to outlast most other aspects of an organisation. By the time you're working on a 20 year old codebase, you're probably working in a team where only 20% have been around from the beginning.&lt;/p&gt;
+&lt;p&gt;Robert Smallshire showed some graphs that suggest code is likely to outlast most other aspects of an organisation. By the time you&amp;rsquo;re working on a 20 year old codebase, you&amp;rsquo;re probably working in a team where only 20% have been around from the beginning.&lt;/p&gt;
 
 &lt;p&gt;Michael Feathers suggested we be more aware of how seemingly unrelated factors can affect the complexity of our code. He used the fascinating example of how &lt;a href=&quot;http://www.wired.com/wiredscience/2011/04/judges-mental-fatigue/&quot;&gt;parole is more likely to be granted at certain times of day&lt;/a&gt; to illustrate the sort of things we could be looking for.&lt;/p&gt;
 
-&lt;p&gt;I loved &lt;a href=&quot;https://twitter.com/mattwynne&quot;&gt;Matt Wynne&lt;/a&gt;'s metaphor that he uses to explain refactoring to non-developers: Think of developers as chefs, their output as meals and refactoring as keeping the kitchen clean. Matt also talked about analysing the commits in the new &lt;a href=&quot;https://github.com/cucumber/cucumber-ruby-core&quot;&gt;cucumber-ruby-core project&lt;/a&gt; and saying that he thinks that about 75% of the commits are refactoring commits.&lt;/p&gt;
+&lt;p&gt;I loved &lt;a href=&quot;https://twitter.com/mattwynne&quot;&gt;Matt Wynne&lt;/a&gt;&amp;rsquo;s metaphor that he uses to explain refactoring to non-developers: Think of developers as chefs, their output as meals and refactoring as keeping the kitchen clean. Matt also talked about analysing the commits in the new &lt;a href=&quot;https://github.com/cucumber/cucumber-ruby-core&quot;&gt;cucumber-ruby-core project&lt;/a&gt; and saying that he thinks that about 75% of the commits are refactoring commits.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://twitter.com/danielbrolund&quot;&gt;Daniel Brolund&lt;/a&gt; described how to use the Mikado method to ensure that we're always reshaping the system to get it into a state that's ready to accept new changes.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/danielbrolund&quot;&gt;Daniel Brolund&lt;/a&gt; described how to use the Mikado method to ensure that we&amp;rsquo;re always reshaping the system to get it into a state that&amp;rsquo;s ready to accept new changes.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://twitter.com/ivanrmoore&quot;&gt;Ivan Moore&lt;/a&gt; gave us some practical advice about &lt;a href=&quot;http://puttingtheteaintoteam.blogspot.co.uk/2014/02/making-life-easier-for-future-software.html&quot;&gt;being kind to our future selves in his lightning talk&lt;/a&gt;.&lt;/p&gt;
 </description>
@@ -354,9 +354,9 @@ xargs -J% date -j -f &quot;%s&quot; %   # Use `-j` to avoid setting the date
     
       <item>
         <title>Deploying Rails apps using Recap, Apache and Passenger</title>
-        <description>&lt;p&gt;This assumes that you already have &lt;a href=&quot;http://httpd.apache.org/&quot;&gt;Apache&lt;/a&gt; and &lt;a href=&quot;https://www.phusionpassenger.com/&quot;&gt;Passenger&lt;/a&gt; installed; and that you've run &lt;code&gt;recap setup&lt;/code&gt; and configured your &lt;code&gt;Capfile&lt;/code&gt; with the address of your server.&lt;/p&gt;
+        <description>&lt;p&gt;This assumes that you already have &lt;a href=&quot;http://httpd.apache.org/&quot;&gt;Apache&lt;/a&gt; and &lt;a href=&quot;https://www.phusionpassenger.com/&quot;&gt;Passenger&lt;/a&gt; installed; and that you&amp;rsquo;ve run &lt;code&gt;recap setup&lt;/code&gt; and configured your &lt;code&gt;Capfile&lt;/code&gt; with the address of your server.&lt;/p&gt;
 
-&lt;p&gt;I'm going to use 'thames-time-lapse' as an example application name but you'll want to replace that with the name of your app in the instructions below.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m going to use &amp;lsquo;thames-time-lapse&amp;rsquo; as an example application name but you&amp;rsquo;ll want to replace that with the name of your app in the instructions below.&lt;/p&gt;
 
 &lt;p&gt;The first step is to set-up the server and get the code deployed.&lt;/p&gt;
 
@@ -365,7 +365,7 @@ $ cap deploy:setup
 $ cap deploy
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;We now want to make &lt;a href=&quot;https://github.com/freerange/recap&quot;&gt;Recap's&lt;/a&gt; configuration options available to Passenger. We can do this by changing the application user's shell to bash and loading Recap's environment variables in that user's &lt;code&gt;.bashrc&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;We now want to make &lt;a href=&quot;https://github.com/freerange/recap&quot;&gt;Recap&amp;rsquo;s&lt;/a&gt; configuration options available to Passenger. We can do this by changing the application user&amp;rsquo;s shell to bash and loading Recap&amp;rsquo;s environment variables in that user&amp;rsquo;s &lt;code&gt;.bashrc&lt;/code&gt;.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;# Set the app user's shell to bash
 # So that Passenger can pick up environment variables from .bashrc
@@ -376,7 +376,7 @@ $ sudo su - thames-time-lapse
 $ echo 'source ~/.recap-env-export' &amp;gt; ~/.bashrc
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Add an Apache virtual host for our application. Note that I'm setting the &lt;code&gt;PassengerRuby&lt;/code&gt; option as it defaults to the user that owns &lt;code&gt;config.ru&lt;/code&gt;, which happens to be the user that deployed rather than the application user.&lt;/p&gt;
+&lt;p&gt;Add an Apache virtual host for our application. Note that I&amp;rsquo;m setting the &lt;code&gt;PassengerRuby&lt;/code&gt; option as it defaults to the user that owns &lt;code&gt;config.ru&lt;/code&gt;, which happens to be the user that deployed rather than the application user.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ sudo vi /etc/apache2/sites-available/thames-time-lapse.chrisroos.co.uk.conf
 
@@ -423,15 +423,15 @@ end
     
       <item>
         <title>Moving my timelapse app from Heroku to AWS</title>
-        <description>&lt;p&gt;I love &lt;a href=&quot;https://www.heroku.com/&quot;&gt;Heroku&lt;/a&gt; and tend to use the free resources to deploy apps when they're in their very early stages of development. I have a few things that I continue to use Heroku for but unfortunately ran into some of the limits with the &lt;a href=&quot;https://github.com/chrisroos/thames-time-lapse&quot;&gt;Thames Time Lapse project&lt;/a&gt;.&lt;/p&gt;
+        <description>&lt;p&gt;I love &lt;a href=&quot;https://www.heroku.com/&quot;&gt;Heroku&lt;/a&gt; and tend to use the free resources to deploy apps when they&amp;rsquo;re in their very early stages of development. I have a few things that I continue to use Heroku for but unfortunately ran into some of the limits with the &lt;a href=&quot;https://github.com/chrisroos/thames-time-lapse&quot;&gt;Thames Time Lapse project&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;The first limitation was the number of rows in the free development database. The dev plan gives you 10,000 rows for free but I managed to get up to around 150,000 before receiving a warning email from Heroku. I only create around 1,000 rows a day, and I'm nowhere near 150 days in, so I'd obviously screwed up somewhere along the line.&lt;/p&gt;
+&lt;p&gt;The first limitation was the number of rows in the free development database. The dev plan gives you 10,000 rows for free but I managed to get up to around 150,000 before receiving a warning email from Heroku. I only create around 1,000 rows a day, and I&amp;rsquo;m nowhere near 150 days in, so I&amp;rsquo;d obviously screwed up somewhere along the line.&lt;/p&gt;
 
-&lt;p&gt;Another limitation was in my use of the &lt;a href=&quot;http://rubygems.org/gems/s3&quot;&gt;S3 gem&lt;/a&gt; to find the new images that had been uploaded to S3. As far as I can tell the gem doesn't understand S3 folders which meant that I had to scan the entire S3 bucket looking for new images. As more were uploaded, so this took longer and longer which just wasn't sustainable. Moving to AWS has allowed me to use the excellent &lt;a href=&quot;http://s3tools.org/s3cmd&quot;&gt;s3cmd&lt;/a&gt; command line interface to greatly improve the performance of looking for new images.&lt;/p&gt;
+&lt;p&gt;Another limitation was in my use of the &lt;a href=&quot;http://rubygems.org/gems/s3&quot;&gt;S3 gem&lt;/a&gt; to find the new images that had been uploaded to S3. As far as I can tell the gem doesn&amp;rsquo;t understand S3 folders which meant that I had to scan the entire S3 bucket looking for new images. As more were uploaded, so this took longer and longer which just wasn&amp;rsquo;t sustainable. Moving to AWS has allowed me to use the excellent &lt;a href=&quot;http://s3tools.org/s3cmd&quot;&gt;s3cmd&lt;/a&gt; command line interface to greatly improve the performance of looking for new images.&lt;/p&gt;
 
 &lt;p&gt;Finally, having the app running on AWS should also make it easier to use imagemagick to create smaller versions of the images, and ffmpeg to automatically create a timelapse of each day of images.&lt;/p&gt;
 
-&lt;p&gt;Instructions for settings up an AWS instance (I'm using a free micro instance) are in the README of the application should you be so inclined to play along.&lt;/p&gt;
+&lt;p&gt;Instructions for settings up an AWS instance (I&amp;rsquo;m using a free micro instance) are in the README of the application should you be so inclined to play along.&lt;/p&gt;
 </description>
 
         <pubDate>Sun, 13 Oct 2013 17:08:54 +0000</pubDate>
@@ -448,7 +448,7 @@ end
 
 &lt;p&gt;I played around with different numbers of images making up the final image, but felt that one per hour produces the best results.&lt;/p&gt;
 
-&lt;p&gt;I've also had a bit of a play with creating a movie from a set of 27 of these time-slice images. I really like the undulating effect of the water. You can also view it on &lt;a href=&quot;https://vimeo.com/74574559&quot;&gt;Vimeo&lt;/a&gt; if you can't see the video below.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve also had a bit of a play with creating a movie from a set of 27 of these time-slice images. I really like the undulating effect of the water. You can also view it on &lt;a href=&quot;https://vimeo.com/74574559&quot;&gt;Vimeo&lt;/a&gt; if you can&amp;rsquo;t see the video below.&lt;/p&gt;
 
 &lt;p&gt;&lt;video width=&quot;782&quot; height=&quot;612&quot; controls&gt;
   &lt;source src=&quot;/videos/thames-time-slice.mp4&quot; type=&quot;video/mp4&quot;&gt;
@@ -464,7 +464,7 @@ end
     
       <item>
         <title>Why split the subject and body in git commit messages?</title>
-        <description>&lt;p&gt;Tim Pope's, &lt;a href=&quot;http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html&quot;&gt;&quot;A Note About Git Commit Messages&quot;&lt;/a&gt; suggests that we should split our git commit message into subject and body, with a newline between the two. Tim lists some tools that make use of this split and I thought I'd follow that with some screenshots showing how this convention is used in four fairly common (well, I use them) git tools.&lt;/p&gt;
+        <description>&lt;p&gt;Tim Pope&amp;rsquo;s, &lt;a href=&quot;http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html&quot;&gt;&amp;ldquo;A Note About Git Commit Messages&amp;rdquo;&lt;/a&gt; suggests that we should split our git commit message into subject and body, with a newline between the two. Tim lists some tools that make use of this split and I thought I&amp;rsquo;d follow that with some screenshots showing how this convention is used in four fairly common (well, I use them) git tools.&lt;/p&gt;
 
 &lt;h2&gt;&lt;a href=&quot;http://mac.github.com/&quot;&gt;GitHub for Mac&lt;/a&gt;&lt;/h2&gt;
 
@@ -515,13 +515,13 @@ end
     
       <item>
         <title>Automatically updating my desktop background from my Thames time lapse pictures</title>
-        <description>&lt;p&gt;One of the things I wanted to do with the &lt;a href=&quot;/blog/2013-08-14-android-and-some-time-lapse-ish-magic&quot;&gt;pictures of the Thames that I've been capturing&lt;/a&gt; is to periodically update my desktop background to show the most recent image.&lt;/p&gt;
+        <description>&lt;p&gt;One of the things I wanted to do with the &lt;a href=&quot;/blog/2013-08-14-android-and-some-time-lapse-ish-magic&quot;&gt;pictures of the Thames that I&amp;rsquo;ve been capturing&lt;/a&gt; is to periodically update my desktop background to show the most recent image.&lt;/p&gt;
 
 &lt;p&gt;I was investigating how best to hook it all up when I came across this article that describes how to &lt;a href=&quot;http://www.macosxautomation.com/automator/examples/ex08/03.html&quot;&gt;Set the Desktop Picture to NASA Image of the Day&lt;/a&gt;. I figured that I could add a feed of the recent images to the &lt;a href=&quot;http://thames-time-lapse.chrisroos.co.uk/images&quot;&gt;thames-time-lapse website&lt;/a&gt; and follow the same workflow to set my desktop background.&lt;/p&gt;
 
 &lt;p&gt;Once I had the workflow downloading images and automatically setting my desktop background, I added a cron job to execute that workflow every 15 minutes.&lt;/p&gt;
 
-&lt;p&gt;Another thing I've been meaning to do is try to improve the quality of some of the images: They're being taken through a pretty dirty window and suffer from both the dirt and reflections as the light changes during the day. I'm hoping that the increased visibility of the images will prompt me to do something about this sooner rather than later.&lt;/p&gt;
+&lt;p&gt;Another thing I&amp;rsquo;ve been meaning to do is try to improve the quality of some of the images: They&amp;rsquo;re being taken through a pretty dirty window and suffer from both the dirt and reflections as the light changes during the day. I&amp;rsquo;m hoping that the increased visibility of the images will prompt me to do something about this sooner rather than later.&lt;/p&gt;
 </description>
 
         <pubDate>Mon, 09 Sep 2013 10:39:55 +0000</pubDate>

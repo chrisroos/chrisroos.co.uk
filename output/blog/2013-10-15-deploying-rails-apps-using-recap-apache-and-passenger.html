@@ -48,14 +48,14 @@
     <div id="content">
       <abbr class="createdAt" title="2013-10-15T14:49:07+00:00">Tue, 15 Oct 13</abbr>
       <h1>Deploying Rails apps using Recap, Apache and Passenger</h1>
-      <p>This assumes that you already have <a href="http://httpd.apache.org/">Apache</a> and <a href="https://www.phusionpassenger.com/">Passenger</a> installed; and that you've run <code>recap setup</code> and configured your <code>Capfile</code> with the address of your server.</p>
-      <p>I'm going to use 'thames-time-lapse' as an example application name but you'll want to replace that with the name of your app in the instructions below.</p>
+      <p>This assumes that you already have <a href="http://httpd.apache.org/">Apache</a> and <a href="https://www.phusionpassenger.com/">Passenger</a> installed; and that you’ve run <code>recap setup</code> and configured your <code>Capfile</code> with the address of your server.</p>
+      <p>I’m going to use ‘thames-time-lapse’ as an example application name but you’ll want to replace that with the name of your app in the instructions below.</p>
       <p>The first step is to set-up the server and get the code deployed.</p>
       <pre><code>$ cap bootstrap
 $ cap deploy:setup
 $ cap deploy
 </code></pre>
-      <p>We now want to make <a href="https://github.com/freerange/recap">Recap's</a> configuration options available to Passenger. We can do this by changing the application user's shell to bash and loading Recap's environment variables in that user's <code>.bashrc</code>.</p>
+      <p>We now want to make <a href="https://github.com/freerange/recap">Recap’s</a> configuration options available to Passenger. We can do this by changing the application user’s shell to bash and loading Recap’s environment variables in that user’s <code>.bashrc</code>.</p>
       <pre><code># Set the app user's shell to bash
 # So that Passenger can pick up environment variables from .bashrc
 $ sudo chsh -s /bin/bash thames-time-lapse
@@ -64,7 +64,7 @@ $ sudo chsh -s /bin/bash thames-time-lapse
 $ sudo su - thames-time-lapse
 $ echo 'source ~/.recap-env-export' &gt; ~/.bashrc
 </code></pre>
-      <p>Add an Apache virtual host for our application. Note that I'm setting the <code>PassengerRuby</code> option as it defaults to the user that owns <code>config.ru</code>, which happens to be the user that deployed rather than the application user.</p>
+      <p>Add an Apache virtual host for our application. Note that I’m setting the <code>PassengerRuby</code> option as it defaults to the user that owns <code>config.ru</code>, which happens to be the user that deployed rather than the application user.</p>
       <pre><code>$ sudo vi /etc/apache2/sites-available/thames-time-lapse.chrisroos.co.uk.conf
 
 # Paste the following content

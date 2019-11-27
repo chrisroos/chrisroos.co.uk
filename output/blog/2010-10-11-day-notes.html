@@ -50,19 +50,19 @@
       <h1>Day notes - Mon 11th Oct 2010</h1>
       <ul>
         <li>
-          <p>Worked with <a href="http://interblah.net/">James A</a> to get the <a href="http://www.hmrc.gov.uk/employers/cdrom/index.htm">HMRC employer's CD</a> set-up.</p>
+          <p>Worked with <a href="http://interblah.net/">James A</a> to get the <a href="http://www.hmrc.gov.uk/employers/cdrom/index.htm">HMRC employer’s CD</a> set-up.</p>
           <ul>
             <li>
               <p>We keep the data directory in a shared <a href="http://www.dropbox.com">dropbox</a> so that all of us can use the app from any machine and connect to the same data directory. Although multiple people <em>can</em> have the app open at one time (pointing at their local dropbox copies of the data) only the last edit/save will win.</p>
             </li>
             <li>
-              <p>You can customise the data directory (post-install) by editing the configuration/projectSpecific/userPath key in the /PATH/TO/HMRC/Employer CD-ROM 2010/shared/xml/configuration.xml configuration file (that's on a Mac).</p>
+              <p>You can customise the data directory (post-install) by editing the configuration/projectSpecific/userPath key in the /PATH/TO/HMRC/Employer CD-ROM 2010/shared/xml/configuration.xml configuration file (that’s on a Mac).</p>
             </li>
             <li>
-              <p>The app actually appears to be made of a webserver (running on <a href="http://127.0.0.1:46721">http://127.0.0.1:46721</a> by default) and a flash front end app. It looks as though you can do everything through the web app if you don't care for the flash front end.</p>
+              <p>The app actually appears to be made of a webserver (running on <a href="http://127.0.0.1:46721">http://127.0.0.1:46721</a> by default) and a flash front end app. It looks as though you can do everything through the web app if you don’t care for the flash front end.</p>
             </li>
             <li>
-              <p>We got an error when trying to submit a form to the HMRC gateway. The error was something along the lines of 'missing or invalid XML in /PATH/TO/HMRC/Employer CD-ROM 2010/shared/xml/forms/2010/p45_part3_zap/script.xml'. We noticed that the p45_part3_zap directory had been created with a capital P (i.e. P45_part3_zap): aliasing this as p45_part3_zap and re-starting the app fixed the problem.</p>
+              <p>We got an error when trying to submit a form to the HMRC gateway. The error was something along the lines of ‘missing or invalid XML in /PATH/TO/HMRC/Employer CD-ROM 2010/shared/xml/forms/2010/p45_part3_zap/script.xml’. We noticed that the p45_part3_zap directory had been created with a capital P (i.e. P45_part3_zap): aliasing this as p45_part3_zap and re-starting the app fixed the problem.</p>
             </li>
           </ul>
         </li>
