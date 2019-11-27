@@ -49,7 +49,7 @@
       <abbr class="createdAt" title="2009-02-24T09:29:13+00:00">Tue, 24 Feb 09</abbr>
       <h1>Gracefully Degrade the Google Custom Search Form So That It Works Without Javascript</h1>
       <p>It struck me a couple of nights ago that it wasn’t possible to search my site without Javascript, because of <a href="http://www.google.com/coop/cse/">Google Custom Search’s</a> reliance on <a href="http://en.wikipedia.org/wiki/JavaScript">Javascript</a>. I’m not sure whether I just overlooked the fact or whether I’d realised that it was bad and ignored it. Either way, I decided it was time to do something about it. I stripped out the google custom search form and replaced it with a form that actually searches the google index of my site.</p>
-      <pre class="code html">
+      <pre>
 &lt;form action='http://www.google.co.uk/search' id='searchForm'&gt;
   &lt;div&gt;
     &lt;input name='q' type='hidden' value='site:chrisroos.co.uk' /&gt;
@@ -59,7 +59,7 @@
 &lt;/form&gt;
 </pre>
       <p>So, the default behaviour (with javascript disabled) is now to search the content of my site in the google index. I then use <a href="http://chrisroos.co.uk/javascripts/google-custom-search.js">javascript</a> to <a href="http://en.wikipedia.org/wiki/Progressive_enhancement">progressively enhance</a> the form to make it compatible with the google custom search. Done.</p>
-      <pre class="code javascript">
+      <pre>
 var googleCustomSearch = {
   createHiddenField : function(name, value) {
     var field = document.createElement('input');

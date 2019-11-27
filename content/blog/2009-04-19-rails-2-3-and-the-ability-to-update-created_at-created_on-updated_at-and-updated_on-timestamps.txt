@@ -15,14 +15,14 @@ h2(#replicating-my-experiment). Replicating my experiment
 
 * Get a copy of rails
 
-<pre class="code shell">
+<pre>
   $ cd /path/to/code
   $ git clone git://github.com/rails/rails.git
 </pre>
 
 * Create a "mysql":http://www.mysql.com/ database called rails_timestamps_test, and create a table within that database called people.
 
-<pre class="code sql">
+<pre>
   mysql> CREATE DATABASE rails_timestamps_test;
   mysql> USE rails_timestamps_test;
   mysql> CREATE TABLE people (id INTEGER AUTO_INCREMENT, created_on DATE, created_at DATETIME, updated_on DATE, updated_at DATETIME, PRIMARY KEY (id));
@@ -30,14 +30,14 @@ h2(#replicating-my-experiment). Replicating my experiment
 
 * Get a copy of my test script
 
-<pre class="code shell">
+<pre>
   $ cd /path/to/code
   $ svn co http://chrisroos.googlecode.com/svn/trunk/scratch/rails_timestamps_test
 </pre>
 
 * Run my script against rails 2.3 (run setup_rails_project.rb without any arguments to see the options) and hopefully see output similar to below (which means that the tests passed as expected).
 
-<pre class="code shell">
+<pre>
   $ cd /path/to/code/rails_timestamps_test
   $ ruby setup_rails_project.rb 2.3.0 /path/to/code/rails
 
@@ -69,7 +69,7 @@ h2(#replicating-my-experiment). Replicating my experiment
 
 * Re-run the script against rails 2.2.2 (the last tag before 2.3) and you should see the same as above except for the last test which should now contain two failures.
 
-<pre class="code shell">
+<pre>
   $ cd /path/to/code/rails_timestamps_test
   $ ruby setup_rails_project.rb 2.2.2 /path/to/code/rails
 
@@ -107,7 +107,7 @@ h2(#notes-about-the-script). A couple of notes about the script
 
 * If you specify an invalid tag (i.e. a tag that doesn't exist in the rails repository) then the rails_version_test.rb will fail.
 
-<pre class="code shell">
+<pre>
   $ cd /path/to/code/rails_timestamps_test
   $ ruby setup_rails_project.rb made.up.tag /path/to/code/rails
 

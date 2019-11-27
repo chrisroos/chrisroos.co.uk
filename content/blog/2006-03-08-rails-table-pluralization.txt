@@ -8,7 +8,7 @@ layout: blog
 ---
 I was talking to someone recently about the pluralisation of table names in "rails":http://www.rubyonrails.org.  It was grating him because some hand built queries no longer read very naturally.
 
-<pre class="code sql">
+<pre>
 -- (in rails) requesting the forename of the 'first' person
 SELECT forename FROM people WHERE people.id = 1;
 
@@ -18,7 +18,7 @@ SELECT forename FROM person WHERE person.id = 1;
 
 "Paul":http://po-ru.com/ (a colleague at "reevoo":http://www.reevoo.com) pointed out that there are two sides to the singular/plural table name debate.  You will always have some queries (as above) that will work better when the table is singular; and others (as below) that will work better when the table is plural.
 
-<pre class="code sql">
+<pre>
 -- requesting all people having a country of 'uk'
 SELECT * FROM person WHERE country = 'UK';
 
@@ -30,7 +30,7 @@ Personally, because of the very small amount of hand written sql I've had to use
 
 By default (in Rails), you create a singular (active record) model (person) that maps to the plural table (people).  Although very convenient (it's the reason I've rarely had to touch sql), it too suffers from the same problems outlined in the queries above.  I think the two statements below show the same sort of natural vs unnatural language that appears in the sql above.
 
-<pre class="code ruby">
+<pre>
 # good english (acting on a single person)
 Person.name = 'chris'
 Person.save
@@ -41,7 +41,7 @@ Person.find(:all, :conditions => "country = 'uk'")
 
 The adaptation to active record I was thinking about would allow you to operate on both a Person and People, using the variant that made the code read more naturally.  That is, we could leave the Person.name example above as is, but change the Person.find to People.find[1].  There are different ways to go about this but to get some of the way there with a little code (i.e. not having to manually create both singular and plural classes for each table); I came up with the following simple hack.
 
-<pre class="code ruby">
+<pre>
 class ActiveRecord::Base
   class << self
     alias_method :__existing_inherited, :inherited

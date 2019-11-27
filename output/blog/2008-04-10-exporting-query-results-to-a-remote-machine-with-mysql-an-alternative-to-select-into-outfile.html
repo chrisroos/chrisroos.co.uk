@@ -53,7 +53,7 @@
         <p>The SELECT … INTO OUTFILE statement is intended primarily to let you very quickly dump a table to a text file on the server machine. If you want to create the resulting file on some client host other than the server host, you cannot use SELECT … INTO OUTFILE. In that case, you should instead use a command such as mysql -e “SELECT …” &gt; file_name to generate the file on the client host.</p>
       </blockquote>
       <p>This works great but the default output you’ll get from redirecting STDOUT won’t be the same as using SELECT INTO OUTFILE. The two main (only?) differences are, in the redirected output, the addition of the headers and that NULL values are output as NULL instead of the special \N (backslash-N) sequence. We can fix both of these things by specifying an optional switch (skip-column-names) to the mysql client and employing some <a href="http://en.wikipedia.org/wiki/Sed">sed</a> magic.</p>
-      <pre class="code shell">
+      <pre>
 mysql -h"my-host" -u"my-user" -p"my-password" -e"select * from my-database.my-table" --skip-column-names |\
   sed -e 's/[[:&lt;:]]NULL[[:&gt;:]]/\\N/g' &gt;\
   my-export-directory/my-table.csv`

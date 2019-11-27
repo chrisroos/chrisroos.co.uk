@@ -13,7 +13,7 @@ fn1. I plan to post some test data (to help others attempting to write a client)
 
 fn2. I printed the parameters and signature at various stages of the request so that I could compare it to the output from my client.
 
-<pre class="code">
+<pre>
 require 'rubygems'
 require 'cgi'
 require 'time'

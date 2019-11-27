@@ -13,7 +13,7 @@ I really like the "Passenger preference pane":http://www.fngtps.com/2008/06/putt
 
 You can get it by checking out the "source":http://chrisroos.googlecode.com/svn/trunk/apacherb/:
 
-<pre class="code">
+<pre>
 svn co http://chrisroos.googlecode.com/svn/trunk/apacherb
 </pre>
 

@@ -49,7 +49,7 @@
       <h1>A common pattern in retailers' receipt pages (and a microformat solution)</h1>
       <p>We’ve been looking at embedding a little bit of javascript in one of our partner’s receipt pages to send us the details of which products were purchased (using <a href="http://en.wikipedia.org/wiki/Stock_Keeping_Unit">SKUs</a>). A quick glance over the page revealed that nine other providers (<a href="http://www.google.com/analytics/">GA</a>, an <a href="http://en.wikipedia.org/wiki/Search_engine_optimization">SEO</a> helper and a bunch of price comparators) had the same idea. That’s the same data repeated nine times. Ten if you include the human readable copy. Now that seems like a problem waiting to be solved to me. It also feels like a perfect fit for <a href="http://microformats.org/">microformats</a>. If we had a <a href="http://microformats.org/wiki/receipt">receipt microformat</a> then we could use javascript to parse the data rather than having to re-define it each time. We would also be removing all duplication and creating semantically rich content (I guess that’s basically what microformats do anyway) in the process.</p>
       <p>So, something that might currently look like this:</p>
-      <pre class="code html">
+      <pre>
 &lt;table&gt;
   &lt;tr&gt;
     &lt;th&gt;Order Number&lt;/th&gt;
@@ -76,7 +76,7 @@
 &lt;!-- And repeat... --&gt;
 </pre>
       <p>Could become much simpler:</p>
-      <pre class="code html">
+      <pre>
 &lt;table&gt;
   &lt;tr&gt;
     &lt;th&gt;Order Number&lt;/th&gt;

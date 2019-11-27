@@ -20,7 +20,7 @@ The same statement goes for uniformly determining the existence of a method on a
 
 Combining these two imlpementations provides us with a uniform method to determine whether the receiver contains a method represented by _method_sym_.
 
-<pre class="code ruby">
+<pre>
 class Object
   def method_exists?(method_sym)
     methods = public_methods + protected_methods + private_methods

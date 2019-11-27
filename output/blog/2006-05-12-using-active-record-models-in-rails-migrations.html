@@ -56,7 +56,7 @@
       <p>The problem with re-defining models in the migrations is that it relies on you remembering to re-define them (I’m good at ‘forgetting’ to do things unless I really have to). There is nothing to stop you using the real models; that is, until someone complains that the migrations are broken and you have to fix it.</p>
       <p>We are currently using a slightly more robust (I think) solution that forces you to re-define any AR models that you wish to use in migrations. It does this by hijacking the ‘zero’ migration (a migration starting with 0 that gets loaded along with all other migrations but doesn’t interfere in any other way) to ensure any AR derived classes are defined in a module. It’s naive but seems to work ok.</p>
       <p>If you don’t already have a zero migration, then create one. The name is important as you will need to create an empty class of the same name in the file itself (for migrations to be happy). Ours is called 000_rails_ext.rb. The code is below. Our code isn’t identical (yet) as I just realised that we had an ineffective call to super in the inherited method, now replaced with alias_method.</p>
-      <pre class="code ruby">
+      <pre>
 class RailsExt
 end
 
@@ -74,7 +74,7 @@ Dispatcher.reset_application!
 </pre>
       <p>The inherited callback is triggered everytime we define a class that inherits from ActiveRecord::Base. All we do is check that its name starts with Migration and raise an error if not (failing fast is good). The name is the fully qualified name and so includes namespaces. This is good as it allows us to place all re-defined classes in a module named Migration&lt;number&gt;. This module can then be included in the migration class itself. Although I can’t remember exactly now, I think the reason we need to reset_application! is because we have some calls to our models in environment.rb. These models would already be loaded and therefore any future references to them (in the migrations) would bypass our custom inherited method. By resetting the app, we are sure that we have no AR models loaded.</p>
       <p>To re-define the models in the migration, we use something like..</p>
-      <pre class="code ruby">
+      <pre>
 class MyFirstMigration &lt; ActiveRecord::Migration
   def self.up
   end

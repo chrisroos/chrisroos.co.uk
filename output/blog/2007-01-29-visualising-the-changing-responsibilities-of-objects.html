@@ -49,7 +49,7 @@
       <h1>Visualising the changing responsibilities of objects</h1>
       <p>By parsing the output of svn diff, we can concisely display the responsibilities that have been added/removed to various objects. It is based on the assumption that our tests capture these changes.</p>
       <p>Taking a very simple (and partially made up) diff:</p>
-      <pre class="code ruby">
+      <pre>
 Index: test/amount_test.rb
 ===================================================================
 --- test/amount_test.rb (revision 2)
@@ -66,14 +66,14 @@ Index: test/amount_test.rb
    end
 </pre>
       <p>And piping it through the diff_parser, we get:</p>
-      <pre class="code">
+      <pre>
 --- Amount
 + should flunk
 - should format amount
 </pre>
       <p>The output is in a diff-like format so that we can pipe it straight into <a href="http://www.macromates.com">TextMate</a> and benefit from the colour formatting therein.</p>
       <h2>diff_parser.rb</h2>
-      <pre class="code ruby">
+      <pre>
 #!/usr/bin/env ruby
 
 class Test

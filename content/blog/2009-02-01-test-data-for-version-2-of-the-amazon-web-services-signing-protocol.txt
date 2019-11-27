@@ -11,7 +11,7 @@ This sort of data would have been incredibly handy when I was "trying to impleme
 
 I chose to test using the "List domains":http://docs.amazonwebservices.com/AmazonSimpleDB/2007-11-07/DeveloperGuide/SDB_API_ListDomains.html method as it seemed fairly straightforward.  These are request parameters I used (you'll obviously need to use the exact same values when testing your implementation).
 
-<pre class="code">
+<pre>
 AWSAccessKeyId = access
 Action = ListDomains
 SignatureMethod = HmacSHA256
@@ -24,13 +24,13 @@ The following numbered steps correspond to the numbered steps in the "Authentica
 
 1. We URL encode the above request parameters (the key value pairs) and sort them to generate this 'canonicalized query string'.
 
-<pre class="code">
+<pre>
 AWSAccessKeyId=access&Action=ListDomains&SignatureMethod=HmacSHA256&SignatureVersion=2&Timestamp=2009-02-01T12%3A53%3A20%2B00%3A00&Version=2007-11-07
 </pre>
 
 2. We use this canonicalized query string within this string that we're going to hash.
 
-<pre class="code">
+<pre>
 GET
 sdb.amazonaws.com
 /
@@ -39,19 +39,19 @@ AWSAccessKeyId=access&Action=ListDomains&SignatureMethod=HmacSHA256&SignatureVer
 
 3 and 4. We generate the following, "base64":http://en.wikipedia.org/wiki/Base64 encoded, "HMAC":http://en.wikipedia.org/wiki/HMAC of the string above using the SHA256 hashing algorithm and a secret key of 'secret'.
 
-<pre class="code">
+<pre>
 okj96/5ucWBSc1uR2zXVfm6mDHtgfNv657rRtt/aunQ=
 </pre>
 
 5. We URL encode this signature and add it to the list of request parameters (note that the order of the request parameters doesn't matter for the request itself).
 
-<pre class="code">
+<pre>
 Action=ListDomains&Signature=okj96%2F5ucWBSc1uR2zXVfm6mDHtgfNv657rRtt%2FaunQ%3D&Version=2007-11-07&AWSAccessKeyId=access&Timestamp=2009-02-01T12%3A53%3A20%2B00%3A00&SignatureVersion=2&SignatureMethod=HmacSHA256
 </pre>
 
 Once you're happy that you've implemented the request signing functionality correctly you can use your real security credentials (access and secret keys) and test using "curl":http://curl.haxx.se/.  Note that the HTTP method, sdb host (sdb.amazonaws.com) and path (/) must match those that were used in the string that we hashed.
 
-<pre class="code">
+<pre>
 curl -X"GET" "https://sdb.amazonaws.com/?Action=ListDomains&Signature=okj96%2F5ucWBSc1uR2zXVfm6mDHtgfNv657rRtt%2FaunQ%3D&Version=2007-11-07&AWSAccessKeyId=access&Timestamp=2009-02-01T12%3A53%3A20%2B00%3A00&SignatureVersion=2&SignatureMethod=HmacSHA256"
 </pre>
 

@@ -10,7 +10,7 @@ In testing (and production code) "we":http://www.reevoo.com always try to persis
 
 The problem is that the standard "test/unit":http://ruby-doc.org/stdlib/libdoc/test/unit/rdoc/index.html reporting framework displays the exception without any details of why the validation failed.
 
-<pre class="code">
+<pre>
  1) Error:​
 test_should_fail_validation(AardvarkTest):​
 ActiveRecord::RecordInvalid:​ActiveRecord::RecordInvalid
@@ -29,13 +29,13 @@ I initially played around with a method that took a block and would wrap the blo
 
 Then I thought it'd be cool if we could integrate slightly more with both test/unit and "rails":http://www.rubyonrails.com.  The result is a "plugin":http://wiki.rubyonrails.org/rails/pages/Plugins ("source":http://chrisroos.googlecode.com/svn/trunk/plugins/test_unit_active_record_errors/) that can be installed as follows.
 
-<pre class="code shell">
+<pre>
 $ script/plugin install http://chrisroos.googlecode.com/svn/trunk/plugins/test_unit_active_record_errors/
 </pre>
 
 The output from a failed validation now includes the validation errors.  Yay.
 
-<pre class="code">
+<pre>
  1) Error:​
 test_should_fail_validation(AardvarkTest):​
 ActiveRecord::RecordInvalid: ActiveRecord::RecordInvalid

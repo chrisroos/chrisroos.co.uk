@@ -20,7 +20,7 @@ We are currently using a slightly more robust (I think) solution that forces you
 
 If you don't already have a zero migration, then create one.  The name is important as you will need to create an empty class of the same name in the file itself (for migrations to be happy).  Ours is called 000_rails_ext.rb.  The code is below.  Our code isn't identical (yet) as I just realised that we had an ineffective call to super in the inherited method, now replaced with alias_method.
 
-<pre class="code ruby">
+<pre>
 class RailsExt
 end
 
@@ -41,7 +41,7 @@ The inherited callback is triggered everytime we define a class that inherits fr
 
 To re-define the models in the migration, we use something like..
 
-<pre class="code ruby">
+<pre>
 class MyFirstMigration < ActiveRecord::Migration
   def self.up
   end

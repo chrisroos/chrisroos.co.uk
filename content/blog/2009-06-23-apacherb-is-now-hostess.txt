@@ -11,13 +11,13 @@ A little while ago I wrote about a utility called "apacherb":/blog/2008-12-15-a-
 
 Install it with:
 
-<pre class="code shell">
+<pre>
 $ gem install hostess
 </pre>
 
 Executing it without any arguments will display some simple instructions.
 
-<pre class="code shell">
+<pre>
 $ hostess
   Usage:
     hostess create domain directory - create a new virtual host
@@ -30,7 +30,7 @@ You'll need to run it as "sudo":http://en.wikipedia.org/wiki/Sudo as it writes t
 
 To create a domain pointing at a local directory, you'd do something like:
 
-<pre class="code shell">
+<pre>
 $ sudo hostess create example.local ~/Sites/example.local/
 </pre>
 

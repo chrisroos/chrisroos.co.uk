@@ -50,7 +50,7 @@
       <h1>Libxml2 Problems When Installing Nokogiri</h1>
       <h2>The problem</h2>
       <p>Trying to install <a href="http://nokogiri.org/">nokogiri</a> on Mac OS X 10.5.8 (Leopard) using <a href="http://github.com/carlhuda/bundler">gem bundler</a>, or more specifically as a non root user (e.g. installing into ~/.gem/), failed with the error below.</p>
-      <pre class="code shell">
+      <pre>
   checking for xmlParseDoc() in -lxml2... no
   libxml2 is missing.  try 'port install libxml2' or 'yum install libxml2'
 </pre>
@@ -58,7 +58,7 @@
       <h2>The solution</h2>
       <p>The <a href="http://gcc.gnu.org/">gcc</a> command being executed to test whether libxml2 existed was looking for both i386 and ppc (universal) libraries, where I only had the i386 versions installed via <a href="http://www.macports.org/">Macports</a> (<code>$ file /opt/local/lib/libxml2.2.dylib #=&gt; /opt/local/lib/libxml2.2.dylib: Mach-O dynamically linked shared library i386</code>)</p>
       <h3>Solution 1</h3>
-      <pre class="code shell">
+      <pre>
   # Instruct gcc to check for i386 libraries only
 
   $ RC_ARCHS="i386" gem install nokogiri
@@ -66,7 +66,7 @@
   $ ARCHFLAGS="-arch i386" gem install nokogiri
 </pre>
       <h3>Solution 2</h3>
-      <pre class="code shell">
+      <pre>
   # Install universal (i.e. i386 and ppc) versions of libxml and libxslt
 
   $ sudo port upgrade --enforce-variants libxml2 +universal
@@ -74,7 +74,7 @@
 </pre>
       <h2>The explanation</h2>
       <p>The error message (libxml2 is missing) was somewhat cryptic. I knew it was installed via macports and as part of the stock Leopard install.</p>
-      <pre class="code shell">
+      <pre>
   $ port installed | grep libxml2.*active
     libxml2 @2.7.5_0 (active)
   $ ls -l /usr/lib | grep libxml2
@@ -83,12 +83,12 @@
     -rwxr-xr-x   1 root  wheel       819 27 Jun  2008 libxml2.la
 </pre>
       <p>After a little digging I discovered that the error was being raised by line 124 of <a href="http://github.com/tenderlove/nokogiri/blob/master/ext/nokogiri/extconf.rb">extconf.rb in nokogiri</a>. In fact, I could replicate the error by checking out a copy of nokogiri and running the following command.</p>
-      <pre class="code shell">
+      <pre>
   $ cd /path/to/clone/of/nokogiri &amp;& ruby ext/nokogiri/extconf.rb
 </pre>
       <p>Trial and error using The One True Ruby Debugger (scattering p statements throughout the file) lead me to realise that the problem was being caused by the <a href="http://ruby-doc.org/stdlib/libdoc/mkmf/rdoc/files/mkmf_rb.html#M000549">dir_config</a> call on line 62 of that same file.</p>
       <p>The simplest example I came up with to expose the problem was as follows.</p>
-      <pre class="code shell">
+      <pre>
   $ cat &gt; wem_extconf.rb
   require 'mkmf'
   find_library('xml2', 'xmlParseDoc')
@@ -101,7 +101,7 @@
 </pre>
       <p>After lots of digging into <a href="http://ruby-doc.org/stdlib/libdoc/mkmf/rdoc/index.html">mkmf.rb</a> I was able to determine the command being executed in order to check whether libxml2 existed (or, more accurately, whether the xmlParseDoc function existed in libxml2). It turns out that the commands executed are actually logged to the mkmf.log that’s generated as part of running extconf.rb but, although I was aware of the mkmf.log file, I didn’t realise it contained the commands until now.</p>
       <p>These are the relevant lines from mkmf.log after a failed install of nokogiri. If you were trying to install nokogiri to your home gem directory then this log file would be in ~/.gem/ruby/1.8/gems/nokogiri-1.4.1/ext/nokogiri/mkmf.log (where the nokogiri version would be specific to the version you were installing).</p>
-      <pre class="code shell">
+      <pre>
   find_library: checking for xmlParseDoc() in -lxml2... -------------------- no
 
   "gcc -o conftest -I/opt/local/include/libxml2 -I/opt/local/include/ -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin9.0 -I. -I/opt/local/include/ -I/opt/local/include/libxml2 -I/opt/local/include   -arch ppc -arch i386 -Os -pipe -fno-common  -g -DXP_UNIX -O3 -Wall -Wcast-qual -Wwrite-strings -Wconversion -Wmissing-noreturn -Winline conftest.c  -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L/opt/local/lib -L. -arch ppc -arch i386     -lruby -lxml2  -lpthread -ldl -lm   "
@@ -141,7 +141,7 @@
   /* end */
 </pre>
       <p>In order to detect whether a function exists within a library (my terminology is probably wrong here) mkmf uses gcc to execute some c code that tries to call the function. It tries twice, changing the c code used. We can see the two commands run in the above log extract (both starting gcc) and the source of the c code used (wrapped in the /begin/ and /end/ comments below the gcc lines). Armed with this knowledge we can replicate the tests manually on the command line.</p>
-      <pre class="code shell">
+      <pre>
   $ # Test 1
   $ cat &gt; conftest.c
   int main() { return 0; }
@@ -164,7 +164,7 @@
 </pre>
       <p>The next step was to compare the gcc command being run when it reported the library as found to the above unsuccessful commands. It turns out that the only difference in the commands was the presence of an additional -L option (-L/opt/local/lib) in the failed command. This additional -L option was the effect of the call to dir_config (from the mkmf.rb rdoc for dir_config, “Note that dir_config only adds to the list of places to search for libraries and include files”).</p>
       <p>To double check that this was the case I repeated Test 2 with this additional -L switch removed. We still get some warnings but we get an exit code of 0 representing success (i.e. the function was found).</p>
-      <pre class="code shell">
+      <pre>
   $ # Test 2
   $ cat &gt; conftest.c
   int main() { return 0; }
@@ -183,7 +183,7 @@
       <p>Having got this far I was still unsure of a fix. I thought about removing libxml2 from ports but it was required by <a href="http://www.imagemagick.org">ImageMagick</a> (among other things) which meant that this wasn’t really an option. Finally, after quite a bit of googling I came across <a href="http://passingcuriosity.com/2009/installing-pil-on-mac-os-x-leopard/">this post</a> that covered a similar error encountered installing PIL (Python Imaging Library) on Leopard. The solution here was to install the universal version of libxml2 from macports. I tried the same thing (I had to install the universal version of libxslt2 too) and it appears to have done the trick, although I have absolutely no idea why.</p>
       <p>Not content to leave it there I continued to investigate, albeit some time after I’d written the stuff above.</p>
       <p>Although installing the libxml2 universal libraries did the trick I still wasn’t sure why it worked as sudo (without the universal libs) but not as my regular user. I continued to dig and worked out that it was all down to my setting the RUPYOPT environment variable to rubygems (RUBYOPT=“rubygems”). It turns out that <a href="http://rubygems.rubyforge.org/svn/tags/REL_1_3_5/lib/rubygems.rb">rubygems.rb</a> (line 168 in rubygems v1.3.5 on my machine) requires rbconfig.rb (/usr/lib/ruby/1.8/universal-darwin9.0/rbconfig.rb on my machine) which in turn defines the ARCHFLAGS constant.</p>
-      <pre class="code ruby">
+      <pre>
   ARCHFLAGS =
     if e = ENV['ARCHFLAGS']
       e
@@ -195,13 +195,13 @@
 </pre>
       <p>We can see that ARCHFLAGS defaults to ‘-arch ppc -arch i386’ if neither ARCHFLAGS or RC_ARCHS are defined (i.e. compile universal binaries; search for “-arch arch” in the <a href="http://developer.apple.com/mac/library/DOCUMENTATION/Darwin/Reference/ManPages/man1/gcc.1.html">gcc man page</a>). However, <a href="http://github.com/tenderlove/nokogiri/blob/REL_1.4.1/ext/nokogiri/extconf.rb#L1">extconf.rb in Nokogiri sets RC_ARCHS to an empty string</a> meaning that as long as extconf.rb is required before rbconfig.rb then gcc won’t try to compile against universal libraries. When I installed nokogiri as sudo this is exactly what happened (extconf.rb is required which in turn requires <a href="http://svn.ruby-lang.org/repos/ruby/tags/v1_8_6_287/lib/mkmf.rb">mkmf</a> which in turn requires rbconfig.rb). When I installed as my user (with RUBYOPT=“rubygems”) extconf.rb was required <strong>after</strong> rbconfig.rb which means that ARCHFLAGS had already been set to compile against universal binaries.</p>
       <p>We can see the difference between requiring rubygems before requiring rbconfig with these two commands:</p>
-      <pre class="code shell">
+      <pre>
   $ ruby -e'p [ENV["RUBYOPT"], require("rbconfig")]' #=&gt; ["rubygems", false] (false because rbconfig has already been required)
   $ sudo ruby -e'p [ENV["RUBYOPT"], require("rbconfig")]' #=&gt; [nil, true] (true because rbconfig hasn't been required)
 </pre>
       <p>NOTE. I noticed that there was a file named rbconfig.rb.orig in the same directory as rbconfig.rb and a little digging revealed this <a href="http://opensource.apple.com/source/ruby/ruby-67.3/patches/rbconfig.diff">apple patch to rbconfig.rb</a>. I’m guessing this patch was applied to the stock Leopard install of Ruby 1.8.6 (i.e. it’s been there since the OS was installed) but I can’t be 100% sure.</p>
       <p>Now, that’s almost the story over, but not quite. My original hypothesis was that installing with sudo was causing gcc to link against /usr/lib/libxml2.2.dylib (compiled for ppc, ppc64, i386 and x86_64; see below) and installing as my user was causing gcc to link against /opt/local/lib/libxml2.2.dylib (compiled for i386 only) which failed.</p>
-      <pre class="code shell">
+      <pre>
   $  file /usr/lib/libxml2.2.dylib
   /usr/lib/libxml2.2.dylib: Mach-O universal binary with 4 architectures
   /usr/lib/libxml2.2.dylib (for architecture ppc7400):  Mach-O dynamically linked shared library ppc

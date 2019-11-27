@@ -52,11 +52,11 @@
       </div>
       <p>I was in need of finding some train times at the weekend. I usually use the <a href="http://www.nationalrail.co.uk">national rail enquiries</a> website but was without Internet access at the time. Instead, I found myself waiting for about 10 minutes in a telephone queue just to spend about 30 seconds getting the information I was after. This played on my mind a bit so last night I started <a href="http://twitter.com/chrisroos/statuses/164273922">playing around</a> with automating the national rail timetable search. That was relatively painless so I moved on to integrating with <a href="http://www.twitter.com">twitter</a> in order to provide an SMS interface to the service. Within a couple of hours I had a twitterbot that receives timetable requests, looks up the times and sends them back to you.</p>
       <p>It’s actually currently all up and running. Just follow <a href="http://twitter.com/natrailenq">natrailenq</a> on twitter and I’ll follow you right back<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> (this seems to be necessary in order to send direct messages between each other). A timetable request must be of the format ‘origin_station (3 letter short code) destination_station (3 letter short code) depart_date (dd-mmmm) depart_time (hh:mm)’. So, if we wanted to get times of trains from London Victoria (VIC) to Clapham Junction (CLJ) tomorrow midday, we’d send a message like so:</p>
-      <pre class="code">
+      <pre>
 d natrailenq vic clj 25-july 12:00
 </pre>
       <p>In this instance, we get the following response back.</p>
-      <pre class="code">
+      <pre>
 natrailenq  11:55-&gt;12:02, 12:02-&gt;12:07, 12:03-&gt;12:09, 12:05-&gt;12:11, 12:06-&gt;12:11
 </pre>
       <p>Cool huh.</p>

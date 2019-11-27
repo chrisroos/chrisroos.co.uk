@@ -54,7 +54,7 @@
         <li>The addition of ActionController::Routing::RouteSet::Mapper#permanently_redirect, allowing us to declare permanent redirections within our <a href="http://api.rubyonrails.com/classes/ActionController/Routing.html">route config</a>.
         </li>
       </ol>
-      <pre class="code ruby">
+      <pre>
 ActionController::Routing:Routes.draw do |map|
   map.permanently_redirect 'legacy/view/:id', :controller =&gt; 'current', :action =&gt; 'show'
 end

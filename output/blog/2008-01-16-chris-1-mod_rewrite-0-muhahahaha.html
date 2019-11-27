@@ -58,7 +58,7 @@
         </li>
       </ul>
       <h2>The mod_rewrite rules</h2>
-      <pre class="code">
+      <pre>
 # Permanently (301) redirect /index.html to / (regex copied from http://www.webmasterworld.com/apache/3155094.htm)
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*index\.html\ HTTP/
 RewriteRule ^(.*)index\.html$ $1 [R=301,L]

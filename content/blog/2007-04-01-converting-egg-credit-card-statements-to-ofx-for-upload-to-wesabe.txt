@@ -12,7 +12,7 @@ I've cobbled together some pretty nasty code to convert an "Egg":http://www.egg.
 
 Grab the "source":http://chrisroos.googlecode.com/svn/trunk/egg-ofx/ from "google code":http://code.google.com.
 
-<pre class="code shell">
+<pre>
 $ svn checkout http://chrisroos.googlecode.com/svn/trunk/egg-ofx
 </pre>
 

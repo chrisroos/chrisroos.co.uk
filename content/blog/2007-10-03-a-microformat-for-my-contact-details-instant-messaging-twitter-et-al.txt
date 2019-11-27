@@ -20,7 +20,7 @@ Maybe some code can help explain what I mean.
 
 h3. A semantically marked up contact page.
 
-<pre class="code html">
+<pre>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 
 <html>
@@ -43,7 +43,7 @@ h3. A semantically marked up contact page.
 
 h3. A parser in "ruby":http://www.ruby-lang.org/
 
-<pre class="code ruby">
+<pre>
 require 'rubygems'
 require 'hpricot'
 

@@ -49,13 +49,13 @@
       <h1>In memory AR object for testing</h1>
       <p>I’ve <a href="/blog/2006-07-12-using-in-memory-active-record-objects-with-associations-for-testing">previously written</a> about using in memory active record objects for testing.</p>
       <p>In doing so recently, I’ve found it necessary to define the id of the in memory object. By default this is obviously nil as it has not been persisted. In addition, it is not possible to set it during normal object construction.</p>
-      <pre class="code ruby">
+      <pre>
 person = Person.new(:id =&gt; 1)
 p person.id
 #=&gt; nil
 </pre>
       <p>However, we can give the person constructor a block, setting the id just after creation.</p>
-      <pre class="code ruby">
+      <pre>
 person = Person.new { |p| p.id = 1 }
 p person.id
 #=&gt; 1

@@ -50,15 +50,15 @@
       <h1>Creating a Greasemonkey Script That Applies to the Firefox 'Problem Loading Page' Error Page</h1>
       <p>I found a few things when developing the <a href="/blog/2009-06-24-down-for-everyone-or-just-me-greasemonkey-script">down for everyone</a> greasemonkey script that might be of use to someone else wanting to customise the ‘Problem loading page’ error page.</p>
       <p>I originally based my script on this <a href="http://userscripts.org/scripts/show/4125">Server not found? Try and try again</a> script. Specifically, I used something like this to determine whether or not the error page was being displayed.</p>
-      <pre class="code javascript">
+      <pre>
   if (document.documentURI.substr(0,14)=="about:neterror") {
 </pre>
       <p>Given this I was able to find, and use, this similar code from <a href="chrome://browser/content/browser.js">chrome://browser/content/browser.js</a> (paste that link into the location bar and search for about:neterror or the aboutNeterror constant).</p>
-      <pre class="code javascript">
+      <pre>
   if (/^about:neterror/.test(document.documentURI)) {
 </pre>
       <p>I’m still not exactly sure of the purpose of document.documentURI except that it appears to allow you to display one URI and actually render another (in this case it displays the URI you’re trying to access but renders the error page). This error page also appears to screw with <a href="http://getfirebug.com">firebug</a>. If you want to see the value of documentURI you’ll need to use this little bit of javascript in the location bar:</p>
-      <pre class="code javascript">
+      <pre>
   javascript:alert(document.documentURI);
 </pre>
       <p>It turns out that you can’t directly view the source of the ‘Problem loading page’ error page: Press Ctrl-U, or select View &gt; Page Source from the menu, and you’ll be presented with the error page in a popup window. In order to view the source you’ll need to load it, using the chrome protocol, from <a href="chrome://global/content/netError.xhtml">chrome://global/content/netError.xhtml</a> (paste that into the location bar). The error page (which lives in firefox-dir/chrome/toolkit.jar/content/global/netError.xhtml) is pretty empty as it uses javascript to read querystring parameters and populate it on the fly. This allows the same error page to be used for multiple types of error. You can see an example of changing the description in this link: <a href="chrome://global/content/netError.xhtml?e=dnsNotFound&amp;u=http%3A//example.com&amp;d=I%20can%20see%20you...">about:neterror?e=dnsNotFound&amp;u=http%3A//example.com&amp;d=I%20can%20see%20you…</a> (paste that link into the location bar).</p>

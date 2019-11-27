@@ -51,7 +51,7 @@
       <p>Over about the last week I’ve started to use tadalist far more. It’s great but I really want a way to add items without having to use tada each time. Apparently there <a href="http://www.keeganjones.com/widgets/tada/">used to be</a> a <a href="http://www.apple.com/uk/downloads/dashboard/">dashboard</a> widget (which would be handy as I use mac’s at work) but it’s been long lost.</p>
       <p>I’d eventually like to develop a dashboard widget myself but until I get there I wondered about developing a <a href="http://en.wikipedia.org/wiki/Bookmarklet">bookmarklet</a> to achieve similar effect.</p>
       <p>I played around for a bit and came up with the following.</p>
-      <pre class="code javascript">
+      <pre>
 var new_item=prompt('Add Item');
 location.href='http://USERNAME.tadalist.com/item/add?list_id=LISTID&amp;content='+encodeURIComponent(new_item);
 alert('Added');

@@ -9,7 +9,7 @@ filter:     textile
 ---
 It struck me a couple of nights ago that it wasn't possible to search my site without Javascript, because of "Google Custom Search's":http://www.google.com/coop/cse/ reliance on "Javascript":http://en.wikipedia.org/wiki/JavaScript.  I'm not sure whether I just overlooked the fact or whether I'd realised that it was bad and ignored it.  Either way, I decided it was time to do something about it.  I stripped out the google custom search form and replaced it with a form that actually searches the google index of my site.
 
-<pre class="code html">
+<pre>
 <form action='http://www.google.co.uk/search' id='searchForm'>
   <div>
     <input name='q' type='hidden' value='site:chrisroos.co.uk' />
@@ -21,7 +21,7 @@ It struck me a couple of nights ago that it wasn't possible to search my site wi
 
 So, the default behaviour (with javascript disabled) is now to search the content of my site in the google index.  I then use "javascript":http://chrisroos.co.uk/javascripts/google-custom-search.js to "progressively enhance":http://en.wikipedia.org/wiki/Progressive_enhancement the form to make it compatible with the google custom search.  Done.
 
-<pre class="code javascript">
+<pre>
 var googleCustomSearch = {
   createHiddenField : function(name, value) {
     var field = document.createElement('input');

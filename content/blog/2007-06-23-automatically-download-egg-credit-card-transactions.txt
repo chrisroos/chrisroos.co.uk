@@ -10,7 +10,7 @@ I've followed in my "previous":/blog/2007-05-14-automatically-downloading-my-rec
 
 As always, the code is in "google code":http://chrisroos.googlecode.com/svn/trunk/egg/ and pasted below for your viewing pleasure...
 
-<pre class="code ruby">
+<pre>
 require 'egg-credentials'
 
 def execute_curl(cmd)

@@ -52,7 +52,7 @@
       <p>Although my original bookmarklet wasn’t all that long, I had it spread over multiple lines for readability. The fix in my case was to remove all the spaces and place the bookmarklet on one line.</p>
       <p>I started to think that it might be nice to have a bookmarklet <a href="http://www.rubyonrails.com">rails</a> helper. The bookmarklet helper would allow you to format your javascript for readability but shorten it all in the resulting html (it could even warn if the bookmarklet is too long for IE). I couldn’t find anything similar, and I probably won’t get around to doing it myself, but I did decide to investigate the limit in IE (which could form the basis of such a helper).</p>
       <p>I used the html page below to test the limits of Internet Explorer. This is the longest bookmarklet that I could get to work: one more character (a 2 on the end of those numbers, for example) and the bookmarklet won’t work (it still works if you click the link in the page – it only fails when used as an actual bookmarklet).</p>
-      <pre class="code html">
+      <pre>
 &lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;
 &lt;html&gt;
   &lt;head&gt;
@@ -72,7 +72,7 @@
       <p>I noticed that, once added to Internet Explorer, the bookmarklet appeared to be <a href="http://www.blooberry.com/indexdot/html/topics/urlencoding.htm">URL encoded</a> (my assumption was based on the conversion of spaces to %20.)</p>
       <p><a href="http://www.flickr.com/photos/chrisjroos/2109757023/"><img alt="" src="http://farm3.static.flickr.com/2321/2109757023_0f69015c44.jpg"></a></p>
       <p>I tried to replicate this encoded string in <a href="http://www.ruby-lang.org">ruby</a> but failed: A simple URI.escape in ruby was escaping too much. Inspecting the bookmarklet again seemed to suggest that the only encoding performed is to remove newlines and convert spaces to %20. Replicating this in irb gave me the same string that Internet Explorer had in its favourites.</p>
-      <pre class="code ruby">
+      <pre>
 irb) str = "javascript:
   var msg = 'hello world, this is my message.  i\'m trying to see how long i can be until internet explorer blows up in my face.';
   var msg = msg + '\n';

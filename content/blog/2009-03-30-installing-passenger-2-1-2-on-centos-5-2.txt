@@ -11,14 +11,14 @@ I needed to upgrade "Passenger":http://www.modrails.com/ on our web server last 
 
 We're running "CentOS":http://www.centos.org/ 5.2 on our staging server.
 
-<pre class="code shell">
+<pre>
   [root@rails-staging0 ~]# cat /etc/redhat-release
   CentOS release 5.2 (Final)
 </pre>
 
 The passenger gem installed OK but when I ran passenger-install-apache2-module I got the following error.
 
-<pre class="code shell">
+<pre>
   ... other lines snipped ...
 
   /usr/bin/ld: skipping incompatible /usr/lib/libaprutil-1.so when searching for -laprutil-1
@@ -35,7 +35,7 @@ The passenger gem installed OK but when I ran passenger-install-apache2-module I
 
 Searching for this error didn't yield any definite fixes but a couple of posts mentioned re-installing the apr-devel packages.  I tried apr-devel to begin with but was told that it was already up-to-date.
 
-<pre class="code shell">
+<pre>
   [root@rails-staging0 ~]# yum install apr-devel
   ... other lines snipped ...
   Nothing to do
@@ -43,7 +43,7 @@ Searching for this error didn't yield any definite fixes but a couple of posts m
 
 I can't remember why but I tried apr-util-devel next which did result in the package being installed.
 
-<pre class="code shell">
+<pre>
   [root@rails-staging0 ~]# yum install apr-util-devel
   ... other lines snipped ...
   Installed: apr-util-devel.x86_64 0:1.2.7-7.el5
@@ -54,7 +54,7 @@ With this package re-installed I was able to go ahead and install the passenger 
 
 One slightly interesting/odd thing was that "yum":http://en.wikipedia.org/wiki/Yellow_dog_Updater,_Modified reported that the same version (1.2.7-7.el5) of apr-util-dev was already installed.  The only difference after the re-install was that its status changed from 'base' to 'installed'.
 
-<pre class="code shell">
+<pre>
   # before the re-install
   [root@rails-staging0 ~]# yum list | grep apr-util-devel
   apr-util-devel.x86_64                    1.2.7-7.el5            base

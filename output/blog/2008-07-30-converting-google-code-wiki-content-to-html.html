@@ -49,11 +49,11 @@
       <h1>Converting Google Code Wiki Content to Html</h1>
       <p>I’ve created a little script that allows me to convert documents in the <a href="http://code.google.com">google code</a> <a href="http://code.google.com/p/support/wiki/WikiSyntax">wiki format</a> to <a href="http://en.wikipedia.org/wiki/HTML">HTML</a>.</p>
       <p>The script lives in <a href="http://chrisroos.googlecode.com">my google code repository</a>. Check it out from subversion:</p>
-      <pre class="code shell">
+      <pre>
 svn co http://chrisroos.googlecode.com/svn/trunk/google-wiki-syntax
 </pre>
       <p>The wiki_convertor script takes two arguments. The first is the wiki file, or directory containing multiple wiki files, and the second is the output directory. So, to use it to create an html copy of the <a href="http://code.google.com/doctype/">google-doctype</a> wiki content, in my home Sites directory, I’d use the following command:</p>
-      <pre class="code shell">
+      <pre>
 wiki_convertor.rb ~/Code/third-party/google-doctype/wiki/ ~/Sites/google-doctype/
 </pre>
       <p>This is the first step towards being able to, hopefully, create a <a href="http://en.wikipedia.org/wiki/Portable_Document_Format">pdf</a> copy of the google-doctype content. Actually, if anyone has any thoughts on this I’d love to hear them: should I output a different format (<a href="http://en.wikipedia.org/wiki/DocBook">docbook</a>, for example) or is it easy enough to convert from (x)html to pdf?</p>

@@ -10,7 +10,7 @@ So this is very much proof of concept and definitely not very useful in its curr
 
 You need to execute this javascript in the context of a webpage.  In "firebug":http://getfirebug.com/ (for example), paste it into the console and run.
 
-<pre class="code javascript">
+<pre>
 // Execute this within an existing webpage, using, for example, firebug console
 function includeDelicious() {
   function loadScript(scriptUrl) {

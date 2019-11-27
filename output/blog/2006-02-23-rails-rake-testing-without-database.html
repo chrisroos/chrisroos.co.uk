@@ -50,7 +50,7 @@
       <p>Continuing from the <a href="/blog/2006-02-23-rails-testing-without-database">previous post</a>, it appears that the rake testing tasks are also tightly coupled to active record.</p>
       <p>This feels quite dirty, but I’ve managed to get round it by manipulating the tasks from the outside (they are buried in the rails libs).</p>
       <p>To replicate, create a new file called ‘default.rake’ in the lib/tasks/ directory within your rails project, and paste in the following code.</p>
-      <pre class="code ruby">
+      <pre>
 Rake::Task::TASKS.delete('default')
 Rake::Task[:test_units].instance_variable_set(:@prerequisites, [])
 Rake::Task[:test_functional].instance_variable_set(:@prerequisites, [])
@@ -64,7 +64,7 @@ end
       <p>Because this relies on the internal implementation of rake (instance variable names and TASKS constant) it might well do very bad things to versions that aren’t 0.6.2.</p>
       <p><strong>Update 17:20</strong></p>
       <p>Just realised that I don’t need most of the code above. All you actually need in default.rake is as follows. Stoopid Chris.</p>
-      <pre class="code ruby">
+      <pre>
 Rake::Task[:test_units].instance_variable_set(:@prerequisites, [])
 Rake::Task[:test_functional].instance_variable_set(:@prerequisites, [])
 </pre>

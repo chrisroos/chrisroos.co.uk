@@ -49,7 +49,7 @@
       <h1>More helpful messages for Active Record validation errors in Rails testing</h1>
       <p>In testing (and production code) <a href="http://www.reevoo.com">we</a> always try to persist <a href="http://api.rubyonrails.com/classes/ActiveRecord/Base.html">Active Record</a> models with the bang variants (save! and create!). This allows us to <a href="http://www.martinfowler.com/ieeeSoftware/failFast.pdf">fail fast</a> if any of our models fail our <a href="http://api.rubyonrails.com/classes/ActiveRecord/Validations/ClassMethods.html">validation</a> rules.</p>
       <p>The problem is that the standard <a href="http://ruby-doc.org/stdlib/libdoc/test/unit/rdoc/index.html">test/unit</a> reporting framework displays the exception without any details of why the validation failed.</p>
-      <pre class="code">
+      <pre>
  1) Error:​
 test_should_fail_validation(AardvarkTest):​
 ActiveRecord::RecordInvalid:​ActiveRecord::RecordInvalid
@@ -63,11 +63,11 @@ ActiveRecord::RecordInvalid:​ActiveRecord::RecordInvalid
       <p>At this point, it would be very easy to jump into the code of the Active Record model, check out the validations and satisfy them within your code. However, it’d be much cooler if we could just add the reason for the failures to the error message that is displayed.</p>
       <p>I initially played around with a method that took a block and would wrap the block with a begin/rescue clause to explicitly catch RecordInvalid exceptions, displaying the reason for failure.</p>
       <p>Then I thought it’d be cool if we could integrate slightly more with both test/unit and <a href="http://www.rubyonrails.com">rails</a>. The result is a <a href="http://wiki.rubyonrails.org/rails/pages/Plugins">plugin</a> (<a href="http://chrisroos.googlecode.com/svn/trunk/plugins/test_unit_active_record_errors/">source</a>) that can be installed as follows.</p>
-      <pre class="code shell">
+      <pre>
 $ script/plugin install http://chrisroos.googlecode.com/svn/trunk/plugins/test_unit_active_record_errors/
 </pre>
       <p>The output from a failed validation now includes the validation errors. Yay.</p>
-      <pre class="code">
+      <pre>
  1) Error:​
 test_should_fail_validation(AardvarkTest):​
 ActiveRecord::RecordInvalid: ActiveRecord::RecordInvalid

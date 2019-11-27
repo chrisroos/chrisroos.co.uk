@@ -48,7 +48,7 @@
       <abbr class="createdAt" title="2006-03-08T07:48:00+00:00">Wed, 08 Mar 06</abbr>
       <h1>Rails table pluralization</h1>
       <p>I was talking to someone recently about the pluralisation of table names in <a href="http://www.rubyonrails.org">rails</a>. It was grating him because some hand built queries no longer read very naturally.</p>
-      <pre class="code sql">
+      <pre>
 -- (in rails) requesting the forename of the 'first' person
 SELECT forename FROM people WHERE people.id = 1;
 
@@ -56,7 +56,7 @@ SELECT forename FROM people WHERE people.id = 1;
 SELECT forename FROM person WHERE person.id = 1;
 </pre>
       <p><a href="http://po-ru.com/">Paul</a> (a colleague at <a href="http://www.reevoo.com">reevoo</a>) pointed out that there are two sides to the singular/plural table name debate. You will always have some queries (as above) that will work better when the table is singular; and others (as below) that will work better when the table is plural.</p>
-      <pre class="code sql">
+      <pre>
 -- requesting all people having a country of 'uk'
 SELECT * FROM person WHERE country = 'UK';
 
@@ -65,7 +65,7 @@ SELECT * FROM people WHERE country = 'UK';
 </pre>
       <p>Personally, because of the very small amount of hand written sql I’ve had to use with Rails this has never been an issue to me. However, it did make me think about a slight adaptation to Active Record…</p>
       <p>By default (in Rails), you create a singular (active record) model (person) that maps to the plural table (people). Although very convenient (it’s the reason I’ve rarely had to touch sql), it too suffers from the same problems outlined in the queries above. I think the two statements below show the same sort of natural vs unnatural language that appears in the sql above.</p>
-      <pre class="code ruby">
+      <pre>
 # good english (acting on a single person)
 Person.name = 'chris'
 Person.save
@@ -74,7 +74,7 @@ Person.save
 Person.find(:all, :conditions =&gt; "country = 'uk'")
 </pre>
       <p>The adaptation to active record I was thinking about would allow you to operate on both a Person and People, using the variant that made the code read more naturally. That is, we could leave the Person.name example above as is, but change the Person.find to People.find<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>. There are different ways to go about this but to get some of the way there with a little code (i.e. not having to manually create both singular and plural classes for each table); I came up with the following simple hack.</p>
-      <pre class="code ruby">
+      <pre>
 class ActiveRecord::Base
   class &lt;&lt; self
     alias_method :__existing_inherited, :inherited

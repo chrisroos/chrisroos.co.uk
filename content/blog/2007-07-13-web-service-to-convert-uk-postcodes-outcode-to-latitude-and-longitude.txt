@@ -10,7 +10,7 @@ Using the data supplied in this "article":http://postcodes.easypeasy.com, by "Ni
 
 The idea is that you can request, for example, /postcodes/se1 and get some json in return.  For se1, we receive the following data.
 
-<pre class="code javascript">
+<pre>
 {"latitude":"51.498","x":"532600","postcode":"SE1","y":"179500","longitude":"51.498"}
 </pre>
 
@@ -20,7 +20,7 @@ The code is, as always, on "google code":http://chrisroos.googlecode.com/svn/tru
 
 I've created it as a proof of concept but I figure that, given a little love, it may prove useful to some folks.
 
-<pre class="code ruby">
+<pre>
 require 'rubygems'
 require 'mongrel'
 require 'json'

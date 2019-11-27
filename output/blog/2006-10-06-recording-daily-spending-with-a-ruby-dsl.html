@@ -50,7 +50,7 @@
       <p>I’m very very very bad with money. Don’t get me wrong, I’m very good at <del>spending</del> wasting money, just bad at all <a href="http://en.wikipedia.org/wiki/Savings">the</a> <a href="http://en.wikipedia.org/wiki/Investing">boring</a> <a href="http://en.wikipedia.org/wiki/Pension">stuff</a>.</p>
       <p>The main part of my problem is that I never know how much I have and therefore don’t know when to stop spending. This is down to laziness. It takes time to check balances at a cash point or via my bank’s website. I feel that this time can be better spent withdrawing the cash and wandering to the pub.</p>
       <p>Anyhoo. What I really need is a something that illustrates (preferably with big colourful graphs) the amount going out vs the amount coming in. This needs to be as un-intrusive as possible or I’m not going to use it. I’d also kinda like to see what sort of things I’m spending on, so that I can maybe shock myself into stopping. So, I need a record of what I spend my money on. Enter… The little dsl to do just that.</p>
-      <pre class="code ruby">
+      <pre>
 payment_mechanisms :cash, :cheque
 
 day '6-oct-2006' do
@@ -61,7 +61,7 @@ end
 </pre>
       <p>This basically records when and how much I spent, what I spent it on and how I paid for it. It does nothing more than record at present (and offer some basic addition), but I’ve got some more ideas.</p>
       <p>There’s also a budgeting counterpart. The idea being that my colourful graphs can show (very clearly) when I go over budget for a given day/week/month etc.</p>
-      <pre class="code ruby">
+      <pre>
 weekly do
   outgoing 18.00, lunch
   outgoing 40.00, 'train travel'

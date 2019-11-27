@@ -49,7 +49,7 @@
       <h1>Encapsulation in Active Record objects</h1>
       <p>I’ve been meaning to finish a post on this subject for ages. As I probably won’t finish it in its current incarnation, I thought I’d at least get something up here.</p>
       <p><a href="http://www.rubyonrails.org/api/classes/ActiveRecord/Base.html">Active Record</a> <a href="http://www.rubyonrails.org/api/classes/ActiveRecord/Associations/ClassMethods.html">associations</a> are brilliant for quickly putting together an object graph. They’re not so brilliant for testing, or keeping the code particularly tidy. They quickly lead to (and even encourage) train-wreck expressions in your code. Diving straight into an example:</p>
-      <pre class="code ruby">
+      <pre>
 class Person &lt; ActiveRecord::Base
   has_many :hobbies
 end
@@ -58,7 +58,7 @@ class Hobby &lt; ActiveRecord::Base
 end
 </pre>
       <p>Because the hobbies object is publicly accessible from a person object, it allows us to reach in and touch things we shouldn’t.</p>
-      <pre class="code ruby">
+      <pre>
 cycling = Hobby.new
 
 # We shouldn't manipulate the hobbies object directly...
@@ -75,7 +75,7 @@ chris = Person.new
 chris.add_hobby(cycling) # Ahh, that's much better
 </pre>
       <p>The revised Person class above follows the <a href="http://en.wikipedia.org/wiki/Law_of_Demeter">law of demeter</a>. As well as making the code look a little neater (no train-wrecks to see here), it makes it easier to test. To illustrate the testing point, I’m going to <a href="http://weblog.jamisbuck.org/2007/1/9/extending-activerecord-associations">extend</a> the <a href="http://ryandaigle.com/articles/2006/12/03/extend-your-activerecord-association-methods">association</a> in this example.</p>
-      <pre class="code ruby">
+      <pre>
 # We end up with a large and not very clear test
 class Person &lt; ActiveRecord::Base
   has_many :hobbies do

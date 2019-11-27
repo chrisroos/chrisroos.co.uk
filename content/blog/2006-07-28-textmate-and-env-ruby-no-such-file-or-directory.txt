@@ -12,7 +12,7 @@ It's a bit of a strange error in that you get seemingly conflicting output from 
 
 In a new TextMate document, I could run (by using the well handy, and very new to me, Ctrl-r key combo)..
 
-<pre class="code">
+<pre>
 $ /usr/bin/env ruby --version
 => ruby 1.8.4 (2005-12-24) [i686-darwin8.7.1]
 
@@ -27,7 +27,7 @@ puts "hello world"
 
 However, if I ran..
 
-<pre class="code">
+<pre>
 #!/usr/bin/env ruby
 
 puts "hello world again"
@@ -42,7 +42,7 @@ Although I, in no way, understand this completely; I blindly followed the instru
 
 In summary for those that don't wish to read the docs..
 
-<pre class="code">
+<pre>
 $ mkdir ~/.MacOSX/
 $ cat >> ~/.MacOSX/environment.plist
 { PATH = "/usr/local/bin"; }

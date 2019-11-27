@@ -12,7 +12,7 @@ So, it seems far more difficult than it should be to retrieve a bunch of *my* ph
 
 *UPDATE 2*: Surround output filename with quotes.
 
-<pre class="code ruby">
+<pre>
 require 'cgi'
 
 API_KEY = 'YOUR_API_KEY'

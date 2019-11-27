@@ -18,7 +18,7 @@ Oh well, might as well fill it in and submit.  But wait.  What's this?
 
 Wow, an email server that takes upto 60 seconds to:
 
-<pre class="code sql">
+<pre>
 DELETE FROM newsletters WHERE email = 'MY_EMAIL';
 </pre>
 

@@ -10,7 +10,7 @@ I wasted a few hours of my life, over the weekend, playing with "mod_rewrite":ht
 
 I thought I could do this without using "RewriteCond":http://httpd.apache.org/docs/1.3/mod/mod_rewrite.html#RewriteCond.  I tried something like this.
 
-<pre class="code">
+<pre>
 RewriteRule ^(.*)index\.html$ $1 [R=301]
 </pre>
 
@@ -20,7 +20,7 @@ Based on this assumption, I figured I'd need to use RewriteCond to somehow ignor
 
 In searching for answers to this problem I kept seeing THE_REQUEST special variable used in the solution, although never an explanation as to why it's used (specifically in preference to REQUEST_URI).  I ended up using THE_REQUEST in my solution (not technically my solution as I stole it from a site that I failed to bookmark) and it seems to work OK.
 
-<pre class="code">
+<pre>
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*index\.html\ HTTP/
 RewriteRule ^(.*)index\.html$ $1 [R=301,L]
 </pre>

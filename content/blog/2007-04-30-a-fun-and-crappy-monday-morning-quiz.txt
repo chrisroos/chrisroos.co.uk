@@ -6,7 +6,7 @@ filter: textile
 created_at: 2007-04-30 09:08:00 +01:00
 layout: blog
 ---
-<pre class="code">
+<pre>
 require 'test/unit'
 
 class CandidateTest < Test::Unit::TestCase

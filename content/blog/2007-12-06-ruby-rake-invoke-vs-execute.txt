@@ -10,7 +10,7 @@ First up - I don't know an awful lot about the magic that is "Rake":http://rake.
 
 I discovered the difference when trying to execute the db:migrate task from within another rake task (I already knew it worked when declared as a dependency).
 
-<pre class="code ruby">
+<pre>
 # Rakefile
 task :foo do
   Rake::Task['db:migrate'].execute
@@ -25,7 +25,7 @@ I changed "Task#execute":http://rake.rubyforge.org/classes/Rake/Task.html#M00010
 
 I put together a simple example to demonstrate the differences.
 
-<pre class="code ruby">
+<pre>
 # The task (task_1) and its dependency (to_be_run_before_task_1)
 
 task :to_be_run_before_task_1 do
