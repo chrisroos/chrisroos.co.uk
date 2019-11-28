@@ -13,14 +13,14 @@ Reading Alex's post made me wonder whether the "rails":http://rubyonrails.org/ "
 
 h2(#replicating-my-experiment). Replicating my experiment
 
-* Get a copy of rails
+Get a copy of rails
 
 <pre><code>
 $ cd /path/to/code
 $ git clone git://github.com/rails/rails.git
 </code></pre>
 
-* Create a "mysql":http://www.mysql.com/ database called rails_timestamps_test, and create a table within that database called people.
+Create a "mysql":http://www.mysql.com/ database called rails_timestamps_test, and create a table within that database called people.
 
 <pre><code>
 mysql> CREATE DATABASE rails_timestamps_test;
@@ -28,14 +28,14 @@ mysql> USE rails_timestamps_test;
 mysql> CREATE TABLE people (id INTEGER AUTO_INCREMENT, created_on DATE, created_at DATETIME, updated_on DATE, updated_at DATETIME, PRIMARY KEY (id));
 </code></pre>
 
-* Get a copy of my test script
+Get a copy of my test script
 
 <pre><code>
 $ cd /path/to/code
 $ svn co http://chrisroos.googlecode.com/svn/trunk/scratch/rails_timestamps_test
 </code></pre>
 
-* Run my script against rails 2.3 (run setup_rails_project.rb without any arguments to see the options) and hopefully see output similar to below (which means that the tests passed as expected).
+Run my script against rails 2.3 (run setup_rails_project.rb without any arguments to see the options) and hopefully see output similar to below (which means that the tests passed as expected).
 
 <pre><code>
 $ cd /path/to/code/rails_timestamps_test
@@ -67,7 +67,7 @@ Finished in 0.078819 seconds.
 4 tests, 8 assertions, 0 failures, 0 errors
 </code></pre>
 
-* Re-run the script against rails 2.2.2 (the last tag before 2.3) and you should see the same as above except for the last test which should now contain two failures.
+Re-run the script against rails 2.2.2 (the last tag before 2.3) and you should see the same as above except for the last test which should now contain two failures.
 
 <pre><code>
 $ cd /path/to/code/rails_timestamps_test
@@ -101,11 +101,11 @@ FAIL: Couldn't persist the mass assigned updated_on attribute.
 4 tests, 8 assertions, 2 failures, 0 errors
 </code></pre>
 
-* Re-run the script against any other tagged version of rails you wish.
+Re-run the script against any other tagged version of rails you wish.
 
 h2(#notes-about-the-script). A couple of notes about the script
 
-* If you specify an invalid tag (i.e. a tag that doesn't exist in the rails repository) then the rails_version_test.rb will fail.
+If you specify an invalid tag (i.e. a tag that doesn't exist in the rails repository) then the rails_version_test.rb will fail.
 
 <pre><code>
 $ cd /path/to/code/rails_timestamps_test
@@ -128,14 +128,14 @@ test_should_be_using_rails_made_up_tag(RailsVersionTest)
 1 tests, 1 assertions, 1 failures, 0 errors
 </code></pre>
 
-* If you specify a tag of rails that is anything other than a 3 part version number (e.g. the four part version 2.3.2.1, or the release candidate 2.1.0_RC1) then the version test will fail because the Rails::VERSION constant only contains the MAJOR, MINOR and TINY components and that's what we use to check the version our app uses.
+If you specify a tag of rails that is anything other than a 3 part version number (e.g. the four part version 2.3.2.1, or the release candidate 2.1.0_RC1) then the version test will fail because the Rails::VERSION constant only contains the MAJOR, MINOR and TINY components and that's what we use to check the version our app uses.
 
-* The supplied database.yml file assumes a mysql database running on localhost that has a root user with no password.  You can update this to reflect your actual environment.
+The supplied database.yml file assumes a mysql database running on localhost that has a root user with no password.  You can update this to reflect your actual environment.
 
-* The projects are created in /path/to/code/rails_timestamps_test/projects/ with a name like rails-app-x-x-x (major, minor, tiny).
+The projects are created in /path/to/code/rails_timestamps_test/projects/ with a name like rails-app-x-x-x (major, minor, tiny).
 
-* In order to ensure we are testing against the correct version of rails, I symlink rails from /path/to/code/rails (after changing to the requested tag) into rails-app-x-x-x/vendor/rails.  The problem here is that if you re-run the script with a different rails version and then attempt to run a test from your first project that it will be using the recently specified version of rails.  Luckily, the rails_version_test will fail fast which means you shouldn't have to waste time wondering why something is not working as expected.
+In order to ensure we are testing against the correct version of rails, I symlink rails from /path/to/code/rails (after changing to the requested tag) into rails-app-x-x-x/vendor/rails.  The problem here is that if you re-run the script with a different rails version and then attempt to run a test from your first project that it will be using the recently specified version of rails.  Luckily, the rails_version_test will fail fast which means you shouldn't have to waste time wondering why something is not working as expected.
 
-* I wonder whether it'd be useful to extract the 'create a rails app from a specific version of rails' functionality out of this script?
+I wonder whether it'd be useful to extract the 'create a rails app from a specific version of rails' functionality out of this script?
 
 fn1. "Alex MacCaw":http://www.eribium.org/ "raised the issue":http://www.madebymany.co.uk/a-rails-security-flaw-destroying-the-audit-trail-00820 in reference to number eight in the list of "10 cools things in Rails 2.3":http://railspikes.com/2009/3/30/10-cool-things-in-rails-23.
