@@ -56,15 +56,15 @@ libxml2 is missing.  try 'port install libxml2' or 'yum install libxml2'</code><
       <h2>The solution</h2>
       <p>The <a href="http://gcc.gnu.org/">gcc</a> command being executed to test whether libxml2 existed was looking for both i386 and ppc (universal) libraries, where I only had the i386 versions installed via <a href="http://www.macports.org/">Macports</a> (<code>$ file /opt/local/lib/libxml2.2.dylib #=&gt; /opt/local/lib/libxml2.2.dylib: Mach-O dynamically linked shared library i386</code>)</p>
       <h3>Solution 1</h3>
-      <pre><code># Instruct gcc to check for i386 libraries only
+      <pre><code># Instruct gcc to check for i386 libraries only</code>
 
-$ RC_ARCHS="i386" gem install nokogiri
+<code>$ RC_ARCHS="i386" gem install nokogiri
 # or
 $ ARCHFLAGS="-arch i386" gem install nokogiri</code></pre>
       <h3>Solution 2</h3>
-      <pre><code># Install universal (i.e. i386 and ppc) versions of libxml and libxslt
+      <pre><code># Install universal (i.e. i386 and ppc) versions of libxml and libxslt</code>
 
-$ sudo port upgrade --enforce-variants libxml2 +universal
+<code>$ sudo port upgrade --enforce-variants libxml2 +universal
 $ sudo port upgrade libxslt2 +universal</code></pre>
       <h2>The explanation</h2>
       <p>The error message (libxml2 is missing) was somewhat cryptic. I knew it was installed via macports and as part of the stock Leopard install.</p>
@@ -89,9 +89,9 @@ checking for xmlParseDoc() in -lxml2... yes
 checking for xmlParseDoc() in -lxml2... no</code></pre>
       <p>After lots of digging into <a href="http://ruby-doc.org/stdlib/libdoc/mkmf/rdoc/index.html">mkmf.rb</a> I was able to determine the command being executed in order to check whether libxml2 existed (or, more accurately, whether the xmlParseDoc function existed in libxml2). It turns out that the commands executed are actually logged to the mkmf.log that’s generated as part of running extconf.rb but, although I was aware of the mkmf.log file, I didn’t realise it contained the commands until now.</p>
       <p>These are the relevant lines from mkmf.log after a failed install of nokogiri. If you were trying to install nokogiri to your home gem directory then this log file would be in ~/.gem/ruby/1.8/gems/nokogiri-1.4.1/ext/nokogiri/mkmf.log (where the nokogiri version would be specific to the version you were installing).</p>
-      <pre><code>find_library: checking for xmlParseDoc() in -lxml2... -------------------- no
+      <pre><code>find_library: checking for xmlParseDoc() in -lxml2... -------------------- no</code>
 
-"gcc -o conftest -I/opt/local/include/libxml2 -I/opt/local/include/ -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin9.0 -I. -I/opt/local/include/ -I/opt/local/include/libxml2 -I/opt/local/include   -arch ppc -arch i386 -Os -pipe -fno-common  -g -DXP_UNIX -O3 -Wall -Wcast-qual -Wwrite-strings -Wconversion -Wmissing-noreturn -Winline conftest.c  -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L/opt/local/lib -L. -arch ppc -arch i386     -lruby -lxml2  -lpthread -ldl -lm   "
+<code>"gcc -o conftest -I/opt/local/include/libxml2 -I/opt/local/include/ -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin9.0 -I. -I/opt/local/include/ -I/opt/local/include/libxml2 -I/opt/local/include   -arch ppc -arch i386 -Os -pipe -fno-common  -g -DXP_UNIX -O3 -Wall -Wcast-qual -Wwrite-strings -Wconversion -Wmissing-noreturn -Winline conftest.c  -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L/opt/local/lib -L. -arch ppc -arch i386     -lruby -lxml2  -lpthread -ldl -lm   "
 conftest.c: In function ‘t’:
 conftest.c:3: error: ‘xmlParseDoc’ undeclared (first use in this function)
 conftest.c:3: error: (Each undeclared identifier is reported only once
@@ -106,9 +106,9 @@ checked program was:
 1: /*top*/
 2: int main() { return 0; }
 3: int t() { void ((*volatile p)()); p = (void ((*)()))xmlParseDoc; return 0; }
-/* end */
+/* end */</code>
 
-"gcc -o conftest -I/opt/local/include/libxml2 -I/opt/local/include/ -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin9.0 -I. -I/opt/local/include/ -I/opt/local/include/libxml2 -I/opt/local/include   -arch ppc -arch i386 -Os -pipe -fno-common  -g -DXP_UNIX -O3 -Wall -Wcast-qual -Wwrite-strings -Wconversion -Wmissing-noreturn -Winline conftest.c  -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L/opt/local/lib -L. -arch ppc -arch i386     -lruby -lxml2  -lpthread -ldl -lm   "
+<code>"gcc -o conftest -I/opt/local/include/libxml2 -I/opt/local/include/ -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin9.0 -I. -I/opt/local/include/ -I/opt/local/include/libxml2 -I/opt/local/include   -arch ppc -arch i386 -Os -pipe -fno-common  -g -DXP_UNIX -O3 -Wall -Wcast-qual -Wwrite-strings -Wconversion -Wmissing-noreturn -Winline conftest.c  -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L/opt/local/lib -L. -arch ppc -arch i386     -lruby -lxml2  -lpthread -ldl -lm   "
 conftest.c: In function ‘t’:
 conftest.c:3: warning: implicit declaration of function ‘xmlParseDoc’
 conftest.c: In function ‘t’:
@@ -135,9 +135,9 @@ int t() { void ((*volatile p)()); p = (void ((*)()))xmlParseDoc; return 0; }
 $ gcc -o conftest -I/opt/local/include/libxml2 -I/opt/local/include/ -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin9.0 -I. -I/opt/local/include/ -I/opt/local/include/libxml2 -I/opt/local/include   -arch ppc -arch i386 -Os -pipe -fno-common  -g -DXP_UNIX -O3 -Wall -Wcast-qual -Wwrite-strings -Wconversion -Wmissing-noreturn -Winline conftest.c  -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L/opt/local/lib -L. -arch ppc -arch i386     -lruby -lxml2  -lpthread -ldl -lm
 # Snipped output
 $ echo $?
-1
+1</code>
 
-$ # Test 2
+<code>$ # Test 2
 $ cat &gt; conftest.c
 int main() { return 0; }
 int t() { xmlParseDoc(); return 0; }

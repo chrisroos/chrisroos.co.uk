@@ -54,7 +54,8 @@
 s = ActionMailer::Base.server_settings
 Net::SMTP.start(s[:address], s[:port], s[:domain], s[:user_name], s[:password], s[:authentication]) do |smtp|
   smtp.sendmail(message, from, to)
-end</code></pre>
+end
+</code></pre>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-12-07-more-on-those-friendly-urls" rel="prev" title="More on those friendly URLs">More on those friendly URLs</a>

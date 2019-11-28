@@ -13,7 +13,7 @@ fn1. I plan to post some test data (to help others attempting to write a client)
 
 fn2. I printed the parameters and signature at various stages of the request so that I could compare it to the output from my client.
 
-<pre><code>require 'rubygems'
+bc.. require 'rubygems'
 require 'cgi'
 require 'time'
 require 'hmac'
@@ -47,4 +47,4 @@ signature = Base64.encode64(hmac.digest).chomp # chomp is important!  the base64
 params['Signature'] = signature
 querystring = params.collect { |key, value| [CGI.escape(key.to_s), CGI.escape(value.to_s)].join('=') }.join('&') # order doesn't matter for the actual request
 
-puts `curl -X"GET" "\#{AMAZON_ENDPOINT}?\#{querystring}" -A"simple ruby aws sdb wrapper"`</code></pre>
+puts `curl -X"GET" "\#{AMAZON_ENDPOINT}?\#{querystring}" -A"simple ruby aws sdb wrapper"`

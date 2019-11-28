@@ -56,13 +56,13 @@ class Hobby &lt; ActiveRecord::Base
   belongs_to :person
 end</code></pre>
       <p>Because the hobbies object is publicly accessible from a person object, it allows us to reach in and touch things we shouldn’t.</p>
-      <pre><code>cycling = Hobby.new
+      <pre><code>cycling = Hobby.new</code>
 
-# We shouldn't manipulate the hobbies object directly...
+<code># We shouldn't manipulate the hobbies object directly...
 chris = Person.new
-chris.hobbies.add(cycling) # Uh oh - touching things we shouldn't
+chris.hobbies.add(cycling) # Uh oh - touching things we shouldn't</code>
 
-# ...rather, it'd be better to add a wrapper method for the functionality we actually need
+<code># ...rather, it'd be better to add a wrapper method for the functionality we actually need
 class Person &lt; ActiveRecord::Base
   def add_hobby(hobby)
     hobbies.add(hobby)
@@ -78,9 +78,9 @@ class Person &lt; ActiveRecord::Base
       find(:first, :conditions =&gt; ['favourite = true'])
     end
   end
-end
+end</code>
 
-class MyContrivedTest &lt; Test::Unit::TestCase
+<code>class MyContrivedTest &lt; Test::Unit::TestCase
   def test_should_find_my_favourite_hobby
     hobbies = mock
     hobbies.expects(:find_favourite)
@@ -88,17 +88,17 @@ class MyContrivedTest &lt; Test::Unit::TestCase
     hobby_finder = HobbyFinder.new
     hobby_finder.find_favourite(person)
   end
-end
+end</code>
 
-# This way, we end up with a slightly cleaner looking class (imo) and a smaller, cleaner test
+<code># This way, we end up with a slightly cleaner looking class (imo) and a smaller, cleaner test
 class Person &lt; ActiveRecord::Base
   has_many :hobbies
   def find_my_favourite_hobby
     hobbies.find(:first, :conditions =&gt; ['favourite = true'])
   end
-end
+end</code>
 
-class MyContrivedTest &lt; Test::Unit::TestCase
+<code>class MyContrivedTest &lt; Test::Unit::TestCase
   def test_should_find_my_favourite_hobby
     person = mock
     person.expects(:find_my_favourite_hobby)

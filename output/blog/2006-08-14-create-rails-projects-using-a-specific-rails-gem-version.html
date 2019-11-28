@@ -51,9 +51,9 @@
       <p>If the first argument to the rails command is a valid (i.e. installed) version number and surrounded by underscores then that version of the gem is used to create the rails application structure.</p>
       <p>So (with 1.0.0 and 1.1.6 gems installed)..</p>
       <pre><code>$ rails _1.0.0_ my-rails-proj
-#-&gt; uses rails version 1
+#-&gt; uses rails version 1</code>
 
-$ rails my-rails-proj
+<code>$ rails my-rails-proj
 #-&gt; uses latest rails version (1.1.6)</code></pre>
       <p>Although you can normally place the rails libraries into the vendor directory of a given rails app (to use that specific rails version); I had problems when placing rails 1.0.0 into a rails 1.1.6 generated app. An error is encountered when trying to boot webrick..</p>
       <pre><code>./script/../config/../vendor/rails/railties/lib/initializer.rb:256:in `send': undefined method `cache_template_extensions=' for ActionView::Base:Class (NoMethodError)</code></pre>

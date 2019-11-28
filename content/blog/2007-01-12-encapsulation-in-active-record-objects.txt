@@ -10,16 +10,16 @@ I've been meaning to finish a post on this subject for ages.  As I probably won'
 
 "Active Record":http://www.rubyonrails.org/api/classes/ActiveRecord/Base.html "associations":http://www.rubyonrails.org/api/classes/ActiveRecord/Associations/ClassMethods.html are brilliant for quickly putting together an object graph.  They're not so brilliant for testing, or keeping the code particularly tidy.  They quickly lead to (and even encourage) train-wreck expressions in your code.  Diving straight into an example:
 
-<pre><code>class Person < ActiveRecord::Base
+bc. class Person < ActiveRecord::Base
   has_many :hobbies
 end
 class Hobby < ActiveRecord::Base
   belongs_to :person
-end</code></pre>
+end
 
 Because the hobbies object is publicly accessible from a person object, it allows us to reach in and touch things we shouldn't.
 
-<pre><code>cycling = Hobby.new
+bc.. cycling = Hobby.new
 
 # We shouldn't manipulate the hobbies object directly...
 chris = Person.new
@@ -32,11 +32,11 @@ class Person < ActiveRecord::Base
   end
 end
 chris = Person.new
-chris.add_hobby(cycling) # Ahh, that's much better</code></pre>
+chris.add_hobby(cycling) # Ahh, that's much better
 
-The revised Person class above follows the "law of demeter":http://en.wikipedia.org/wiki/Law_of_Demeter.  As well as making the code look a little neater (no train-wrecks to see here), it makes it easier to test.  To illustrate the testing point, I'm going to "extend":http://weblog.jamisbuck.org/2007/1/9/extending-activerecord-associations the "association":http://ryandaigle.com/articles/2006/12/03/extend-your-activerecord-association-methods in this example.
+p. The revised Person class above follows the "law of demeter":http://en.wikipedia.org/wiki/Law_of_Demeter.  As well as making the code look a little neater (no train-wrecks to see here), it makes it easier to test.  To illustrate the testing point, I'm going to "extend":http://weblog.jamisbuck.org/2007/1/9/extending-activerecord-associations the "association":http://ryandaigle.com/articles/2006/12/03/extend-your-activerecord-association-methods in this example.
 
-<pre><code># We end up with a large and not very clear test
+bc.. # We end up with a large and not very clear test
 class Person < ActiveRecord::Base
   has_many :hobbies do
     def find_favourite
@@ -70,9 +70,9 @@ class MyContrivedTest < Test::Unit::TestCase
     hobby_finder = HobbyFinder.new
     hobby_finder.find_favourite(person)
   end
-end</code></pre>
+end
 
-Interestingly enough, if we had "test driven":http://en.wikipedia.org/wiki/Test_driven_development the development of the above code, we would almost certainly have ended up with something similar (interface-wise) to the example that has a wrapper around the association proxy.
+p. Interestingly enough, if we had "test driven":http://en.wikipedia.org/wiki/Test_driven_development the development of the above code, we would almost certainly have ended up with something similar (interface-wise) to the example that has a wrapper around the association proxy.
 
 So, with all of this in mind, I've hacked together a real quick "plugin":http://chrisroos.googlecode.com/svn/trunk/plugins/private_associations/ that adds a corresponding _private method for each of the four (has_one, has_many, belongs_to and has_and_belongs_to_many) associations.  Using the _private alternative will do exactly the same as the original method but it will make all of the dynamically created methods private.  So.  It'll still be possible to write the wrapper around the association (as we did in the test above) but it won't be possible to reach in and touch things that we shouldn't.[1]
 

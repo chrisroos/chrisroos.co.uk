@@ -54,44 +54,44 @@
 end
 class Address &lt; ActiveRecord::Base
   belongs_to :person
-end
+end</code>
 
-# One sided relationship with parent getting access to child
+<code># One sided relationship with parent getting access to child
 chris = Person.new
-home = chris.addresses.build
+home = chris.addresses.build</code>
 
-chris.addresses.first
+<code>chris.addresses.first
 =&gt; #&lt;home&gt;
 home.person
-=&gt; nil
+=&gt; nil</code>
 
-# One sided relationship with child getting access to parent
+<code># One sided relationship with child getting access to parent
 home = Address.new
-chris = home.build_person
+chris = home.build_person</code>
 
-chris.addresses
+<code>chris.addresses
 =&gt; []
 home.person
-=&gt; #&lt;chris&gt;
+=&gt; #&lt;chris&gt;</code>
 
-# The example above that creates the address first could also have been written as.
+<code># The example above that creates the address first could also have been written as.
 # chris = Person.new
 # home = Address.new(:person =&gt; chris)</code></pre>
       <p>You can see that in each case, only one side of the relationship has access to the other. If we were persisting the objects then the relationship would be two way via a database lookup. We can get a two way relationship in memory; although it has a certain duplication smell about it. Assuming the same models as above, we can amend the above examples like so.</p>
       <pre><code># First example
 chris = Person.new
-home = chris.addresses.build(:person =&gt; chris)
+home = chris.addresses.build(:person =&gt; chris)</code>
 
-chris.addresses.first
+<code>chris.addresses.first
 =&gt; #&lt;home&gt;
 home.person
-=&gt; #&lt;chris&gt;
+=&gt; #&lt;chris&gt;</code>
 
-# Second example
+<code># Second example
 home = Address.new
-chris = home.build_person(:addresses =&gt; [home])
+chris = home.build_person(:addresses =&gt; [home])</code>
 
-home.person
+<code>home.person
 =&gt; #&lt;chris&gt;
 chris.addresses.first
 =&gt; #&lt;home&gt;</code></pre>

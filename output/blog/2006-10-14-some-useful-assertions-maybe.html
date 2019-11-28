@@ -48,65 +48,66 @@
       <abbr class="createdAt" title="2006-10-14T09:27:00+00:00">Sat, 14 Oct 06</abbr>
       <h1>Some useful assertions, maybe</h1>
       <p>The first is to ensure two arrays contain the same elements not necessarily in the same order.</p>
-      <pre><code>require 'test/unit'
+      <pre><code>require 'test/unit'</code>
 
-require 'set'
-module AssertEqualArray
+<code>require 'set'
+module AssertEqualArray</code>
 
-  def assert_equal_array(array_1, array_2)
+<code>  def assert_equal_array(array_1, array_2)
     assert_equal array_1.size, array_2.size, "Arrays must be of the same size to be equal"
     assert_equal array_1.to_set, array_2.to_set
-  end
+  end</code>
 
-end
+<code>end</code>
 
-class Test::Unit::TestCase
+<code>class Test::Unit::TestCase
   include AssertEqualArray
-end
+end</code>
 
-class MyTest &lt; Test::Unit::TestCase
+<code>class MyTest &lt; Test::Unit::TestCase</code>
 
-  def test_should_assert_equal_arrays
+<code>  def test_should_assert_equal_arrays
     assert_equal_array [1, 2, 3], [2, 1, 3]
-  end
+  end</code>
 
-end</code></pre>
+<code>end</code></pre>
       <p>The second is to test for generated warnings. In my <a href="/blog/2006-10-06-recording-daily-spending-with-a-ruby-dsl">current project</a> app, I use method_missing and wanted to warn the user if the unknown message looks like it’s supposed to be a payment mechanism…</p>
       <pre><code>day '25-oct-2006' do
   cash 30.29, beer
-end
+end</code>
 
-# Results in NoMethodError and, more importantly, this friendly warning..
+<code># Results in NoMethodError and, more importantly, this friendly warning..
 # Maybe you expected 'cash' to be a payment mechanism?
 # Cool huh?</code></pre>
       <p>Anyway, I wanted a way to test that the warning was being generated and came up with another assertion…</p>
-      <pre><code>require 'test/unit'
+      <pre><code>require 'test/unit'</code>
 
-require 'stringio'
-module AssertWarning
+<code>require 'stringio'
+module AssertWarning</code>
 
-  def assert_warning(expected_warning, &amp;blk)
+<code>  def assert_warning(expected_warning, &amp;blk)
     original_stderr = $stderr
     $stderr = stderr = StringIO.new
     yield
     assert_equal expected_warning, stderr.string.chomp
   ensure
     $stderr = original_stderr
-  end
+  end</code>
 
-end
+<code>end</code>
 
-class Test::Unit::TestCase
+<code>class Test::Unit::TestCase
   include AssertWarning
-end
+end</code>
 
-class MyTest &lt; Test::Unit::TestCase
+<code>class MyTest &lt; Test::Unit::TestCase</code>
 
-  def test_should_assert_warning
+<code>  def test_should_assert_warning
     assert_warning('this is a warning') { Kernel::warn('this is a warning') }
-  end
+  end</code>
 
-end</code></pre>
+<code>end
+</code></pre>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2006-10-06-recording-daily-spending-with-a-ruby-dsl" rel="prev" title="Recording daily spending with a Ruby Dsl">Recording daily spending with a Ruby Dsl</a>

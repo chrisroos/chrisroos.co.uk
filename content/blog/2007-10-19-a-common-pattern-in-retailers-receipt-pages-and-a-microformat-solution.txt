@@ -10,7 +10,7 @@ We've been looking at embedding a little bit of javascript in one of our partner
 
 So, something that might currently look like this:
 
-<pre><code><table>
+bc.. <table>
   <tr>
     <th>Order Number</th>
     <th>Price</th>
@@ -33,11 +33,11 @@ So, something that might currently look like this:
 </script>
 <script src="http://MY-SEO-HELPER" type="text/javascript" charset="utf-8"></script>
 
-<!-- And repeat... --></code></pre>
+<!-- And repeat... -->
 
-Could become much simpler:
+p. Could become much simpler:
 
-<pre><code><table>
+bc.. <table>
   <tr>
     <th>Order Number</th>
     <th>Price</th>
@@ -49,6 +49,6 @@ Could become much simpler:
 </table>
 
 <script src="http://MY-PRICE-COMPARATOR" type="text/javascript" charset="utf-8"></script>
-<script src="http://MY-SEO-HELPER" type="text/javascript" charset="utf-8"></script></code></pre>
+<script src="http://MY-SEO-HELPER" type="text/javascript" charset="utf-8"></script>
 
-There has been discussion of such a "receipt microformat":http://microformats.org/wiki/receipt but a quick search seemed to suggest that it hasn't been discussed in the context of this specific problem.  Maybe I'll go add my voice to that discussion...
+p. There has been discussion of such a "receipt microformat":http://microformats.org/wiki/receipt but a quick search seemed to suggest that it hasn't been discussed in the context of this specific problem.  Maybe I'll go add my voice to that discussion...

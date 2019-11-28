@@ -74,8 +74,7 @@ Chris: as the classes aren't assigned to constants they can be garbage collected
 Chris: oops
 James: aha
 Chris: no more anonymous test classes for christopher
-James: that explains - why they were in the ObjectSpace one minute and not the next
-</pre>
+James: that explains - why they were in the ObjectSpace one minute and not the next</pre>
       <p>Note that p_l_i_test mentioned above is just a shorthand for one of our tests that was failing individually but ‘running’ (or as we now know, not running) from rake.</p>
       <p>So, although you get a little added excitement to your testing (“Will this test class run before it gets garbage collected???”), it’s probably a lot safer to not use anonymous classes when testing.</p>
       <p>James has just informed me that we gained about 230 tests in rake by naming all of our test cases…</p>

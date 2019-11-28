@@ -20,7 +20,7 @@ We are currently using a slightly more robust (I think) solution that forces you
 
 If you don't already have a zero migration, then create one.  The name is important as you will need to create an empty class of the same name in the file itself (for migrations to be happy).  Ours is called 000_rails_ext.rb.  The code is below.  Our code isn't identical (yet) as I just realised that we had an ineffective call to super in the inherited method, now replaced with alias_method.
 
-<pre><code>class RailsExt
+bc.. class RailsExt
 end
 
 class ActiveRecord::Base
@@ -33,13 +33,13 @@ class ActiveRecord::Base
   end
 end
 
-Dispatcher.reset_application!</code></pre>
+Dispatcher.reset_application!
 
-The inherited callback is triggered everytime we define a class that inherits from ActiveRecord::Base.  All we do is check that its name starts with Migration and raise an error if not (failing fast is good).  The name is the fully qualified name and so includes namespaces.  This is good as it allows us to place all re-defined classes in a module named Migration&lt;number&gt;.  This module can then be included in the migration class itself.  Although I can't remember exactly now, I think the reason we need to reset_application! is because we have some calls to our models in environment.rb.  These models would already be loaded and therefore any future references to them (in the migrations) would bypass our custom inherited method.  By resetting the app, we are sure that we have no AR models loaded.
+p. The inherited callback is triggered everytime we define a class that inherits from ActiveRecord::Base.  All we do is check that its name starts with Migration and raise an error if not (failing fast is good).  The name is the fully qualified name and so includes namespaces.  This is good as it allows us to place all re-defined classes in a module named Migration&lt;number&gt;.  This module can then be included in the migration class itself.  Although I can't remember exactly now, I think the reason we need to reset_application! is because we have some calls to our models in environment.rb.  These models would already be loaded and therefore any future references to them (in the migrations) would bypass our custom inherited method.  By resetting the app, we are sure that we have no AR models loaded.
 
 To re-define the models in the migration, we use something like..
 
-<pre><code>class MyFirstMigration < ActiveRecord::Migration
+bc.. class MyFirstMigration < ActiveRecord::Migration
   def self.up
   end
   def self.down
@@ -50,9 +50,9 @@ module Migration001
   class Person < ActiveRecord::Base
   end
 end
-MyFirstMigration.send(:include, Migration001)</code></pre>
+MyFirstMigration.send(:include, Migration001)
 
-Although sending the migration class the include message with the module isn't great, we use it as it allows us to re-define all our classes below the actual migration.  If we were to place the module at the top then this wouldn't be required but I feel that it gets in the way of being able to read the migration clearly.
+p. Although sending the migration class the include message with the module isn't great, we use it as it allows us to re-define all our classes below the actual migration.  If we were to place the module at the top then this wouldn't be required but I feel that it gets in the way of being able to read the migration clearly.
 
 h2. A problem with this method and re-defining classes directly in the migration
 

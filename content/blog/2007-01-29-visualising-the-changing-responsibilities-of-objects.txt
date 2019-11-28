@@ -10,7 +10,7 @@ By parsing the output of svn diff, we can concisely display the responsibilities
 
 Taking a very simple (and partially made up) diff:
 
-<pre><code>Index: test/amount_test.rb
+bc.. Index: test/amount_test.rb
 ===================================================================
 --- test/amount_test.rb (revision 2)
 +++ test/amount_test.rb (working copy)
@@ -23,19 +23,19 @@ Taking a very simple (and partially made up) diff:
 -    assert_equal '$5.00', formatted_amount
 +  def test_should_flunk
 +    flunk
-   end</code></pre>
+   end
 
-And piping it through the diff_parser, we get:
+p. And piping it through the diff_parser, we get:
 
-<pre><code>--- Amount
+bc. --- Amount
 + should flunk
-- should format amount</code></pre>
+- should format amount
 
 The output is in a diff-like format so that we can pipe it straight into "TextMate":http://www.macromates.com and benefit from the colour formatting therein.
 
 h2. diff_parser.rb
 
-<pre><code>#!/usr/bin/env ruby
+bc.. #!/usr/bin/env ruby
 
 class Test
   def initialize
@@ -92,4 +92,4 @@ tests.sort.each do |test_name, test|
     test.removed_responsibilities.each { |responsibility| puts '- ' + responsibility } if test.removed_responsibilities?
     puts ''
   end
-end</code></pre>
+end

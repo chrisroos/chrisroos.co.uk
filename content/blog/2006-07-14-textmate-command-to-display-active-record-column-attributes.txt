@@ -16,7 +16,7 @@ Anyhoo, I just spent some time whilst on the train hacking together a basic "tex
 
 The code is below.  You'll need to add a ruby command in the ruby textmate bundle, setting the intput to 'selected text' or 'nothing', the output to 'show as tooltip' and preferably a hotkey that isn't one of the ones you use every day (however tempting that is).
 
-<pre><code>#! /usr/local/bin/ruby
+bc.. #! /usr/local/bin/ruby
 
 project = ENV['TM_PROJECT_DIRECTORY']
 word = ENV['TM_CURRENT_WORD']
@@ -40,9 +40,9 @@ elsif klass and klass.class == Class and not klass.ancestors.include?(ActiveReco
   STDOUT << "\#{word} is not an Active Record derived class"
 else
   STDOUT << "\#{word} was not recognised as a class"
-end</code></pre>
+end
 
-It relies on you having your entire rails project (the folder right above app, config, script etc) open in textmate (in order to find the config files).  With that, just click on the name of an active record class (it has to be the actual class name at present, it'd be cool if it also worked based on the class definition you are currently in too) and hit your hotkey of choice (best to use the one you assigned to this command).  Hey presto, a tooltip containing your table structure.
+p. It relies on you having your entire rails project (the folder right above app, config, script etc) open in textmate (in order to find the config files).  With that, just click on the name of an active record class (it has to be the actual class name at present, it'd be cool if it also worked based on the class definition you are currently in too) and hit your hotkey of choice (best to use the one you assigned to this command).  Hey presto, a tooltip containing your table structure.
 
 One odd thing I've noticed is that it never recognises standard class constants.  It should display 'this is not an active record derived class' but instead always displays 'was not recognised as a class'.  Oh well.
 

@@ -10,7 +10,7 @@ I've followed in my "previous":/blog/2007-05-14-automatically-downloading-my-rec
 
 As always, the code is in "google code":http://chrisroos.googlecode.com/svn/trunk/egg/ and pasted below for your viewing pleasure...
 
-<pre><code>require 'egg-credentials'
+bc.. require 'egg-credentials'
 
 def execute_curl(cmd)
   `\#{cmd}`
@@ -51,4 +51,4 @@ statement_dates = []
 statement_index = statement_dates.index(STATEMENT_DATE)
 
 curl_cmd = %[curl -s -o"\#{STATEMENT_FILE}" -b"\#{COOKIE_LOCATION}" "https://your.egg.com/customer/eggcard/statements.aspx?index=\#{statement_index}"]
-execute_curl curl_cmd</code></pre>
+execute_curl curl_cmd

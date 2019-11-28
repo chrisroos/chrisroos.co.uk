@@ -69,9 +69,9 @@ location.replace("/INGDirect.html?command=displayValidateCustomer&amp;fill=1");
       <p>Let’s just see what happens if we request the page returned in the javascript (https://secure.ingdirect.co.uk/INGDirect.html?command=displayValidateCustomer&amp;fill=1)</p>
       <p><a href="http://www.flickr.com/photos/chrisjroos/601442615/"><img alt="" src="http://farm2.static.flickr.com/1130/601442615_2ce8dafc21_m.jpg"></a></p>
       <p>Ok, so that’s not unexpected. How about, if we store the cookies sent to us in the original response, and then request the page returned in the javascript.</p>
-      <pre><code>$ curl -X"POST" -c"/Users/chrisroos/Desktop/ing-cookie" -d"command=enterCustomerNumber" -d"locale=en_GB" -d"device=web" -d"ACN=YOUR_CUSTOMER_NUMBER" -d"LNAME=YOUR_LAST_NAME" -d"GO.x=23" -d"GO.y=12" "https://secure.ingdirect.co.uk/InitialINGDirect.html"
+      <pre><code>$ curl -X"POST" -c"/Users/chrisroos/Desktop/ing-cookie" -d"command=enterCustomerNumber" -d"locale=en_GB" -d"device=web" -d"ACN=YOUR_CUSTOMER_NUMBER" -d"LNAME=YOUR_LAST_NAME" -d"GO.x=23" -d"GO.y=12" "https://secure.ingdirect.co.uk/InitialINGDirect.html"</code>
 
-$ curl -b"/Users/chrisroos/Desktop/ing-cookie" "https://secure.ingdirect.co.uk/INGDirect.html?command=displayValidateCustomer&amp;fill=1" -o"/Users/chrisroos/Desktop/ing.html"</code></pre>
+<code>$ curl -b"/Users/chrisroos/Desktop/ing-cookie" "https://secure.ingdirect.co.uk/INGDirect.html?command=displayValidateCustomer&amp;fill=1" -o"/Users/chrisroos/Desktop/ing.html"</code></pre>
       <p>Ok, this looks promising. We can now proceed to the second security page.</p>
       <p>Let’s use firefox to log in and get to the second security page again. Fill in the details as requested, open live http headers and get hold of the data we are sending. Right, so we POST the following details to InitialINGDirect.html</p>
       <pre><code>command=validateCustomer&amp;locale=en_GB&amp;device=web&amp;PIN_A=5&amp;PIN_B=1&amp;PIN_C=4&amp;DAYS=65&amp;MONTHS=65&amp;YEARS=66&amp;GO.x=41&amp;GO.y=9</code></pre>
@@ -86,15 +86,15 @@ $ curl -b"/Users/chrisroos/Desktop/ing-cookie" "https://secure.ingdirect.co.uk/I
       <p>If our pin number is 1234 and we are asked for the first digit then, although we would push the button labeled 1 on the keypad, we would actually send the value 2 to the server. The buttons (but not the values they represent) all have a constant position, where the top-left button is position 1, the bottom-right is position 9 and the bottom button is position 0 (same layout as phone keypads). For the above example, the button labeled 1 is in position 2, hence us sending a 2 to the server.</p>
       <p>Right, so unless I’m missing something, the server must ‘know’ which three digits we’re being asked for, along with the order of the keypad. If we’re to log in automatically then we’re going to need to parse the text that asks us for certain digits and determine the order of the keypad. A little experimentation with <a href="http://code.whytheluckystiff.net/hpricot/">hpricot</a> yielded the following code.</p>
       <pre><code>require 'rubygems'
-require 'hpricot'
+require 'hpricot'</code>
 
-html = File.open('/Users/chrisroos/Desktop/ingdirect-b1.html') { |f| f.read }
+<code>html = File.open('/Users/chrisroos/Desktop/ingdirect-b1.html') { |f| f.read }</code>
 
-# The request for our PIN digits appears within the following text
+<code># The request for our PIN digits appears within the following text
 # &lt;b&gt;Using the Key Pad, please enter the 3rd, 5th and 2nd digits from your PIN&lt;/b&gt;
-pin_a, pin_b, pin_c = html.scan(/Using the Key Pad, please enter the (\d).+?(\d).+?(\d).*?&lt;\/b&gt;/).flatten
+pin_a, pin_b, pin_c = html.scan(/Using the Key Pad, please enter the (\d).+?(\d).+?(\d).*?&lt;\/b&gt;/).flatten</code>
 
-# Ok, now let's find the order of the keypad (hey, it's in a div with id pin-pad - cool)
+<code># Ok, now let's find the order of the keypad (hey, it's in a div with id pin-pad - cool)
 # This has turned out quite trivial.  The keypad is rendered within an html table, where each cell contains a button (input)
 # that has a value of the number displayed on the button.  Hpricot makes it very easy to say 'get me all buttons (input)
 # that appear in cells within the table that is in the div with an id of pin-pad'.  As hpricot will parse the html table

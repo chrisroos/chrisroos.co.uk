@@ -10,7 +10,7 @@ Hitting the database in testing is bad.
 
 Something that I've found relatively useful at "work":http://www.reevoo.com is to use real "Active Record":http://api.rubyonrails.com/classes/ActiveRecord/Base.html objects without any persistence (basically use AR#new and not AR#save[!] or AR#create[!]).  When using standard techniques to create the association objects in memory you only get one side of the association at a time.  Consider the following.
 
-<pre><code>class Person < ActiveRecord::Base
+bc.. class Person < ActiveRecord::Base
   has_many :addresses
 end
 class Address < ActiveRecord::Base
@@ -37,11 +37,11 @@ home.person
 
 # The example above that creates the address first could also have been written as.
 # chris = Person.new
-# home = Address.new(:person => chris)</code></pre>
+# home = Address.new(:person => chris)
 
-You can see that in each case, only one side of the relationship has access to the other.  If we were persisting the objects then the relationship would be two way via a database lookup.  We can get a two way relationship in memory; although it has a certain duplication smell about it.  Assuming the same models as above, we can amend the above examples like so.
+p. You can see that in each case, only one side of the relationship has access to the other.  If we were persisting the objects then the relationship would be two way via a database lookup.  We can get a two way relationship in memory; although it has a certain duplication smell about it.  Assuming the same models as above, we can amend the above examples like so.
 
-<pre><code># First example
+bc.. # First example
 chris = Person.new
 home = chris.addresses.build(:person => chris)
 
@@ -57,6 +57,6 @@ chris = home.build_person(:addresses => [home])
 home.person
 => #<chris>
 chris.addresses.first
-=> #<home></code></pre>
+=> #<home>
 
-I've occasionally used this in place of stubbing methods but am still not 100% convinced of the definite benefits one way or another.  I do have some definite disadvantages of stubbing methods (nothing exciting, they've almost certainly been noted by many others in the past) which I'll note down at a later date.
+p. I've occasionally used this in place of stubbing methods but am still not 100% convinced of the definite benefits one way or another.  I do have some definite disadvantages of stubbing methods (nothing exciting, they've almost certainly been noted by many others in the past) which I'll note down at a later date.

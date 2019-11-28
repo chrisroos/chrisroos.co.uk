@@ -52,51 +52,52 @@
       <pre><code># Rakefile
 task :foo do
   Rake::Task['db:migrate'].execute
-end
+end</code>
 
-#$ rake foo
+<code>#$ rake foo
 #=&gt; rake aborted!
 #=&gt; uninitialized constant ActiveRecord</code></pre>
       <p>I changed <a href="http://rake.rubyforge.org/classes/Rake/Task.html#M000100">Task#execute</a> to <a href="http://rake.rubyforge.org/classes/Rake/Task.html#M000098">Task#invoke</a> and, voila, it all worked fine. The rdoc for those methods is actually pretty self explanatory, having seen the differences in action. Oh well.</p>
       <p>I put together a simple example to demonstrate the differences.</p>
-      <pre><code># The task (task_1) and its dependency (to_be_run_before_task_1)
+      <pre><code># The task (task_1) and its dependency (to_be_run_before_task_1)</code>
 
-task :to_be_run_before_task_1 do
+<code>task :to_be_run_before_task_1 do
   puts "to_be_run_before_task_1"
-end
+end</code>
 
-task :task_1 =&gt; ['to_be_run_before_task_1'] do
+<code>task :task_1 =&gt; ['to_be_run_before_task_1'] do
   puts "task_1"
-end
+end</code>
 
-# Three tasks that 'run' task_1
+<code># Three tasks that 'run' task_1</code>
 
-task :invoke_task_1 do
+<code>task :invoke_task_1 do
   Rake::Task['task_1'].invoke
-end
+end</code>
 
-task :execute_task_1 do
+<code>task :execute_task_1 do
   Rake::Task['task_1'].execute
-end
+end</code>
 
-task :run_task_1_using_dependencies =&gt; ['task_1']
+<code>task :run_task_1_using_dependencies =&gt; ['task_1']</code>
 
-# 'Running' the tasks
+<code># 'Running' the tasks</code>
 
-#$ rake task_1
+<code>#$ rake task_1
+#=&gt; to_be_run_before_task_1
+#=&gt; task_1</code>
+
+<code>#$ rake invoke_task_1
+#=&gt; to_be_run_before_task_1
+#=&gt; task_1</code>
+
+<code>#$ rake execute_task_1
+#=&gt; task_1 #*** Note that the dependencies are not run</code>
+
+<code>#$ rake run_task_1_using_dependencies
 #=&gt; to_be_run_before_task_1
 #=&gt; task_1
-
-#$ rake invoke_task_1
-#=&gt; to_be_run_before_task_1
-#=&gt; task_1
-
-#$ rake execute_task_1
-#=&gt; task_1 #*** Note that the dependencies are not run
-
-#$ rake run_task_1_using_dependencies
-#=&gt; to_be_run_before_task_1
-#=&gt; task_1</code></pre>
+</code></pre>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-11-27-fun-with-selenium" rel="prev" title="Fun with Selenium">Fun with Selenium</a>

@@ -55,18 +55,18 @@
         <li>A tiny bit of ruby script</li>
       </ul>
       <pre><code>require 'rubygems'
-require 'json'
+require 'json'</code>
 
-RECEIVER_USERNAME = 'USERNAME_OF_MOBILE_ACCOUNT'
+<code>RECEIVER_USERNAME = 'USERNAME_OF_MOBILE_ACCOUNT'
 RECEIVER_PASSWORD = 'PASSWORD_OF_MOBILE_ACCOUNT'
-js = `curl -u"\#{RECEIVER_USERNAME}:\#{RECEIVER_PASSWORD}" http://twitter.com/statuses/friends_timeline.json`
+js = `curl -u"\#{RECEIVER_USERNAME}:\#{RECEIVER_PASSWORD}" http://twitter.com/statuses/friends_timeline.json`</code>
 
-text = JSON.parse(js).first['text']
+<code>text = JSON.parse(js).first['text']</code>
 
-SENDER_USERNAME = 'USERNAME_OF_FRIEND'
-SENDER_PASSWORD = 'PASSWORD_OF_FRIEND'
+<code>SENDER_USERNAME = 'USERNAME_OF_FRIEND'
+SENDER_PASSWORD = 'PASSWORD_OF_FRIEND'</code>
 
-`curl -u"\#{SENDER_USERNAME}:\#{SENDER_PASSWORD}" -d"status=\#{text.reverse}" http://twitter.com/statuses/update.xml`</code></pre>
+<code>`curl -u"\#{SENDER_USERNAME}:\#{SENDER_PASSWORD}" -d"status=\#{text.reverse}" http://twitter.com/statuses/update.xml`</code></pre>
       <p>The script just reads the most recent message sent to your mobile twitter account, reverses the text and sends it back to your mobile.</p>
       <p>This is all free stuff, and although the twitter terms of service don’t appear to explicitly disallow us doing this, I think you should probably be nice if you’re going to use it in this way.</p>
       <hr>

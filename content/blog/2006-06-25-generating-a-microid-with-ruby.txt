@@ -8,12 +8,12 @@ layout: blog
 ---
 Very naive Ruby method to create a "MicroId":http://www.microid.org for a given email and url.
 
-<pre><code>require 'digest/sha1'
+bc.. require 'digest/sha1'
 
 def micro_id(email, url)
   email_digest = Digest::SHA1.new(email).to_s
   url_digest = Digest::SHA1.new(url).to_s
   Digest::SHA1.new(email_digest + url_digest).to_s
-end</code></pre>
+end
 
-Note that there is no validation of the MicroId in this code at all.
+p. Note that there is no validation of the MicroId in this code at all.

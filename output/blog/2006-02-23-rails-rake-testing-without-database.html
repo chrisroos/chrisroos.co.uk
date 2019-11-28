@@ -52,9 +52,9 @@
       <p>To replicate, create a new file called ‘default.rake’ in the lib/tasks/ directory within your rails project, and paste in the following code.</p>
       <pre><code>Rake::Task::TASKS.delete('default')
 Rake::Task[:test_units].instance_variable_set(:@prerequisites, [])
-Rake::Task[:test_functional].instance_variable_set(:@prerequisites, [])
+Rake::Task[:test_functional].instance_variable_set(:@prerequisites, [])</code>
 
-task :default do
+<code>task :default do
   Rake::Task[:test_units].invoke      rescue got_error = true
   Rake::Task[:test_functional].invoke rescue got_error = true
   raise "Test failures" if got_error
@@ -63,7 +63,8 @@ end</code></pre>
       <p><strong>Update 17:20</strong></p>
       <p>Just realised that I don’t need most of the code above. All you actually need in default.rake is as follows. Stoopid Chris.</p>
       <pre><code>Rake::Task[:test_units].instance_variable_set(:@prerequisites, [])
-Rake::Task[:test_functional].instance_variable_set(:@prerequisites, [])</code></pre>
+Rake::Task[:test_functional].instance_variable_set(:@prerequisites, [])
+</code></pre>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2006-02-23-rails-testing-without-database" rel="prev" title="Rails testing without database">Rails testing without database</a>

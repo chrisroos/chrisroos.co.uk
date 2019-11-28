@@ -18,7 +18,7 @@ Oh well, might as well fill it in and submit.  But wait.  What's this?
 
 Wow, an email server that takes upto 60 seconds to:
 
-<pre><code>DELETE FROM newsletters WHERE email = 'MY_EMAIL';</code></pre>
+bc. DELETE FROM newsletters WHERE email = 'MY_EMAIL';
 
 Oh well, I best click OK and wait.  Oh.
 

@@ -53,16 +53,16 @@
       <pre><code># File init.rb
 require File.dirname(__FILE__) + '/lib/record_invalid'</code></pre>
       <pre><code># File record_invalid.rb
-module ActiveRecord
+module ActiveRecord</code>
 
-  class RecordInvalid &lt; ActiveRecordError
+<code>  class RecordInvalid &lt; ActiveRecordError
     def initialize(record)
       @record = record
       super("Validation failed: \#{@record.errors.full_messages.join(", ")}")
     end
-  end
+  end</code>
 
-end</code></pre>
+<code>end</code></pre>
       <p>To create a plugin from this, create the following structure in your rails_app/vendor/plugins directory.</p>
       <pre><code>active_record_validation_error/
 |
@@ -70,7 +70,8 @@ end</code></pre>
 |
 |--lib/
    |
-   |--record_invalid.rb (copy content of code above)</code></pre>
+   |--record_invalid.rb (copy content of code above)
+</code></pre>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2006-07-28-textmate-and-env-ruby-no-such-file-or-directory" rel="prev" title="TextMate and env: ruby: No such file or directory">TextMate and env: ruby: No such file or directory</a>

@@ -53,12 +53,12 @@
         </li>
         <li>Use the following script to get started (making sure that you explicitly reference the downloaded pop3 file)…</li>
       </ul>
-      <pre><code>require 'pop_ssl' # I renamed the file from pop.rb to pop_ssl.rb to ensure I was requiring the correct version
+      <pre><code>require 'pop_ssl' # I renamed the file from pop.rb to pop_ssl.rb to ensure I was requiring the correct version</code>
 
-username = 'YOUR_GMAIL_USERNAME@gmail.com'
-password = 'YOUR_GMAIL_PASSWORD'
+<code>username = 'YOUR_GMAIL_USERNAME@gmail.com'
+password = 'YOUR_GMAIL_PASSWORD'</code>
 
-Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_NONE)
+<code>Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_NONE)
 Net::POP3.start('pop.gmail.com', 995, username, password) do |pop|
   if pop.mails.empty?
     puts 'No mail.'

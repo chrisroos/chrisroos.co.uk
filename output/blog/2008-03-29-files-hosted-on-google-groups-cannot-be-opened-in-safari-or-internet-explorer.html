@@ -48,9 +48,9 @@
       <abbr class="createdAt" title="2008-03-29T06:06:02+00:00">Sat, 29 Mar 08</abbr>
       <h1>Files hosted on Google Groups cannot be opened in Safari (or Internet Explorer)</h1>
       <p>I noticed a little while ago that opening a, <a href="http://groups.google.com">Google Groups</a> hosted, file in <a href="http://www.apple.com/safari/">Safari</a> didn’t work. I have a file at <a href="http://delicious-trackbacks.googlegroups.com/web/installation.html">http://delicious-trackbacks.googlegroups.com/web/installation.html</a> that you can try out if you’re so inclined. Requests for that file result in a page being rendered in Firefox but not in Safari or Internet Explorer (6 at least). <a href="http://interblah.net/">James</a> noticed that requests for these hosted files were resulting in a 302 response, as we can see from this <a href="http://curl.haxx.se/">curl</a> output.</p>
-      <pre><code>curl "http://delicious-trackbacks.googlegroups.com/web/installation.html" -v -X"HEAD"
+      <pre><code>curl "http://delicious-trackbacks.googlegroups.com/web/installation.html" -v -X"HEAD"</code>
 
-&lt; HTTP/1.1 302 Moved Temporarily
+<code>&lt; HTTP/1.1 302 Moved Temporarily
 &lt; Content-Type: text/html; charset=UTF-8
 &lt; Content-Length: 0
 &lt; Cache-control: private

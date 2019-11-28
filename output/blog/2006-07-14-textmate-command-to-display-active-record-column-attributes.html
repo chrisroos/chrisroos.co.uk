@@ -52,24 +52,24 @@
       <p>Anyhoo, I just spent some time whilst on the train hacking together a basic <a href="http://macromates.com/">textmate</a> command that displays a tooltip containing the table structure. It’s very basic (though you wouldn’t have thought it based on the amount of time it took me together<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>); but seems to work ok.</p>
       <p><img alt="" src="http://farm1.static.flickr.com/236/460082493_49ff4cd1ed_o.png"></p>
       <p>The code is below. You’ll need to add a ruby command in the ruby textmate bundle, setting the intput to ‘selected text’ or ‘nothing’, the output to ‘show as tooltip’ and preferably a hotkey that isn’t one of the ones you use every day (however tempting that is).</p>
-      <pre><code>#! /usr/local/bin/ruby
+      <pre><code>#! /usr/local/bin/ruby</code>
 
-project = ENV['TM_PROJECT_DIRECTORY']
-word = ENV['TM_CURRENT_WORD']
+<code>project = ENV['TM_PROJECT_DIRECTORY']
+word = ENV['TM_CURRENT_WORD']</code>
 
-require "\#{project}/config/boot"
-require "\#{project}/config/environment"
+<code>require "\#{project}/config/boot"
+require "\#{project}/config/environment"</code>
 
-klass = Object.const_get(word) rescue nil
+<code>klass = Object.const_get(word) rescue nil
 if klass and klass.class == Class and klass.ancestors.include?(ActiveRecord::Base)
-  columns = klass.columns_hash
+  columns = klass.columns_hash</code>
 
-  data = []
+<code>  data = []
   data += [%w[column primary sql_type default]]
   data += [%w[------ ------- -------- -------]]
-  data += columns.collect { |col, attrs| [col, attrs.primary.to_s, attrs.sql_type.to_s, attrs.default.to_s] }
+  data += columns.collect { |col, attrs| [col, attrs.primary.to_s, attrs.sql_type.to_s, attrs.default.to_s] }</code>
 
-  STDOUT &lt;&lt; data.inject('') do |output, array|
+<code>  STDOUT &lt;&lt; data.inject('') do |output, array|
     output + array.inject('') { |row_str, value| row_str + value.ljust(20) } + "\n"
   end
 elsif klass and klass.class == Class and not klass.ancestors.include?(ActiveRecord::Base)

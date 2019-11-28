@@ -54,29 +54,29 @@
       <p>If the author’s contact details were semantically marked up, either on the page I was looking at or linked to elsewhere on the web, then I could use a simple parser to extract those details and select the best communication tool to use manually.</p>
       <p>Maybe some code can help explain what I mean.</p>
       <h3>A semantically marked up contact page.</h3>
-      <pre><code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;
+      <pre><code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;</code>
 
-&lt;html&gt;
+<code>&lt;html&gt;</code>
 
-  &lt;head&gt;
+<code>  &lt;head&gt;
     &lt;title&gt;Contact Details&lt;/title&gt;
-  &lt;/head&gt;
+  &lt;/head&gt;</code>
 
-  &lt;body&gt;
+<code>  &lt;body&gt;
     &lt;dl class="contactDetails"&gt;
       &lt;dt&gt;Skype&lt;/dt&gt;
       &lt;dd class="skype identifier"&gt;skype-username&lt;/dd&gt;
       &lt;dt&gt;MSN&lt;/dt&gt;
       &lt;dd class="msn identifier"&gt;msn-username&lt;/dd&gt;
     &lt;/dl&gt;
-  &lt;/body&gt;
+  &lt;/body&gt;</code>
 
-&lt;/html&gt;</code></pre>
+<code>&lt;/html&gt;</code></pre>
       <h3>A parser in <a href="http://www.ruby-lang.org/">ruby</a></h3>
       <pre><code>require 'rubygems'
-require 'hpricot'
+require 'hpricot'</code>
 
-class ContactParser
+<code>class ContactParser
   def self.from_html(html)
     doc = Hpricot(html)
     new(doc)
@@ -95,13 +95,13 @@ class ContactParser
   def identifier(service)
     (@hpricot_doc/".contactDetails .\#{service}.identifier").inner_text
   end
-end
+end</code>
 
-contact_details_file = File.dirname(__FILE__) + '/contact-details.html'
+<code>contact_details_file = File.dirname(__FILE__) + '/contact-details.html'
 html = File.open(contact_details_file) { |f| f.read }
-parser = ContactParser.from_html(html)
+parser = ContactParser.from_html(html)</code>
 
-p parser.service_identifiers
+<code>p parser.service_identifiers
 # =&gt; {"skype"=&gt;"skype-username", "msn"=&gt;"msn-username"}
 p parser.identifier('skype')
 # =&gt; 'skype-username'

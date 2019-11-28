@@ -56,36 +56,37 @@ require 'cgi'
 require 'time'
 require 'hmac'
 require 'hmac-sha2'
-require 'base64'
+require 'base64'</code>
 
-ACCESS_IDENTIFIER = 'your-access-identifier'
-SECRET_IDENTIFIER = 'your-secret-identifier'
+<code>ACCESS_IDENTIFIER = 'your-access-identifier'
+SECRET_IDENTIFIER = 'your-secret-identifier'</code>
 
-AMAZON_ENDPOINT = 'https://sdb.amazonaws.com/'
+<code>AMAZON_ENDPOINT = 'https://sdb.amazonaws.com/'</code>
 
-params = {
+<code>params = {
   'Action' =&gt; 'ListDomains',
   'AWSAccessKeyId' =&gt; ACCESS_IDENTIFIER,
   'SignatureMethod' =&gt; 'HmacSHA256',
   'SignatureVersion' =&gt; 2,
   'Timestamp' =&gt; Time.now.iso8601,
   'Version' =&gt; '2007-11-07'
-}
+}</code>
 
-canonical_querystring = params.sort.collect { |key, value| [CGI.escape(key.to_s), CGI.escape(value.to_s)].join('=') }.join('&amp;')
+<code>canonical_querystring = params.sort.collect { |key, value| [CGI.escape(key.to_s), CGI.escape(value.to_s)].join('=') }.join('&amp;')
 string_to_sign = "GET
 sdb.amazonaws.com
 /
-\#{canonical_querystring}"
+\#{canonical_querystring}"</code>
 
-hmac = HMAC::SHA256.new(SECRET_IDENTIFIER)
+<code>hmac = HMAC::SHA256.new(SECRET_IDENTIFIER)
 hmac.update(string_to_sign)
-signature = Base64.encode64(hmac.digest).chomp # chomp is important!  the base64 encoded version will have a newline at the end
+signature = Base64.encode64(hmac.digest).chomp # chomp is important!  the base64 encoded version will have a newline at the end</code>
 
-params['Signature'] = signature
-querystring = params.collect { |key, value| [CGI.escape(key.to_s), CGI.escape(value.to_s)].join('=') }.join('&amp;') # order doesn't matter for the actual request
+<code>params['Signature'] = signature
+querystring = params.collect { |key, value| [CGI.escape(key.to_s), CGI.escape(value.to_s)].join('=') }.join('&amp;') # order doesn't matter for the actual request</code>
 
-puts `curl -X"GET" "\#{AMAZON_ENDPOINT}?\#{querystring}" -A"simple ruby aws sdb wrapper"`</code></pre>
+<code>puts `curl -X"GET" "\#{AMAZON_ENDPOINT}?\#{querystring}" -A"simple ruby aws sdb wrapper"`
+</code></pre>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2009-01-31-turning-off-my-national-rail-twitter-bot" rel="prev" title="Turning Off My National Rail Twitter Bot">Turning Off My National Rail Twitter Bot</a>

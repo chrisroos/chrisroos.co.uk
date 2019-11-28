@@ -54,7 +54,7 @@
       <p>Install <a href="http://www.modrails.com/">Passenger</a>.</p>
       <p>Download <a href="http://cruisecontrolrb.thoughtworks.com/">cruisecontrol.rb</a> (from <a href="http://github.com/thoughtworks/cruisecontrol.rb/tree/master">github</a> or <a href="http://rubyforge.org/projects/cruisecontrolrb/">rubyforge</a>). We’re using the version from <a href="http://github.com/">github</a> as it has <a href="http://git-scm.com/">git</a> support built in.</p>
       <p>Edit the cruisecontrol.rb production environment (cc.rb/config/environments/production.rb) so that we can disable the builders by setting an environment variable. By default, starting the server (even through Passenger) starts the builders too. This doesn’t work by default because the PATH environment variable isn’t set which means the builders can’t find git. Although it doesn’t feel like entirely the right approach I actually wonder if I could use the ruby-wrapper-approach (detailed below) to have these builders work correctly.</p>
-      <pre><code> config.after_initialize do
+      <pre><code>config.after_initialize do
    require CRUISE_DATA_ROOT + '/site_config' if File.exists?(CRUISE_DATA_ROOT + "/site_config.rb")
    require RAILS_ROOT + '/config/dashboard_initialize'
 -  BuilderStarter.start_builders
@@ -62,13 +62,13 @@
  end</code></pre>
       <p>Create a wrapper around <a href="http://www.ruby-lang.org/">ruby</a> that allows us to pass environment variables to our Passenger apps. I actually made the amendment to the code above before realising that it’s not entirely trivial to pass environment variables from <a href="http://httpd.apache.org/">Apache</a> to a Passenger app (<a href="http://code.google.com/p/phusion-passenger/issues/detail?id=81">this ticket</a> details the problem). I wasn’t keen on the idea of this wrapper (<a href="http://blog.phusion.nl/2008/12/16/passing-environment-variables-to-ruby-from-phusion-passenger/">explanation on the phusion blog</a>) at first but I ended up thinking it was the neatest solution.</p>
       <pre><code>$ cat &gt; ~/ruby_for_passenger
-#!/bin/sh
+#!/bin/sh</code>
 
-export CCRB_WITHOUT_BUILDERS=true
+<code>export CCRB_WITHOUT_BUILDERS=true</code>
 
-exec "/usr/bin/ruby" "$@"
+<code>exec "/usr/bin/ruby" "$@"</code>
 
-$ sudo mv ~/ruby_for_passenger /usr/local/bin/
+<code>$ sudo mv ~/ruby_for_passenger /usr/local/bin/
 $ sudo chmod +x /usr/local/bin/ruby_for_passenger</code></pre>
       <p>Change the value of the PassengerRuby configuration option in your apache httpd config. We need to tell Passenger to use our wrapper script instead of the default ruby binary it found during installation.</p>
       <pre><code>$ sudo vi /etc/apache2/httpd.conf
@@ -101,9 +101,9 @@ PassengerRuby /usr/local/bin/ruby_for_passenger</code></pre>
     &lt;key&gt;RunAtLoad&lt;/key&gt;
     &lt;true/&gt;
   &lt;/dict&gt;
-&lt;/plist&gt;
+&lt;/plist&gt;</code>
 
-# Notes:
+<code># Notes:
 # We set the PATH environment variable so that both git and ruby can be found.
 # We set RunAtLoad so that as soon as the plist is loaded by launchctl it will start to run.</code></pre>
       <p>Load the agent using <a href="http://developer.apple.com/DOCUMENTATION/DARWIN/Reference/ManPages/man1/launchctl.1.html">launchctl</a> as the user named above (i.e. not root).</p>

@@ -55,13 +55,13 @@
       <p>I’ve created it as a proof of concept but I figure that, given a little love, it may prove useful to some folks.</p>
       <pre><code>require 'rubygems'
 require 'mongrel'
-require 'json'
+require 'json'</code>
 
-postcodes_file = File.dirname(__FILE__) + '/uk-postcodes.json'
+<code>postcodes_file = File.dirname(__FILE__) + '/uk-postcodes.json'
 Postcodes = JSON.parse(File.open(postcodes_file) { |f| f.read })
-Index = Postcodes.inject([]) { |index, postcode| index &lt;&lt; postcode['postcode'].downcase }
+Index = Postcodes.inject([]) { |index, postcode| index &lt;&lt; postcode['postcode'].downcase }</code>
 
-class PostcodeHandler &lt; Mongrel::HttpHandler
+<code>class PostcodeHandler &lt; Mongrel::HttpHandler
   def process(request, response)
     outcode = request.params['PATH_INFO'].sub(/^\//, '').downcase
     postcode_index = Index.index(outcode)
@@ -76,17 +76,18 @@ class PostcodeHandler &lt; Mongrel::HttpHandler
       end
     end
   end
-end
+end</code>
 
-config = Mongrel::Configurator.new :host =&gt; 'localhost', :port =&gt; '4000' do
+<code>config = Mongrel::Configurator.new :host =&gt; 'localhost', :port =&gt; '4000' do
   listener do
     uri "/postcodes", :handler =&gt; PostcodeHandler.new
   end
   trap("INT") { stop }
   run
-end
+end</code>
 
-config.join</code></pre>
+<code>config.join
+</code></pre>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-07-12-wesabe-open-up-their-api-and-ask-me-to-help-write-their-press-release" rel="prev" title="Wesabe open up their API and ask me to help write their press release...">Wesabe open up their API and ask me to help write their press release...</a>

@@ -51,19 +51,19 @@
       <p>It’s a bit of a strange error in that you get seemingly conflicting output from TextMate.</p>
       <p>In a new TextMate document, I could run (by using the well handy, and very new to me, Ctrl-r key combo)..</p>
       <pre><code>$ /usr/bin/env ruby --version
-=&gt; ruby 1.8.4 (2005-12-24) [i686-darwin8.7.1]
+=&gt; ruby 1.8.4 (2005-12-24) [i686-darwin8.7.1]</code>
 
-$ /usr/bin/which ruby
-=&gt; /usr/local/bin/ruby
+<code>$ /usr/bin/which ruby
+=&gt; /usr/local/bin/ruby</code>
 
-#!/usr/local/bin/ruby
+<code>#!/usr/local/bin/ruby</code>
 
-puts "hello world"
+<code>puts "hello world"
 =&gt; hello world</code></pre>
       <p>However, if I ran..</p>
-      <pre><code>#!/usr/bin/env ruby
+      <pre><code>#!/usr/bin/env ruby</code>
 
-puts "hello world again"
+<code>puts "hello world again"
 =&gt; env: ruby: No such file or directory</code></pre>
       <p>Hmm, so <code>/usr/bin/env ruby --version</code> works, but when using the very same as the shebang interpreter we get an error. Odd huh.</p>
       <p>Well, apparently not; if we read the textmate docs about <a href="http://macromates.com/textmate/manual/shell_commands#search_path">shell commands</a>.</p>

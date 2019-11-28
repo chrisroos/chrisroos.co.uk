@@ -18,7 +18,7 @@ h2. The requirements
 
 h2. The mod_rewrite rules
 
-<pre><code># Permanently (301) redirect /index.html to / (regex copied from http://www.webmasterworld.com/apache/3155094.htm)
+bc.. # Permanently (301) redirect /index.html to / (regex copied from http://www.webmasterworld.com/apache/3155094.htm)
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*index\.html\ HTTP/
 RewriteRule ^(.*)index\.html$ $1 [R=301,L]
 
@@ -42,8 +42,8 @@ RewriteRule ^(.*)$ http://the-local-paper.co.uk/$1 [R=301,L]
   Order allow,deny
   Deny from all
   Satisfy All
-</DirectoryMatch></code></pre>
+</DirectoryMatch>
 
-I figured that there's a chance some of these rules might come in useful to someone else.
+p. I figured that there's a chance some of these rules might come in useful to someone else.
 
 fn1. This has all been for the "local paper idea":/blog/2007-06-01-an-open-letter-to-my-local-newspapers I mentioned a while back.  I've actually "started":http://twitter.com/chrisroos/statuses/570937102 to get some content up on "the-local-paper.co.uk":http://the-local-paper.co.uk if you want to play along and see how it's shaping up..

@@ -12,11 +12,11 @@ I was in need of finding some train times at the weekend.  I usually use the "na
 
 It's actually currently all up and running.  Just follow "natrailenq":http://twitter.com/natrailenq on twitter and I'll follow you right back[1] (this seems to be necessary in order to send direct messages between each other).  A timetable request must be of the format 'origin_station (3 letter short code) destination_station (3 letter short code) depart_date (dd-mmmm) depart_time (hh:mm)'.  So, if we wanted to get times of trains from London Victoria (VIC) to Clapham Junction (CLJ) tomorrow midday, we'd send a message like so:
 
-<pre><code>d natrailenq vic clj 25-july 12:00</code></pre>
+bc. d natrailenq vic clj 25-july 12:00
 
 In this instance, we get the following response back.
 
-<pre><code>natrailenq  11:55->12:02, 12:02->12:07, 12:03->12:09, 12:05->12:11, 12:06->12:11</code></pre>
+bc. natrailenq  11:55->12:02, 12:02->12:07, 12:03->12:09, 12:05->12:11, 12:06->12:11
 
 Cool huh.
 

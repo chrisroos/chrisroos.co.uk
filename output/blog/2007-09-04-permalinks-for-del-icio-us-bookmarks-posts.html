@@ -66,9 +66,9 @@
       <p>I’ve created a crappy script that will add this url/MD5_OF_URL tag to each of your posts. It’s hosted on <a href="http://chrisroos.googlecode.com/svn/trunk/delicious_url_tags">google code</a> and pasted below. Err, use at your own risk by the way.</p>
       <pre><code>USERNAME = 'YOUR_USERNAME'
 PASSWORD = 'YOUR_PASSWORD'
-POSTS_CACHE = 'FILE_TO_STORE_YOUR_EXISTING_DELICIOUS_POSTS_IN'
+POSTS_CACHE = 'FILE_TO_STORE_YOUR_EXISTING_DELICIOUS_POSTS_IN'</code>
 
-# GET ALL POSTS
+<code># GET ALL POSTS
 unless File.exists?(POSTS_CACHE)
   puts "Downloading all posts..."
   curl_cmd = &lt;&lt;-EndCurl
@@ -78,27 +78,27 @@ curl "https://api.del.icio.us/v1/posts/all" \
 &gt; \#{POSTS_CACHE}
   EndCurl
   `\#{curl_cmd}`
-end
+end</code>
 
-require 'hpricot'
+<code>require 'hpricot'
 require 'md5'
-require 'cgi'
+require 'cgi'</code>
 
-def add_url_hash_to_post(post)
+<code>def add_url_hash_to_post(post)
   url = CGI.unescapeHTML(post['href'])
   url_hash = MD5.md5(url)
-  url = CGI.escape(url)
+  url = CGI.escape(url)</code>
 
-  tags = post['tag'].split(' ').collect { |tag| CGI.unescapeHTML(tag) }
+<code>  tags = post['tag'].split(' ').collect { |tag| CGI.unescapeHTML(tag) }
   tags &lt;&lt; "url/\#{url_hash}" unless tags.include?("url/\#{url_hash}")
   tags = tags.collect { |tag| CGI.escape(tag) }
-  tags = tags.join(' ')
+  tags = tags.join(' ')</code>
 
-  shared = post['shared']
+<code>  shared = post['shared']
   description = CGI.escape(CGI.unescapeHTML(post['description']))
-  extended = CGI.escape(CGI.unescapeHTML(post['extended']))
+  extended = CGI.escape(CGI.unescapeHTML(post['extended']))</code>
 
-  curl_cmd = &lt;&lt;-EndCurl
+<code>  curl_cmd = &lt;&lt;-EndCurl
 curl "https://api.del.icio.us/v1/posts/add" \
 -u"\#{USERNAME}:\#{PASSWORD}" \
 -d"url=\#{url}" \
@@ -109,9 +109,9 @@ curl "https://api.del.icio.us/v1/posts/add" \
 -s
   EndCurl
   `\#{curl_cmd}`
-end
+end</code>
 
-# ADD THE URL/&lt;md5_hash&gt; TAG TO EACH POST
+<code># ADD THE URL/&lt;md5_hash&gt; TAG TO EACH POST
 posts_xml = File.open(POSTS_CACHE) { |f| f.read }
 posts_doc = Hpricot(posts_xml)
 count = 1
@@ -119,7 +119,8 @@ count = 1
   puts "Bookmark: \#{count}" if (count % 5) == 0
   add_url_hash_to_post(post_xml.attributes)
   count += 1
-end</code></pre>
+end
+</code></pre>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-08-31-blue-card-user-stories-coming-out-of-the-reevoo-com-feedback" rel="prev" title="Blue card user stories coming out of the reevoo.com feedback">Blue card user stories coming out of the reevoo.com feedback</a>

@@ -50,9 +50,9 @@
       <p>I’m very very very bad with money. Don’t get me wrong, I’m very good at <del>spending</del> wasting money, just bad at all <a href="http://en.wikipedia.org/wiki/Savings">the</a> <a href="http://en.wikipedia.org/wiki/Investing">boring</a> <a href="http://en.wikipedia.org/wiki/Pension">stuff</a>.</p>
       <p>The main part of my problem is that I never know how much I have and therefore don’t know when to stop spending. This is down to laziness. It takes time to check balances at a cash point or via my bank’s website. I feel that this time can be better spent withdrawing the cash and wandering to the pub.</p>
       <p>Anyhoo. What I really need is a something that illustrates (preferably with big colourful graphs) the amount going out vs the amount coming in. This needs to be as un-intrusive as possible or I’m not going to use it. I’d also kinda like to see what sort of things I’m spending on, so that I can maybe shock myself into stopping. So, I need a record of what I spend my money on. Enter… The little dsl to do just that.</p>
-      <pre><code>payment_mechanisms :cash, :cheque
+      <pre><code>payment_mechanisms :cash, :cheque</code>
 
-day '6-oct-2006' do
+<code>day '6-oct-2006' do
   cheque 9.99, lunch, 'expensivo restaurant', burger
   cash 4.00, 'return ticket', train
   cash 1.00, 'mars bar', coke
@@ -62,14 +62,14 @@ end</code></pre>
       <pre><code>weekly do
   outgoing 18.00, lunch
   outgoing 40.00, 'train travel'
-end
+end</code>
 
-monthly do
+<code>monthly do
   income 1_000_000, 'wages (not really my monthly wage)'
   outgoing 500_000, tax
-end
+end</code>
 
-yearly do
+<code>yearly do
   outgoing 25.00, 'flickr subscription'
 end</code></pre>
       <p>That’s about all I have at the moment. Unfortunately, I’m already getting a bit bored with this project so this may be the last of it and I’ll continue spending over my limits. Or, I’ll get those colourful graphs added and it’ll be heralded as the best budgeting app in the world ever<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>.</p>
