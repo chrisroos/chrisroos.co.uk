@@ -8,8 +8,7 @@ layout: blog
 ---
 We're not _quite_ at this stage yet...
 
-<pre><code>
-class ActiveRecord::ConnectionAdapters::MysqlAdapter
+<pre><code>class ActiveRecord::ConnectionAdapters::MysqlAdapter
   alias :execute_before_test_hijack :execute
   def execute(*args)
     unless args.first =~ /^SHOW FIELDS FROM/ || %w[BEGIN COMMIT ROLLBACK END].include?(args.first)
@@ -17,5 +16,4 @@ class ActiveRecord::ConnectionAdapters::MysqlAdapter
     end
     execute_before_unit_test_hijack(*args)
   end
-end
-</code></pre>
+end</code></pre>

@@ -12,8 +12,7 @@ It's a bit of a strange error in that you get seemingly conflicting output from 
 
 In a new TextMate document, I could run (by using the well handy, and very new to me, Ctrl-r key combo)..
 
-<pre><code>
-$ /usr/bin/env ruby --version
+<pre><code>$ /usr/bin/env ruby --version
 => ruby 1.8.4 (2005-12-24) [i686-darwin8.7.1]
 
 $ /usr/bin/which ruby
@@ -22,17 +21,14 @@ $ /usr/bin/which ruby
 #!/usr/local/bin/ruby
 
 puts "hello world"
-=> hello world
-</code></pre>
+=> hello world</code></pre>
 
 However, if I ran..
 
-<pre><code>
-#!/usr/bin/env ruby
+<pre><code>#!/usr/bin/env ruby
 
 puts "hello world again"
-=> env: ruby: No such file or directory
-</code></pre>
+=> env: ruby: No such file or directory</code></pre>
 
 Hmm, so <code>/usr/bin/env ruby --version</code> works, but when using the very same as the shebang interpreter we get an error.  Odd huh.
 
@@ -42,11 +38,9 @@ Although I, in no way, understand this completely; I blindly followed the instru
 
 In summary for those that don't wish to read the docs..
 
-<pre><code>
-$ mkdir ~/.MacOSX/
+<pre><code>$ mkdir ~/.MacOSX/
 $ cat >> ~/.MacOSX/environment.plist
-{ PATH = "/usr/local/bin"; }
-</code></pre>
+{ PATH = "/usr/local/bin"; }</code></pre>
 
 *Note* You'll want to change the path to the location of the binaries you want found.
 

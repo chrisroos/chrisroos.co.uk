@@ -8,8 +8,7 @@ layout: blog
 ---
 It turns out that we can use "streetmap.co.uk":http://streetmap.co.uk to "convert":http://streetmap.co.uk/streetmap.dll?GridConvert a UK postcode to latitude/longitude.  It also turns out that a combination of "curl":http://curl.haxx.se/, "ruby":http://www.ruby-lang.org and "hpricot":http://code.whytheluckystiff.net/hpricot/ make it very easy to bypass the streetmap site to perform the conversion.
 
-<pre><code>
-postcode = 'SW1A 2AJ'
+<pre><code>postcode = 'SW1A 2AJ'
 
 html = `curl "http://streetmap.co.uk/streetmap.dll" -d"MfcISAPICommand=GridConvert" -d"name=\#{postcode}" -d"type=PostCode"`
 
@@ -30,7 +29,6 @@ latitude, longitude = 0, 0
   end
 end
 
-p [latitude, longitude]
-</code></pre>
+p [latitude, longitude]</code></pre>
 
 Err, this is probably a bit naughty.

@@ -49,8 +49,7 @@
       <h1>Visualising the changing responsibilities of objects</h1>
       <p>By parsing the output of svn diff, we can concisely display the responsibilities that have been added/removed to various objects. It is based on the assumption that our tests capture these changes.</p>
       <p>Taking a very simple (and partially made up) diff:</p>
-      <pre><code>
-Index: test/amount_test.rb
+      <pre><code>Index: test/amount_test.rb
 ===================================================================
 --- test/amount_test.rb (revision 2)
 +++ test/amount_test.rb (working copy)
@@ -63,18 +62,14 @@ Index: test/amount_test.rb
 -    assert_equal '$5.00', formatted_amount
 +  def test_should_flunk
 +    flunk
-   end
-</code></pre>
+   end</code></pre>
       <p>And piping it through the diff_parser, we get:</p>
-      <pre><code>
---- Amount
+      <pre><code>--- Amount
 + should flunk
-- should format amount
-</code></pre>
+- should format amount</code></pre>
       <p>The output is in a diff-like format so that we can pipe it straight into <a href="http://www.macromates.com">TextMate</a> and benefit from the colour formatting therein.</p>
       <h2>diff_parser.rb</h2>
-      <pre><code>
-#!/usr/bin/env ruby
+      <pre><code>#!/usr/bin/env ruby
 
 class Test
   def initialize
@@ -131,8 +126,7 @@ tests.sort.each do |test_name, test|
     test.removed_responsibilities.each { |responsibility| puts '- ' + responsibility } if test.removed_responsibilities?
     puts ''
   end
-end
-</code></pre>
+end</code></pre>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-01-12-combining-distributed-small-tools-as-an-alternative-to-backpack-et-al" rel="prev" title="Combining distributed small tools as an alternative to Backpack et al">Combining distributed small tools as an alternative to Backpack et al</a>

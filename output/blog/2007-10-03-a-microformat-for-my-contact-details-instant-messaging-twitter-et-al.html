@@ -54,8 +54,7 @@
       <p>If the author’s contact details were semantically marked up, either on the page I was looking at or linked to elsewhere on the web, then I could use a simple parser to extract those details and select the best communication tool to use manually.</p>
       <p>Maybe some code can help explain what I mean.</p>
       <h3>A semantically marked up contact page.</h3>
-      <pre><code>
-&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;
+      <pre><code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;
 
 &lt;html&gt;
 
@@ -72,11 +71,9 @@
     &lt;/dl&gt;
   &lt;/body&gt;
 
-&lt;/html&gt;
-</code></pre>
+&lt;/html&gt;</code></pre>
       <h3>A parser in <a href="http://www.ruby-lang.org/">ruby</a></h3>
-      <pre><code>
-require 'rubygems'
+      <pre><code>require 'rubygems'
 require 'hpricot'
 
 class ContactParser
@@ -109,8 +106,7 @@ p parser.service_identifiers
 p parser.identifier('skype')
 # =&gt; 'skype-username'
 p parser.identifier('blurgh')
-# =&gt; ''
-</code></pre>
+# =&gt; ''</code></pre>
       <h2>Further considerations</h2>
       <ul>
         <li>If existing communication tools<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> were to integrate this parser then it would be easy to add a contact by giving the url of, for example, their blog.</li>

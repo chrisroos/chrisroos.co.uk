@@ -48,8 +48,7 @@
       <abbr class="createdAt" title="2006-09-09T11:16:00+00:00">Sat, 09 Sep 06</abbr>
       <h1>Changing Irb context</h1>
       <p>I picked up on this yesterday and now cannot find the article (it was something to do with manipulating a rails app from the console). Sorry.</p>
-      <pre><code>
-irb(main):001:0&gt; class Foo
+      <pre><code>irb(main):001:0&gt; class Foo
 irb(main):002:1&gt; private
 irb(main):003:1&gt; def bar
 irb(main):004:2&gt; 'bar'
@@ -62,8 +61,7 @@ NoMethodError: private method `bar' called for #&lt;Foo:0x358304&gt;
         from :0
 irb(main):009:0&gt; irb Foo.new # IMPORTANT BIT
 irb#1(#&lt;Foo:0x31c5fc&gt;):001:0&gt; bar
-=&gt; "bar"
-</code></pre>
+=&gt; "bar"</code></pre>
       <p>Although cool, I can’t think of any situations where this would have been useful. Ho hum.</p>
       <hr>
       <ul class="navigation group">

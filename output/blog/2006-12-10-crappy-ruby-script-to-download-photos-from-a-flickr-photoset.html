@@ -50,8 +50,7 @@
       <p>So, it seems far more difficult than it should be to retrieve a bunch of <strong>my</strong> photos from flickr.com. Having unsuccessfully experimented with some of the flickr libs on <a href="http://www.rubyforge.org">rubyforge</a> I hacked this together.</p>
       <p><strong>UPDATE</strong>: Something caused curl to get ‘stuck’ downloading a particular picture so I amended the script to ensure it ignores already downloaded files.</p>
       <p><strong>UPDATE 2</strong>: Surround output filename with quotes.</p>
-      <pre><code>
-require 'cgi'
+      <pre><code>require 'cgi'
 
 API_KEY = 'YOUR_API_KEY'
 PHOTOSET_ID = 'YOUR_PHOTOSET_ID'
@@ -82,8 +81,7 @@ photoset_photos.scan(/&lt;photo .*&gt;/) do |line|
     curl_cmd = %[curl "\#{url}" &gt; "\#{filepath}"]
     `\#{curl_cmd}`
   end
-end
-</code></pre>
+end</code></pre>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2006-11-29-del-icio-us-as-a-simple-to-do-list" rel="prev" title="del.icio.us as a simple to do list">del.icio.us as a simple to do list</a>

@@ -11,21 +11,15 @@ I found a few things when developing the "down for everyone":/blog/2009-06-24-do
 
 I originally based my script on this "Server not found? Try and try again":http://userscripts.org/scripts/show/4125 script.  Specifically, I used something like this to determine whether or not the error page was being displayed.
 
-<pre><code>
-if (document.documentURI.substr(0,14)=="about:neterror") {
-</code></pre>
+<pre><code>if (document.documentURI.substr(0,14)=="about:neterror") {</code></pre>
 
 Given this I was able to find, and use, this similar code from "chrome://browser/content/browser.js":chrome://browser/content/browser.js (paste that link into the location bar and search for about:neterror or the aboutNeterror constant).
 
-<pre><code>
-if (/^about:neterror/.test(document.documentURI)) {
-</code></pre>
+<pre><code>if (/^about:neterror/.test(document.documentURI)) {</code></pre>
 
 I'm still not exactly sure of the purpose of document.documentURI except that it appears to allow you to display one URI and actually render another (in this case it displays the URI you're trying to access but renders the error page).  This error page also appears to screw with "firebug":http://getfirebug.com.  If you want to see the value of documentURI you'll need to use this little bit of javascript in the location bar:
 
-<pre><code>
-javascript:alert(document.documentURI);
-</code></pre>
+<pre><code>javascript:alert(document.documentURI);</code></pre>
 
 It turns out that you can't directly view the source of the 'Problem loading page' error page: Press Ctrl-U, or select View > Page Source from the menu, and you'll be presented with the error page in a popup window.  In order to view the source you'll need to load it, using the chrome protocol, from "chrome://global/content/netError.xhtml":chrome://global/content/netError.xhtml (paste that into the location bar).  The error page (which lives in firefox-dir/chrome/toolkit.jar/content/global/netError.xhtml) is pretty empty as it uses javascript to read querystring parameters and populate it on the fly.  This allows the same error page to be used for multiple types of error.  You can see an example of changing the description in this link: ["about:neterror?e=dnsNotFound&u=http%3A//example.com&d=I%20can%20see%20you...":chrome://global/content/netError.xhtml?e=dnsNotFound&u=http%3A//example.com&d=I%20can%20see%20you...] (paste that link into the location bar).
 

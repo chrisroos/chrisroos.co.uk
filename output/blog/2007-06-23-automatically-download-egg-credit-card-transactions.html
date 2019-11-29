@@ -49,8 +49,7 @@
       <h1>Automatically download egg credit card transactions</h1>
       <p>I’ve followed in my <a href="/blog/2007-05-14-automatically-downloading-my-recent-transactions-from-lloyds-tsb">previous</a> <a href="/blog/2007-05-04-automatically-downloading-my-most-recent-hsbc-transactions">footsteps</a> and automated the download of my <a href="http://egg.com">egg</a> credit card transactions and statements. Using this in combination with my <a href="/blog/2007-04-01-converting-egg-credit-card-statements-to-ofx-for-upload-to-wesabe">ofx convertor</a> makes it easier for me to upload my financial data to <a href="http://www.wesabe.com">wesabe</a>.</p>
       <p>As always, the code is in <a href="http://chrisroos.googlecode.com/svn/trunk/egg/">google code</a> and pasted below for your viewing pleasure…</p>
-      <pre><code>
-require 'egg-credentials'
+      <pre><code>require 'egg-credentials'
 
 def execute_curl(cmd)
   `\#{cmd}`
@@ -91,8 +90,7 @@ statement_dates = []
 statement_index = statement_dates.index(STATEMENT_DATE)
 
 curl_cmd = %[curl -s -o"\#{STATEMENT_FILE}" -b"\#{COOKIE_LOCATION}" "https://your.egg.com/customer/eggcard/statements.aspx?index=\#{statement_index}"]
-execute_curl curl_cmd
-</code></pre>
+execute_curl curl_cmd</code></pre>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-06-13-i-really-dont-know-whether-this-is-spam-or-not" rel="prev" title="I really don't know whether this is spam or not...">I really don't know whether this is spam or not...</a>

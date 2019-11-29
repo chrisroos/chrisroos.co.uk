@@ -50,8 +50,7 @@
       <p>To aid my development of the <a href="/blog/2008-03-04-version-0-2-of-the-del-icio-us-trackback-extension">del.icio.us trackbacks firefox extension</a> I created a reference <a href="http://en.wikipedia.org/wiki/Trackback">trackback</a> server implementation based on the <a href="http://www.sixapart.com/pronet/docs/trackback_spec">trackback specification</a>.</p>
       <p>It’s written in <a href="http://www.ruby-lang.org">Ruby</a> as a <a href="http://mongrel.rubyforge.org/">Mongrel</a> handler and stores the trackbacks serialized to <a href="http://en.wikipedia.org/wiki/YAML">YAML</a> on the filesystem. The code is over in <a href="http://code.google.com/p/chrisroos/">my google code repository</a> (no direct link as I plan to move the trackback-server from its current home in /trunk/scratch to /trunk/www/trackbacks.seagul.co.uk).</p>
       <p>On the off-chance that someone else might find it useful I’m currently hosting it at <a href="http://trackbacks.seagul.co.uk">http://trackbacks.seagul.co.uk</a>. You might use it to see the del.icio.us trackbacks extension in action or to test the sending of trackbacks from your blog (the trackback URL is <a href="http://trackbacks.seagul.co.uk/trackback">http://trackbacks.seagul.co.uk/trackback</a>). Or, you could just play with it using <a href="http://curl.haxx.se">curl</a>.</p>
-      <pre><code>
-# Let's just try to GET the trackback URL
+      <pre><code># Let's just try to GET the trackback URL
 $ curl http://trackbacks.seagul.co.uk/trackback
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;response&gt;
@@ -80,8 +79,7 @@ $ curl http://trackbacks.seagul.co.uk/trackback -X"POST" -H"Content-Type: applic
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;response&gt;
   &lt;error&gt;0&lt;/error&gt;
-&lt;/response&gt;
-</code></pre>
+&lt;/response&gt;</code></pre>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2008-03-29-files-hosted-on-google-groups-cannot-be-opened-in-safari-or-internet-explorer" rel="prev" title="Files hosted on Google Groups cannot be opened in Safari (or Internet Explorer)">Files hosted on Google Groups cannot be opened in Safari (or Internet Explorer)</a>

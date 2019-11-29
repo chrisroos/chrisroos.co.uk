@@ -12,8 +12,7 @@ It's written in "Ruby":http://www.ruby-lang.org as a "Mongrel":http://mongrel.ru
 
 On the off-chance that someone else might find it useful I'm currently hosting it at "http://trackbacks.seagul.co.uk":http://trackbacks.seagul.co.uk.  You might use it to see the del.icio.us trackbacks extension in action or to test the sending of trackbacks from your blog (the trackback URL is "http://trackbacks.seagul.co.uk/trackback":http://trackbacks.seagul.co.uk/trackback).  Or, you could just play with it using "curl":http://curl.haxx.se.
 
-<pre><code>
-# Let's just try to GET the trackback URL
+<pre><code># Let's just try to GET the trackback URL
 $ curl http://trackbacks.seagul.co.uk/trackback
 <?xml version="1.0" encoding="utf-8"?>
 <response>
@@ -42,5 +41,4 @@ $ curl http://trackbacks.seagul.co.uk/trackback -X"POST" -H"Content-Type: applic
 <?xml version="1.0" encoding="utf-8"?>
 <response>
   <error>0</error>
-</response>
-</code></pre>
+</response></code></pre>

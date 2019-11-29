@@ -52,24 +52,17 @@
       <p>Reading Alex’s post made me wonder whether the <a href="http://rubyonrails.org/">rails</a> <a href="http://en.wikipedia.org/wiki/API">API</a> ever guaranteed that the timestamps would be readonly: If that was the case then I can see arguments for not wanting to test the behaviour of your objects (because you’re essentially testing the framework itself). I couldn’t find any mention of whether they’d specifically be readonly so chose to do a bit of digging. I created a <a href="http://chrisroos.googlecode.com/svn/trunk/scratch/rails_timestamps_test/">script</a> that allowed me to, with relative ease, run tests against rails apps created with different versions of rails. Using this I was able to test the mass assignment of timestamps (created_at, created_on, updated_at and updated_on) against multiple versions of rails. The conclusion I came to (and I’d love for other people to replicate my experiment and prove/disprove my results) was that the created_at and created_on pair of attributes have always (at least as far back as rails 1.0.0) been assignable, while the updated_at and updated_on attributes have only recently become assignable. While digging I managed to find the <a href="https://rails.lighthouseapp.com/projects/8994/tickets/1612-cant-create-ar-models-with-custom-updated_xx-timestamp">lighthouse ticket</a> (#1612) that requested the ability to set the updated_* timestamps and the <a href="http://github.com/rails/rails/commit/63aac338332a06d3c9e28dde7954679703ec7620">rails commit</a> that closed that ticket.</p>
       <h2 id="replicating-my-experiment">Replicating my experiment</h2>
       <p>Get a copy of rails</p>
-      <pre><code>
-$ cd /path/to/code
-$ git clone git://github.com/rails/rails.git
-</code></pre>
+      <pre><code>$ cd /path/to/code
+$ git clone git://github.com/rails/rails.git</code></pre>
       <p>Create a <a href="http://www.mysql.com/">mysql</a> database called rails_timestamps_test, and create a table within that database called people.</p>
-      <pre><code>
-mysql&gt; CREATE DATABASE rails_timestamps_test;
+      <pre><code>mysql&gt; CREATE DATABASE rails_timestamps_test;
 mysql&gt; USE rails_timestamps_test;
-mysql&gt; CREATE TABLE people (id INTEGER AUTO_INCREMENT, created_on DATE, created_at DATETIME, updated_on DATE, updated_at DATETIME, PRIMARY KEY (id));
-</code></pre>
+mysql&gt; CREATE TABLE people (id INTEGER AUTO_INCREMENT, created_on DATE, created_at DATETIME, updated_on DATE, updated_at DATETIME, PRIMARY KEY (id));</code></pre>
       <p>Get a copy of my test script</p>
-      <pre><code>
-$ cd /path/to/code
-$ svn co http://chrisroos.googlecode.com/svn/trunk/scratch/rails_timestamps_test
-</code></pre>
+      <pre><code>$ cd /path/to/code
+$ svn co http://chrisroos.googlecode.com/svn/trunk/scratch/rails_timestamps_test</code></pre>
       <p>Run my script against rails 2.3 (run setup_rails_project.rb without any arguments to see the options) and hopefully see output similar to below (which means that the tests passed as expected).</p>
-      <pre><code>
-$ cd /path/to/code/rails_timestamps_test
+      <pre><code>$ cd /path/to/code/rails_timestamps_test
 $ ruby setup_rails_project.rb 2.3.0 /path/to/code/rails
 
 *** Removing the rails app at /path/to/code/rails_timestamps_test/projects/rails-app-2-3-0
@@ -95,11 +88,9 @@ Started
 ....
 Finished in 0.078819 seconds.
 
-4 tests, 8 assertions, 0 failures, 0 errors
-</code></pre>
+4 tests, 8 assertions, 0 failures, 0 errors</code></pre>
       <p>Re-run the script against rails 2.2.2 (the last tag before 2.3) and you should see the same as above except for the last test which should now contain two failures.</p>
-      <pre><code>
-$ cd /path/to/code/rails_timestamps_test
+      <pre><code>$ cd /path/to/code/rails_timestamps_test
 $ ruby setup_rails_project.rb 2.2.2 /path/to/code/rails
 
 ... some lines snipped ...
@@ -127,13 +118,11 @@ FAIL: Couldn't persist the mass assigned updated_on attribute.
 &lt;Thu, 01 Jan 2009&gt; expected but was
 &lt;Sun Apr 19 09:23:46 UTC 2009&gt;.
 
-4 tests, 8 assertions, 2 failures, 0 errors
-</code></pre>
+4 tests, 8 assertions, 2 failures, 0 errors</code></pre>
       <p>Re-run the script against any other tagged version of rails you wish.</p>
       <h2 id="notes-about-the-script">A couple of notes about the script</h2>
       <p>If you specify an invalid tag (i.e. a tag that doesn’t exist in the rails repository) then the rails_version_test.rb will fail.</p>
-      <pre><code>
-$ cd /path/to/code/rails_timestamps_test
+      <pre><code>$ cd /path/to/code/rails_timestamps_test
 $ ruby setup_rails_project.rb made.up.tag /path/to/code/rails
 
 ... some lines snipped ...
@@ -150,8 +139,7 @@ test_should_be_using_rails_made_up_tag(RailsVersionTest)
 &lt;"made.up.tag"&gt; expected but was
 &lt;"2.2.2"&gt;.
 
-1 tests, 1 assertions, 1 failures, 0 errors
-</code></pre>
+1 tests, 1 assertions, 1 failures, 0 errors</code></pre>
       <p>If you specify a tag of rails that is anything other than a 3 part version number (e.g. the four part version 2.3.2.1, or the release candidate 2.1.0_RC1) then the version test will fail because the Rails::VERSION constant only contains the MAJOR, MINOR and TINY components and that’s what we use to check the version our app uses.</p>
       <p>The supplied database.yml file assumes a mysql database running on localhost that has a root user with no password. You can update this to reflect your actual environment.</p>
       <p>The projects are created in /path/to/code/rails_timestamps_test/projects/ with a name like rails-app-x-x-x (major, minor, tiny).</p>

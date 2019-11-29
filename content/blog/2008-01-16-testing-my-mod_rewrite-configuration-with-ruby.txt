@@ -8,8 +8,7 @@ layout: blog
 ---
 In order to ensure that I didn't break anything while setting up my "mod_rewrite rules":/blog/2008-01-16-chris-1-mod_rewrite-0-muhahahaha I created a little "ruby script":http://chrisroos.googlecode.com/svn/trunk/the-local-paper/apache_test.rb to test my expectations.  I've cut down the rules in the example below but you should get the idea.  It'd be quite cool to create a little dsl to better express the intentions of the code.
 
-<pre><code>
-require 'net/http'
+<pre><code>require 'net/http'
 
 expectations = {
   # Redirect www. to .
@@ -37,5 +36,4 @@ expectations.each do |request_url, expected_attributes|
   if status_code = expected_attributes[:code]
     raise "Expected status code of (\#{status_code}) but got (\#{response.code})." unless status_code == response.code
   end
-end
-</code></pre>
+end</code></pre>

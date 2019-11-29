@@ -50,8 +50,7 @@
       <p>I <a href="/blog/2007-12-14-bookmarklet-favelet-limits-in-internet-explorer-6-and-7">mentioned</a> that I’d been playing with bookmarklets in Internet Explorer 6 (among other, proper, browsers).</p>
       <p>I thought it might be useful to paste the script that bootstraps the bookmarklet. The concept is that we use the bookmarklet javascript to insert a script tag into the page that links to the full javascript file containing the function(s) that we wish to execute. I know this has been documented elsewhere and I’ve probably missed some important stuff out but it may prove useful to someone.</p>
       <h2>The commented, un-compressed, version</h2>
-      <pre><code>
-if (typeof(rvmBM) == 'undefined') { // Best to name rvmBM to something unlikely to clash with pre-defined variables
+      <pre><code>if (typeof(rvmBM) == 'undefined') { // Best to name rvmBM to something unlikely to clash with pre-defined variables
   var s = document.createElement('script'); // Use of s versus script saves some precious space
   s.type = 'text/javascript';
   s.src = 'http://example.com/my-external-bookmarklet.js'; // The location of your bookmarklet javascript that does all the work
@@ -66,12 +65,9 @@ function addRvm() { // A wrapper function around the actual function we want to 
     void(setTimeout(addRvm, 100)); // If our function isn't ready yet we'll just hang on 1/10th of a second and try again
   };
 };
-addRvm(); // Ask our wrapper function to call the actual bookmarklet function
-</code></pre>
+addRvm(); // Ask our wrapper function to call the actual bookmarklet function</code></pre>
       <h2>The compressed version</h2>
-      <pre><code>
-javascript:if(typeof(rvmBM)=='undefined'){var s=document.createElement('script');s.type='text/javascript';s.src='http://example.com/my-external-bookmarklet.js';void(rvmBM=true);void(document.body.appendChild(s));};function addRvm(){if(typeof(addReevooMark)=='function'){addReevooMark();}else{void(setTimeout(addRvm,100));};};addRvm();
-</code></pre>
+      <pre><code>javascript:if(typeof(rvmBM)=='undefined'){var s=document.createElement('script');s.type='text/javascript';s.src='http://example.com/my-external-bookmarklet.js';void(rvmBM=true);void(document.body.appendChild(s));};function addRvm(){if(typeof(addReevooMark)=='function'){addReevooMark();}else{void(setTimeout(addRvm,100));};};addRvm();</code></pre>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-12-14-web-pages-should-specify-their-canonical-url-permalink" rel="prev" title="Web pages should specify their canonical URL (permalink)">Web pages should specify their canonical URL (permalink)</a>

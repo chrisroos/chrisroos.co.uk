@@ -48,8 +48,7 @@
       <abbr class="createdAt" title="2007-04-03T20:33:00+00:00">Tue, 03 Apr 07</abbr>
       <h1>Obtaining latitude/longitude for UK postcodes</h1>
       <p>It turns out that we can use <a href="http://streetmap.co.uk">streetmap.co.uk</a> to <a href="http://streetmap.co.uk/streetmap.dll?GridConvert">convert</a> a UK postcode to latitude/longitude. It also turns out that a combination of <a href="http://curl.haxx.se/">curl</a>, <a href="http://www.ruby-lang.org">ruby</a> and <a href="http://code.whytheluckystiff.net/hpricot/">hpricot</a> make it very easy to bypass the streetmap site to perform the conversion.</p>
-      <pre><code>
-postcode = 'SW1A 2AJ'
+      <pre><code>postcode = 'SW1A 2AJ'
 
 html = `curl "http://streetmap.co.uk/streetmap.dll" -d"MfcISAPICommand=GridConvert" -d"name=\#{postcode}" -d"type=PostCode"`
 
@@ -70,8 +69,7 @@ latitude, longitude = 0, 0
   end
 end
 
-p [latitude, longitude]
-</code></pre>
+p [latitude, longitude]</code></pre>
       <p>Err, this is probably a bit naughty.</p>
       <hr>
       <ul class="navigation group">

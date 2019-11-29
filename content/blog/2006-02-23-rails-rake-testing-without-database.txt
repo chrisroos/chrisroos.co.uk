@@ -12,8 +12,7 @@ This feels quite dirty, but I've managed to get round it by manipulating the tas
 
 To replicate, create a new file called 'default.rake' in the lib/tasks/ directory within your rails project, and paste in the following code.
 
-<pre><code>
-Rake::Task::TASKS.delete('default')
+<pre><code>Rake::Task::TASKS.delete('default')
 Rake::Task[:test_units].instance_variable_set(:@prerequisites, [])
 Rake::Task[:test_functional].instance_variable_set(:@prerequisites, [])
 
@@ -21,8 +20,7 @@ task :default do
   Rake::Task[:test_units].invoke      rescue got_error = true
   Rake::Task[:test_functional].invoke rescue got_error = true
   raise "Test failures" if got_error
-end
-</code></pre>
+end</code></pre>
 
 Because this relies on the internal implementation of rake (instance variable names and TASKS constant) it might well do very bad things to versions that aren't 0.6.2.
 
@@ -30,7 +28,5 @@ Because this relies on the internal implementation of rake (instance variable na
 
 Just realised that I don't need most of the code above.  All you actually need in default.rake is as follows.  Stoopid Chris.
 
-<pre><code>
-Rake::Task[:test_units].instance_variable_set(:@prerequisites, [])
-Rake::Task[:test_functional].instance_variable_set(:@prerequisites, [])
-</code></pre>
+<pre><code>Rake::Task[:test_units].instance_variable_set(:@prerequisites, [])
+Rake::Task[:test_functional].instance_variable_set(:@prerequisites, [])</code></pre>

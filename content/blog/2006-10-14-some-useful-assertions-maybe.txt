@@ -8,8 +8,7 @@ layout: blog
 ---
 The first is to ensure two arrays contain the same elements not necessarily in the same order.
 
-<pre><code>
-require 'test/unit'
+<pre><code>require 'test/unit'
 
 require 'set'
 module AssertEqualArray
@@ -31,25 +30,21 @@ class MyTest < Test::Unit::TestCase
     assert_equal_array [1, 2, 3], [2, 1, 3]
   end
 
-end
-</code></pre>
+end</code></pre>
 
 The second is to test for generated warnings.  In my "current project":/blog/2006-10-06-recording-daily-spending-with-a-ruby-dsl app, I use method_missing and wanted to warn the user if the unknown message looks like it's supposed to be a payment mechanism...
 
-<pre><code>
-day '25-oct-2006' do
+<pre><code>day '25-oct-2006' do
   cash 30.29, beer
 end
 
 # Results in NoMethodError and, more importantly, this friendly warning..
 # Maybe you expected 'cash' to be a payment mechanism?
-# Cool huh?
-</code></pre>
+# Cool huh?</code></pre>
 
 Anyway, I wanted a way to test that the warning was being generated and came up with another assertion...
 
-<pre><code>
-require 'test/unit'
+<pre><code>require 'test/unit'
 
 require 'stringio'
 module AssertWarning
@@ -75,5 +70,4 @@ class MyTest < Test::Unit::TestCase
     assert_warning('this is a warning') { Kernel::warn('this is a warning') }
   end
 
-end
-</code></pre>
+end</code></pre>

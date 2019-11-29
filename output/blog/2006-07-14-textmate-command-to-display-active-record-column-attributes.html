@@ -52,8 +52,7 @@
       <p>Anyhoo, I just spent some time whilst on the train hacking together a basic <a href="http://macromates.com/">textmate</a> command that displays a tooltip containing the table structure. It’s very basic (though you wouldn’t have thought it based on the amount of time it took me together<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>); but seems to work ok.</p>
       <p><img alt="" src="http://farm1.static.flickr.com/236/460082493_49ff4cd1ed_o.png"></p>
       <p>The code is below. You’ll need to add a ruby command in the ruby textmate bundle, setting the intput to ‘selected text’ or ‘nothing’, the output to ‘show as tooltip’ and preferably a hotkey that isn’t one of the ones you use every day (however tempting that is).</p>
-      <pre><code>
-#! /usr/local/bin/ruby
+      <pre><code>#! /usr/local/bin/ruby
 
 project = ENV['TM_PROJECT_DIRECTORY']
 word = ENV['TM_CURRENT_WORD']
@@ -77,8 +76,7 @@ elsif klass and klass.class == Class and not klass.ancestors.include?(ActiveReco
   STDOUT &lt;&lt; "\#{word} is not an Active Record derived class"
 else
   STDOUT &lt;&lt; "\#{word} was not recognised as a class"
-end
-</code></pre>
+end</code></pre>
       <p>It relies on you having your entire rails project (the folder right above app, config, script etc) open in textmate (in order to find the config files). With that, just click on the name of an active record class (it has to be the actual class name at present, it’d be cool if it also worked based on the class definition you are currently in too) and hit your hotkey of choice (best to use the one you assigned to this command). Hey presto, a tooltip containing your table structure.</p>
       <p>One odd thing I’ve noticed is that it never recognises standard class constants. It should display ‘this is not an active record derived class’ but instead always displays ‘was not recognised as a class’. Oh well.</p>
       <p>Anyone find this remotely useful or want to finish off what I’ve started?</p>

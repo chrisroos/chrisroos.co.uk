@@ -11,21 +11,15 @@ Wow, it was around "two and half years ago":/blog/2007-04-01-converting-egg-cred
 
 I'd like to think that this version is a little more usable.  You can install it as a gem for a start.
 
-<pre><code>
-$ gem install egg2ofx --source http://gemcutter.org
-</code></pre>
+<pre><code>$ gem install egg2ofx --source http://gemcutter.org</code></pre>
 
 With that, you get a nice little binary that you can use to convert a downloaded copy of your statement or recent transactions.
 
-<pre><code>
-$ egg2ofx downloaded-statement.html > egg-statement.ofx
-</code></pre>
+<pre><code>$ egg2ofx downloaded-statement.html > egg-statement.ofx</code></pre>
 
 As if that wasn't enough, I've also created a little "web service":http://github.com/chrisroos/egg2ofx-server that exposes the conversion functionality over http.  Assuming you've got "ruby":http://www.ruby-lang.org/en/ and "curl":http://curl.haxx.se/ (and probably other stuff) installed you should be able to do something like this to try it out.
 
-<pre><code>
-$ cat downloaded-statement.html | ruby -rcgi -e "puts 'documentHtml=' + CGI.escape(STDIN.read)" | curl http://egg2ofx.seagul.co.uk -d@-
-</code></pre>
+<pre><code>$ cat downloaded-statement.html | ruby -rcgi -e "puts 'documentHtml=' + CGI.escape(STDIN.read)" | curl http://egg2ofx.seagul.co.uk -d@-</code></pre>
 
 Where we pipe the content of the downloaded statement into a single line ruby script that constructs the key/value pair that we need to send to the service and pipes that into curl that actually makes the POST request (the magic <code>-d@-</code> means, read from stdin).
 

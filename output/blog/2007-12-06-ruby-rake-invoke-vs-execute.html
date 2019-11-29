@@ -49,20 +49,17 @@
       <h1>Ruby Rake - Invoke vs Execute</h1>
       <p>First up – I don’t know an awful lot about the magic that is <a href="http://rake.rubyforge.org/">Rake</a>. As such, this is probably common knowledge to most people.</p>
       <p>I discovered the difference when trying to execute the db:migrate task from within another rake task (I already knew it worked when declared as a dependency).</p>
-      <pre><code>
-# Rakefile
+      <pre><code># Rakefile
 task :foo do
   Rake::Task['db:migrate'].execute
 end
 
 #$ rake foo
 #=&gt; rake aborted!
-#=&gt; uninitialized constant ActiveRecord
-</code></pre>
+#=&gt; uninitialized constant ActiveRecord</code></pre>
       <p>I changed <a href="http://rake.rubyforge.org/classes/Rake/Task.html#M000100">Task#execute</a> to <a href="http://rake.rubyforge.org/classes/Rake/Task.html#M000098">Task#invoke</a> and, voila, it all worked fine. The rdoc for those methods is actually pretty self explanatory, having seen the differences in action. Oh well.</p>
       <p>I put together a simple example to demonstrate the differences.</p>
-      <pre><code>
-# The task (task_1) and its dependency (to_be_run_before_task_1)
+      <pre><code># The task (task_1) and its dependency (to_be_run_before_task_1)
 
 task :to_be_run_before_task_1 do
   puts "to_be_run_before_task_1"
@@ -99,8 +96,7 @@ task :run_task_1_using_dependencies =&gt; ['task_1']
 
 #$ rake run_task_1_using_dependencies
 #=&gt; to_be_run_before_task_1
-#=&gt; task_1
-</code></pre>
+#=&gt; task_1</code></pre>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-11-27-fun-with-selenium" rel="prev" title="Fun with Selenium">Fun with Selenium</a>

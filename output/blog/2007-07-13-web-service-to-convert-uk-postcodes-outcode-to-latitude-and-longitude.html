@@ -49,14 +49,11 @@
       <h1>Web service to convert UK Postcodes (outcode) to Latitude and Longitude</h1>
       <p>Using the data supplied in this <a href="http://postcodes.easypeasy.com">article</a>, by <a href="http://www.niksargent.com">Nik Sargent</a>, I’ve created a simple web service that returns <a href="http://www.json.org">JSON</a> formatted data about UK Outcodes (the first bit of the postcode).</p>
       <p>The idea is that you can request, for example, /postcodes/se1 and get some json in return. For se1, we receive the following data.</p>
-      <pre><code>
-{"latitude":"51.498","x":"532600","postcode":"SE1","y":"179500","longitude":"51.498"}
-</code></pre>
+      <pre><code>{"latitude":"51.498","x":"532600","postcode":"SE1","y":"179500","longitude":"51.498"}</code></pre>
       <p>The service is currently running at <a href="http://seagul.co.uk/postcodes">http://seagul.co.uk/postcodes</a> (<a href="http://seagul.co.uk/postcodes/se1">se1</a>) but I make no guarantees as to its reliability. I’d suggest that if anyone actually finds this useful that they go host it somewhere for themselves in order to control the availability.</p>
       <p>The code is, as always, on <a href="http://chrisroos.googlecode.com/svn/trunk/uk-postcodes/">google code</a> and pasted below.</p>
       <p>I’ve created it as a proof of concept but I figure that, given a little love, it may prove useful to some folks.</p>
-      <pre><code>
-require 'rubygems'
+      <pre><code>require 'rubygems'
 require 'mongrel'
 require 'json'
 
@@ -89,8 +86,7 @@ config = Mongrel::Configurator.new :host =&gt; 'localhost', :port =&gt; '4000' d
   run
 end
 
-config.join
-</code></pre>
+config.join</code></pre>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-07-12-wesabe-open-up-their-api-and-ask-me-to-help-write-their-press-release" rel="prev" title="Wesabe open up their API and ask me to help write their press release...">Wesabe open up their API and ask me to help write their press release...</a>

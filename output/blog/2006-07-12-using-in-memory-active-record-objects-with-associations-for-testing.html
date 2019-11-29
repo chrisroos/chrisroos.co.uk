@@ -49,8 +49,7 @@
       <h1>Using in memory Active Record objects with associations for testing</h1>
       <p>Hitting the database in testing is bad.</p>
       <p>Something that I’ve found relatively useful at <a href="http://www.reevoo.com">work</a> is to use real <a href="http://api.rubyonrails.com/classes/ActiveRecord/Base.html">Active Record</a> objects without any persistence (basically use AR#new and not AR#save[!] or AR#create[!]). When using standard techniques to create the association objects in memory you only get one side of the association at a time. Consider the following.</p>
-      <pre><code>
-class Person &lt; ActiveRecord::Base
+      <pre><code>class Person &lt; ActiveRecord::Base
   has_many :addresses
 end
 class Address &lt; ActiveRecord::Base
@@ -77,11 +76,9 @@ home.person
 
 # The example above that creates the address first could also have been written as.
 # chris = Person.new
-# home = Address.new(:person =&gt; chris)
-</code></pre>
+# home = Address.new(:person =&gt; chris)</code></pre>
       <p>You can see that in each case, only one side of the relationship has access to the other. If we were persisting the objects then the relationship would be two way via a database lookup. We can get a two way relationship in memory; although it has a certain duplication smell about it. Assuming the same models as above, we can amend the above examples like so.</p>
-      <pre><code>
-# First example
+      <pre><code># First example
 chris = Person.new
 home = chris.addresses.build(:person =&gt; chris)
 
@@ -97,8 +94,7 @@ chris = home.build_person(:addresses =&gt; [home])
 home.person
 =&gt; #&lt;chris&gt;
 chris.addresses.first
-=&gt; #&lt;home&gt;
-</code></pre>
+=&gt; #&lt;home&gt;</code></pre>
       <p>I’ve occasionally used this in place of stubbing methods but am still not 100% convinced of the definite benefits one way or another. I do have some definite disadvantages of stubbing methods (nothing exciting, they’ve almost certainly been noted by many others in the past) which I’ll note down at a later date.</p>
       <hr>
       <ul class="navigation group">

@@ -11,15 +11,12 @@ I needed to upgrade "Passenger":http://www.modrails.com/ on our web server last 
 
 We're running "CentOS":http://www.centos.org/ 5.2 on our staging server.
 
-<pre><code>
-[root@rails-staging0 ~]# cat /etc/redhat-release
-CentOS release 5.2 (Final)
-</code></pre>
+<pre><code>[root@rails-staging0 ~]# cat /etc/redhat-release
+CentOS release 5.2 (Final)</code></pre>
 
 The passenger gem installed OK but when I ran passenger-install-apache2-module I got the following error.
 
-<pre><code>
-... other lines snipped ...
+<pre><code>... other lines snipped ...
 
 /usr/bin/ld: skipping incompatible /usr/lib/libaprutil-1.so when searching for -laprutil-1
 /usr/bin/ld: cannot find -laprutil-1
@@ -30,36 +27,29 @@ Command failed with status (1): [g++ -shared SystemTime.o Utils.o Bucket.o ...]
 (See full trace by running task with --trace)
 
 --------------------------------------------
-It looks like something went wrong
-</code></pre>
+It looks like something went wrong</code></pre>
 
 Searching for this error didn't yield any definite fixes but a couple of posts mentioned re-installing the apr-devel packages.  I tried apr-devel to begin with but was told that it was already up-to-date.
 
-<pre><code>
-[root@rails-staging0 ~]# yum install apr-devel
+<pre><code>[root@rails-staging0 ~]# yum install apr-devel
 ... other lines snipped ...
-Nothing to do
-</code></pre>
+Nothing to do</code></pre>
 
 I can't remember why but I tried apr-util-devel next which did result in the package being installed.
 
-<pre><code>
-[root@rails-staging0 ~]# yum install apr-util-devel
+<pre><code>[root@rails-staging0 ~]# yum install apr-util-devel
 ... other lines snipped ...
 Installed: apr-util-devel.x86_64 0:1.2.7-7.el5
-Complete!
-</code></pre>
+Complete!</code></pre>
 
 With this package re-installed I was able to go ahead and install the passenger apache module (i.e. passenger-install-apache2-module succeeded).
 
 One slightly interesting/odd thing was that "yum":http://en.wikipedia.org/wiki/Yellow_dog_Updater,_Modified reported that the same version (1.2.7-7.el5) of apr-util-dev was already installed.  The only difference after the re-install was that its status changed from 'base' to 'installed'.
 
-<pre><code>
-# before the re-install
+<pre><code># before the re-install
 [root@rails-staging0 ~]# yum list | grep apr-util-devel
 apr-util-devel.x86_64                    1.2.7-7.el5            base
 
 # after the re-install
 [root@rails-staging0 ~]# yum list | grep apr-util-devel
-apr-util-devel.x86_64                    1.2.7-7.el5            installed
-</code></pre>
+apr-util-devel.x86_64                    1.2.7-7.el5            installed</code></pre>
