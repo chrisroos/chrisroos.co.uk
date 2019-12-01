@@ -8,7 +8,7 @@ layout: blog
 ---
 Over about the last day and a half, if you used "Internet Explorer 6":http://en.wikipedia.org/wiki/Internet_Explorer_6 to browse any of the reviews on "reevoo.com":http://www.reevoo.com, then we should apologise.  It seems that, apart from breaking the layout somewhat, we'd actually managed to cause IE 6 to crash.  Not cool.  A concerted effort this morning got the problem sorted, but it took longer than it should've done, especially when you consider that about 75% of our traffic is from users of IE 6...
 
-Anyway, with the embarrassment out of the way, I thought I'd share the remotely interesting[1] findings of the investigation into the browser crash.  It turns out that a combination of these three little lines of "css":http://en.wikipedia.org/wiki/CSS, and any "doctype":http://en.wikipedia.org/wiki/Doctype declaration[2], will cause IE 6 to hang while waiting for the magic "Windows kiss of life":http://en.wikipedia.org/wiki/Control-Alt-Delete#Windows_NT.
+Anyway, with the embarrassment out of the way, I thought I'd share the remotely interesting<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> findings of the investigation into the browser crash.  It turns out that a combination of these three little lines of "css":http://en.wikipedia.org/wiki/CSS, and any "doctype":http://en.wikipedia.org/wiki/Doctype declaration<sup class="footnote" id="fnr2"><a href="#fn2">2</a></sup>, will cause IE 6 to hang while waiting for the magic "Windows kiss of life":http://en.wikipedia.org/wiki/Control-Alt-Delete#Windows_NT.
 
 bc. margin-left: 240px;
 margin-right: 10%;
@@ -41,6 +41,6 @@ bc. <!-- <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR
   </body>
 </html>
 
-fn1. They're really not interesting.
+<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> They're really not interesting.</p>
 
-fn2. If there is no doctype declaration, the browser doesn't crash (something to do with standards mode I believe).
+<p class="footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a> If there is no doctype declaration, the browser doesn't crash (something to do with standards mode I believe).</p>

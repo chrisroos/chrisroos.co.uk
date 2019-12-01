@@ -10,7 +10,7 @@ A couple of days ago I was playing around with "SVN::Mirror":http://search.cpan.
 
 All was going well until I tried to mirror a "project":http://rubyforge.org/projects/mocha/ hosted on rubyforge.  On initialising the mirror, I kept receiving the error "source url not under source root" from line 72 in Ra.pm.
 
-After some very careful debugging (yeah, like I know anything about perl - @print "1";@ was about the extent of it) of that perl file; I noticed that the $source_root variable didn't contain the double slash[1].  This causes a problem for the line @if substr($path, 0, length($source_root), '') ne $source_root;@ as at this point, $path does contain the double slash.
+After some very careful debugging (yeah, like I know anything about perl - @print "1";@ was about the extent of it) of that perl file; I noticed that the $source_root variable didn't contain the double slash<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>.  This causes a problem for the line @if substr($path, 0, length($source_root), '') ne $source_root;@ as at this point, $path does contain the double slash.
 
 The value of $source_root is returned from a call to RA->get_repos_root (Subversion Repository Access code).  So; it would seem that the url was being normalised somewhere in the bowels of "Subversion":http://subversion.tigris.org.
 
@@ -20,4 +20,4 @@ I would love to have followed the actual subversion c code to find the normalisa
 
 Anyhoo, the outcome of the story is that I emailed Tom Copeland of rubyforge fame to ask about the deal with the double slashes.  Turns out that it was probably just a "gforge":http://gforge.org/ default thing and Tom went ahead and promptly changed it.  I suddenly got very nervous that lots of arms would be thrown up with cries of "Who broke rubyforge?", but so far it would appears to be ok.  Phew.
 
-fn1. Not sure if anyone else had really noticed but the svn repositories on rubyforge used to contain a double slash between the domain and var path (i.e. rubyforge.org//var).
+<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> Not sure if anyone else had really noticed but the svn repositories on rubyforge used to contain a double slash between the domain and var path (i.e. rubyforge.org//var).</p>

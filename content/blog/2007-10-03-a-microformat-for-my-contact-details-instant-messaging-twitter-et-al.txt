@@ -78,7 +78,7 @@ p parser.identifier('blurgh')
 
 h2. Further considerations
 
-* If existing communication tools[1] were to integrate this parser then it would be easy to add a contact by giving the url of, for example, their blog.
+* If existing communication tools<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> were to integrate this parser then it would be easy to add a contact by giving the url of, for example, their blog.
 * Author's should be able to specify the order of the tools that they wish to use for communication.  We could just assume that the list of contact details is in the author's preferred order.
 * This would be open to spam.  Err, not too sure what to do about this.
 * Ultimately, I'd like to hit a 'communicate' button in "firefox":http://www.mozilla.com/en-US/firefox/ that automatically decides which communication protocols we have in common and allows me to get my message through.
@@ -87,4 +87,4 @@ Anyone have any thoughts?
 
 Code is all over on "google code":http://chrisroos.googlecode.com/svn/trunk/contact-microformat/.
 
-fn1. I'm thinking of multi protocol tools, like "adium":http://www.adiumx.com/, in particular.
+<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> I'm thinking of multi protocol tools, like "adium":http://www.adiumx.com/, in particular.</p>

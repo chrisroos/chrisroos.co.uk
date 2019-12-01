@@ -8,7 +8,7 @@ layout: blog
 ---
 I've installed a handful of wireless networks over the years and have always gone for "Netgear":http://www.netgear.co.uk products due to price and my perceived quality of the items.
 
-I recently had another wireless network to install which was to span a house and an office at the end of the garden.  Having looked at the latest Netgear offerings I decided upon the "WPN824":http://netgear.co.uk/rangemax_wirelessrouter_wpn824.php.  This was mainly due to the boasts of "Network range extended by up to 400 feet".  Although the item was slightly more expensive (£73.91 ex Vat at time of writing[1]) than the alternatives, I was figuring on not having to buy additional antennae for the individual computers and therefore saving that way.  The first problem I had was that I had mis-interpreted the device as an ADSL router rather than a Broadband router.  Because of this oversight I had to purchase an additional ADSL Ethernet Modem ("Netgear DG632":http://netgear.co.uk/wired_adsl_router_dg632.php) for £36.45 ex Vat at the time of writing.  This was already going over budget.
+I recently had another wireless network to install which was to span a house and an office at the end of the garden.  Having looked at the latest Netgear offerings I decided upon the "WPN824":http://netgear.co.uk/rangemax_wirelessrouter_wpn824.php.  This was mainly due to the boasts of "Network range extended by up to 400 feet".  Although the item was slightly more expensive (£73.91 ex Vat at time of writing<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>) than the alternatives, I was figuring on not having to buy additional antennae for the individual computers and therefore saving that way.  The first problem I had was that I had mis-interpreted the device as an ADSL router rather than a Broadband router.  Because of this oversight I had to purchase an additional ADSL Ethernet Modem ("Netgear DG632":http://netgear.co.uk/wired_adsl_router_dg632.php) for £36.45 ex Vat at the time of writing.  This was already going over budget.
 
 On installation I was greeted with very dissapointing results.  I was using "Netgear WPN311":http://netgear.co.uk/rangemax_wirelesspci_wpn311.php cards in each desktop and the wireless router was placed equidistant from each machine (albeit one had to travel through a couple of walls and the other through open air and wooden divides).
 
@@ -26,4 +26,4 @@ As indicated at the top of the article, I'm generally pleased with Netgear produ
 
 Mini-disclaimer: This is based only on my experience with the product.  Your experience may vary.
 
-fn1. All prices are from www.ebuyer.com
+<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> All prices are from www.ebuyer.com</p>

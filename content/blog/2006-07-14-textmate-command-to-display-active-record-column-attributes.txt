@@ -10,7 +10,7 @@ I find myself constantly visiting either the console or the mysql command line t
 
 I know there is a "plugin":http://blogs.pragprog.com/cgi-bin/pragdave.cgi/Tech/Ruby/AnnotateModels.rdoc by "Dave Thomas":http://blogs.pragprog.com/cgi-bin/pragdave.cgi that places the table structure within the model code itself.  To be honest I've never tried this and it might well suffice (although I'm not 100% convinced I like the idea).
 
-Anyhoo, I just spent some time whilst on the train hacking together a basic "textmate":http://macromates.com/ command that displays a tooltip containing the table structure.  It's very basic (though you wouldn't have thought it based on the amount of time it took me together[1]); but seems to work ok.
+Anyhoo, I just spent some time whilst on the train hacking together a basic "textmate":http://macromates.com/ command that displays a tooltip containing the table structure.  It's very basic (though you wouldn't have thought it based on the amount of time it took me together<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>); but seems to work ok.
 
 !http://farm1.static.flickr.com/236/460082493_49ff4cd1ed_o.png!
 
@@ -48,4 +48,4 @@ One odd thing I've noticed is that it never recognises standard class constants.
 
 Anyone find this remotely useful or want to finish off what I've started?
 
-fn1. I spent ages trying to develop within the textmate bundle editor before realising it'd be a helluva lot quicker and easier to develop in textmate proper.  Hmmm.
+<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> I spent ages trying to develop within the textmate bundle editor before realising it'd be a helluva lot quicker and easier to develop in textmate proper.  Hmmm.</p>

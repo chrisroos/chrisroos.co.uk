@@ -7,11 +7,11 @@ guid:       d3ec8873-65d1-4536-872d-b164016b7dfc
 layout:     blog
 filter:     textile
 ---
-This took me a long time to work out this afternoon so I guess it might be useful to others.  I couldn't find an implementation (of version 2 of the request signing) in any of the existing Amazon AWS libraries and although I did find a promising looking post "here":http://www.jamesmurty.com/2008/12/31/aws-query-signature-version-2/ it just didn't work for me.  I ended up using the "Simple DB PHP sample code":http://developer.amazonwebservices.com/connect/entry.jspa?externalID=1135 to obtain some test data[1] that I could use to debug my own code[2] and eventually got it working.
+This took me a long time to work out this afternoon so I guess it might be useful to others.  I couldn't find an implementation (of version 2 of the request signing) in any of the existing Amazon AWS libraries and although I did find a promising looking post "here":http://www.jamesmurty.com/2008/12/31/aws-query-signature-version-2/ it just didn't work for me.  I ended up using the "Simple DB PHP sample code":http://developer.amazonwebservices.com/connect/entry.jspa?externalID=1135 to obtain some test data<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> that I could use to debug my own code<sup class="footnote" id="fnr2"><a href="#fn2">2</a></sup> and eventually got it working.
 
-fn1. I plan to post some test data (to help others attempting to write a client) in a follow up post.
+<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> I plan to post some test data (to help others attempting to write a client) in a follow up post.</p>
 
-fn2. I printed the parameters and signature at various stages of the request so that I could compare it to the output from my client.
+<p class="footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a> I printed the parameters and signature at various stages of the request so that I could compare it to the output from my client.</p>
 
 bc.. require 'rubygems'
 require 'cgi'

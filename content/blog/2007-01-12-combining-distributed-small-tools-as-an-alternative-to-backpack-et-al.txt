@@ -6,7 +6,7 @@ filter: textile
 created_at: 2007-01-12 11:53:00 +00:00
 layout: blog
 ---
-For a while now, I've been thinking/dreaming of having a number of very specific, distributed services.  These would be no more than additions to the single purpose services we already use (notably, in my case, "flickr":http://flickr.com for photos, this blog for articulating thought and "del.icio.us":http://del.icio.us for storing bookmarks).  Some additions I'd like to see[1] are:
+For a while now, I've been thinking/dreaming of having a number of very specific, distributed services.  These would be no more than additions to the single purpose services we already use (notably, in my case, "flickr":http://flickr.com for photos, this blog for articulating thought and "del.icio.us":http://del.icio.us for storing bookmarks).  Some additions I'd like to see<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> are:
 
 * A way to record and tag financial transactions
 
@@ -50,12 +50,12 @@ I think this is where our funky new distributed system can help.  Following the 
 * We record a note that states when and how we sent the item, tagged with our placeholder
 * We record a financial transaction that represents our cost for sending the item, tagged with our placeholder
 
-The important thing is that all of these resources are tagged with a common uri.  The uri that represents our item for sale.  At the simplest level, this makes auto-generating a backpack type page very simple - we just aggregate[2] all of the data tagged with our item uri.  Tagging these items with a higher level tag, such as 'ebay', will allow us to search across multiple sales/purchase.
+The important thing is that all of these resources are tagged with a common uri.  The uri that represents our item for sale.  At the simplest level, this makes auto-generating a backpack type page very simple - we just aggregate<sup class="footnote" id="fnr2"><a href="#fn2">2</a></sup> all of the data tagged with our item uri.  Tagging these items with a higher level tag, such as 'ebay', will allow us to search across multiple sales/purchase.
 
 Going even further, using opensearch with a simple custom front-end (basically just a parser) gives us even greater querying capabilities.  I could imagine searching for something like "ebay finance:expenditure" to get a list of all items (descriptions, notes, pictures etc) we've sold on ebay along with our expenditure.  Our simple search engine would know to search for all items tagged with ebay, but only those transactions that are tagged with expenditure (i.e. costs to us).
 
 Does this make sense/sound feasible to anyone else?  Indeed, has someone else already presented these ideas in a more legible/understandable way?  It all seems to make great sense to me but I've spent quite a while thinking about it (and what seems like ages just writing this post), meaning there's every chance I've missed something obvious.  I'd appreciate any thoughts.
 
-fn1. I did had every intention of developing these things as a proof of concept, but, on the basis that I'm unlikely to get around to it, and that I do actually think something like this is a good idea, I thought I'd jot my thoughts here.
+<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> I did had every intention of developing these things as a proof of concept, but, on the basis that I'm unlikely to get around to it, and that I do actually think something like this is a good idea, I thought I'd jot my thoughts here.</p>
 
-fn2. I started out thinking that the tags would be stored against the resource itself - the same way that the tag for a photo in flickr is stored against that photo.  I was also assuming that these services would be "opensearch":http://opensearch.org enabled to allow searching of the tags.  As I've been writing the post I've realised that, providing everything has a uri, we can use del.icio.us as our tagging mechanism and as our search engine.
+<p class="footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a> I started out thinking that the tags would be stored against the resource itself - the same way that the tag for a photo in flickr is stored against that photo.  I was also assuming that these services would be "opensearch":http://opensearch.org enabled to allow searching of the tags.  As I've been writing the post I've realised that, providing everything has a uri, we can use del.icio.us as our tagging mechanism and as our search engine.</p>

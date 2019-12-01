@@ -10,7 +10,7 @@ Hmm.  I need to remove this, very firmly attached, processor from the heatsink a
 
 !http://farm1.static.flickr.com/174/411792179_f302416633.jpg?v=0!
 
-I'm sure if I just apply a little pressure[1]...
+I'm sure if I just apply a little pressure<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>...
 
 !http://farm1.static.flickr.com/147/411792926_f61db3d103.jpg?v=0!
 
@@ -18,4 +18,4 @@ Bugger.
 
 In an effort to take something positive from the experience, I've created a "photoset":http://flickr.com/photos/chrisjroos/sets/72157594571965120/ on "flickr":http://www.flickr.com that describes the re-assembly process of the Sony Vaio K315B.
 
-fn1.  More like a combination of pressure (on the processor, not me), lessening patience and a knife (resulting in two cut fingers.)  Ho hum.
+<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> More like a combination of pressure (on the processor, not me), lessening patience and a knife (resulting in two cut fingers.)  Ho hum.</p>

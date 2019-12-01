@@ -47,12 +47,12 @@ bc. $ REDIRECTION_PORT=XXXX ruby mongrel-redir.rb &
 $# Leaving out REDIRECTION_PORT will mean that the server starts on port 4000
 $# Leaving out the final ampersand (&) will mean that server runs in the foreground
 
-Visit www.example.com/google[1] and watch[2] as you're redirected first to example.com/google and then onto www.google.com.  Cool huh.
+Visit www.example.com/google<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> and watch<sup class="footnote" id="fnr2"><a href="#fn2">2</a></sup> as you're redirected first to example.com/google and then onto www.google.com.  Cool huh.
 
 Lots to do - notably a user interface for managing rules but it's not a bad start.
 
 Oh, and this is specifically so that you can redirect from your own domain.  If you don't care about the domain then you could try "tinyurl":http://tinyurl.com or, for human friendly URLs, "decent url":http://decenturl.com.
 
-fn1. Assuming, of course, that www.example.com and example.com both point to the server that this redirection server is running on.
+<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> Assuming, of course, that www.example.com and example.com both point to the server that this redirection server is running on.</p>
 
-fn2. You probably won't be able to watch as it'll redirect too quickly in the browser - your best bet is to use "curl":http://curl.haxx.se/ or the "Live HTTP Headers":http://livehttpheaders.mozdev.org/ "firefox":http://www.mozilla.com/en-US/firefox/ extension so see what's actually going on.
+<p class="footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a> You probably won't be able to watch as it'll redirect too quickly in the browser - your best bet is to use "curl":http://curl.haxx.se/ or the "Live HTTP Headers":http://livehttpheaders.mozdev.org/ "firefox":http://www.mozilla.com/en-US/firefox/ extension so see what's actually going on.</p>

@@ -10,10 +10,10 @@ I don't like giving out my real contact details in surveys / on-line forms, part
 
 There is a point (and a link no-less) to this rant.  Honest.  Wait.  It's coming...
 
-"Ofcom's list of reserved numbers for official form filling in use":http://www.ofcom.org.uk/telecoms/ioi/numbers/num_drama [1]
+"Ofcom's list of reserved numbers for official form filling in use":http://www.ofcom.org.uk/telecoms/ioi/numbers/num_drama <sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>
 
-I remembered this from the oftel days of yore but had been unable to find it in more recent searches.  Luckily, "wikipedia":http://en.wikipedia.org/wiki/UK_telephone_numbering_plan came to the rescue this evening[2].
+I remembered this from the oftel days of yore but had been unable to find it in more recent searches.  Luckily, "wikipedia":http://en.wikipedia.org/wiki/UK_telephone_numbering_plan came to the rescue this evening<sup class="footnote" id="fnr2"><a href="#fn2">2</a></sup>.
 
-fn1. That's quite clearly not their actual intended purpose.  Right.
+<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> That's quite clearly not their actual intended purpose.  Right.</p>
 
-fn2. In the past, when requested for landline number, I've entered my, relatively recently disconnected, landline number.  There's every chance that this has been (or is scheduled to be) re-allocated - prompting me to find a new number.
+<p class="footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a> In the past, when requested for landline number, I've entered my, relatively recently disconnected, landline number.  There's every chance that this has been (or is scheduled to be) re-allocated - prompting me to find a new number.</p>
