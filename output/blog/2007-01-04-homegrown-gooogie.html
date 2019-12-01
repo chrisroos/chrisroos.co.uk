@@ -53,16 +53,10 @@
       <ul>
         <li>Open up <a href="http://www.google.co.uk">google</a>
         </li>
-      </ul>
-      <ul>
         <li>Type something into the search box that will generate a ‘did you mean’ response (tip. use any <a href="http://www.google.co.uk/search?hl=en&amp;q=mispeled&amp;btnG=Google+Search">misspelled</a> word)
         </li>
-      </ul>
-      <ul>
         <li>Use the handy <a href="https://addons.mozilla.org/firefox/1192/">XPather</a> firefox extension to find the XPath expression of the suggested word (in italics). At this time, the relevant xpath seems to be ‘/html/body/p<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>/a/b/i’
         </li>
-      </ul>
-      <ul>
         <li>Fire up firebug and execute the following line in the console, substituting your desired suggestion first (the text on the page should change immediately)</li>
       </ul>
       <pre><code>document.evaluate('/html/body/p[1]/a/b/i', document, null, XPathResult.ANY_TYPE, null).iterateNext().textContent = 'THE_WORD_YOU_WANT_TO_SUGGEST'</code></pre>

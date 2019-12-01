@@ -13,11 +13,8 @@ You can achieve the same effect as gooogie by using the excellent "firebug":http
 To achieve the effect:
 
 * Open up "google":http://www.google.co.uk
-
 * Type something into the search box that will generate a 'did you mean' response (tip. use any "misspelled":http://www.google.co.uk/search?hl=en&q=mispeled&btnG=Google+Search word)
-
 * Use the handy "XPather":https://addons.mozilla.org/firefox/1192/ firefox extension to find the XPath expression of the suggested word (in italics).  At this time, the relevant xpath seems to be '/html/body/p[1]/a/b/i'
-
 * Fire up firebug and execute the following line in the console, substituting your desired suggestion first (the text on the page should change immediately)
 
 bc. document.evaluate('/html/body/p[1]/a/b/i', document, null, XPathResult.ANY_TYPE, null).iterateNext().textContent = 'THE_WORD_YOU_WANT_TO_SUGGEST'

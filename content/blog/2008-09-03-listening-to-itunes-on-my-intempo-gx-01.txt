@@ -12,9 +12,6 @@ I've had the "Intempo GX-01":http://www.intempodigital.com/GX-01/AJ100008,en_GB,
 h2. The alternatives (in the interest of fairness)
 
 * "Nullriver MediaLink":http://www.nullriver.com/products/medialink - The first application I tried.  I was immediately hooked on the simplicity and would have been more than willing to pay for it.  Unfortunately, although my radio could see my iTunes library, it refused to play any music: The Intempo responded with "UPnP Internal Error 113".  It took me a while to realise that this software was specifically designed for the PS3 and I can only assume that's the reason for the error I received.
-
 * "Allegro Media Server":http://www.allegrosoft.com/ams.html - This worked fine but it felt a bit kludgy.  I'd guess this was because of the elegance of the Nullriver offering though.
-
 * "TwonkyMedia Media Server":http://www.twonkyvision.de/Products/TwonkyMedia/index.html - As with the Allegro offering this worked fine but felt a little kludgy and over-complicated.
-
 * "XBMC":http://xbmc.org/ - I'm afraid I only got as far as downloading, opening the application and immediately closing it.  It was immediately clear that this was far too complicated for what I was after.

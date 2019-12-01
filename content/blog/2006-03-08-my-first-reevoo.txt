@@ -33,11 +33,8 @@ Overall, it's pretty good.  Although not the largest mp3 device on the market, t
 Although I'm generally quite pleased I do have a few niggles with it.
 
 * The itunes software doesn't allow you to copy tracks from multiple pc's (apparently all other ipod's allow this).  If you have copied tracks from one pc and wish to then copy from another you first have to remove all tracks on the ipod.  You can actually copy the tracks directly from the ipod filesystem and play them on a different pc but I'm guessing that if they've been purchased through itunes and therefore drm'd up this might not work (I only tried it with downloaded podcasts).
-
 * The cord used to place the shuffle round your neck is too short.  It hangs at about chest high making it difficult to get access to the shuffle if under clothing (which I'm guessing is pretty likely).
-
 * I have a feeling it caused problems with my work mac (unconfirmed) when it was charging in the keyboard usb port.
-
 * As someone that gets annoyed by hearing other peoples music, I try to ensure that I have the volume at a level that can't be heard outside of my headphones.  This isn't always easy with the supplied set (although I'd suggest this is more a problem of in-ear headphones rather than the apple specific ones).
 
 </div>

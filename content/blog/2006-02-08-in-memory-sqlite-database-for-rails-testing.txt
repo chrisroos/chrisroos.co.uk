@@ -61,19 +61,14 @@ h2. Testing your sqlite installation
 One final note that may be of interest.  When I first started playing with sqlite3 with Ruby it seems that I didn't have it installed correctly (relying on pre-installed sqlite and the sqlite3-ruby gem).  As per "this article":http://wiki.rubyonrails.org/rails/pages/HowtoUseSQLite I had to un-install sqlite3-ruby gem and first install the swig port before re-installing sqlite3-ruby gem.  You can test for the correct installation by running the "Active Record":http://wiki.rubyonrails.com/rails/pages/ActiveRecord tests against sqlite by following these steps.
 
 * Change directory to Active Record tests (rails/activerecord/test)
-
 * Run base_test.rb, supplying the location of the sqlite3 connection to the load path.
-
 * @ruby -I "connections/native_sqlite3/" base_test.rb@
 
 You can also run the tests using the sqlite3 in memory connection.  To do so, perform these actions before running the tests as above.
 
 * Remove the standard sqlite3 connection
-
 * @rm connections/native_sqlite3/connection.rb@
-
 * Rename in_memory_connection.rb as connection.rb
-
 * @mv connections/in_memory_connection.rb connections/connection.rb@
 
 I'd suggest doing this against an svn checked out copy of rails, purely due to the these at which the changes can be reverted.
