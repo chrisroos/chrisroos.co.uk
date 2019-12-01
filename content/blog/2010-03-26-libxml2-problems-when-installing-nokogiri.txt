@@ -18,7 +18,7 @@ Using sudo to install (sudo gem install nokogiri or sudo gem bundle) resulted in
 
 h2. The solution
 
-The "gcc":http://gcc.gnu.org/ command being executed to test whether libxml2 existed was looking for both i386 and ppc (universal) libraries, where I only had the i386 versions installed via "Macports":http://www.macports.org/ (<code>$ file /opt/local/lib/libxml2.2.dylib #=> /opt/local/lib/libxml2.2.dylib: Mach-O dynamically linked shared library i386</code>)
+The "gcc":http://gcc.gnu.org/ command being executed to test whether libxml2 existed was looking for both i386 and ppc (universal) libraries, where I only had the i386 versions installed via "Macports":http://www.macports.org/ (@$ file /opt/local/lib/libxml2.2.dylib #=> /opt/local/lib/libxml2.2.dylib: Mach-O dynamically linked shared library i386@)
 
 h3. Solution 1
 
@@ -147,7 +147,7 @@ $ echo $?
 
 I figured that the presence of this flag meant that it was using libxml2 from /opt/local/lib (which was failing for some reason), and an absence meant it used libxml2 from /usr/lib (which worked).
 
-Unfortunately, although you can tell gcc to consider additional paths when searching for the xml2 library (using something like <code>gem install nokogiri -- --with-xml2-dir=/usr</code>) these paths are added after those added by the call to dir_config.  Because I was trying to add a path that gcc considers by default (/usr/lib) the setting of this compile time option didn't actually have any effect.
+Unfortunately, although you can tell gcc to consider additional paths when searching for the xml2 library (using something like @gem install nokogiri -- --with-xml2-dir=/usr@) these paths are added after those added by the call to dir_config.  Because I was trying to add a path that gcc considers by default (/usr/lib) the setting of this compile time option didn't actually have any effect.
 
 Having got this far I was still unsure of a fix.  I thought about removing libxml2 from ports but it was required by "ImageMagick":http://www.imagemagick.org (among other things) which meant that this wasn't really an option.  Finally, after quite a bit of googling I came across "this post":http://passingcuriosity.com/2009/installing-pil-on-mac-os-x-leopard/ that covered a similar error encountered installing PIL (Python Imaging Library) on Leopard.  The solution here was to install the universal version of libxml2 from macports.  I tried the same thing (I had to install the universal version of libxslt2 too) and it appears to have done the trick, although I have absolutely no idea why.
 

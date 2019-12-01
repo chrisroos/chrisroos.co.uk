@@ -11,9 +11,9 @@ I've now spent quite a considerable amount of time trying to get "mod_rewrite":h
 h2. The requirements
 
 * Permanently redirect (301) and requests for www.the-local-paper.co.uk to the-local-paper.co.uk
-* Permanently redirect any requests for <code>/index.html</code> to <code>/</code>
-* Permanently redirect any requests for <code>/<article>.html</code> to <code>/<article></code>
-* Render the corresponding <code>/<article>.html</code> for any requests for <code>/<article></code>
+* Permanently redirect any requests for @/index.html@ to @/@
+* Permanently redirect any requests for @/<article>.html@ to @/<article>@
+* Render the corresponding @/<article>.html@ for any requests for @/<article>@
 * Hide .svn directories as the entire site is checked out from "subversion":http://subversion.tigris.org/
 
 h2. The mod_rewrite rules

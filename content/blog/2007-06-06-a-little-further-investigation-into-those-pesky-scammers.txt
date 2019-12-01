@@ -24,7 +24,7 @@ h2. Look like legitimate blogs but are noticeable due to a complete lack of styl
 * pinkyspaperhause.com
 * timesofsooz.com
 
-h2. Look like legitimate websites but a <code>site:<website></code> search in google reveals lots of porn pages.
+h2. Look like legitimate websites but a @site:<website>@ search in google reveals lots of porn pages.
 
 * smachex.info
 * wampy.info

@@ -64,17 +64,17 @@ One final note that may be of interest.  When I first started playing with sqlit
 
 * Run base_test.rb, supplying the location of the sqlite3 connection to the load path.
 
-* <code>ruby -I "connections/native_sqlite3/" base_test.rb</code>
+* @ruby -I "connections/native_sqlite3/" base_test.rb@
 
 You can also run the tests using the sqlite3 in memory connection.  To do so, perform these actions before running the tests as above.
 
 * Remove the standard sqlite3 connection
 
-* <code>rm connections/native_sqlite3/connection.rb</code>
+* @rm connections/native_sqlite3/connection.rb@
 
 * Rename in_memory_connection.rb as connection.rb
 
-* <code>mv connections/in_memory_connection.rb connections/connection.rb</code>
+* @mv connections/in_memory_connection.rb connections/connection.rb@
 
 I'd suggest doing this against an svn checked out copy of rails, purely due to the these at which the changes can be reverted.
 
