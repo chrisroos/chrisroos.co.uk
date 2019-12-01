@@ -10,4 +10,4 @@ The majority of estate agent websites are crap.  Fact<sup class="footnote" id="f
 
 "Nestoria":http://www.nestoria.co.uk is not crap.  Fact<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>.
 
-<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> *fact* _-noun_ - the personal opinion of chris</p>
+<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> <strong>fact</strong> <em>-noun</em> - the personal opinion of chris</p>

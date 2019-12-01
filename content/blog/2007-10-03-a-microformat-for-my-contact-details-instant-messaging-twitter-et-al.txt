@@ -87,4 +87,4 @@ Anyone have any thoughts?
 
 Code is all over on "google code":http://chrisroos.googlecode.com/svn/trunk/contact-microformat/.
 
-<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> I'm thinking of multi protocol tools, like "adium":http://www.adiumx.com/, in particular.</p>
+<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> I'm thinking of multi protocol tools, like <a href="http://www.adiumx.com/">adium</a>, in particular.</p>

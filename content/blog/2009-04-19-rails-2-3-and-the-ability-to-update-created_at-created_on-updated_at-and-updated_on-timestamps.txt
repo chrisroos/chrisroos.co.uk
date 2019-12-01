@@ -126,4 +126,4 @@ In order to ensure we are testing against the correct version of rails, I symlin
 
 I wonder whether it'd be useful to extract the 'create a rails app from a specific version of rails' functionality out of this script?
 
-<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> "Alex MacCaw":http://www.eribium.org/ "raised the issue":http://www.madebymany.co.uk/a-rails-security-flaw-destroying-the-audit-trail-00820 in reference to number eight in the list of "10 cools things in Rails 2.3":http://railspikes.com/2009/3/30/10-cool-things-in-rails-23.</p>
+<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> <a href="http://www.eribium.org/">Alex MacCaw</a> <a href="http://www.madebymany.co.uk/a-rails-security-flaw-destroying-the-audit-trail-00820">raised the issue</a> in reference to number eight in the list of <a href="http://railspikes.com/2009/3/30/10-cool-things-in-rails-23">10 cools things in Rails 2.3</a>.</p>

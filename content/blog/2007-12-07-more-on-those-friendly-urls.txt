@@ -55,4 +55,4 @@ Oh, and this is specifically so that you can redirect from your own domain.  If 
 
 <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> Assuming, of course, that www.example.com and example.com both point to the server that this redirection server is running on.</p>
 
-<p class="footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a> You probably won't be able to watch as it'll redirect too quickly in the browser - your best bet is to use "curl":http://curl.haxx.se/ or the "Live HTTP Headers":http://livehttpheaders.mozdev.org/ "firefox":http://www.mozilla.com/en-US/firefox/ extension so see what's actually going on.</p>
+<p class="footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a> You probably won't be able to watch as it'll redirect too quickly in the browser - your best bet is to use <a href="http://curl.haxx.se/">curl</a> or the <a href="http://livehttpheaders.mozdev.org/">Live HTTP Headers</a> <a href="http://www.mozilla.com/en-US/firefox/">firefox</a> extension so see what's actually going on.</p>

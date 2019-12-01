@@ -17,4 +17,4 @@ I love how relatively easy it is to hook these things together, in a short perio
 
 *Note*.  I searched again for android delicious clients just before I started writing this post and was slightly surprised to see that there are now two apps that offer this functionality: "Android delicious bookmarks":http://code.google.com/p/android-delicious-bookmarks/ and Beelicious (for which I couldn't find a link).
 
-<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> Having just repeated the search I found "this post":http://www.labnol.org/internet/post-links-to-delicious-via-email-mobile/4470/ that suggests using "ping.fm":http://ping.fm to do exactly what I'm after.  Oh well.</p>
+<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> Having just repeated the search I found <a href="http://www.labnol.org/internet/post-links-to-delicious-via-email-mobile/4470/">this post</a> that suggests using <a href="http://ping.fm">ping.fm</a> to do exactly what I'm after.  Oh well.</p>

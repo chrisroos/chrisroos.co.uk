@@ -32,4 +32,4 @@ How do other people solve this potential loss of knowledge?  Am I missing someth
 
 P.S. I spent a few minutes chatting with "James":http://interblah.net/ about it today and he had some interesting suggestions, although I'll leave it up to him to share those if he wants (no pressure James, I'm just running out of time right now I'm afraid).
 
-<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> "Paul":http://po-ru.com suggested a while back that we use the commit note to explain the problem that we've solved, rather than just describing the changeset.  Unfortunately, I can't find the source of that suggestion so no link I'm afraid.</p>
+<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> <a href="http://po-ru.com">Paul</a> suggested a while back that we use the commit note to explain the problem that we've solved, rather than just describing the changeset.  Unfortunately, I can't find the source of that suggestion so no link I'm afraid.</p>

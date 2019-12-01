@@ -80,4 +80,4 @@ There is at least one problem (there may be many more I'm not aware of) with usi
 
 Just one final note.  "Dave Astels":http://www.daveastels.com/ has a good "article":http://blog.daveastels.com/articles/2006/10/24/encapsulation-in-action about encapsulation in rails, as "referred to":http://www.reevoo.com/blogs/bengriffiths/2006/10/24/rails-like-or-oo/ by "Ben":http://www.reevoo.com/blogs/bengriffiths
 
-<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> Ok.  That is, of course, a blatant lie - we can still access the private association - this is "ruby":http://www.ruby-lang.org remember.  The important point is that we've made our intentions more explicit.</p>
+<p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> Ok.  That is, of course, a blatant lie - we can still access the private association - this is <a href="http://www.ruby-lang.org">ruby</a> remember.  The important point is that we've made our intentions more explicit.</p>
