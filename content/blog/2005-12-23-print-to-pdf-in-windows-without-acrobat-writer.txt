@@ -26,7 +26,7 @@ Install PostScript compatible printer.
 Download and install AFPL Ghostscript
 -------------------------------------
 
-1.  Visit the [Ghostscript site](http://www.cs.wisc.edu/~ghost/) and follow the 'Obtaining AFPL Ghostscript \<version&gt;' link.
+1.  Visit the [Ghostscript site](http://www.cs.wisc.edu/~ghost/) and follow the 'Obtaining AFPL Ghostscript &lt;version&gt;' link.
 2.  Download the version for Windows, which at the time of writing is called gs853w32.exe.
 3.  Double click the downloaded file to install. Use the defaults during installation.
 
