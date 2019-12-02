@@ -20,6 +20,6 @@ This is the first step towards being able to, hopefully, create a [pdf](http://e
 
 The code is covered by quite a few tests but, if peeps find problems converting their own wiki content (for example) then I'd love to hear from you.
 
-**Note** There's a chance that this becomes less important [if/when](http://code.google.com/docreader/#p(google-documentation-reader)s(google-documentation-reader)t(OfflineSupport) Google use [gears](http://gears.google.com/) in their [google docreader](http://code.google.com/docreader/#p(google-documentation-reader)s(google-documentation-reader)t(google-documentation-reader) app to allow offline access.
+**Note** There's a chance that this becomes less important [if/when](http://code.google.com/docreader/#p%28google-documentation-reader%29s%28google-documentation-reader%29t%28OfflineSupport%29) Google use [gears](http://gears.google.com/) in their [google docreader](http://code.google.com/docreader/#p%28google-documentation-reader%29s%28google-documentation-reader%29t%28google-documentation-reader%29) app to allow offline access.
 
 **Note** If you don't want to go through this process then you can use a standalone version of [moinmoin](http://moinmoin.wikiwikiweb.de/) to [view your wiki content offline](http://groups.google.com/group/google-doctype/browse_thread/thread/5fe1d26a0afdc4c7).

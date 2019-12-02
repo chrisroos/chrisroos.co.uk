@@ -18,7 +18,7 @@ An off-the-top-of-my-head plan:
     -   Search for audio based on current location.
     -   Stream and play audio.
 -   Make the creation of geotagged audio easier.
-    -   Can we use text to voice to convert fragments of [geotagged wikipedia articles](http://en.wikipedia.org/wiki/Geotagging#Wikipedia?)
+    -   Can we use text to voice to convert fragments of [geotagged wikipedia articles](http://en.wikipedia.org/wiki/Geotagging#Wikipedia)?
     -   Can we create a game that makes the generation of this audio content appealing to more people?
 -   Allow people to upload their own factlets when they're out and about.
     -   twaud.io already enables uploading of audio, we'd just need to geotag it.
