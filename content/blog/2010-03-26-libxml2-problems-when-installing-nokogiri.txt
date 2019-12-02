@@ -10,7 +10,7 @@ filter:     markdown
 The problem
 -----------
 
-Trying to install [nokogiri](http://nokogiri.org/) on Mac OS X 10.5.8 (Leopard) using [gem bundler](http://github.com/carlhuda/bundler), or more specifically as a non root user (e.g. installing into \~/.gem/), failed with the error below.
+Trying to install [nokogiri](http://nokogiri.org/) on Mac OS X 10.5.8 (Leopard) using [gem bundler](http://github.com/carlhuda/bundler), or more specifically as a non root user (e.g. installing into ~/.gem/), failed with the error below.
 
     checking for xmlParseDoc() in -lxml2... no
     libxml2 is missing.  try 'port install libxml2' or 'yum install libxml2'
@@ -69,7 +69,7 @@ The simplest example I came up with to expose the problem was as follows.
 
 After lots of digging into [mkmf.rb](http://ruby-doc.org/stdlib/libdoc/mkmf/rdoc/index.html) I was able to determine the command being executed in order to check whether libxml2 existed (or, more accurately, whether the xmlParseDoc function existed in libxml2). It turns out that the commands executed are actually logged to the mkmf.log that's generated as part of running extconf.rb but, although I was aware of the mkmf.log file, I didn't realise it contained the commands until now.
 
-These are the relevant lines from mkmf.log after a failed install of nokogiri. If you were trying to install nokogiri to your home gem directory then this log file would be in \~/.gem/ruby/1.8/gems/nokogiri-1.4.1/ext/nokogiri/mkmf.log (where the nokogiri version would be specific to the version you were installing).
+These are the relevant lines from mkmf.log after a failed install of nokogiri. If you were trying to install nokogiri to your home gem directory then this log file would be in ~/.gem/ruby/1.8/gems/nokogiri-1.4.1/ext/nokogiri/mkmf.log (where the nokogiri version would be specific to the version you were installing).
 
     find_library: checking for xmlParseDoc() in -lxml2... -------------------- no
 

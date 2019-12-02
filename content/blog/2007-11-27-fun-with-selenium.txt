@@ -29,10 +29,10 @@ Sample lightbox reevoomark
 --------------------------
 
 
-\<script type=\"text/javascript\" charset=\"utf-8\"\>
-  rvo\_format=\'image\_horizontal250x40\';
-  rvo\_product\_id=\'1\'
-  rvo\_retailer\_ref=\'rev\';
-  rvo\_version = 2;
-\</script\>
-\<script type=\"text/javascript\" src=\'http://www.revieworld.com/javascripts/reevoomark.js\'\>\</script\>
+<script type="text/javascript" charset="utf-8">
+  rvo_format='image_horizontal250x40';
+  rvo_product_id='1'
+  rvo_retailer_ref='rev';
+  rvo_version = 2;
+</script>
+<script type="text/javascript" src='http://www.revieworld.com/javascripts/reevoomark.js'></script>

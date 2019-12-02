@@ -24,7 +24,7 @@ The code is over in my [google code repository](http://chrisroos.googlecode.com/
 -   Install the del.icio.us permalinks extension
 -   Checkout out the del.icio.us trackbacks source
 -   Find your Firefox extensions directory
--   Create a textfile called delicious-trackbacks\@googlegroups.com
+-   Create a textfile called delicious-trackbacks@googlegroups.com
 -   Add the path to the checked out project del.icio.us trackbacks project to this textfile
 -   Restart firefox
 -   Hope it all works and doesn't destroy your computer :-)

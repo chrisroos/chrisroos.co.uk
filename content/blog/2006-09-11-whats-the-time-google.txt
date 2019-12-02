@@ -10,7 +10,7 @@ From this [article](http://dmiessler.com/archives/910) (via [lifehacker](http://
 
 time london
 
-London, United Kingdom --- Current local time: 9:18 AM on Monday, September 11<br/>\
+London, United Kingdom --- Current local time: 9:18 AM on Monday, September 11<br/>
 According to http://www.google.com
 
 That's pretty cool.

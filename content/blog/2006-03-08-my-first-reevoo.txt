@@ -8,7 +8,7 @@ layout: blog
 ---
 <div class='hreview'>
 
-<span class='version' style='display:none'>0.2</span>\
+<span class='version' style='display:none'>0.2</span>
 <span class='type' style='display:none'>product</span>
 
 <div class='item'>
@@ -18,15 +18,15 @@ layout: blog
 <ul class='identifiers' style='display: none'>
 <li>
 
-<a class='url' href='http://www.reevoo.com/pages/apple_ipodshuffle1gb'>\
-http://www.reevoo.com/pages/apple\_ipodshuffle1gb\
+<a class='url' href='http://www.reevoo.com/pages/apple_ipodshuffle1gb'>
+http://www.reevoo.com/pages/apple_ipodshuffle1gb
 </a>
 
 </li>
 <li>
 
-<a class='url' href='urn:ean.ucc:718908929278'>\
-urn:ean.ucc:718908929278\
+<a class='url' href='urn:ean.ucc:718908929278'>
+urn:ean.ucc:718908929278
 </a>
 
 </li>
@@ -73,7 +73,7 @@ As someone that gets annoyed by hearing other peoples music, I try to ensure tha
 </div>
 <p>
 
-Rated <span class='rating'>3</span> by <span class='reviewer fn'>Chris</span><br>\
+Rated <span class='rating'>3</span> by <span class='reviewer fn'>Chris</span><br>
 on <abbr class='dtreviewed' title='2006-03-08T08:53:00+00:00'>Mar 08, 2006</abbr>
 
 </p>

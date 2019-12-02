@@ -42,6 +42,6 @@ That's about all I have at the moment. Unfortunately, I'm already getting a bit 
 
 <p class="footnote" id="fn1">
 
-<a href="#fnr1"><sup>1</sup></a> This reminds me of the 'best \[dance\|rock\|urban\|insert music genre here\] album in the world ever...' type compilations, of which <a href="http://www.amazon.co.uk/Worst-Album-World-Ever-Ever-Shirehorses/dp/B000024V87">this</a> is undoubtedly the best.
+<a href="#fnr1"><sup>1</sup></a> This reminds me of the 'best [dance|rock|urban|insert music genre here] album in the world ever...' type compilations, of which <a href="http://www.amazon.co.uk/Worst-Album-World-Ever-Ever-Shirehorses/dp/B000024V87">this</a> is undoubtedly the best.
 
 </p>

@@ -12,11 +12,11 @@ One Friday in September 2008 I had the bright idea (I don't remember where the i
 I'm embedding it below (or you can see it at [vimeo](http://vimeo.com/2743072)) ~~but you'll have to excuse the large amount of whitespace between this paragraph and the video. I've had a real quick look but I'm tired and really can't work out what's causing it.~~ [Adem](http://www.ademweb.co.uk/blog) spotted what I'd done wrong and the whitespace has now been removed.
 
 
-\<object width=\"400\" height=\"300\"\>
-  \<param name=\"allowfullscreen\" value=\"true\" /\>
-  \<param name=\"allowscriptaccess\" value=\"always\" /\>
-  \<param name=\"movie\" value=\"http://vimeo.com/moogaloop.swf?clip\_id=2743072&amp;server=vimeo.com&amp;show\_title=1&amp;show\_byline=1&amp;show\_portrait=0&amp;color=&amp;fullscreen=1\" /\>
-  \<embed src=\"http://vimeo.com/moogaloop.swf?clip\_id=2743072&amp;server=vimeo.com&amp;show\_title=0&amp;show\_byline=0&amp;show\_portrait=0&amp;color=&amp;fullscreen=1\" type=\"application/x-shockwave-flash\" allowfullscreen=\"true\" allowscriptaccess=\"always\" width=\"400\" height=\"300\"\>\</embed\>
-\</object\>
+<object width="400" height="300">
+  <param name="allowfullscreen" value="true" />
+  <param name="allowscriptaccess" value="always" />
+  <param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=2743072&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" />
+  <embed src="http://vimeo.com/moogaloop.swf?clip_id=2743072&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="400" height="300"></embed>
+</object>
 
 I love being able to see the massive volume of water that moves in and out of the harbour entrance raising and lowering the boats as it pleases.

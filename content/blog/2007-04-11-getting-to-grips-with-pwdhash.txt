@@ -64,7 +64,8 @@ Next up was a comparison of an HMAC MD5 of a key and some data.
     javascript: hex_hmac_md5(key, data) => "9d5c73ef85594d34ec4438b7c97e51d8"
     ruby: HMAC::MD5.hexdigest(key, data) => "9d5c73ef85594d34ec4438b7c97e51d8"
 
-Although we can easily replicate the result of hex\_hmac\_md5 in ruby, we actually want to replicate the result of b64\_hmac\_md5 (i.e. the hashed data encoded in base64 representation.)\
+Although we can easily replicate the result of hex\_hmac\_md5 in ruby, we actually want to replicate the result of b64\_hmac\_md5 (i.e. the hashed data encoded in base64 representation.)
+
 With a bit of thinking, and some trial and error, I realised that I needed to calculate the binary digest of the key and data, and then base64 encode the result. **Note**. My original problems arose when comparing the output of the binary string data, what with Javascript being able to display unicode characters and ruby just displaying their code points in octal representation.
 
     javascript: b64_hmac_md5(key, data) => "nVxz74VZTTTsRDi3yX5R2A"

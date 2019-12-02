@@ -6,18 +6,18 @@ filter: markdown
 created_at: 2007-03-12 23:13:00 +00:00
 layout: blog
 ---
-**Update - 9th Jan 2013**\
+**Update - 9th Jan 2013**
 I received an email toward the end of last (thanks, Nick) pointing out that when you choose a payee from the list of beneficiaries (e.g. HMRC SA AS SHIP) you'll be presented with their sort code and account number on the next screen. If it doesn't match what you're expecting you can go back and choose another entry from the list.
 
-**Update - 15th Feb 2012**\
+**Update - 15th Feb 2012**
 I've removed the table of sort codes and account numbers that used to live at the bottom of this page. I received an email from someone (thanks, Adam) that had found this page and realised that at least one of the entries in the table was incorrect (the one for HMRC SELF AS CUMB). I don't want to host incorrect information but also don't want to maintain the table so the easiest thing for me is to remove it.
 
 I've also just had a quick play with attempting to pay a HMRC bill using the HSBC friends and family mechanism. It looks like the error message is at least a little clearer now, beginning, "Sorry, the details you have entered match a beneficiary on our pay a bill or organisation list."
 
-**Update - 27th Feb 2010**\
+**Update - 27th Feb 2010**
 I've updated the table of sort codes and account numbers based on comments (via disqus) and emails I've received. I obviously can't make any guarantee as to the accuracy of this data.
 
-**Update - 15th Apr 2009**\
+**Update - 15th Apr 2009**
 I've updated the link to the hmrc bank account site and added a table (to the bottom of this post) of sort code and account numbers to their cryptically named counterpart based on some of the comments to this post.
 
 <hr>
