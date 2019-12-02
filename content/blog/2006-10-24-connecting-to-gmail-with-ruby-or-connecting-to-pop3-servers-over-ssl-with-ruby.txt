@@ -12,8 +12,6 @@ Short version (or, "I want to connect to gmail NOW")
 -   Download the [pop3 library](http://ruby-doc.org/stdlib-1.9/libdoc/net/pop/rdoc/index.html) from [Ruby HEAD](http://www.ruby-lang.org/cgi-bin/cvsweb.cgi//?only_with_tag=HEAD) (Ruby 1.9) ([download file](http://www.ruby-lang.org/cgi-bin/cvsweb.cgi/~checkout~/ruby/lib/net/pop.rb?rev=1.73;content-type=application%2Fx-ruby;only_with_tag=HEAD))
 -   Use the following script to get started (making sure that you explicitly reference the downloaded pop3 file)...
 
-<!-- -->
-
     require 'pop_ssl' # I renamed the file from pop.rb to pop_ssl.rb to ensure I was requiring the correct version
 
     username = 'YOUR_GMAIL_USERNAME@gmail.com'
@@ -38,8 +36,6 @@ This is identical to the short version except that we verify the ssl certificate
 -   Follow the first step above (i.e. download new version of pop3 lib).
 -   Download the CA Root Certificates bundle from [cURL site](http://curl.haxx.se/) ([download file](http://curl.haxx.se/ca/cacert.pem))
 -   Copy the code above but change the Net::POP3.enable\_ssl line to read...
-
-<!-- -->
 
     Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_PEER, '/PATH/TO/DOWNLOADED/cacert.pem')
 
