@@ -10,9 +10,9 @@ A couple of days ago I was playing around with "SVN::Mirror":http://search.cpan.
 
 All was going well until I tried to mirror a "project":http://rubyforge.org/projects/mocha/ hosted on rubyforge.  On initialising the mirror, I kept receiving the error "source url not under source root" from line 72 in Ra.pm.
 
-After some very careful debugging (yeah, like I know anything about perl - @print "1";@ was about the extent of it) of that perl file; I noticed that the $source_root variable didn't contain the double slash<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>.  This causes a problem for the line @if substr($path, 0, length($source_root), '') ne $source_root;@ as at this point, $path does contain the double slash.
+After some very careful debugging (yeah, like I know anything about perl - @print "1";@ was about the extent of it) of that perl file; I noticed that the @$source_root@ variable didn't contain the double slash<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup>.  This causes a problem for the line @if substr($path, 0, length($source_root), '') ne $source_root;@ as at this point, $path does contain the double slash.
 
-The value of $source_root is returned from a call to RA->get_repos_root (Subversion Repository Access code).  So; it would seem that the url was being normalised somewhere in the bowels of "Subversion":http://subversion.tigris.org.
+The value of @$source_root@ is returned from a call to @RA->get_repos_root@ (Subversion Repository Access code).  So; it would seem that the url was being normalised somewhere in the bowels of "Subversion":http://subversion.tigris.org.
 
 This was kinda confirmed by testing the svn client (which uses the code in the RA module just like SVN::Mirror) with urls containing additional slashes.  The url was always resolved and svn info would always show the normalised variant.  It was additionally(ish) tested by using the "Ruby":http://www.ruby-lang.org "bindings":http://svn.collab.net/viewvc/svn/trunk/subversion/bindings/swig/ruby/ (which, as an aside, contain just about the most difficult to read Ruby code I've ever come across!)
 
