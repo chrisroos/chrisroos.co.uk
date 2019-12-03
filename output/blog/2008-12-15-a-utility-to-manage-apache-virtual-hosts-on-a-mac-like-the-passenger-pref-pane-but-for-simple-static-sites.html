@@ -48,9 +48,7 @@
     <div id="content">
       <abbr class="createdAt" title="2008-12-15T20:21:47+00:00">Mon, 15 Dec 08</abbr>
       <h1>A Utility to Manage Apache Virtual Hosts on a Mac (Like the Passenger Pref Pane but for Simple Static Sites)</h1>
-      <div class="notice">
-        29 June 2009. See the <a href="/blog/2009-06-23-apacherb-is-now-hostess">updated post</a> about this utility.
-      </div>
+      <p><b>29 Jun 2009</b>. See the <a href="/blog/2009-06-23-apacherb-is-now-hostess">updated post</a> about this utility.</p>
       <p>I really like the <a href="http://www.fngtps.com/2008/06/putting-the-pane-back-into-deployment">Passenger preference pane</a>, for both its functionality and simplicity. I wondered whether there was anything similar that would allow me to create simple <a href="http://en.wikipedia.org/wiki/Virtual_hosting">virtual hosts</a> in the same way (i.e. create the <a href="http://httpd.apache.org/">apache</a> config and register the hostname with <a href="http://developer.apple.com/opensource/dirservices/">directory services</a>). I saw mention of something called headdress (that supposedly makes apache config easier) but the site’s been down for the last couple of days and I believe it’s pay-for software anyway. I decided to steal the concepts (and the code for the <a href="http://developer.apple.com/documentation/Darwin/Reference/ManPages/man1/dscl.1.html">dscl</a> stuff) from the <a href="http://github.com/alloy/passengerpane/tree/master">passenger pref pane code</a> and create a little shell script that allows me to manage virtual hosts on my Mac.</p>
       <p>You can get it by checking out the <a href="http://chrisroos.googlecode.com/svn/trunk/apacherb/">source</a>:</p>
       <pre><code>svn co http://chrisroos.googlecode.com/svn/trunk/apacherb</code></pre>
