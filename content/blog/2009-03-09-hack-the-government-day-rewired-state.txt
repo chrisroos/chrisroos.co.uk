@@ -9,9 +9,8 @@ filter:     markdown
 ---
 [James Darling](http://coupde.com/), [Richard Pope](http://www.memespring.co.uk/) and [Emma Mulqueeny](http://www.emmamulqueeny.com/) organised the excellent [Rewired State](http://rewiredstate.org/) on Saturday (7th March) at the new [Guardian](http://www.guardian.co.uk/) offices in Kings Cross. The idea behind rewiredstate was pretty simple (from rewiredstate.org):
 
-bq.\
-Government isn't very good at computers.\
-They spend millions to produce mediocre websites, hide away really useful public information and generally get it wrong. Which is a shame.
+> Government isn't very good at computers.
+> They spend millions to produce mediocre websites, hide away really useful public information and generally get it wrong. Which is a shame.
 
 I had a plan for the day. It's a plan I'd had for about a year or so and it involved the atrocity that is [Active Places](http://activeplaces.com/) (a [Sport England](http://www.sportengland.org/) funded project). It's really hard to find information about sports facilities (I was specifically interested in public swimming pools) in the UK. I know this because I've tried to find public swimming pools that are either near where I stay (when in London), easily accessible from a station on the commute, or near work. At the moment that involves finding and searching the websites of each of the councils whose boundaries I cross or am near. This is certainly not ideal. It's more frustrating because the government have this information locked up (the entire site requires cookies so there's no chance of it appearing in google) in activeplaces. Oh, and there's another little gem of information: [activeplaces cost £5.2 million over three years](http://www.theyworkforyou.com/wrans/?id=2005-06-13b.3605.h).
 

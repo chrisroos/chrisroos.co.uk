@@ -8,11 +8,7 @@ layout: blog
 ---
 I just read [this](http://blogs.law.harvard.edu/vrm/2007/11/16/can-vrm-fix-drm/) article over on the [Project VRM](http://blogs.law.harvard.edu/vrm/) blog. There was a fragment of a sentence that really resonated with me - highlighted in the quote below.
 
-<blockquote>
-
-For copyrighted works, VRM could involve agreements made on an individual basis --- ones that could involve actual relationships between copyright holders and their customers. For example, if I buy an open (non-DRM'd) copy of an album by Mike Marshall (my favorite mandolin player), it might involve letting him know who I am, the fact that I like his work, a commitment not to duplicate it beyond fair uses, and the option to do any number of things, **including re-distributing it for pay that would get us both a slice of the take**. The options are wide open. What matters is that there would means for a real reslationship based on mutual interest, trust and control.
-
-</blockquote>
+> For copyrighted works, VRM could involve agreements made on an individual basis --- ones that could involve actual relationships between copyright holders and their customers. For example, if I buy an open (non-DRM'd) copy of an album by Mike Marshall (my favorite mandolin player), it might involve letting him know who I am, the fact that I like his work, a commitment not to duplicate it beyond fair uses, and the option to do any number of things, **including re-distributing it for pay that would get us both a slice of the take**. The options are wide open. What matters is that there would means for a real reslationship based on mutual interest, trust and control.
 
 If I like something enough to want to recommend it to people why shouldn't I take a small amount of money from any resulting transaction? If I was to become an [Amazon affiliate](http://affiliate-program.amazon.co.uk/gp/associates/join/) I could already get paid for recommending this album: except that I'd actually be getting paid for recommending this album **at** Amazon. That just makes me feel a little less comfortable than if I was able to get paid for recommending the artist alone.
 
