@@ -21,7 +21,7 @@ As if that wasn't enough, I've also created a little [web service](http://github
 
     $ cat downloaded-statement.html | ruby -rcgi -e "puts 'documentHtml=' + CGI.escape(STDIN.read)" | curl http://egg2ofx.seagul.co.uk -d@-
 
-Where we pipe the content of the downloaded statement into a single line ruby script that constructs the key/value pair that we need to send to the service and pipes that into curl that actually makes the POST request (the magic <code>~~d@~~</code> means, read from stdin).
+Where we pipe the content of the downloaded statement into a single line ruby script that constructs the key/value pair that we need to send to the service and pipes that into curl that actually makes the POST request (the magic `-d@-` means, read from stdin).
 
 The final little treat is a [greasemonkey](http://en.wikipedia.org/wiki/Greasemonkey) script that adds a button to the egg transactions and statement pages allowing you to download them as Ofx right there. Whoah.
 
