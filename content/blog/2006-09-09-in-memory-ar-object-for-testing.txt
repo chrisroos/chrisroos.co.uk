@@ -2,22 +2,22 @@
 blog_post: true
 guid: 346ed442-9499-44fc-a578-9f61bd89ebd4
 title: In memory AR object for testing
-filter: textile
+filter: markdown
 created_at: 2006-09-09 12:03:00 +01:00
 layout: blog
 ---
-I've "previously written":/blog/2006-07-12-using-in-memory-active-record-objects-with-associations-for-testing about using in memory active record objects for testing.
+I've [previously written](/blog/2006-07-12-using-in-memory-active-record-objects-with-associations-for-testing) about using in memory active record objects for testing.
 
-In doing so recently, I've found it necessary to define the id of the in memory object.  By default this is obviously nil as it has not been persisted.  In addition, it is not possible to set it during normal object construction.
+In doing so recently, I've found it necessary to define the id of the in memory object. By default this is obviously nil as it has not been persisted. In addition, it is not possible to set it during normal object construction.
 
-bc. person = Person.new(:id => 1)
-p person.id
-#=> nil
+    person = Person.new(:id => 1)
+    p person.id
+    #=> nil
 
 However, we can give the person constructor a block, setting the id just after creation.
 
-bc. person = Person.new { |p| p.id = 1 }
-p person.id
-#=> 1
+    person = Person.new { |p| p.id = 1 }
+    p person.id
+    #=> 1
 
 Cool.
