@@ -53,25 +53,27 @@
 ===================================================================
 --- test/amount_test.rb (revision 2)
 +++ test/amount_test.rb (working copy)
-@@ -2,9 +2,8 @@</code>
+@@ -2,9 +2,8 @@
 
-<code> class AmountTest &lt; Test::Unit::TestCase</code>
+ class AmountTest &lt; Test::Unit::TestCase
 
-<code>-  def test_should_format_amount
+-  def test_should_format_amount
 -    formatted_amount = Amount.format(5, '$')
 -    assert_equal '$5.00', formatted_amount
 +  def test_should_flunk
 +    flunk
-   end</code></pre>
+   end
+</code></pre>
       <p>And piping it through the diff_parser, we get:</p>
       <pre><code>--- Amount
 + should flunk
-- should format amount</code></pre>
+- should format amount
+</code></pre>
       <p>The output is in a diff-like format so that we can pipe it straight into <a href="http://www.macromates.com">TextMate</a> and benefit from the colour formatting therein.</p>
       <h2>diff_parser.rb</h2>
-      <pre><code>#!/usr/bin/env ruby</code>
+      <pre><code>#!/usr/bin/env ruby
 
-<code>class Test
+class Test
   def initialize
     @added, @removed = [], []
   end
@@ -96,12 +98,12 @@
   def changed_responsibilities?
     added_responsibilities? || removed_responsibilities?
   end
-end</code>
+end
 
-<code>tests = {}
-class_under_test = ''</code>
+tests = {}
+class_under_test = ''
 
-<code>while line = gets
+while line = gets
   if line =~ /Index: (.*)/
     if (test_name = File.basename($1, '.rb')) =~ /_test$/
       name_of_class_under_test = test_name.sub(/_test/, '')
@@ -117,9 +119,9 @@ class_under_test = ''</code>
       tests[class_under_test].add_responsibility(responsibility)
     end
   end
-end</code>
+end
 
-<code>tests.sort.each do |test_name, test|
+tests.sort.each do |test_name, test|
   if test.changed_responsibilities?
     puts '--- ' + test_name
     test.added_responsibilities.each { |responsibility| puts '+ ' + responsibility } if test.added_responsibilities?

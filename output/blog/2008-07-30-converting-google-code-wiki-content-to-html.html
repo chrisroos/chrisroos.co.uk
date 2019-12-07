@@ -49,12 +49,14 @@
       <h1>Converting Google Code Wiki Content to Html</h1>
       <p>I’ve created a little script that allows me to convert documents in the <a href="http://code.google.com">google code</a> <a href="http://code.google.com/p/support/wiki/WikiSyntax">wiki format</a> to <a href="http://en.wikipedia.org/wiki/HTML">HTML</a>.</p>
       <p>The script lives in <a href="http://chrisroos.googlecode.com">my google code repository</a>. Check it out from subversion:</p>
-      <pre><code>svn co http://chrisroos.googlecode.com/svn/trunk/google-wiki-syntax</code></pre>
+      <pre><code>svn co http://chrisroos.googlecode.com/svn/trunk/google-wiki-syntax
+</code></pre>
       <p>The wiki_convertor script takes two arguments. The first is the wiki file, or directory containing multiple wiki files, and the second is the output directory. So, to use it to create an html copy of the <a href="http://code.google.com/doctype/">google-doctype</a> wiki content, in my home Sites directory, I’d use the following command:</p>
-      <pre><code>wiki_convertor.rb ~/Code/third-party/google-doctype/wiki/ ~/Sites/google-doctype/</code></pre>
+      <pre><code>wiki_convertor.rb ~/Code/third-party/google-doctype/wiki/ ~/Sites/google-doctype/
+</code></pre>
       <p>This is the first step towards being able to, hopefully, create a <a href="http://en.wikipedia.org/wiki/Portable_Document_Format">pdf</a> copy of the google-doctype content. Actually, if anyone has any thoughts on this I’d love to hear them: should I output a different format (<a href="http://en.wikipedia.org/wiki/DocBook">docbook</a>, for example) or is it easy enough to convert from (x)html to pdf?</p>
       <p>The code is covered by quite a few tests but, if peeps find problems converting their own wiki content (for example) then I’d love to hear from you.</p>
-      <p><strong>Note</strong> There’s a chance that this becomes less important <a href="http://code.google.com/docreader/#p(google-documentation-reader)s(google-documentation-reader)t(OfflineSupport">if/when</a> Google use <a href="http://gears.google.com/">gears</a> in their <a href="http://code.google.com/docreader/#p(google-documentation-reader)s(google-documentation-reader)t(google-documentation-reader">google docreader</a> app to allow offline access.</p>
+      <p><strong>Note</strong> There’s a chance that this becomes less important <a href="http://code.google.com/docreader/#p%28google-documentation-reader%29s%28google-documentation-reader%29t%28OfflineSupport%29">if/when</a> Google use <a href="http://gears.google.com/">gears</a> in their <a href="http://code.google.com/docreader/#p%28google-documentation-reader%29s%28google-documentation-reader%29t%28google-documentation-reader%29">google docreader</a> app to allow offline access.</p>
       <p><strong>Note</strong> If you don’t want to go through this process then you can use a standalone version of <a href="http://moinmoin.wikiwikiweb.de/">moinmoin</a> to <a href="http://groups.google.com/group/google-doctype/browse_thread/thread/5fe1d26a0afdc4c7">view your wiki content offline</a>.</p>
       <hr>
       <ul class="navigation group">

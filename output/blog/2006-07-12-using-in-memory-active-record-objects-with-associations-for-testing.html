@@ -54,47 +54,49 @@
 end
 class Address &lt; ActiveRecord::Base
   belongs_to :person
-end</code>
+end
 
-<code># One sided relationship with parent getting access to child
+# One sided relationship with parent getting access to child
 chris = Person.new
-home = chris.addresses.build</code>
+home = chris.addresses.build
 
-<code>chris.addresses.first
+chris.addresses.first
 =&gt; #&lt;home&gt;
 home.person
-=&gt; nil</code>
+=&gt; nil
 
-<code># One sided relationship with child getting access to parent
+# One sided relationship with child getting access to parent
 home = Address.new
-chris = home.build_person</code>
+chris = home.build_person
 
-<code>chris.addresses
+chris.addresses
 =&gt; []
 home.person
-=&gt; #&lt;chris&gt;</code>
+=&gt; #&lt;chris&gt;
 
-<code># The example above that creates the address first could also have been written as.
+# The example above that creates the address first could also have been written as.
 # chris = Person.new
-# home = Address.new(:person =&gt; chris)</code></pre>
+# home = Address.new(:person =&gt; chris)
+</code></pre>
       <p>You can see that in each case, only one side of the relationship has access to the other. If we were persisting the objects then the relationship would be two way via a database lookup. We can get a two way relationship in memory; although it has a certain duplication smell about it. Assuming the same models as above, we can amend the above examples like so.</p>
       <pre><code># First example
 chris = Person.new
-home = chris.addresses.build(:person =&gt; chris)</code>
+home = chris.addresses.build(:person =&gt; chris)
 
-<code>chris.addresses.first
+chris.addresses.first
 =&gt; #&lt;home&gt;
 home.person
-=&gt; #&lt;chris&gt;</code>
+=&gt; #&lt;chris&gt;
 
-<code># Second example
+# Second example
 home = Address.new
-chris = home.build_person(:addresses =&gt; [home])</code>
+chris = home.build_person(:addresses =&gt; [home])
 
-<code>home.person
+home.person
 =&gt; #&lt;chris&gt;
 chris.addresses.first
-=&gt; #&lt;home&gt;</code></pre>
+=&gt; #&lt;home&gt;
+</code></pre>
       <p>I’ve occasionally used this in place of stubbing methods but am still not 100% convinced of the definite benefits one way or another. I do have some definite disadvantages of stubbing methods (nothing exciting, they’ve almost certainly been noted by many others in the past) which I’ll note down at a later date.</p>
       <hr>
       <ul class="navigation group">

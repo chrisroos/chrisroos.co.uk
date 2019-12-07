@@ -50,11 +50,14 @@
       <h1>Converting Egg Statements and Transactions to Ofx</h1>
       <p>Wow, it was around <a href="/blog/2007-04-01-converting-egg-credit-card-statements-to-ofx-for-upload-to-wesabe">two and half years ago</a> that I first hacked together a little utility to do this. I’ve pretty much neglected the code since then but have always intended to get back to it. Over the last week or so I’ve done just that (<a href="http://github.com/chrisroos/egg2ofx">egg2ofx on github</a>).</p>
       <p>I’d like to think that this version is a little more usable. You can install it as a gem for a start.</p>
-      <pre><code>$ gem install egg2ofx --source http://gemcutter.org</code></pre>
+      <pre><code>$ gem install egg2ofx --source http://gemcutter.org
+</code></pre>
       <p>With that, you get a nice little binary that you can use to convert a downloaded copy of your statement or recent transactions.</p>
-      <pre><code>$ egg2ofx downloaded-statement.html &gt; egg-statement.ofx</code></pre>
+      <pre><code>$ egg2ofx downloaded-statement.html &gt; egg-statement.ofx
+</code></pre>
       <p>As if that wasn’t enough, I’ve also created a little <a href="http://github.com/chrisroos/egg2ofx-server">web service</a> that exposes the conversion functionality over http. Assuming you’ve got <a href="http://www.ruby-lang.org/en/">ruby</a> and <a href="http://curl.haxx.se/">curl</a> (and probably other stuff) installed you should be able to do something like this to try it out.</p>
-      <pre><code>$ cat downloaded-statement.html | ruby -rcgi -e "puts 'documentHtml=' + CGI.escape(STDIN.read)" | curl http://egg2ofx.seagul.co.uk -d@-</code></pre>
+      <pre><code>$ cat downloaded-statement.html | ruby -rcgi -e "puts 'documentHtml=' + CGI.escape(STDIN.read)" | curl http://egg2ofx.seagul.co.uk -d@-
+</code></pre>
       <p>Where we pipe the content of the downloaded statement into a single line ruby script that constructs the key/value pair that we need to send to the service and pipes that into curl that actually makes the POST request (the magic <code>-d@-</code> means, read from stdin).</p>
       <p>The final little treat is a <a href="http://en.wikipedia.org/wiki/Greasemonkey">greasemonkey</a> script that adds a button to the egg transactions and statement pages allowing you to download them as Ofx right there. Whoah.</p>
       <p><a href="http://www.flickr.com/photos/chrisjroos/4113433456/"><img alt="" src="http://farm3.static.flickr.com/2764/4113433456_662c0fec1e_m.jpg"></a></p>

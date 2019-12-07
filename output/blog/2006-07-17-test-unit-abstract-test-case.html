@@ -60,7 +60,8 @@ class MyTest &lt; Test::Unit::TestCase
   def test_should_accept_an_item_when_sent_push
     assert_nothing_raised { @stack.push(1) }
   end
-end</code></pre>
+end
+</code></pre>
       <p>Although this is fine, I spent a short while creating an AbstractTestCase that doesn’t complain if no tests are specified.</p>
       <pre><code>require 'test/unit'
 class Test::Unit::AbstractTestCase &lt; Test::Unit::TestCase
@@ -69,7 +70,8 @@ class Test::Unit::AbstractTestCase &lt; Test::Unit::TestCase
     ancestors = (self.class.ancestors - [self.class]).collect { |ancestor| ancestor.to_s }
     super unless klass =~ /AbstractTestCase/ or ancestors.first =~ /AbstractTestCase/
   end
-end</code></pre>
+end
+</code></pre>
       <p>Any test case (TestBase in this example) that inherits from AbstractTestCase can now contain setup and teardown methods but not have to worry about missing tests. In order to maintain expected behaviour, any test case subclassed from TestBase will still complain if tests are missing.</p>
       <pre><code>class TestBase &lt; Test::Unit::AbstractTestCase
   # 'No test were specified' error is not thrown
@@ -85,7 +87,8 @@ class RealTest &lt; TestBase
 end
 class ShouldErrorTest &lt; TestBase
   # 'No tests were specified' error
-end</code></pre>
+end
+</code></pre>
       <p>I then figured that you may want more than one level of abstract test case, i.e. be able to define at the TestCase class level whether or not a test case was abstract. This isn’t properly tested but it seems to work ok.</p>
       <p><strong>Note</strong> This isn’t doing exactly what I thought (the default test case is default_test, not test_default). This works because it just creates an empty test in your test case. This breaks behaviour in test cases that subclass your abstract test case as they too will already have at least one test defined.</p>
       <pre><code>require 'test/unit'
@@ -98,7 +101,8 @@ class Test::Unit::TestCase
       end
     end
   end
-end</code></pre>
+end
+</code></pre>
       <p>By sending the abstract message to any TestCase class, no errors will be reported when no tests are specified. It does this by overriding the test_default method; which is the method that raises the error if no other tests are specified.</p>
       <pre><code>class AbstractTest &lt; Test::Unit::TestCase
   abstract

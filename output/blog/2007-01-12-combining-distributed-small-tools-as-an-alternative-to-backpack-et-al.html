@@ -59,7 +59,7 @@
       <ul>
         <li>A way to add multiple comments to any resource on the web</li>
       </ul>
-      <p>Think – being able to bookmark the same uri multiple times in del.icio.us with different notes against each bookmark. Actually, I wonder why these sort of distributed comment systems are not more prevalent – it seems kinda odd that every blogging engine re-implements something that could be done once, and done well.</p>
+      <p>Think - being able to bookmark the same uri multiple times in del.icio.us with different notes against each bookmark. Actually, I wonder why these sort of distributed comment systems are not more prevalent - it seems kinda odd that every blogging engine re-implements something that could be done once, and done well.</p>
       <ul>
         <li>A way to expose an email or an email conversation at a given uri (a permailink maybe? he he)</li>
       </ul>
@@ -75,7 +75,7 @@
         <li>physical receipts for posting the item</li>
       </ul>
       <p>This is fine until you want to interrogate the data. Try finding out how much money you made/lost, when it was sent, who it was sent to, and the problems are obvious.</p>
-      <p>One solution would be to record all the information for a given item in a page in backpack (or any similar service – a simple wiki would do). But now try to query the data for two items sold, or partially query one item and the problems become evident again.</p>
+      <p>One solution would be to record all the information for a given item in a page in backpack (or any similar service - a simple wiki would do). But now try to query the data for two items sold, or partially query one item and the problems become evident again.</p>
       <p>I think this is where our funky new distributed system can help. Following the same ebay selling process as above:</p>
       <ul>
         <li>We create a text snippet that provides us with a placeholder uri for this item. This would be something like ‘sale of computer’</li>
@@ -87,11 +87,11 @@
         <li>We record a note that states when and how we sent the item, tagged with our placeholder</li>
         <li>We record a financial transaction that represents our cost for sending the item, tagged with our placeholder</li>
       </ul>
-      <p>The important thing is that all of these resources are tagged with a common uri. The uri that represents our item for sale. At the simplest level, this makes auto-generating a backpack type page very simple – we just aggregate<sup class="footnote" id="fnr2"><a href="#fn2">2</a></sup> all of the data tagged with our item uri. Tagging these items with a higher level tag, such as ‘ebay’, will allow us to search across multiple sales/purchase.</p>
+      <p>The important thing is that all of these resources are tagged with a common uri. The uri that represents our item for sale. At the simplest level, this makes auto-generating a backpack type page very simple - we just aggregate<sup class="footnote" id="fnr2"><a href="#fn2">2</a></sup> all of the data tagged with our item uri. Tagging these items with a higher level tag, such as ‘ebay’, will allow us to search across multiple sales/purchase.</p>
       <p>Going even further, using opensearch with a simple custom front-end (basically just a parser) gives us even greater querying capabilities. I could imagine searching for something like “ebay finance:expenditure” to get a list of all items (descriptions, notes, pictures etc) we’ve sold on ebay along with our expenditure. Our simple search engine would know to search for all items tagged with ebay, but only those transactions that are tagged with expenditure (i.e. costs to us).</p>
       <p>Does this make sense/sound feasible to anyone else? Indeed, has someone else already presented these ideas in a more legible/understandable way? It all seems to make great sense to me but I’ve spent quite a while thinking about it (and what seems like ages just writing this post), meaning there’s every chance I’ve missed something obvious. I’d appreciate any thoughts.</p>
-      <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> I did had every intention of developing these things as a proof of concept, but, on the basis that I’m unlikely to get around to it, and that I do actually think something like this is a good idea, I thought I’d jot my thoughts here.</p>
-      <p class="footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a> I started out thinking that the tags would be stored against the resource itself – the same way that the tag for a photo in flickr is stored against that photo. I was also assuming that these services would be <a href="http://opensearch.org">opensearch</a> enabled to allow searching of the tags. As I’ve been writing the post I’ve realised that, providing everything has a uri, we can use del.icio.us as our tagging mechanism and as our search engine.</p>
+      <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> I did had every intention of developing these things as a proof of concept, but, on the basis that I'm unlikely to get around to it, and that I do actually think something like this is a good idea, I thought I'd jot my thoughts here.</p>
+      <p class="footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a> I started out thinking that the tags would be stored against the resource itself - the same way that the tag for a photo in flickr is stored against that photo. I was also assuming that these services would be <a href="http://opensearch.org">opensearch</a> enabled to allow searching of the tags. As I've been writing the post I've realised that, providing everything has a uri, we can use del.icio.us as our tagging mechanism and as our search engine.</p>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-01-12-encapsulation-in-active-record-objects" rel="prev" title="Encapsulation in Active Record objects">Encapsulation in Active Record objects</a>

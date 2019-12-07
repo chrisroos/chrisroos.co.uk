@@ -59,14 +59,16 @@
   RewriteRule ^/(.*)$ http://chrisroos.co.uk/$1 [R=301,L]
   # Amazon Wishlist
   RewriteRule ^/amazonwishlist http://www.amazon.co.uk/gp/registry/IO9HVNCPEWGD [R]
-&lt;/VirtualHost&gt;</code></pre>
-      <p>I’ve replaced that with a much simpler apache config that proxies requests to my new <a href="http://mongrel.rubyforge.org/">mongrel</a> redirection handler thing (<a href="http://chrisroos.co.uk/code/mongrel-redirection">source</a> – hey, even that URL passes through my redirection service).</p>
+&lt;/VirtualHost&gt;
+</code></pre>
+      <p>I’ve replaced that with a much simpler apache config that proxies requests to my new <a href="http://mongrel.rubyforge.org/">mongrel</a> redirection handler thing (<a href="http://chrisroos.co.uk/code/mongrel-redirection">source</a> - hey, even that URL passes through my redirection service).</p>
       <pre><code>&lt;VirtualHost *:80&gt;
   ServerName www.chrisroos.co.uk
   ServerAlias chrisroos.co.uk
   RewriteEngine On
   RewriteRule (.*) http://localhost:4010$1 [P]
-&lt;/VirtualHost&gt;</code></pre>
+&lt;/VirtualHost&gt;
+</code></pre>
       <p>Feel free to go run this on your own server if you’re so inclined. At the moment you’ll have to generate the redirection rules by hand. In irb, you can do something like:</p>
       <pre><code># require 'yaml'
 # # For www.example.com
@@ -74,16 +76,18 @@
 # File.open('PATH_TO_RULES_FOLDER' + '/www.example.com', 'w') { |file| file.puts(rules.to_yaml) }
 # # For example.com
 # rules = { '/google' =&gt; 'www.google.com' }
-# File.open('PATH_TO_RULES_FOLDER' + '/example.com', 'w') { |file| file.puts(rules.to_yaml) }</code></pre>
+# File.open('PATH_TO_RULES_FOLDER' + '/example.com', 'w') { |file| file.puts(rules.to_yaml) }
+</code></pre>
       <p>Start the redirection server.</p>
       <pre><code>$ REDIRECTION_PORT=XXXX ruby mongrel-redir.rb &
 $# Leaving out REDIRECTION_PORT will mean that the server starts on port 4000
-$# Leaving out the final ampersand (&amp;) will mean that server runs in the foreground</code></pre>
+$# Leaving out the final ampersand (&amp;) will mean that server runs in the foreground
+</code></pre>
       <p>Visit www.example.com/google<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> and watch<sup class="footnote" id="fnr2"><a href="#fn2">2</a></sup> as you’re redirected first to example.com/google and then onto www.google.com. Cool huh.</p>
-      <p>Lots to do – notably a user interface for managing rules but it’s not a bad start.</p>
+      <p>Lots to do - notably a user interface for managing rules but it’s not a bad start.</p>
       <p>Oh, and this is specifically so that you can redirect from your own domain. If you don’t care about the domain then you could try <a href="http://tinyurl.com">tinyurl</a> or, for human friendly URLs, <a href="http://decenturl.com">decent url</a>.</p>
       <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> Assuming, of course, that www.example.com and example.com both point to the server that this redirection server is running on.</p>
-      <p class="footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a> You probably won’t be able to watch as it’ll redirect too quickly in the browser – your best bet is to use <a href="http://curl.haxx.se/">curl</a> or the <a href="http://livehttpheaders.mozdev.org/">Live HTTP Headers</a> <a href="http://www.mozilla.com/en-US/firefox/">firefox</a> extension so see what’s actually going on.</p>
+      <p class="footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a> You probably won't be able to watch as it'll redirect too quickly in the browser - your best bet is to use <a href="http://curl.haxx.se/">curl</a> or the <a href="http://livehttpheaders.mozdev.org/">Live HTTP Headers</a> <a href="http://www.mozilla.com/en-US/firefox/">firefox</a> extension so see what's actually going on.</p>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-12-06-ruby-rake-invoke-vs-execute" rel="prev" title="Ruby Rake - Invoke vs Execute">Ruby Rake - Invoke vs Execute</a>

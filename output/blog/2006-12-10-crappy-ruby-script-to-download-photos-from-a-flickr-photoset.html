@@ -50,31 +50,31 @@
       <p>So, it seems far more difficult than it should be to retrieve a bunch of <strong>my</strong> photos from flickr.com. Having unsuccessfully experimented with some of the flickr libs on <a href="http://www.rubyforge.org">rubyforge</a> I hacked this together.</p>
       <p><strong>UPDATE</strong>: Something caused curl to get ‘stuck’ downloading a particular picture so I amended the script to ensure it ignores already downloaded files.</p>
       <p><strong>UPDATE 2</strong>: Surround output filename with quotes.</p>
-      <pre><code>require 'cgi'</code>
+      <pre><code>require 'cgi'
 
-<code>API_KEY = 'YOUR_API_KEY'
+API_KEY = 'YOUR_API_KEY'
 PHOTOSET_ID = 'YOUR_PHOTOSET_ID'
-LOCAL_PHOTO_DIR = '/users/chrisroos/desktop/photos/'</code>
+LOCAL_PHOTO_DIR = '/users/chrisroos/desktop/photos/'
 
-<code>curl_cmd = %[curl "http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&amp;api_key=\#{API_KEY}&amp;photoset_id=\#{PHOTOSET_ID}"]
-photoset_photos = `\#{curl_cmd}`</code>
+curl_cmd = %[curl "http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&amp;api_key=\#{API_KEY}&amp;photoset_id=\#{PHOTOSET_ID}"]
+photoset_photos = `\#{curl_cmd}`
 
-<code>number_of_photos = photoset_photos.scan(/&lt;photo .*&gt;/).size
-current_photo = 0</code>
+number_of_photos = photoset_photos.scan(/&lt;photo .*&gt;/).size
+current_photo = 0
 
-<code>photoset_photos.scan(/&lt;photo .*&gt;/) do |line|
-  current_photo += 1</code>
+photoset_photos.scan(/&lt;photo .*&gt;/) do |line|
+  current_photo += 1
 
-<code>  photo_id = line[/id="(\d+)"/, 1]
+  photo_id = line[/id="(\d+)"/, 1]
   photo_secret = line[/secret="(\w+)"/, 1]
   photo_server = line[/server="(\d+)"/, 1]
-  photo_title = line[/title="(.+?)"/, 1]</code>
+  photo_title = line[/title="(.+?)"/, 1]
 
-<code>  url = "http://static.flickr.com/\#{photo_server}/\#{photo_id}_\#{photo_secret}_o_d.jpg"
+  url = "http://static.flickr.com/\#{photo_server}/\#{photo_id}_\#{photo_secret}_o_d.jpg"
   filename = CGI.unescapeHTML(photo_title).gsub(/ |&amp;|,|-/, '_').gsub(/'/, '').downcase.squeeze('_') + '_' + photo_id + '.jpg' # Sanitize title to use as filename
-  filepath = LOCAL_PHOTO_DIR + filename</code>
+  filepath = LOCAL_PHOTO_DIR + filename
 
-<code>  if File.exists?(filepath)
+  if File.exists?(filepath)
     puts "Skipping photo (already downloaded) \#{current_photo} of \#{number_of_photos}"
   else
     puts "Retrieving photo \#{current_photo} of \#{number_of_photos}"

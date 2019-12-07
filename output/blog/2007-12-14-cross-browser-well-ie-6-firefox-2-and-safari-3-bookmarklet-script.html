@@ -65,7 +65,8 @@ function addRvm() { // A wrapper function around the actual function we want to 
     void(setTimeout(addRvm, 100)); // If our function isn't ready yet we'll just hang on 1/10th of a second and try again
   };
 };
-addRvm(); // Ask our wrapper function to call the actual bookmarklet function</code></pre>
+addRvm(); // Ask our wrapper function to call the actual bookmarklet function
+</code></pre>
       <h2>The compressed version</h2>
       <pre><code>javascript:if(typeof(rvmBM)=='undefined'){var s=document.createElement('script');s.type='text/javascript';s.src='http://example.com/my-external-bookmarklet.js';void(rvmBM=true);void(document.body.appendChild(s));};function addRvm(){if(typeof(addReevooMark)=='function'){addReevooMark();}else{void(setTimeout(addRvm,100));};};addRvm();
 </code></pre>

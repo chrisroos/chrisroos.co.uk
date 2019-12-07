@@ -51,11 +51,13 @@
       <p>In doing so recently, I’ve found it necessary to define the id of the in memory object. By default this is obviously nil as it has not been persisted. In addition, it is not possible to set it during normal object construction.</p>
       <pre><code>person = Person.new(:id =&gt; 1)
 p person.id
-#=&gt; nil</code></pre>
+#=&gt; nil
+</code></pre>
       <p>However, we can give the person constructor a block, setting the id just after creation.</p>
       <pre><code>person = Person.new { |p| p.id = 1 }
 p person.id
-#=&gt; 1</code></pre>
+#=&gt; 1
+</code></pre>
       <p>Cool.</p>
       <hr>
       <ul class="navigation group">

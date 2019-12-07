@@ -54,29 +54,30 @@
       <p>If the author’s contact details were semantically marked up, either on the page I was looking at or linked to elsewhere on the web, then I could use a simple parser to extract those details and select the best communication tool to use manually.</p>
       <p>Maybe some code can help explain what I mean.</p>
       <h3>A semantically marked up contact page.</h3>
-      <pre><code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;</code>
+      <pre><code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;
 
-<code>&lt;html&gt;</code>
+&lt;html&gt;
 
-<code>  &lt;head&gt;
+  &lt;head&gt;
     &lt;title&gt;Contact Details&lt;/title&gt;
-  &lt;/head&gt;</code>
+  &lt;/head&gt;
 
-<code>  &lt;body&gt;
+  &lt;body&gt;
     &lt;dl class="contactDetails"&gt;
       &lt;dt&gt;Skype&lt;/dt&gt;
       &lt;dd class="skype identifier"&gt;skype-username&lt;/dd&gt;
       &lt;dt&gt;MSN&lt;/dt&gt;
       &lt;dd class="msn identifier"&gt;msn-username&lt;/dd&gt;
     &lt;/dl&gt;
-  &lt;/body&gt;</code>
+  &lt;/body&gt;
 
-<code>&lt;/html&gt;</code></pre>
+&lt;/html&gt;
+</code></pre>
       <h3>A parser in <a href="http://www.ruby-lang.org/">ruby</a></h3>
       <pre><code>require 'rubygems'
-require 'hpricot'</code>
+require 'hpricot'
 
-<code>class ContactParser
+class ContactParser
   def self.from_html(html)
     doc = Hpricot(html)
     new(doc)
@@ -95,18 +96,19 @@ require 'hpricot'</code>
   def identifier(service)
     (@hpricot_doc/".contactDetails .\#{service}.identifier").inner_text
   end
-end</code>
+end
 
-<code>contact_details_file = File.dirname(__FILE__) + '/contact-details.html'
+contact_details_file = File.dirname(__FILE__) + '/contact-details.html'
 html = File.open(contact_details_file) { |f| f.read }
-parser = ContactParser.from_html(html)</code>
+parser = ContactParser.from_html(html)
 
-<code>p parser.service_identifiers
+p parser.service_identifiers
 # =&gt; {"skype"=&gt;"skype-username", "msn"=&gt;"msn-username"}
 p parser.identifier('skype')
 # =&gt; 'skype-username'
 p parser.identifier('blurgh')
-# =&gt; ''</code></pre>
+# =&gt; ''
+</code></pre>
       <h2>Further considerations</h2>
       <ul>
         <li>If existing communication tools<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> were to integrate this parser then it would be easy to add a contact by giving the url of, for example, their blog.</li>
@@ -117,7 +119,7 @@ p parser.identifier('blurgh')
       </ul>
       <p>Anyone have any thoughts?</p>
       <p>Code is all over on <a href="http://chrisroos.googlecode.com/svn/trunk/contact-microformat/">google code</a>.</p>
-      <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> I’m thinking of multi protocol tools, like <a href="http://www.adiumx.com/">adium</a>, in particular.</p>
+      <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> I'm thinking of multi protocol tools, like <a href="http://www.adiumx.com/">adium</a>, in particular.</p>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-10-03-finding-similar-sites-by-mining-the-del-icio-us-data" rel="prev" title="Finding similar sites by mining the del.icio.us data">Finding similar sites by mining the del.icio.us data</a>

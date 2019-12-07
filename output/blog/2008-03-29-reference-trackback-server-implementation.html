@@ -56,25 +56,25 @@ $ curl http://trackbacks.seagul.co.uk/trackback
 &lt;response&gt;
   &lt;error&gt;1&lt;/error&gt;
   &lt;message&gt;Http Method MUST be POST&lt;/message&gt;
-&lt;/response&gt;</code>
+&lt;/response&gt;
 
-<code># OK, so we'll POST to the trackback URL
+# OK, so we'll POST to the trackback URL
 $ curl http://trackbacks.seagul.co.uk/trackback -X"POST"
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;response&gt;
   &lt;error&gt;1&lt;/error&gt;
   &lt;message&gt;Content-Type MUST be 'application/x-www-form-urlencoded' with OPTIONAL character encoding&lt;/message&gt;
-&lt;/response&gt;</code>
+&lt;/response&gt;
 
-<code># Posting with the correct Content-Type
+# Posting with the correct Content-Type
 $ curl http://trackbacks.seagul.co.uk/trackback -X"POST" -H"Content-Type: application/x-wencoded"
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;response&gt;
   &lt;error&gt;1&lt;/error&gt;
   &lt;message&gt;You MUST send the URL of your post (permalink) that mentions this post.&lt;/message&gt;
-&lt;/response&gt;</code>
+&lt;/response&gt;
 
-<code># Post with the correct Content-Type and the required URL parameter to actually have a trackback created on the server
+# Post with the correct Content-Type and the required URL parameter to actually have a trackback created on the server
 $ curl http://trackbacks.seagul.co.uk/trackback -X"POST" -H"Content-Type: application/x-wencoded" -d"url=http://example.com"
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;response&gt;

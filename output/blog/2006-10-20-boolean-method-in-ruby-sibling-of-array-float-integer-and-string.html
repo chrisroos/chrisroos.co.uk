@@ -48,34 +48,34 @@
       <abbr class="createdAt" title="2006-10-19T23:19:00+00:00">Thu, 19 Oct 06</abbr>
       <h1>Boolean method in Ruby (sibling of Array, Float, Integer and String)</h1>
       <p>I was reading in data from a file and expected one particular column to contain either ‘true’ or ‘false’. I wanted a nice way to convert the string representation into its object counterpart. I thought to the Kernel#Float (and kin) and decided I wanted a Kernel#Boolean method. So I made one. Tada…</p>
-      <pre><code>module Kernel</code>
+      <pre><code>module Kernel
 
-<code>  def Boolean(string)
+  def Boolean(string)
     return true if string == true || string =~ /^true$/i
     return false if string == false || string.nil? || string =~ /^false$/i
     raise ArgumentError.new("invalid value for Boolean: \"\#{string}\"")
-  end</code>
+  end
 
-<code>end</code>
+end
 
-<code>require File.dirname(__FILE__) + '/../test_helper'</code>
+require File.dirname(__FILE__) + '/../test_helper'
 
-<code>class KernelTest &lt; Test::Unit::TestCase</code>
+class KernelTest &lt; Test::Unit::TestCase
 
-<code>  def test_should_return_true
+  def test_should_return_true
     assert_equal true, Boolean('true')
     assert_equal true, Boolean('TrUe')
     assert_equal true, Boolean(true)
-  end</code>
+  end
 
-<code>  def test_should_return_false
+  def test_should_return_false
     assert_equal false, Boolean(nil)
     assert_equal false, Boolean('false')
     assert_equal false, Boolean('FaLsE')
     assert_equal false, Boolean(false)
-  end</code>
+  end
 
-<code>  def test_should_raise_exception
+  def test_should_raise_exception
     assert_raise(ArgumentError) { Boolean('true ') }
     assert_raise(ArgumentError) { Boolean(' true') }
     assert_raise(ArgumentError) { Boolean(' true ') }
@@ -84,9 +84,9 @@
     assert_raise(ArgumentError) { Boolean(' false ') }
     assert_raise(ArgumentError) { Boolean('BLAH') }
     assert_raise(ArgumentError) { Boolean(1) }
-  end</code>
+  end
 
-<code>end
+end
 </code></pre>
       <hr>
       <ul class="navigation group">

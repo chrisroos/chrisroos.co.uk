@@ -51,27 +51,30 @@
       <p>It’s a bit of a strange error in that you get seemingly conflicting output from TextMate.</p>
       <p>In a new TextMate document, I could run (by using the well handy, and very new to me, Ctrl-r key combo)..</p>
       <pre><code>$ /usr/bin/env ruby --version
-=&gt; ruby 1.8.4 (2005-12-24) [i686-darwin8.7.1]</code>
+=&gt; ruby 1.8.4 (2005-12-24) [i686-darwin8.7.1]
 
-<code>$ /usr/bin/which ruby
-=&gt; /usr/local/bin/ruby</code>
+$ /usr/bin/which ruby
+=&gt; /usr/local/bin/ruby
 
-<code>#!/usr/local/bin/ruby</code>
+#!/usr/local/bin/ruby
 
-<code>puts "hello world"
-=&gt; hello world</code></pre>
+puts "hello world"
+=&gt; hello world
+</code></pre>
       <p>However, if I ran..</p>
-      <pre><code>#!/usr/bin/env ruby</code>
+      <pre><code>#!/usr/bin/env ruby
 
-<code>puts "hello world again"
-=&gt; env: ruby: No such file or directory</code></pre>
+puts "hello world again"
+=&gt; env: ruby: No such file or directory
+</code></pre>
       <p>Hmm, so <code>/usr/bin/env ruby --version</code> works, but when using the very same as the shebang interpreter we get an error. Odd huh.</p>
       <p>Well, apparently not; if we read the textmate docs about <a href="http://macromates.com/textmate/manual/shell_commands#search_path">shell commands</a>.</p>
       <p>Although I, in no way, understand this completely; I blindly followed the instructions on that page and got TextMate back to health.</p>
       <p>In summary for those that don’t wish to read the docs..</p>
       <pre><code>$ mkdir ~/.MacOSX/
 $ cat &gt;&gt; ~/.MacOSX/environment.plist
-{ PATH = "/usr/local/bin"; }</code></pre>
+{ PATH = "/usr/local/bin"; }
+</code></pre>
       <p><strong>Note</strong> You’ll want to change the path to the location of the binaries you want found.</p>
       <p>Then a quick log out and back in, and all is well with TextMate. Yay.</p>
       <hr>

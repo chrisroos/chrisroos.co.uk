@@ -51,8 +51,9 @@
       <p>Anyway, with the embarrassment out of the way, I thought I’d share the remotely interesting<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> findings of the investigation into the browser crash. It turns out that a combination of these three little lines of <a href="http://en.wikipedia.org/wiki/CSS">css</a>, and any <a href="http://en.wikipedia.org/wiki/Doctype">doctype</a> declaration<sup class="footnote" id="fnr2"><a href="#fn2">2</a></sup>, will cause IE 6 to hang while waiting for the magic <a href="http://en.wikipedia.org/wiki/Control-Alt-Delete#Windows_NT">Windows kiss of life</a>.</p>
       <pre><code>margin-left: 240px;
 margin-right: 10%;
-width: expression(document.body.offsetWidth - 256);</code></pre>
-      <p>It is not the specific values (240px, 10% and 256) in the lines above that are of interest – I was able to express and suppress the problem by altering those. Unfortunately, I didn’t spend any time trying to find the threshold of the problem, and am therefore unsure as to the reason for this behaviour.</p>
+width: expression(document.body.offsetWidth - 256);
+</code></pre>
+      <p>It is not the specific values (240px, 10% and 256) in the lines above that are of interest - I was able to express and suppress the problem by altering those. Unfortunately, I didn’t spend any time trying to find the threshold of the problem, and am therefore unsure as to the reason for this behaviour.</p>
       <p>The offending, nasty, IE hack has now been removed. In addition, the day has been spent working with the <a href="http://daftpixel.wordpress.com">designer monkey</a> (ahh, you can call him Adam if you like) to start tidying up the, still somewhat cumbersome, stylesheets.</p>
       <p>For the curious, the simplest html page I could come up with that exhibits the crash behaviour in IE 6 is below.</p>
       <pre><code>&lt;!-- &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"&gt; --&gt;
@@ -74,9 +75,10 @@ width: expression(document.body.offsetWidth - 256);</code></pre>
   &lt;body&gt;
     &lt;div id="content"&gt;blurgh&lt;/div&gt;
   &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-      <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> They’re really not interesting.</p>
-      <p class="footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a> If there is no doctype declaration, the browser doesn’t crash (something to do with standards mode I believe).</p>
+&lt;/html&gt;
+</code></pre>
+      <p class="footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> They're really not interesting.</p>
+      <p class="footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a> If there is no doctype declaration, the browser doesn't crash (something to do with standards mode I believe).</p>
       <hr>
       <ul class="navigation group">
         <li class="previousPost">« (older) <a class="previousPost" href="/blog/2007-01-29-visualising-the-changing-responsibilities-of-objects" rel="prev" title="Visualising the changing responsibilities of objects">Visualising the changing responsibilities of objects</a>

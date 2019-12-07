@@ -59,7 +59,8 @@ function includeDelicious() {
   }
   loadScript('http://s3.amazonaws.com/seagul/delicious.js');
 }
-if (typeof(getRelatedPosts) != 'function') { includeDelicious(); }</code></pre>
+if (typeof(getRelatedPosts) != 'function') { includeDelicious(); }
+</code></pre>
       <p>The javascript above loads this <a href="http://s3.amazonaws.com/seagul/delicious.js">script</a> that in turn loads <a href="http://s3.amazonaws.com/seagul/md5.js">md5.js</a>, <a href="http://s3.amazonaws.com/seagul/jquery.js">jquery.js</a>, does some magic with the <a href="http://del.icio.us">del.icio.us</a> <a href="http://www.json.org">json</a> <a href="http://del.icio.us/help/json/">feeds</a> before finally writing some ‘similar’ sites to the bottom of the page you’re currently looking. At the moment it finds the three most recent sites you’ve bookmarked for each of the tags that people have used when bookmarking the site you’re looking at. It writes all this to the bottom of the current page, as this <a href="http://flickr.com/photos/chrisjroos/1474875125/">screenshot</a> shows.</p>
       <p>Lots of things to do before this could possibly be deemed useful but I think it’s got some potential.</p>
       <hr>
