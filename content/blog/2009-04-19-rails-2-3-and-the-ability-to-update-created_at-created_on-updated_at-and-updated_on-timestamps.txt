@@ -94,7 +94,7 @@ Re-run the script against rails 2.2.2 (the last tag before 2.3) and you should s
 
 Re-run the script against any other tagged version of rails you wish.
 
-A couple of notes about the script {#notes-about-the-script}
+A couple of notes about the script
 ----------------------------------
 
 If you specify an invalid tag (i.e. a tag that doesn't exist in the rails repository) then the rails\_version\_test.rb will fail.
