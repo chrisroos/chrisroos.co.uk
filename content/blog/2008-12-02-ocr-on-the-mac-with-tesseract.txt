@@ -20,9 +20,9 @@ At 300dpi
 
 <div class="letter">
 
-Nothing is ruled out in terms of further development, and I have met with a representative of mySociety to discuss ways of continuing to improve what we do.\
-I am fully supportive of the aims of the Free Our Bills campaign, and I am keen to work with the relevant House authorities to see what can be done to open up the legislative process to a broader audience.\
-I hope that this is helpful to your constituent.
+<p>Nothing is ruled out in terms of further development, and I have met with a representative of mySociety to discuss ways of continuing to improve what we do.<br>
+I am fully supportive of the aims of the Free Our Bills campaign, and I am keen to work with the relevant House authorities to see what can be done to open up the legislative process to a broader audience.<br>
+I hope that this is helpful to your constituent.</p>
 
 </div>
 
@@ -33,9 +33,9 @@ At 150dpi
 
 <div class="letter">
 
-Nothing is ruled out in terms of further development, and I have met with a representative of mySociety to discuss ways of continuing to improve what we do.\
-I am fully supportive ofthe aims ofthe Free Our Bills campaign, and I am keen to work with the relevant House authorities to see what can be done to open up the legislative process to a broader audience.\
-I hope that this is helpful to your constituent.
+<p>Nothing is ruled out in terms of further development, and I have met with a representative of mySociety to discuss ways of continuing to improve what we do.<br>
+I am fully supportive ofthe aims ofthe Free Our Bills campaign, and I am keen to work with the relevant House authorities to see what can be done to open up the legislative process to a broader audience.<br>
+I hope that this is helpful to your constituent.</p>
 
 </div>
 
@@ -46,8 +46,8 @@ At 96dpi
 
 <div class="letter">
 
-Nothing is ruled out in tcmts cI` further develcpntcnt, and I have met with u rcpresentmivc ul' mysociety tn discuss ways nfccnvsinuing to improve what we dc.
-I am titlly supportive oI'thc uirns ofthe I-`rce Our Bills campaign, und I urn keen vn work with the relevant House authorities to sec what can he done to open up thc legislative process In at broader audience.
-I hope that this is hclphtl to your constituent.
+<p>Nothing is ruled out in tcmts cI` further develcpntcnt, and I have met with u rcpresentmivc ul' mysociety tn discuss ways nfccnvsinuing to improve what we dc.<br>
+I am titlly supportive oI'thc uirns ofthe I-`rce Our Bills campaign, und I urn keen vn work with the relevant House authorities to sec what can he done to open up thc legislative process In at broader audience.<br>
+I hope that this is hclphtl to your constituent.</p>
 
 </div>
