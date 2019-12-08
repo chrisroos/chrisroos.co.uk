@@ -5,6 +5,4 @@ filter:      erb
 ---
 <h1><%= h(@page.title) %></h1>
 
-<p>A nice list of all my previous blog posts with, where I've been bothered, a little summary to entice you in.</p>
-
 <%= render(:partial => "/blog_post_list") %>
