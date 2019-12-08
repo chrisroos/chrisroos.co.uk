@@ -11,7 +11,4 @@ filter: erb
   <li>
     <a href="/blog" title="Blog">blog</a>
   </li>
-  <li>
-    <a href="/utilities" title="Utilities">utilities</a>
-  </li>
 </ul>
