@@ -11,7 +11,6 @@ filter:    erb
     <div id="page">
       <div class="group" id="header">
         <%= render(:partial => "/header") %>
-        <%= render(:partial => "/navigation") %>
       </div>
       <div id="content">
         <%= @content %>

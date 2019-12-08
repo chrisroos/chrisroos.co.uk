@@ -1,8 +1,0 @@
----
-filter: erb
----
-<ul class="navigation group">
-  <li>
-    <a href="/blog" title="Blog">blog</a>
-  </li>
-</ul>
