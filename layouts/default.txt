@@ -12,7 +12,6 @@ filter:    erb
       <div class="group" id="header">
         <%= render(:partial => "/header") %>
         <%= render(:partial => "/navigation") %>
-        <%= render(:partial => "/google-search") %>
       </div>
       <div id="content">
         <%= @content %>
@@ -21,6 +20,5 @@ filter:    erb
         <%= render(:partial => "/footer") %>
       </div>
     </div>
-    <script src="/javascripts/google-custom-search.js"></script>
   </body>
 </html>
