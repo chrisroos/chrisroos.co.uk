@@ -14,7 +14,7 @@ GEM
     logging (1.6.1)
       little-plugger (>= 1.1.2)
     loquacious (1.9.1)
-    rake (0.9.2.2)
+    rake (13.0.1)
     rdiscount (2.2.0.1)
     rspec (2.7.0)
       rspec-core (~> 2.7.0)
